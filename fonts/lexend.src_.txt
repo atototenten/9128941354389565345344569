@@ -1,0 +1,4 @@
+https://github.com/ThomasJockin/readexpro/tree/master/fonts/
+	https://github.com/ThomasJockin/readexpro
+		https://github.com/googlefonts/lexend
+			https://fonts.google.com/specimen/Lexend/about

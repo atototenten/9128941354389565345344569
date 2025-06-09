@@ -1,0 +1,2 @@
+https://raw.githubusercontent.com/itfoundry/Poppins/master/products/Poppins-4.003-GoogleFonts-TTF.zip
+	https://github.com/itfoundry/Poppins/raw/master/products/Poppins-4.003-GoogleFonts-OTF.zip

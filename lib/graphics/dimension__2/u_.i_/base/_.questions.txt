@@ -1,0 +1,70 @@
+- advantages of using flutter, over react-native
+	- performance
+	- single language
+	- modern approach
+- architecture of flutter
+	- 3 trees (widget-tree ,element-tree and render-object tree)
+	- communication with platform through ffi and method-channels
+- difference between `StatefulWidget` and `StatelessWidget`
+	- `StatefulWidget` allows access to widget-lifecycle events ,like init. ,update ,dispose
+	- `StatefulWidget` is updateable using `setState`
+	- `StatelessWidget` is lighter/efficient and faster/performant
+- use of `await` keyword
+	- to suspend the function's execution ,until the result is ready (wait for result)
+- calling a funtion inside an `Isolate` ,vs calling a `Future` returning function
+	- isloates run parallelly
+	- futures run sequentially/one-after-the-other (but suspended upon blocking(IO operation))
+- difference between widget-tree and element-tree
+	- widget-tree describes appearance/UI
+	- element-tree acts as a bridge between render-tree and widget-tree
+	- element-tree keeps the references to both the widget and render-object
+- how is focus handled in flutter
+	- through a separate focus-tree
+	- important classes are `FocusNode` ,`FocusScope` ,and `Focus`
+- how does hot-reload work
+	- by replacing the old code portion with new ,but keeping the progress/call-stack/state (including all the variables and widgets) in memory
+- hot-reload vs hot-restart
+	- hot-reload keeps/maintains the progress/state/call-stack
+	- hot-restart does a clean start ,by clearing the app-memory ,apart from replacing the code
+- `const` vs `final` keywords
+	- `const` is compile-time constant (cannot be changed any-how ,directly)
+	- `final` is for run-time constant (cannot be changed once assigned during the app's execution)
+- `return` vs `yield` keywords
+	- `return` does one-time return of the value ,and function execution ends permanently ,for that specific call
+	- `yield` returns a value ,of the sequence ,and the function suspends execution until the request for the next value
+- types of async-tasks
+	- micro tasks (time sensitive tasks ,like timer ,date-time)
+	- io/normal tasks (with completely unknown completion-time ,like file/network read/write)
+- `Stream` vs `Future`
+	- `Future` is for single value
+	- `Stream` is for multiple values
+- `Stream` vs `Iterator`
+	- `Iterator` is sync(like calling normal functions one after the other)
+	- `Stream` is async/event-driven(like calling futures one after the other)
+	- and some minor differences
+- flutter framework vs engine
+	- engine is low-level graphics rendering portion ,written in c++
+	- framework is dart portion ,and everything else in flutter
+- `push()` and `pushReplacement()` functions in navigation
+	- `push` opens the page/overlay/bottom-sheet without affecting the current one
+	- `pushReplacement` opens the page/overlay/bottom-sheet ,but removes the current one
+- use of `InheritedWidget`
+	- to allow passing data to nested widgets ,without passing explicitly
+- opinions on getx
+	- getx is for simple apps
+	- getx promotes global-state and leads to mess
+	- getx merges UI and logic portion
+- opinions on dependency-injection/DI
+	- dependency-injection promotes implicit dependencies ,which can fail only at run-time ,and un-checked at compile-time
+- `setState` function vs a separate `ValueNotifier`/`Listenable` classes
+	- `setState` is faster ,but requires explicit checking for widget's mounting in tree
+	- `setState` works only on the current widget
+	- `ValueNotifier`/`Listenable` classes are safer and allow multiple listeners
+- types of keys
+	- many types ,but `ValueKey` and `GlobalKey` are most important and ample
+		although the latter should be avoided ,unless necessary
+- `ValueKey<Object>` vs `ObjectKey` vs `UniqueKey`
+	- first and second are are equal ,while the third is more memory-efficient ,and has same effect
+- what is build-context
+	- used to interact with widget-tree
+	- an interface over the node of the element-tree

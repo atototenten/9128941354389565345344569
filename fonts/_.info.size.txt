@@ -1,0 +1,9 @@
+100	thin
+200	light.extra
+300	light
+400	regular
+500	medium
+600	bold.semi (semi-bold)
+700	bold
+800	bold.extra
+900	black

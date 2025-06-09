@@ -1,0 +1,165 @@
+inferiorities
+	the framework is completely single-instance(window) ,even on work-stations ,let alone desktops ,or phones
+		and does not even plan ,to deviate(like supporting multiple windows)
+		because the framework is temp. ,the ultimate goal is owning the full-stack ,completely ,including the lang.(currently dart)
+guidelines
+	prefer composability
+		over
+			bloating(conditional features)
+				like `Padding(Decoration(Box()))` ,instead of `Box(Padding(),Decoration())`
+			wrapping(duplicating features)
+				example
+					either `(listing widget;items:count uu,item (widget;context,id))`-callback as param.
+						or returning `items:count uu` and `item (widget;context,id)` ,as multiple-results
+							instead of wrapping `Listing()` into `SuperListing()`
+	architecture
+		keep multi-point separation
+			into loosely-linked layers
+				storage
+					usually an empty compo. ,with proc. associations
+						simply for organization
+						but can also be a few global proc.s
+					manages both ,cache/fast and persistent ,types
+						former should be local ,without networking
+							while the latter can be networked/internet-based/remote
+					maintains single-source-of-truth principle
+				entity
+					depository/state
+						a compo.
+							representing the concept ,in the system
+							a completely-hiding encapsulation/abstraction
+						can be circulated/passed in the system ,wherever and whenever necessary
+						completely independent from other [sub-]layers
+							especially the life-cycle
+							like presentation and its binding
+							except the well-defined interface ,with storage layer
+						includes the behavior/management/manipulation ,and event dispatch/handling
+						success and failure cases ,should be events ,distinct or combined
+							instead of separate event-channels
+					presentation/view
+						fragment/section
+							binding
+								a compo.
+									deriving/extending the depository
+										as a leaky/non-hiding proxy
+											with additional necessary functionality
+								manages the depositories(or equivalent) of external modules
+									including the frameworks ,like flutter
+									and pass/convert their events to the depository ,for handling
+										like text-editing/scroll/... control
+								re-usable ,through init.ion/disposal proc.-associations
+									being free of any side-effect
+										especially to depository
+								life-cycle(init.ion/disposal) should be syn.ed/linked
+									with the major-widget's tree-node attach/detach events
+									simply a suggestion ,but arch.-specific ,hence not mandatory
+							building
+								a proc.
+									named `build`
+									should be state-less(non-closure)
+										and free of any side-effect
+									assoc.ed to the respective/relevant binding
+								input can only be the widget's building-context(tree-node ,containing widget-specific details)
+									apart from the assoc.ion binding
+										which should also contain all the other data
+											necessary/needed for building
+								output can only be a widget
+									especially not multiple results
+										which is a signal ,for
+											weak separation-of-concern ,and possible software-design defects
+											potential for a break-down of the functionality ,into [more] parts
+											like composition of a view
+												with multiple manipulation-buttons or other views/fragments
+													all positioned at different places
+						major-widget(page/[bottom-]overlay)
+							binding
+								a compo.
+									containing only the bindings of its parts/[children-]fragments
+										and especially not any behavior/functionality
+										and at-least one fragment
+							building
+								same as fragment's building
+			because
+				scalable
+					due to well-defined division/separation-of-concern in functionality
+				memory-efficient
+					due to auto. and systematic in-validation ,of un-necessary data
+	dependencies
+		keep the dependency-list as little ,as practically feasible
+			because
+				packages are inherently-bundled ,with un-necessary components
+					like tech.-debt and api choices
+		prefer 1st-party packages ,over 3rd-party ones ,where possible
+			because
+				external packages can conflict ,with other packages ,and even the framework[s]
+				quality is sub-standard ,for non-popular ones
+			example
+				`http` over `dio` ,for non-advanced cases
+				`ChangeNotifier` and `ValueNotifier`
+					instead of `Bloc` and `Cubit`
+	not defeat/evade the type-safety (static typing behavior) ,of the [dart-]lang.
+		merely to improve writability ,at the cost of understandability and maintainability
+			like trying to reduce some lines-of-code
+		example
+			decl. dedicated and well doc.ed ,compo./`class` instead of `typedef`
+			prefer explicit ,protocol/interface type ,param.s and passing
+				instead of global-data and dependency-injection/`InheritedWidget`
+					including its proponents
+						like `getx` and `riverpod`/`provider` ,packages
+	dependency-injection
+		tree-searching form
+			its implicit ,and completely un-typed ,defeating/evading the lang.'s static type-checking
+				hence very-bad for understand-ability and maintain-ability
+			natuarally optimized against run-time efficiency (which is very-important ,even in non-{IO-intensive} app.s ,to avoid lag between frames)
+				due to non-linear iteration (in-efficient for cache-memory) of the widget-tree
+				although greatly depends on the search-approach ,being nearest or furthest ,which in-turn depends on tree-depth
+					but would always be very in-efficient ,compared to direct-access
+				although slightly efficient for memory-space efficiency ,which is usually ir-relevant for app.s
+				for example "Adding one call to `inheritFromWidgetOfExactType` from Theme.of is adding 200ms to the build benchmark."(by hixie(flutter-framework's lead at-the-time) ,on 2017-oct.-4 ,at `www://github.com/flutter/flutter/issues/11572#issuecomment-334015787`)
+	observer-pattern/event-driven-arch.
+		recommended ,due to being natuarally efficient ,in all terms (except the increase in the amount-of-code)
+	inherited-widget/`InheritedWidget`
+		can be used for state-management ,using `dependOnInheritedWidgetOfExactType` and `updateShouldNotify` methods
+			but tightly-coupled with the widget-tree ,hence should be avoided ,for large programs
+			run-time in-efficient in the current impl. (in 2024)
+				because `HashSet` data-structure (which is based on {re-sizable}-array ,hence would always be slower than it) is used ,to track observers ,internally
+	terminology
+		parent/child/children/node is recommended ,because every branch ,of every non-physical thing ,is based-on/resembles its physical similarity ,so back-to-basics can never be in-correct
+	packages
+		`provider`
+			a utility/helper ,for inherited-widget/dependency-injection
+				with a much-more complex(sometimes complicated) design
+					and all the inherent issues of the inherited-widgets
+		`riverpod`
+			new version of `provider`
+				un-linked from inherited-widget
+					to reduce the tight-coupling with the widget-tree ,and support flexibility
+						and allow global data-storage (AKA "spooky action at distance") ,which should be avoided for large app.s
+				with even-more complex(on the border-line of complicated) design
+		`bloc`
+			a good state-management library ,based on the popular MVVM architecture ,of android app.-dev. world
+			in-efficient (in both run-time and run-memory-space) in current impl. (in 2024)
+				due to being based on the dart-lang.'s `Stream` data-structure ,for state-change event notifications
+					and excessive rigidness ,leading to no-escape ,from the hell of inefficiency
+			depends on `provider`
+		getx/`get`
+			a good and efficient tool
+				but too-much magical
+					deviated from flutter
+						and paves a buttery-smooth way ,towards spooky-action-at-distance
+	RATIONALE
+		bloc package is not recommended ,due to
+			very-high memory and compute overhead
+				due to streams ,and other un-necessities
+			separate success/failure channels
+				instead of combining with events
+			high rigidity
+		majority of online tutorials
+			recommend bloc package ,to immitate android's MVVM pattern ,which is proven to be scalable
+				because most dev.s lack the knowledge and discipline
+					to maintain correctness
+						hence cannot be trusted to ensure quality
+		majority of online tutorials
+			recommend riverpod/provider/getx package
+				because most dev.s lack the discipline
+					and not want to write ,the enough/necessary amount of code ,but bare minimum

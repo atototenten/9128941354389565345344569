@@ -1,0 +1,2 @@
+https://api-icons.icons8.com/siteApi/icons/icon?id=19417&language=en-US&svg=true
+	https://icons8.com/icon/19417/star-filled
