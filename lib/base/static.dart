@@ -1,0 +1,105 @@
+part of "_.dart";
+
+const TCW //
+    TC__unicode__bullet = 8226,
+    TC__unicode__currency__rupee = 8377 /* symbol of Indian National Rupee */;
+
+final string__raw //
+    char__bullet = string__raw.fromCharCode(TC__unicode__bullet),
+    char__currency__rupee = string__raw.fromCharCode(TC__unicode__currency__rupee);
+
+const //
+    number__ordinal__static__sting__array = <string__raw>[
+      "First",
+      "Second",
+      "Third",
+      "Fourth",
+      "Fifth",
+      "Sixth",
+      "Seventh",
+      "Eighth",
+      "Ninth",
+      "Tenth",
+      "Eleventh",
+      "Twelfth",
+      "Thirteenth",
+      "Fourteenth",
+      "Fifteenth",
+      "Sixteenth",
+      "Seventeenth",
+      "Eighteenth",
+      "Nineteenth",
+      "Twentieth",
+      "Twenty-first",
+      "Twenty-second",
+      "Twenty-third",
+      "Twenty-fourth",
+      "Twenty-fifth",
+      "Twenty-sixth",
+      "Twenty-seventh",
+      "Twenty-eighth",
+      "Twenty-ninth",
+      "Thirtieth",
+      "Thirty-first",
+      "Thirty-second",
+      "Thirty-third",
+    ],
+//
+    calendar__gregorian__month__static__text__array = <string__raw>[
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ],
+    calendar__gregorian__week__day__static__text__array = <string__raw>[
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ],
+//
+    file__type__array__count__size = NI2__size,
+    file__type__static__text__graphic__image = "image",
+    file__type__static__text__graphic__symbol = "symbol",
+    file__type__static__text__array = <string__raw>[
+      (file__type__static__text__graphic__image + char__colon + "png"),
+      (file__type__static__text__graphic__symbol + char__colon + "svg"),
+    ];
+
+final //
+    currencies = <({
+  NIMR code,
+  string__raw char,
+  string__raw title,
+})>[
+  (
+    code: TC__unicode__currency__rupee,
+    char: char__currency__rupee,
+    title: "Indian Rupees",
+  ),
+];
+
+const //
+    char__s = 's',
+    chars__es = ('e' + char__s),
+//
+    static__text__english__array = [
+      "Add",
+      "All",
+    ],
+    static__text__array = //
+        static__text__english__array;
+
+string__raw get static__text__add => static__text__array[0];
+string__raw get static__text__all => static__text__array[1];

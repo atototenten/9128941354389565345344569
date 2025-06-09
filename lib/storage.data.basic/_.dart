@@ -1,0 +1,1150 @@
+import "package:base/base/_.dart";
+
+import "package:sqlite_async/sqlite_async.dart" as sqlite_async;
+import "package:sqlite_async/sqlite3.dart" as sqlite_sync;
+
+class base__storage__data__basic__meta //
+    extends base__storage__data__basic__meta__base //
+    implements
+        base__dispose__asyn___protocol //
+        <base__storage__data__basic__meta__disposal__result> {
+  static value__asyn<base__storage__data__basic__meta> //
+      asyn({
+    required final string__raw file__path /*
+usually (storage__directory__permanent__path__absolute + base__storage__file__path__separation__char + file__name) */
+    ,
+  }) /*
+the data-base access ,must be exclusive */
+  async {
+    if (base__printing__ok) {
+      base__storage__data__basic__meta__base.sqlite__info().text__representation().print("sqlite__info");
+    }
+
+    final value = sqlite_async.SqliteDatabase(
+      path: file__path,
+      maxReaders: NI1__limit,
+      options: sqlite_async.SqliteOptions(
+        journalMode: sqlite_async.SqliteJournalMode.wal,
+        journalSizeLimit: 0,
+        synchronous: sqlite_async.SqliteSynchronous.full,
+      ),
+    );
+
+    await value.initialize();
+
+    return value__asyn.value(
+      base__storage__data__basic__meta.raw(
+        value,
+      ),
+    );
+  }
+
+  base__storage__data__basic__meta.raw(
+    super.value__raw,
+  );
+
+  value__asyn<BOOL?> //
+      init_ization__needed__ok__auto__asyn() async {
+    final meta__asyn = accessing__meta__asyn();
+
+    if (meta__asyn == null) {
+      return NIL;
+    }
+
+    final meta = await meta__asyn;
+
+    final result = init_ization__needed__ok__asyn(
+      meta,
+    );
+
+    await meta.complete__asyn();
+
+    return result;
+  }
+
+  value__asyn<BOOL> //
+      init_ization__needed__ok__asyn(
+    final base__storage__data__basic__accessing__meta meta,
+  ) async {
+    final tables__count = await meta.tables__count__asyn();
+    return (tables__count == 0);
+  }
+
+  @override
+  value__asyn<base__storage__data__basic__meta__disposal__result> //
+      dispose__asyn() async {
+    await value__raw.close();
+
+    return base__storage__data__basic__meta__disposal__result.success;
+  }
+}
+
+enum base__storage__data__basic__meta__disposal__result {
+  success,
+}
+
+abstract class base__storage__data__basic__meta__base /*
+based on sqlite-3
+  sqlite is quite-ok(compared to alternatives) ,for {non-concurrent connections ,and storage__data__file__size less than the file-system's limits}
+    ,otherwise postgresql ,but overall ,s.q.l.-to-software interface is a non-sensible approach
+requires `sqlite3_flutter_libs` pkg. */
+{
+  static const //
+      table__row__id__column__name = char__underscore;
+
+  static sqlite_sync.Version sqlite__info() => //
+      sqlite_sync.sqlite3.version;
+
+  static void sqlite__temporary__directory__init_ize(
+    final string__raw storage__directory__temporary__path__absolute,
+  ) {
+    sqlite_sync.sqlite3.tempDirectory = storage__directory__temporary__path__absolute;
+  }
+
+  base__storage__data__basic__meta__base(
+    this.value__raw,
+  )   : accesses__count__raw = 0,
+        access__mutating__exclusion__raw = base__exclusion__mutual(),
+        accesses__empty__channel__raw = base__event__channel__broadcast() {
+    access__mutating__exclusion__raw //
+        .free__channel()
+        .descriptions__add(
+      procedure__empty__meta(
+        () {
+          if (accesses__count__raw != 0) {
+            return;
+          }
+
+          accesses__empty__channel__raw.event__dispatch();
+        },
+      ),
+    );
+  }
+
+  final sqlite_async.SqliteDatabase value__raw;
+  final base__event__channel__broadcast accesses__empty__channel__raw;
+  final base__exclusion__mutual access__mutating__exclusion__raw;
+  NIMR accesses__count__raw /*
+excluding mutating-access
+  available through `access__mutating__exclusion__raw.locked__ok` proc. */
+      ;
+
+  value__asyn<base__storage__data__basic__accessing__meta>? //
+      accessing__meta__asyn /*
+required for read op.ions */
+      () async {
+    accesses__count__raw += 1;
+
+    final result = value__asyn__meta<base__storage__data__basic__accessing__meta>();
+
+    value__raw.readLock(
+      (final value) {
+        final completion__asyn__meta = value__asyn__meta<void>();
+
+        value
+            .operate__asyn__raw(
+          statement: "BEGIN",
+        )
+            .handle(
+          (final _) {
+            result.complete(
+              base__storage__data__basic__accessing__meta.raw(
+                value,
+                completion__meta__raw: base__procedure__empty__complicated__meta(
+                  () {
+                    {
+                      accesses__count__raw -= 1;
+
+                      if (accesses__count__raw != 0) {
+                        return;
+                      }
+                    }
+
+                    {
+                      final access__mutating__exclusion__locked__ok = access__mutating__exclusion__raw.locked__ok();
+                      if (access__mutating__exclusion__locked__ok) {
+                        return;
+                      }
+                    }
+
+                    accesses__empty__channel__raw.event__dispatch();
+
+                    completion__asyn__meta.complete();
+                  },
+                ),
+              ),
+            );
+          },
+          (final e, final t) {
+            completion__asyn__meta.complete();
+
+            result.completeError(e, t);
+          },
+        );
+
+        return completion__asyn__meta.future;
+      },
+    );
+
+    return result.future;
+  }
+
+  value__asyn<base__storage__data__basic__accessing__mutating__meta>? //
+      accessing__mutating__meta__asyn /*
+required for write op.ions */
+      () {
+    late final value__asyn__meta<base__storage__data__basic__accessing__mutating__meta> result;
+
+    final ok = access__mutating__exclusion__raw.lock(
+      (final lock) {
+        value__raw.writeLock(
+          (final value) {
+            final completion__asyn__meta = value__asyn__meta<void>();
+
+            value
+                .operate__asyn__raw(
+              statement: "BEGIN IMMEDIATE",
+            )
+                .handle(
+              (final _) {
+                result.complete(
+                  base__storage__data__basic__accessing__mutating__meta.raw(
+                    value,
+                    lock__raw: lock,
+                    completion__meta__raw: base__procedure__empty__complicated__meta(
+                      () {
+                        completion__asyn__meta.complete();
+                      },
+                    ),
+                  ),
+                );
+              },
+              (final e, final t) {
+                completion__asyn__meta.complete();
+
+                result.completeError(e, t);
+              },
+            );
+
+            return completion__asyn__meta.future;
+          },
+        );
+      },
+    );
+
+    if (ok.not) {
+      return NIL;
+    }
+
+    result = value__asyn__meta<base__storage__data__basic__accessing__mutating__meta>();
+
+    return result.future;
+  }
+}
+
+extension SqliteReadContext__operation__extension //
+    on sqlite_async.SqliteReadContext {
+  value__asyn<array<array<Object?>>> //
+      operate__asyn__raw({
+    required final string__raw statement,
+    final array<Object?>? statement__arguments,
+  }) async {
+    statement__print__raw(
+      statement: statement,
+      statement__arguments: statement__arguments,
+    );
+
+    final result = await this.getAll(
+      statement,
+      (statement__arguments ?? const <Object?>[]),
+    );
+
+    return result.rows;
+  }
+
+  void statement__print__raw({
+    required final string__raw statement,
+    final array<Object?>? statement__arguments,
+  }) {
+    statement.text__representation().print("statement");
+    statement__arguments
+        .text__representation(
+          elements__truncation__count__threshold: 0,
+        )
+        .print("statement__arguments");
+  }
+}
+
+class base__storage__data__basic__accessing__meta //
+    extends base__storage__data__basic__accessing__meta__base //
+    <sqlite_async.SqliteReadContext> {
+  base__storage__data__basic__accessing__meta.raw(
+    final sqlite_async.SqliteReadContext value, {
+    required this.completion__meta__raw,
+  }) : super.raw(
+          value,
+        );
+
+  final base__procedure__empty__complicated__meta completion__meta__raw;
+
+  value__asyn<void> complete__asyn() async {
+    final completed__already__ok = completion__meta__raw.invoked__ok();
+
+    if (completed__already__ok) {
+      throw "completed already";
+    }
+
+    await value__raw.operate__asyn__raw(
+      statement: "END TRANSACTION",
+    );
+
+    completion__meta__raw.invoke();
+  }
+}
+
+abstract class base__storage__data__basic__accessing__meta__base //
+    <value__type extends sqlite_async.SqliteReadContext> {
+  base__storage__data__basic__accessing__meta__base.raw(
+    this.value__raw,
+  );
+
+  final value__type value__raw;
+
+  value__asyn<
+      ({
+        NIMR occupied /*
+including `.wasted` */
+        ,
+        NIMR wasted,
+      })> space__usage__summary() async {
+    final result = await value__raw.operate__asyn__raw(
+      statement: "SELECT page_count * page_size as total_size, freelist_count * page_size as freelist_size FROM pragma_freelist_count(), pragma_page_size();" /*
+source : `web://powersync.com/blog/sqlite-optimizations-for-ultra-high-performance#strongstrong10-free-up-space-when-appropriate` */
+      ,
+    );
+
+    return (
+      occupied: (result.first as NIMR),
+      wasted: (result[1] as NIMR),
+    );
+  }
+
+  /*value__asyn<void> build_re__asyn({
+    required final string__raw file__path,
+    required final base__storage__data__basic__table__column__id? Function(
+      array<base__storage__data__basic__table__cell__id> /*
+empty for root-table */
+          table__path,
+    ) table__build_re__column /*
+column is asumed to be boolean-type
+  and true if not zero
+after re-building
+  row-id.s are in-validated
+    including the ref.s to the rows
+  row-order is maintained */
+    ,
+  }) async {
+    await value__raw.operate__asyn__raw(
+      statement: "vacuum; pragma wal_checkpoint(truncate);",
+    );
+  }*/ /*
+TASK
+  support */
+
+  value__asyn<NIMR> table__rows__count__asyn__raw({
+    required final string__raw table__name,
+    final string__raw suffix = empty__text,
+  }) async {
+    final result = await value__raw.operate__asyn__raw(
+      statement: ("SELECT COUNT(*) FROM " + table__name + suffix),
+    );
+
+    return (result.first.first as NIMR);
+  }
+
+  value__asyn<NIMR> table__rows__count__asyn({
+    required final base__storage__data__basic__table__id table__id,
+  }) {
+    return table__rows__count__asyn__raw(
+      table__name: table__id.convert__name__raw(),
+    );
+  }
+
+  value__asyn<NIMR> tables__count__asyn() /*
+excluding, the mandatory, ad default, schema table
+refer to `web://sqlite.org/schematab.html` */
+  {
+    return table__rows__count__asyn__raw(
+      table__name: "sqlite_schema",
+      suffix: " WHERE type = 'table'",
+    );
+  }
+
+  void table__columns__id__join__raw(
+    final StringBuffer buffer,
+    final array<base__storage__data__basic__table__column__meta> columns__meta,
+    final BOOL result__column__id__ok,
+  ) {
+    if (columns__meta.empty__ok() /* because sqlite mandates non-empty selection-columns */) {
+      buffer.write(base__storage__data__basic__meta__base.table__row__id__column__name);
+      return;
+    }
+
+    if (result__column__id__ok) {
+      buffer
+        ..write(base__storage__data__basic__meta__base.table__row__id__column__name)
+        ..write(", ");
+    }
+
+    buffer.write(
+      columns__meta.first.name(),
+    );
+
+    columns__meta.iterate__basic(
+      (final /*column__id__id_*/ _, final column__meta) {
+        buffer
+          ..write(", ")
+          ..write(column__meta.name());
+      },
+      offset: 1,
+    );
+  }
+
+  value__asyn<array<base__storage__data__basic__table__row>> /*
+the first column of each row ,is the unique id ,of the row ,its type ,is un-signed integer ,and range 1..s64 */
+      table__rows__asyn({
+    required final base__storage__data__basic__table__id table__id,
+    required final array<base__storage__data__basic__table__column__meta>? result__columns__meta /*
+if NIL ,then all the columns ,but respecting the "conditions" argument
+if empty ,then the column-id column ,is implicit */
+    ,
+    final BOOL result__column__id__ok /*
+ignored if `result__columns__meta == NIL` */
+    = NO,
+    final BOOL result__rows__distinct__ok = NO,
+    required final string__raw? result__conditions /*
+  example: "\(column__name) LIKE ?"
+    '?' indicates substitution, from "conditions__arguments" */
+    ,
+    required final array<Object?>? result__conditions__arguments /*
+  example: "Dr%", "%@mail.com" */
+    ,
+    final array<base__storage__data__basic__table__column__meta>? result__order__columns__meta /*
+if NIL ,then resulting rows ,are un-order-ed ,or the order is un-defin-ed ,and "result__order__ascend_ing__ok" is ignored  */
+    ,
+    final BOOL result__order__ascend_ing__ok /* otherwise descend-ing */ = OK,
+    final NIMR? result__rows__count__limit,
+    final NIMR? result__rows__id__offset /*
+`result__order__columns__meta` should also be passed */
+    ,
+  }) /*
+example
+  search
+    table__rows ( \arg.s\  result__conditions :"\(column__name) LIKE ?" ,result__conditions__arguments :[ "%@mail.com" ] ) */
+  async {
+    final statement__buffer = StringBuffer("SELECT ");
+
+    if (result__rows__distinct__ok) {
+      statement__buffer.write("DISTINCT ");
+    }
+
+    if (result__columns__meta != null) {
+      table__columns__id__join__raw(
+        statement__buffer,
+        result__columns__meta,
+        result__column__id__ok,
+      );
+    } else {
+      statement__buffer.write(char__asterisk);
+    }
+
+    statement__buffer
+      ..write(" FROM ")
+      ..write(table__id.convert__name__raw());
+
+    if (result__conditions != null) {
+      statement__buffer.write(
+        (" WHERE " + result__conditions),
+      );
+    }
+
+    if (result__order__columns__meta != null) {
+      statement__buffer.write(" ORDER BY ");
+
+      table__columns__id__join__raw(
+        statement__buffer,
+        result__order__columns__meta,
+        NO,
+      );
+
+      statement__buffer
+        ..write(char__space)
+        ..write(
+          (result__order__ascend_ing__ok //
+              ? "ASC"
+              : "DESC"),
+        );
+    }
+
+    if (result__rows__count__limit != null) {
+      statement__buffer
+        ..write(" LIMIT ")
+        ..write(result__rows__count__limit);
+    }
+
+    if (result__rows__id__offset != null) {
+      statement__buffer
+        ..write(" OFFSET ")
+        ..write(result__rows__id__offset);
+    }
+
+    final statement = statement__buffer.toString();
+    statement__buffer.clear();
+
+    return await value__raw.operate__asyn__raw(
+      statement: statement,
+      statement__arguments: result__conditions__arguments,
+    );
+  }
+
+  value__asyn<array<base__storage__data__basic__table__row>> table__rows__all__asyn({
+    required final base__storage__data__basic__table__id table__id,
+    final array<base__storage__data__basic__table__column__meta>? result__columns__meta,
+    final BOOL result__column__id__ok = NO,
+  }) {
+    return table__rows__asyn(
+      table__id: table__id,
+      result__columns__meta: result__columns__meta,
+      result__column__id__ok: result__column__id__ok,
+      result__conditions: NIL,
+      result__conditions__arguments: NIL,
+    );
+  }
+
+  value__asyn<base__storage__data__basic__table__row?> table__row__asyn({
+    required final base__storage__data__basic__table__id table__id,
+    required final base__storage__data__basic__table__row__id table__row__id,
+    required final array<base__storage__data__basic__table__column__meta>? result__columns__meta,
+  }) async {
+    final rows = await table__rows__asyn(
+      table__id: table__id,
+      result__columns__meta: result__columns__meta,
+      result__conditions: (base__storage__data__basic__meta__base.table__row__id__column__name + " = ?"),
+      result__conditions__arguments: [table__row__id.value],
+    );
+
+    if (rows.empty__ok()) {
+      return NIL;
+    }
+
+    if /*F*/ (rows.elements__count > 1) {
+      throw "exception : `table__row__id` is not unique";
+    }
+
+    return rows.first;
+  }
+}
+
+class base__storage__data__basic__table__cell__id {
+  const base__storage__data__basic__table__cell__id({
+    required this.row__id,
+    required this.column__id,
+  });
+
+  final base__storage__data__basic__table__row__id row__id;
+  final base__storage__data__basic__table__column__id column__id;
+}
+
+class base__storage__data__basic__table__column__id {
+  const base__storage__data__basic__table__column__id(
+    this.value,
+  );
+
+  final NIMR value;
+}
+
+typedef base__storage__data__basic__table__row = array<Object?>;
+
+class base__storage__data__basic__table__id //
+    extends base__storage__data__basic__table__row__id__base {
+  const base__storage__data__basic__table__id(
+    super.value,
+  );
+
+  string__raw convert__name__raw() {
+    return (char__underscore + value.toString());
+  }
+}
+
+class base__storage__data__basic__accessing__mutating__meta //
+    extends base__storage__data__basic__accessing__meta__base //
+    <sqlite_async.SqliteWriteContext> {
+  base__storage__data__basic__accessing__mutating__meta.raw(
+    final sqlite_async.SqliteWriteContext value, {
+    required this.lock__raw,
+    required this.completion__meta__raw,
+  }) : super.raw(
+          value,
+        );
+
+  final base__exclusion__mutual__lock lock__raw;
+  final base__procedure__empty__complicated__meta completion__meta__raw;
+
+  value__asyn<
+          base__storage__data__basic__table__id /*/*
+table-id.'s assignment is fully-defined
+  equal to row-id. */ */
+          > //
+      table__add__asyn({
+    required final array<base__storage__data__basic__table__column__meta> columns__meta,
+  }) async {
+    final //
+        table__id__value = await tables__count__asyn(),
+        table__id = base__storage__data__basic__table__id(
+          table__id__value,
+        ),
+        statement__buffer = StringBuffer("CREATE TABLE ")
+          ..write(table__id.convert__name__raw())
+          ..write(" (")
+          ..write(base__storage__data__basic__meta__base.table__row__id__column__name)
+          ..write(" ")
+          ..write(base__storage__data__basic__table__column__data__type.number__integer__auto.name)
+          ..write(" PRIMARY KEY") /*
+avoid `AUTOINCREMENT`
+  `http://www.sqlite.org/autoinc.html` */
+        ;
+
+    columns__meta.iterate__basic(
+      (final column__id, final column__meta) {
+        statement__buffer
+          ..write(", _")
+          ..write(column__id)
+          ..write(char__space)
+          ..write(
+            column__meta.type.name,
+          );
+
+        if (column__meta.nil_able__ok.not) {
+          statement__buffer
+            ..write(char__space)
+            ..write("NOT ")
+            ..write(
+              base__storage__data__basic__table__column__data__type.nil.name,
+            );
+        }
+      },
+    );
+
+    statement__buffer.write(");");
+
+    await value__raw.operate__asyn__raw(
+      statement: statement__buffer.toString(),
+    );
+
+    statement__buffer.clear();
+
+    return table__id;
+  }
+
+  /*value__asyn<void> table__remove__asyn({
+    required final base__storage__data__basic__table__id table__id,
+    required final array<base__storage__data__basic__table__column__meta> columns__meta,
+  }) async {
+    await value__raw.operate__asyn__raw(
+      statement: ("DROP TABLE " + table__id.convert__name__raw()),
+    );
+  }*/ /*
+tables cannot be removed ,after addition
+  almost-completely similar to rows */
+
+  value__asyn<
+          base__storage__data__basic__table__row__id /*
+row-id.'s assignment/sequence is well-defined ,as always increasing integer ,beginning from zero */
+          > //
+      table__row__add__asyn /*
+can add only-single row */
+      ({
+    required final base__storage__data__basic__table__id table__id,
+    required final array<base__storage__data__basic__table__column__meta> columns__meta,
+    required final base__storage__data__basic__table__row row,
+  }) async {
+    final //
+        statement = table__row__addition__statement__raw(
+          table__id: table__id,
+          columns__meta: columns__meta,
+        ),
+        result = await value__raw.operate__asyn__raw(
+          statement: statement,
+          statement__arguments: row,
+        );
+
+    return base__storage__data__basic__table__row__id(
+      ((result.first.first as NIMR) - 1),
+    );
+  }
+
+  value__asyn<
+          base__storage__data__basic__table__row__id /*
+of `rows.first` */
+          > //
+      table__rows__add__asyn /*
+can add multiple-rows ,as well as a single-row */
+      ({
+    required final base__storage__data__basic__table__id table__id,
+    required final array<base__storage__data__basic__table__column__meta> columns__meta,
+    required final array<base__storage__data__basic__table__row> rows,
+  }) async {
+    final statement = table__row__addition__statement__raw(
+      table__id: table__id,
+      columns__meta: columns__meta,
+    );
+
+    final result = await value__raw.operate__asyn__raw(
+      statement: statement,
+      statement__arguments: rows.first,
+    );
+
+    if (rows.elements__count > 1) {
+      await value__raw.operate__compound__asyn__raw(
+        statement: statement,
+        statement__arguments: rows.sublist(1),
+      );
+    }
+
+    return base__storage__data__basic__table__row__id(
+      (result.first.first as NIMR),
+    );
+  }
+
+  string__raw //
+      table__row__addition__statement__raw({
+    required final base__storage__data__basic__table__id table__id,
+    required final array<base__storage__data__basic__table__column__meta> columns__meta,
+  }) {
+    final //
+        columns__count = columns__meta.elements__count,
+        statement__buffer = StringBuffer("INSERT INTO ")
+          ..write(table__id.convert__name__raw())
+          ..write(" (");
+
+    {
+      statement__buffer.write(columns__meta.first.name());
+
+      base__iterate__basic(
+        (columns__count - 1),
+        (final column__id) {
+          statement__buffer
+            ..write(", ")
+            ..write(columns__meta[column__id].name());
+        },
+        offset: 1,
+      );
+    }
+
+    statement__buffer
+      ..write(") VALUES (?")
+      ..write(",?" * (columns__count - 1))
+      ..write(char__bracket__round__close)
+      ..write(" RETURNING ")
+      ..write(base__storage__data__basic__meta__base.table__row__id__column__name);
+
+    final result = statement__buffer.toString();
+    statement__buffer.clear();
+
+    return result;
+  }
+
+  value__asyn<void> table__row__cells__assign__asyn({
+    required final base__storage__data__basic__table__id table__id,
+    required final base__storage__data__basic__table__row__id table__row__id,
+    required final array<base__storage__data__basic__table__column> columns,
+  }) async {
+    final //
+        statement__buffer = StringBuffer("UPDATE ")
+          ..write(table__id.convert__name__raw())
+          ..write(" SET "),
+        statement__arguments__accumulation = base__accumulation__linear__basic<Object?>();
+
+    columns.iterate__basic(
+      (final column__id, final column) {
+        if (column__id != 0) {
+          statement__buffer.write(", ");
+        }
+
+        statement__buffer
+          ..write(column.meta.name())
+          ..write(" = ?");
+
+        statement__arguments__accumulation.add__ending(
+          column.value,
+        );
+      },
+    );
+
+    statement__buffer
+      ..write(" WHERE ")
+      ..write(base__storage__data__basic__meta__base.table__row__id__column__name)
+      ..write(" = ?");
+
+    statement__arguments__accumulation.add__ending(
+      table__row__id.value,
+    );
+
+    final //
+        statement = statement__buffer.toString(),
+        statement__arguments = statement__arguments__accumulation.convert__array();
+
+    statement__buffer.clear();
+    statement__arguments__accumulation.dispose();
+
+    await value__raw.operate__asyn__raw(
+      statement: statement,
+      statement__arguments: statement__arguments,
+    );
+  }
+
+  /*value__asyn<void> table__row__remove__asyn({
+    required final base__storage__data__basic__table__id table__id,
+    required final base__storage__data__basic__table__row__id table__row__id,
+  }) async {
+    final statement__buffer = StringBuffer("DELETE FROM ")
+      ..write(table__id.convert__name__raw())
+      ..write(" WHERE ")
+      ..write(base__storage__data__basic__meta__base.table__row__id__column__name)
+      ..write(" = ?");
+
+    final statement = statement__buffer.toString();
+
+    statement__buffer.clear();
+
+    await value__raw.operate__asyn__raw(
+      statement: statement,
+      statement__arguments: [table__row__id.value],
+    );
+  }
+  value__asyn<void> table__rows__all__remove__asyn({
+    required final base__storage__data__basic__table__id table__id,
+  }) async {
+    await value__raw.operate__asyn__raw(
+      statement: ("DELETE FROM " + table__id.convert__name__raw()),
+    );
+  }*/ /*
+rows cannot be removed after addition
+  but should be manually set to direct/default values
+    which do not ref. the storage
+      to reduce the storage's space-usage ,after re-building
+  because
+    removal in-validates the row-id.s
+    removal of an inter-mediate row would require moving the subsequent rows
+      which can become too heavy and expensive (in all relevant terms) */
+
+  value__asyn<void> complete__asyn /*
+finish the mutation process */
+      () async {
+    await complete__asyn__raw(
+      "COMMIT",
+    );
+  }
+
+  value__asyn<void> abort__asyn /*
+revert the changes/mutations */
+      () async {
+    await complete__asyn__raw(
+      "ROLLBACK",
+    );
+  }
+
+  value__asyn<void> complete__asyn__raw(
+    final string__raw statement,
+  ) async {
+    {
+      final completed__already__ok = completion__meta__raw.invoked__ok();
+
+      if (completed__already__ok) {
+        throw "completed already";
+      }
+
+      await value__raw.operate__asyn__raw(
+        statement: statement,
+      );
+
+      completion__meta__raw.invoke();
+    }
+
+    lock__raw.free();
+  }
+}
+
+class base__storage__data__basic__table__row__id //
+    extends base__storage__data__basic__table__row__id__base {
+  const base__storage__data__basic__table__row__id(
+    super.value,
+  );
+}
+
+abstract class base__storage__data__basic__table__row__id__base {
+  const base__storage__data__basic__table__row__id__base(
+    this.value,
+  );
+
+  final NIMR value;
+}
+
+extension SqliteWriteContext__operation__extension //
+    on sqlite_async.SqliteWriteContext {
+  value__asyn<void> operate__compound__asyn__raw({
+    required final string__raw statement,
+    required final array<array<Object?>> statement__arguments,
+  }) {
+    statement__print__raw(
+      statement: statement,
+      statement__arguments: statement__arguments,
+    );
+
+    return this.executeBatch(
+      statement,
+      statement__arguments,
+    );
+  }
+}
+
+enum base__storage__data__basic__table__column__data__type {
+  nil("NULL") /*Null*/,
+  number__integer("UNSIGNED BIG INT") /*NIMR*/,
+  number__integer__signed("BIGINT") /*NISMR*/,
+  number__integer__auto("INTEGER") /*NISR*/,
+  number__exponential("REAL") /*NEMR*/,
+  byte__array("BLOB") /*byte__array*/,
+  text("TEXT") /*string__raw*/ /*
+prefer `.byte__array`, unless searching is required */
+  ;
+
+  const base__storage__data__basic__table__column__data__type(
+    this.name,
+  );
+
+  final string__raw name;
+}
+
+class base__storage__data__basic__table__column__meta /*
+example : `
+typedef _column__meta = base__storage__data__table__column__meta;
+typedef _column__data__type = base__storage__data__table__column__data__type;
+final //
+  _column__abc = _column__meta(NIL,_column__data__type.integer__un_signed),
+  _column__jkl = _column__meta(_column__abc,_column__data__type.integer__auto),
+  _column__xyz = _column__meta(_column__jkl,_column__data__type.bytes, nil_able__ok: OK),
+  _columns__meta = [_column__abc, _column__jkl, _column__xyz];` */
+{
+  base__storage__data__basic__table__column__meta(
+    final base__storage__data__basic__table__column__meta? column__previous__meta,
+    this.type, {
+    this.nil_able__ok = NO,
+  }) : id = ((column__previous__meta != null) //
+            ? (1 + column__previous__meta.id)
+            : 0);
+
+  final NIMR id;
+  /*final string__raw name;*/
+  final base__storage__data__basic__table__column__data__type type;
+  final BOOL nil_able__ok;
+
+  string__raw name() {
+    return (char__underscore + id.toString());
+  }
+}
+
+class base__storage__data__basic__table__column {
+  const base__storage__data__basic__table__column(
+    this.meta,
+    this.value,
+  );
+
+  final base__storage__data__basic__table__column__meta meta;
+  final Object? value;
+}
+
+/*string__raw byte__array__convert__sqlite__data__type__BLOB__text(
+  final byte__array bytes,
+) {
+  final buffer = StringBuffer("x'");
+
+  bytes.iterate__basic(
+    (final _, final byte) {
+      buffer.write(
+        byte.toRadixString(16),
+      );
+    },
+  );
+
+  buffer.write(
+    char__quote__single,
+  );
+
+  final result = buffer.toString();
+
+  buffer.clear();
+
+  return result;
+}*/
+
+value__asyn<void> base__storage__data__basic__meta__test(
+  final string__raw file__path,
+) async {
+  {
+    final value = sqlite_async.SqliteDatabase(
+      path: file__path,
+      maxReaders: NI1__limit,
+      options: sqlite_async.SqliteOptions(
+        journalMode: sqlite_async.SqliteJournalMode.wal,
+        journalSizeLimit: 0,
+        synchronous: sqlite_async.SqliteSynchronous.full,
+      ),
+    );
+
+    await value.initialize();
+
+    value.readLock(
+      (final context) async {
+        await context.getAll(
+          "BEGIN",
+        );
+
+        final result = await context.getAll(
+          "SELECT COUNT(*) FROM sqlite_schema WHERE type = 'table'",
+        );
+
+        final tables__count = (result.rows.first.first as NIMR);
+
+        "tables__count : $tables__count".print();
+
+        await context.getAll(
+          "END TRANSACTION",
+        );
+      },
+    );
+  }
+
+  value__asyn<void> storage__print(
+    final base__storage__data__basic__accessing__meta__base meta,
+  ) async {
+    "printing storage".print();
+
+    final tables__count = await meta.tables__count__asyn();
+
+    tables__count.text__representation().print("tables__count");
+
+    await base__iterate__basic__asyn(
+      tables__count,
+      (final table__id) async {
+        final rows = await meta.table__rows__all__asyn(
+          table__id: base__storage__data__basic__table__id(
+            table__id,
+          ),
+        );
+
+        rows
+            .text__representation(
+              elements__truncation__count__threshold: 0,
+            )
+            .print("tables[$table__id].rows");
+      },
+    );
+
+    "printed".print();
+  }
+
+  final storage = await base__storage__data__basic__meta.asyn(
+    file__path: file__path,
+  );
+
+  value__asyn<void> storage__print__auto__asyn() async {
+    "auto-printing storage".print();
+
+    final meta = await storage.accessing__meta__asyn();
+
+    if (meta == null) {
+      "ISSUE : `(storage.access__meta() = NIL)`".print();
+    } else {
+      await storage__print(
+        meta,
+      );
+
+      await meta.complete__asyn();
+    }
+
+    "auto-printed".print();
+  }
+
+  {
+    final init_ization__needed__ok = await storage.init_ization__needed__ok__auto__asyn();
+    init_ization__needed__ok.text__representation().print("init_ization__needed__ok");
+  }
+
+  await storage__print__auto__asyn();
+
+  {
+    var abort__ok = OK;
+
+    await base__iterate__forever__asyn(
+      (final _) async {
+        final meta = await storage.accessing__mutating__meta__asyn();
+
+        if (meta == null) {
+          "ISSUE : `(storage.access__mutating__meta() = NIL)`".print();
+
+          return NO;
+        } else {
+          final //
+              name = base__storage__data__basic__table__column__meta(
+                NIL,
+                base__storage__data__basic__table__column__data__type.text,
+              ),
+              age = base__storage__data__basic__table__column__meta(
+                name,
+                base__storage__data__basic__table__column__data__type.number__integer__auto,
+              ),
+              weight = base__storage__data__basic__table__column__meta(
+                age,
+                base__storage__data__basic__table__column__data__type.number__exponential,
+              ),
+              columns__meta = [name, age, weight];
+
+          final table__id = await meta.table__add__asyn(
+            columns__meta: columns__meta,
+          );
+
+          table__id.text__representation().print("table__id");
+
+          final table__row__id = await meta.table__row__add__asyn(
+            table__id: table__id,
+            columns__meta: columns__meta,
+            row: ["abc-xyz", 27, 76.0],
+          );
+
+          table__row__id.value.text__representation().print("table__row__id");
+
+          if (abort__ok.not) {
+            "mutating".print();
+
+            await meta.complete__asyn();
+
+            return NO;
+          }
+
+          abort__ok = NO;
+
+          "aborting".print();
+
+          await meta.abort__asyn();
+
+          return OK;
+        }
+      },
+    );
+  }
+
+  await storage__print__auto__asyn();
+
+  await storage.dispose__asyn();
+}
