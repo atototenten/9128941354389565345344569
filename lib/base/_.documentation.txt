@@ -1,3 +1,0 @@
-boolean
-	`(OK & OK) = (NOT | NOT)`
-		`OK` can also be `NOT`

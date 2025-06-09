@@ -1,2 +1,0 @@
-https://api-icons.icons8.com/siteApi/icons/icon?id=19323&language=en-US&svg=true
-	https://icons8.com/icon/19323/star-half-empty
