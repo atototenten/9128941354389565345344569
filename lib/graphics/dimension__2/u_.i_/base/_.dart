@@ -171,8 +171,8 @@ typedef gui__base__widget__attach__proc__format = //
       gui__base__widget__building__context,
     );
 
-void base__app__build__re()
-/*{ _app__context.build__re__recursive(); }*/
+void base__app__re_build()
+/*{ _app__context.re_build__recursive(); }*/
 {
   final //
   binding = WidgetsBinding.instance,
@@ -239,17 +239,17 @@ void gui__base__widget__tree__rendering__frame__current__post__register(
   );
 }
 
-void _element__build__re(
+void _element__re_build(
   final Element element,
 ) {
-  element.build__re();
+  element.re_build();
 }
 
 extension on Element {
-  void build__re() {
+  void re_build() {
     markNeedsBuild();
     visitChildren(
-      _element__build__re,
+      _element__re_build,
     );
   }
 }
@@ -260,19 +260,19 @@ extension gui__base__widget__building__context__extension //
     return (this as Element);
   }
 
-  void build__re__recursive() {
+  void re_build__recursive() {
     element___raw().visitChildren(
-      _element__build__re,
+      _element__re_build,
     );
   }
 
-  void build__re() {
+  void re_build() {
     if (valid__ok()) {
-      build__re__raw();
+      re_build__raw();
     }
   }
 
-  void build__re__raw /*
+  void re_build__raw /*
 should not be called ,after asyn.-gap */ () {
     element___raw().markNeedsBuild();
   }

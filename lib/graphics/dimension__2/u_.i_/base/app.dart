@@ -266,7 +266,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
 
         app__size__set();
 
-        app__build__re();
+        app__re_build();
       }
       ..onPlatformBrightnessChanged = () {
         if (base__printing__ok) //
@@ -284,7 +284,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
 
         app__color__set();
         app__color__broadcast.message__announce(null);
-        app__build__re();
+        app__re_build();
       };*/
   }
 
@@ -329,7 +329,7 @@ example :`["Demo", char__space, "app"]` */
 `theme__colors__set` proc. should be called in the proc.
 wrap every page/overlay ,to handle `base__app__theme__change__channel`
   ,and preferably the child with `ValueKey(app__theme__id)`(or simply `ValueKey(base__app__theme__colors__ground__back__contrast__dark__ok)` if merely a day/night theme is needed) as `key` (to not re-use ,the tree's existing widgets)
-    ,because the framework's `base__app__build__re` is not definitive
+    ,because the framework's `base__app__re_build` is not definitive
   ,because handling above(in tree-node's position or hierarchy) `MaterialApp` ,would re-set the whole app (including navigation[-stack] ,and current page/overlay)
     ,while handling below(as its child) ,would be overridden with page/overlay navigation
 `storage` is available at this point
@@ -422,8 +422,8 @@ class gui__base__app__running__simple //
             showPerformanceOverlay: NO,
             /*checkerboardRasterCacheImages: OK,
             checkerboardOffscreenLayers: OK,*/
-            home: gui__base__widget__build(
-              child__build: (final context) {
+            home: gui__base__widget__building(
+              build__handle: (final context) {
                 return entity_1.widget__build(
                   context,
                 );
@@ -504,7 +504,7 @@ class _app__gui__base__widget__state //
         "app:size:set:re_fresh:ok".print();
       }
 
-      context.build__re();
+      context.re_build();
     }
   }
 
@@ -526,7 +526,7 @@ class _app__gui__base__widget__state //
       "app:colors:set:re_fresh:ok".print();
     }
 
-    context.build__re();
+    context.re_build();
   }
 
   @override

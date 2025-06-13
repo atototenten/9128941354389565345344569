@@ -122,7 +122,7 @@ navigation__manager__kampo navigation__manager({
 
             navigation__last__type = navigation__type;
 
-            state.build__re__if();
+            state.re_build__if();
           },
         );
 

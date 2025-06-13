@@ -57,7 +57,7 @@ class service__authority__source__inet__file //
 
   value__asyn<NIMR> //
   fetch() async {
-    final base__value__optional___union<java_script__type> response;
+    final Object? response;
     {
       final client = base__net__reliable__web__client();
       try {
@@ -70,13 +70,12 @@ class service__authority__source__inet__file //
       }
     }
 
-    if ((response is! base__value__optional__present__compo<java_script__type>) || //
-        (response.value is! NISR) || //
-        (response.value as NISR).isNegative) {
+    if ((response is NISR).not || //
+        (response as NISMR).isNegative) {
       throw "in-valid status-code";
     }
 
-    return (response.value as NIR);
+    return response;
   }
 
   @override
