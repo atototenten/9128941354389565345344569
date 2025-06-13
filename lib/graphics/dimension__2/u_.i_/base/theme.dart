@@ -22,5 +22,5 @@ should be avoided ,because of great increase ,in deviation ,from the standard in
 void base__app__theme__colors__ground__back__contrast__dark__ok__switch() {
   base__app__theme__colors__ground__back__contrast__dark__ok = base__app__theme__colors__ground__back__contrast__dark__ok.not;
 
-  /*base__app__re_build()*/ base__app__theme__change__channel.event__dispatch();
+  /*base__app__build__re()*/ base__app__theme__change__channel.event__dispatch();
 }

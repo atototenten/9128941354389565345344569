@@ -39,7 +39,7 @@ gui__base__widget base__indicator__scroll__horizontal({
 /* TASK:
   animate the following `setState`s */
 
-        BOOL b__re_build = NO;
+        BOOL b__build__re = NO;
 
         if ((position.pixels == position.minScrollExtent) && //
             (colors__left == _pictures__present__colors)) {
@@ -47,22 +47,22 @@ gui__base__widget base__indicator__scroll__horizontal({
 
           //print__info("atMin");
 
-          b__re_build = OK;
+          b__build__re = OK;
         } else if ((position.pixels == position.maxScrollExtent) && //
             (colors__right == _pictures__present__colors)) {
           colors__right = _pictures__present__colors__empty;
 
           //print__info("atMax");
 
-          b__re_build = OK;
+          b__build__re = OK;
         }
 
         if ((position.pixels > position.minScrollExtent) && //
             (colors__left != _pictures__present__colors)) {
           colors__left = _pictures__present__colors;
 
-          if (!b__re_build) {
-            b__re_build = OK;
+          if (!b__build__re) {
+            b__build__re = OK;
           }
         }
 
@@ -70,13 +70,13 @@ gui__base__widget base__indicator__scroll__horizontal({
             (colors__right != _pictures__present__colors)) {
           colors__right = _pictures__present__colors;
 
-          if (!b__re_build) {
-            b__re_build = OK;
+          if (!b__build__re) {
+            b__build__re = OK;
           }
         }
 
-        if (b__re_build) {
-          state.re_build();
+        if (b__build__re) {
+          state.build__re();
         }
       }
 

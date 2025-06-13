@@ -150,7 +150,7 @@ prefer `base__listing__item`
     number = number__new;
   }
 
-  procedure__empty__format re_build = base__empty__procedure__empty;
+  procedure__empty__format build__re = base__empty__procedure__empty;
 
   const //
       rows__count = 3,
@@ -171,9 +171,9 @@ prefer `base__listing__item`
           Center(
             child: gui__base__widget__build__definitive(
               init_: (final state) => //
-                  (re_build = state.re_build__raw),
+                  (build__re = state.build__re__raw),
               de_init_: () => //
-                  (re_build = base__empty__procedure__empty),
+                  (build__re = base__empty__procedure__empty),
               build: (final _) => //
                   gui__base__box__text__widget(
                 number.toString(),
@@ -203,7 +203,7 @@ prefer `base__listing__item`
                             ),
                             press__handle: () {
                               number__update((number * 10) + number_);
-                              re_build();
+                              build__re();
                             },
                           );
                         },
@@ -224,12 +224,12 @@ prefer `base__listing__item`
                           else //
                             number = 0;
 
-                          re_build();
+                          build__re();
                         },
                         press__long__handle: () {
                           number = 0;
 
-                          re_build();
+                          build__re();
                         },
                       ),
                       _input__number__button(
@@ -239,7 +239,7 @@ prefer `base__listing__item`
                         ),
                         press__handle: () {
                           number__update(number * 10);
-                          re_build();
+                          build__re();
                         },
                       ),
                       _input__number__button(

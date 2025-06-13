@@ -29,9 +29,9 @@ part of "../_.dart";
           NOT(selection__accumulation.elements__count() > selection__array__constraints.max));
 
   procedure__empty__format? //
-      listing__re_build,
-      button__re_build,
-      count__re_build;
+      listing__build__re,
+      button__build__re,
+      count__build__re;
 
   Key listing__key = gui__base__widget__key__unique();
 
@@ -45,11 +45,11 @@ part of "../_.dart";
 
       if ((selection__accumulation.elements__count() < selection__array__constraints.min) || button__submit__show__ok) {
         if (button__flush__show__ok) //
-          count__re_build?.call();
+          count__build__re?.call();
         else {
           button__flush__show__ok = OK;
 
-          button__re_build?.call();
+          button__build__re?.call();
         }
       } else {
         if (!button__submit__show__ok) //
@@ -58,7 +58,7 @@ part of "../_.dart";
         if (!button__flush__show__ok) //
           button__flush__show__ok = OK;
 
-        button__re_build?.call();
+        button__build__re?.call();
       }
 
       return OK;
@@ -75,19 +75,19 @@ part of "../_.dart";
       base__value__same__ok,
     );
 
-    BOOL button__re_build__ok = NO;
+    BOOL button__build__re__ok = NO;
 
     if (selection__accumulation.empty__ok()) {
       button__flush__show__ok = NO;
-      button__re_build__ok = OK;
+      button__build__re__ok = OK;
     }
 
     if ((selection__accumulation.elements__count() < selection__array__constraints.min) && //
         button__submit__show__ok) {
       button__submit__show__ok = NO;
 
-      if (NOT(button__re_build__ok)) {
-        button__re_build__ok = OK;
+      if (NOT(button__build__re__ok)) {
+        button__build__re__ok = OK;
       }
     }
 
@@ -96,15 +96,15 @@ part of "../_.dart";
         !button__submit__show__ok) {
       button__submit__show__ok = OK;
 
-      if (!button__re_build__ok) {
-        button__re_build__ok = OK;
+      if (!button__build__re__ok) {
+        button__build__re__ok = OK;
       }
     }
 
-    if (button__re_build__ok) {
-      button__re_build?.call();
+    if (button__build__re__ok) {
+      button__build__re?.call();
     } else {
-      count__re_build?.call();
+      count__build__re?.call();
     }
 
     return OK;
@@ -119,16 +119,16 @@ part of "../_.dart";
     button__flush__show__ok = NO;
 
     listing__key = gui__base__widget__key__unique();
-    listing__re_build?.call();
+    listing__build__re?.call();
   }
 
   return page__foundation(
     RepaintBoundary(
       child: gui__base__widget__build__definitive(
         init_: (final state) => //
-            (listing__re_build = state.re_build),
+            (listing__build__re = state.build__re),
         de_init_: () => //
-            (listing__re_build = NIL),
+            (listing__build__re = NIL),
         build: (final context) => //
             base__list_ing__generat_ed(
           context: context,
@@ -148,9 +148,9 @@ part of "../_.dart";
           floating: RepaintBoundary(
             child: gui__base__widget__build__definitive(
               init_: (final state_) => //
-                  (button__re_build = state_.re_build),
+                  (button__build__re = state_.build__re),
               de_init_: () => //
-                  (button__re_build = NIL),
+                  (button__build__re = NIL),
               build: (final _) => //
                   ((button__submit__show__ok || button__flush__show__ok)
                       ? gui__base__stack__widget(
@@ -203,9 +203,9 @@ part of "../_.dart";
                               child: RepaintBoundary(
                                 child: gui__base__widget__build__definitive(
                                   init_: (final state__) => //
-                                      (count__re_build = state__.re_build),
+                                      (count__build__re = state__.build__re),
                                   de_init_: () => //
-                                      (count__re_build = NIL),
+                                      (count__build__re = NIL),
                                   build: (final _) => //
                                       gui__base__box__floating(
                                     border__radius: BorderRadius.all(Radius.circular(12.px())),
