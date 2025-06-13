@@ -132,7 +132,7 @@ void app__page__background__change() {
   }
 
   base__app__page__background__set();
-  base__app__build__re();
+  base__app__re_build();
 }
 
 late LinearGradient //

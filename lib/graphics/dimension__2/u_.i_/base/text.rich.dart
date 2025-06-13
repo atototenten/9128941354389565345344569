@@ -33,7 +33,7 @@ gui__base__widget rich_text__image({
   required final NEMR width,
   required final NEMR height,
 }) {
-  procedure__empty__format? build__re;
+  procedure__empty__format? re_build;
 
   BS1__array? image;
 
@@ -42,7 +42,7 @@ gui__base__widget rich_text__image({
     future: image__future,
     success__handle: (final image_) {
       image = image_;
-      build__re?.call();
+      re_build?.call();
     },
     error__indicate: (final _) => //
         SizedBox(
@@ -67,10 +67,10 @@ gui__base__widget rich_text__image({
         borderRadius: BorderRadius.all(Radius.circular(8.px())),
         child: gui__base__widget__build__definitive(
           init: (final state) {
-            build__re = state.build__re;
+            re_build = state.re_build;
           },
           de_init_: () {
-            build__re =  null;
+            re_build =  null;
           },
           build: (final state) {
             final image_ = image;

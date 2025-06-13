@@ -329,13 +329,13 @@ source : `web://powersync.com/blog/sqlite-optimizations-for-ultra-high-performan
     );
   }
 
-  /*value__asyn<void> build__re__asyn({
+  /*value__asyn<void> build_re__asyn({
     required final string__raw file__path,
     required final base__storage__data__basic__table__column__id? Function(
       array<base__storage__data__basic__table__cell__id> /*
 empty for root-table */
           table__path,
-    ) table__build__re__column /*
+    ) table__build_re__column /*
 column is asumed to be boolean-type
   and true if not zero
 after re-building

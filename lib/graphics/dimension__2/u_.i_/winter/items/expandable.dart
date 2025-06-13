@@ -34,24 +34,24 @@ gui__base__widget winter__button__icon__circled(
   required final gui__base__widget collapsed__body,
   required final gui__base__widget Function(gui__base__widget trailing) expanded__widget,
 }) {
-  procedure__empty__format? build__re;
+  procedure__empty__format? re_build;
 
   void expand() {
     b__expanded = OK;
-    build__re?.call();
+    re_build?.call();
   }
 
   void collapse() {
     b__expanded = NO;
-    build__re?.call();
+    re_build?.call();
   }
 
   return gui__base__widget__build__definitive(
     init_: (final context) {
-      build__re = context.build__re;
+      re_build = context.re_build;
     },
     de_init_: (final context) {
-      build__re = NIL;
+      re_build = NIL;
     },
     build: (final _) {
       return (b__expanded

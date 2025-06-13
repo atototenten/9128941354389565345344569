@@ -17,7 +17,7 @@ typedef navigation__bottom__item___compo = ({
 {
   final //
       page__array__count = page__array.elements__count,
-      build__re__array = array__new__filled<procedure__empty__format?>(
+      re_build__array = array__new__filled<procedure__empty__format?>(
         page__array__count,
          null,
       );
@@ -33,12 +33,12 @@ typedef navigation__bottom__item___compo = ({
       page__array[page__chosen__id].icon,
       () => page__switch(page__chosen__id),
     );
-    build__re__array[page__chosen__id]!();
+    re_build__array[page__chosen__id]!();
 
     items[page__chosen__id = page__id] = _button__selected(
       page__array[page__id].icon,
     );
-    build__re__array[page__id]!();
+    re_build__array[page__id]!();
 
     page__array[page__id].press__handle();
   }
@@ -49,9 +49,9 @@ typedef navigation__bottom__item___compo = ({
       return RepaintBoundary(
         child: gui__base__widget__build__definitive(
           init_: (final state) => //
-              (build__re__array[page__id] = state.build__re__raw),
+              (re_build__array[page__id] = state.re_build__raw),
           de_init_: () => //
-              (build__re__array[page__id] =  null),
+              (re_build__array[page__id] =  null),
           build: (final _) => //
               ((page__id == page__chosen__id)
                   ? _button__selected(
