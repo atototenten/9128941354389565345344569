@@ -132,7 +132,7 @@ const //
                           if (key__logical == LogicalKeyboardKey.backspace) {
                             if (key is RawKeyDownEvent) {
                               if (input__list.backspace()) //
-                                state.re_build__raw();
+                                state.build__re__raw();
                             }
                           } else {
                             final key__logical__b__enter = (key__logical == LogicalKeyboardKey.enter);
@@ -147,7 +147,7 @@ const //
                                   if (input__write__char('\n' /*
                 `c` is 13(CR or carriage-return). */
                                       )) //
-                                    state.re_build__raw();
+                                    state.build__re__raw();
                                 } else if (key__data.isControlPressed) {
                                   switch (key__logical) {
                                     case LogicalKeyboardKey.keyV:
@@ -155,7 +155,7 @@ const //
                                         (final s) {
                                           if (s != null) {
                                             if (input__write__text(s)) //
-                                              state.re_build();
+                                              state.build__re();
                                           }
                                         },
                                       );
@@ -168,7 +168,7 @@ const //
                                   }
                                 } else {
                                   if (input__write__char(c)) //
-                                    state.re_build__raw();
+                                    state.build__re__raw();
                                 }
                               }
                             }
@@ -296,7 +296,7 @@ gui__base__widget listing__item__input__text__stored({
 }) {
   var input = input__initial;
 
-  final result = gui__base__widget__definitive__building(
+  final result = gui__base__widget__definitive__build(
     (final context) => //
         GestureDetector(
       child: gui__base__listing__item(
@@ -337,7 +337,7 @@ gui__base__widget listing__item__input__text__stored({
           input__submit: (final input_) {
             input = input_;
 
-            context.re_build__raw();
+            context.build__re__raw();
 
             context.navigate__backward();
 

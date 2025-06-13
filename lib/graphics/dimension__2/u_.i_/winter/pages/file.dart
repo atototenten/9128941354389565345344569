@@ -202,7 +202,7 @@ gui__base__widget pages__file__page(
                         b__binary = OK;
                       }
 
-                      state.re_build();
+                      state.build__re();
                     },
                   );
                 },

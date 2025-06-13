@@ -100,7 +100,7 @@ NEMR base__wall__width() {
 final base__app__size__alter__channel = base__event__channel__broadcast();
 
 BOOL /*
-app:re_build:ok */
+app:build__re:ok */
     base__app__size__set({
   required ui.FlutterView? view,
 }) {

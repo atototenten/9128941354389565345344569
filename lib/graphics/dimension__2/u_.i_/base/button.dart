@@ -44,16 +44,16 @@ class gui__base__button //
     final gui__base__widget__building__context context, {
     required final gui__base__button__children___record children,
   }) {
-    return gui__base__widget__definitive__building(
-      build__handle: (final context) {
+    return gui__base__widget__build(
+      child__build: (final context) {
         return gui__base__gesture__press__handling__widget(
           press__down__handle: (_) {
             pressed__ok__raw = OK;
-            context.re_build__raw();
+            context.build__re__raw();
           },
           press__cancel__handle: () {
             pressed__ok__raw = NO;
-            context.re_build__raw();
+            context.build__re__raw();
           },
           press__handle: () {
             if (pressed__ok__raw) {
@@ -61,11 +61,11 @@ class gui__base__button //
             }
 
             pressed__ok__raw = OK;
-            context.re_build__raw();
+            context.build__re__raw();
 
             void revert() {
               pressed__ok__raw = NO;
-              context.re_build();
+              context.build__re();
             }
 
             press__handle() //
@@ -122,8 +122,8 @@ should not invoke `.selection__switch` ,if the result is `OK`
     final gui__base__widget__building__context context, {
     required final gui__base__button__children___record children,
   }) {
-    return gui__base__widget__definitive__building(
-      build__handle: (final context) {
+    return gui__base__widget__build(
+      child__build: (final context) {
         return gui__base__gesture__press__handling__widget(
           press__handle: () {
             final switch__ok = press__handle();
@@ -133,7 +133,7 @@ should not invoke `.selection__switch` ,if the result is `OK`
             }
 
             selected__ok__raw = selected__ok__raw.not;
-            context.re_build__raw();
+            context.build__re__raw();
           },
           child: children.child__build(
             context,
