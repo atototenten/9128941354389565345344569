@@ -15,13 +15,13 @@ const //
 }) {
   Key listing__key = gui__base__widget__key__unique();
 
-  procedure__empty__format listing__re_build = base__empty__procedure__empty;
+  procedure__empty__format listing__build__re = base__empty__procedure__empty;
 
   BOOL choice__update(final NIMR? choice) {
     chosen__id = choice;
 
     listing__key = gui__base__widget__key__unique();
-    listing__re_build();
+    listing__build__re();
 
     return OK;
   }
@@ -30,9 +30,9 @@ const //
     RepaintBoundary(
       child: gui__base__widget__build__definitive(
         init_: (final state) => //
-            (listing__re_build = state.re_build),
+            (listing__build__re = state.build__re),
         de_init_: () => //
-            (listing__re_build = base__empty__procedure__empty),
+            (listing__build__re = base__empty__procedure__empty),
         build: (final context) => //
             base__list_ing__generat_ed(
           context: context,

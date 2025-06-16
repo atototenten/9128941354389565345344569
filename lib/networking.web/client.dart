@@ -4,7 +4,7 @@ typedef base__net__reliable__web__client = http.Client;
 
 extension base__net__reliable__web__client__extension //
     on base__net__reliable__web__client {
-  value__asyn<java_script__type? /*IF response.body.text.empty.not java_script.type ELSE NIL*/> //
+  value__asyn<base__value__optional___union<java_script__type> /*IF response.body.text.empty absent ELSE java_script.type*/> //
   communicate__basic /*
 prefer adding a `.timeout` ,to the result */ ({
     required final string__raw path /*
@@ -52,19 +52,20 @@ including protocol ,like "http://" ,service-path ,and the end-point */,
     path__parsed = Uri.parse(
           path,
         ),
-        response = await ((body == null)
-            ? http.get(
-                path__parsed,
-              )
-            : http.post(
-                path__parsed,
-                headers:
-                    (headers
-                        .empty__ok() //
-                    ? NIL
-                    : headers),
-                body: body,
-              ))/*
+        response =
+            await ((body == null)
+                ? http.get(
+                    path__parsed,
+                  )
+                : http.post(
+                    path__parsed,
+                    headers:
+                        (headers
+                            .empty__ok() //
+                        ? NIL
+                        : headers),
+                    body: body,
+                  )) /*
 TASK :
   replace "http." with "this."
     once "ClientException: Connection closed before full header was received" errors are fixed */;
@@ -88,11 +89,13 @@ TASK :
     }
 
     if (response__body.empty__ok()) {
-      return NIL;
+      return base__value__optional__absent__compo();
     }
 
-    return text__convert__java_script__object(
-      response__body,
+    return base__value__optional__present__compo(
+      text__convert__java_script__object(
+        response__body,
+      ),
     );
   }
 }

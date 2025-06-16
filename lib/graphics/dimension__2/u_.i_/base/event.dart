@@ -20,109 +20,83 @@ a separate `base__value__mutation__event__channel__broadcast__dispose___protocol
 unicast-channels("base__event__channel__unicast___protocol") should be avoided
   due to the flutter's behavior of detaching the old widget
     after attaching the new widget
-    and the general un-reliability of the invokation-sequence */ (
+    and the general un-reliability of the invocation-sequence */ (
     final gui__base__widget__building__context context, {
     required final gui__base__event__channel__handling__children___record children,
-    string__raw? label___debug,
   }) {
-    label___debug ??= "event__handling__widget";
-
-    "${label___debug}  ${hashCode}  Call".print__raw();
-
-    return _event__channel__handling__widget__definitive(
-      channel: this,
-      build__handle: children.child__build,
-      label___debug: label___debug,
-    );
-
     gui__base__widget__building__context? context_1;
 
     void build__re() {
-      "${label___debug}  ${hashCode}  Re-build ${context_1.hashCode}".print__raw();
-      context_1?.re_build__raw();
+      context_1?.build__re__raw();
     }
 
-    return gui__base__widget__definitive__building(
+    return gui__base__widget__definitive__build(
       attach__handle: (final context) {
-        "${label___debug}  ${hashCode}  Attach  ${context.hashCode}".print__raw();
-
         context_1 = context;
 
-        descriptions__add(
-          build__re,
-        );
+        descriptions__add(build__re);
       },
       detach__handle: () {
-        "${label___debug}  ${hashCode}  Detach  ${context_1.hashCode}".print__raw();
-
         context_1 = NIL;
 
-        descriptions__remove(
-          build__re,
-        );
+        descriptions__remove(build__re);
       },
-      build__handle: (final context) {
-        return children.child__build(
-          context,
-        );
+      child__build: (final context) {
+        return children.child__build(context);
       },
     );
   }
 }
 
-@immutable
-class _event__channel__handling__widget__definitive /* FIX */ //
+/*@immutable
+class gui__base__event__channel__handling__widget //
     extends StatefulWidget {
-  const _event__channel__handling__widget__definitive({
+  const gui__base__event__channel__handling__widget({
+    super.key,
     required this.channel,
-    required this.build__handle,
-    required this.label___debug,
+    required this.children,
   });
 
   final base__event__channel__broadcast___protocol channel;
-  final gui__base__widget__build__function__format build__handle;
-  final string__raw label___debug;
+  final gui__base__event__channel__handling__children___record children;
 
   @override
-  _event__channel__handling__widget__definitive__state //
+  gui__base__event__channel__handling__widget__state //
   createState() {
-    return _event__channel__handling__widget__definitive__state();
+    return gui__base__event__channel__handling__widget__state();
   }
 }
 
-class _event__channel__handling__widget__definitive__state //
-    extends State<_event__channel__handling__widget__definitive> {
+class gui__base__event__channel__handling__widget__state //
+    extends State<gui__base__event__channel__handling__widget> {
   @override
   void initState() {
     super.initState();
 
-    widget.channel.descriptions__add(
-      build__re,
-    );
-
-    "${widget.label___debug}  ${hashCode}  Attach  ${context.hashCode}".print__raw();
+    widget.channel.descriptions__add(build__re);
   }
 
   @override
   void dispose() {
-    "${widget.label___debug}  ${hashCode}  Detach  ${context.hashCode}".print__raw();
-
-    widget.channel.descriptions__remove(
-      build__re,
-    );
+    widget.channel.descriptions__remove(build__re);
 
     super.dispose();
   }
 
+  @override
+  void didUpdateWidget(final gui__base__event__channel__handling__widget widget__old) {
+    super.didUpdateWidget(widget__old);
+
+    widget__old.channel.descriptions__remove(build__re);
+    widget.channel.descriptions__add(build__re);
+  }
+
   void build__re() {
-    "${widget.label___debug}  ${hashCode}  Re-build ${context.hashCode}".print__raw();
-    context.re_build__raw();
+    context.build__re__raw();
   }
 
   @override
-  gui__base__widget build(_) {
-    return widget.build__handle(
-      context,
-    );
+  gui__base__widget build(final gui__base__widget__building__context context) {
+    return widget.children.child__build(context);
   }
-}
+}*/
