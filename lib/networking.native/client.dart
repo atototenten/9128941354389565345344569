@@ -1,7 +1,7 @@
 part of "_.dart";
 
-value__asyn<bool> base__net__connect_ed__ok({
-  final string__raw host = "example.com",
+value__asyn<bool> base__net__connect_ed___ok({
+  final string host = "example.com",
 }) async {
   try {
     final result = await net.InternetAddress.lookup(host);
@@ -26,7 +26,7 @@ value__asyn<void> base__net__reliable__client__socket__close__safe(
 
 value__asyn<BS1__array> base__net__reliable__client__simple__communicate({
   required final net.InternetAddress address,
-  required final NI2R port,
+  required final NI port,
   required final BS1__array request,
 }) async {
   final socket = await net.Socket.connect(
@@ -38,7 +38,7 @@ value__asyn<BS1__array> base__net__reliable__client__simple__communicate({
       OK,
     )
     /*..add(
-      NI__convert__BS1__array__little_endian(
+       NI__convert__BS1__array__little_endian(
         request.bytes__count,
         base__net__request__size__size,
       ),
@@ -53,7 +53,7 @@ value__asyn<BS1__array> base__net__reliable__client__simple__communicate({
 
   final result = await socket.convert__byte__array__asyn();
 
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     result
         .text__representation()
         .print("net__reliable__client__simple__response");

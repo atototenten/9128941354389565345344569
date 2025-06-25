@@ -8,7 +8,7 @@ void base__storage__data__table__row__bytes__auto({
   `count` MUST NOT `< table__columns.count` */
       data__array,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__table__row__bytes__auto",
     );
@@ -39,13 +39,13 @@ void base__storage__data__table__row__bytes__mod__auto({
   required final base__storage__data__table__columns___compo table__columns,
   required final array<
           ({
-            NIMR meta__id,
+            NI meta__id,
             Object? data,
           })>
       column__array,
   required final BS1__array row__bytes,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__table__row__bytes__mod__auto",
     );
@@ -75,11 +75,11 @@ void base__storage__data__table__row__bytes__mod__auto({
 array<Object?> base__storage__data__table__row__data__array__auto({
   required final base__storage__data__meta___compo ds__meta,
   required final base__storage__data__table__columns___compo table__columns,
-  required final array<NIMR> column__meta__id__array,
+  required final array<NI> column__meta__id__array,
   required final BS1__array row__bytes,
-  required final NIMR row__bytes__base__storage__data__offset,
+  required final NI row__bytes__base__storage__data__offset,
 }) /* macro */ {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print("base__storage__data__table__row__data__array__auto");
 
     row__bytes.text__representation().print("arguments__row__bytes");
@@ -92,7 +92,7 @@ array<Object?> base__storage__data__table__row__data__array__auto({
     (final column__id) {
       final table__column = table__columns[column__meta__id__array[column__id]];
 
-      /*if (base__printing__ok) {
+      /*if (base__printing___ok) {
         report__NI(
           table__column.meta.offset,
           "table.column.meta.offset",

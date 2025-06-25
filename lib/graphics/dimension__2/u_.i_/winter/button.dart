@@ -1,10 +1,10 @@
 part of "_.dart";
 
 gui__base__widget winter__button__structure({
-  final NEMR scale = 1,
+  final NFP scale = 1,
   final IconData? icon,
-  final BOOL icon__trailing__ok = NO,
-  required final string__raw text,
+  final BOOL icon__trailing___ok = NO,
+  required final string text,
 }) {
   final //
       b__icon__available = (icon != null),
@@ -44,12 +44,12 @@ gui__base__widget winter__button__structure({
   return Padding(
     padding: EdgeInsets.only(
       top: padding__vertical,
-      left: (((b__icon__available && !icon__trailing__ok) //
+      left: (((b__icon__available && !icon__trailing___ok) //
                   ? 12
                   : 16) *
               scale)
           .px(),
-      right: (((b__icon__available && icon__trailing__ok) //
+      right: (((b__icon__available && icon__trailing___ok) //
                   ? 12
                   : 16) *
               scale)
@@ -61,34 +61,34 @@ gui__base__widget winter__button__structure({
 }
 
 typedef base__button___compo = gui__base__widget Function({
-  NEMR scale,
+  NFP scale,
   BorderRadius? border__radius,
-  BOOL selected__ok,
+  BOOL selected___ok,
   IconData? icon,
   BOOL iconAtEnding,
-  required string__raw text,
-  NEMR? font__size,
+  required string text,
+  NFP? font__size,
   procedure__empty__format? press__handle,
   procedure__empty__format? press__long__handle,
 });
 
 gui__base__widget winter__button({
-  final NEMR scale = 1,
+  final NFP scale = 1,
   final BorderRadius? border__radius,
-  final BOOL selected__ok = NO,
+  final BOOL selected___ok = NO,
   final IconData? icon,
   final BOOL iconAtEnding = NO,
-  required final string__raw text,
+  required final string text,
   final procedure__empty__format? press__handle,
   final procedure__empty__format? press__long__handle,
 }) =>
     winter__box__button(
       border__radius: (border__radius ?? BorderRadius.all(Radius.circular(12.px()) * scale)),
-      b__highlight: selected__ok,
+      b__highlight: selected___ok,
       child: winter__button__structure(
         scale: scale,
         icon: icon,
-        icon__trailing__ok: iconAtEnding,
+        icon__trailing___ok: iconAtEnding,
         text: text,
       ),
       onSinglePress: press__handle,
@@ -96,12 +96,12 @@ gui__base__widget winter__button({
     );
 
 gui__base__widget winter__button__floating({
-  final NEMR scale = 1,
+  final NFP scale = 1,
   final BorderRadius? border__radius,
-  final BOOL selected__ok = NO,
+  final BOOL selected___ok = NO,
   final IconData? icon,
   final BOOL iconAtEnding = NO,
-  required final string__raw text,
+  required final string text,
   final procedure__empty__format? press__handle,
   final procedure__empty__format? press__long__handle,
 }) =>
@@ -110,11 +110,11 @@ gui__base__widget winter__button__floating({
           BorderRadius.all(
             (Radius.circular(12.px()) * scale),
           )),
-      b__highlight: selected__ok,
+      b__highlight: selected___ok,
       child: winter__button__structure(
         scale: scale,
         icon: icon,
-        icon__trailing__ok: iconAtEnding,
+        icon__trailing___ok: iconAtEnding,
         text: text,
       ),
       onSinglePress: press__handle,

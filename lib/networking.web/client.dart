@@ -7,12 +7,12 @@ extension base__net__reliable__web__client__extension //
   value__asyn<base__value__optional___union<java_script__type> /*IF response.body.text.empty absent ELSE java_script.type*/> //
   communicate__basic /*
 prefer adding a `.timeout` ,to the result */ ({
-    required final string__raw path /*
+    required final string path /*
 including protocol ,like "http://" ,service-path ,and the end-point */,
-    final string__raw? authorization,
+    final string? authorization,
     final base__net__reliable__web__client__communication__body___union? value,
   }) async {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       path.text__representation().print("request.path");
       value.text__representation().print("request");
     }
@@ -61,7 +61,7 @@ including protocol ,like "http://" ,service-path ,and the end-point */,
                     path__parsed,
                     headers:
                         (headers
-                            .empty__ok() //
+                            .empty___ok() //
                         ? NIL
                         : headers),
                     body: body,
@@ -70,7 +70,7 @@ TASK :
   replace "http." with "this."
     once "ClientException: Connection closed before full header was received" errors are fixed */;
 
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       response.statusCode.text__representation().print("response.status");
     }
 
@@ -84,11 +84,11 @@ TASK :
 
     final response__body = response.body;
 
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       response__body.text__representation().print("response.text");
     }
 
-    if (response__body.empty__ok()) {
+    if (response__body.empty___ok()) {
       return base__value__optional__absent__compo();
     }
 
@@ -115,7 +115,7 @@ class base__net__reliable__web__client__communication__body__form //
     this.value,
   );
 
-  final dictionary<string__raw, /*BOOL|NE8R|string*/ Object> value;
+  final dictionary<string, /*BOOL|NFP|string*/ Object> value;
 }
 
 extension base__net__reliable__web__client__communication__body___union__extension //

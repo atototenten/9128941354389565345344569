@@ -19,7 +19,7 @@ const u8 //
     navigation__type__re_set /* push_and_remove_until, pop_until */ = (1 + navigation__type__backward),
     navigation__type__exit = (1 + navigation__type__re_set);
 
-string__raw navigation__type__convert__string(
+string navigation__type__convert__string(
   final uu navigation__type,
 ) {
   switch (navigation__type) {
@@ -114,10 +114,10 @@ navigation__manager__kampo navigation__manager({
       init: (final state) {
         broadcast_.listener__add(
           (final navigation__type) {
-            if (base__printing__ok) {
+            if (base__printing___ok) {
               report__info(navigation__type__convert__string(navigation__type));
               report__uu(history.count, "navigation.history.count");
-              report__bool(state.valid__ok(), "navigation.app.b__mounted");
+              report__bool(state.valid___ok(), "navigation.app.b__mounted");
             }
 
             navigation__last__type = navigation__type;
@@ -136,7 +136,7 @@ navigation__manager__kampo navigation__manager({
       },
       de_init_: broadcast_.flush,
       build: (final _) {
-        if (base__printing__ok) //
+        if (base__printing___ok) //
           base__function__call__print__arguments__void(
             "navigation.build",
           );
@@ -315,7 +315,7 @@ void navigate__backward(
     navigation__manager,
   );
 
-  if (!navigation__manager.history.empty__ok) //
+  if (!navigation__manager.history.empty___ok) //
     navigation__manager.broadcast.message__announce(
       navigation__type__backward,
     );

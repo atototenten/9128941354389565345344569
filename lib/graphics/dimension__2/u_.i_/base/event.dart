@@ -11,7 +11,6 @@ class gui__base__event__channel__handling__children___record {
 extension gui__base__event__channel__broadcast__handling__extension //
     on base__event__channel__broadcast___protocol {
   gui__base__widget handling__widget__build /*
-for multiple channels ,prefer `event__channels__broadcast`
 like `ListenableBuilder`
 a separate `base__value__mutation__event__channel__broadcast__dispose___protocol<value__type, gui__base__widget__building__context__definitive>` handling-widget (like `ValueListenableBuilder`)
   ,is un-necessary
@@ -27,7 +26,7 @@ unicast-channels("base__event__channel__unicast___protocol") should be avoided
     gui__base__widget__building__context? context_1;
 
     void build__re() {
-      context_1?.build__re__raw();
+      context_1?.build__re___raw();
     }
 
     return gui__base__widget__definitive__build(
@@ -92,7 +91,7 @@ class gui__base__event__channel__handling__widget__state //
   }
 
   void build__re() {
-    context.build__re__raw();
+    context.build__re___raw();
   }
 
   @override

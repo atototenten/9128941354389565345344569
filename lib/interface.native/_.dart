@@ -28,7 +28,7 @@ const //
     ffi__mem__free = free;
 
 ffi_.Pointer<T> ffi__mem__alloc<T extends ffi_.NativeType>(
-  final NIMR byteCount,
+  final NI byteCount,
 ) {
   final ptr = malloc(
     byteCount,
@@ -41,8 +41,8 @@ ffi_.Pointer<T> ffi__mem__alloc<T extends ffi_.NativeType>(
 }
 
 ffi_.Pointer<T> ffi__mem__aligned__alloc<T extends ffi_.NativeType>(
-  final NIMR alignment,
-  final NIMR size,
+  final NI alignment,
+  final NI size,
 ) {
   final //
       ptr = ffi__mem__alloc<ffi_.Pointer<T>>(
@@ -60,16 +60,16 @@ ffi_.Pointer<T> ffi__mem__aligned__alloc<T extends ffi_.NativeType>(
   return ptr.value;
 }
 
-NIMR ffi__text__count(
+NI ffi__text__count(
   final ffi_.Pointer<ffi_.Uint8> s,
 ) {
-  NIMR count = 0;
+  NI count = 0;
   while (s[count++] != 0);
   return (count - 1);
 }
 
 byte__array___compo ffi__text__convert(
-  final string__raw s,
+  final string s,
 ) {
   final //
       bytes = text__convert__utf_8__bytes(s),
@@ -86,7 +86,7 @@ byte__array___compo ffi__text__convert(
   return result;
 }
 
-string__raw ffi__convert__text(
+string ffi__convert__text(
   final ffi_.Pointer<ffi_.Uint8> bytes,
 ) =>
     utf_8__bytes__convert__text(
@@ -98,7 +98,7 @@ string__raw ffi__convert__text(
     );
 
 ffi_.Pointer<ffi_.Int32> ffi__errno() => //
-    (environment__phone__ok__android.not //
+    (environment__phone__android___ok.not //
             ? ffi__binding__errno_location
             : ffi__binding__errno) /*
   source: `https://github.com/termux/termux-packages/issues/10244#issuecomment-1103748373` */
@@ -119,8 +119,8 @@ s32 ffi__errno__value() /*
     ffi__errno().value;
 
 ({
-  string__raw name /* title */,
-  string__raw desc /* description */,
+  string name /* title */,
+  string desc /* description */,
 }) ffi__errno__parsable__human(
   final s32 errno /* `ffi__errno__value()` */,
 ) =>

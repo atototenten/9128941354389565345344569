@@ -3,7 +3,7 @@ part of "_.dart";
 typedef base__block__fetch__asyn__procedure__format //
     <element__type extends base__dispose__asyn__basic___protocol>
     = value__asyn<array<element__type>> Function(
-  NIMR block__id,
+  NI block__id,
 );
 
 class base__fetching__caching /*
@@ -36,9 +36,9 @@ TASK
 
   factory base__fetching__caching({
     required final base__block__fetch__asyn__procedure__format<element__type> block__fetch__asyn,
-    required final NIMR elements__count,
-    final NIMR block__elements__count__width = block__elements__count__width__default,
-    final NIMR blocks__count__width = blocks__count__width__default,
+    required final NI elements__count,
+    final NI block__elements__count__width = block__elements__count__width__default,
+    final NI blocks__count__width = blocks__count__width__default,
   }) {
     final blocks__count = (1 << blocks__count__width);
 
@@ -50,7 +50,7 @@ TASK
       ),
       blocks__count__max: (blocks__count - 1),
       block__fetch__asyn: block__fetch__asyn,
-      blocks__raw: array__new__filled<base__fetching__caching__block<element__type>?>(
+      blocks___raw: array__new__filled<base__fetching__caching__block<element__type>?>(
         blocks__count,
         NIL,
       ),
@@ -63,10 +63,10 @@ TASK
     required this.block__elements__count__max,
     required this.blocks__count__max,
     required this.block__fetch__asyn,
-    required this.blocks__raw,
+    required this.blocks___raw,
   });
 
-  final NIMR //
+  final NI //
       elements__count /*
 fixed because re-loading the affected block (of which ,the elements-count has been changed) ,if loaded
   is highly complicated */
@@ -77,13 +77,13 @@ fixed because re-loading the affected block (of which ,the elements-count has be
 
   final base__block__fetch__asyn__procedure__format<element__type> block__fetch__asyn;
 
-  final array<base__fetching__caching__block<element__type>?> blocks__raw;
+  final array<base__fetching__caching__block<element__type>?> blocks___raw;
 
   ({
-    NIMR elements__offset /* not in block */,
-    NIMR block__elements__count,
+    NI elements__offset /* not in block */,
+    NI block__elements__count,
   }) elements__offset__count(
-    final NIMR block__id,
+    final NI block__id,
   ) {
     final //
         element__id = (block__id << block__elements__count__width),
@@ -100,7 +100,7 @@ fixed because re-loading the affected block (of which ,the elements-count has be
 
   value__asyn<element__type> //
       element__asyn(
-    final NIMR element__id,
+    final NI element__id,
   ) async {
     if (element__id >= elements__count) {
       throw "`(element__id >= elements__count)`($element__id >= $elements__count)";
@@ -111,7 +111,7 @@ fixed because re-loading the affected block (of which ,the elements-count has be
         block__offset /* requested element's offset in block */ = (element__id & block__elements__count__max),
         blocks__offset /* requested element's block's offset in blocks */ = (block__id & blocks__count__max);
 
-    final block__existing = blocks__raw[blocks__offset];
+    final block__existing = blocks___raw[blocks__offset];
 
     if ((block__existing == null) || //
         (block__existing.id != block__id)) {
@@ -144,7 +144,7 @@ fixed because re-loading the affected block (of which ,the elements-count has be
         }
       }
 
-      blocks__raw[blocks__offset] = base__fetching__caching__block(
+      blocks___raw[blocks__offset] = base__fetching__caching__block(
         id: block__id,
         elements: base__fetching__caching__block__elements__waiting(
           block__elements__asyn,
@@ -175,9 +175,9 @@ fixed because re-loading the affected block (of which ,the elements-count has be
   @override
   value__asyn<void> dispose__asyn() async {
     return base__iterate__reverse__basic__asyn(
-      blocks__raw.elements__count,
+      blocks___raw.elements__count,
       (final i) async {
-        final block = blocks__raw[i];
+        final block = blocks___raw[i];
 
         if (block == null) {
           return;
@@ -198,7 +198,7 @@ class base__fetching__caching__block //
     required this.elements,
   });
 
-  final NIMR id;
+  final NI id;
   final base__fetching__caching__block__elements___union<element__type> elements;
 
   @override
@@ -268,7 +268,7 @@ class base__fetching__caching__testing__element //
     this.value,
   );
 
-  final NIMR value;
+  final NI value;
 
   @override
   value__asyn<void> dispose__asyn() async {}

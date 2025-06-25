@@ -2,7 +2,19 @@ part of "_.dart";
 
 extension gui__base__value__asyn__definitive__handling__extension<value__type> //
     on base__value__asyn__definitive<value__type> {
-  gui__base__widget handling__widget__build(
+  gui__base__widget handling__widget__build /*
+compared to `FutureBuilder<T>`(of `flutter/widgets/async.dart`)
+  `value__type` can be nil-able
+    unlike `FutureBuilder` which silently behaves in-correctly
+      instead of supporting ,failing ,or error-ing out
+        due to `snapshot.data` being internally nil-able
+          despite its type being un-constrained
+            which is implicitly `extends Object?` in dart-lang.
+              breaking the promise of void-safety
+  value is available in the very-first frame ,if completed already
+    due to the value being accessible syn.ly ,from "base__value__asyn__definitive"
+  child-build are separate ,for each state
+    reducing duplication ,and maintaining separation-of-concern */ (
     final gui__base__widget__building__context context, {
     required final gui__base__value__asyn__handling__children___record<value__type> children,
   }) {

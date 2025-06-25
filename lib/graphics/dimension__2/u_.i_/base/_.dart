@@ -111,7 +111,7 @@ part "theme.dart";
 part "wall.dart";
 
 const //
-base__program__compilation__debug__ok = kDebugMode;
+base__program__compilation__debug___ok = kDebugMode;
 
 final base__program__compilation__platform /* should be avoided ,as much as possible */ = //
     (kIsWeb //
@@ -191,7 +191,7 @@ needed to prevent the flutter-framework ,from re-using the old widget ,from the 
 should be avoided ,in favor of a reliable (consistently reproducible) value (like `ValueKey("$category:$item")`) ,to not waste resources ,on un-necessary build calls ,and improve efficiency */ => //
     /*/* must not be `const` */ ValueKey(Object())*/ UniqueKey();
 
-value__asyn<string__raw?> //
+value__asyn<string?> //
 base__environment__clipboard__text() async {
   return ((await Clipboard.hasStrings()) //
       ? (await Clipboard.getData(
@@ -202,7 +202,7 @@ base__environment__clipboard__text() async {
 
 value__asyn<void> //
 base__environment__clipboard__set__text({
-  required final string__raw value,
+  required final string value,
 }) {
   return Clipboard.setData(
     ClipboardData(
@@ -267,17 +267,17 @@ extension gui__base__widget__building__context__extension //
   }
 
   void build__re() {
-    if (valid__ok()) {
-      build__re__raw();
+    if (valid___ok()) {
+      build__re___raw();
     }
   }
 
-  void build__re__raw /*
+  void build__re___raw /*
 should not be called ,after asyn.-gap */ () {
     element___raw().markNeedsBuild();
   }
 
-  BOOL valid__ok() {
+  BOOL valid___ok() {
     return mounted;
   }
 }

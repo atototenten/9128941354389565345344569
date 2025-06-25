@@ -424,7 +424,7 @@ void report__test() {
 
 void str__search__de_limiter__array(
   final byte__array encodedBytes,
-  final string__raw encoder_name, {
+  final string encoder_name, {
   final bool b__verbose_output = NO,
 }) {
   final List<int> possibleDeLimiters = <int>[];
@@ -487,7 +487,7 @@ void bytes__test() {
 void list__test() {
   final ls = list<uu>();
 
-  void print_(final string__raw id) {
+  void print_(final string id) {
     report__array(ls.elements, "ls.$id", uu__nilable__report);
     report__uu(ls.elements__count__current, "ls.elements__count__current");
   }
@@ -506,7 +506,7 @@ void list__test() {
 
   void remove(
     final uu value,
-    final string__raw print__id,
+    final string print__id,
   ) {
     ls.remove__value(value);
     print_("removed." + print__id);
@@ -559,7 +559,7 @@ void storage__test() {
   void print_(
     final uu i,
     final storage__alignment__kampo alignment,
-    final string__raw s,
+    final string s,
   ) {
     uu__b__aligned(i, alignment.size).text__representation().print("$s-aligned?");
     uu__aligned__basic__1(i, alignment.shift__count).text__representation().print("$s-aligned.");
@@ -626,7 +626,7 @@ void base__storage__file__fast__test() {
         offset_ = storage__buffer.indexOf(value),
         count_ = ((storage__buffer.lastIndexOf(value) + 1) - offset_);
 
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       offset_.text__representation().print("offset_");
       count_.text__representation().print("count_");
     }
@@ -641,7 +641,7 @@ void base__storage__file__fast__test() {
       }
     }
 
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       final //
           b__offset__not__min = (offset > 0),
           b__count__not__max = (count < storage__size);
@@ -708,7 +708,7 @@ void base__storage__file__fast__test() {
 
   {
     void pool__print() {
-      if (base__printing__ok) //
+      if (base__printing___ok) //
         pool
               ..store.iterate__basic((final element) => //
                   element.offset.text__representation().print("store.block.offset"))

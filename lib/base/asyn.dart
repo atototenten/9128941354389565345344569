@@ -85,6 +85,19 @@ value__asyn<void> base__delaying__asyn([
   );
 }
 
+extension base__value__asyn__definitive__dispose___extension //
+<value__type extends base__dispose___protocol> //
+    on base__value__asyn__definitive<value__type> {
+  void value__dispose() {
+    handle___raw(
+      (final v) {
+        v.dispose();
+      },
+      NIL,
+    );
+  }
+}
+
 class base__value__asyn__definitive /*
 "base__value__asyn__definitive<value___type?>.completion__success" is same as "base__value__asyn__definitive.blank"(un-init.ized state) */ <value__type> //
     implements base__dispose___protocol {
@@ -94,17 +107,17 @@ class base__value__asyn__definitive /*
 
   base__value__asyn__definitive.waiting(
     final value__asyn<value__type> value,
-  ) : state__channel__raw = base__value__mutation__event__channel__broadcast(
+  ) : state__channel___raw = base__value__mutation__event__channel__broadcast(
         base__value__asyn__definitive__state__waiting<value__type>(
           value,
         ),
       ) {
-    state__waiting__handle__raw(value);
+    state__waiting__handle___raw(value);
   }
 
   base__value__asyn__definitive.completion__success(
     final value__type value,
-  ) : state__channel__raw = base__value__mutation__event__channel__broadcast(
+  ) : state__channel___raw = base__value__mutation__event__channel__broadcast(
         base__value__asyn__definitive__state__completion__success<value__type>(
           value,
         ),
@@ -113,51 +126,61 @@ class base__value__asyn__definitive /*
   base__value__asyn__definitive.completion__failure(
     final Object error,
     final StackTrace trace,
-  ) : state__channel__raw = base__value__mutation__event__channel__broadcast(
+  ) : state__channel___raw = base__value__mutation__event__channel__broadcast(
         base__value__asyn__definitive__state__completion__failure<value__type>(
           error,
           trace,
         ),
       );
 
-  final base__value__mutation__event__channel__broadcast<base__value__asyn__definitive__state___union<value__type>> state__channel__raw;
+  final base__value__mutation__event__channel__broadcast<base__value__asyn__definitive__state___union<value__type>> state__channel___raw;
 
   @override
   void dispose() {
-    state__channel__raw.dispose();
+    state__channel___raw.dispose();
   }
 
   base__event__channel__broadcast___protocol state__channel() {
-    return state__channel__raw;
+    return state__channel___raw;
   }
 
   base__value__asyn__definitive__state___union<value__type> state() {
-    return state__channel__raw.value();
+    return state__channel___raw.value();
   }
 
   void state__assign__waiting(
     final value__asyn<value__type> value,
   ) {
-    state__channel__raw.value__mutation__dispatch(
+    state__channel___raw.value__mutation__dispatch(
       base__value__asyn__definitive__state__waiting<value__type>(
         value,
       ),
     );
 
-    state__waiting__handle__raw(value);
+    state__waiting__handle___raw(value);
   }
 
-  void state__waiting__handle__raw(final value__asyn<value__type> value) {
+  void state__assign__completion__success(
+    final value__type value,
+  ) {
+    state__channel___raw.value__mutation__dispatch(
+      base__value__asyn__definitive__state__completion__success<value__type>(
+        value,
+      ),
+    );
+  }
+
+  void state__waiting__handle___raw(final value__asyn<value__type> value) {
     value.handle(
       (final value) {
-        state__channel__raw.value__mutation__dispatch(
+        state__channel___raw.value__mutation__dispatch(
           base__value__asyn__definitive__state__completion__success<value__type>(
             value,
           ),
         );
       },
       (final error, final trace) {
-        state__channel__raw.value__mutation__dispatch(
+        state__channel___raw.value__mutation__dispatch(
           base__value__asyn__definitive__state__completion__failure<value__type>(
             error,
             trace,
@@ -167,12 +190,12 @@ class base__value__asyn__definitive /*
     );
   }
 
-  void handle__raw /*
+  void handle___raw /*
 ignores the future state-channel events */ (
     final base__value__single__procedure__format<value__type> value__handle,
     final base__error__handle__proc_? error__handle,
   ) {
-    final state = state__channel__raw.value();
+    final state = state__channel___raw.value();
 
     switch (state) {
       case base__value__asyn__definitive__state__waiting<value__type>():

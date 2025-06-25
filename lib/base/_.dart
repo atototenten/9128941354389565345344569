@@ -35,12 +35,12 @@ part "number/integer/_.dart";
 part "number/integer/binary.dart";
 part "number/integer/signed.dart";
 part "number/integer/signed.big.dart";
-part "number/exponential.dart";
-part "number/real.dart";
+part "number/floating-point.dart";
+part "number/fixed-point.dart";
 part "image.dart";
 part "input.text.buffering.dart";
-part "iterable.dart";
-part "iterate.dart";
+part "Iterable.dart";
+part "Iterate.dart";
 part "language.english.dart";
 part "list.dart";
 part "message.dart";
@@ -66,14 +66,14 @@ part "Object__nilable.dart";
     any function, marked `async`, or using `await` in body, MUST return `Future`, NOT `FutureOr` */
 
 const //
-    base__printing__ok = OK,
-    behavior__correct__ok /* prefer correct-ness, over, efficiency or performance; NO guarentee */ = OK,
+    base__printing___ok = OK,
+    behavior__correct___ok /* prefer correct-ness, over, efficiency or performance; NO guarentee */ = OK,
 //
-    environment__phone__ok__android = OK,
-    environment__phone__ok__apple = NO,
-    environment__phone__ok = (environment__phone__ok__android || environment__phone__ok__apple),
-    environment__work_station__ok__unix /*BSD|GNU|Linux*/ = !environment__phone__ok,
-    environment__work_station__ok = environment__work_station__ok__unix;
+    environment__phone__android___ok = OK,
+    environment__phone__apple___ok = NO,
+    environment__phone___ok = (environment__phone__android___ok || environment__phone__apple___ok),
+    environment__work_station__unix___ok /*BSD|GNU|Linux*/ = !environment__phone___ok,
+    environment__work_station___ok = environment__work_station__unix___ok;
 
 const Null NIL = null;
 
@@ -92,7 +92,7 @@ const //
     bytes__count__zebi = (bytes__count__exbi << bytes__count__decimal__shift__count),
     bytes__count__yobi = (bytes__count__zebi << bytes__count__decimal__shift__count);
 
-const NIMR //
+const NI //
     io__buffer__size__default = (bytes__count__kibi << 2);
 
 enum base__results__basic {
@@ -127,7 +127,7 @@ const //
     static__indicate__truncat_ion = "...",
     static__indicate__short_en_ing = static__indicate__truncat_ion,
 //
-    empty__text = '',
+    empty__string = '',
     empty__array = <dynamic>[];
 
 const TC //
@@ -165,17 +165,17 @@ void base__check__features() {
 }
 
 typedef base__copy__result___compo = ({
-  NIMR dest__offset__new,
-  NIMR src__offset__new,
+  NI dest__offset__new,
+  NI src__offset__new,
 });
 
 //@attribute__function__inline
 base__copy__result___compo base__copy<T>(
   final array<T> dest,
   final array<T> src, {
-  NIMR? /*src__*/ count,
-  NIMR dest__offset = 0,
-  NIMR src__offset = 0,
+  NI? /*src__*/ count,
+  NI dest__offset = 0,
+  NI src__offset = 0,
 }) {
   count /* end/stop */ = ((count == null) //
       ? (src.elements__count - src__offset)
@@ -205,11 +205,11 @@ abstract class base__dispose__asyn__basic___protocol {
       dispose__asyn();
 }
 
-NIMR binarySearch(
-  final array<NIMR> list,
-  final NIMR element,
+NI binarySearch(
+  final array<NI> list,
+  final NI element,
 ) {
-  NIMR //
+  NI //
       min = 0,
       mid = 0 /* un-necessary assignment, to avoid the error, by dart's analyzer */,
       max = list.elements__count;
@@ -236,9 +236,9 @@ NIMR binarySearch(
 }
 
 extension NI__array__bits__extension //
-    on array<NIMR> {
-  string__raw bits({
-    final NIMR interval = 4,
+    on array<NI> {
+  string bits({
+    final NI interval = 4,
   }) {
     final buffer = StringBuffer("[");
 
@@ -269,11 +269,11 @@ extension NI__array__bits__extension //
 }
 
 extension text__separation__extension //
-    on string__raw {
-  string__raw separate({
-    final string__raw separation = char__space,
-    final NIMR interval = 3,
-    final string__raw? prefix,
+    on string {
+  string separate({
+    final string separation = char__space,
+    final NI interval = 3,
+    final string? prefix,
   }) {
     final length_1 = length;
 
@@ -316,7 +316,7 @@ extension text__separation__extension //
     return buffer.toString();
   }
 
-  array<string__raw> separate__array({
+  array<string> separate__array({
     final int interval = 3,
   }) {
     final length_1 = length;
@@ -325,9 +325,9 @@ extension text__separation__extension //
 
     final elements__count = ((length_1 - offset) ~/ interval);
 
-    final result = array__new__filled<string__raw>(
+    final result = array__new__filled<string>(
       elements__count,
-      empty__text,
+      empty__string,
     )..first = substring(
         0,
         offset,

@@ -8,20 +8,20 @@ class gui__base__navigation__bottom__children___record {
   final array<
       gui__base__widget Function(
         gui__base__widget__building__context context,
-        BOOL chosen__ok,
+        BOOL chosen___ok,
       )> items__build;
 }
 
 class gui__base__navigation__bottom //
     implements gui__base__entity__component___protocol<gui__base__navigation__bottom__children___record> {
   gui__base__navigation__bottom({
-    final NIMR chosen__id = 0,
+    final NI chosen__id = 0,
     required this.items__press__handle,
   }) : chosen__id__channel = base__value__mutation__event__channel__broadcast(
           chosen__id,
         );
 
-  final base__value__mutation__event__channel__broadcast<NIMR> chosen__id__channel;
+  final base__value__mutation__event__channel__broadcast<NI> chosen__id__channel;
   final array<bool /*switch__ok*/ Function()?> items__press__handle;
 
   @override
@@ -58,9 +58,9 @@ non-functional ,with `GestureDetector.behavior` ,being `HitTestBehavior.transluc
                       final press__handle = items__press__handle[item__id];
 
                       if (press__handle != null) {
-                        final switch__ok = press__handle();
+                        final switch___ok = press__handle();
 
-                        if (switch__ok.not) {
+                        if (switch___ok.not) {
                           return;
                         }
                       }

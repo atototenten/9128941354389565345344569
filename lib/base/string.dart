@@ -1,6 +1,6 @@
 part of "_.dart";
 
-typedef string__raw = String;
+typedef string = String;
 
 /*
   conclusions, from `test__search__de_limiter` function are:
@@ -13,20 +13,20 @@ typedef string__raw = String;
       but the last encountered `charCode` was 244(at `byteCounter` 169856)
     the `byteCount` of the `encodedBytes` was 4388733 */
 
-byte__array text__convert__utf_8__bytes(final string__raw s) => //
+byte__array text__convert__utf_8__bytes(final string s) => //
     (const convert.Utf8Encoder()).convert(s);
 
-NIMR? /*id_*/ text__search /*
+NI? /*id_*/ text__search /*
 forked ,from `array__search` */
     (
-  final string__raw text_,
-  final string__raw segment /*
+  final string text_,
+  final string segment /*
 sub-string to search */
   , {
-  final NIMR? offset /*
+  final NI? offset /*
 by-default 0 ,if `reverse:OK` is `NOT OK` ,else `char:last:id` */
   ,
-  final BOOL reverse__ok = NO,
+  final BOOL reverse___ok = NO,
 }) {
   if ((offset != null) && (offset < text_.chars__count).not) {
     throw RangeError.range(
@@ -36,9 +36,9 @@ by-default 0 ,if `reverse:OK` is `NOT OK` ,else `char:last:id` */
     );
   }
 
-  final NIMR result;
+  final NI result;
 
-  if /*F*/ (reverse__ok) {
+  if /*F*/ (reverse___ok) {
     result = text_.lastIndexOf(
       segment,
       offset,
@@ -57,8 +57,8 @@ by-default 0 ,if `reverse:OK` is `NOT OK` ,else `char:last:id` */
   return result;
 }
 
-BOOL text__numbers__ok(
-  final string__raw s,
+BOOL text__numbers___ok(
+  final string s,
 ) {
   for (final c in s.codeUnits) {
     if ((c < 48) || (c > 57)) {
@@ -68,10 +68,10 @@ BOOL text__numbers__ok(
   return OK;
 }
 
-string__raw utf_8__bytes__convert__text(final byte__array bytes) => //
+string utf_8__bytes__convert__text(final byte__array bytes) => //
     (const convert.Utf8Decoder()).convert(bytes);
 
-NIMR /*(char:bytes:count -1)*/ utf_8__bytes__char__bytes__count__remain_ing(
+NI /*(char:bytes:count -1)*/ utf_8__bytes__char__bytes__count__remain_ing(
   final BS1 b /*char:bytes:first*/,
 ) {
   if (b < 128 /*1000_0000*/) {
@@ -91,31 +91,23 @@ source :`http://stackoverflow.com/questions/26070766/utf-8-how-does-only-0-127-s
   }
 }
 
-final value__asyn<string__raw> Function(Stream<byte__array>) utf_8__Stream__byte__array__convert__text = //
+final value__asyn<string> Function(Stream<byte__array>) utf_8__Stream__byte__array__convert__text = //
     (const convert.Utf8Codec()).decodeStream;
 
-final value__asyn<string__raw> Function(Stream<array<NI1R>>) utf_8__byte__array__Stream__convert__text = //
+final value__asyn<string> Function(Stream<array<NI>>) utf_8__byte__array__Stream__convert__text = //
     (const convert.Utf8Codec()).decodeStream;
 
-extension text__extension on string__raw {
-  NIMR get chars__count => //
+extension text__extension on string {
+  NI get chars__count => //
       length;
 
-  BOOL empty__ok() => //
+  BOOL empty___ok() => //
       isEmpty;
 
   BOOL empty__not() => //
       isNotEmpty;
 
-  string__raw? empty__not__else__null() {
-    if (empty__ok()) {
-      return NIL;
-    }
-
-    return this;
-  }
-
-  void print__raw() /*
+  void print___raw() /*
 should never be needed(only wanted)
   prefer `::print` */
   {
@@ -125,7 +117,7 @@ should never be needed(only wanted)
   }
 
   void print([
-    final string__raw? label,
+    final string? label,
   ]) {
     base__print__labeled(
       this,
@@ -135,7 +127,7 @@ should never be needed(only wanted)
   }
 }
 
-extension text__convert__text__representation__extension on string__raw {
+extension text__convert__text__representation__extension on string {
   base__text__representation //
       text__representation() {
     return base__text__representation(

@@ -1,9 +1,24 @@
 part of "_.dart";
 
-extension Iterable__extension<T> on Iterable<T> {
-  BOOL empty__ok() => //
-      isEmpty;
+extension Iterable___extension<element___type> //
+on Iterable<element___type> {
+  Iterable<element__new__type> //
+  convert<element__new__type>(
+    final element__new__type Function(element___type) operate,
+  ) {
+    return map<element__new__type>(
+      operate,
+    );
+  }
 
-  Iterable<T>? get empty__not__else__null => //
-      (empty__ok().not ? this :  null);
+  array<element___type> //
+  convert__array() {
+    return toList(
+      growable: NO,
+    );
+  }
+
+  BOOL empty___ok() {
+    return isEmpty;
+  }
 }

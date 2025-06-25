@@ -5,7 +5,7 @@ void base__storage__data__tar__create(
   required final BS1__array column__bytes,
   required final number__size rows__count__size__id,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__tar__create",
       ds__meta.debug__label,
@@ -33,16 +33,16 @@ void base__storage__data__tar__create(
 }
 
 typedef base__storage__data__tar__table__meta___compo = ({
-  NIMR id,
-  NIMR row__id,
-  NIMR rows__count,
+  NI id,
+  NI row__id,
+  NI rows__count,
 });
 
 base__storage__data__tar__table__meta___compo base__storage__data__tar__table__meta(
-  final NIMR row__id,
-  final NI1R rows__count__multiplier__initial,
+  final NI row__id,
+  final NI rows__count__multiplier__initial,
 ) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__tar__table__meta",
     );
@@ -54,7 +54,7 @@ base__storage__data__tar__table__meta___compo base__storage__data__tar__table__m
 
   base__printing__indentation__increase();
 
-  NIMR //
+  NI //
       table__id = 0,
       table__row__id /* table__row__id__offset__to__row */ = row__id,
       table__rows__count /* for the table; `rows_per_table`; `table__rows__count__limit` */ = //
@@ -66,7 +66,7 @@ base__storage__data__tar__table__meta___compo base__storage__data__tar__table__m
     table__rows__count <<= 1 /* (i *= 2) */;
   }
 
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__compo__text__representation(
       "base__storage__data__tar__table__meta__compo",
       {
@@ -89,7 +89,7 @@ base__storage__data__tar__table__meta___compo base__storage__data__tar__table__m
   );
 }
 
-NIMR base__storage__data__tar__bytes__count(final NIMR table__id) => //
+NI base__storage__data__tar__bytes__count(final NI table__id) => //
     ((table__id + 1) * base__storage__data__position__size__id.size);
 
 class base__storage__data__tar__meta___compo //
@@ -108,17 +108,17 @@ class base__storage__data__tar__meta___compo //
           rows__count__size__id.size,
         );
 
-  NIMR //
+  NI //
       rows__count__max,
       table__array__bytes__base__storage__data__offset;
 
-  final NIMR //
+  final NI //
       tar__meta__bytes__base__storage__data__offset;
 
   BS1__array? //
       table__array__bytes;
 
-  final NI1R //
+  final NI //
       rows__count__multiplier__initial;
 
   base__compo__member__dictionary //
@@ -158,11 +158,11 @@ BS1__array base__storage__data__tar__table__array__bytes(
       tar__meta,
     ));
 
-NIMR base__storage__data__tar__row__bytes__base__storage__data__offset({
+NI base__storage__data__tar__row__bytes__base__storage__data__offset({
   required final base__storage__data__tar__table__meta___compo table__meta,
-  required final NIMR row__size,
+  required final NI row__size,
   required final BS1__array table__array__bytes,
-  final NIMR row__offset = 0,
+  final NI row__offset = 0,
 }) /* macro */ =>
     base__storage__data__table__row__bytes__base__storage__data__offset(
       row__id: table__meta.row__id,
@@ -177,12 +177,12 @@ NIMR base__storage__data__tar__row__bytes__base__storage__data__offset({
       row__offset: row__offset,
     );
 
-NIMR base__storage__data__tar__row__add(
+NI base__storage__data__tar__row__add(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tar__meta___compo tar__meta,
   final BS1__array bytes /* refer to `ds__table__row__add__bytes` */,
 ) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__tar__row__add",
       tar__meta.debug__label,
@@ -195,7 +195,7 @@ NIMR base__storage__data__tar__row__add(
 
   final row__id = tar__meta.rows__count++;
 
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     row__id.text__representation().print(
           "row__id",
           tar__meta.debug__label,
@@ -230,7 +230,7 @@ NIMR base__storage__data__tar__row__add(
   else {
     base__printing__indentation__increase();
 
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       ((table__meta.id != 0)
               ? ("current `table` is out-of-space;"
                   " allocating a new `table`;"
@@ -249,7 +249,7 @@ NIMR base__storage__data__tar__row__add(
           (table__meta.rows__count * tar__meta.row__size),
         );
 
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       ("${(table__meta.rows__count * tar__meta.row__size)}"
               "(${table__meta.rows__count}(rows) * ${tar__meta.row__size}(row's size))")
           .text__representation()
@@ -299,7 +299,7 @@ NIMR base__storage__data__tar__row__add(
       base__storage__data__offset: tar__meta.tar__meta__bytes__base__storage__data__offset,
     );
 
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       base__storage__data__position(ds__meta).text__representation().print(
             "table__array__new__base__storage__data__offset",
             tar__meta.debug__label,
@@ -338,12 +338,12 @@ void base__storage__data__tar__rows__count__update(
 base__storage__data__table__row___compo base__storage__data__tar__row(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tar__meta___compo tar__meta, {
-  required final NIMR row__id,
+  required final NI row__id,
   required final BS1__array? bytes,
-  NIMR? count,
-  final NIMR row__offset = 0,
+  NI? count,
+  final NI row__offset = 0,
 }) /* refer to `ds_.tbl.row` */ {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__tar__row",
       tar__meta.debug__label,
@@ -413,7 +413,7 @@ base__storage__data__table__row___compo base__storage__data__tar__row(
 base__storage__data__table__row__column___compo base__storage__data__tar__row__column(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tar__meta___compo tar__meta, {
-  required final NIMR row__id,
+  required final NI row__id,
   required final BS1__array? bytes,
   required final base__storage__data__table__column___compo table__column,
 }) /* macro */ =>
@@ -431,9 +431,9 @@ base__storage__data__table__row__column___compo base__storage__data__tar__row__c
 BS1__array base__storage__data__tar__row__group__bytes(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tar__meta___compo tar__meta, {
-  required final NIMR group__id,
+  required final NI group__id,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__tar__row__group__bytes",
       tar__meta.debug__label,
@@ -463,7 +463,7 @@ BS1__array base__storage__data__tar__row__group__bytes(
     12 is also more, than the usual user's expected count of 10, hence the 2 extra rows, feel like a bonus */
       ;
 
-  NIMR row__id /*rows__offset*/ = (group__id * row__group__size);
+  NI row__id /*rows__offset*/ = (group__id * row__group__size);
 
   if (!(row__id < tar__meta.rows__count) /*b__exists*/) {
     "table.end".print();
@@ -475,7 +475,7 @@ BS1__array base__storage__data__tar__row__group__bytes(
 
   final sink = base__byte__array__accumulation();
 
-  NIMR count = (((row__group__size + row__id) > tar__meta.rows__count) //
+  NI count = (((row__group__size + row__id) > tar__meta.rows__count) //
       ? tar__meta.rows__count
       : row__group__size);
 
@@ -522,15 +522,15 @@ void base__storage__data__tar__rows__all__iterate(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tar__meta___compo tar__meta,
   final void Function(
-    NIMR row__id,
+    NI row__id,
     BS1__array row__bytes,
-    NIMR row__bytes__base__storage__data__offset,
+    NI row__bytes__base__storage__data__offset,
   ) row__handle,
 ) /*
   REFER
     `data__base::table::rows::all` */
 {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__tar__rows__all",
       tar__meta.debug__label,
@@ -545,7 +545,7 @@ void base__storage__data__tar__rows__all__iterate(
     throw "tar.table.empty__ok";
   }
 
-  NIMR row__id__offset = 0;
+  NI row__id__offset = 0;
 
   while (row__id__offset < tar__meta.rows__count) {
     final //
@@ -570,7 +570,7 @@ void base__storage__data__tar__rows__all__iterate(
           base__storage__data__offset: table__bytes__base__storage__data__offset,
         );
 
-    NIMR table__bytes__offset = 0;
+    NI table__bytes__offset = 0;
 
     base__iterate__basic(
       (((row__id__offset + table__meta.rows__count) < tar__meta.rows__count) //

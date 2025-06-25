@@ -190,7 +190,7 @@ const _colors = <array<Color>>[
   <Color>[Color(0x16ffffff), Color(0xff79938f), Color(0xff223b37)],
 ];
 
-const NI1R //
+const NI //
     _color__background__page__foreground__intensity = 63;
 
 final colors__background__page__gradient_contrasts__dark = <array<Color>>[

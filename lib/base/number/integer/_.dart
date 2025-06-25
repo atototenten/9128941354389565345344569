@@ -1,12 +1,6 @@
 part of "../../_.dart";
 
-typedef NIR /* general/generic */ = int;
-typedef NI1R = NIR;
-typedef NI2R = NIR;
-typedef NI4R = NIR;
-typedef NI8R = NIR;
-typedef NIMR /* max */ = NI8R;
-typedef NINR /* native word */ = NIMR;
+typedef NI /* general/generic */ = int;
 
 const //
     NI1__size = BS1__size,
@@ -74,25 +68,25 @@ final //
     NI8__limit = (BigInt.from(1) << NI8__width),
     NI8__max = (NI8__limit - BigInt.from(1));
 
-NIMR NI__base__16__digits__count__convert__size(
-  final NIMR digits__count,
+NI NI__base__16__digits__count__convert__size(
+  final NI digits__count,
 ) =>
     NI__base__binary__multiple__digits__count__convert__size(
       digits__count,
-      NI__base__16__digits__count,
+       NI__base__16__digits__count,
     );
 
-NIMR NI__base__2__digits__count__convert__size(
-  final NIMR digits__count /*bits__count*/,
+NI NI__base__2__digits__count__convert__size(
+  final NI digits__count /*bits__count*/,
 ) =>
     NI__base__binary__multiple__digits__count__convert__size(
       digits__count,
-      NI__base__2__digits__count,
+       NI__base__2__digits__count,
     );
 
-NIMR NI__base__binary__multiple__digits__count__convert__size(
-  final NIMR digits__count,
-  final NIMR base__binary__multiple__digits__count,
+NI NI__base__binary__multiple__digits__count__convert__size(
+  final NI digits__count,
+  final NI base__binary__multiple__digits__count,
 ) /*{
   return (digits__count.toDouble() / base__binary__multiple__digits__count).ceil();
 }*/
@@ -104,27 +98,27 @@ NIMR NI__base__binary__multiple__digits__count__convert__size(
   return (1 + ((digits__count - 1) ~/ base__binary__multiple__digits__count));
 }
 
-NIMR NI__max(
-  final NIMR size,
+NI NI__max(
+  final NI size,
 ) {
   final shift__count = ((NIM__size - size) * BS1__width);
 
   return (((~0 << shift__count) >>> shift__count));
 }
 
-NIMR NI__max__basic({
-  required final NIMR width,
+NI NI__max__basic({
+  required final NI width,
 }) {
   return ((1 << width) - 1);
 }
 
-BOOL base__NI__aligned__ok(final NIMR value, final NIMR size) => //
+BOOL base__NI__aligned___ok(final NI value, final NI size) => //
     ((value & (size - 1)) == 0);
 
-NIMR NI__aligned__alignment__count(final NIMR value, final NIMR shift__count) => //
+NI NI__aligned__alignment__count(final NI value, final NI shift__count) => //
     (value >> shift__count);
 
-NIMR NI__aligned__basic(final NIMR value, final NIMR shift__count) => //
+NI NI__aligned__basic(final NI value, final NI shift__count) => //
     (NI__aligned__alignment__count(
           value,
           shift__count,
@@ -136,13 +130,13 @@ NIMR NI__aligned__basic(final NIMR value, final NIMR shift__count) => //
     ;
 
 ({
-  NIMR value__aligned,
-  NIMR remainder__un_aligned /* `` */,
+  NI value__aligned,
+  NI remainder__un_aligned /* `` */,
 /* `uu get value => (remainder__un_aligned + value__aligned);` */
 }) NI__aligned(
-  final NIMR value,
-  final NIMR alignment__size,
-  final NIMR alignment__shift__count,
+  final NI value,
+  final NI alignment__size,
+  final NI alignment__shift__count,
 ) {
   /*if (value < block__size__shift.size) {
     return (
@@ -156,7 +150,7 @@ NIMR NI__aligned__basic(final NIMR value, final NIMR shift__count) => //
     ); /* informative, but not intended */
   }*/
 
-  if (base__NI__aligned__ok(value, alignment__size)) //
+  if (base__NI__aligned___ok(value, alignment__size)) //
     return (
       value__aligned: value,
       remainder__un_aligned: 0,
@@ -174,8 +168,8 @@ NIMR NI__aligned__basic(final NIMR value, final NIMR shift__count) => //
 }
 
 typedef NI__bytes__convert__result___compo = ({
-  NIMR value,
-  NIMR count /* not `value__size`, but actually `bytes__count` */
+  NI value,
+  NI count /* not `value__size`, but actually `bytes__count` */
 });
 
 NI__bytes__convert__result___compo NI__bytes__convert(
@@ -234,8 +228,8 @@ while (OK) {
 }
 ``` */
 
-extension NI__extension on NIR {
-  BOOL NI__even__ok /*
+extension NI__extension on NI {
+  BOOL even___ok /*
 copied from `~/bin/dart-sdk/lib/_internal/wasm/lib/int.dart`::`_BoxedInt`::`isEven` */
       () {
     return ((this & 1) == 0);
@@ -250,7 +244,7 @@ copied from `~/bin/dart-sdk/lib/_internal/wasm/lib/int.dart`::`_BoxedInt`::`isEv
   }
 
   byte__array convert__byte__array__endian__little(
-    final NIMR size,
+    final NI size,
   ) /*
 `size` must equal `value.size`
   else illegal-access error
@@ -271,7 +265,7 @@ copied from `~/bin/dart-sdk/lib/_internal/wasm/lib/int.dart`::`_BoxedInt`::`isEv
   }
 
   byte__array convert__byte__array__endian__big(
-    final NIMR size,
+    final NI size,
   ) {
     var value = this;
 
@@ -321,7 +315,7 @@ do {
       () {
     var value = this;
 
-    final NIMR size;
+    final NI size;
     {
       var i = 0;
       while ((value < (1 << ((i += 1) * TC__width))).not);
@@ -347,51 +341,51 @@ do {
 }
 
 class number__integer__nilable {
-  static NIMR value__convert__nilable__raw(
-    final NIMR value,
+  static NI value__convert__nilable___raw(
+    final NI value,
   ) {
     return (1 + value);
   }
 
-  static NIMR value__nilable__convert__raw(
-    final NIMR value,
+  static NI value__nilable__convert___raw(
+    final NI value,
   ) {
     return (value - 1);
   }
 
   number__integer__nilable.nil() //
-      : value__raw = 0;
+      : value___raw = 0;
 
   number__integer__nilable(
-    final NIMR value,
-  ) : value__raw = value__convert__nilable__raw(
+    final NI value,
+  ) : value___raw = value__convert__nilable___raw(
           value,
         );
 
-  NIMR value__raw;
+  NI value___raw;
 
-  BOOL nil__ok() {
-    return (value__raw == 0);
+  BOOL nil___ok() {
+    return (value___raw == 0);
   }
 
-  NIMR value() {
-    if (nil__ok()) {
+  NI value() {
+    if (nil___ok()) {
       throw "`(value = NIL)`";
     }
 
-    return value__nilable__convert__raw(
-      value__raw,
+    return value__nilable__convert___raw(
+      value___raw,
     );
   }
 
   void assign__nil() {
-    value__raw = 0;
+    value___raw = 0;
   }
 
   void assign(
-    final NIMR value,
+    final NI value,
   ) {
-    value__raw = value__convert__nilable__raw(
+    value___raw = value__convert__nilable___raw(
       value,
     );
   }

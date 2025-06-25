@@ -1,27 +1,57 @@
 part of "_.dart";
 
-extension navigation__extension //
-    on
-        gui__base__widget__building__context /*
+const //
+gui__base__navigation__overlay__background__color = /*base__color__transparent__dark*/ Color.from(alpha: .5, red: 0, green: 0, blue: 0),
+    gui__base__navigation__animation__duration__default = Duration(
+      milliseconds: (date_time.duration__second__seconds__milli ~/ (3 * 2)),
+    );
+
+typedef gui__base__navigation___compo = NavigatorState;
+
+extension gui__base__widget__building__context__navigation___extension
+    on //
+        gui__base__widget__building__context {
+  gui__base__navigation___compo navigation({
+    final BOOL root___ok /*
+useful for `overlay`s
+run-time expensive op. */ =
+        NO,
+  }) {
+    return Navigator.of(
+      this,
+      rootNavigator: root___ok,
+    );
+  }
+}
+
+class _empty__widget extends StatelessWidget {
+  const _empty__widget() : super(key: NIL);
+
+  @override
+  Widget build(final gui__base__widget__building__context context) {
+    return gui__base__empty__widget;
+  }
+}
+
+extension gui__base__navigation___extension
+    on //
+        gui__base__navigation___compo /*
 {`dismiss`|`depart_ure`|`de_init_`|`dispose`}`:handle` can be achieved by ,`::handle`-ing the `navigate:forward:`* `return`-ed `async_:value` ,then calling the proc. */ {
   value__asyn<void> //
-  navigate__forward__overlay /*
-application :en-large-ing an image */ //
+  forward__overlay //
   <entity__type extends gui__base__entity__overlay___compo>({
-    final BOOL navigation__root__ok = NO,
-    final Color background__color = _overlay__background__color,
-    final BOOL background__press__dismiss__ok = OK,
-    final BOOL transition__instant__ok = NO,
+    final Color background__color = gui__base__navigation__overlay__background__color,
+    final BOOL gesture__press__background__dismiss___ok = OK,
+    final Duration animation__duration = gui__base__navigation__animation__duration__default,
     required final entity__type entity,
   }) {
     return _entity__overlay__handle(
       entity,
-      _navigate__forward(
-        navigation__root__ok,
+      _forward(
         _overlay(
           background__color: background__color,
-          background__press__dismiss__ok: background__press__dismiss__ok,
-          transition__instant__ok: transition__instant__ok,
+          gesture__press__background__dismiss___ok: gesture__press__background__dismiss___ok,
+          animation__duration: animation__duration,
           entity: entity,
         ),
       ),
@@ -29,22 +59,20 @@ application :en-large-ing an image */ //
   }
 
   value__asyn<void> //
-  navigate__forward__replace__overlay //
+  forward__replace__overlay //
   <entity__type extends gui__base__entity__overlay___compo>({
-    final BOOL navigation__root__ok = NO,
-    final Color background__color = _overlay__background__color,
-    final BOOL background__press__dismiss__ok = OK,
-    final BOOL transition__instant__ok = NO,
+    final Color background__color = gui__base__navigation__overlay__background__color,
+    final BOOL gesture__press__background__dismiss___ok = OK,
+    final Duration animation__duration = gui__base__navigation__animation__duration__default,
     required final entity__type entity,
   }) {
     return _entity__overlay__handle(
       entity,
-      _navigate__forward__replace(
-        navigation__root__ok,
+      _forward__replace(
         _overlay(
           background__color: background__color,
-          background__press__dismiss__ok: background__press__dismiss__ok,
-          transition__instant__ok: transition__instant__ok,
+          gesture__press__background__dismiss___ok: gesture__press__background__dismiss___ok,
+          animation__duration: animation__duration,
           entity: entity,
         ),
       ),
@@ -55,55 +83,60 @@ application :en-large-ing an image */ //
   _overlay //
   <entity__type extends gui__base__entity__overlay___compo>({
     required final Color background__color,
-    required final BOOL background__press__dismiss__ok,
-    required final BOOL transition__instant__ok,
+    required final BOOL gesture__press__background__dismiss___ok,
+    required final Duration animation__duration,
     required final entity__type entity,
   }) {
-    return ( /*F*/ transition__instant__ok
-        ? RawDialogRoute<void>(
-            pageBuilder: (final context, _, __) {
-              return entity.widget__build(
-                context,
-              );
-            },
-            barrierColor: background__color,
-            barrierDismissible: background__press__dismiss__ok,
-            barrierLabel: empty__text,
-            transitionDuration: Duration.zero,
-            transitionBuilder: (final context, _, __, ___) {
-              return entity.widget__build(
-                context,
-              );
-            },
-          )
-        : DialogRoute<void>(
-            context: this,
-            builder: entity.widget__build,
-            barrierColor: background__color,
-            barrierDismissible: background__press__dismiss__ok,
-            barrierLabel: empty__text,
-            useSafeArea: NO,
-          ));
+    if (animation__duration == Duration.zero) {
+      RawDialogRoute<void>(
+        pageBuilder: (final context, _, _) {
+          return entity.widget__build(
+            context,
+          );
+        },
+        barrierDismissible: gesture__press__background__dismiss___ok,
+        barrierColor: background__color,
+        barrierLabel: empty__string,
+        transitionDuration: Duration.zero,
+        transitionBuilder: (final context, _, _, _) {
+          return entity.widget__build(
+            context,
+          );
+        },
+        fullscreenDialog: OK,
+      );
+    }
+
+    return DialogRoute<void>(
+      context: StatelessElement(_empty__widget()),
+      builder: entity.widget__build,
+      barrierColor: background__color,
+      barrierDismissible: gesture__press__background__dismiss___ok,
+      barrierLabel: empty__string,
+      useSafeArea: NO,
+      fullscreenDialog: OK,
+      animationStyle: AnimationStyle(
+        duration: animation__duration,
+        reverseDuration: animation__duration,
+      ),
+    );
   }
 
   value__asyn<void> //
-  navigate__forward__overlay__bottom /*
-application :(modal) bottom sheet */ //
+  forward__overlay__bottom //
   <entity__type extends gui__base__entity__overlay___compo>({
-    final BOOL navigation__root__ok = NO,
-    final Color background__color = _overlay__background__color,
-    final BOOL background__press__dismiss__ok = OK,
-    final BOOL drag__bottom__dismiss__ok = OK,
+    final Color background__color = gui__base__navigation__overlay__background__color,
+    final BOOL gesture__press__background__dismiss___ok = OK,
+    final BOOL gesture__drag__bottom__dismiss___ok = OK,
     required final entity__type entity,
   }) {
     return _entity__overlay__handle(
       entity,
-      _navigate__forward(
-        navigation__root__ok,
+      _forward(
         _overlay__bottom(
           background__color,
-          background__press__dismiss__ok,
-          drag__bottom__dismiss__ok,
+          gesture__press__background__dismiss___ok,
+          gesture__drag__bottom__dismiss___ok,
           NIL,
           entity,
         ),
@@ -111,23 +144,49 @@ application :(modal) bottom sheet */ //
     );
   }
 
-  value__asyn<void> //
-  navigate__forward__replace__overlay__bottom //
+  /*value__asyn<void> //
+  forward__overlay__bottom__transition__instant //
   <entity__type extends gui__base__entity__overlay___compo>({
-    final BOOL navigation__root__ok = NO,
-    final Color background__color = _overlay__background__color,
-    final BOOL background__press__dismiss__ok = OK,
-    final BOOL drag__bottom__dismiss__ok = OK,
+    final Color background__color = gui__base__navigation__overlay__background__color,
+    final BOOL gesture__press__background__dismiss___ok = OK,
+    final BOOL gesture__drag__bottom__dismiss___ok = OK,
+    required final TickerProvider vsync,
     required final entity__type entity,
   }) {
     return _entity__overlay__handle(
       entity,
-      _navigate__forward__replace(
-        navigation__root__ok,
+      _instant(
+        vsync,
+        (final transition__control) {
+          return _forward(
+            _overlay__bottom(
+              background__color,
+              gesture__press__background__dismiss___ok,
+              gesture__drag__bottom__dismiss___ok,
+              transition__control,
+              entity,
+            ),
+          );
+        },
+      ),
+    );
+  }*/
+
+  value__asyn<void> //
+  forward__replace__overlay__bottom //
+  <entity__type extends gui__base__entity__overlay___compo>({
+    final Color background__color = gui__base__navigation__overlay__background__color,
+    final BOOL gesture__press__background__dismiss___ok = OK,
+    final BOOL gesture__drag__bottom__dismiss___ok = OK,
+    required final entity__type entity,
+  }) {
+    return _entity__overlay__handle(
+      entity,
+      _forward__replace(
         _overlay__bottom(
           background__color,
-          background__press__dismiss__ok,
-          drag__bottom__dismiss__ok,
+          gesture__press__background__dismiss___ok,
+          gesture__drag__bottom__dismiss___ok,
           NIL,
           entity,
         ),
@@ -135,27 +194,25 @@ application :(modal) bottom sheet */ //
     );
   }
 
-  value__asyn<void> //
-  navigate__forward__overlay__bottom__transition__instant //
+  /*value__asyn<void> //
+  forward__replace__overlay__bottom__transition__instant //
   <entity__type extends gui__base__entity__overlay___compo>({
-    final BOOL navigation__root__ok = NO,
-    final Color background__color = _overlay__background__color,
-    final BOOL background__press__dismiss__ok = OK,
-    final BOOL drag__bottom__dismiss__ok = OK,
+    final Color background__color = gui__base__navigation__overlay__background__color,
+    final BOOL gesture__press__background__dismiss___ok = OK,
+    final BOOL gesture__drag__bottom__dismiss___ok = OK,
     required final TickerProvider vsync,
     required final entity__type entity,
   }) {
     return _entity__overlay__handle(
       entity,
-      _navigate__instant(
+      _instant(
         vsync,
         (final transition__control) {
-          return _navigate__forward(
-            navigation__root__ok,
+          return _forward__replace(
             _overlay__bottom(
               background__color,
-              background__press__dismiss__ok,
-              drag__bottom__dismiss__ok,
+              gesture__press__background__dismiss___ok,
+              gesture__drag__bottom__dismiss___ok,
               transition__control,
               entity,
             ),
@@ -163,40 +220,46 @@ application :(modal) bottom sheet */ //
         },
       ),
     );
-  }
+  }*/
 
-  value__asyn<void> //
-  navigate__forward__replace__overlay__bottom__transition__instant //
-  <entity__type extends gui__base__entity__overlay___compo>({
-    final BOOL navigation__root__ok = NO,
-    final Color background__color = _overlay__background__color,
-    final BOOL background__press__dismiss__ok = OK,
-    final BOOL drag__bottom__dismiss__ok = OK,
-    required final TickerProvider vsync,
-    required final entity__type entity,
-  }) {
-    return _entity__overlay__handle(
-      entity,
-      _navigate__instant(
-        vsync,
-        (final transition__control) {
-          return _navigate__forward__replace(
-            navigation__root__ok,
-            _overlay__bottom(
-              background__color,
-              background__press__dismiss__ok,
-              drag__bottom__dismiss__ok,
-              transition__control,
-              entity,
-            ),
-          );
-        },
-      ),
+  Route<void> //
+  _overlay__bottom //
+  <entity__type extends gui__base__entity__overlay___compo>(
+    final Color background__color,
+    final BOOL gesture__press__background__dismiss___ok,
+    final BOOL gesture__drag__bottom__dismiss___ok,
+    final AnimationController? transition__control,
+    final entity__type entity,
+  ) {
+    return ModalBottomSheetRoute<void>(
+      builder: entity.widget__build,
+      isScrollControlled: OK,
+      backgroundColor:
+          (base__app__theme__colors__ground__back__contrast__dark___ok //
+          ? base__color__transparent__dark
+          : base__color__transparent__light),
+      elevation: 0,
+      clipBehavior: Clip.none,
+      constraints: () {
+        final wall__size = base__wall__size__default();
+
+        return BoxConstraints(
+          maxWidth: wall__size.width,
+          maxHeight: wall__size.height,
+        );
+      }(),
+      isDismissible: gesture__press__background__dismiss___ok,
+      modalBarrierColor: background__color,
+      barrierLabel: empty__string,
+      enableDrag: gesture__drag__bottom__dismiss___ok,
+      showDragHandle: NO,
+      transitionAnimationController: transition__control,
+      useSafeArea: NO,
     );
   }
 
-  value__asyn<void> //
-  _navigate__instant(
+  /*value__asyn<void> //
+  _instant(
     final TickerProvider vsync,
     final value__asyn<void> Function(
       AnimationController transition__control,
@@ -214,38 +277,7 @@ application :(modal) bottom sheet */ //
     );
 
     transition__control.dispose();
-  }
-
-  Route<void> //
-  _overlay__bottom //
-  <entity__type extends gui__base__entity__overlay___compo>(
-    final Color background__color,
-    final BOOL background__press__dismiss__ok,
-    final BOOL drag__bottom__dismiss__ok,
-    final AnimationController? transition__control,
-    final entity__type entity,
-  ) {
-    return ModalBottomSheetRoute<void>(
-      builder: entity.widget__build,
-      isScrollControlled: OK,
-      backgroundColor:
-          (base__app__theme__colors__ground__back__contrast__dark__ok //
-          ? base__color__transparent__dark
-          : base__color__transparent__light),
-      elevation: 0,
-      clipBehavior: Clip.none,
-      constraints: BoxConstraints.tight(
-        base__wall__size__default(),
-      ),
-      isDismissible: background__press__dismiss__ok,
-      modalBarrierColor: background__color,
-      barrierLabel: empty__text,
-      enableDrag: drag__bottom__dismiss__ok,
-      showDragHandle: NO,
-      transitionAnimationController: transition__control,
-      useSafeArea: NO,
-    );
-  }
+  }*/
 
   value__asyn<void> //
   _entity__overlay__handle //
@@ -259,19 +291,17 @@ application :(modal) bottom sheet */ //
   }
 
   value__asyn<void> //
-  navigate__forward__page /*
+  forward__page /*
 push ,next */ //
   <entity__type extends gui__base__entity__page___protocol>({
-    final BOOL navigation__root__ok = NO,
-    final BOOL transition__instant__ok = NO,
+    final Duration animation__duration = gui__base__navigation__animation__duration__default,
     required final entity__type entity,
   }) {
     return _entity__page__handle(
       entity,
-      _navigate__forward(
-        navigation__root__ok,
+      _forward(
         _page__route(
-          transition__instant__ok,
+          animation__duration,
           entity.widget__build,
         ),
       ),
@@ -279,32 +309,27 @@ push ,next */ //
   }
 
   value__asyn<void> /*
-completes ,when the `route` is de-navigat-ed */
-  _navigate__forward(
-    final BOOL navigation__root__ok,
+completes ,when the "route" is de-navigated */
+  _forward(
     final Route<void> route,
   ) {
-    return _navigator_state(
-      root__ok: navigation__root__ok,
-    ).push<void>(
+    return push<void>(
       route,
     );
   }
 
   value__asyn<void> //
-  navigate__forward__replace__page /*
+  forward__replace__page /*
 efficient, than the, first calling `de_navigate`, then calling `navigate` */ //
   <entity__type extends gui__base__entity__page___protocol>({
-    final BOOL navigation__root__ok = NO,
-    final BOOL transition__instant__ok = NO,
+    final Duration animation__duration = gui__base__navigation__animation__duration__default,
     required final entity__type entity,
   }) {
     return _entity__page__handle(
       entity,
-      _navigate__forward__replace(
-        navigation__root__ok,
+      _forward__replace(
         _page__route(
-          transition__instant__ok,
+          animation__duration,
           entity.widget__build,
         ),
       ),
@@ -312,33 +337,27 @@ efficient, than the, first calling `de_navigate`, then calling `navigate` */ //
   }
 
   value__asyn<void> //
-  _navigate__forward__replace(
-    final BOOL navigation__root__ok,
+  _forward__replace(
     final Route<void> route,
   ) {
-    return _navigator_state(
-      root__ok: navigation__root__ok,
-    ).pushReplacement<void, void>(
+    return pushReplacement<void, void>(
       route,
     );
   }
 
   value__asyn<void> //
-  navigate__forward__replace__full__page /*
+  forward__replace__full__page /*
 {pop_until_and_push|{pop_all_and_push|re_set}} */ //
   <entity__type extends gui__base__entity__page___protocol>({
-    final BOOL navigation__root__ok = NO,
-    final NIMR? pages__count,
-    final BOOL transition__instant__ok = NO,
+    final NI? pages__count,
+    final Duration animation__duration = gui__base__navigation__animation__duration__default,
     required final entity__type entity,
   }) {
     return _entity__page__handle(
       entity,
-      _navigator_state(
-        root__ok: navigation__root__ok,
-      ).pushAndRemoveUntil<void>(
+      pushAndRemoveUntil<void>(
         _page__route(
-          transition__instant__ok,
+          animation__duration,
           entity.widget__build,
         ),
         _route__predicate(
@@ -359,42 +378,21 @@ efficient, than the, first calling `de_navigate`, then calling `navigate` */ //
     entity.dispose();
   }
 
-  BOOL navigate__backward__ok({
-    final BOOL navigation__root__ok = NO,
-  }) {
-    return _navigator_state(
-      root__ok: navigation__root__ok,
-    ).canPop();
+  BOOL backward___ok() {
+    return canPop();
   }
 
-  void navigate__backward /*
-{{pop|back}|exit}
-call-ing multiple times ,would act multiple times 
-  ,even exit-ing the app
-  ,even on same `context`
-    ,on further(than the first) calls ,acts on `context` ,of parent(in hierarchy)[s]  */ ({
-    final BOOL navigation__root__ok = NO,
-  }) {
-    if /*F*/ (navigate__backward__ok().not /*exit__ok*/ ) {
-      base__app__exit();
-    } else {
-      _navigator_state(
-        root__ok: navigation__root__ok,
-      ).pop<void>();
-    }
+  void backward /*
+{pop|back}
+call-ing multiple times ,acts as many times */ () {
+    pop<void>();
   }
 
-  /*void navigate__back()
-    { return navigate__backward(); }*/
-
-  void navigate__backward__full /*
+  void backward__full /*
 {pop_until|{pop_all|re_set}} */ ({
-    final BOOL navigation__root__ok = NO,
-    final NIMR? pages__count,
+    final NI? pages__count,
   }) {
-    return _navigator_state(
-      root__ok: navigation__root__ok,
-    ).popUntil(
+    return popUntil(
       _route__predicate(
         pages__count,
       ),
@@ -403,7 +401,7 @@ call-ing multiple times ,would act multiple times
 
   RoutePredicate //
   _route__predicate(
-    final NIMR? pages__count /*
+    final NI? pages__count /*
 cases :
   NIL :remove all previous pages
   0 :remove all previous pages ,until/except/exclud-ing the first page
@@ -432,158 +430,29 @@ cases :
     };
   }
 
-  NavigatorState //
-  _navigator_state({
-    final BOOL root__ok /*
-useful for `overlay`s
-run-time expensive op. */ =
-        NO,
-  }) {
-    return Navigator.of(
-      this,
-      rootNavigator: root__ok,
-    );
-  }
-
   static Route<void> _page__route(
-    final BOOL transition__instant__ok,
+    final Duration animation__duration,
     final gui__base__widget__build__function__format page__build,
   ) {
-    return ( /*iff*/ transition__instant__ok
-        ? PageRouteBuilder<void>(
-            pageBuilder: (final context, final _, final __) {
-              return page__build(
-                context,
-              );
-            },
-            transitionDuration: Duration.zero,
-            reverseTransitionDuration: Duration.zero,
-          )
-        : /*CupertinoPageRoute<void>*/ MaterialPageRoute<void>(
-            builder: page__build,
-            maintainState: NO,
-          ));
-  }
-
-  static const _overlay__background__color = /*base__color__transparent__dark*/ Color(0xBB000000);
-}
-
-value__asyn<void> base__app__exit() {
-  return SystemNavigator.pop();
-}
-
-extension navigation__indicate__extension //
-    on gui__base__widget__building__context {
-  value__asyn<type> navigate__forward__overlay__waiting<type>(
-    final value__asyn<type> value /*
-`value__asyn.sync` can be used for sync. actions
-handles ,`value__asyn.value` ,and `value__asyn.delayed` ,also */, {
-    required final gui__base__widget__build__function__format waiting__build,
-  }) {
-    final promise = value__asyn__meta<type>();
-
-    gui__base__widget__building__context? context_1;
-
-    void navigate__backward() {
-      final context_2 = context_1;
-      if ((context_2 != null) && context_2.valid__ok()) {
-        context_2.navigate__backward();
-      }
+    if (animation__duration == Duration.zero) {
+      return PageRouteBuilder<void>(
+        pageBuilder: (final context, final _, final __) {
+          return page__build(
+            context,
+          );
+        },
+        transitionDuration: Duration.zero,
+        reverseTransitionDuration: Duration.zero,
+      );
     }
 
-    var complete__ok /*
-needed to handle ,already completed ,and `value__asyn.value` creations */ =
-        NO;
-
-    value.handle(
-      (final value) {
-        complete__ok = OK;
-
-        navigate__backward();
-
-        promise.complete(value);
-      },
-      (final e, final t) {
-        complete__ok = OK;
-
-        navigate__backward();
-
-        promise.completeError(e, t);
-      },
-    );
-
-    var navigation__back__scheduled__ok = NO;
-
-    navigate__forward__overlay(
-      background__press__dismiss__ok: NO,
-      entity: gui__base__entity__overlay___compo(
-        dispose__handle: NIL,
-        widget__build: (final context_2) {
-          if (navigation__back__scheduled__ok) {
-            return gui__base__empty__widget;
-          }
-
-          if (complete__ok) {
-            navigation__back__scheduled__ok = OK;
-
-            task__schedule(
-              () {
-                context_2.navigate__backward();
-              },
-            );
-
-            return gui__base__empty__widget;
-          }
-
-          context_1 = context_2;
-
-          return PopScope(
-            canPop: NO,
-            child: waiting__build(
-              context_2,
-            ),
-          );
-        },
-      ),
-    );
-
-    return promise.future;
-  }
-
-  value__asyn<void> navigate__forward__overlay__notice({
-    final Alignment notice__position = Alignment.center,
-    final Duration? notice__duration /*
-auto.-dismiss duration
-values :
-  NIL :permanent
-  other :temporary */ = const Duration(
-      seconds: 3,
-    ),
-    required final gui__base__widget__build__function__format notice__build,
-  }) {
-    return navigate__forward__overlay(
-      entity: gui__base__entity__overlay___compo(
-        dispose__handle: NIL,
-        widget__build: (final context) {
-          if (notice__duration != null) {
-            delaying__asyn(
-              notice__duration,
-              () {
-                if (context.valid__ok()) {
-                  context.navigate__backward();
-                }
-              },
-            );
-          }
-
-          return Align(
-            alignment: notice__position,
-            child: notice__build(
-              context,
-            ),
-          );
-        },
-      ),
+    return /*CupertinoPageRoute<void>*/ MaterialPageRoute<void>(
+      builder: page__build,
+      maintainState: NO,
     );
   }
+}
+
+value__asyn<void> gui__base__app__exit() {
+  return SystemNavigator.pop();
 }

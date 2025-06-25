@@ -9,31 +9,31 @@ class base__storage__data__ear__meta___compo {
     required this.meta__bytes__base__storage__data__offset,
   });
 
-  final NIMR //
+  final NI //
       elements__count;
 
   final number__size //
       elements__count__size__id;
 
-  final NIMR //
+  final NI //
       element__size;
 
-  final NIMR //
+  final NI //
       elements__bytes__base__storage__data__offset,
       meta__bytes__base__storage__data__offset;
 }
 
 typedef base__storage__data__ear__result___compo = ({
   BS1__array elements__bys,
-  NIMR elements__count,
+  NI elements__count,
 });
 
 base__storage__data__ear__result___compo base__storage__data__ear({
-  required final NIMR elements__count,
-  required final NIMR element__size,
-  required final void Function(NIMR, BS1__array) element__fill,
+  required final NI elements__count,
+  required final NI element__size,
+  required final void Function(NI, BS1__array) element__fill,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__ear",
     );
@@ -65,12 +65,12 @@ base__storage__data__ear__result___compo base__storage__data__ear({
 base__storage__data__table__row___compo base__storage__data__ear__element__read(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__ear__meta___compo ear__meta, {
-  required final NIMR element__id,
-  final NIMR elements__count = 1,
+  required final NI element__id,
+  final NI elements__count = 1,
 }) /*
   checkout `base__storage__data__tbl__row` */
 {
-  final NIMR count;
+  final NI count;
   if (elements__count < 2) {
     base__storage__data__table__row__ensure__exists(
       row__id: element__id,
@@ -104,9 +104,9 @@ void base__storage__data__ear__elements__all__iterate(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__ear__meta___compo ear__meta,
   final void Function(
-    NIMR element__id,
+    NI element__id,
     BS1__array element__bytes,
-    NIMR element__bytes__base__storage__data__offset,
+    NI element__bytes__base__storage__data__offset,
   ) element__handle,
 ) /*
   read all the elements, in one op, then iterate */
@@ -120,7 +120,7 @@ void base__storage__data__ear__elements__all__iterate(
       ),
       element__size = ear__meta.element__size;
 
-  NIMR offset = /*column.row__offset*/ 0;
+  NI offset = /*column.row__offset*/ 0;
 
   base__iterate__basic(ear__meta.elements__count, (final element__id) {
     element__handle(

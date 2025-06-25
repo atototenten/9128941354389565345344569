@@ -1,10 +1,10 @@
 part of "_.dart";
 
 /*value__asyn<BS1__array> inet__communicate__http(
-  final string__raw host,
-  final NI2R port,
-  final string__raw path /* excluding the query */, {
-  final string__raw? query,
+  final string host,
+  final NI port,
+  final string path /* excluding the query */, {
+  final string? query,
   final BS1__array? requestBytes,
   final BOOL allowCached /* for offline, and similar situations */ = NO,
   final BOOL preferCached /* for static(that do NOT change, usually) files, like icons, fonts, pictures */ = NO,
@@ -71,15 +71,15 @@ part of "_.dart";
 }
 
 value__asyn<BS1__array?> inet__communicate__http(
-  final string__raw host,
-  final NI2R port,
-  final string__raw path, {
-  final string__raw? query,
+  final string host,
+  final NI port,
+  final string path, {
+  final string? query,
   final BS1__array? requestBytes,
   final BOOL allowCached = NO,
   final BOOL preferCached = NO,
 }) async {
-  final string__raw _path = (webAddressSchemePrefix +
+  final string _path = (webAddressSchemePrefix +
       "://" + //
       host +
       ':' +

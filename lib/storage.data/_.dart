@@ -47,7 +47,7 @@ enum number__size {
     this.size,
   );
 
-  final NIMR size;
+  final NI size;
 }
 
 class base__storage__data__meta___compo /*
@@ -93,7 +93,7 @@ TASK
   final preservation__journal__compo? //
       preservation__journal;
 
-  NIMR //
+  NI //
       position /*
   `base__storage__data__position` is `count`(un-aligned), while `ds__meta.size` is `count__max`(aligned) */
       ,
@@ -122,8 +122,8 @@ final //
         ) +
         base__storage__data__main__tbl__offset);
 
-NIMR base__storage__data__main__tbl__size(
-  final NIMR rows__count,
+NI base__storage__data__main__tbl__size(
+  final NI rows__count,
 ) =>
     (rows__count * //
         (base__storage__data__table__main__rows__count__size + base__storage__data__position__size__id.size));
@@ -143,7 +143,7 @@ base__storage__data__meta___compo base__storage__data__create({
     the same `base__storage__data__storage`, can be passsed to `base__storage__data__create`, again
       to re-try, the creat-ion */
 {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__create",
       base__storage__data__storage.debug__label,
@@ -232,7 +232,7 @@ base__storage__data__meta___compo base__storage__data__open({
   required final base__storage__file__fast___compo base__storage__data__storage,
   required final base__storage__file__native__linux__meta__compo? bytes__preserved__storage,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__open",
       base__storage__data__storage.debug__label,
@@ -267,7 +267,7 @@ base__storage__data__meta___compo base__storage__data__open({
             base__storage__data__wastage__size__id,
           );
 
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     position.text__representation().print(
           "data:base:position",
           base__storage__data__storage.debug__label,
@@ -303,13 +303,13 @@ typedef base__storage__data__linux__auto__result___compo = ({
 });
 
 base__storage__data__linux__auto__result___compo base__storage__data__linux__auto({
-  required string__raw directory__path,
-  final string__raw file__name = "db",
-  required final NIMR ds__storage__size,
+  required string directory__path,
+  final string file__name = "db",
+  required final NI ds__storage__size,
   final BOOL bytes__b__preserve = OK,
   required final void Function(base__storage__data__linux__auto__result__compo) create__handle,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print("base__storage__data__linux__auto");
 
     directory__path.text__representation().print("directory__path");
@@ -368,13 +368,13 @@ base__storage__data__linux__auto__result___compo base__storage__data__linux__aut
 }
 
 /*void base__storage__data__position__update__if__needed(
-    final NIMR position__new,
+    final NI position__new,
   ) {
     if (position__new > base__storage__data__position){
       base__storage__data__position = position__new;}
   }*/
 
-NIMR base__storage__data__position(
+NI base__storage__data__position(
   final base__storage__data__meta___compo ds__meta,
 ) {
   return (ds__meta.position__change + ds__meta.position);
@@ -382,8 +382,8 @@ NIMR base__storage__data__position(
 
 BS1__array base__storage__data__read(
   final base__storage__data__meta___compo ds__meta, {
-  required final NIMR count,
-  required final NIMR base__storage__data__offset,
+  required final NI count,
+  required final NI base__storage__data__offset,
 }) /*
   also applicable for, `bytes`, `str`(non-wide `text`s), and `wstr__bytes` */
     =>
@@ -396,8 +396,8 @@ BS1__array base__storage__data__read(
 void base__storage__data__write(
   final base__storage__data__meta___compo ds__meta, {
   required final BS1__array bytes,
-  final NIMR? bytes__count,
-  required final NIMR base__storage__data__offset,
+  final NI? bytes__count,
+  required final NI base__storage__data__offset,
 }) /*
   should, be used, only, if the write op
     is on garbage, ir-relevent, or obsolete bytes
@@ -417,15 +417,15 @@ void base__storage__data__write(
 void base__storage__data__write__replace /*:preserved*/ (
   final base__storage__data__meta___compo ds__meta, {
   required final BS1__array bytes,
-  required final NIMR bytes__count,
-  required final NIMR base__storage__data__offset,
+  required final NI bytes__count,
+  required final NI base__storage__data__offset,
 }) /*
   similar to `transaction`s in other dbms-es; but not as heavy, because, only, the original un-modified bytes, are saved(or preserved)
 
   `if(count > 96)`, prefer append op, instead of (over-)writing directly
     due to, the increase, in preservation cost, of pre-mod(or un-modified) data */
 {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__write__replace",
       ds__meta.debug__label,
@@ -449,7 +449,7 @@ void base__storage__data__write__replace /*:preserved*/ (
       offset: base__storage__data__offset,
     );
 
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       bytes__preserved.text__representation().print(
             "bytes__preserved",
             ds__meta.debug__label,
@@ -474,11 +474,11 @@ void base__storage__data__write__replace /*:preserved*/ (
   base__printing__indentation__decrease();
 }
 
-NIMR base__storage__data__write__reserve(
+NI base__storage__data__write__reserve(
   final base__storage__data__meta___compo ds__meta,
-  final NIMR count,
+  final NI count,
 ) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__write__reserve",
       ds__meta.debug__label,
@@ -496,10 +496,10 @@ NIMR base__storage__data__write__reserve(
   return base__storage__data__offset;
 }
 
-NIMR /*base__storage__data__offset*/ base__storage__data__write__append(
+NI /*base__storage__data__offset*/ base__storage__data__write__append(
   final base__storage__data__meta___compo ds__meta,
   final BS1__array bytes, [
-  NIMR? count,
+  NI? count,
 ]) /*
   un-preserved write */
 {
@@ -523,7 +523,7 @@ void base__storage__data__sync(
 ) /*
   similar to `commit` in other DBMS */
 {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__sync",
       ds__meta.debug__label,

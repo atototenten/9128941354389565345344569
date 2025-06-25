@@ -9,7 +9,7 @@ extension base__Object__nilable__extension //
       text__representation /*
 this(global/common/general `convert__text__representation`) is required due to the dart-lang.'s type-system being dynamic/late-deterministic */
       ({
-    final NIMR elements__truncation__count__threshold /*
+    final NI elements__truncation__count__threshold /*
 acts on the middle part
 applicable on nested arrays and dictionaries
 zero is special-case to disable truncation */
@@ -103,15 +103,15 @@ zero is special-case to disable truncation */
           ..write("](");
 
         if (value.empty__not()) {
-          var first__ok = OK;
+          var first___ok = OK;
 
           value.forEach(
             (
               final key,
               final value,
             ) {
-              if (first__ok) {
-                first__ok = NO;
+              if (first___ok) {
+                first___ok = NO;
               } else {
                 buffer.write(elements__separation);
               }
@@ -139,13 +139,13 @@ zero is special-case to disable truncation */
     return base__text__representation(
       switch (value) {
         BOOL() => (value ? "OK" : "NO"),
-        NIR() => value.toString(),
-        //NISR() => "NISR(${value.toString()})",
-        string__raw() => "\"${value.toString()}\"",
+         NI() => value.toString(),
+        //NIS() => "NIS(${value.toString()})",
+        string() => "\"${value.toString()}\"",
         Enum() => value.name,
-        NER() => "NER(${value.toString()})",
+        NFP() => "NFP(${value.toString()})",
         Type() => value.toString(),
-        NISI() => "NISI(${value.toString()})",
+         NISI() => "NISI(${value.toString()})",
         _ => "${value.runtimeType}(${value})",
       },
     );
@@ -154,7 +154,7 @@ zero is special-case to disable truncation */
   base__text__representation //
       compo__text__representation(
     final base__compo__member__dictionary members /*
-for proxy/wrapping compo.s ,`empty__text` as key for `.value` member */
+for proxy/wrapping compo.s ,`empty__string` as key for `.value` member */
     ,
   ) {
     return base__compo__text__representation(

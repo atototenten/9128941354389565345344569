@@ -1,7 +1,7 @@
 part of "../_.dart";
 
-/*NIMR base__storage__data__table__rows__count__size(
-  final NIMR rows__count,
+/*NI base__storage__data__table__rows__count__size(
+  final NI rows__count,
 ) {
   if (rows__count < NI1__limit) {
     return NI1__size;
@@ -28,8 +28,8 @@ part of "../_.dart";
 }*/
 
 void base__storage__data__table__row__ensure__space({
-  required final NIMR rows__count,
-  required final NIMR rows__count__max,
+  required final NI rows__count,
+  required final NI rows__count__max,
 }) {
   if (!(rows__count < rows__count__max)) {
     throw "$rows__count__max(rows__count__max) reached; can NOT add any row";
@@ -37,37 +37,37 @@ void base__storage__data__table__row__ensure__space({
 }
 
 void base__storage__data__table__row__ensure__exists({
-  required final NIMR row__id,
-  required final NIMR rows__count,
+  required final NI row__id,
+  required final NI rows__count,
 }) {
   if (!(row__id < rows__count)) {
     throw "$row__id(row__id) does NOT exist";
   }
 }
 
-NIMR base__storage__data__table__row__bytes__base__storage__data__offset({
-  required final NIMR row__id,
-  required final NIMR row__size,
-  required final NIMR table__bytes__base__storage__data__offset,
-  final NIMR row__offset = 0,
+NI base__storage__data__table__row__bytes__base__storage__data__offset({
+  required final NI row__id,
+  required final NI row__size,
+  required final NI table__bytes__base__storage__data__offset,
+  final NI row__offset = 0,
 }) =>
     ((row__offset + (row__id * row__size)) + table__bytes__base__storage__data__offset);
 
-NIMR base__storage__data__table__row__bytes__count({
-  required final NIMR row__size,
-  final NIMR rows__count = 1,
-  final NIMR row__offset = 0,
+NI base__storage__data__table__row__bytes__count({
+  required final NI row__size,
+  final NI rows__count = 1,
+  final NI row__offset = 0,
 }) =>
     ((row__size * rows__count) - row__offset);
 
 void base__storage__data__table__rows__count__update(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__table__meta___protocol table__meta, {
-  required final NIMR rows__count__bytes__base__storage__data__offset,
+  required final NI rows__count__bytes__base__storage__data__offset,
 }) /*
   MUST be called, AFTER, the whole process, if `table__row__add(` was called, during the process */
 {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__table__rows__count__update",
       table__meta.debug__label,

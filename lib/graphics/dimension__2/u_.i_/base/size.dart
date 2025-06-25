@@ -60,7 +60,7 @@ mis-alignment between the virtual and physical ,can lead to blurring of edges
     = 1.0;
 
 extension num__convert__pixel__size__scale__extension on num {
-  NEMR px() {
+  NFP px() {
     return (this * _size__pixel);
   }
 }
@@ -89,7 +89,7 @@ more categories are un-necessary
   huge /* desktop/workstation monitor ,television */,
 }
 
-NEMR base__wall__width() {
+NFP base__wall__width() {
   return switch (base__screen__size__category) {
     (base__screen__size__categories.medium || base__screen__size__categories.small) => _screen__size.width,
     base__screen__size__categories.large => base__screen__ample__width__limit.toDouble(),
@@ -110,7 +110,7 @@ app:build__re:ok */
     var result = NO;
 
     if (view.physicalSize.isEmpty) {
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         "screen:size:new:empty:ok".print();
       }
 
@@ -121,7 +121,7 @@ app:build__re:ok */
     } else {
       final screen__size__new = (view.physicalSize / view.devicePixelRatio);
 
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         screen__size__new //
             .text__representation()
             .print("screen:size:new");
@@ -139,7 +139,7 @@ app:build__re:ok */
         view.devicePixelRatio,
       );
 
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         screen__padding__permanent__new //
             .text__representation()
             .print("screen:padding:permanent:new");
@@ -160,7 +160,7 @@ app:build__re:ok */
         view.devicePixelRatio,
       );
 
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         screen__padding__temporary__new //
             .text__representation()
             .print("screen:padding:temporary:new");

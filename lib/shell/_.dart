@@ -10,8 +10,8 @@ const //
 text? io__shell() => //
     io.Platform.environment[io__shell__static__text__environment__variable__id];
 
-string__raw io__shell__process__run(
-  final string__raw command,
+string io__shell__process__run(
+  final string command,
 ) {
   final shell = io__shell();
 
@@ -20,7 +20,7 @@ string__raw io__shell__process__run(
 
   final result = io.Process.runSync(
     shell,
-    <string__raw>["-c", command],
+    <string>["-c", command],
   );
 
   if (result.exitCode != 0) //

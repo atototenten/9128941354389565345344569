@@ -12,12 +12,12 @@ value__asyn<void> base__net__reliable__server__socket__close__safe(
 value__asyn<void> base__net__reliable__server__simple({
   required final net.InternetAddress
       address /*io.InternetAddress.fromRawAddress(ip__v4,type:io.InternetAddressType.IPv4)*/,
-  required final NI2R port,
+  required final NI port,
   required final value__asyn<void> Function(
           net.Socket client__socket /* must not be close-ed ,nor dispose-ed */)
       request__handle,
   final base__error__handle__proc_? request__listen__error__handle,
-  final BOOL latency__low__ok = NO,
+  final BOOL latency__low___ok = NO,
 }) async {
   (await net.NetworkInterface.list(
     includeLoopback: OK,
@@ -44,7 +44,7 @@ value__asyn<void> base__net__reliable__server__simple({
 
         "client.address".print(client__address);
 
-        if (latency__low__ok) {
+        if (latency__low___ok) {
           if (client__socket.setOption(net.SocketOption.tcpNoDelay, OK).not) {
             throw "client.socket.option.t_c_p_.no_delay.set";
           }
@@ -82,8 +82,8 @@ value__asyn<void>
 request responses :`base__results__basic` */
     ({
   required final net.InternetAddress address,
-  required final NI2R port,
-  required final string__raw directory__path,
+  required final NI port,
+  required final string directory__path,
 }) {
   final //
       result__success__code__BS1__array =
@@ -106,7 +106,7 @@ request responses :`base__results__basic` */
         return;
       }
 
-      final string__raw file__path;
+      final string file__path;
       try {
         file__path = str__convert__text(
           request,

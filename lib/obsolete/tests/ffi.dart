@@ -16,7 +16,7 @@ void ffi__test() {
 
   void mem__print(
     final ffi.Pointer<ffi.NativeType> pointer,
-    final string__raw id,
+    final string id,
   ) =>
       pointer
         ..address.text__representation().print("$id.addr")

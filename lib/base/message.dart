@@ -18,7 +18,7 @@ data is plural ,datum/message is singular
 
   final base__accumulation__linear__basic<message__channel__broadcast__observer<message__type>> _observers;
 
-  NIMR observers__count() {
+  NI observers__count() {
     return this._observers.elements__count;
   }
 
@@ -43,7 +43,7 @@ data is plural ,datum/message is singular
   ) {
     this._observers.remove__element(
           observer,
-          base__value__same__ok,
+          base__value__same___ok,
         );
   }
 

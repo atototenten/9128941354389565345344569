@@ -6,20 +6,20 @@ singly chained (backward ref.ing) list */ //
     implements
         base__dispose___protocol {
   base__accumulation__chained() //
-      : element__last__raw = NIL,
-        elements__count__raw = 0;
+      : element__last___raw = NIL,
+        elements__count___raw = 0;
 
   base__accumulation__chained__element<element__type>? //
-      element__last__raw;
+      element__last___raw;
 
-  NIMR //
-      elements__count__raw;
+  NI //
+      elements__count___raw;
 
-  NIMR elements__count() {
-    return elements__count__raw;
+  NI elements__count() {
+    return elements__count___raw;
   }
 
-  BOOL empty__ok() {
+  BOOL empty___ok() {
     return (elements__count() == 0);
   }
 
@@ -28,59 +28,59 @@ singly chained (backward ref.ing) list */ //
   }
 
   base__accumulation__chained__element<element__type>? element__last() {
-    return element__last__raw;
+    return element__last___raw;
   }
 
   void add__ending(
     final element__type value,
   ) {
-    element__last__raw = base__accumulation__chained__element(
+    element__last___raw = base__accumulation__chained__element(
       value,
-      previous__raw: element__last__raw,
+      previous___raw: element__last___raw,
     );
 
-    elements__count__raw += 1;
+    elements__count___raw += 1;
   }
 
   void remove__last() {
-    final element__last_1 = element__last__raw;
+    final element__last_1 = element__last___raw;
 
     if (element__last_1 == null) {
       return NIL;
     }
 
-    element__last__raw = element__last_1.previous__raw;
+    element__last___raw = element__last_1.previous___raw;
 
-    elements__count__raw -= 1;
+    elements__count___raw -= 1;
   }
 
   void iterate(
     final BOOL Function(base__accumulation__chained__element<element__type> element) element__handle,
   ) {
-    var element = element__last__raw;
+    var element = element__last___raw;
 
     while (element != null) {
-      final iterate__ok = element__handle(
+      final iterate___ok = element__handle(
         element,
       );
 
-      if (iterate__ok.not) {
+      if (iterate___ok.not) {
         break;
       }
 
-      element = element.previous__raw;
+      element = element.previous___raw;
     }
   }
 
-  BOOL present__ok(
+  BOOL present___ok(
     final element__type element,
-    final base__value__equal__ok__function__format<element__type,element__type> equal__ok,
+    final base__value__equality__function__format<element__type,element__type> equal___ok,
   ) {
-    var present__ok = NO;
+    var present___ok = NO;
 
     iterate(
       (final element_1) {
-        final equal__ok_1 = equal__ok(
+        final equal__ok_1 = equal___ok(
           element,
           element_1.value,
         );
@@ -89,13 +89,13 @@ singly chained (backward ref.ing) list */ //
           return OK;
         }
 
-        present__ok = OK;
+        present___ok = OK;
 
         return NO;
       },
     );
 
-    return present__ok;
+    return present___ok;
   }
 
   array<element__type> convert__array /*
@@ -103,7 +103,7 @@ TASK
   eliminate intermediate conversion to `base__accumulation__linear__basic`
     also in `base__accumulation__linked` */
       () {
-    if (empty__ok()) {
+    if (empty___ok()) {
       return array__new__empty();
     }
 
@@ -129,13 +129,13 @@ TASK
   }
 
   void flush() {
-    element__last__raw = NIL;
-    elements__count__raw = 0;
+    element__last___raw = NIL;
+    elements__count___raw = 0;
   }
 
   @override
   void dispose() {
-    if (empty__ok()) {
+    if (empty___ok()) {
       return;
     }
 
@@ -147,10 +147,10 @@ class base__accumulation__chained__element //
     <element__type extends Object?> {
   base__accumulation__chained__element(
     this.value, {
-    required this.previous__raw,
+    required this.previous___raw,
   });
 
   final element__type value;
 
-  base__accumulation__chained__element<element__type>? previous__raw;
+  base__accumulation__chained__element<element__type>? previous___raw;
 }

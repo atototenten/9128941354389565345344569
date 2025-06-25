@@ -1,23 +1,23 @@
 part of "../_.dart";
 
-class number__real__fixed_point__raw {
+class base__number__real__fixed_point___raw {
   static const //
       point__default = 8;
 
-  const number__real__fixed_point__raw(
+  const base__number__real__fixed_point___raw(
     this.value, {
     this.point = point__default,
   });
 
-  number__real__fixed_point__raw.NEMR__convert(
-    final NEMR value, {
+  base__number__real__fixed_point___raw.NFP__convert(
+    final NFP value, {
     this.point = point__default,
   }) : value = (value / point).truncate();
 
-  final NIMR point;
-  final NISMR value;
+  final NI point;
+  final NIS value;
 
-  NEMR convert__NE /*
+  NFP convert__NFP /*
 1 -> 0.125
 2 -> 0.25
 3 -> 0.375

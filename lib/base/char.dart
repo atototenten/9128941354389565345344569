@@ -131,39 +131,39 @@ const //
     char__bracket__curly__close = '}',
     char__tilde = '~',
 //
-    char__array /* `http://en.wikipedia.org/wiki/ASCII` */ = <string__raw>[
-      empty__text /*'\0'*/ /* `NIL`, `null`, `^@` */, //
-      empty__text /* `SOH`, `startOfHeading`, `^A` */,
-      empty__text /* `STX`, `startOfText`, `^B` */,
-      empty__text /* `ETX`, `endOfText`, `^C` */,
-      empty__text /* `EOT`, `endOfTransmission`, `^D` */,
-      empty__text /* `ENQ`, `enquiry`, `^E` */,
-      empty__text /* `ACK`, `acknowledgement`, `^F` */, //
-      empty__text /*'\a'*/ /* `BEL`, `bell`, `^G` */,
+    char__array /* `http://en.wikipedia.org/wiki/ASCII` */ = <string>[
+      empty__string /*'\0'*/ /* `NIL`, `null`, `^@` */, //
+      empty__string /* `SOH`, `startOfHeading`, `^A` */,
+      empty__string /* `STX`, `startOfText`, `^B` */,
+      empty__string /* `ETX`, `endOfText`, `^C` */,
+      empty__string /* `EOT`, `endOfTransmission`, `^D` */,
+      empty__string /* `ENQ`, `enquiry`, `^E` */,
+      empty__string /* `ACK`, `acknowledgement`, `^F` */, //
+      empty__string /*'\a'*/ /* `BEL`, `bell`, `^G` */,
       '\b' /* `BS`, `backspace`, `^H` */,
       '\t' /* `HT`, `horizontalTab`, `^I` */,
       '\n' /* `LF`, `lineFeed`, `^J` */,
       '\v' /* `VT`, `verticalTab`, `^K` */,
       '\f' /* `FF`, `formFeed`, `^L` */,
       '\r' /* `CR`, `carriageReturn`, `^M` */, //
-      empty__text /* `SO`, `shiftOut`, `^N` */,
-      empty__text /* `SI`, `shiftIn`, `^O` */,
-      empty__text /* `DLE`, `dataLinkEscape`, `^P` */,
-      empty__text /* `DC1`, `deviceControlOne`, `^Q` */,
-      empty__text /* `DC2`, `deviceControlTwo`, `^R` */,
-      empty__text /* `DC3`, `deviceControlThree`, `^S` */,
-      empty__text /* `DC4`, `deviceControlFour`, `^T` */,
-      empty__text /* `NAK`, `negativeAcknowledgement`, `^U` */,
-      empty__text /* `SYN`, `synchronousIdle`, `^V` */,
-      empty__text /* `ETB`, `endOfTransmissionBlock`, `^W` */,
-      empty__text /* `CAN`, `cancel`, `^X` */,
-      empty__text /* `EM`, `endOfMedium`, `^Y` */,
-      empty__text /* `SUB`, `substitute`, `^Z` */, //
-      empty__text /*'\e'*/ /* `ESC`, `escape`, `^[` */, //
-      empty__text /* `FS`, `fileSeparator`, `^\` */,
-      empty__text /* `GS`, `groupSeparator`, `^]` */,
-      empty__text /* `RS`, `recordSeparator`, `^^` */,
-      empty__text /* `US`, `unitSeparator`, `^_` */, //
+      empty__string /* `SO`, `shiftOut`, `^N` */,
+      empty__string /* `SI`, `shiftIn`, `^O` */,
+      empty__string /* `DLE`, `dataLinkEscape`, `^P` */,
+      empty__string /* `DC1`, `deviceControlOne`, `^Q` */,
+      empty__string /* `DC2`, `deviceControlTwo`, `^R` */,
+      empty__string /* `DC3`, `deviceControlThree`, `^S` */,
+      empty__string /* `DC4`, `deviceControlFour`, `^T` */,
+      empty__string /* `NAK`, `negativeAcknowledgement`, `^U` */,
+      empty__string /* `SYN`, `synchronousIdle`, `^V` */,
+      empty__string /* `ETB`, `endOfTransmissionBlock`, `^W` */,
+      empty__string /* `CAN`, `cancel`, `^X` */,
+      empty__string /* `EM`, `endOfMedium`, `^Y` */,
+      empty__string /* `SUB`, `substitute`, `^Z` */, //
+      empty__string /*'\e'*/ /* `ESC`, `escape`, `^[` */, //
+      empty__string /* `FS`, `fileSeparator`, `^\` */,
+      empty__string /* `GS`, `groupSeparator`, `^]` */,
+      empty__string /* `RS`, `recordSeparator`, `^^` */,
+      empty__string /* `US`, `unitSeparator`, `^_` */, //
       char__space,
       '!',
       '"',
@@ -259,5 +259,5 @@ const //
       '|',
       '}',
       '~', //
-      empty__text /* `DEL`, `delete`, `^?` */
+      empty__string /* `DEL`, `delete`, `^?` */
     ];

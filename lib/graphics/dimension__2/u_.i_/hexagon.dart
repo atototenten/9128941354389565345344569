@@ -72,7 +72,7 @@ class box extends StatelessWidget {
       final int color__value,
     ) =>
         Color.fromARGB(
-          NI1__max,
+           NI1__max,
           color__value,
           color__value,
           color__value,
@@ -137,7 +137,7 @@ usable for gems in video-games */
       final int color__value,
     ) =>
         Color.fromARGB(
-          NI1__max,
+           NI1__max,
           color__value,
           color__value,
           color__value,
@@ -190,7 +190,7 @@ class hexagon__paint_er extends CustomPainter {
       color__center__right,
       border;
 
-  final NEMR border__width;
+  final NFP border__width;
 
   @override
   void paint(Canvas canvas, Size size) {

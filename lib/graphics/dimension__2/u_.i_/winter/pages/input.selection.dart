@@ -3,15 +3,15 @@ part of "../_.dart";
 /* gui__base__widget pages__input__selection__page({
   required final base__scrolling scroll__manager,
   required final gui__base__widget page__title,
-  required final NIMR item__array__count,
-  final array<NIMR>? selection__array__initial,
-  final ({NIMR min, NIMR max}) selection__array__constraints = (min: 1 /* 0, to allow submit-ing anytime, without even a single selection */, max: NI1__max),
+  required final NI item__array__count,
+  final array<NI>? selection__array__initial,
+  final ({NI min, NI max}) selection__array__constraints = (min: 1 /* 0, to allow submit-ing anytime, without even a single selection */, max: NI1__max),
   required final gui__base__listing__item__build__function__format listing__item__body__build,
   final IconData? submit__button__icon = flutter__icon__done,
-  final string__raw submit__button__title = "Submit",
-  required final void Function(array<NIMR> selection__id__array) submit__handle,
+  final string submit__button__title = "Submit",
+  required final void Function(array<NI> selection__id__array) submit__handle,
 }) {
-  final selection__accumulation = base__accumulation__linear__basic__definitive<NIMR>();
+  final selection__accumulation = base__accumulation__linear__basic__definitive<NI>();
 
   if (selection__array__initial != null) {
     selection__array__initial.iterate__basic(
@@ -24,8 +24,8 @@ part of "../_.dart";
   }
 
   var //
-      button__flush__show__ok = selection__accumulation.empty__not(),
-      button__submit__show__ok = (NOT(selection__accumulation.elements__count() < selection__array__constraints.min) && //
+      button__flush__show___ok = selection__accumulation.empty__not(),
+      button__submit__show___ok = (NOT(selection__accumulation.elements__count() < selection__array__constraints.min) && //
           NOT(selection__accumulation.elements__count() > selection__array__constraints.max));
 
   procedure__empty__format? //
@@ -35,28 +35,28 @@ part of "../_.dart";
 
   Key listing__key = gui__base__widget__key__unique();
 
-  BOOL select__ok(
-    final NIMR item__id,
+  BOOL select___ok(
+    final NI item__id,
   ) {
     if (selection__accumulation.elements__count() < selection__array__constraints.max) {
       selection__accumulation.add(
         item__id,
       );
 
-      if ((selection__accumulation.elements__count() < selection__array__constraints.min) || button__submit__show__ok) {
-        if (button__flush__show__ok) //
+      if ((selection__accumulation.elements__count() < selection__array__constraints.min) || button__submit__show___ok) {
+        if (button__flush__show___ok) //
           count__build__re?.call();
         else {
-          button__flush__show__ok = OK;
+          button__flush__show___ok = OK;
 
           button__build__re?.call();
         }
       } else {
-        if (!button__submit__show__ok) //
-          button__submit__show__ok = OK;
+        if (!button__submit__show___ok) //
+          button__submit__show___ok = OK;
 
-        if (!button__flush__show__ok) //
-          button__flush__show__ok = OK;
+        if (!button__flush__show___ok) //
+          button__flush__show___ok = OK;
 
         button__build__re?.call();
       }
@@ -67,41 +67,41 @@ part of "../_.dart";
     return NO;
   }
 
-  BOOL de_select__ok(
-    final NIMR item__id,
+  BOOL de_select___ok(
+    final NI item__id,
   ) {
     selection__accumulation.remove__element(
       item__id,
-      base__value__same__ok,
+      base__value__same___ok,
     );
 
-    BOOL button__build__re__ok = NO;
+    BOOL button__build__re___ok = NO;
 
-    if (selection__accumulation.empty__ok()) {
-      button__flush__show__ok = NO;
-      button__build__re__ok = OK;
+    if (selection__accumulation.empty___ok()) {
+      button__flush__show___ok = NO;
+      button__build__re___ok = OK;
     }
 
     if ((selection__accumulation.elements__count() < selection__array__constraints.min) && //
-        button__submit__show__ok) {
-      button__submit__show__ok = NO;
+        button__submit__show___ok) {
+      button__submit__show___ok = NO;
 
-      if (NOT(button__build__re__ok)) {
-        button__build__re__ok = OK;
+      if (NOT(button__build__re___ok)) {
+        button__build__re___ok = OK;
       }
     }
 
     if ((!(selection__accumulation.elements__count() < selection__array__constraints.min) && //
             !(selection__accumulation.elements__count() > selection__array__constraints.max)) && //
-        !button__submit__show__ok) {
-      button__submit__show__ok = OK;
+        !button__submit__show___ok) {
+      button__submit__show___ok = OK;
 
-      if (!button__build__re__ok) {
-        button__build__re__ok = OK;
+      if (!button__build__re___ok) {
+        button__build__re___ok = OK;
       }
     }
 
-    if (button__build__re__ok) {
+    if (button__build__re___ok) {
       button__build__re?.call();
     } else {
       count__build__re?.call();
@@ -114,9 +114,9 @@ part of "../_.dart";
     selection__accumulation.flush();
 
     if (selection__array__constraints.min != 0) //
-      button__submit__show__ok = NO;
+      button__submit__show___ok = NO;
 
-    button__flush__show__ok = NO;
+    button__flush__show___ok = NO;
 
     listing__key = gui__base__widget__key__unique();
     listing__build__re?.call();
@@ -138,12 +138,12 @@ part of "../_.dart";
           item__build: (final build__context, final item__id) => //
               gui__base__listing__item__select_able(
             key: listing__key,
-            selected__ok: selection__accumulation.present__ok(
+            selected___ok: selection__accumulation.present___ok(
               item__id,
             ),
             body: listing__item__body__build(build__context, item__id),
-            selection__handle: (final _) async => select__ok(item__id),
-            de_selection__handle: (final _) async => de_select__ok(item__id),
+            selection__handle: (final _) async => select___ok(item__id),
+            de_selection__handle: (final _) async => de_select___ok(item__id),
           ),
           floating: RepaintBoundary(
             child: gui__base__widget__build__definitive(
@@ -152,7 +152,7 @@ part of "../_.dart";
               de_init_: () => //
                   (button__build__re = NIL),
               build: (final _) => //
-                  ((button__submit__show__ok || button__flush__show__ok)
+                  ((button__submit__show___ok || button__flush__show___ok)
                       ? gui__base__stack__widget(
                           children: <gui__base__widget>[
                             Padding(
@@ -163,12 +163,12 @@ part of "../_.dart";
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  if (button__flush__show__ok) //
+                                  if (button__flush__show___ok) //
                                     base__button__floating(
                                       scale: 1.25,
                                       border__radius: BorderRadius.horizontal(
                                         left: Radius.circular(12.px()),
-                                        right: (button__submit__show__ok //
+                                        right: (button__submit__show___ok //
                                             ? Radius.circular(4.px())
                                             : Radius.circular(12.px())),
                                       ),
@@ -176,7 +176,7 @@ part of "../_.dart";
                                       title: "Clear",
                                       press__handle: flush__handle,
                                     ),
-                                  if (button__submit__show__ok) //
+                                  if (button__submit__show___ok) //
                                     Padding(
                                       padding: EdgeInsets.only(
                                         left: 4.px(),
@@ -187,7 +187,7 @@ part of "../_.dart";
                                           left: Radius.circular(4.px()),
                                           right: Radius.circular(12.px()),
                                         ),
-                                        selected__ok: OK,
+                                        selected___ok: OK,
                                         icon: submit__button__icon,
                                         title: submit__button__title,
                                         press__handle: () => //

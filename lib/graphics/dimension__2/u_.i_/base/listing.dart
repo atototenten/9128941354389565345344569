@@ -1,13 +1,13 @@
 part of "_.dart";
 
 typedef gui__base__listing__item__build__function__format = //
-    gui__base__widget Function(BuildContext build__context, NIMR);
+    gui__base__widget Function(BuildContext build__context, NI);
 
 const gui__base__listing__vertical__caching__extent__default = .5;
 
-const NIMR Function(
-  NIMR item__id,
-  NIMR items__count,
+const NI Function(
+  NI item__id,
+  NI items__count,
 ) gui__base__listing__reverse__item__id = //
     array__reverse__element__id;
 
@@ -15,7 +15,7 @@ extension base__array__convert__widget__array__extension<value__type extends Obj
     on array<value__type> {
   array<gui__base__widget> convert__widget__array(
     final gui__base__widget separation,
-    final gui__base__widget Function(NIMR, value__type) element__convert,
+    final gui__base__widget Function(NI, value__type) element__convert,
   ) {
     return base__items__generate(
       elements__count,
@@ -28,11 +28,11 @@ extension base__array__convert__widget__array__extension<value__type extends Obj
 array<gui__base__widget> base__items__generate /*
 if `separation` is not needed ,`convert` associated-fn. should be used */
     (
-  final NIMR count /*
+  final NI count /*
 excluding `separation`s */
   ,
   final gui__base__widget separation,
-  final gui__base__widget Function(NIMR i) generate,
+  final gui__base__widget Function(NI i) generate,
 ) {
   if (count == 0) {
     return array__new__empty<gui__base__widget>();
@@ -53,10 +53,10 @@ excluding `separation`s */
 array<gui__base__widget> base__items__and__title__generate({
   required final gui__base__widget title,
   final gui__base__widget? separation__title__and__item,
-  required final NIMR items__count /*
+  required final NI items__count /*
   excluding `widgetSeparator`, this complexity is abstracted, and is none of user's business */
   ,
-  required final gui__base__widget Function(NIMR i) item,
+  required final gui__base__widget Function(NI i) item,
   required final gui__base__widget items__separation,
 }) {
   if (items__count == 0) {
@@ -91,7 +91,7 @@ array<gui__base__widget> base__items__and__title__generate({
 
 typedef gui__base__listing__grow_able__listing__widget__function__format = gui__base__widget Function(
   gui__base__widget__building__context context,
-  NIMR items__count,
+  NI items__count,
   gui__base__listing__item__build__function__format item__widget,
 );
 
@@ -130,8 +130,8 @@ class gui__base__listing__grow_able<element__new__type> //
   })  : _elements__new = base__accumulation__linear__basic<element__new__type>(),
         channel = base__event__channel__broadcast();
 
-  final NIMR items__existing__count;
-  final NIMR items__new__count__limit;
+  final NI items__existing__count;
+  final NI items__new__count__limit;
 
   final base__event__channel__broadcast channel;
 
@@ -147,19 +147,19 @@ class gui__base__listing__grow_able<element__new__type> //
     channel.event__dispatch();
   }
 
-  /*void remove__element(final NIMR element__id,) {}*/
+  /*void remove__element(final NI element__id,) {}*/
 
   element__new__type element__new(
-    final NIMR id,
+    final NI id,
   ) =>
       _elements__new.element(
         id,
       );
 
-  NIMR elements__new__count() => //
+  NI elements__new__count() => //
       _elements__new.elements__count();
 
-  NIMR _elements__new__count__definitive() => //
+  NI _elements__new__count__definitive() => //
       elements__new__count();
 
   array<element__new__type> elements__new__convert__array() => //
@@ -196,7 +196,7 @@ class gui__base__listing__grow_able<element__new__type> //
             items__count,
             (final build__context, var item__id) {
 /*
-(items__new__first__ok /* order ,the new-ly add-ed items ,before exist-ing ones */
+(items__new__first___ok /* order ,the new-ly add-ed items ,before exist-ing ones */
     ? ((id < items__new__count) //
         ? items__new__array[base__listing__reverse__item__id(
             id,
@@ -256,7 +256,7 @@ class gui__base__listing__grow_able<element__new__type> //
 
   final base__accumulation__linear__basic<element__new__sav_ed__type> _elements__new__sav_ed;
 
-  BOOL? _save__allow__ok;
+  BOOL? _save__allow___ok;
 
   void save__elements(
     final array<element__new__sav_ed__type> elements__new__sav_ed__array /*
@@ -279,15 +279,15 @@ must have same elements:count as input/param. */
     channel.event__announce();
   }
 
-  NIMR elements__new__sav_ed__count() => //
+  NI elements__new__sav_ed__count() => //
       _elements__new__sav_ed.elements__count();
 
   @override
-  NIMR _elements__new__count__definitive() => //
+  NI _elements__new__count__definitive() => //
       (elements__new__sav_ed__count() + super._elements__new__count__definitive());
 
   element__new__sav_ed__type element__new__sav_ed(
-    final NIMR id,
+    final NI id,
   ) =>
       _elements__new__sav_ed.element(
         id,
@@ -296,25 +296,25 @@ must have same elements:count as input/param. */
   array<element__new__sav_ed__type> elements__new__sav_ed__convert__array() => //
       _elements__new__sav_ed.convert__array();
 
-  BOOL? save__allow__ok() {
-    return _save__allow__ok;
+  BOOL? save__allow___ok() {
+    return _save__allow___ok;
   }
 
   void save__allow() {
-    if (_save__allow__ok == OK) {
+    if (_save__allow___ok == OK) {
       return;
     }
 
-    _save__allow__ok = OK;
+    _save__allow___ok = OK;
     channel.event__announce();
   }
 
   void save__allow__auto_() {
-    if (_save__allow__ok == NIL) {
+    if (_save__allow___ok == NIL) {
       return;
     }
 
-    _save__allow__ok = NIL;
+    _save__allow___ok = NIL;
     channel.event__announce();
   }
 
@@ -332,8 +332,8 @@ extension gui__base__listing__grow_able__sav_able__widget //
   gui__base__widget widget //
       <element__new__type, element__new__sav_ed__type>({
     required final gui__base__listing__grow_able__listing__widget__function__format listing,
-    required final NIMR items__existing__count,
-    required final NIMR items__new__count__limit,
+    required final NI items__existing__count,
+    required final NI items__new__count__limit,
     required final gui__base__listing__item__build__function__format /* 2nd param. is `item__exist_ing__id` */ ? item__existing__build,
     required final gui__base__listing__item__build__function__format /* 2nd param. is `item__new__sav_ed__id` */ item__new__saved__build,
     required final gui__base__listing__item__build__function__format /* 2nd param. is `item__new__un_sav_ed__id` */
@@ -369,11 +369,11 @@ not visible ,if no elements ,are un-sav-ed */
       item__new__dummy__build: item__new__dummy__build,
       /*floating__button: ((save__button != null)
           ? (final context) {
-              if /*F*/ (_save__allow__ok == OK) {
+              if /*F*/ (_save__allow___ok == OK) {
                 return save__button;
               }
 
-              if /*F*/ (_save__allow__ok == NO) {
+              if /*F*/ (_save__allow___ok == NO) {
                 return gui__base__empty__widget;
               }
 
@@ -389,7 +389,7 @@ not visible ,if no elements ,are un-sav-ed */
               title: "save",
               press__handle: () {
                 if (store.elements__new__count() == 0) {
-                  context.navigate__forward__overlay__notice(
+                  context.navigation().forward__overlay__notice(
                     notice__build: (final context) => //
                         notice__basic(
                       context: context,
@@ -400,7 +400,7 @@ not visible ,if no elements ,are un-sav-ed */
                   return;
                 }
 
-                context.navigate__forward__overlay__waiting(
+                context.navigation().forward__overlay__waiting(
                   data__base__table__rows__add(
                     entity.elements__new__convert__array(),
                   ),

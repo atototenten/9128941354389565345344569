@@ -10,7 +10,7 @@ const //
   bytes needed, for storing `ch__unicode__max` */
     = TCW__size;
 
-NIMR TCW__bytes__count(final TCW wc) => //
+NI TCW__bytes__count(final TCW wc) => //
     ((wc < NI07__limit) //
         ? TC__size
         : ((wc < NI014__limit) //
@@ -20,8 +20,8 @@ NIMR TCW__bytes__count(final TCW wc) => //
                 : throw "`TCW` MUST be `<u21__limit`")));
 
 string__wide text__unicode__convert__string__wide(
-  final string__raw s, [
-  final NIMR? chars__count__initial /*
+  final string s, [
+  final NI? chars__count__initial /*
   usually `NI2__max` */
   ,
 ]) {
@@ -70,11 +70,11 @@ string__wide text__unicode__convert__string__wide(
 }
 
 TCW char__unicode__convert__TCW(
-  final string__raw char,
+  final string char,
 ) {
   final runes = Runes(char).iterator;
 
-  if (behavior__correct__ok && //
+  if (behavior__correct___ok && //
       runes.moveNext().not) //
     throw "empty text";
 
@@ -133,13 +133,13 @@ byte__array wstr__convert__bytes(
 
 /*BS1__array wstr__bytes__convert__encrypted /*__iterate*/ (
   final BS1__array bytes, [
-  final NIMR? chars__count__prefixed__size,
+  final NI? chars__count__prefixed__size,
 ]) {
   final //
       bytes__count = bytes.count,
       result = BS1__array(bytes__count);
 
-  BOOL ascii__ok /*
+  BOOL ascii___ok /*
   char is standalone, or single-byte (ascii, not unicode)
     hence needs encryption */
       = OK;
@@ -149,8 +149,8 @@ byte__array wstr__convert__bytes(
     (final i) {
       final wc = bytes[iter];
 
-      if ((wc < TC__ascii__limit) || (ascii__ok = NO)) {
-        if (ascii__ok || (ascii__ok = OK).not) //
+      if ((wc < TC__ascii__limit) || (ascii___ok = NO)) {
+        if (ascii___ok || (ascii___ok = OK).not) //
           result[iter] = TC__encrypt(wc);
       }
     },
@@ -165,7 +165,7 @@ byte__array wstr__convert__bytes(
 string__wide wstr__bytes__convert(
   final byte__array bytes,
 ) {
-  /*if (bytes.empty__ok) //
+  /*if (bytes.empty___ok) //
     return string__wide(0);*/
 
   final //
@@ -174,7 +174,7 @@ string__wide wstr__bytes__convert(
       ),
       sink = base__accumulation__linear__basic<TCW>();
 
-  while (bytes_.iterate__ok) {
+  while (bytes_.iterate___ok) {
     sink.add__ending(
       bytes_.read__NI().value,
     );
@@ -189,11 +189,11 @@ string__wide wstr__bytes__convert(
   return result;
 }
 
-string__raw wstr__convert__text(
+string wstr__convert__text(
   final string__wide ws,
 ) {
-  if /*F*/ (ws.empty__ok()) {
-    return empty__text;
+  if /*F*/ (ws.empty___ok()) {
+    return empty__string;
   }
 
   final //
@@ -209,7 +209,7 @@ string__raw wstr__convert__text(
         : wc);
   });
 
-  final result = string__raw.fromCharCodes(
+  final result = string.fromCharCodes(
     ws__copy,
   );
 

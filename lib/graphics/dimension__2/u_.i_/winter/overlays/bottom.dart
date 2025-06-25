@@ -2,9 +2,9 @@ part of "../_.dart";
 
 gui__base__widget overlay__bottom__alert(
   final gui__base__widget__building__context context, {
-  required final string__raw title,
-  required final string__raw sub_title,
-  final string__raw dismiss__button__title = "OK",
+  required final string title,
+  required final string sub_title,
+  final string dismiss__button__title = "OK",
 }) =>
     winter__overlay__bottom__menu(
       context,
@@ -25,16 +25,16 @@ gui__base__widget overlay__bottom__alert(
 
 gui__base__widget overlay__bottom__confirm__item({
   final BorderRadius? border__radius,
-  final BOOL action__destructive__ok = NO,
-  required final string__raw title,
-  final string__raw? sub_title,
+  final BOOL action__destructive___ok = NO,
+  required final string title,
+  final string? sub_title,
   final gui__base__widget? trailing,
 }) =>
     winter__listing__item(
       border__radius: border__radius,
       body: winter__box__text__primary__secondary__auto(
         primary__text: title,
-        primary__color: (action__destructive__ok //
+        primary__color: (action__destructive___ok //
             ? color__red
             : color__foreground__default),
         secondary__text: sub_title,
@@ -44,19 +44,19 @@ gui__base__widget overlay__bottom__confirm__item({
 
 gui__base__widget overlay__bottom__confirm(
   final gui__base__widget__building__context context, {
-  required final BOOL action__destructive__ok,
-  required final string__raw title,
-  required final string__raw sub_title,
+  required final BOOL action__destructive___ok,
+  required final string title,
+  required final string sub_title,
   required final procedure__empty__format proceed__handle,
-  final string__raw proceed__title = "OK",
-  final string__raw? proceed__sub_title,
-  final string__raw cancel__title = "Cancel",
-  final string__raw? cancel__sub_title,
+  final string proceed__title = "OK",
+  final string? proceed__sub_title,
+  final string cancel__title = "Cancel",
+  final string? cancel__sub_title,
 }) =>
     winter__overlay__bottom__menu(
       context,
-      dismiss__swipe__indication__ok: NO,
-      button__close__ok: NO,
+      dismiss__swipe__indication___ok: NO,
+      button__close___ok: NO,
       title: title,
       sub_title: sub_title,
       body: Padding(
@@ -69,13 +69,13 @@ gui__base__widget overlay__bottom__confirm(
           children: <gui__base__widget>[
             gui__base__gesture__press__handling__widget(
               press__handle: () {
-                context.navigate__backward();
+                context.navigation().backward();
                 proceed__handle();
               },
               child: overlay__bottom__confirm__item(
                 border__radius:
                     gui__base__listing__item__position__top__border__radius(),
-                action__destructive__ok: action__destructive__ok,
+                action__destructive___ok: action__destructive___ok,
                 title: proceed__title,
                 sub_title: proceed__sub_title,
                 trailing: base__icon(
@@ -85,11 +85,11 @@ gui__base__widget overlay__bottom__confirm(
             ),
             gui__base__widget__separat_or__vertical,
             gui__base__gesture__press__handling__widget(
-              press__handle: () => context.navigate__backward(),
+              press__handle: () => context.navigation().backward(),
               child: winter__listing__item(
                 border__radius:
                     gui__base__listing__item__position__bottom__border__radius(),
-                selected__ok: OK,
+                selected___ok: OK,
                 body: winter__box__text__primary__secondary__auto(
                   primary__text: cancel__title,
                   secondary__text: cancel__sub_title,
@@ -107,8 +107,8 @@ gui__base__widget overlay__bottom__confirm(
 
 gui__base__widget overlay__bottom__options(
   final gui__base__widget__building__context context, {
-  required final string__raw title,
-  final string__raw? sub_title,
+  required final string title,
+  final string? sub_title,
   required final array<gui__base__widget>
       option__array /*
 prefer `base__listing__item`
@@ -135,14 +135,14 @@ prefer `base__listing__item`
 
 /* gui__base__widget overlay__bottom__input__number(
  final gui__base__widget__building__context context,
-{ required final string__raw title,
-  final string__raw? sub_title,
-  required final NIMR input__max,
-  required final void Function(NIMR input) submit__handle,
+{ required final string title,
+  final string? sub_title,
+  required final NI input__max,
+  required final void Function(NI input) submit__handle,
 }) {
-  NIMR number = 0;
+  NI number = 0;
   void number__update(
-    final NIMR number__new,
+    final NI number__new,
   ) {
     if (number__new > input__max) //
       return;
@@ -171,7 +171,7 @@ prefer `base__listing__item`
           Center(
             child: gui__base__widget__build__definitive(
               init_: (final state) => //
-                  (build__re = state.build__re__raw),
+                  (build__re = state.build__re___raw),
               de_init_: () => //
                   (build__re = base__empty__procedure__empty),
               build: (final _) => //
@@ -188,7 +188,7 @@ prefer `base__listing__item`
             height: (base__screen__size().height * 0.3),
             child: Column(
               children: <gui__base__widget>[
-                for (NIMR row__id = 0; row__id < rows__count; row__id += 1) //
+                for (NI row__id = 0; row__id < rows__count; row__id += 1) //
                   Expanded(
                     child: Row(
                       children: array__new__generated(
@@ -243,7 +243,7 @@ prefer `base__listing__item`
                         },
                       ),
                       _input__number__button(
-                        selected__ok: OK,
+                        selected___ok: OK,
                         child: base__icon(
                           flutter__icon__done,
                           size: 24.px(),
@@ -268,7 +268,7 @@ prefer `base__listing__item`
 } */
 
 gui__base__widget _input__number__button({
-  final BOOL selected__ok = NO,
+  final BOOL selected___ok = NO,
   required final gui__base__widget child,
   required final procedure__empty__format press__handle,
   final procedure__empty__format? press__long__handle,
@@ -277,7 +277,7 @@ gui__base__widget _input__number__button({
       child: Padding(
         padding: EdgeInsets.all(2.px()),
         child: winter__box__button(
-          b__highlight: selected__ok,
+          b__highlight: selected___ok,
           child: gui__base__child__constrained__tight__max__widget(
             Center(
               child: child,
@@ -301,7 +301,7 @@ gui__base__widget _input__number__button({
           onTap: () {
             final $scroll__manager = base__scrolling.create();
             context
-                .navigate__forward__replace__page(
+                .navigation().forward__replace__page(
                   page__build: (final $context) => //
                       pages__directory__page(
                     context: $context,
@@ -329,7 +329,7 @@ gui__base__widget _input__number__button({
           onTap: () {
             final $scroll__manager = base__scrolling.create();
             context
-                .navigate__forward__replace__page(
+                .navigation().forward__replace__page(
                   page__build: (final $context) => //
                       pages__directory__page(
                     context: $context,

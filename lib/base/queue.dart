@@ -9,66 +9,66 @@ dart's `ListQueue` should be preferred
     implements
         base__dispose___protocol {
   base__queue() //
-      : accumulation__raw = base__accumulation__linked();
+      : accumulation___raw = base__accumulation__linked();
 
-  final base__accumulation__linked<element__type> accumulation__raw;
+  final base__accumulation__linked<element__type> accumulation___raw;
 
-  NIMR elements__count() {
-    return accumulation__raw.elements__count();
+  NI elements__count() {
+    return accumulation___raw.elements__count();
   }
 
-  BOOL empty__ok() {
-    return accumulation__raw.empty__ok();
+  BOOL empty___ok() {
+    return accumulation___raw.empty___ok();
   }
 
   BOOL empty__not() {
-    return accumulation__raw.empty__not();
+    return accumulation___raw.empty__not();
   }
 
   base__accumulation__linked__element<element__type>? element() {
-    return accumulation__raw.element__first();
+    return accumulation___raw.element__first();
   }
 
   void add(
     final element__type value,
   ) {
-    accumulation__raw.add__ending(
+    accumulation___raw.add__ending(
       value,
     );
   }
 
   void remove() {
-    accumulation__raw.remove__first();
+    accumulation___raw.remove__first();
   }
 
   void iterate(
     final BOOL Function(base__accumulation__linked__element<element__type> element) element__handle,
   ) {
-    accumulation__raw.iterate(
+    accumulation___raw.iterate(
       element__handle,
     );
   }
 
-  BOOL present__ok(
+  BOOL present___ok(
     final element__type element,
-    final base__value__equal__ok__function__format<element__type,element__type> equal__ok,
+    final base__value__equality__function__format<element__type,element__type> equal___ok,
   ) {
-    return accumulation__raw.present__ok(
+    return accumulation___raw.present___ok(
       element,
-      equal__ok,
+      equal___ok,
     );
   }
 
   array<element__type> convert__array() {
-    return accumulation__raw.convert__array();
+    return accumulation___raw.convert__array();
   }
 
   void flush() {
-    accumulation__raw.flush();
+    accumulation___raw.flush();
   }
 
   @override
   void dispose() {
-    accumulation__raw.dispose();
+    accumulation___raw.dispose();
   }
 }

@@ -1,25 +1,25 @@
 part of "_.dart";
 
-late string__raw //
+late string //
     _directory__permanent__path,
     _directory__cache__path,
     _directory__temporary__path;
 
-string__raw base__storage__directory__permanent__path() /*
+string base__storage__directory__permanent__path() /*
 program level/specific
 can be cleaned ,anytime ,by the user */
 {
   return _directory__permanent__path;
 }
 
-string__raw base__storage__directory__cache__path() /*
+string base__storage__directory__cache__path() /*
 program specific
 would be cleaned ,anytime ,by the environment ,or the user */
 {
   return _directory__cache__path;
 }
 
-string__raw base__storage__directory__temporary__path() /*
+string base__storage__directory__temporary__path() /*
 system:operating level (common/shared among all the programs)
 will be cleaned ,before the environment's next run-time session ,or after the current session */
 {
@@ -44,17 +44,17 @@ class base__storage__cache__file {
     this.bytes,
   );
 
-  final string__raw path;
+  final string path;
   final int mod__latest__date_time;
   final BS1__array bytes;
 }
 
 /* external value__asyn<void> base__storage__cache__file__set(
-  final string__raw path,
+  final string path,
   final BS1__array bytes, [
   final int? mod__latest__date_time,
 ]);
 
 external value__asyn<base__storage__cache__file?> base__storage__cache__file__get(
-  final string__raw path,
+  final string path,
 ); */

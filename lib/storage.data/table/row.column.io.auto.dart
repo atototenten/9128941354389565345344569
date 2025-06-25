@@ -19,13 +19,13 @@ void base__storage__data__table__row__column__bytes__auto({
       base__storage__data__table__row__column__type__uit__write(
         column__bytes: column__bytes,
         size__id: column__meta.size__id,
-        value: (data as NIMR),
+        value: (data as NI),
       );
     } else //
       base__storage__data__table__row__column__type__uit__write__nilable(
         column__bytes: column__bytes,
         size__id: column__meta.size__id,
-        data: (data as NIMR?),
+        data: (data as NI?),
       );
   } else if /* un-likely */ (table__column.meta.b__nilable && //
       (data == null)) {
@@ -97,7 +97,7 @@ Object? base__storage__data__table__row__column__data__auto({
   required final base__storage__data__meta___compo ds__meta,
   required final base__storage__data__table__column___compo table__column,
   required final BS1__array column__bytes,
-  required final NIMR column__bytes__base__storage__data__offset,
+  required final NI column__bytes__base__storage__data__offset,
 }) /*
   instead of multiple [consecutive] calls
     prefer calling `base__storage__data__table__row__data__array__auto`
@@ -122,7 +122,7 @@ Object? base__storage__data__table__row__column__data__auto({
   }
 
   if (table__column.meta.b__nilable &&
-      byte__array__blank__ok(
+      byte__array__blank___ok(
         column__bytes,
         count: base__storage__data__position__size__id.size,
       )) {

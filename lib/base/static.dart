@@ -4,12 +4,12 @@ const TCW //
     TC__unicode__bullet = 8226,
     TC__unicode__currency__rupee = 8377 /* symbol of Indian National Rupee */;
 
-final string__raw //
-    char__bullet = string__raw.fromCharCode(TC__unicode__bullet),
-    char__currency__rupee = string__raw.fromCharCode(TC__unicode__currency__rupee);
+final string //
+    char__bullet = string.fromCharCode(TC__unicode__bullet),
+    char__currency__rupee = string.fromCharCode(TC__unicode__currency__rupee);
 
 const //
-    number__ordinal__static__sting__array = <string__raw>[
+    number__ordinal__static__sting__array = <string>[
       "First",
       "Second",
       "Third",
@@ -45,7 +45,7 @@ const //
       "Thirty-third",
     ],
 //
-    calendar__gregorian__month__static__text__array = <string__raw>[
+    calendar__gregorian__month__static__text__array = <string>[
       "January",
       "February",
       "March",
@@ -59,7 +59,7 @@ const //
       "November",
       "December",
     ],
-    calendar__gregorian__week__day__static__text__array = <string__raw>[
+    calendar__gregorian__week__day__static__text__array = <string>[
       "Monday",
       "Tuesday",
       "Wednesday",
@@ -72,16 +72,16 @@ const //
     file__type__array__count__size = NI2__size,
     file__type__static__text__graphic__image = "image",
     file__type__static__text__graphic__symbol = "symbol",
-    file__type__static__text__array = <string__raw>[
+    file__type__static__text__array = <string>[
       (file__type__static__text__graphic__image + char__colon + "png"),
       (file__type__static__text__graphic__symbol + char__colon + "svg"),
     ];
 
 final //
     currencies = <({
-  NIMR code,
-  string__raw char,
-  string__raw title,
+  NI code,
+  string char,
+  string title,
 })>[
   (
     code: TC__unicode__currency__rupee,
@@ -101,5 +101,5 @@ const //
     static__text__array = //
         static__text__english__array;
 
-string__raw get static__text__add => static__text__array[0];
-string__raw get static__text__all => static__text__array[1];
+string get static__text__add => static__text__array[0];
+string get static__text__all => static__text__array[1];

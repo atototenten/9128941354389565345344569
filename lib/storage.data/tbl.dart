@@ -4,10 +4,10 @@ void base__storage__data__tbl__create(
   final base__storage__data__meta___compo ds__meta, {
   required final BS1__array column__bytes,
   required final number__size rows__count__size__id,
-  required final NIMR rows__count__max,
-  required final NIMR row__size,
+  required final NI rows__count__max,
+  required final NI row__size,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__tbl__create",
       ds__meta.debug__label,
@@ -45,10 +45,10 @@ class base__storage__data__tbl__meta___compo //
     required super.row__size,
     required this.rows__count__max,
     required this.table__bytes__base__storage__data__offset,
-    required final NIMR tbl__meta__bytes__base__storage__data__offset,
+    required final NI tbl__meta__bytes__base__storage__data__offset,
   }) : rows__count__bytes__base__storage__data__offset = (base__storage__data__position__size__id.size + tbl__meta__bytes__base__storage__data__offset);
 
-  final NIMR //
+  final NI //
       rows__count__max,
       table__bytes__base__storage__data__offset,
       rows__count__bytes__base__storage__data__offset;
@@ -63,12 +63,12 @@ class base__storage__data__tbl__meta___compo //
   }
 }
 
-NIMR /*row__id_*/ base__storage__data__tbl__row__add(
+NI /*row__id_*/ base__storage__data__tbl__row__add(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tbl__meta___compo tbl__meta,
   final BS1__array bytes /* any `bytes`__count, more than `row__size`, are ignored */,
 ) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__tbl__row__add",
       tbl__meta.debug__label,
@@ -109,7 +109,7 @@ NIMR /*row__id_*/ base__storage__data__tbl__row__add(
 void base__storage__data__tbl__rows__count__update(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tbl__meta___compo tbl__meta, {
-  required final NIMR rows__count__base__storage__data__offset,
+  required final NI rows__count__base__storage__data__offset,
 }) =>
     base__storage__data__table__rows__count__update(
       ds__meta,
@@ -120,13 +120,13 @@ void base__storage__data__tbl__rows__count__update(
 base__storage__data__table__row___compo base__storage__data__tbl__row(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tbl__meta___compo tbl__meta, {
-  required final NIMR row__id,
+  required final NI row__id,
   required final BS1__array? bytes /* write(or mod) | read */,
-  NIMR? count /* un-check for correct-ness; use with care */,
-  final NIMR rows__count /* ignored if `count` is non-null */ = 1,
-  final NIMR row__offset = 0,
+  NI? count /* un-check for correct-ness; use with care */,
+  final NI rows__count /* ignored if `count` is non-null */ = 1,
+  final NI row__offset = 0,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__tbl__row",
       tbl__meta.debug__label,
@@ -190,7 +190,7 @@ base__storage__data__table__row___compo base__storage__data__tbl__row(
 base__storage__data__table__row__column___compo base__storage__data__tbl__row__column(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tbl__meta___compo tbl__meta, {
-  required final NIMR row__id,
+  required final NI row__id,
   required final BS1__array? bytes,
   required final base__storage__data__table__column___compo table__column,
 }) /* macro */ =>

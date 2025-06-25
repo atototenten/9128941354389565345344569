@@ -33,7 +33,7 @@ class error__reference__assertion__valid__in___error {
   const error__reference__assertion__valid__in___error();
 }
 
-BOOL base__error__fatal__ok //
+BOOL base__error__fatal___ok //
 /*exception|error:serious|panic*/ /* un-recoverable ,possible in-valid usage */ (
   final Object error,
 ) {
@@ -48,11 +48,11 @@ BOOL base__error__fatal__ok //
   return OK /* default/most-likely */;
 }
 
-string__raw //
+string //
 base__error__code(
-  final BOOL error__fatal__ok,
+  final BOOL error__fatal___ok,
 ) {
-  return (error__fatal__ok //
+  return (error__fatal___ok //
       ? char__alphabet__case__upper__f /* Fatal */
       : char__alphabet__case__upper__e /* Error */ );
 }
@@ -60,7 +60,7 @@ base__error__code(
 void base__error__print(
   final Object error,
   final StackTrace? trace, [
-  final string__raw? label,
+  final string? label,
 ]) {
   base__print__blank(16);
 
@@ -76,13 +76,13 @@ void base__error__print(
 void base__error__print__concise(
   final Object error,
   final StackTrace? trace, [
-  final string__raw? label,
+  final string? label,
 ]) {
   error //
       .text__representation()
       .print(
         base__error__code(
-          base__error__fatal__ok(error),
+          base__error__fatal___ok(error),
         ),
         label,
       );

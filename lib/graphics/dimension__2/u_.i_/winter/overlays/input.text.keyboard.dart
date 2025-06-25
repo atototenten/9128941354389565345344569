@@ -87,7 +87,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           return Expanded(
                             child: _button(
                               child: gui__base__box__text__widget(
-                                string__raw.fromCharCode(
+                                string.fromCharCode(
                                   (i + row__numbers__key__value__offset),
                                 ),
                               ),
@@ -107,7 +107,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           return Expanded(
                             child: _button(
                               child: gui__base__box__text__widget(
-                                string__raw.fromCharCode(
+                                string.fromCharCode(
                                   (i + row__alphabets__key__value__offset),
                                 ),
                               ),
@@ -124,7 +124,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           return Expanded(
                             child: _button(
                               child: gui__base__box__text__widget(
-                                string__raw.fromCharCode(
+                                string.fromCharCode(
                                   (i + row__alphabets__1__key__value__offset),
                                 ),
                               ),
@@ -160,7 +160,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                             return Expanded(
                               child: _button(
                                 child: gui__base__box__text__widget(
-                                  string__raw.fromCharCode(
+                                  string.fromCharCode(
                                     (i + row__alphabets__2__key__value__offset),
                                   ),
                                 ),
@@ -186,7 +186,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__bracket__round__open,
                               ),
                             ),
@@ -196,7 +196,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__bracket__round__close,
                               ),
                             ),
@@ -206,7 +206,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__comma,
                               ),
                             ),
@@ -225,7 +225,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__question,
                               ),
                             ),
@@ -235,7 +235,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__dot,
                               ),
                             ),
@@ -258,7 +258,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__dash,
                               ),
                             ),
@@ -268,7 +268,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__exclamation,
                               ),
                             ),
@@ -278,7 +278,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__question,
                               ),
                             ),
@@ -288,7 +288,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__bracket__round__open,
                               ),
                             ),
@@ -298,7 +298,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__bracket__round__close,
                               ),
                             ),
@@ -308,7 +308,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__colon,
                               ),
                             ),
@@ -318,7 +318,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__comma,
                               ),
                             ),
@@ -328,7 +328,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__colon__semi,
                               ),
                             ),
@@ -338,7 +338,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                         Expanded(
                           child: _button(
                             child: gui__base__box__text__widget(
-                              string__raw.fromCharCode(
+                              string.fromCharCode(
                                 TC__ascii__dot,
                               ),
                             ),

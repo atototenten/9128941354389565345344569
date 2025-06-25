@@ -55,12 +55,12 @@ part "text.dart";
 TASK
   - add `button(decoration(gradient(linear(color(255,59,255,149) ,color(255,9,134,61)))))` */
 
-NI2R //
+var //
     preference__page__background__dark = 0,
     preference__page__background__light = 0;
 
-NI2R get preference__page__background => //
-    (base__app__theme__colors__ground__back__contrast__dark__ok //
+NI get preference__page__background => //
+    (base__app__theme__colors__ground__back__contrast__dark___ok //
         ? preference__page__background__dark
         : preference__page__background__light);
 
@@ -115,9 +115,9 @@ final color__random__list = array<Color>.filled(
 );
 
 void app__page__background__change() {
-  final NI2R bg;
+  final NI bg;
 
-  if (base__app__theme__colors__ground__back__contrast__dark__ok) {
+  if (base__app__theme__colors__ground__back__contrast__dark___ok) {
     preference__page__background__dark = //
         (((bg = (preference__page__background__dark += 1)) < //
                 colors__background__page__gradient_contrasts__dark.length) //
@@ -139,7 +139,7 @@ late LinearGradient //
     _gradient__linear,
     _gradient__linear__selected;
 
-const NI1R _theme__winter__color__interval = 4;
+const NI _theme__winter__color__interval = 4;
 
 const base__theme__winter = (
   color__set: box__winter__color__set,
@@ -203,11 +203,11 @@ void box__winter__page__background__set() {
 }
 
 void box__winter__color__set() {
-  const NI1R intensity = ((NI1__limit ~/ _theme__winter__color__interval) - 1);
+  const NI intensity = ((NI1__limit ~/ _theme__winter__color__interval) - 1);
 
   final Color color__background__base__intermediate;
 
-  if (base__app__theme__colors__ground__back__contrast__dark__ok) {
+  if (base__app__theme__colors__ground__back__contrast__dark___ok) {
     color__foreground__full = _color__light__relative(0);
     color__foreground__almost = _color__light__relative(15);
     color__foreground__default = _color__light__relative(31);
@@ -293,12 +293,12 @@ void box__winter__color__set() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: base__color__transparent__dark,
     systemNavigationBarDividerColor: base__color__transparent__dark,
-    systemNavigationBarIconBrightness: (base__app__theme__colors__ground__back__contrast__dark__ok //
+    systemNavigationBarIconBrightness: (base__app__theme__colors__ground__back__contrast__dark___ok //
         ? Brightness.light
         : Brightness.dark),
     systemNavigationBarContrastEnforced: NO,
     statusBarColor: base__color__transparent__dark,
-    statusBarIconBrightness: (base__app__theme__colors__ground__back__contrast__dark__ok //
+    statusBarIconBrightness: (base__app__theme__colors__ground__back__contrast__dark___ok //
         ? Brightness.light
         : Brightness.dark),
     systemStatusBarContrastEnforced: NO,

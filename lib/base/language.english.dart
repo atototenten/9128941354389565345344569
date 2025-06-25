@@ -6,9 +6,9 @@ const //
 
 void language__english__count__text__convert__plural__if__needed__buffer(
   final StringBuffer buffer,
-  final NIMR count,
-  final string__raw word, [
-  final BOOL suffix__s__ok /* {'s'|"es"} */ = OK,
+  final NI count,
+  final string word, [
+  final BOOL suffix__s___ok /* {'s'|"es"} */ = OK,
 ]) {
   buffer
     ..write(count)
@@ -16,15 +16,15 @@ void language__english__count__text__convert__plural__if__needed__buffer(
     ..write(word);
 
   if (count != 1) //
-    buffer.write(suffix__s__ok //
+    buffer.write(suffix__s___ok //
         ? "s"
         : "es");
 }
 
-string__raw language__english__count__text__convert__plural__if__needed(
-  final NIMR count,
-  final string__raw word, [
-  final BOOL suffix__s__ok = OK,
+string language__english__count__text__convert__plural__if__needed(
+  final NI count,
+  final string word, [
+  final BOOL suffix__s___ok = OK,
 ]) {
   final buffer = StringBuffer();
 
@@ -32,7 +32,7 @@ string__raw language__english__count__text__convert__plural__if__needed(
     buffer,
     count,
     word,
-    suffix__s__ok,
+    suffix__s___ok,
   );
 
   return buffer.toString();

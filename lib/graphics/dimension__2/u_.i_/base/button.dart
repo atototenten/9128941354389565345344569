@@ -20,23 +20,23 @@ class gui__base__button //
     implements gui__base__entity__component___protocol<gui__base__button__children___record> {
   gui__base__button({
     required this.press__handle,
-  }) : pressed__ok__raw = NO;
+  }) : pressed__ok___raw = NO;
 
   final gui__base__button__press__handle__function__format press__handle;
 
-  BOOL pressed__ok__raw;
+  BOOL pressed__ok___raw;
 
   @override
   void dispose() {}
 
   BOOL //
-      pressed__ok() {
-    return pressed__ok__raw;
+      pressed___ok() {
+    return pressed__ok___raw;
   }
 
   BOOL //
-      waiting__ok() {
-    return pressed__ok__raw;
+      waiting___ok() {
+    return pressed__ok___raw;
   }
 
   @override
@@ -48,23 +48,23 @@ class gui__base__button //
       child__build: (final context) {
         return gui__base__gesture__press__handling__widget(
           press__down__handle: (_) {
-            pressed__ok__raw = OK;
-            context.build__re__raw();
+            pressed__ok___raw = OK;
+            context.build__re___raw();
           },
           press__cancel__handle: () {
-            pressed__ok__raw = NO;
-            context.build__re__raw();
+            pressed__ok___raw = NO;
+            context.build__re___raw();
           },
           press__handle: () {
-            if (pressed__ok__raw) {
+            if (pressed__ok___raw) {
               return;
             }
 
-            pressed__ok__raw = OK;
-            context.build__re__raw();
+            pressed__ok___raw = OK;
+            context.build__re___raw();
 
             void revert() {
-              pressed__ok__raw = NO;
+              pressed__ok___raw = NO;
               context.build__re();
             }
 
@@ -105,16 +105,16 @@ should not invoke `.selection__switch` ,if the result is `OK`
   ,because otherwise `selection__switch` invoked ,implicitly ,after the press__handle's result
     ,would re-switch the selection */
     ,
-    this.selected__ok__raw = NO,
+    this.selected__ok___raw = NO,
   });
 
   final gui__base__button__selectable__press__handle__function__format press__handle;
 
-  BOOL selected__ok__raw;
+  BOOL selected__ok___raw;
 
   BOOL //
-      selected__ok() {
-    return selected__ok__raw;
+      selected___ok() {
+    return selected__ok___raw;
   }
 
   @override
@@ -126,14 +126,14 @@ should not invoke `.selection__switch` ,if the result is `OK`
       child__build: (final context) {
         return gui__base__gesture__press__handling__widget(
           press__handle: () {
-            final switch__ok = press__handle();
+            final switch___ok = press__handle();
 
-            if (switch__ok.not) {
+            if (switch___ok.not) {
               return;
             }
 
-            selected__ok__raw = selected__ok__raw.not;
-            context.build__re__raw();
+            selected__ok___raw = selected__ok___raw.not;
+            context.build__re___raw();
           },
           child: children.child__build(
             context,

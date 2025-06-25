@@ -4,7 +4,7 @@ gui__base__widget gui__base__box__text__widget(
   final TextSpan text__segment, {
   final TextAlign text__align = TextAlign.start,
   final TextOverflow text__overflow = TextOverflow.clip,
-  final NIMR? lines__max,
+  final NI? lines__max,
 }) {
   return RichText(
     text: text__segment,
@@ -17,7 +17,7 @@ gui__base__widget gui__base__box__text__widget(
 }
 
 TextSpan gui__base__box__text__segment(
-  final string__raw value, {
+  final string value, {
   final TextStyle? style,
 }) {
   return TextSpan(
@@ -37,16 +37,16 @@ TextSpan gui__base__box__text__segments(
 }
 
 TextStyle base__text__style({
-  required final NEMR font__size,
+  required final NFP font__size,
   required final Color? font__color,
   final FontWeight? font__weight,
   final FontStyle? font__style,
   final Paint? ground__fore,
   final array<FontFeature>? font__features,
   final TextDecoration? decoration,
-  required final string__raw? font__family,
-  required final array<string__raw>? font__family__default,
-  final string__raw? package,
+  required final string? font__family,
+  required final array<string>? font__family__default,
+  final string? package,
   final TextOverflow text__overflow = TextOverflow.clip,
 }) {
   return TextStyle(
@@ -75,7 +75,7 @@ for `base__text__style.ground__fore`
     ..color = base__color__white);
 }
 
-array<string__raw>? base__text__font__family__default() {
+array<string>? base__text__font__family__default() {
   return Typography.material2021().black.bodyMedium?.fontFamilyFallback /*
 copied from `Theme.of(context).textTheme.bodyMedium`'s src. */
       ;

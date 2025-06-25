@@ -18,11 +18,11 @@ arg.s :
     ,by default ,dynamic ,"request.headers.origin"
 sends only 3 status-codes ,as response ,200/OK ,400/bad-request/client-issue ,500/{internal|server}-issue */
     (
-  final array<string__raw> info__,
+  final array<string> info__,
 ) async {
   info__.text__representation().print("information");
 
-  final string__raw address;
+  final string address;
   if (info__.isNotEmpty) {
     address = info__[0];
   } else {
@@ -42,7 +42,7 @@ sends only 3 status-codes ,as response ,200/OK ,400/bad-request/client-issue ,50
     }
   }
 
-  final string__raw? app__origin;
+  final string? app__origin;
   if (info__.length < 3) {
     app__origin =  null;
   } else {
@@ -87,7 +87,7 @@ sends only 3 status-codes ,as response ,200/OK ,400/bad-request/client-issue ,50
       request.contentLength.text__representation().print("request.content_length");
       request.coOKies.text__representation().print("request.coOKies");
 
-      final string__raw request__body;
+      final string request__body;
       try {
         (request__body = await utf_8__Stream__byte__array__convert__string(request)).text__representation().print("request.body");
       } catch (e) {
@@ -140,8 +140,8 @@ sends only 3 status-codes ,as response ,200/OK ,400/bad-request/client-issue ,50
 }
 
 void base__net__web__header__print(
-  final string__raw name,
-  final List<string__raw> values,
+  final string name,
+  final List<string> values,
 ) {
   print("  - \"$name\": \"${values.join("\",\"")}\"");
 }

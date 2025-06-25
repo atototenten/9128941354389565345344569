@@ -20,7 +20,7 @@ typedef base__storage__data__table__column___compo = ({
 typedef base__storage__data__table__columns___compo = //
     array<base__storage__data__table__column__compo>;
 
-NIMR base__storage__data__table__column__size(
+NI base__storage__data__table__column__size(
   final base__storage__data__table__column___compo table__column,
 ) {
   final type = table__column.type;
@@ -41,7 +41,7 @@ NIMR base__storage__data__table__column__size(
               : throw "${table__column.meta.runtimeType}(column__meta.type) is un-known")));
 }
 
-NIMR base__storage__data__table__column__row__bytes__offset(
+NI base__storage__data__table__column__row__bytes__offset(
   final base__storage__data__table__column___compo table__column__previous,
 ) =>
     (base__storage__data__table__column__size(
@@ -68,13 +68,13 @@ abstract class base__storage__data__table__column__meta___protocol {
           ? (1 + column__previous__meta.meta__id)
           : 0);*/
 
-  final string__raw //
+  final string //
       name;
 
   final BOOL //
       b__nilable;
 
-  final NIMR /*row__bytes__*/ offset /*
+  final NI /*row__bytes__*/ offset /*
   is calculat-able, whenever required
     but based on the usage count, caching would be more efficient */
       ;
@@ -104,7 +104,7 @@ abstract class base__storage__data__table__column__type__primitive__meta___proto
 
 base__storage__data__table__column___compo //
     base__storage__data__table__column__type__uit(
-  final string__raw name, {
+  final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size size__id,
   final BOOL b__nilable = NO,
@@ -140,7 +140,7 @@ class base__storage__data__table__column__type__uit__meta___compo /*
 
 base__storage__data__table__column___compo //
     base__storage__data__table__column__type__iid(
-  final string__raw name, {
+  final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final base__storage__data__table__column__type__ear__meta___compo column,
   final BOOL b__nilable = NO,
@@ -169,7 +169,7 @@ class base__storage__data__table__column__type__iid__meta___compo /*
 
 base__storage__data__table__column___compo //
     base__storage__data__table__column__type__eid(
-  final string__raw name, {
+  final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size size__id,
   final BOOL b__nilable = NO,
@@ -198,9 +198,9 @@ class base__storage__data__table__column__type__eid__meta___compo /*
 
 base__storage__data__table__column___compo //
     base__storage__data__table__column__type__irb(
-  final string__raw name, {
+  final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
-  required final NIMR size,
+  required final NI size,
 }) {
   return (
     type: base__storage__data__table__column__type___enum.irb,
@@ -223,7 +223,7 @@ class base__storage__data__table__column__type__irb__meta___compo /*
     this.size,
   );
 
-  final NIMR //
+  final NI //
       size;
 }
 
@@ -245,7 +245,7 @@ abstract class base__storage__data__table__column__type__in_direct__meta___proto
 
 base__storage__data__table__column___compo //
     base__storage__data__table__column__type__rbt(
-  final string__raw name, {
+  final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size count__size__id,
   final BOOL b__nilable = NO,
@@ -274,7 +274,7 @@ class base__storage__data__table__column__type__rbt__meta___compo /*
 
 base__storage__data__table__column___compo //
     base__storage__data__table__column__type__bst(
-  final string__raw name, {
+  final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size count__size__id,
   final BOOL b__nilable = NO,
@@ -303,7 +303,7 @@ class base__storage__data__table__column__type__bst__meta___compo /*
 
 base__storage__data__table__column___compo //
     base__storage__data__table__column__type__wst(
-  final string__raw name, {
+  final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size count__size__id,
   final BOOL b__nilable = NO,
@@ -332,15 +332,15 @@ class base__storage__data__table__column__type__wst__meta___compo /*
 
 typedef base__storage__data__table__row__convert__text__summary__function__format = //
     ({
-  string__raw title,
-  string__raw sub_title,
+  string title,
+  string sub_title,
 })
         Function(
   array<Object?> data__array,
 );
 
 typedef base__storage__data__table__row__convert__text__function__format = //
-    string__raw Function(
+    string Function(
   array<Object?> data__array,
 );
 
@@ -358,7 +358,7 @@ abstract class base__storage__data__table__column__type__array__meta___protocol 
           columns__last,
         );
 
-  final NIMR row__size;
+  final NI row__size;
 
   final base__storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary;
 
@@ -372,7 +372,7 @@ abstract class base__storage__data__table__column__type__array__meta___protocol 
 
 base__storage__data__table__column___compo //
     base__storage__data__table__column__type__ear(
-  final string__raw name, {
+  final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size elements__count__size__id,
   required final base__storage__data__table__column___compo columns__last,
@@ -435,10 +435,10 @@ abstract class base__storage__data__table__column__type__table__meta___protocol 
 
 base__storage__data__table__column___compo //
     base__storage__data__table__column__type__tbl(
-  final string__raw name, {
+  final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size rows__count__size__id,
-  required final NIMR rows__count__max,
+  required final NI rows__count__max,
   required final base__storage__data__table__column___compo columns__last,
   final base__storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary,
   required final base__storage__data__table__row__convert__text__function__format row__convert__text,
@@ -474,16 +474,16 @@ class base__storage__data__table__column__type__tbl__meta___compo /*
     super.row__convert__text,
   );
 
-  final NIMR //
+  final NI //
       rows__count__max;
 }
 
 base__storage__data__table__column___compo //
     base__storage__data__table__column__type__tar(
-  final string__raw name, {
+  final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size rows__count__size__id,
-  final NIMR rows__count__multiplier__initial = 0,
+  final NI rows__count__multiplier__initial = 0,
   required final base__storage__data__table__column___compo columns__last,
   final base__storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary,
   required final base__storage__data__table__row__convert__text__function__format row__convert__text,
@@ -519,6 +519,6 @@ class base__storage__data__table__column__type__tar__meta___compo /*
     super.row__convert__text,
   );
 
-  final NIMR //
+  final NI //
       rows__count__multiplier__initial;
 }

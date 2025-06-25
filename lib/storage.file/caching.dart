@@ -5,7 +5,7 @@ TASK
   must support direct-access to the cached file
     through raw proc.s */
 
-/*bool base__storage__file__fast__block__equal__ok(
+/*bool base__storage__file__fast__block__equal___ok(
   final base__storage__file__fast__block block,
   final base__storage__file__fast__block other,
 ) =>
@@ -17,7 +17,7 @@ class base__storage__file__fast__block {
     required this.buffer,
   });
 
-  final NIMR offset /* aligned */ /* TASK: replace with `__reduced` */;
+  final NI offset /* aligned */ /* TASK: replace with `__reduced` */;
   final BS1__array buffer;
 }
 
@@ -49,14 +49,14 @@ base__storage__file__fast___compo //
           /*free__list: list__compo<byte__array__compo>(),*/
         );
 
-/*uu _iterations(final NIMR count__max) => //
+/*uu _iterations(final NI count__max) => //
   (count__max >> base__storage__file__block__size.shift__count);*/
 
 base__storage__file__fast__block _base__storage__file__fast__block__cache__if__needed(
   final base__storage__file__fast___compo storage,
-  final NIMR offset,
+  final NI offset,
 ) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "_base__storage__file__fast__block__cache__if__needed",
       storage.debug__label,
@@ -74,14 +74,14 @@ base__storage__file__fast__block _base__storage__file__fast__block__cache__if__n
           (block.offset == offset)) /* if already cached */;
 
   if (block != null) {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       "already cached".print();
     }
 
     base__printing__indentation__decrease();
 
     return block;
-  } else if (base__printing__ok) {
+  } else if (base__printing___ok) {
     "caching".print();
   }
 
@@ -111,7 +111,7 @@ void _base__storage__file__fast__block__mod__if__needed(
   final base__storage__file__fast___compo storage,
   final base__storage__file__fast__block block,
 ) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "_base__storage__file__fast__block__mod__if__needed",
       storage.debug__label,
@@ -125,15 +125,15 @@ void _base__storage__file__fast__block__mod__if__needed(
   base__printing__indentation__increase();
 
   if (storage.blocks__mod_ed.search(
-        (final block_) => base__storage__file__fast__block__equal__ok(block, block),
+        (final block_) => base__storage__file__fast__block__equal___ok(block, block),
       ) ==
       null) {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       "adding".print();
     }
 
     storage.blocks__mod_ed.add(block);
-  } else if (base__printing__ok) {
+  } else if (base__printing___ok) {
     "already present".print();
   }
 
@@ -143,8 +143,8 @@ void _base__storage__file__fast__block__mod__if__needed(
 void base__storage__file__fast__read_write /* __caching */ (
   final base__storage__file__fast___compo storage, {
   required final BS1__array bytes,
-  required NIMR count,
-  required NIMR offset,
+  required NI count,
+  required NI offset,
   final BOOL b__write = NO,
 }) /*
   design
@@ -163,7 +163,7 @@ void base__storage__file__fast__read_write /* __caching */ (
           all bys, from aligned offset, to aligned count
           all remaining bys, if any */
 {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       ("storage." + (b__write ? "write" : "read")),
       storage.debug__label,
@@ -183,7 +183,7 @@ void base__storage__file__fast__read_write /* __caching */ (
 
   final offset__aligned = base__storage__file__offset__aligned(offset);
 
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     offset__aligned.text__representation().print(
           "offset__aligned",
           storage.debug__label,
@@ -193,7 +193,7 @@ void base__storage__file__fast__read_write /* __caching */ (
   base__printing__indentation__increase();
 
   if /* likely */ (!(count > base__storage__file__block__size.size)) /* fast-path */ {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       "Fast-path".print(storage.debug__label);
     }
 
@@ -232,7 +232,7 @@ void base__storage__file__fast__read_write /* __caching */ (
     base__printing__indentation__increase();
 
     if /* un-likely */ ((count -= count_) != 0) /* multi block op */ {
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         "Multi block op".print(storage.debug__label);
       }
 
@@ -267,7 +267,7 @@ void base__storage__file__fast__read_write /* __caching */ (
 
     base__printing__indentation__decrease();
   } else {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       "Normal-path".print(
         storage.debug__label,
       );
@@ -275,12 +275,12 @@ void base__storage__file__fast__read_write /* __caching */ (
 
     /*bytes__*/ offset = 0;
 
-    NIMR offset__diff;
+    NI offset__diff;
 
     base__printing__indentation__increase();
 
     if /* likely */ (offset__aligned.buffer__offset != 0) {
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         "First step (un-aligned bys Before)".print(
           storage.debug__label,
         );
@@ -345,7 +345,7 @@ void base__storage__file__fast__read_write /* __caching */ (
       base__storage__file__block__size.shift__count,
     );
 
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       count__aligned.text__representation().print(
             "count__aligned",
             storage.debug__label,
@@ -357,7 +357,7 @@ void base__storage__file__fast__read_write /* __caching */ (
     base__printing__indentation__increase();
 
     while (count != 0) {
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         "while ($count != 0)".print(
           storage.debug__label,
         );
@@ -398,7 +398,7 @@ void base__storage__file__fast__read_write /* __caching */ (
     }
 
     if (count__aligned.remainder__un_aligned != 0) {
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         "Last step (un-aligned bys After)".print(
           storage.debug__label,
         );
@@ -445,10 +445,10 @@ void base__storage__file__fast__read_write /* __caching */ (
 
 /*void write__direct /*__un_cached*/ (
     final BOOL Function(BS1__array bytes) b__mod,
-    final NIMR count,
-    final NIMR offset,
+    final NI count,
+    final NI offset,
   ) {
-    if (base__printing__ok) //
+    if (base__printing___ok) //
       print__info("storage.write__direct(count: $count, offset: $offset)");
 
     final //
@@ -476,8 +476,8 @@ void base__storage__file__fast__read_write /* __caching */ (
 
 BS1__array base__storage__file__fast__read__auto(
   final base__storage__file__fast___compo storage, {
-  required final NIMR count,
-  required final NIMR offset,
+  required final NI count,
+  required final NI offset,
 }) {
   final bytes = BS1__array(count);
   base__storage__file__fast__read_write(
@@ -490,8 +490,8 @@ BS1__array base__storage__file__fast__read__auto(
 }
 
 /*BS1__array read__direct(
-    final NIMR count,
-    final NIMR offset,
+    final NI count,
+    final NI offset,
   ) {
     BS1__array bytes = empty__byte__array;
 
@@ -506,7 +506,7 @@ BS1__array base__storage__file__fast__read__auto(
 void base__storage__file__fast__sync(
   final base__storage__file__fast___compo storage,
 ) {
-  if (base__printing__ok) //
+  if (base__printing___ok) //
     base__function__call__print(
       "base__storage__file__fast__sync",
       storage.debug__label,
@@ -517,7 +517,7 @@ void base__storage__file__fast__sync(
   if (storage.blocks__mod_ed.empty__not()) {
     storage.blocks__mod_ed.iterate__basic(
       (final element) {
-        if (base__printing__ok) {
+        if (base__printing___ok) {
           element.offset.text__representation().print(
                 "block__moded__list__block__offset",
                 storage.debug__label,
@@ -550,7 +550,7 @@ void base__storage__file__fast__flush(
   SHOULD
     prefer calling `sync(`, before */
 {
-  if (base__printing__ok) //
+  if (base__printing___ok) //
     base__function__call__print(
       "base__storage__file__fast__flush",
       storage.debug__label,
@@ -558,7 +558,7 @@ void base__storage__file__fast__flush(
 
   base__printing__indentation__increase();
 
-  if (storage.blocks__cach_ed.empty__ok.not) {
+  if (storage.blocks__cach_ed.empty___ok.not) {
     storage.blocks__cach_ed
       ..iterate__basic((final block) {
         /*free__list.add*/ /*block.buffer.mem_:free()*/
@@ -570,9 +570,9 @@ void base__storage__file__fast__flush(
 }
 
 /*void base__storage__file__fast__free__if__not__needed() {
-  if (base__printing__ok) //
+  if (base__printing___ok) //
     print__info("storage.free__if__not__needed()");
 
-  if (!(free__list.empty__ok)) //
+  if (!(free__list.empty___ok)) //
     free__list.iterate__basic(BS1__array__free);
 }*/*/

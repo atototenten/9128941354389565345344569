@@ -1,11 +1,6 @@
 part of "../../_.dart";
 
-typedef NISR = int;
-typedef NIS1R = NISR;
-typedef NIS2R = NISR;
-typedef NIS4R = NISR;
-typedef NIS8R = NISR;
-typedef NISMR = NIS8R;
+typedef NIS = int;
 
 const //
     NIS8__size = NI8__size,
@@ -20,50 +15,50 @@ enum base__NIS__text__digits__fixed__truncation {
 }
 
 typedef NIS__bytes__convert__result___compo = ({
-  NISMR value,
-  NIMR count,
+  NIS value,
+  NI count,
 });
 
 class base__NIS__text__digits__fixed {
   base__NIS__text__digits__fixed(
-    this.value__raw, {
-    required this.negative__ok,
+    this.value___raw, {
+    required this.negative___ok,
     required this.digits__count,
     required this.truncation,
   });
 
-  final NIMR digits__count;
+  final NI digits__count;
 
   final base__NIS__text__digits__fixed__truncation? truncation;
 
-  NIMR value__raw;
+  NI value___raw;
 
-  BOOL negative__ok;
+  BOOL negative___ok;
 
   void value__set(
-    NISMR value__new,
+    NIS value__new,
   ) {
-    if (negative__ok != value__new.isNegative) {
-      negative__ok = value__new.isNegative;
+    if (negative___ok != value__new.isNegative) {
+      negative___ok = value__new.isNegative;
     }
 
-    if (negative__ok) {
+    if (negative___ok) {
       value__new = -value__new;
     }
 
-    if (value__raw != value__new) {
-      value__raw = value__new;
+    if (value___raw != value__new) {
+      value___raw = value__new;
     }
   }
 
-  string__raw //
+  string //
       value__convert__text() {
     final //
-        value__text = value__raw.toString(),
+        value__text = value___raw.toString(),
         value__text__chars__count = value__text.chars__count,
         buffer = StringBuffer();
 
-    if (negative__ok) {
+    if (negative___ok) {
       buffer.write(
         char__dash,
       );

@@ -2,8 +2,8 @@ part of "../_.dart";
 
 gui__base__widget winter__listing__shell__title({
   final gui__base__widget? leading,
-  required final string__raw primary__text,
-  final string__raw? secondary__text,
+  required final string primary__text,
+  final string? secondary__text,
   final gui__base__widget? trailing,
 }) {
   final gui__base__widget //

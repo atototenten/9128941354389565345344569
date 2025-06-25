@@ -9,7 +9,7 @@ class base__text__representation /*
     this.value,
   );
 
-  final string__raw value;
+  final string value;
 
   Never text__representation() {
     throw Error();
@@ -28,8 +28,8 @@ const Null__text__representation = base__text__representation(
 extension base__text__representation__print__extension //
     on base__text__representation {
   void print([
-    final string__raw? path,
-    final string__raw? label,
+    final string? path,
+    final string? label,
   ]) {
     base__print__labeled(
       value,

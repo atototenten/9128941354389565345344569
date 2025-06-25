@@ -26,8 +26,8 @@ const //
 
 BS1__array image__convert__bytes(
   final BS1__array image, {
-  required final NI2R width,
-  required final NI2R height,
+  required final NI width,
+  required final NI height,
   required final BOOL b__alpha,
 }) /*
   `__pixel__sub`
@@ -74,7 +74,7 @@ BS1__array image__convert__bytes(
         channel__array__count,
         0,
       ),
-      channel__rep__value__array = array__new__filled<NI1R?>(
+      channel__rep__value__array = array__new__filled<NI?>(
         channel__array__count,
         null,
       );

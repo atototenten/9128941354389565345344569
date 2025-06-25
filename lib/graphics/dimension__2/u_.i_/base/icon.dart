@@ -6,7 +6,7 @@ const //
 gui__base__widget base__icon(
   final IconData icon, {
   required final Color color,
-  final NEMR size = base__icon__size__default,
+  final NFP size = base__icon__size__default,
 }) /*
 fork of `flutter/widgets/icon.dart`::`Icon` */
 {
@@ -24,12 +24,12 @@ fork of `flutter/widgets/icon.dart`::`Icon` */
 
 gui__base__widget flutter__icon__basic(
   final IconData icon, {
-  required final NEMR size,
+  required final NFP size,
   required final Color color,
 }) {
   return gui__base__box__text__widget(
     TextSpan(
-      text: string__raw.fromCharCode(
+      text: string.fromCharCode(
         icon.codePoint,
       ),
       style: TextStyle(

@@ -1,7 +1,7 @@
 part of "_.dart";
 
 extension unit__extension //
-    on NIMR {
+    on NI {
   magnitude__conversion__scale__faulty__result___union //
       magnitude__convert__scale__faulty() {
     final value = this;
@@ -49,18 +49,18 @@ class magnitude__conversion__scale__faulty__result__success //
     required this.scale,
   });
 
-  final NIMR magnitude;
+  final NI magnitude;
   final units__scale scale;
 
-  string__raw convert__text({
+  string convert__text({
     required final unit unit,
-    required final string__raw Function(
+    required final string Function(
       units__scale scale,
     ) scale__prefix,
-    required final string__raw Function(
-      string__raw magnitude,
-      string__raw scale__prefix,
-      string__raw scale__suffix,
+    required final string Function(
+      string magnitude,
+      string scale__prefix,
+      string scale__suffix,
     ) convert,
   }) {
     return convert(
@@ -109,8 +109,8 @@ class unit {
     required this.plural /* ?? `join(singular ,"s")` */,
   });
 
-  final string__raw singular;
-  final string__raw? plural;
+  final string singular;
+  final string? plural;
 }
 
 enum units__scale /*
@@ -132,5 +132,5 @@ enum units__scale /*
     this.magnitude,
   );
 
-  final NIMR magnitude;
+  final NI magnitude;
 }

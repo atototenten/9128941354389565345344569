@@ -14,11 +14,11 @@ more patterns : `
     this.value,
   );
 
-  final NIMR value;
+  final NI value;
 
   base__number__binary__max //
       add(
-    final NIMR amount,
+    final NI amount,
   ) {
     return base__number__binary__max(
       (value + amount),
@@ -27,7 +27,7 @@ more patterns : `
 
   base__number__binary__max //
       subtract(
-    final NIMR amount,
+    final NI amount,
   ) {
     return base__number__binary__max(
       (value - amount),
@@ -36,7 +36,7 @@ more patterns : `
 
   base__number__binary__max //
       multiply(
-    final NIMR amount,
+    final NI amount,
   ) {
     return base__number__binary__max(
       (value << amount),
@@ -45,7 +45,7 @@ more patterns : `
 
   base__number__binary__max //
       divide(
-    final NIMR amount,
+    final NI amount,
   ) {
     return base__number__binary__max(
       (value >> amount),
@@ -54,7 +54,7 @@ more patterns : `
 
   base__number__binary__max //
       remainder(
-    final NIMR amount,
+    final NI amount,
   ) {
     return base__number__binary__max(
       (value & amount),

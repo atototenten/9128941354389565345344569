@@ -18,12 +18,12 @@ terminology
 dictionary<key__type, value__type> //
     dictionary__generate //
     <key__type, value__type>(
-  final NIMR count,
+  final NI count,
   final ({
     key__type key,
     value__type value,
   })
-          Function(NIMR)
+          Function(NI)
       generate,
 ) {
   final result = <key__type, value__type>{};
@@ -38,10 +38,10 @@ dictionary<key__type, value__type> //
 
 extension dictionary__extension<key__type, value__type> //
     on dictionary<key__type, value__type> {
-  NIMR get elements__count => //
+  NI get elements__count => //
       length;
 
-  BOOL empty__ok() => //
+  BOOL empty___ok() => //
       (this.elements__count == 0);
 
   BOOL empty__not() => //

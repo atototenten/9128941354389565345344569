@@ -1,7 +1,7 @@
 part of "_.dart";
 
 extension number__integer__conversion__byte__array__extension //
-    on NIR {
+    on NI {
   BS1__array //
       cast__byte__array(
     final number__size size,
@@ -14,7 +14,7 @@ extension number__integer__conversion__byte__array__extension //
 
 extension byte__array__conversion__number__integer__extension //
     on BS1__array {
-  NIR //
+  NI //
       cast__number__integer(
     final number__size size,
   ) {

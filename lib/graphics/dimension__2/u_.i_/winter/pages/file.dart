@@ -5,20 +5,20 @@ part of "../_.dart";
 gui__base__widget pages__file__page(
   final gui__base__widget__building__context context, {
   required final base__scrolling scroll__manager,
-  required final string__raw title,
+  required final string title,
   required final BS1__array Function(
-    NIMR count,
-    NIMR position,
+    NI count,
+    NI position,
   ) fetch,
-  required final NIMR count,
-  final NIMR offset = 0,
+  required final NI count,
+  final NI offset = 0,
 }) /*
   file is a collection of bytes, so the page is actually general purpose
   TASK: currently, limited, to `io__buffer__size__default` */
 {
   final BS1__array file__bytes;
 
-  final NIMR //
+  final NI //
       segments__count,
       bytes__un_aligned__count;
 
@@ -36,7 +36,7 @@ gui__base__widget pages__file__page(
         : 0);
   }
 
-  BOOL b__aligned(final NIMR segment__counter) => //
+  BOOL b__aligned(final NI segment__counter) => //
       ((bytes__un_aligned__count == 0) || (segment__counter < segments__count));
 
   return page__foundation(
@@ -65,7 +65,7 @@ gui__base__widget pages__file__page(
             b__aligned_ = b__aligned(segment__counter);
 
         final BS1__array bytes;
-        final array<string__raw> text__binary;
+        final array<string> text__binary;
 
         if (b__aligned_) {
           bytes = file__bytes.view__partial(
@@ -73,7 +73,7 @@ gui__base__widget pages__file__page(
             file__segment__size,
           );
 
-          text__binary = array<string__raw>.generate(
+          text__binary = array<string>.generate(
             file__segment__size,
             (final i) => //
                 bytes[i].toString(),
@@ -85,9 +85,9 @@ gui__base__widget pages__file__page(
             bytes__un_aligned__count,
           );
 
-          text__binary = array<string__raw>.filled(
+          text__binary = array<string>.filled(
             file__segment__size,
-            empty__text,
+            empty__string,
             growable: NO,
           );
 
@@ -97,11 +97,11 @@ gui__base__widget pages__file__page(
                   (text__binary[i] = bytes[i].toString()));
         }
 
-        array<string__raw> text__current = text__binary;
+        array<string> text__current = text__binary;
 
         BOOL b__binary = OK;
 
-        array<string__raw>? text__ascii;
+        array<string>? text__ascii;
 
         return Row(
           children: <gui__base__widget>[
@@ -179,15 +179,15 @@ gui__base__widget pages__file__page(
                       if (b__binary) {
                         text__current = //
                             (text__ascii ??= //
-                                array<string__raw>.generate(
+                                array<string>.generate(
                           (b__aligned_ //
                               ? file__segment__size
                               : bytes__un_aligned__count),
                           (final i) {
                             final c = bytes[i];
 
-                            return (TC__ascii__valid__ok__and__printable(c) //
-                                ? string__raw.fromCharCode(c)
+                            return (TC__ascii__valid__and__printable___ok(c) //
+                                ? string.fromCharCode(c)
                                 : ((c == TC__ascii__non_printable__line_feed) //
                                     ? r"\n"
                                     : text__binary[i]));

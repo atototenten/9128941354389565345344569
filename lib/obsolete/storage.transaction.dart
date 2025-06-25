@@ -21,12 +21,12 @@ abstract class Transaction {
   static int fileSize = 0;
 
   static Map<str, int> appendOperatedFilesPath = <str, int>{};
-  static List<string__raw> filesPathDeletionQueue = <string__raw>[];
+  static List<string> filesPathDeletionQueue = <string>[];
 
-  static void initialize(final string__raw storageDirPath) {
+  static void initialize(final string storageDirPath) {
     //if (file !=  null) throw Exception();
 
-    final string__raw filePath = (storageDirPath + base__storage__file__path__separation__char + FILE__NAME);
+    final string filePath = (storageDirPath + base__storage__file__path__separation__char + FILE__NAME);
 
     if (ReadOnlyFile.exists(filePath)) /** needs recovery */ {
       final RandomAccessFile _file = RandomAccessFile.open(filePath, FileOpenMode. /*TRUNCATE_AND_*/ READ_WRITE);
@@ -39,7 +39,7 @@ abstract class Transaction {
       while (byteCounter < _fileSize) {
         final int type = fileBytes[byteCounter++];
 
-        final string__raw filePath = ascii__convert__str__ascii(fileBytes.sublist(byteCounter, fileBytes.indexOf(0, byteCounter)));
+        final string filePath = ascii__convert__str__ascii(fileBytes.sublist(byteCounter, fileBytes.indexOf(0, byteCounter)));
         byteCounter += 1;
 
         switch (type) {
@@ -77,7 +77,7 @@ abstract class Transaction {
   }
 
   static void _registerFileOperation(
-    final string__raw absoluteFilePath,
+    final string absoluteFilePath,
     final int type, [
     final byte__array? extraInfoBytes,
   ]) {
@@ -102,7 +102,7 @@ abstract class Transaction {
   }
 
   static void registerCreateFileOperation(
-    final string__raw absoluteFilePath,
+    final string absoluteFilePath,
   ) =>
       _registerFileOperation(
         absoluteFilePath,
@@ -110,7 +110,7 @@ abstract class Transaction {
       );
 
   static void registerAppendFileOperation(
-    final string__raw absoluteFilePath,
+    final string absoluteFilePath,
     final uu fileSize /** before append operation */,
   ) {
     if (appendOperatedFilesPath.containsKey(absoluteFilePath)) {
@@ -130,7 +130,7 @@ abstract class Transaction {
   }
 
   static void registerModifyFileOperation(
-    final string__raw absoluteFilePath,
+    final string absoluteFilePath,
     final ReadOnlyFile file,
     final uu position,
     final uu count,
@@ -158,7 +158,7 @@ abstract class Transaction {
   }
 
   static void registerWriteFileOperation /** automatically detects, and switches from modify, to append operation, as required, based on `fileSize` */ (
-    final string__raw absoluteFilePath,
+    final string absoluteFilePath,
     final ReadOnlyFile file,
     final int filePosition,
     final int byteCount, {
@@ -178,7 +178,7 @@ abstract class Transaction {
   }
 
   static void registerDeleteFileOperation(
-    final string__raw absoluteFilePath,
+    final string absoluteFilePath,
   ) =>
       filesPathDeletionQueue.add(absoluteFilePath);
 
@@ -188,7 +188,7 @@ abstract class Transaction {
     file =  null;
 
     filesPathDeletionQueue.forEach((
-      final string__raw file__path,
+      final string file__path,
     ) =>
         io.File(file__path).deleteSync());
 

@@ -2,7 +2,7 @@ part of "../_.dart";
 
 typedef base__storage__data__table__row___compo = ({
   BS1__array bytes,
-  NIMR bytes__base__storage__data__offset,
+  NI bytes__base__storage__data__offset,
 });
 
 typedef base__storage__data__table__row__column___compo = //
@@ -21,13 +21,13 @@ abstract class base__storage__data__table__meta___protocol /*
     required this.row__size,
   });
 
-  NIMR //
+  NI //
       rows__count /* `row_counter`, next `row__id`, always less than `rows__count`(`(rows__count__current + rows__count__current)`) */;
 
   final number__size //
       rows__count__size__id;
 
-  final NIMR //
+  final NI //
       row__size /* row__bytes__count */;
 
   base__compo__member__dictionary //

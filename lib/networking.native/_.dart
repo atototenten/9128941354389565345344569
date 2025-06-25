@@ -15,8 +15,8 @@ final base__net__ip__local__v4 = BS1__array.fromList(
   const [127, 0, 0, 1],
 );
 
-value__asyn<bool> inet__connect_ed__ok({
-  final string__raw host = "example.com",
+value__asyn<bool> inet__connect_ed___ok({
+  final string host = "example.com",
 }) async {
   try {
     final result = await net.InternetAddress.lookup(host);
@@ -33,8 +33,8 @@ value__asyn<bool> inet__connect_ed__ok({
   return NO;
 }
 
-string__raw base__net__address__port__convert__text(
-  final string__raw address,
-  final NI2R port,
+string base__net__address__port__convert__text(
+  final string address,
+  final NI port,
 ) =>
     (address + char__colon + port.toString());

@@ -16,15 +16,15 @@ var //
 
 typedef base__print__handle__proc_ = //
     void Function(
-  string__raw,
+  string,
 );
 
 void base__printing__indentation__increase([
-  final NIMR value = 1,
+  final NI value = 1,
 ]) /*
 user should be careful, to call de-indent ,before `throw`s ,and early `return`s */
 {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     _indentation += value;
   }
 }
@@ -32,9 +32,9 @@ user should be careful, to call de-indent ,before `throw`s ,and early `return`s 
 const base__printing__indent = base__printing__indentation__increase;
 
 void base__printing__indentation__decrease([
-  final NIMR value = 1,
+  final NI value = 1,
 ]) {
-  if (base__printing__ok //
+  if (base__printing___ok //
       &&
       (_indentation != 0)) {
     _indentation -= value;
@@ -44,11 +44,11 @@ void base__printing__indentation__decrease([
 const base__printing__indent__de = base__printing__indentation__decrease;
 
 void base__print__labeled(
-  final string__raw value, [
-  final string__raw? path /*
+  final string value, [
+  final string? path /*
 usually `value.ingredient.name` */
   ,
-  final string__raw? label /*
+  final string? label /*
 usually `value.debug__label`, or `value.code__hash.cached` */
   ,
 ]) {
@@ -93,7 +93,7 @@ usually `value.debug__label`, or `value.code__hash.cached` */
 }
 
 void base__print__blank([
-  final NIMR count = 0,
+  final NI count = 0,
 ]) {
   base__print__handle(
     (char__line_feed * count),
@@ -101,8 +101,8 @@ void base__print__blank([
 }
 
 void base__procedure__call__print(
-  final string__raw procedure__name, [
-  final string__raw? label,
+  final string procedure__name, [
+  final string? label,
 ]) {
   base__print__labeled(
     "$procedure__name ( $static__indicate__short_en_ing",
@@ -116,6 +116,6 @@ const //
     base__function__call__print = base__procedure__call__print;
 
 extension Object__nilable__label__extension on Object? {
-  string__raw get debug__label => //
+  string get debug__label => //
       hashCode.toString();
 }

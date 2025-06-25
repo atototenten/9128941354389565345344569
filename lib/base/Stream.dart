@@ -20,14 +20,14 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
   }
 
   void convert__messages({
-    final NIMR message__size__size = NI4__size,
+    final NI message__size__size = NI4__size,
     required final base__message__handle__procedure<BS1__array> message__handle,
     required final dispose__procedure__format channel__close__handle,
     required final base__error__handle__proc_ channel__error__handle,
   }) {
     final accumulation = base__byte__array__accumulation();
 
-    NIMR //
+    NI //
         count /* `left`, or remaining count */ = 0,
         data__count;
 

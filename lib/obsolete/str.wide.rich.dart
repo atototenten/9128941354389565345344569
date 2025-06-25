@@ -63,7 +63,7 @@ const ch //
     = (1 + str__wide__rich__media__symbol),
     str__wide__rich__media__video = (1 + str__wide__rich__media__picture);
 
-string__raw str__wide__rich__text__style__convert__string(
+string str__wide__rich__text__style__convert__string(
   final u16 text__style,
 ) {
   const style__array = [
@@ -125,7 +125,7 @@ byte__array str__wide__rich__convert__bytes(
     support latex and ascii-math, using the `\formula\` keyword */
   ,
 ) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "str__wide__rich__convert__bytes",
     );
@@ -156,7 +156,7 @@ byte__array str__wide__rich__convert__bytes(
       buffer__str__offset = str__iter;
 
   void report__str__context(
-    final string__raw? path, [
+    final string? path, [
     final uu? id,
   ]) =>
       report__array__element__context(
@@ -221,7 +221,7 @@ byte__array str__wide__rich__convert__bytes(
 
   void text__add(
     final ch text__style,
-    finalNIMRescape__sequence__size,
+    final NI MRescape__sequence__size,
   ) {
     text__segment__add(
       (str__iter - (escape__sequence__size + 2)),
@@ -231,7 +231,7 @@ byte__array str__wide__rich__convert__bytes(
     {
       list__iterate__basic(
         text__segment__list,
-        (final _, final string__raw __segment) => //
+        (final _, final string __segment) => //
             (count += text__segment.count),
       );
 
@@ -491,10 +491,10 @@ byte__array str__wide__rich__convert__bytes(
       sink__size = sink.bytes__count,
       text__section = base__array__accumulation<wch>();
 
-  list__iterate__basic(text__segment__list__list, (final _, final string__raw __segment__list) {
+  list__iterate__basic(text__segment__list__list, (final _, final string __segment__list) {
     list__iterate__basic(
         text__segment__list,
-        (final _, final string__raw __segment) => //
+        (final _, final string __segment) => //
             base__array__accumulation__add__array(
               text__section,
               str__wide__rich.view__partial(
@@ -525,7 +525,7 @@ byte__array str__wide__rich__convert__bytes(
 void str__wide__rich__bytes__convert__report(
   final byte__array bytes,
 ) {
-  if (base__printing__ok) //
+  if (base__printing___ok) //
     base__function__call__print(
       "str__wide__rich__bytes__convert",
       () {

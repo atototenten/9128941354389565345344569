@@ -2,7 +2,7 @@ part of "_.dart";
 
 /*
   primitive (type): fixed size value, like NI, NI8
-  object: allocated value, of struct, like of `struct { NI1R id; };`
+  object: allocated value, of struct, like of `struct { NI id; };`
 
 `ARRAY<BS1>`/`byte__array` vs "bytes"
   former :raw representation of an object(or primitive)
@@ -24,8 +24,8 @@ final byte__array //
     empty__bytes = empty__byte__array;
 
 byte__array byte__array__new__generated(
-  final NIMR count,
-  final NI1R Function(NIMR i) generate,
+  final NI count,
+  final NI Function(NI i) generate,
 ) {
   final result = byte__array(count);
 
@@ -37,20 +37,20 @@ byte__array byte__array__new__generated(
   return result;
 }
 
-BOOL byte__array__blank__ok(
+BOOL byte__array__blank___ok(
   final byte__array bys, {
-  final NIMR? count,
+  final NI? count,
 }) /*
   `byte__array__b__clear_ed`
   test: ```
       final bys = [0,0,0,0,0,0,0,0];
-      byte__array__blank__ok(byte__array.fromList(bys+([0,0]..text__representation().print("count")))).text__representation().print("blank?");
-      byte__array__blank__ok(byte__array.fromList(bys+([1,1]..text__representation().print("count")))).text__representation().print("blank?");
-      byte__array__blank__ok(byte__array.fromList(bys+([0,1]..text__representation().print("count")))).text__representation().print("blank?");
-      byte__array__blank__ok(byte__array.fromList(bys+([1,0]..text__representation().print("count")))).text__representation().print("blank?");
+      byte__array__blank___ok(byte__array.fromList(bys+([0,0]..text__representation().print("count")))).text__representation().print("blank?");
+      byte__array__blank___ok(byte__array.fromList(bys+([1,1]..text__representation().print("count")))).text__representation().print("blank?");
+      byte__array__blank___ok(byte__array.fromList(bys+([0,1]..text__representation().print("count")))).text__representation().print("blank?");
+      byte__array__blank___ok(byte__array.fromList(bys+([1,0]..text__representation().print("count")))).text__representation().print("blank?");
 ``` */
 {
-  var blank__ok = OK;
+  var blank___ok = OK;
 
   bys.iterate(
     (final _, final element) {
@@ -58,17 +58,17 @@ BOOL byte__array__blank__ok(
         return OK;
       }
 
-      blank__ok = NO;
+      blank___ok = NO;
       return NO;
     },
     count: (count ?? bys.bytes__count),
   );
 
-  return blank__ok;
+  return blank___ok;
 }
 
 byte__array byte__array__blank(
-  final NIMR count,
+  final NI count,
 ) {
   final result = byte__array(count);
 
@@ -81,9 +81,9 @@ byte__array byte__array__blank(
 }
 
 byte__array byte__array__create /* actually init, not create */ (
-  final array<NIMR> bytes, {
-  NIMR? count,
-  final NIMR result__offset = 0,
+  final array<NI> bytes, {
+  NI? count,
+  final NI result__offset = 0,
 }) {
   final result = byte__array(count ??= bytes.elements__count);
 
@@ -100,9 +100,9 @@ byte__array byte__array__create /* actually init, not create */ (
 byte__array byte__array__array__catinate(
   final array<byte__array> a,
 ) {
-  final NIMR byteArrayCount = a.length;
+  final NI byteArrayCount = a.length;
 
-  NIMR //
+  NI //
       i = 0,
       totalByteCount = 0;
 
@@ -113,7 +113,7 @@ byte__array byte__array__array__catinate(
   final result = byte__array(totalByteCount);
 
   i = 0;
-  NIMR byteOffset = 0;
+  NI byteOffset = 0;
   while (i < byteArrayCount) {
     byteOffset = base__copy(
       result /*.buffer.asUint8List(byteOffset)*/,
@@ -133,9 +133,9 @@ class bytes___compo {
 
   final byte__array bytes;
 
-  NIMR bytes__offset;
+  NI bytes__offset;
 
-  BOOL get iterate__ok => //
+  BOOL get iterate___ok => //
       (bytes__offset < bytes.bytes__count);
 
   byte__array bytes__view__full() => //
@@ -143,8 +143,8 @@ class bytes___compo {
         bytes__offset,
       );
 
-  NIMR read__NI__fixed(
-    final NIMR size,
+  NI read__NI__fixed(
+    final NI size,
   ) {
     final value = bytes
         .view(
@@ -159,8 +159,8 @@ class bytes___compo {
     return value;
   }
 
-  NIMR? read__NI__fixed__nilable(
-    final NIMR size,
+  NI? read__NI__fixed__nilable(
+    final NI size,
   ) {
     final value = read__NI__fixed(
       size,
@@ -171,8 +171,8 @@ class bytes___compo {
         : NIL);
   }
 
-  NISMR read__NIS__fixed(
-    final NIMR size,
+  NIS read__NIS__fixed(
+    final NI size,
   ) =>
       read__NIS__fixed(
         size,
@@ -194,8 +194,8 @@ class bytes___compo {
       read__NIS();
 
   ({
-    NIMR? value,
-    NIMR count,
+    NI? value,
+    NI count,
   }) read__NI__nilable() {
     final result = read__NI();
 
@@ -214,7 +214,7 @@ class bytes___compo {
       bytes[bytes__offset++];
 
   byte__array read__view__partial(
-    final NIMR count,
+    final NI count,
   ) {
     final offset = bytes__offset;
 
@@ -227,7 +227,7 @@ class bytes___compo {
   }
 
   byte__array? read__view__partial__auto__nilable([
-    final NIMR? count__size,
+    final NI? count__size,
   ]) {
     final count = ((count__size != null) //
         ? read__NI__fixed(
@@ -243,7 +243,7 @@ class bytes___compo {
   }
 
   byte__array read__view__partial__auto([
-    final NIMR? count__size,
+    final NI? count__size,
   ]) =>
       (read__view__partial__auto__nilable(
             count__size,
@@ -319,7 +319,7 @@ class bytes___compo {
 
 void byte__array__fill(
   final byte__array dest, {
-  final NIMR? count,
+  final NI? count,
   final BS1 value = 0,
 }) =>
     dest.fill(
@@ -328,12 +328,12 @@ void byte__array__fill(
     );
 
 extension byte__array__extension on byte__array {
-  NIMR get bytes__count => //
+  NI get bytes__count => //
       lengthInBytes;
 
   byte__array view__partial(
-    final NIMR offset,
-    final NIMR count,
+    final NI offset,
+    final NI count,
   ) {
     return buffer.asUint8List(
       (offset + offsetInBytes),
@@ -342,7 +342,7 @@ extension byte__array__extension on byte__array {
   }
 
   byte__array view(
-    final NIMR offset,
+    final NI offset,
   ) {
     return view__partial(
       offset,
@@ -351,8 +351,8 @@ extension byte__array__extension on byte__array {
   }
 
   byte__array separate(
-    final NIMR offset,
-    final NIMR count,
+    final NI offset,
+    final NI count,
   ) {
     return /*sublist(offset,(count+offset),)*/ byte__array__create(
       view__partial(
@@ -363,8 +363,8 @@ extension byte__array__extension on byte__array {
     );
   }
 
-  NIMR convert__NI__endian__little(
-    final NI1R value__size,
+  NI convert__NI__endian__little(
+    final NI value__size,
   ) {
     var //
         result = 0,
@@ -381,8 +381,8 @@ extension byte__array__extension on byte__array {
     return result;
   }
 
-  NIMR convert__NI__endian__big(
-    final NI1R value__size,
+  NI convert__NI__endian__big(
+    final NI value__size,
   ) {
     var //
         result = 0,

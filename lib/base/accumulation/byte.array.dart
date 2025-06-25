@@ -51,70 +51,70 @@ class base__byte__array__accumulation /*
         base__dispose___protocol {
   base__byte__array__accumulation();
 
-  final accumulation__raw = base__accumulation__linear__basic<byte__array>();
+  final accumulation___raw = base__accumulation__linear__basic<byte__array>();
 
-  var bytes__count__raw = 0;
+  var bytes__count___raw = 0;
 
-  NIMR bytes__count() {
-    return bytes__count__raw;
+  NI bytes__count() {
+    return bytes__count___raw;
   }
 
-  NIMR byte__next__offset() {
-    return bytes__count__raw;
+  NI byte__next__offset() {
+    return bytes__count___raw;
   }
 
   void flush() {
-    accumulation__raw.flush();
-    bytes__count__raw = 0;
+    accumulation___raw.flush();
+    bytes__count___raw = 0;
   }
 
   void shrink() {
-    accumulation__raw.shrink();
+    accumulation___raw.shrink();
   }
 
   void add(
     final byte__array bytes,
   ) {
-    accumulation__raw.add__ending(
+    accumulation___raw.add__ending(
       bytes,
     );
 
-    bytes__count__raw += bytes.bytes__count;
+    bytes__count___raw += bytes.bytes__count;
   }
 
   void add__byte(
     final BS1 b,
   ) {
-    accumulation__raw.add__ending(
+    accumulation___raw.add__ending(
       b.NI1__convert__byte__array(),
     );
 
-    bytes__count__raw += 1;
+    bytes__count___raw += 1;
   }
 
   void add__NI__fixed(
-    final NIMR value,
-    final NIMR value__size,
+    final NI value,
+    final NI value__size,
   ) {
-    accumulation__raw.add__ending(
+    accumulation___raw.add__ending(
       value.convert__byte__array__endian__little(
         value__size,
       ),
     );
 
-    bytes__count__raw += value__size;
+    bytes__count___raw += value__size;
   }
 
   void add__NI(
-    final NIMR value,
+    final NI value,
   ) =>
       add(
         value.convert__bytes(),
       );
 
   void add__NI__fixed__nilable(
-    final NIMR? value,
-    final NIMR value__size,
+    final NI? value,
+    final NI value__size,
   ) =>
       ((value != null) //
           ? add__NI__fixed(
@@ -124,7 +124,7 @@ class base__byte__array__accumulation /*
           : add__byte(0));
 
   void add__NI__nilable(
-    final NIMR? value,
+    final NI? value,
   ) =>
       ((value != null) //
           ? add__NI(
@@ -133,8 +133,8 @@ class base__byte__array__accumulation /*
           : add__byte(0));
 
   void add__NIS__fixed(
-    final NISMR value,
-    final NIMR value__size,
+    final NIS value,
+    final NI value__size,
   ) =>
       add__NI__fixed(
         value,
@@ -142,7 +142,7 @@ class base__byte__array__accumulation /*
       );
 
   void add__NIS(
-    final NISMR value,
+    final NIS value,
   ) =>
       add__NI(
         value,
@@ -152,18 +152,18 @@ class base__byte__array__accumulation /*
     byte__array? bytes,
   }) {
     bytes ??= byte__array(
-      bytes__count__raw,
+      bytes__count___raw,
     );
 
-    accumulation__raw.copy__byte__array(
+    accumulation___raw.copy__byte__array(
       bytes,
     );
 
     return bytes;
   }
 
-  /* string__raw convert__str([final BOOL b_verbose = NO]) {
-    NIMR //
+  /* string convert__str([final BOOL b_verbose = NO]) {
+    NI //
         counter = 0,
         byteOffset = 0;
 
@@ -171,7 +171,7 @@ class base__byte__array__accumulation /*
 
     ls.iterate__basic(
       (final byte__array bytes) {
-        final NIMR byteCount = bytes.length;
+        final NI byteCount = bytes.length;
 
         buffer
           ..write("id: ")
@@ -196,6 +196,6 @@ class base__byte__array__accumulation /*
 
   @override
   void dispose() {
-    accumulation__raw.dispose();
+    accumulation___raw.dispose();
   }
 }

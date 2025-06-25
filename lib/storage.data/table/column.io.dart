@@ -3,7 +3,7 @@ part of "../_.dart";
 typedef base__storage__data__table__columns__array___compo = //
     array<base__storage__data__table__columns__compo>;
 
-string__raw base__storage__data__table__column__meta__convert__text(
+string base__storage__data__table__column__meta__convert__text(
   final base__storage__data__table__column___compo column,
   final base__storage__data__table__columns__array___compo columns__array,
 ) {
@@ -25,7 +25,7 @@ string__raw base__storage__data__table__column__meta__convert__text(
   }
 
   void buffer__write(
-    final string__raw name,
+    final string name,
     final Object value,
   ) {
     buffer
@@ -38,7 +38,7 @@ string__raw base__storage__data__table__column__meta__convert__text(
   }
 
   {
-    final string__raw type;
+    final string type;
 
     switch (column__type) {
       case base__storage__data__table__column__type___enum.uit:

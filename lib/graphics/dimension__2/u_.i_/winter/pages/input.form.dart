@@ -1,7 +1,7 @@
 part of "../_.dart";
 
 /*class Form extends StatefulWidget {
-  static const NI1R //
+  static const NI //
       TYPE_CHOICE_SINGLE = 0,
       TYPE_CHOICE_MULTIPLE = (TYPE_CHOICE_SINGLE + 1),
       TYPE_TEXT = (TYPE_CHOICE_MULTIPLE + 1),
@@ -70,7 +70,7 @@ class _FormState extends State<Form> {
               isMultiChoice: NO,
               title: ascii__convert__str__ascii(bytes.sublist(byteCounter, (byteCounter = bytes.indexOf(0, byteCounter)))),
               infoText: ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter)))),
-              items: List<string__raw>.generate(
+              items: List<string>.generate(
                 (firstByte >> 2),
                 (final int i) {
                   return ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter))));
@@ -91,7 +91,7 @@ class _FormState extends State<Form> {
               isMultiChoice: OK,
               title: ascii__convert__str__ascii(bytes.sublist(byteCounter, (byteCounter = bytes.indexOf(0, byteCounter)))),
               infoText: ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter)))),
-              items: List<string__raw>.generate(
+              items: List<string>.generate(
                 (firstByte >> 2),
                 (final int i) {
                   return ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter))));
@@ -273,8 +273,8 @@ class ChoiceInputFormItem extends StatefulWidget {
 
   final BOOL isMultiChoice;
 
-  final string__raw title, infoText;
-  final List<string__raw> items;
+  final string title, infoText;
+  final List<string> items;
 
   final Pointer<Object?> result;
 
@@ -328,7 +328,7 @@ class _ChoiceInputFormItemState extends State<ChoiceInputFormItem> {
               _widget = GestureDetector(
                 child: gui__base__listing__item(
                   body: gui__base__box__text__primary__secondary(
-                    primary__text: List<string__raw>.generate(selections.length, (final int i) {
+                    primary__text: List<string>.generate(selections.length, (final int i) {
                       return widget.items[selections[i]];
                     }, growable: NO)
                         .join('\n'),

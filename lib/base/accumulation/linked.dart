@@ -6,22 +6,22 @@ singly linked (forward ref.ing) list */ //
     implements
         base__dispose___protocol {
   base__accumulation__linked() //
-      : element__first__raw = NIL,
-        element__last__raw = NIL,
-        elements__count__raw = 0;
+      : element__first___raw = NIL,
+        element__last___raw = NIL,
+        elements__count___raw = 0;
 
   base__accumulation__linked__element<element__type>? //
-      element__first__raw,
-      element__last__raw;
+      element__first___raw,
+      element__last___raw;
 
-  NIMR //
-      elements__count__raw;
+  NI //
+      elements__count___raw;
 
-  NIMR elements__count() {
-    return elements__count__raw;
+  NI elements__count() {
+    return elements__count___raw;
   }
 
-  BOOL empty__ok() {
+  BOOL empty___ok() {
     return (elements__count() == 0);
   }
 
@@ -30,28 +30,28 @@ singly linked (forward ref.ing) list */ //
   }
 
   base__accumulation__linked__element<element__type>? element__first() {
-    return element__first__raw;
+    return element__first___raw;
   }
 
   base__accumulation__linked__element<element__type>? element__last() {
-    return element__last__raw;
+    return element__last___raw;
   }
 
   void add__beginning /* add to front (prepend) */ (
     final element__type value,
   ) {
-    final only__ok = empty__ok();
+    final only___ok = empty___ok();
 
-    element__first__raw = base__accumulation__linked__element<element__type>(
+    element__first___raw = base__accumulation__linked__element<element__type>(
       value,
-      next__raw: element__first__raw,
+      next___raw: element__first___raw,
     );
 
-    if /*F*/ (only__ok) {
-      element__last__raw = element__first__raw;
+    if /*F*/ (only___ok) {
+      element__last___raw = element__first___raw;
     }
 
-    elements__count__raw += 1;
+    elements__count___raw += 1;
   }
 
   void add__ending /* add to rear (append) */ (
@@ -59,33 +59,33 @@ singly linked (forward ref.ing) list */ //
   ) {
     final element = base__accumulation__linked__element<element__type>(
       value,
-      next__raw: NIL,
+      next___raw: NIL,
     );
 
-    if /*F*/ (empty__ok()) /*
+    if /*F*/ (empty___ok()) /*
 `element` is first and only */
     {
-      element__first__raw = element;
+      element__first___raw = element;
     } else {
-      element__last__raw!.next__raw = element;
+      element__last___raw!.next___raw = element;
     }
 
-    element__last__raw = element;
+    element__last___raw = element;
 
-    elements__count__raw += 1;
+    elements__count___raw += 1;
   }
 
   void remove__first() {
-    if (empty__ok()) {
+    if (empty___ok()) {
       return;
     }
 
-    element__first__raw = element__first__raw?.next__raw;
+    element__first___raw = element__first___raw?.next___raw;
 
-    elements__count__raw -= 1;
+    elements__count___raw -= 1;
 
-    if (empty__ok()) {
-      element__last__raw = NIL;
+    if (empty___ok()) {
+      element__last___raw = NIL;
     }
   }
 
@@ -96,30 +96,30 @@ if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy defaul
   void iterate(
     final BOOL Function(base__accumulation__linked__element<element__type> element) element__handle,
   ) {
-    var element = element__first__raw;
+    var element = element__first___raw;
 
     while (element != null) {
-      final iterate__ok = element__handle(
+      final iterate___ok = element__handle(
         element,
       );
 
-      if (iterate__ok.not) {
+      if (iterate___ok.not) {
         break;
       }
 
-      element = element.next__raw;
+      element = element.next___raw;
     }
   }
 
-  BOOL present__ok(
+  BOOL present___ok(
     final element__type element,
-    final base__value__equal__ok__function__format<element__type,element__type> equal__ok,
+    final base__value__equality__function__format<element__type,element__type> equal___ok,
   ) {
-    var present__ok = NO;
+    var present___ok = NO;
 
     iterate(
       (final element_1) {
-        final equal__ok_1 = equal__ok(
+        final equal__ok_1 = equal___ok(
           element,
           element_1.value,
         );
@@ -128,13 +128,13 @@ if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy defaul
           return OK;
         }
 
-        present__ok = OK;
+        present___ok = OK;
 
         return NO;
       },
     );
 
-    return present__ok;
+    return present___ok;
   }
 
   array<element__type> convert__array /*
@@ -142,7 +142,7 @@ TASK
   eliminate intermediate conversion to `base__accumulation__linear__basic`
     also in `base__accumulation__chained` */
       () {
-    if (empty__ok()) {
+    if (empty___ok()) {
       return array__new__empty();
     }
 
@@ -168,15 +168,15 @@ TASK
   }
 
   void flush() {
-    element__first__raw = NIL;
-    element__last__raw = NIL;
+    element__first___raw = NIL;
+    element__last___raw = NIL;
 
-    elements__count__raw = 0;
+    elements__count___raw = 0;
   }
 
   @override
   void dispose() {
-    if (empty__ok()) {
+    if (empty___ok()) {
       return;
     }
 
@@ -188,19 +188,19 @@ class base__accumulation__linked__element //
     <element__type extends Object?> {
   base__accumulation__linked__element(
     this.value, {
-    required this.next__raw,
+    required this.next___raw,
   });
 
   final element__type value;
 
-  base__accumulation__linked__element<element__type>? next__raw;
+  base__accumulation__linked__element<element__type>? next___raw;
 }
 
 void base__accumulation__linked__test() {
-  final accumulation = base__accumulation__linked<NIMR>();
+  final accumulation = base__accumulation__linked<NI>();
 
   void accumulation__print(
-    final string__raw title,
+    final string title,
   ) {
     title.print();
     "accumulation".print();
@@ -208,10 +208,10 @@ void base__accumulation__linked__test() {
     base__printing__indent();
 
     accumulation
-      ..elements__count__raw.text__representation().print("..elements__count")
+      ..elements__count___raw.text__representation().print("..elements__count")
       ..convert__array().join(" ").text__representation().print("..elements")
-      ..element__first__raw?.value.text__representation().print("..element__first")
-      ..element__last__raw?.value.text__representation().print("..element__last");
+      ..element__first___raw?.value.text__representation().print("..element__first")
+      ..element__last___raw?.value.text__representation().print("..element__last");
 
     base__printing__indent__de();
 

@@ -4,20 +4,20 @@ class base__storage__file__memory__meta //
     implements
         base__storage__file__meta__basic___protocol {
   base__storage__file__memory__meta(
-    this.file__raw, {
+    this.file___raw, {
     this.alignment = alignment__modern__normal,
   });
 
-  final storage__file__memory file__raw;
+  final storage__file__memory file___raw;
   final base__storage__file__alignment___compo alignment;
 
   @override
   value__asyn<base__storage__file__reading__result___union> //
       read__asyn({
-    required final NIMR count,
-    required final NIMR offset,
+    required final NI count,
+    required final NI offset,
   }) {
-    final result = file__raw.read(
+    final result = file___raw.read(
       count: count,
       offset: offset,
     );
@@ -33,9 +33,9 @@ class base__storage__file__memory__meta //
   value__asyn<base__storage__file__writing__error?> //
       write__asyn(
     final base__storage__file__blocks value, {
-    required final NIMR offset,
+    required final NI offset,
   }) {
-    file__raw.write(
+    file___raw.write(
       value,
       offset: offset,
     );
@@ -48,7 +48,7 @@ class base__storage__file__memory__meta //
   @override
   value__asyn<base__storage__file__closure__error?> //
       dispose__asyn() {
-    file__raw.dispose();
+    file___raw.dispose();
 
     return value__asyn.value(
       NIL,
@@ -64,47 +64,47 @@ class storage__file__memory //
 
   storage__file__memory({
     this.block__meta = alignment__modern__normal,
-  }) : block__accumulation__raw = base__accumulation__linear__basic();
+  }) : block__accumulation___raw = base__accumulation__linear__basic();
 
   final base__storage__file__alignment___compo block__meta;
-  final base__accumulation__linear__basic<byte__array> block__accumulation__raw;
+  final base__accumulation__linear__basic<byte__array> block__accumulation___raw;
 
-  NIMR blocks__count__raw = 0;
+  NI blocks__count___raw = 0;
 
-  NIMR //
+  NI //
       blocks__count() {
-    return blocks__count__raw;
+    return blocks__count___raw;
   }
 
   BOOL //
-      empty__ok() {
-    return (blocks__count__raw == 0);
+      empty___ok() {
+    return (blocks__count___raw == 0);
   }
 
   BOOL //
       empty__not() {
-    return (blocks__count__raw != 0);
+    return (blocks__count___raw != 0);
   }
 
-  NIMR //
+  NI //
       bytes__count() {
-    return (blocks__count__raw * block__meta.size);
+    return (blocks__count___raw * block__meta.size);
   }
 
-  void block__ensure__valid__raw(
-    final NIMR block__id,
+  void block__ensure__valid___raw(
+    final NI block__id,
   ) {
-    if (block__id > blocks__count__raw) {
+    if (block__id > blocks__count___raw) {
       throw "$block__id\\block__id\\ is not existent in the file";
     }
   }
 
   void write__fill({
     final byte value = 0,
-    required final NIMR count,
-    required final NIMR offset,
+    required final NI count,
+    required final NI offset,
   }) {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       base__function__call__print(
         "storage__file__memory.write__fill",
         debug__label,
@@ -116,7 +116,7 @@ class storage__file__memory //
     }
 
     if (count == 0) {
-      block__ensure__valid__raw(
+      block__ensure__valid___raw(
         offset,
       );
 
@@ -126,17 +126,17 @@ class storage__file__memory //
     {
       final offset__new = (count + offset);
 
-      block__ensure__valid__raw(
+      block__ensure__valid___raw(
         offset__new,
       );
     }
 
-    operate__raw(
+    operate___raw(
       count: count,
       offset: offset,
       block__handle: (final _, final block) {
         byte__array__fill(
-          block.value__raw,
+          block.value___raw,
           count: block__meta.size,
           value: value,
         );
@@ -144,11 +144,11 @@ class storage__file__memory //
     );
   }
 
-  NIMR /*offset*/ //
+  NI /*offset*/ //
       write__ending(
     final base__storage__file__blocks value,
   ) {
-    final offset = blocks__count__raw;
+    final offset = blocks__count___raw;
 
     increase(
       count: value.elements__count,
@@ -164,9 +164,9 @@ class storage__file__memory //
 
   void write(
     final base__storage__file__blocks value, {
-    required final NIMR offset,
+    required final NI offset,
   }) {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       base__function__call__print(
         "storage__file__memory.write",
         debug__label,
@@ -176,8 +176,8 @@ class storage__file__memory //
       offset.text__representation().print("offset");
     }
 
-    if (value.empty__ok()) {
-      block__ensure__valid__raw(
+    if (value.empty___ok()) {
+      block__ensure__valid___raw(
         offset,
       );
 
@@ -187,18 +187,18 @@ class storage__file__memory //
     {
       final offset__new = (value.elements__count + offset);
 
-      block__ensure__valid__raw(
+      block__ensure__valid___raw(
         offset__new,
       );
     }
 
-    operate__raw(
+    operate___raw(
       count: value.elements__count,
       offset: offset,
       block__handle: (final block__id, final block) {
         base__copy(
-          block.value__raw,
-          value[block__id].value__raw,
+          block.value___raw,
+          value[block__id].value___raw,
           count: block__meta.size,
         );
       },
@@ -207,12 +207,12 @@ class storage__file__memory //
 
   base__storage__file__blocks //
       read__full() {
-    if (empty__ok()) {
+    if (empty___ok()) {
       return array__new__empty();
     }
 
     final result = read(
-      count: blocks__count__raw,
+      count: blocks__count___raw,
       offset: 0,
     );
 
@@ -221,10 +221,10 @@ class storage__file__memory //
 
   base__storage__file__blocks //
       read({
-    required final NIMR count,
-    required final NIMR offset,
+    required final NI count,
+    required final NI offset,
   }) {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       base__function__call__print(
         "storage__file__memory.read",
         debug__label,
@@ -236,7 +236,7 @@ class storage__file__memory //
 
     final offset__new = (count + offset);
 
-    block__ensure__valid__raw(
+    block__ensure__valid___raw(
       offset__new,
     );
 
@@ -248,7 +248,7 @@ class storage__file__memory //
       capacity__initial: count,
     );
 
-    operate__raw(
+    operate___raw(
       count: count,
       offset: offset,
       block__handle: (final _, final block) {
@@ -265,17 +265,17 @@ class storage__file__memory //
     return result;
   }
 
-  void operate__raw({
-    required final NIMR count,
-    required final NIMR offset,
+  void operate___raw({
+    required final NI count,
+    required final NI offset,
     required final void Function(
-      NIMR block__id,
+      NI block__id,
       base__storage__file__block block,
     ) block__handle,
   }) {
     final blocks__iteration__meta = base__accumulation__conservative__iteration__meta(
       array__first__elements__count__doubling__initial: block__first__bytes__count__doubling__initial,
-      elements__count: blocks__count__raw,
+      elements__count: blocks__count___raw,
     );
 
     late byte__array blocks;
@@ -287,7 +287,7 @@ class storage__file__memory //
         final accumulation__element__id,
         final array__id,
       ) {
-        blocks = block__accumulation__raw.element(
+        blocks = block__accumulation___raw.element(
           array__id,
         );
 
@@ -313,32 +313,32 @@ class storage__file__memory //
   }
 
   void increase({
-    required final NIMR count,
+    required final NI count,
   }) {
     {
       final bytes__count = (count * block__meta.size);
 
-      NIMR array__last__bytes__count;
-      if /*F*/ (block__accumulation__raw.empty__ok()) {
+      NI array__last__bytes__count;
+      if /*F*/ (block__accumulation___raw.empty___ok()) {
         array__last__bytes__count = (block__meta.size *
             base__accumulation__conservative__iteration__meta.array__first__elements__count__ideal(
               array__first__elements__count__doubling__initial: block__first__bytes__count__doubling__initial,
             ));
 
-        block__accumulation__raw.add__ending(
+        block__accumulation___raw.add__ending(
           byte__array(
             array__last__bytes__count,
           ),
         );
       } else {
-        array__last__bytes__count = block__accumulation__raw.element__last().bytes__count;
+        array__last__bytes__count = block__accumulation___raw.element__last().bytes__count;
       }
 
       while (OK) {
         {
           array__last__bytes__count *= 2;
 
-          block__accumulation__raw.add__ending(
+          block__accumulation___raw.add__ending(
             byte__array(
               array__last__bytes__count,
             ),
@@ -353,11 +353,11 @@ class storage__file__memory //
       }
     }
 
-    blocks__count__raw += count;
+    blocks__count___raw += count;
   }
 
   /*void decrease({
-    final NIMR offset = 0,
+    final NI offset = 0,
   });*/
 
   byte__array convert__byte__array() {
@@ -365,21 +365,21 @@ class storage__file__memory //
   }
 
   void flush() {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       base__function__call__print(
         "storage__file__memory.flush",
         debug__label,
       );
     }
 
-    block__accumulation__raw.flush();
+    block__accumulation___raw.flush();
 
-    blocks__count__raw = 0;
+    blocks__count___raw = 0;
   }
 
   @override
   void dispose() {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       base__function__call__print(
         "storage__file__memory.dispose",
         debug__label,
@@ -388,7 +388,7 @@ class storage__file__memory //
 
     flush();
 
-    block__accumulation__raw.dispose();
+    block__accumulation___raw.dispose();
   }
 }
 
@@ -419,7 +419,7 @@ void storage__file__memory__test() {
     ..read__full()
         .convert__byte__array()
         .text__representation(
-          elements__truncate__ok: NO,
+          elements__truncate___ok: NO,
         )
         .print("file.read.full.1")
     ..block__accumulation__raw

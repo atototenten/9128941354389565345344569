@@ -17,10 +17,7 @@ class service__authority //
 resolving is 
   ,from begin to end ,but stops if any source denies
     ,simply logical-OR towards denial */;
-  final value__asyn<gui__base__widget?> Function(
-    NIMR data,
-  )
-  data__handle;
+  final value__asyn<gui__base__widget?> Function(base__value__optional___union<java_script__type>) data__handle;
 
   @override
   value__asyn<void> handle() async {

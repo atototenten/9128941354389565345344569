@@ -37,16 +37,16 @@ invokation possibly leads to side-effects */
 {
   base__procedure__empty__complicated__meta(
     final procedure__empty__format value,
-  ) : value__raw = value;
+  ) : value___raw = value;
 
-  procedure__empty__format? value__raw;
+  procedure__empty__format? value___raw;
 
-  BOOL invoked__ok() {
-    return (value__raw == NIL);
+  BOOL invoked___ok() {
+    return (value___raw == NIL);
   }
 
   BOOL invoke() {
-    final value = value__raw;
+    final value = value___raw;
 
     if (value == null) {
       return NO;
@@ -54,7 +54,7 @@ invokation possibly leads to side-effects */
 
     value();
 
-    value__raw = NIL;
+    value___raw = NIL;
 
     return OK;
   }
@@ -67,9 +67,9 @@ app.s :widget(of graphical-user-interface)'s [de-]init ,etc. */ //
     implements
         base__dispose___protocol {
   base__procedure__empty__meta__definitive() //
-      : assignment__id__raw = 0;
+      : assignment__id___raw = 0;
 
-  NIMR assignment__id__raw /*
+  NI assignment__id___raw /*
 mutation/generation id.
 needed for safe remov-al/re-place
 should only used for intra-container equality ,not inter-container 
@@ -82,22 +82,22 @@ should only used for intra-container equality ,not inter-container
       ;
 
   ({
-    NIMR id,
+    NI id,
     procedure__empty__format proc,
-  })? value__raw;
+  })? value___raw;
 
-  NIMR? _value__id() => //
-      value__raw?.id;
+  NI? _value__id() => //
+      value___raw?.id;
 
   procedure__empty__format? proc_() => //
-      value__raw?.proc;
+      value___raw?.proc;
 
-  NIMR re_place__un_safe(
+  NI re_place__un_safe(
     final procedure__empty__format procedure__new,
   ) {
-    final $id = assignment__id__raw++;
+    final $id = assignment__id___raw++;
 
-    value__raw = (
+    value___raw = (
       id: $id,
       proc: procedure__new,
     );
@@ -105,8 +105,8 @@ should only used for intra-container equality ,not inter-container
     return $id;
   }
 
-  NIMR? re_place__safe(
-    final NIMR procedure__id /*
+  NI? re_place__safe(
+    final NI procedure__id /*
 of currently contain-ed proc. ,not `procedure:new` */
     ,
     final procedure__empty__format procedure__new,
@@ -120,7 +120,7 @@ of currently contain-ed proc. ,not `procedure:new` */
     );
   }
 
-  NIMR re_place(
+  NI re_place(
     final procedure__empty__format procedure__new,
   ) =>
       re_place__un_safe(
@@ -128,13 +128,13 @@ of currently contain-ed proc. ,not `procedure:new` */
       );
 
   void re_move__un_safe() {
-    value__raw = NIL;
+    value___raw = NIL;
   }
 
   BOOL /*
 `NO` for `(proc_()==NIL)` */
       re_move__safe(
-    final NIMR procedure__id,
+    final NI procedure__id,
   ) {
     if (procedure__id != _value__id()) {
       return NO;
@@ -146,7 +146,7 @@ of currently contain-ed proc. ,not `procedure:new` */
   }
 
   BOOL re_move(
-    final NIMR procedure__id,
+    final NI procedure__id,
   ) =>
       re_move__safe(
         procedure__id,
@@ -190,7 +190,7 @@ latest run's result :`
 {
   void check(
     final BOOL condition,
-    final string__raw title,
+    final string title,
   ) =>
       "$title :${(condition ? "YES" : "NO")}".print();
 

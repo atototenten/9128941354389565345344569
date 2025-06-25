@@ -2,21 +2,21 @@ part of "_.dart";
 
 void app__size__set() {}
 
-NEMR get page__padding__left => //
+NFP get page__padding__left => //
     (size__pixel__padding__horizontal + base__screen__padding__permanent().left);
 
-NEMR get page__padding__right => //
+NFP get page__padding__right => //
     (size__pixel__padding__horizontal + base__screen__padding__permanent().right);
 
-NEMR get size__pixel__padding__horizontal => 8.px();
-NEMR get size__pixel__padding__horizontal__double => 16.px();
+NFP get size__pixel__padding__horizontal => 8.px();
+NFP get size__pixel__padding__horizontal__double => 16.px();
 
-NEMR get size__pixel__padding__vertical => 8.px();
-NEMR get size__pixel__padding__vertical__double => 16.px();
+NFP get size__pixel__padding__vertical => 8.px();
+NFP get size__pixel__padding__vertical__double => 16.px();
 
 Radius _radius(
-  final NEMR value__base,
-  final NIMR nest_ing__depth,
+  final NFP value__base,
+  final NI nest_ing__depth,
 ) =>
     Radius.circular(((nest_ing__depth > 0) //
             ? (value__base - (((value__base / 2) / 2) * nest_ing__depth))
@@ -24,12 +24,12 @@ Radius _radius(
         .px());
 
 Radius radius__full([
-  final NIMR nest_ing__depth = 0,
+  final NI nest_ing__depth = 0,
 ]) =>
     _radius(16, nest_ing__depth);
 
 Radius radius__half([
-  final NIMR nest_ing__depth = 0,
+  final NI nest_ing__depth = 0,
 ]) =>
     _radius(8, nest_ing__depth);
 

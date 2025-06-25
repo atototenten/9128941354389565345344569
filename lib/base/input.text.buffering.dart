@@ -3,13 +3,13 @@ part of "_.dart";
 const //
     TCW__list__text__initial__size = NI1__max;
 
-NIMR TCW__list__text__size__increased(
-  final NIMR size,
+NI TCW__list__text__size__increased(
+  final NI size,
 ) =>
     ((size << 1) | 1);
 
 input__text__buffer___compo input__text__buffer({
-  required final NIMR text__bytes__count__max,
+  required final NI text__bytes__count__max,
   final string__wide? chars__initial,
 }) {
   if (chars__initial == null) //
@@ -21,7 +21,7 @@ input__text__buffer___compo input__text__buffer({
     );
 
   final text__initial__size = chars__initial.elements__count;
-  NIMR text__size = TCW__list__text__initial__size;
+  NI text__size = TCW__list__text__initial__size;
 
   while (text__size < text__initial__size) //
     text__size = TCW__list__text__size__increased(
@@ -36,7 +36,7 @@ input__text__buffer___compo input__text__buffer({
     count: text__initial__size,
   );
 
-  NIMR text__bytes__count = 0;
+  NI text__bytes__count = 0;
 
   chars__initial.iterate__basic(
     (final _, final wc) {
@@ -68,25 +68,25 @@ class input__text__buffer___compo /*
 
   string__wide chars;
 
-  NIMR size__current;
-  NIMR bytes__count;
+  NI size__current;
+  NI bytes__count;
 
-  final NIMR bytes__count__max;
+  final NI bytes__count__max;
 
   /*wstr? text__secondary;
-  NIMR? text__offset;*/
+  NI? text__offset;*/
 
-  NIMR get size => //
+  NI get size => //
       chars.elements__count;
 
-  BOOL empty__ok() => //
+  BOOL empty___ok() => //
       (size__current == 0);
 
   BOOL get b__wide => //
       (size__current == bytes__count);
 
   BOOL $b__write(
-    final NIMR ws__bytes__count,
+    final NI ws__bytes__count,
   ) =>
       ((bytes__count + ws__bytes__count) > bytes__count__max).not /*
   partially writing `bytes`, until `text__bytes__count__max`'s breach
@@ -96,12 +96,12 @@ class input__text__buffer___compo /*
       ;
 
   void $grow__if__required(
-    NIMR size__required,
+    NI size__required,
   ) {
     size__required += size__current;
 
     final text__size_ = size;
-    NIMR text__size__ = text__size_;
+    NI text__size__ = text__size_;
 
     while /* un-likely */ (text__size__ < size__required) //
       text__size__ = TCW__list__text__size__increased(
@@ -191,7 +191,7 @@ class input__text__buffer___compo /*
   }
 
   string__wide read__full() => //
-      (empty__ok().not
+      (empty___ok().not
           ? chars.view__partial(
               0,
               size__current,

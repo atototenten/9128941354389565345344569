@@ -1,7 +1,7 @@
 part of "_.dart";
 
 gui__base__widget winter__box__text__primary(
-  final string__raw s, {
+  final string s, {
   final Color? color,
 }) =>
     gui__base__box__text__widget(
@@ -11,7 +11,7 @@ gui__base__widget winter__box__text__primary(
     );
 
 gui__base__widget winter__box__text__secondary(
-  final string__raw s, {
+  final string s, {
   final Color? color,
 }) =>
     gui__base__box__text__widget(
@@ -37,8 +37,8 @@ gui__base__widget winter__box__text__multi({
     );
 
 gui__base__widget winter__box__text__primary__secondary(
-  final string__raw primary__text,
-  final string__raw secondary__text, {
+  final string primary__text,
+  final string secondary__text, {
   final Color? primary__color,
   final Color? secondary__color,
 }) => //
@@ -54,9 +54,9 @@ gui__base__widget winter__box__text__primary__secondary(
     );
 
 gui__base__widget winter__box__text__primary__secondary__auto({
-  required final string__raw primary__text,
+  required final string primary__text,
   final Color? primary__color,
-  final string__raw? secondary__text,
+  final string? secondary__text,
   final Color? secondary__color,
 }) => //
     ((secondary__text == null)
@@ -72,9 +72,9 @@ gui__base__widget winter__box__text__primary__secondary__auto({
           ));
 
 gui__base__widget winter__box__text__secondary__primary({
-  required final string__raw secondary__text,
+  required final string secondary__text,
   final Color? secondary__color,
-  required final string__raw primary__text,
+  required final string primary__text,
   final Color? primary__color,
 }) => //
     gui__base__box__text__multi(
@@ -89,12 +89,12 @@ gui__base__widget winter__box__text__secondary__primary({
     );
 
 gui__base__widget winter__heading__top__widget({
-  required final string__raw heading,
-  final string__raw? heading__sub,
-   final NEMR heading__size=28,
-   final NEMR heading__sub__size=20,
-  final NEMR padding__top=0,
-   final NEMR padding__bottom=0,
+  required final string heading,
+  final string? heading__sub,
+   final NFP heading__size=28,
+   final NFP heading__sub__size=20,
+  final NFP padding__top=0,
+   final NFP padding__bottom=0,
 }) {
   final title = gui__base__box__text__widget(
     heading,

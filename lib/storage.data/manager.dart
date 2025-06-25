@@ -42,7 +42,7 @@ class base__storage__data__manager___compo {
   final base__storage__data__meta___compo ds__meta;
   final array<base__storage__data__column__tree__element__super__compo> column__tree;
 
-  array<string__raw> table__main__name__array() {
+  array<string> table__main__name__array() {
     return array__new__generated(
       column__tree.elements__count,
       (final i) => column__tree[i].column.meta.name,
@@ -50,7 +50,7 @@ class base__storage__data__manager___compo {
   }
 
   base__storage__data__table__meta___protocol table__main(
-    final NIMR table__main__id,
+    final NI table__main__id,
   ) {
     return base__storage__data__table__main__open(
       ds__meta,

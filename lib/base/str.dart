@@ -13,9 +13,9 @@ final //
     empty__str = empty__byte__array;
 
 str text__ascii__convert__str(
-  final string__raw s,
+  final string s,
 ) {
-  if (s.empty__ok()) {
+  if (s.empty___ok()) {
     return empty__str;
   }
 
@@ -39,11 +39,11 @@ str text__ascii__convert__str(
   return result;
 }
 
-string__raw str__convert__text(
+string str__convert__text(
   final str s,
 ) {
-  if (s.empty__ok()) {
-    return empty__text;
+  if (s.empty___ok()) {
+    return empty__string;
   }
 
   final //
@@ -61,7 +61,7 @@ string__raw str__convert__text(
     },
   );
 
-  return string__raw.fromCharCodes(
+  return string.fromCharCodes(
     result,
   );
 }

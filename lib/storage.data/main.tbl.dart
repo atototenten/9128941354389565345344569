@@ -12,7 +12,7 @@ void base__storage__data__table__main__array__write(
   final base__storage__data__meta___compo ds__meta, {
   required final base__storage__data__table__main__array___compo table__main__array,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__tbl__main__write",
       ds__meta.debug__label,
@@ -83,9 +83,9 @@ void base__storage__data__table__main__array__write(
 base__storage__data__table__meta___protocol base__storage__data__table__main__open(
   final base__storage__data__meta___compo ds__meta, {
   required final base__storage__data__table__main__array___compo table__main__array,
-  required final NIMR table__main__id,
+  required final NI table__main__id,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__data__tbl__main__table",
       ds__meta.debug__label,

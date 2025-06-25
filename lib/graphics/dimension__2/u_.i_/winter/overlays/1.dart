@@ -2,13 +2,13 @@ part of "../_.dart";
 
 gui__base__widget winter__overlay__notice__basic({
   final IconData? icon = flutter__material__icons.info_outlined,
-  required final string__raw title,
-  final string__raw? body,
+  required final string title,
+  final string? body,
   final Color background__color = const Color(0xFFDDDDDD),
 }) {
   final //
       separat_ion = SizedBox(height: 4.px()),
-      body__ok = (body != null);
+      body___ok = (body != null);
 
   return Padding(
     padding: EdgeInsets.symmetric(
@@ -23,7 +23,7 @@ gui__base__widget winter__overlay__notice__basic({
         ),
       ),
       child: SizedBox(
-        width: NEMR.maxFinite,
+        width: NFP.maxFinite,
         child: Padding(
           padding: EdgeInsets.all(16.px()),
           child: Column(
@@ -42,11 +42,11 @@ gui__base__widget winter__overlay__notice__basic({
               gui__base__box__text__widget(
                 title,
                 font__size: 16.px(),
-                font__weight: (body__ok //
+                font__weight: (body___ok //
                     ? FontWeight.w600
                     : FontWeight.w400),
               ),
-              if (body__ok) //
+              if (body___ok) //
                 ...[
                 SizedBox(height: 8.px()),
                 gui__base__box__text__widget(
@@ -65,8 +65,8 @@ gui__base__widget winter__overlay__notice__basic({
 }
 
 gui__base__widget winter__overlay__issue({
-  final string__raw title = "Issue found",
-  required final string__raw issue,
+  final string title = "Issue found",
+  required final string issue,
 }) {
   return winter__overlay__notice__basic(
     icon: flutter__material__icons. /*report_outlined*/ warning_amber_outlined,

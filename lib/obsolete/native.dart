@@ -14,7 +14,7 @@ abstract class FileOpenMode {
 
   static const _prefixText = "FileOpenMode.";
 
-  static string__raw getModeText(final io.FileMode mode) {
+  static string getModeText(final io.FileMode mode) {
     switch (mode) {
       case READ_ONLY:
         return (_prefixText + "READ_ONLY");
@@ -33,11 +33,11 @@ abstract class FileOpenMode {
 }
 
 class ReadOnlyFile {
-  static bool exists(final string__raw path) => //
+  static bool exists(final string path) => //
       io.File(path).existsSync()..text__representation().print("ReadOnlyFile.exists(path: \"$path\")");
 
   static void create(
-    final string__raw path, [
+    final string path, [
     final bool recursive = NO,
   ]) {
     report__info("ReadOnlyFile.create(path: \"$path\", recursive: $recursive)");
@@ -48,7 +48,7 @@ class ReadOnlyFile {
   }
 
   static ReadOnlyFile open(
-    final string__raw path, [
+    final string path, [
     final io.FileMode mode = FileOpenMode.READ_ONLY,
   ]) {
     report__info("ReadOnlyFile.open(path: \"$path\", mode: ${FileOpenMode.getModeText(mode)})");
@@ -64,7 +64,7 @@ class ReadOnlyFile {
 
   final io.RandomAccessFile file;
 
-  string__raw get _filePath => //
+  string get _filePath => //
       "File(${file.path})";
 
   byte__array read(
@@ -127,7 +127,7 @@ class RandomAccessFile extends ReadOnlyFile {
   ) : super._(file);
 
   static RandomAccessFile open(
-    final string__raw path, [
+    final string path, [
     final io.FileMode mode = FileOpenMode.READ_WRITE,
   ]) {
     report__info("RandomAccessFile.open(path: $path, mode: ${FileOpenMode.getModeText(mode)})");

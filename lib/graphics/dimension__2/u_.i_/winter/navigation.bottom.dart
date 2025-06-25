@@ -10,7 +10,7 @@ typedef navigation__bottom__item___compo = ({
   prefer, to keep the `(count < 4)`
     to avoid looking bloated, or congested */
   ,
-  final NIMR page__chosen__initial__id = 0,
+  final NI page__chosen__initial__id = 0,
 }) /*
   design was copied from "My BMW"(`http://play.google.com/store/apps/details?id=de.bmw.connected.mobile20.row`) app,
     got reference to app, from `flutter.dart`'s web homepage */
@@ -22,12 +22,12 @@ typedef navigation__bottom__item___compo = ({
          null,
       );
 
-  NIMR page__chosen__id = page__chosen__initial__id;
+  NI page__chosen__id = page__chosen__initial__id;
 
   late final array<gui__base__widget> items;
 
   void page__switch(
-    final NIMR page__id,
+    final NI page__id,
   ) {
     items[page__chosen__id] = _button__un_selected(
       page__array[page__chosen__id].icon,
@@ -49,7 +49,7 @@ typedef navigation__bottom__item___compo = ({
       return RepaintBoundary(
         child: gui__base__widget__build__definitive(
           init_: (final state) => //
-              (build__re__array[page__id] = state.build__re__raw),
+              (build__re__array[page__id] = state.build__re___raw),
           de_init_: () => //
               (build__re__array[page__id] =  null),
           build: (final _) => //

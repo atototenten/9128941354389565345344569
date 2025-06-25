@@ -22,7 +22,7 @@ class list__old__kampo<T> {
       first,
       last;
 
-  bool empty__ok() => //
+  bool empty___ok() => //
       (count == 0);
 
   void flush() {
@@ -152,7 +152,7 @@ class list__old__kampo<T> {
     );
   }
 
-  string__raw convert__string([
+  string convert__string([
     final bool b_verbose = NO,
   ]) {
     final buffer = StringBuffer("count: ") //
@@ -166,7 +166,7 @@ class list__old__kampo<T> {
         ..write(last?.value.hashCode)
         ..write("; elements: ");
 
-      if (empty__ok) //
+      if (empty___ok) //
         buffer.write(null);
       else {
         buffer.write('{');

@@ -1,11 +1,11 @@
 part of "../_.dart";
 
-string__raw Size__convert__text(final Size size) => //
+string Size__convert__text(final Size size) => //
     ("Width: ${size.width}"
         "\n"
         "Height: ${size.height}");
 
-string__raw EdgeInsets__convert__text(final EdgeInsets edgeInsets) => //
+string EdgeInsets__convert__text(final EdgeInsets edgeInsets) => //
     (((edgeInsets.top == 0) &&
             (edgeInsets.left == 0) && //
             (edgeInsets.right == 0) &&
@@ -207,7 +207,7 @@ class base__program__info__page__entity //
               ),
             ),
             onTap: () {
-              /*context.navigate__forward__overlay__bottom(
+              /*context.navigation().forward__overlay__bottom(
                     overlay__build: (final $context) => //
                         overlay__bottom__explorer__file_system(
                       context: $context,
@@ -225,7 +225,7 @@ class base__program__info__page__entity //
           primary__text: "Runtime Info.",
         ),
         item__array__count: items.length,
-        item__build: (final _, final NIMR i) => //
+        item__build: (final _, final NI i) => //
             items[i],
       ),
     );

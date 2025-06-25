@@ -6,16 +6,16 @@ const //
   like `input__text__filter___compo.regex__text` */
 
 /*widget__stored___compo input__text__overlay__bottom__work_station__stored({
-  required final string__raw title,
-  final string__raw? sub_title /* info */,
-  final string__raw hint /*
+  required final string title,
+  final string? sub_title /* info */,
+  final string hint /*
   including input__type(`input__text__work_station__type__`*) */
   = input__text__work_station__type__ascii,
   final BOOL input__b__simple /*
   single-line, not multi-line */
   = OK,
-  final NIMR input__text__bytes__count__max = NI1__max,
-  final string__raw? input__initial,
+  final NI input__text__bytes__count__max = NI1__max,
+  final string? input__initial,
   required final void Function(
    string__wide input,
     BOOL b__wide,
@@ -36,7 +36,7 @@ const //
   );
 
   BOOL input__write__char(
-    final string__raw s,
+    final string s,
   ) {
     final //
         wc = char__unicode__convert__TCW(
@@ -46,7 +46,7 @@ const //
           wc,
         );
 
-    if (base__printing__ok && //
+    if (base__printing___ok && //
         b__written) //
       report__NI(
         wc,
@@ -57,7 +57,7 @@ const //
   }
 
   BOOL input__write__text(
-    final string__raw s,
+    final string s,
   ) {
     final //
         ws = text__unicode__convert__string__wide(
@@ -67,7 +67,7 @@ const //
           ws,
         );
 
-    if (base__printing__ok && //
+    if (base__printing___ok && //
         b__written) //
       report__string__wide(
         ws,
@@ -79,7 +79,7 @@ const //
 
   //uu? input__offset;
 
-  string__raw input__read() => //
+  string input__read() => //
       wstr__convert__text(
         input__list.read__full(),
       );
@@ -87,7 +87,7 @@ const //
   void input__submit_() {
     final input = input__list.read__full();
 
-    if (base__printing__ok) //
+    if (base__printing___ok) //
       report__string__wide(
         input,
         "input",
@@ -113,7 +113,7 @@ const //
               maxHeight: (24 * 18).px(),
             ),
             child: SizedBox(
-              width: NEMR.maxFinite,
+              width: NFP.maxFinite,
               child: gui__base__box__non_button(
                 border__radius: BorderRadius.all(Radius.circular(8.px())),
                 child: Padding(
@@ -132,7 +132,7 @@ const //
                           if (key__logical == LogicalKeyboardKey.backspace) {
                             if (key is RawKeyDownEvent) {
                               if (input__list.backspace()) //
-                                state.build__re__raw();
+                                state.build__re___raw();
                             }
                           } else {
                             final key__logical__b__enter = (key__logical == LogicalKeyboardKey.enter);
@@ -147,7 +147,7 @@ const //
                                   if (input__write__char('\n' /*
                 `c` is 13(CR or carriage-return). */
                                       )) //
-                                    state.build__re__raw();
+                                    state.build__re___raw();
                                 } else if (key__data.isControlPressed) {
                                   switch (key__logical) {
                                     case LogicalKeyboardKey.keyV:
@@ -168,7 +168,7 @@ const //
                                   }
                                 } else {
                                   if (input__write__char(c)) //
-                                    state.build__re__raw();
+                                    state.build__re___raw();
                                 }
                               }
                             }
@@ -250,7 +250,7 @@ const //
 }
 
 gui__base__widget $text(
-  final string__raw s,
+  final string s,
 ) =>
     gui__base__box__text__widget(
       gui__base__box__text__segment(
@@ -279,18 +279,18 @@ gui__base__widget $text(
 
 gui__base__widget listing__item__input__text__stored({
   final BOOL input__b__required /* mandatory field ? */ = NO,
-  required final string__raw title,
-  final string__raw? sub_title /* info */,
-  required final string__raw hint /*
+  required final string title,
+  final string? sub_title /* info */,
+  required final string hint /*
   example, or sample */
   ,
-  final string__raw? input__initial,
+  final string? input__initial,
   /*final BOOL b__chars__counter__show = NO,*/
   final TextInputType input__type = TextInputType.text,
   final TextInputAction input__submit__indicator = TextInputAction.done,
   final TextCapitalization input__capitalization = TextCapitalization.none,
-  final NIMR input__chars__count__max = NI1__max,
-  final input__text__filter___compo input__filter = input__text__filter__basic__print_able__ok,
+  final NI input__chars__count__max = NI1__max,
+  final input__text__filter___compo input__filter = input__text__filter__basic__print_able___ok,
   required final input__text__function__format input__submit,
   final BOOL indicator__edit_able__b__show = OK,
 }) {
@@ -337,9 +337,9 @@ gui__base__widget listing__item__input__text__stored({
           input__submit: (final input_) {
             input = input_;
 
-            context.build__re__raw();
+            context.build__re___raw();
 
-            context.navigate__backward();
+            context.navigation().backward();
 
             input__submit(
               input_,
@@ -348,7 +348,7 @@ gui__base__widget listing__item__input__text__stored({
         );
 
         context
-            .navigate__forward__overlay__bottom(
+            .navigation().forward__overlay__bottom(
           overlay__build: overlay.widget__build,
         )
             .then__result__ignore(() {
@@ -362,7 +362,7 @@ gui__base__widget listing__item__input__text__stored({
 }
 
 gui__base__widget _title__optional(
-  final string__raw title,
+  final string title,
 ) =>
     Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -393,18 +393,18 @@ gui__base__widget _title__optional(
     );
 
 widget__stored___compo input__text__overlay__bottom__phone__stored({
-  required final string__raw title,
-  final string__raw? sub_title /* info */,
-  final string__raw? hint /*
+  required final string title,
+  final string? sub_title /* info */,
+  final string? hint /*
   example, or sample */
   ,
-  final string__raw? input__initial,
+  final string? input__initial,
   /*final BOOL b__chars__counter__show = NO,*/
   final TextInputType input__type = TextInputType.text,
   final TextInputAction input__submit__indicator = TextInputAction.done,
   final TextCapitalization input__capitalization = TextCapitalization.none,
-  final NIMR input__chars__count__max = NI1__max,
-  final input__text__filter___compo input__filter = input__text__filter__basic__print_able__ok,
+  final NI input__chars__count__max = NI1__max,
+  final input__text__filter___compo input__filter = input__text__filter__basic__print_able___ok,
   final BOOL b__recursive /*
   recursion: `input__text__overlay__bottom__phone__stored(`, in `input__submit` */
   = NO,

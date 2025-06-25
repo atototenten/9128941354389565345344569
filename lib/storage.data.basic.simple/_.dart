@@ -2,12 +2,12 @@ import "package:base/base/_.dart";
 import "package:base/storage.data.basic/_.dart";
 
 final //
-    base__storage__data__basic__simple__column__meta__raw = base__storage__data__basic__table__column__meta(
+    base__storage__data__basic__simple__column__meta___raw = base__storage__data__basic__table__column__meta(
       NIL,
       base__storage__data__basic__table__column__data__type.byte__array,
     ),
-    base__storage__data__basic__simple__columns__meta__raw = array__new__element__single(
-      base__storage__data__basic__simple__column__meta__raw,
+    base__storage__data__basic__simple__columns__meta___raw = array__new__element__single(
+      base__storage__data__basic__simple__column__meta___raw,
     );
 
 class base__storage__data__basic__simple__meta //
@@ -27,17 +27,17 @@ class base__storage__data__basic__simple__meta //
     final storage__accessing__meta = await storage__accessing__meta__asyn;
 
     return base__storage__data__basic__simple__meta<table__cell__meta__type>.raw(
-      storage__accessing__meta__raw: storage__accessing__meta,
-      storage__table__id__raw: storage__table__id,
+      storage__accessing__meta___raw: storage__accessing__meta,
+      storage__table__id___raw: storage__table__id,
     );
   }
 
   const base__storage__data__basic__simple__meta.raw({
-    required final base__storage__data__basic__accessing__meta storage__accessing__meta__raw,
-    required final base__storage__data__basic__table__id storage__table__id__raw,
+    required final base__storage__data__basic__accessing__meta storage__accessing__meta___raw,
+    required final base__storage__data__basic__table__id storage__table__id___raw,
   }) : super.raw(
-          storage__accessing__meta__raw: storage__accessing__meta__raw,
-          storage__table__id__raw: storage__table__id__raw,
+          storage__accessing__meta___raw: storage__accessing__meta___raw,
+          storage__table__id___raw: storage__table__id___raw,
         );
 }
 
@@ -48,20 +48,20 @@ abstract class base__storage__data__basic__simple__meta__base //
 based on `base__storage__data__basic__meta` */
 {
   const base__storage__data__basic__simple__meta__base.raw({
-    required this.storage__accessing__meta__raw,
-    required this.storage__table__id__raw,
+    required this.storage__accessing__meta___raw,
+    required this.storage__table__id___raw,
   });
 
-  final storage__accessing__meta__type storage__accessing__meta__raw;
-  final base__storage__data__basic__table__id storage__table__id__raw;
+  final storage__accessing__meta__type storage__accessing__meta___raw;
+  final base__storage__data__basic__table__id storage__table__id___raw;
 
-  value__asyn<byte__array> cell__raw(
+  value__asyn<byte__array> cell___raw(
     final table__cell__meta__type cell__meta,
   ) async {
-    final row = await storage__accessing__meta__raw.table__row__asyn(
-      table__id: storage__table__id__raw,
+    final row = await storage__accessing__meta___raw.table__row__asyn(
+      table__id: storage__table__id___raw,
       table__row__id: cell__meta.row__id(),
-      result__columns__meta: base__storage__data__basic__simple__columns__meta__raw,
+      result__columns__meta: base__storage__data__basic__simple__columns__meta___raw,
     );
 
     return (row!.first as byte__array);
@@ -70,11 +70,11 @@ based on `base__storage__data__basic__meta` */
   value__asyn<byte__array?> cell(
     final table__cell__meta__type cell__meta,
   ) async {
-    final result = await cell__raw(
+    final result = await cell___raw(
       cell__meta,
     );
 
-    if (result.empty__ok()) {
+    if (result.empty___ok()) {
       return NIL;
     }
 
@@ -91,7 +91,7 @@ based on `base__storage__data__basic__meta` */
     return result;
   }
 
-  value__asyn<NIMR?> cell__NI(
+  value__asyn<NI?> cell__NI(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell(
@@ -121,7 +121,7 @@ based on `base__storage__data__basic__meta` */
     );
   }
 
-  value__asyn<NISMR?> cell__NIS(
+  value__asyn<NIS?> cell__NIS(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell(
@@ -143,7 +143,7 @@ based on `base__storage__data__basic__meta` */
     );
   }
 
-  value__asyn<string__raw?> cell__text(
+  value__asyn<string?> cell__text(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell(
@@ -155,7 +155,7 @@ based on `base__storage__data__basic__meta` */
     );
   }
 
-  value__asyn<NEMR?> cell__NE(
+  value__asyn<NFP?> cell__NE(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell__text(
@@ -163,7 +163,7 @@ based on `base__storage__data__basic__meta` */
     );
 
     return result.convert__if(
-      NER.parse,
+      NFP.parse,
     );
   }
 }
@@ -186,15 +186,15 @@ empty {`byte__array` and `text`} are equal to nil/absence */ //
     final storage__accessing__meta = await storage__accessing__meta__asyn;
 
     return base__storage__data__basic__simple__mutating__meta<table__cell__meta__type>.raw(
-      storage__accessing__meta__raw: storage__accessing__meta,
-      storage__table__id__raw: storage__table__id,
+      storage__accessing__meta___raw: storage__accessing__meta,
+      storage__table__id___raw: storage__table__id,
     );
   }
 
   static value__asyn<void> cells__count__update({
     required final base__storage__data__basic__accessing__mutating__meta storage__accessing__meta,
     required final base__storage__data__basic__table__id storage__table__id,
-    required final NIMR cells__count /*
+    required final NI cells__count /*
 can be increased ,freely
   except during online (any connection open to storage)
   but decreasing leads to space wastage/leakage */
@@ -210,7 +210,7 @@ can be increased ,freely
 
     await storage__accessing__meta.table__rows__add__asyn(
       table__id: storage__table__id,
-      columns__meta: base__storage__data__basic__simple__columns__meta__raw,
+      columns__meta: base__storage__data__basic__simple__columns__meta___raw,
       rows: array__new__filled(
         (cells__count - rows__count),
         array__new__element__single(
@@ -223,23 +223,23 @@ can be increased ,freely
   }
 
   base__storage__data__basic__simple__mutating__meta.raw({
-    required final base__storage__data__basic__accessing__mutating__meta storage__accessing__meta__raw,
-    required final base__storage__data__basic__table__id storage__table__id__raw,
+    required final base__storage__data__basic__accessing__mutating__meta storage__accessing__meta___raw,
+    required final base__storage__data__basic__table__id storage__table__id___raw,
   }) : super.raw(
-          storage__accessing__meta__raw: storage__accessing__meta__raw,
-          storage__table__id__raw: storage__table__id__raw,
+          storage__accessing__meta___raw: storage__accessing__meta___raw,
+          storage__table__id___raw: storage__table__id___raw,
         );
 
   value__asyn<void> cell__assign(
     final table__cell__meta__type cell__meta,
     final byte__array value,
   ) async {
-    await storage__accessing__meta__raw.table__row__cells__assign__asyn(
-      table__id: storage__table__id__raw,
+    await storage__accessing__meta___raw.table__row__cells__assign__asyn(
+      table__id: storage__table__id___raw,
       table__row__id: cell__meta.row__id(),
       columns: array__new__element__single(
         base__storage__data__basic__table__column(
-          base__storage__data__basic__simple__column__meta__raw,
+          base__storage__data__basic__simple__column__meta___raw,
           value,
         ),
       ),
@@ -267,7 +267,7 @@ can be increased ,freely
 
   value__asyn<void> cell__assign__NI(
     final table__cell__meta__type cell__meta,
-    final NIMR value,
+    final NI value,
   ) async {
     await cell__assign(
       cell__meta,
@@ -277,11 +277,11 @@ can be increased ,freely
 
   value__asyn<void> cell__assign__NIS(
     final table__cell__meta__type cell__meta,
-    final NISMR value,
+    final NIS value,
   ) async {
     final //
-        negative__ok = value.isNegative,
-        bytes = (negative__ok //
+        negative___ok = value.isNegative,
+        bytes = (negative___ok //
                 ? -value
                 : value)
             .convert__bytes(),
@@ -289,7 +289,7 @@ can be increased ,freely
           (1 + bytes.bytes__count),
         );
 
-    data.first = (negative__ok ? 1 : 0);
+    data.first = (negative___ok ? 1 : 0);
 
     base__copy(
       data,
@@ -305,7 +305,7 @@ can be increased ,freely
 
   value__asyn<void> cell__assign__NE(
     final table__cell__meta__type cell__meta,
-    final NEMR value,
+    final NFP value,
   ) async {
     await cell__assign__text(
       cell__meta,
@@ -325,9 +325,9 @@ can be increased ,freely
 
   value__asyn<void> cell__assign__text(
     final table__cell__meta__type cell__meta,
-    final string__raw value,
+    final string value,
   ) async {
-    if /*F*/ (value.empty__ok()) {
+    if /*F*/ (value.empty___ok()) {
       await cell__assign__nil(
         cell__meta,
       );
@@ -347,11 +347,11 @@ should be avoided ,unless necessary
       ({
     required final array<table__cell__meta__type> cells__meta,
     required final BOOL? value__BOOL,
-    required final NIMR? value__NI,
-    required final NISMR? value__NIS,
-    required final NEMR? value__NE,
+    required final NI? value__NI,
+    required final NIS? value__NIS,
+    required final NFP? value__NE,
     required final byte__array? value__byte__array,
-    required final string__raw? value__text,
+    required final string? value__text,
   }) async {
     await base__iterate__basic__asyn(
       cells__meta.elements__count,

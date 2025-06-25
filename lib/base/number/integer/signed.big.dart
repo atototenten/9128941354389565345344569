@@ -3,13 +3,13 @@ part of "../../_.dart";
 typedef NISI /* infinite */ = BigInt;
 
 extension NISI__extension on NISI {
-  BOOL value__zero__ok() {
+  BOOL value__zero___ok() {
     return ((bitLength == 0) && isNegative.not);
   }
 
   NISI endian__little__convert__endian__big({
-    required final NIMR digits__count,
-    final NIMR digit__width = 1,
+    required final NI digits__count,
+    final NI digit__width = 1,
   }) {
     var //
         source = this,

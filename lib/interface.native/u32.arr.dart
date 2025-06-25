@@ -10,14 +10,14 @@ class BS4__array___compo {
   );
 
   final ffi_.Pointer<ffi_.Uint32> ptr;
-  final NIMR count;
+  final NI count;
 
   BS4__array get arr => //
       ptr.asTypedList(count);
 }
 
 BS4__array___compo BS4__array__alloc(
-  final NIMR count,
+  final NI count,
 ) =>
     BS4__array___compo(
       ffi__mem__alloc<ffi_.Uint32>(

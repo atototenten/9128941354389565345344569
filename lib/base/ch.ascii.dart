@@ -171,41 +171,41 @@ const //
     TC__ascii__limit = TC__limit,
     TC__ascii__max = TC__max;
 
-BOOL TC__ascii__valid__ok(final TC c) => //
+BOOL TC__ascii__valid___ok(final TC c) => //
     (c < TC__ascii__limit);
 
-BOOL TC__ascii__valid__ok__and__printable(final TC c) => //
+BOOL TC__ascii__valid__and__printable___ok(final TC c) => //
     ((c < TC__ascii__max) && (c < TC__ascii__space).not);
 
 BOOL TC__ascii__number__non__zero__not(final TC c) => //
     ((c < TC__ascii__number__one) || (c > TC__ascii__number__nine));
 
-BOOL TC__ascii__number__non__zero__ok(final TC c) => //
+BOOL TC__ascii__number__non__zero___ok(final TC c) => //
     TC__ascii__number__non__zero__not(c).not;
 
 BOOL TC__ascii__number__not(final TC c) => //
     (TC__ascii__number__non__zero__not(c) && (c != TC__ascii__number__zero));
 
-BOOL TC__ascii__number__ok(final TC c) => //
-    (TC__ascii__number__non__zero__ok(c) || (c == TC__ascii__number__zero));
+BOOL TC__ascii__number___ok(final TC c) => //
+    (TC__ascii__number__non__zero___ok(c) || (c == TC__ascii__number__zero));
 
 BOOL TC__ascii__alphabet__case__lower__not(final TC c) => //
     ((c < TC__ascii__alphabet__case__lower__a) || (c > TC__ascii__alphabet__case__lower__z));
 
-BOOL TC__ascii__alphabet__case__lower__ok(final TC c) => //
+BOOL TC__ascii__alphabet__case__lower___ok(final TC c) => //
     TC__ascii__alphabet__case__lower__not(c).not;
 
 BOOL TC__ascii__alphabet__case__upper__not(final TC c) => //
     ((c < TC__ascii__alphabet__case__upper__a) || (c > TC__ascii__alphabet__case__upper__z));
 
-BOOL TC__ascii__alphabet__case__upper__ok(final TC c) => //
+BOOL TC__ascii__alphabet__case__upper___ok(final TC c) => //
     TC__ascii__alphabet__case__upper__not(c).not;
 
 BOOL TC__ascii__alphabet__not(final TC c) => //
     (TC__ascii__alphabet__case__lower__not(c) && //
         TC__ascii__alphabet__case__upper__not(c));
 
-BOOL TC__ascii__alphabet__ok(final TC c) => //
+BOOL TC__ascii__alphabet___ok(final TC c) => //
     TC__ascii__alphabet__not(c).not;
 
 BOOL TC__ascii__alphabet__case__upper__ok__basic(final TC c) => //

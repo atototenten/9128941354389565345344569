@@ -5,7 +5,7 @@ const //
 
 gui__base__widget winter__overlay__bottom__button__dismiss(
   final gui__base__widget__building__context context,{
-  required final string__raw title,
+  required final string title,
   final procedure__empty__format? dismiss__handle,
 }) =>
     winter__button__floating__basic(
@@ -15,7 +15,7 @@ gui__base__widget winter__overlay__bottom__button__dismiss(
         font__weight: FontWeight.w700,
         text__align: TextAlign.center,
       ),
-      press__handle: (dismiss__handle ?? () => context.navigate__backward()),
+      press__handle: (dismiss__handle ?? () => context.navigation().backward()),
     );
 
 gui__base__widget winter__overlay__bottom__dismiss__swipe__indication() /*
@@ -39,7 +39,7 @@ pill at sheet's top */
 
 gui__base__widget winter__overlay__bottom__base({
   final ui.ImageFilter? back_ground__filter,
-  final NEMR? padding__top /*(.25 * (base__screen__size().height - base__screen__padding.top))*/,
+  final NFP? padding__top /*(.25 * (base__screen__size().height - base__screen__padding.top))*/,
   final Color? back_ground__color,
   final Radius? border__top__radius,
   required final gui__base__widget child,
@@ -79,13 +79,13 @@ gui__base__widget winter__overlay__bottom__base({
 gui__base__widget winter__overlay__bottom__menu(
   final gui__base__widget__building__context context, {
   final ui.ImageFilter? back_ground__filter,
-  final NEMR? padding__top,
+  final NFP? padding__top,
   final Color? back_ground__color,
   final Radius? border__top__radius,
-  final BOOL dismiss__swipe__indication__ok = OK,
-  final BOOL button__close__ok = OK,
-  required final string__raw title,
-  final string__raw? sub_title,
+  final BOOL dismiss__swipe__indication___ok = OK,
+  final BOOL button__close___ok = OK,
+  required final string title,
+  final string? sub_title,
   required final gui__base__widget? body /*
 if `Column` ,`mainAxisSize` should be `MainAxisSize.min`
 `base__overlay__bottom__button__dismiss` can also be used
@@ -106,7 +106,7 @@ if input:text is present ,prefer padding items ,through `SizedBox(height: base__
           gui__base__stack__widget(
             alignment: Alignment.topCenter,
             children: [
-              if (dismiss__swipe__indication__ok) //
+              if (dismiss__swipe__indication___ok) //
                 winter__overlay__bottom__dismiss__swipe__indication(),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -115,12 +115,12 @@ if input:text is present ,prefer padding items ,through `SizedBox(height: base__
                 child: winter__navigation__top(
                   left: winter__navigation__top__button(
                     icon: flutter__icon__navigation__backward,
-                    press__handle: () => context.navigate__backward(),
+                    press__handle: () => context.navigation().backward(),
                   ),
-                  right: (button__close__ok //
+                  right: (button__close___ok //
                       ? winter__navigation__top__button(
                           icon: _icon__close,
-                          press__handle: () => context.navigate__backward(),
+                          press__handle: () => context.navigation().backward(),
                         )
                       : NIL),
                 ),

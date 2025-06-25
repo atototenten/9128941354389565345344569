@@ -4,17 +4,14 @@ typedef gui__base__widget__sliver = gui__base__widget;
 
 typedef gui__base__widget__sliver__build__function__format = //
     gui__base__widget__sliver Function(
-  gui__base__widget__building__context context,
-);
+      gui__base__widget__building__context context,
+    );
 
-typedef base__scrolling__axis__direction = ({
-  AxisDirection main,
-  AxisDirection cross,
-});
+typedef base__scrolling__axis__direction = ({AxisDirection main, AxisDirection cross});
 
 const //
-    base__app__scroll__behavior = _scroll__behavior(),
-//
+base__app__scroll__behavior = _scroll__behavior(),
+    //
     base__scrolling__physics__clamping = ClampingScrollPhysics(
       parent: RangeMaintainingScrollPhysics(),
     ),
@@ -28,7 +25,7 @@ const //
     base__scrolling__physics__natural__always = BouncingScrollPhysics(
       parent: AlwaysScrollableScrollPhysics(),
     ),
-//
+    //
     base__scrolling__axis__direction__vertical = (
       main: AxisDirection.down,
       cross: AxisDirection.right,
@@ -47,7 +44,7 @@ const //
     );
 
 const //
-    gui__base__scrolling__offset__default = 0.0;
+gui__base__scrolling__offset__default = 0.0;
 
 class gui__base__scrolling__children___record {
   const gui__base__scrolling__children___record({
@@ -62,8 +59,8 @@ class gui__base__scrolling //
   factory gui__base__scrolling({
     required final base__scrolling__axis__direction axis__direction,
     required final ScrollPhysics physics,
-    final NEMR caching__extent = 0,
-    final NEMR offset = gui__base__scrolling__offset__default,
+    final NFP caching__extent = 0,
+    final NFP offset = gui__base__scrolling__offset__default,
   }) {
     late final gui__base__scrolling value;
 
@@ -71,7 +68,7 @@ class gui__base__scrolling //
       axis__direction: axis__direction,
       physics: physics,
       caching__extent: caching__extent,
-      control__raw: ScrollController(
+      control___raw: ScrollController(
         initialScrollOffset: offset,
         keepScrollOffset: NO,
         onAttach: (final position) {
@@ -81,13 +78,13 @@ class gui__base__scrolling //
             offset,
           );
 
-          value.offset__raw = NIL;
+          value.offset___raw = NIL;
         },
         onDetach: (final position) {
-          value.offset__raw = position.pixels;
+          value.offset___raw = position.pixels;
         },
       ),
-      offset__raw: offset,
+      offset___raw: offset,
     );
 
     return value;
@@ -97,36 +94,32 @@ class gui__base__scrolling //
     required this.axis__direction,
     required this.physics,
     required this.caching__extent,
-    required this.control__raw,
-    this.offset__raw,
+    required this.control___raw,
+    this.offset___raw,
   });
 
   final base__scrolling__axis__direction axis__direction;
   final ScrollPhysics physics;
-  final NEMR caching__extent;
+  final NFP caching__extent;
 
-  final ScrollController control__raw;
+  final ScrollController control___raw;
 
-  NEMR? offset__raw;
+  NFP? offset___raw;
 
-  NEMR offset() {
-    return (offset__raw ?? gui__base__scrolling__offset__default);
+  NFP offset() {
+    return (offset___raw ?? gui__base__scrolling__offset__default);
   }
 
-  BOOL? offset__min__ok() {
-    return switch (offset__raw) {
+  BOOL? offset__min___ok() {
+    return switch (offset___raw) {
       NIL => NIL,
       gui__base__scrolling__offset__default => OK,
       _ => NO,
     };
   }
 
-  ({
-    NEMR current,
-    NEMR min,
-    NEMR max,
-  })? offset__range() {
-    final position = position__raw();
+  ({NFP current, NFP min, NFP max})? offset__range() {
+    final position = position___raw();
 
     if (position == null) {
       return NIL;
@@ -140,10 +133,10 @@ class gui__base__scrolling //
   }
 
   BOOL scroll__position__begin({
-    final NIMR duration__seconds__milli = /*(1000 ~/ 3)*/ 96,
+    final NI duration__seconds__milli = /*(1000 ~/ 3)*/ 96,
     final Curve curve = Curves.ease,
   }) {
-    final position = position__raw();
+    final position = position___raw();
 
     if (position == null) {
       return NO;
@@ -165,9 +158,9 @@ class gui__base__scrolling //
   }
 
   BOOL scroll__instant({
-    required final NEMR offset,
+    required final NFP offset,
   }) {
-    final position = position__raw();
+    final position = position___raw();
 
     if (position == null) {
       return NO;
@@ -180,8 +173,8 @@ class gui__base__scrolling //
     return OK;
   }
 
-  BOOL? position__min__ok__raw() {
-    final position = position__raw();
+  BOOL? position__min__ok___raw() {
+    final position = position___raw();
 
     if (position == null) {
       return NIL;
@@ -190,8 +183,14 @@ class gui__base__scrolling //
     return (position.pixels == position.minScrollExtent);
   }
 
-  ScrollPosition? position__raw() {
-    return control__raw.positions.empty__not__else__null?.first;
+  ScrollPosition? position___raw() {
+    final v = control___raw.positions;
+
+    if (v.empty___ok()) {
+      return NIL;
+    }
+
+    return v.first;
   }
 
   base__text__representation offset__range__text__representation() {
@@ -218,7 +217,7 @@ class gui__base__scrolling //
   }) {
     return Scrollable(
       axisDirection: axis__direction.main,
-      controller: control__raw,
+      controller: control___raw,
       physics: physics,
       scrollBehavior: base__app__scroll__behavior,
       viewportBuilder: (final context, final offset) {
@@ -233,7 +232,7 @@ class gui__base__scrolling //
                 context,
               );
             },
-          ),
+          ).convert__array(),
         );
       },
     );
@@ -241,7 +240,7 @@ class gui__base__scrolling //
 
   @override
   void dispose() {
-    control__raw.dispose();
+    control___raw.dispose();
   }
 }
 
@@ -250,37 +249,34 @@ class _scroll__behavior extends ScrollBehavior {
 
   @override
   Set<ui.PointerDeviceKind> get dragDevices => //
-      <ui.PointerDeviceKind>{
-        ui.PointerDeviceKind.touch,
-        ui.PointerDeviceKind.stylus,
-        ui.PointerDeviceKind.trackpad,
-        ui.PointerDeviceKind.mouse,
-      };
+  <ui.PointerDeviceKind>{
+    ui.PointerDeviceKind.touch,
+    ui.PointerDeviceKind.stylus,
+    ui.PointerDeviceKind.trackpad,
+    ui.PointerDeviceKind.mouse,
+  };
 
   @override
   gui__base__widget buildScrollbar(
     final BuildContext context,
     final gui__base__widget child,
     final ScrollableDetails details,
-  ) =>
-      (/*kDebugMode //
+  ) => ( /*kDebugMode //
           ? RawScrollbar(
               controller: details.controller,
               child: child,
             )
-          :*/
-          child);
+          :*/ child);
 
   @override
   gui__base__widget buildOverscrollIndicator(
     final BuildContext context,
     final gui__base__widget child,
     final ScrollableDetails details,
-  ) =>
-      StretchingOverscrollIndicator(
-        axisDirection: details.direction,
-        child: child,
-      );
+  ) => StretchingOverscrollIndicator(
+    axisDirection: details.direction,
+    child: child,
+  );
 
   @override
   GestureVelocityTrackerBuilder velocityTrackerBuilder(final BuildContext context) => //

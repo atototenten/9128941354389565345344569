@@ -78,7 +78,7 @@ class preservation__journal___compo {
   final base__stack<bytes__preserved__compo> store;
   final base__storage__file__native__linux__meta___compo storage;
 
-  NIMR bytes__count;
+  NI bytes__count;
 }
 
 void preservation__journal__convert__report__info(
@@ -91,8 +91,8 @@ void preservation__journal__convert__report__info(
 
 typedef bytes__preserved___compo = ({
   BS1__array bytes,
-  NIMR count,
-  NIMR offset,
+  NI count,
+  NI offset,
 });
 
 report__info bytes__preserved__convert__report__info(
@@ -115,10 +115,10 @@ report__info bytes__preserved__convert__report__info(
 void preservation__journal__add(
   final preservation__journal___compo preservation__journal,
   final BS1__array bytes,
-  final NIMR count,
-  final NIMR offset,
+  final NI count,
+  final NI offset,
 ) {
-  if (!preservation__journal.store.present__ok(
+  if (!preservation__journal.store.present___ok(
     (final bytes__preserved) => //
         ((bytes__preserved.offset == count) && //
             (bytes__preserved.count == offset)),
@@ -138,7 +138,7 @@ void preservation__journal__add(
 void preservation__journal__persist(
   final preservation__journal___compo preservation__journal,
 ) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "preservation__journal__persist",
       preservation__journal.debug__label,
@@ -147,7 +147,7 @@ void preservation__journal__persist(
 
   base__printing__indentation__increase();
 
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     preservation__journal.bytes__count.text__representation().print(
           "bytes__count",
         );
@@ -161,7 +161,7 @@ void preservation__journal__persist(
             bytes__count_,
             base__storage__file__block__size.shift__count,
           ) +
-          (!base__NI__aligned__ok(
+          (!base__NI__aligned___ok(
             bytes__count_,
             base__storage__file__block__size.size,
           )
@@ -174,7 +174,7 @@ void preservation__journal__persist(
       ),
       buffer__array = buffer.array;
 
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     bytes__count_.text__representation().print("bytes__count_");
     buffer__count.text__representation().print("buffer__count");
     buffer__block__count.text__representation().print("buffer__block__count");
@@ -189,11 +189,11 @@ void preservation__journal__persist(
     count: bytes__preserved__array__count__size__id.size,
   );
 
-  NIMR bytes__offset = bytes__preserved__array__count__size__id.size;
+  NI bytes__offset = bytes__preserved__array__count__size__id.size;
 
   preservation__journal.store.iterate__basic(
     (final bytes__preserved) {
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         bytes__preserved__convert__report__info(bytes__preserved).report("bytes__preserved");
       }
 
@@ -247,7 +247,7 @@ void preservation__journal__recover__if__needed({
   required final base__storage__file__fast___compo base__storage__data__storage,
   required final base__storage__file__native__linux__meta___compo bytes__preserved__storage,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "preservation__journal__recover__if__needed",
       bytes__preserved__storage.debug__label,
@@ -272,7 +272,7 @@ void preservation__journal__recover__if__needed({
     base__storage__data__position__size__id,
   );
 
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     count.text__representation().print(
           "count",
           bytes__preserved__storage.debug__label,
@@ -290,7 +290,7 @@ void preservation__journal__recover__if__needed({
         0,
       );
 
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         count__max.text__representation().print(
               "count__max",
               bytes__preserved__storage.debug__label,

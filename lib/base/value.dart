@@ -32,8 +32,7 @@ class base__value__lazy__compo<value___type> {
 //
 
 class base__value__optional__present__compo<value___type> //
-    implements
-        base__value__optional___union<value___type> {
+    implements base__value__optional___union<value___type> {
   const base__value__optional__present__compo(
     this.value,
   );
@@ -42,8 +41,7 @@ class base__value__optional__present__compo<value___type> //
 }
 
 class base__value__optional__absent__compo<value___type> //
-    implements
-        base__value__optional___union<value___type> {
+    implements base__value__optional___union<value___type> {
   const base__value__optional__absent__compo();
 }
 
@@ -52,22 +50,21 @@ sealed class base__value__optional___union<value___type> {}
 //
 
 abstract class base__value__equality__check___protocol {
-  BOOL equal__ok /*
-prefer `value__nilable__equal__ok` for nil-able values */
-      (
+  BOOL equal___ok /*
+prefer `value__nilable__equal__ok` for nil-able values */ (
     final base__value__equality__check___protocol /*
 not generic-type (`value__type`)
   ,just because of the dart-lang.'s deficiency
     ,of not allowing accessing the current-type's introspection
 must be same as the impl.ion itself */
-        other,
+    other,
   );
 }
 
 extension base__value__equality__check__extension //
-    <value__type extends base__value__equality__check___protocol> //
+<value__type extends base__value__equality__check___protocol> //
     on value__type? {
-  BOOL value__nilable__equal__ok(
+  BOOL value__nilable__equal___ok(
     final value__type? other,
   ) {
     final value = this;
@@ -89,7 +86,7 @@ extension base__value__equality__check__extension //
       return NO;
     }
 
-    return value.equal__ok(
+    return value.equal___ok(
       other,
     );
   }
@@ -97,21 +94,24 @@ extension base__value__equality__check__extension //
 
 class base__value__proxy /*
 like c[++]'s pointer */ //
-    <value__type extends Object?> {
+<value__type extends Object?> {
   base__value__proxy(this.value);
 
   value__type value;
 }
 
-typedef base__value__equal__ok__function__format //
-    <value__type, value__other__type>
-    = BOOL Function(
-  value__type value,
-  value__other__type other,
-);
+typedef base__value__equality__function__closure__format<value__type> = //
+    BOOL Function(value__type);
 
-BOOL base__value__same__ok //
-    <value__type>(
+typedef base__value__equality__function__format //
+<value__type, value__other__type> =
+    BOOL Function(
+      value__type value,
+      value__other__type other,
+    );
+
+BOOL base__value__same___ok //
+<value__type>(
   final value__type value,
   final value__type other,
 ) {
@@ -121,19 +121,19 @@ BOOL base__value__same__ok //
   );
 }
 
-BOOL base__value__equal__ok //
-    <value__type extends Object>(
+BOOL base__value__equal___ok //
+<value__type extends Object>(
   final value__type value,
   final value__type other,
 ) {
   return (value == other);
 }
 
-BOOL base__value__nilable__equal__ok //
-    <value__type extends Object>(
+BOOL base__value__nilable__equal___ok //
+<value__type extends Object>(
   final value__type? value,
   final value__type? other, {
-  final base__value__equal__ok__function__format<value__type, value__type>? value__equal__ok,
+  final base__value__equality__function__format<value__type, value__type>? value__equal___ok,
 }) {
   if ((value == null) && //
       (other == null)) {
@@ -141,32 +141,32 @@ BOOL base__value__nilable__equal__ok //
   }
 
   if /*(((value == null) && (other != null)) || ((value != null) && (other == null)))*/ //
-      ((value == null) || //
-          (other == null)) {
+  ((value == null) || //
+      (other == null)) {
     return NO;
   }
 
-  if /*F*/ (value__equal__ok == null) {
+  if /*F*/ (value__equal___ok == null) {
     return (value == other);
   }
 
-  return value__equal__ok(
+  return value__equal___ok(
     value,
     other,
   );
 }
 
 base__text__representation //
-    base__value__convert__text__representation //
-    <value__type extends Object>(
+base__value__convert__text__representation //
+<value__type extends Object>(
   final value__type value,
 ) {
   return value.text__representation();
 }
 
 base__text__representation //
-    base__value__nilable__convert__text__representation //
-    <value__type extends Object?>(
+base__value__nilable__convert__text__representation //
+<value__type extends Object?>(
   final value__type value,
 ) {
   return value.text__representation();
@@ -175,9 +175,8 @@ base__text__representation //
 //
 
 abstract class base__value__mutation__event__channel___protocol //
-    <value__type> //
-    implements
-        base__event__channel___protocol {
+<value__type> //
+    implements base__event__channel___protocol {
   value__type value();
 
   void value__mutate(
@@ -192,34 +191,32 @@ abstract class base__value__mutation__event__channel___protocol //
 //
 
 abstract class base__value__mutation__event__channel__unicast__dispose___protocol //
-    <value__type> //
-    implements
-        base__value__mutation__event__channel___protocol<value__type>,
-        base__event__channel__unicast__dispose___protocol {}
+<value__type> //
+    implements base__value__mutation__event__channel___protocol<value__type>, base__event__channel__unicast__dispose___protocol {}
 
 class base__value__mutation__event__channel__unicast //
-    <value__type> /*
+<value__type> /*
 `observer` management is all direct */ //
-    extends base__event__channel__unicast //
-    implements
-        base__value__mutation__event__channel__unicast__dispose___protocol<value__type> {
+    extends
+        base__event__channel__unicast //
+    implements base__value__mutation__event__channel__unicast__dispose___protocol<value__type> {
   base__value__mutation__event__channel__unicast(
-    this.value__raw,
+    this.value___raw,
     /*{ super.debug__name, }*/
   );
 
-  value__type value__raw;
+  value__type value___raw;
 
   @override
   value__type value() {
-    return value__raw;
+    return value___raw;
   }
 
   @override
   void value__mutate(
     final value__type value__new,
   ) {
-    value__raw = value__new;
+    value___raw = value__new;
   }
 
   @override
@@ -237,34 +234,32 @@ class base__value__mutation__event__channel__unicast //
 //
 
 abstract class base__value__mutation__event__channel__broadcast__dispose___protocol //
-    <value__type> //
-    implements
-        base__value__mutation__event__channel___protocol<value__type>,
-        base__event__channel__broadcast__dispose___protocol {}
+<value__type> //
+    implements base__value__mutation__event__channel___protocol<value__type>, base__event__channel__broadcast__dispose___protocol {}
 
 class base__value__mutation__event__channel__broadcast //
-    <value__type> /*
+<value__type> /*
 like `dart:flutter:ValueNotifier` */ //
-    extends base__event__channel__broadcast //
-    implements
-        base__value__mutation__event__channel__broadcast__dispose___protocol<value__type> {
+    extends
+        base__event__channel__broadcast //
+    implements base__value__mutation__event__channel__broadcast__dispose___protocol<value__type> {
   base__value__mutation__event__channel__broadcast(
-    this.value__raw, {
+    this.value___raw, {
     super.debug__name,
   });
 
-  value__type value__raw;
+  value__type value___raw;
 
   @override
   value__type value() {
-    return value__raw;
+    return value___raw;
   }
 
   @override
   void value__mutate(
     final value__type value__new,
   ) {
-    value__raw = value__new;
+    value___raw = value__new;
   }
 
   @override
@@ -283,17 +278,16 @@ typedef base__value__channel__broadcast__handling__format<value__type> = //
     base__value__single__procedure__format<value__type>;
 
 class base__value__channel__broadcast<value__type> //
-    implements
-        base__dispose___protocol {
+    implements base__dispose___protocol {
   base__value__channel__broadcast() //
-      : handlings__raw = base__accumulation__linear__basic();
+    : handlings___raw = base__accumulation__linear__basic();
 
-  final base__accumulation__linear__basic<base__value__channel__broadcast__handling__format<value__type>> handlings__raw;
+  final base__accumulation__linear__basic<base__value__channel__broadcast__handling__format<value__type>> handlings___raw;
 
   void value__handle(
     final base__value__channel__broadcast__handling__format<value__type> handle,
   ) {
-    handlings__raw.add__ending(
+    handlings___raw.add__ending(
       handle,
     );
   }
@@ -301,7 +295,7 @@ class base__value__channel__broadcast<value__type> //
   void value__dispatch(
     final value__type value,
   ) {
-    handlings__raw.iterate(
+    handlings___raw.iterate(
       (final id, final handle) {
         handle(
           value,
@@ -314,25 +308,25 @@ class base__value__channel__broadcast<value__type> //
 
   @override
   void dispose() {
-    handlings__raw.dispose();
+    handlings___raw.dispose();
   }
 }
 
 //
 
 /* extension base__value__mutation__event__channel__broadcast__extension //
-    on base__value__mutation__event__channel__broadcast<string__raw, NIMR> {
+    on base__value__mutation__event__channel__broadcast<string, NIMR> {
   void test() {
     void announce(
-      final string__raw value,
+      final string value,
     ) {
       value__alter__and__announce__safe(value);
       "announc-ed $value".print();
     }
 
     procedure__empty__format proc_(
-      final string__raw title,
-      final NIMR id,
+      final string title,
+      final NI id,
     ) =>
         () => "$title:listen_er :listened ${value()}".print(id.toString());
 

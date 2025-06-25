@@ -4,20 +4,20 @@ part of "../_.dart";
     icon__directory__open = flutter__material__icons.folder_open,
     icon__file__open = flutter__material__icons.description_outlined;
 
-string__raw file__path__convert__name(final string__raw file_path) => //
+string file__path__convert__name(final string file_path) => //
     file_path.substring(file_path.lastIndexOf(base__storage__file__path__separation__char) + 1);
 
 const //
-    file__mode__array = <string__raw>["---", "--x", "-w-", "-wx", "r--", "r-x", "rw-", "rwx"];
+    file__mode__array = <string>["---", "--x", "-w-", "-wx", "r--", "r-x", "rw-", "rwx"];
 
-string__raw _file__stat__mode__convert__text(
-  final NIMR mode,
+string _file__stat__mode__convert__text(
+  final NI mode,
 ) /*
   forked from `dart-sdk/lib/io/file_system_entity.dart`::`FileStat`::`modeString` */
 {
   final permissions = (mode & 0xFFF);
 
-  return <string__raw>[
+  return <string>[
     if ((permissions & 0x800) != 0) "(suid)",
     if ((permissions & 0x400) != 0) "(guid)",
     if ((permissions & 0x200) != 0) "(sticky)",
@@ -29,19 +29,19 @@ string__raw _file__stat__mode__convert__text(
 
 gui__base__widget overylays__file_system__in_existence__alert(
   final gui__base__widget__building__context context,
-{  required final string__raw path,
-  required final BOOL type__directory__ok,
+{  required final string path,
+  required final BOOL type__directory___ok,
 }) =>
     overlay__bottom__alert(
       context: context,
       title: path,
-      sub_title: ((type__directory__ok ? "Directory" : "File") + " does NOT exist"),
+      sub_title: ((type__directory___ok ? "Directory" : "File") + " does NOT exist"),
     );
 
 gui__base__widget pages__directory__page(
   final gui__base__widget__building__context context,
 {  required final base__scrolling scroll__manager,
-  final string__raw directory__path /*
+  final string directory__path /*
   MUST exist
   could be empty */
   = '/',
@@ -70,7 +70,7 @@ gui__base__widget pages__directory__page(
       scroll__manager: scroll__manager,
       page__title: base__page__title__aligned__center(
         primary__text: directory__path,
-        secondary__text: (file__array__count.toString() + " file" + ((file__array__count > 1) ? 's' : empty__text)),
+        secondary__text: (file__array__count.toString() + " file" + ((file__array__count > 1) ? 's' : empty__string)),
       ),
       item__array__count: file__array__count,
       item__build: (final _, final file__id) {
@@ -86,7 +86,7 @@ gui__base__widget pages__directory__page(
                 file__path__convert__name(file__path),
                 (StringBuffer(b__type__file //
                         ? (getSeparatedString(stat.size.toString()) + "  bytes" '\n')
-                        : empty__text)
+                        : empty__string)
                       ..write(stat.type.toString())
                       ..write("  (type)" '\n')
                       ..write(_file__stat__mode__convert__text(stat.mode))
@@ -108,7 +108,7 @@ gui__base__widget pages__directory__page(
                               $$scroll__manager = base__scrolling.create();
 
                           context
-                              .navigate__forward__page(
+                              .navigation().forward__page(
                                 page__build: (final $context) => //
                                     pages__file__page(
                                   $context,
@@ -125,7 +125,7 @@ gui__base__widget pages__directory__page(
                       : _button(icon__directory__open, () {
                           final $$scroll__manager = base__scrolling.create();
                           context
-                              .navigate__forward__page(
+                              .navigation().forward__page(
                                 page__build: (final $context) => //
                                     pages__directory__page(
                                   context: $context,

@@ -36,14 +36,14 @@ class navigation__kampo /*
     required this.exit__handle,
   })  : history = base__stack<_navigate__element>(),
         channel = message__channel__broadcast<navigation__type>() {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       "navigate:record:init".print();
 
       message__channel__broadcast__listeners__add(
         channel,
         (final navigate__event) {
           navigate__event.name.text__representation().print("navigate:event");
-          app__navigation__kampo.navigate__depth.text__representation().print("navigate:depth:before:navigation");
+          app__navigation__kampo.navigation().depth.text__representation().print("navigate:depth:before:navigation");
         },
       );
     }
@@ -86,14 +86,14 @@ class _navigate__element {
   const _navigate__element(
     /*this.widget__build,*/
     this.de_init_,
-    /*this.transition__instant__ok,*/
+    /*this.transition__instant___ok,*/
   );
 
   /*final base__widget__build__function__format widget__build;*/
   final procedure? de_init_ /*
 use `procedure__schedule`, to executure, after the build */
       ;
-  /*final bool transition__instant__ok /*
+  /*final bool transition__instant___ok /*
 not animate, the transition, TO this page */
       ;*/
 }
@@ -311,19 +311,19 @@ appbar's back navigation button is not shown */
   }
 }
 
-bool _backward__ok() => //
+bool _backward___ok() => //
     (app__navigation__kampo.history.elements__count > 1);
 
-bool navigate__backward__ok(
+bool navigate__backward___ok(
   final base__widget__building__context context,
 ) {
-  return /*_backward__ok()*/ _navigator_state(context).canPop();
+  return /*_backward___ok()*/ _navigator_state(context).canPop();
 }
 
 void navigate__backward(
   final base__widget__building__context context,
 ) {
-  if /*F*/ (NOT(_backward__ok()) /*exit__ok*/) {
+  if /*F*/ (NOT(_backward___ok()) /*exit__ok*/) {
     app__navigation__kampo.exit__handle?.call();
 
     message__channel__broadcast__message__announce(

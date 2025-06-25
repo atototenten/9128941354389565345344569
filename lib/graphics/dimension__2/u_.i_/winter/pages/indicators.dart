@@ -1,7 +1,7 @@
 part of "../_.dart";
 
 gui__base__widget winter__indicate__progress__bar__widget({
-  required final NIMR parts__count,
+  required final NI parts__count,
   required final base__value__mutation__event__channel__broadcast<NIMR, gui__base__widget__building__context__definitive> progress__channel /*
 progress must be a multiple ,of `parts:count` */
   ,
@@ -29,7 +29,7 @@ if not available ,`border__color` is used */
         final //
             progress__flex = progress__channel.value(),
             remain_ing__flex = (parts__count - progress__flex),
-            remain__ing__ok = (remain_ing__flex > /* handles `progress > parts:count` case ,vs `!=` */ 0),
+            remain__ing___ok = (remain_ing__flex > /* handles `progress > parts:count` case ,vs `!=` */ 0),
             child = SizedBox(
               height: 16.px(),
             );
@@ -42,7 +42,7 @@ if not available ,`border__color` is used */
                 child: ClipRRect(
                   borderRadius: BorderRadius.horizontal(
                     left: Radius.circular(12.px()),
-                    right: (remain__ing__ok //
+                    right: (remain__ing___ok //
                         ? Radius.zero
                         : Radius.circular(12.px())),
                   ),
@@ -55,7 +55,7 @@ if not available ,`border__color` is used */
                   ),
                 ),
               ),
-            if (remain__ing__ok) //
+            if (remain__ing___ok) //
               Expanded(
                 flex: remain_ing__flex,
                 child: child,
@@ -68,7 +68,7 @@ if not available ,`border__color` is used */
 }
 
 gui__base__widget winter__waiting__widget({
-  final NEMR? radius__size,
+  final NFP? radius__size,
 }) {
   return Center(
     child: winter__waiting__widget__base(
@@ -78,7 +78,7 @@ gui__base__widget winter__waiting__widget({
 }
 
 gui__base__widget winter__waiting__widget__base({
-  final NEMR? radius__size /*size__half*/ /*dynamic*/,
+  final NFP? radius__size /*size__half*/ /*dynamic*/,
 }) {
   return CupertinoActivityIndicator(
     color: color__foreground__dim,
@@ -95,7 +95,7 @@ gui__base__widget winter__waiting__page() {
 }
 
 gui__base__widget winter__dis_connection__widget({
-  final NEMR? size,
+  final NFP? size,
 }) {
   return Center(
     child: base__icon(
@@ -125,7 +125,7 @@ class winter__dis_connection__page extends StatelessWidget {
             child: base__navigation__top__bubble(
               left: (
                 icon: flutter__icon__navigation__backward,
-                on_press: () => context.navigate__backward(),
+                on_press: () => context.navigation().backward(),
               ),
             ),
           ),
@@ -164,7 +164,7 @@ class winter__dis_connection__page extends StatelessWidget {
     this.subTitle = "to open item",
   });
 
-  final string__raw title, subTitle;
+  final string title, subTitle;
 
   @override
   gui__base__widget build(final BuildContext context) {

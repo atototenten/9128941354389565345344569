@@ -5,19 +5,19 @@ const //
 
 /* gui__base__widget pages__input__choice__page({
   required final base__scrolling scroll__manager,
-  required final string__raw page__title,
-  required final NIMR item__array__count,
-  NIMR? chosen__id /* choice__initial */,
+  required final string page__title,
+  required final NI item__array__count,
+  NI? chosen__id /* choice__initial */,
   required final gui__base__listing__item__build__function__format listing__item__body__build,
   final IconData? submit__button__icon = flutter__icon__done,
-  final string__raw submit__button__title = "Submit",
-  required final void Function(NIMR chosen__id) submit__handle,
+  final string submit__button__title = "Submit",
+  required final void Function(NI chosen__id) submit__handle,
 }) {
   Key listing__key = gui__base__widget__key__unique();
 
   procedure__empty__format listing__build__re = base__empty__procedure__empty;
 
-  BOOL choice__update(final NIMR? choice) {
+  BOOL choice__update(final NI? choice) {
     chosen__id = choice;
 
     listing__key = gui__base__widget__key__unique();
@@ -45,7 +45,7 @@ const //
           item__build: (final build__context, final item__id) => //
               gui__base__listing__item__select_able(
             key: listing__key,
-            selected__ok: (chosen__id == item__id),
+            selected___ok: (chosen__id == item__id),
             body: listing__item__body__build(
               build__context,
               item__id,
@@ -73,9 +73,9 @@ gui__base__widget pages__input__choice__page__simple(
  final gui__base__widget__building__context context,{
   required final base__scrolling scroll__manager,
   required final gui__base__widget page__title,
-  required final NIMR item__array__count,
+  required final NI item__array__count,
   required final gui__base__listing__item__build__function__format listing__item__body__build,
-  required final void Function(NIMR chosen__id) submit__handle,
+  required final void Function(NI chosen__id) submit__handle,
 }) =>
     page__foundation(
       base__list_ing__generat_ed(

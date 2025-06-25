@@ -30,12 +30,12 @@ extension winter__page__base__extension //
     on winter__page__base {
   gui__base__widget widget(
      final gui__base__widget__building__context context,{
-    final BOOL scroll__direction__reverse__ok = NO,
+    final BOOL scroll__direction__reverse___ok = NO,
     required final gui__base__widget heading,
-    required final NIMR items__count,
-    //final NIMR items__lanes__count = 1,
+    required final NI items__count,
+    //final NI items__lanes__count = 1,
     required final gui__base__listing__item__build__function__format /* 2nd param. is `item__id_` */ item__build,
-    final NEMR? items__separation__size,
+    final NFP? items__separation__size,
     final gui__base__widget? floating,
   }) {
     /*final gui__base__widget scrollBar = CupertinoScrollbar(
@@ -85,7 +85,7 @@ extension winter__page__base__extension //
       children: <gui__base__widget>[
         gui__base__child__constrained__tight__max__widget(
           child: scrolling.widget(
-            axis__direction: (scroll__direction__reverse__ok /*F*/ //
+            axis__direction: (scroll__direction__reverse___ok /*F*/ //
                 ? base__scrolling__axis__direction__vertical__reverse
                 : base__scrolling__axis__direction__vertical),
             physics: base__scrolling__physics__natural__always,
@@ -136,10 +136,10 @@ extension winter__page__base__extension //
           ),
           child: winter__navigation__top(
             left: (top__ok
-                ? (context.navigate__backward__ok()
+                ? (context.navigation().backward___ok()
                     ? winter__navigation__top__button(
                         icon: flutter__icon__navigation__backward,
-                        press__handle: () => context.navigate__backward(),
+                        press__handle: () => context.navigation().backward(),
                       )
                     : NIL)
                 : winter__navigation__top__button(
@@ -159,7 +159,7 @@ extension winter__page__base__extension //
                 image__filter__blur__crucial,
               ),
               child: gui__base__child__constrained__tight__max__widget(
-                height__ok: NO,
+                height___ok: NO,
                 child: gui__base__child__constrained__tight__widget(
                   height: screen__padding.top,
                 ),

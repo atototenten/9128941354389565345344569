@@ -3,10 +3,10 @@ part of "_.dart";
 base__storage__file__accessing__aligned__meta___union //
     base__storage__file__accessing__auto({
   required final base__storage__file__alignment___compo alignment,
-  required NIMR length,
-  required NIMR offset,
+  required NI length,
+  required NI offset,
 }) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "base__storage__file__accessing__auto",
     );
@@ -20,14 +20,14 @@ base__storage__file__accessing__aligned__meta___union //
   final base__storage__file__accessing__aligned__meta___union result;
 
   if /*F*/ (length == 0) {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       "(length = 0)".print();
     }
 
     result = base__storage__file__accessing__aligned__none__meta();
   } else {
     final //
-        offset__aligned__ok = base__NI__aligned__ok(
+        offset__aligned___ok = base__NI__aligned___ok(
           offset,
           alignment.size,
         ),
@@ -40,7 +40,7 @@ base__storage__file__accessing__aligned__meta___union //
           alignment.shift__count,
         );
 
-    if /*F*/ (offset__aligned__ok.not && //
+    if /*F*/ (offset__aligned___ok.not && //
         ((length + offset__aligned___compo.buffer__offset) < alignment.size)) /*
 branch is required
   because `block__partial__begin__meta` implies `(length = block__bytes__count\alignment__size\)`
@@ -50,7 +50,7 @@ example :`
 aligned equivalent case (`offset__aligned__ok`)
   is covered by `result.end` */
     {
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         "block__single__ok".print();
       }
 
@@ -68,14 +68,14 @@ aligned equivalent case (`offset__aligned__ok`)
       final base__storage__file__block__multiple__full__meta? middle;
       final base__storage__file__block__single__partial__ending__meta? ending;
 
-      if /*T*/ (offset__aligned__ok) {
+      if /*T*/ (offset__aligned___ok) {
         if (offset__aligned___compo.buffer__offset != 0) {
           throw "exception";
         }
 
         beginning = NIL;
       } else {
-        if (base__printing__ok) {
+        if (base__printing___ok) {
           "offset__aligned__not".print();
         }
 
@@ -93,7 +93,7 @@ aligned equivalent case (`offset__aligned__ok`)
       );
 
       if /*F*/ (length == 0) {
-        if (base__printing__ok) {
+        if (base__printing___ok) {
           "(length  =  0)".print();
         }
 
@@ -105,7 +105,7 @@ aligned equivalent case (`offset__aligned__ok`)
         );
 
         if /*F*/ (blocks__count == 0) {
-          if (base__printing__ok) {
+          if (base__printing___ok) {
             "(blocks__count = 0)".print();
           }
 
@@ -123,14 +123,14 @@ aligned equivalent case (`offset__aligned__ok`)
       }
 
       if /*F*/ (length == 0) {
-        if (base__printing__ok) {
+        if (base__printing___ok) {
           "(length   =   0)".print();
         }
 
         ending = NIL;
       } else {
         final //
-            length__aligned__ok = base__NI__aligned__ok(
+            length__aligned___ok = base__NI__aligned___ok(
               length,
               alignment.size,
             ),
@@ -140,14 +140,14 @@ aligned equivalent case (`offset__aligned__ok`)
   due to `middle`-case's `length -= blocks__bytes__count` */
             ;
 
-        if /*F*/ (length__aligned__ok) {
+        if /*F*/ (length__aligned___ok) {
           if (block__bytes__count != 0) {
             throw "exception";
           }
 
           ending = NIL;
         } else {
-          if (base__printing__ok) {
+          if (base__printing___ok) {
             "length__aligned__not".print();
           }
 
@@ -183,12 +183,12 @@ class base__storage__file__accessing__aligned__none__meta //
   const base__storage__file__accessing__aligned__none__meta();
 
   @override
-  NIMR blocks__count() {
+  NI blocks__count() {
     return 0;
   }
 
   @override
-  BOOL equal__ok(
+  BOOL equal___ok(
     final base__storage__file__accessing__aligned__meta___union other,
   ) {
     return (other is base__storage__file__accessing__aligned__none__meta);
@@ -199,7 +199,7 @@ class base__storage__file__accessing__aligned__none__meta //
     final Object other,
   ) {
     return ((other is base__storage__file__accessing__aligned__meta___union) && //
-        equal__ok(other));
+        equal___ok(other));
   }
 }
 
@@ -215,16 +215,16 @@ class base__storage__file__accessing__aligned__simple__meta //
   final base__storage__file__block__single__partial__meta value;
 
   @override
-  NIMR blocks__count() {
+  NI blocks__count() {
     return 1;
   }
 
   @override
-  BOOL equal__ok(
+  BOOL equal___ok(
     final base__storage__file__accessing__aligned__meta___union other,
   ) {
     return ((other is base__storage__file__accessing__aligned__simple__meta) && //
-        value.equal__ok(value));
+        value.equal___ok(value));
   }
 
   @override
@@ -232,7 +232,7 @@ class base__storage__file__accessing__aligned__simple__meta //
     final Object other,
   ) {
     return ((other is base__storage__file__accessing__aligned__meta___union) && //
-        equal__ok(other));
+        equal___ok(other));
   }
 }
 
@@ -252,7 +252,7 @@ class base__storage__file__accessing__aligned__complex__meta //
   final base__storage__file__block__single__partial__ending__meta? ending;
 
   @override
-  NIMR blocks__count() {
+  NI blocks__count() {
     var blocks__count = ((beginning != null) /*F*/ ? 1 : 0);
 
     if (ending != null) {
@@ -269,13 +269,13 @@ class base__storage__file__accessing__aligned__complex__meta //
   }
 
   @override
-  BOOL equal__ok(
+  BOOL equal___ok(
     final base__storage__file__accessing__aligned__meta___union other,
   ) {
     return ((other is base__storage__file__accessing__aligned__complex__meta) && //
-        base__value__nilable__equal__ok(beginning, other.beginning) && //
-        base__value__nilable__equal__ok(middle, other.middle) && //
-        base__value__nilable__equal__ok(ending, other.ending));
+        base__value__nilable__equal___ok(beginning, other.beginning) && //
+        base__value__nilable__equal___ok(middle, other.middle) && //
+        base__value__nilable__equal___ok(ending, other.ending));
   }
 
   @override
@@ -283,7 +283,7 @@ class base__storage__file__accessing__aligned__complex__meta //
     final Object other,
   ) {
     return ((other is base__storage__file__accessing__aligned__meta___union) && //
-        equal__ok(other));
+        equal___ok(other));
   }
 }
 
@@ -292,13 +292,13 @@ abstract class base__storage__file__accessing__aligned__meta__base {
     required this.block__id,
   });
 
-  final NIMR block__id;
+  final NI block__id;
 }
 
 sealed class base__storage__file__accessing__aligned__meta___union {
-  NIMR blocks__count();
+  NI blocks__count();
 
-  BOOL equal__ok(
+  BOOL equal___ok(
     base__storage__file__accessing__aligned__meta___union other,
   );
 }
@@ -312,10 +312,10 @@ class base__storage__file__block__multiple__full__meta //
     required this.blocks__count,
   });
 
-  final NIMR blocks__count;
+  final NI blocks__count;
 
   @override
-  BOOL equal__ok(
+  BOOL equal___ok(
     final base__storage__file__block__meta___union other,
   ) {
     return ((other is base__storage__file__block__multiple__full__meta) && //
@@ -327,7 +327,7 @@ class base__storage__file__block__multiple__full__meta //
     final Object other,
   ) {
     return ((other is base__storage__file__block__meta___union) && //
-        equal__ok(other));
+        equal___ok(other));
   }
 }
 
@@ -339,12 +339,12 @@ class base__storage__file__block__single__partial__meta //
     required this.offset,
   });
 
-  final NIMR //
+  final NI //
       length,
       offset /* in block */;
 
   @override
-  BOOL equal__ok(
+  BOOL equal___ok(
     final base__storage__file__block__meta___union other,
   ) {
     return ((other is base__storage__file__block__single__partial__meta) && //
@@ -357,7 +357,7 @@ class base__storage__file__block__single__partial__meta //
     final Object other,
   ) {
     return ((other is base__storage__file__block__meta___union) && //
-        equal__ok(other));
+        equal___ok(other));
   }
 }
 
@@ -368,16 +368,16 @@ class base__storage__file__block__single__partial__beginning__meta //
     required this.offset,
   });
 
-  final NIMR offset /* in block */;
+  final NI offset /* in block */;
 
-  NIMR length(
+  NI length(
     final base__storage__file__alignment___compo alignment,
   ) {
     return (alignment.size - offset);
   }
 
   @override
-  BOOL equal__ok(
+  BOOL equal___ok(
     final base__storage__file__block__meta___union other,
   ) {
     return ((other is base__storage__file__block__single__partial__beginning__meta) && //
@@ -389,7 +389,7 @@ class base__storage__file__block__single__partial__beginning__meta //
     final Object other,
   ) {
     return ((other is base__storage__file__block__meta___union) && //
-        equal__ok(other));
+        equal___ok(other));
   }
 }
 
@@ -400,14 +400,14 @@ class base__storage__file__block__single__partial__ending__meta //
     required this.length,
   });
 
-  final NIMR length;
+  final NI length;
 
-  NIMR offset() {
+  NI offset() {
     return 0;
   }
 
   @override
-  BOOL equal__ok(
+  BOOL equal___ok(
     final base__storage__file__block__meta___union other,
   ) {
     return ((other is base__storage__file__block__single__partial__ending__meta) && //
@@ -419,19 +419,19 @@ class base__storage__file__block__single__partial__ending__meta //
     final Object other,
   ) {
     return ((other is base__storage__file__block__meta___union) && //
-        equal__ok(other));
+        equal___ok(other));
   }
 }
 
 sealed class base__storage__file__block__meta___union {
-  BOOL equal__ok(
+  BOOL equal___ok(
     base__storage__file__block__meta___union other,
   );
 }
 
 void base__storage__file__accessing__auto__test() {
   const //
-      generate__ok /*
+      generate___ok /*
 disable `base__printing__ok` */
       = NO,
       //
@@ -1712,8 +1712,8 @@ formatted after generation */
         (length__aligned__octuple + 1),*/
       ];
 
-  if (generate__ok) {
-    "const _expectations = <array<base__storage__file__accessing__aligned__meta___union>>[".print__raw();
+  if (generate___ok) {
+    "const _expectations = <array<base__storage__file__accessing__aligned__meta___union>>[".print___raw();
   }
 
   array__new__generated(
@@ -1731,8 +1731,8 @@ formatted after generation */
     },
   ).iterate__basic(
     (final offset__id, final e) {
-      if (generate__ok) {
-        "[".print__raw();
+      if (generate___ok) {
+        "[".print___raw();
       }
 
       e.iterate__basic(
@@ -1743,8 +1743,8 @@ formatted after generation */
             offset: e.offset,
           );
 
-          if (generate__ok) {
-            final string__raw text__segment = "/* length :${e.length} ,offset :${e.offset} ;end :${e.length + e.offset} */\n";
+          if (generate___ok) {
+            final string text__segment = "/* length :${e.length} ,offset :${e.offset} ;end :${e.length + e.offset} */\n";
 
             (switch (file__accessing) {
               base__storage__file__accessing__aligned__none__meta() => //
@@ -1754,7 +1754,7 @@ formatted after generation */
               base__storage__file__accessing__aligned__complex__meta() => //
                 "${text__segment}base__storage__file__accessing__aligned__complex__meta(block__id:${file__accessing.block__id},beginning:${file__accessing.beginning.convert__if((final beginning) => "base__storage__file__block__single__partial__beginning__meta(offset:${beginning.offset},)") ?? Null__value__text},middle:${file__accessing.middle.convert__if((final middle) => "base__storage__file__block__multiple__full__meta(blocks__count:${middle.blocks__count},)") ?? Null__value__text},ending:${file__accessing.ending.convert__if((final ending) => "base__storage__file__block__single__partial__ending__meta(length:${ending.length},)") ?? Null__value__text},),",
             })
-                .print__raw();
+                .print___raw();
           } else {
             switch (file__accessing) {
               case base__storage__file__accessing__aligned__none__meta():
@@ -1801,7 +1801,7 @@ formatted after generation */
             {
               final expectation = _expectations[offset__id][length__id];
 
-              if (file__accessing.equal__ok(expectation)) {
+              if (file__accessing.equal___ok(expectation)) {
                 "$offset__id.$length__id : OK".print();
               } else {
                 throw "$offset__id.$length__id : $file__accessing ~= $expectation";
@@ -1811,13 +1811,13 @@ formatted after generation */
         },
       );
 
-      if (generate__ok) {
-        "],".print__raw();
+      if (generate___ok) {
+        "],".print___raw();
       }
     },
   );
 
-  if (generate__ok) {
-    "];".print__raw();
+  if (generate___ok) {
+    "];".print___raw();
   }
 }

@@ -17,16 +17,16 @@ class base__storage__file__block /*
 required to allow single-copy and mandate alignment */
 {
   const base__storage__file__block(
-    this.value__raw,
+    this.value___raw,
   );
 
-  final byte__array value__raw;
+  final byte__array value___raw;
 
   byte__array /*
 im-mutable and partial view
   of the storage block */
       value() {
-    return value__raw.asUnmodifiableView();
+    return value___raw.asUnmodifiableView();
   }
 }
 
@@ -35,12 +35,12 @@ extension file__segment__array__joining__extension //
   byte__array /*
 with ownership */
       convert__byte__array() {
-    if (empty__ok()) {
+    if (empty___ok()) {
       return empty__byte__array;
     }
 
     final //
-        block__size = first.value__raw.bytes__count,
+        block__size = first.value___raw.bytes__count,
         result = byte__array(
           (elements__count * block__size),
         );
@@ -51,7 +51,7 @@ with ownership */
       (final i, final e) {
         base__copy(
           result,
-          e.value__raw,
+          e.value___raw,
           count: block__size,
           dest__offset: result__offset,
         );
@@ -64,13 +64,13 @@ with ownership */
   }
 }
 
-string__raw file__path__convert__name(
-  final string__raw file__path,
+string file__path__convert__name(
+  final string file__path,
 ) {
   final char__id = text__search(
     file__path,
     base__storage__file__path__separation__char,
-    reverse__ok: OK,
+    reverse___ok: OK,
   );
 
   if (char__id == null) {
@@ -82,17 +82,17 @@ string__raw file__path__convert__name(
   );
 }
 
-string__raw file__name__convert__extension(
-  final string__raw file__name,
+string file__name__convert__extension(
+  final string file__name,
 ) {
   final char__id = text__search(
     file__name,
     char__dot,
-    reverse__ok: OK,
+    reverse___ok: OK,
   );
 
   if (char__id == null) {
-    return empty__text;
+    return empty__string;
   }
 
   return file__name.substring(
@@ -101,8 +101,8 @@ string__raw file__name__convert__extension(
 }
 
 typedef base__storage__file__alignment___compo = ({
-  NIMR shift__count,
-  NIMR size,
+  NI shift__count,
+  NI size,
 });
 
 const base__storage__file__alignment___compo //
@@ -119,15 +119,15 @@ const base__storage__file__alignment___compo //
 
 typedef io__operation__read_write__function__format = void Function(
   BS1__array buffer,
-  NIMR count,
-  NIMR offset,
+  NI count,
+  NI offset,
 );
 
 ({
-  NIMR offset__aligned,
-  NIMR buffer__offset /* `__un_aligned` */,
+  NI offset__aligned,
+  NI buffer__offset /* `__un_aligned` */,
 }) base__storage__file__offset__aligned(
-  final NIMR offset,
+  final NI offset,
   final base__storage__file__alignment___compo block__meta,
 ) {
   final offset__aligned = NI__aligned(
@@ -142,18 +142,18 @@ typedef io__operation__read_write__function__format = void Function(
   );
 }
 
-NIMR base__storage__file__count__max /*
+NI base__storage__file__count__max /*
   equivalent of `storage__offset__aligned`, despite the in-appropriate name
   not `__aligned` because `count` is not aligned, but `(count +1)`, to get upper-limit, which is max, actually necessary */
     (
-  final NIMR count,
-  final NIMR buffer__offset, [
+  final NI count,
+  final NI buffer__offset, [
   final base__storage__file__alignment___compo block__size = base__storage__file__block__size,
 ]) {
   if (count == 0) //
     return 0;
 
-  if (base__NI__aligned__ok(
+  if (base__NI__aligned___ok(
     count,
     block__size.size,
   )) {
@@ -172,11 +172,11 @@ NIMR base__storage__file__count__max /*
           which is in-correct; because `offset__new` should be `21000`, instead of `20480`(5 * bk_sz) */
 
 void base__storage__file__io__check__aligned(
-  final NIMR count,
-  final NIMR offset,
+  final NI count,
+  final NI offset,
   final base__storage__file__alignment___compo alignment,
 ) {
-  if (base__printing__ok) {
+  if (base__printing___ok) {
     base__function__call__print(
       "storage__io__check__aligned",
     );
@@ -186,11 +186,11 @@ void base__storage__file__io__check__aligned(
     alignment.size.text__representation().print("alignment__size");
   }
 
-  if (base__NI__aligned__ok(count, alignment.size).not) {
+  if (base__NI__aligned___ok(count, alignment.size).not) {
     throw "`count` is NOT aligned";
   }
 
-  if (base__NI__aligned__ok(offset, alignment.size).not) {
+  if (base__NI__aligned___ok(offset, alignment.size).not) {
     throw "`offset` is NOT aligned";
   }
 }

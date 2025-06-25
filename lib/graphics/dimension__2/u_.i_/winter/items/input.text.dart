@@ -1,9 +1,9 @@
 part of "../_.dart";
 
 gui__base__widget winter__input__text({
-  required final string__raw title,
-  final string__raw? sub_title,
-  final string__raw? info_,
+  required final string title,
+  final string? sub_title,
+  final string? info_,
   required final gui__base__widget input__text /*base__input__text__base*/,
 }) {
   final //
@@ -32,7 +32,7 @@ gui__base__widget winter__input__text({
           ),
           gui__base__widget__separat_or__vertical,
           SizedBox(
-            width: NEMR.maxFinite,
+            width: NFP.maxFinite,
             child: winter__box__non_button /* for `color__background__nested` bg */ (
               border__radius: border__radius,
               child: Padding(
@@ -90,8 +90,8 @@ should be wrap-ed in a `GestureDetector` ,to navigate to a new page(or maybe an 
 }
 
 gui__base__widget winter__input__text__search__body({
-  final string__raw hint__title = "Search for",
-  required final array<string__raw> hint__items,
+  final string hint__title = "Search for",
+  required final array<string> hint__items,
 }) =>
     Wrap(
       children: <gui__base__widget>[

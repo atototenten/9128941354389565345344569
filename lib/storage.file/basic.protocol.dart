@@ -11,8 +11,8 @@ completely raw and un-cached
       read__asyn /*
 fetch data */
       ({
-    required final NIMR count,
-    required final NIMR offset,
+    required final NI count,
+    required final NI offset,
   });
 
   value__asyn<base__storage__file__writing__error?> //
@@ -20,7 +20,7 @@ fetch data */
 re-place data */
       (
     final base__storage__file__blocks value, {
-    required final NIMR offset,
+    required final NI offset,
   });
 
   @override

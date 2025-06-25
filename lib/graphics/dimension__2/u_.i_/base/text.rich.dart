@@ -10,13 +10,13 @@ part of "_.dart";
       Alignment.center,
       Alignment.centerRight,
     ],
-    rich_text__link___protocol__list = <string__raw>[
+    rich_text__link___protocol__list = <string>[
       base__net__web__scheme__fix__pre,
       base__net__web__scheme__secure__fix__pre,
     ];
 
-string__raw rich_text__www__address__resolve(
-  final NI1R protocol__id,
+string rich_text__www__address__resolve(
+  final NI protocol__id,
   final BS1__array address__bytes__buffer,
 ) {
   final address = (StringBuffer(rich_text__link___protocol__list[protocol__id])
@@ -30,8 +30,8 @@ string__raw rich_text__www__address__resolve(
 gui__base__widget rich_text__image({
   required final ScrollController controller,
   required final value__asyn<BS1__array> image__future,
-  required final NEMR width,
-  required final NEMR height,
+  required final NFP width,
+  required final NFP height,
 }) {
   procedure__empty__format? build__re;
 
@@ -177,7 +177,7 @@ TextStyle base__text__rich__style__code() => //
 array<gui__base__widget> str__wide__rich__bytes__convert({
   required final BS1__array str__wide__rich__bytes,
   required final void Function(text address) text__link__open,
-  required final value__asyn<BS1__array> Function(NIMR file__id) file__fetch,
+  required final value__asyn<BS1__array> Function(NI file__id) file__fetch,
 }) {
   report__BS1__array(
     str__wide__rich__bytes,
@@ -207,7 +207,7 @@ array<gui__base__widget> str__wide__rich__bytes__convert({
 
   Alignment text__alignment = Alignment.centerLeft;
 
-  string__raw section__text__read() {
+  string section__text__read() {
     final //
         count = section__control__bytes.read__NI().value,
         result = wstr__convert__text(
@@ -223,7 +223,7 @@ array<gui__base__widget> str__wide__rich__bytes__convert({
   }
 
   void widget__add() {
-    if (!text__segment__list.empty__ok) {
+    if (!text__segment__list.empty___ok) {
       widget__list.add(
         Align(
           alignment: text__alignment,
@@ -240,7 +240,7 @@ array<gui__base__widget> str__wide__rich__bytes__convert({
     }
   }
 
-  while (section__control__bytes.iterate__ok) //
+  while (section__control__bytes.iterate___ok) //
     switch (section__control__bytes.read__byte()) {
       case str__wide__rich__type__text__un_styl_ed:
         text__segment__list.add(

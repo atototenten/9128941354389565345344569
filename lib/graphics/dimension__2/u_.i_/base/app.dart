@@ -1,11 +1,11 @@
 part of "_.dart";
 
-late final array<string__raw> base__app__title__segments;
+late final array<string> base__app__title__segments;
 
-string__raw base__app__title() => //
+string base__app__title() => //
     base__app__title__segments.join();
 
-BOOL base__environment__theme__colors__ground__back__contrast__dark__ok() {
+BOOL base__environment__theme__colors__ground__back__contrast__dark___ok() {
   return (ui.PlatformDispatcher.instance.platformBrightness == Brightness.dark);
 }
 
@@ -58,10 +58,10 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
 
   final init_ion__promise = value__asyn__meta<void>();
   {
-    var count__raw = 2;
+    var count___raw = 2;
     void _success__handle() {
-      count__raw -= 1;
-      if (count__raw == 0) {
+      count___raw -= 1;
+      if (count___raw == 0) {
         init_ion__promise.complete();
       }
     }
@@ -102,7 +102,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
           throw "un-known `AppLifecycleState`, $message";
       }
 
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         state.name.text__representation().print("app__state__life_cycle");
       }
 
@@ -118,19 +118,19 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
       ::`void initInstances()` */*/
 
     /*SystemChannels.keyEvent.setMessageHandler((final message) async {
-      final key__raw = RawKeyEvent.fromMessage(message as Map<string__raw, Object?>);
+      final key___raw = RawKeyEvent.fromMessage(message as Map<string, Object?>);
 
-      if (base__printing__ok) {
-        report__Object(key__raw, "app__key.key__raw");
+      if (base__printing___ok) {
+        report__Object(key___raw, "app__key.key__raw");
 
         reporting__indent();
 
-        report__text__null_able(key__raw.character, "..character");
-        report__Object__null_able(key__raw.character?.codeUnits, "..character.codeUnits");
+        report__text__null_able(key___raw.character, "..character");
+        report__Object__null_able(key___raw.character?.codeUnits, "..character.codeUnits");
         report__bool((key__raw is RawKeyDownEvent), "..isRawKeyDownEvent");
         report__bool((key__raw is RawKeyUpEvent), "..isRawKeyUpEvent");
 
-        final data = key__raw.data;
+        final data = key___raw.data;
 
         report__text(data.keyLabel, "..keyLabel");
 
@@ -146,16 +146,16 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
       }
 
       if /* un-likely */ ((key__raw is RawKeyDownEvent) && //
-          (key__raw.data.logicalKey == LogicalKeyboardKey.goBack)) //
+          (key___raw.data.logicalKey == LogicalKeyboardKey.goBack)) //
         navigate__back(
           app__navigation__manager,
         );
       else //
         app__key__broadcast.message__announce(
-          key__raw,
+          key___raw,
         );
 
-      return <string__raw, bool>{"handled" /*b__handled*/ : OK};
+      return <string, bool>{"handled" /*b__handled*/ : OK};
     }); /*
   forked
     from `flutter/src/services/binding.dart`::`mixin ServicesBinding`
@@ -163,7 +163,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
       ::`void initInstances()` */*/
 
     /*SystemChannels.navigation.setMethodCallHandler((final call) async {
-      if (base__printing__ok) //
+      if (base__printing___ok) //
         base__function__call__print__arguments__void(
           "SystemChannels.navigation",
         );
@@ -183,7 +183,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
               );
 
           reporting__indent();
-          if (base__printing__ok) {
+          if (base__printing___ok) {
             report__text(route, "route");
             report__Object(route__info, "route__info");
           }
@@ -199,7 +199,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
               );
 
           reporting__indent();
-          if (base__printing__ok) {
+          if (base__printing___ok) {
             report__Object(route__args, "route__args");
             report__Object(route__info, "route__info");
           }
@@ -218,7 +218,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
 
     /*PlatformDispatcher.instance
       ..onMetricsChanged = () {
-        if (base__printing__ok) //
+        if (base__printing___ok) //
           base__function__call__print__arguments__void(
             "PlatformDispatcher.onMetricsChanged",
           );
@@ -253,7 +253,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
       ::`void initInstances()` */
 
         reporting__indent();
-        if (base__printing__ok) //
+        if (base__printing___ok) //
           ui.PlatformDispatcher.instance.views.forEach((final view) {
             report__Object(view, "view");
 
@@ -269,13 +269,13 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
         app__build__re();
       }
       ..onPlatformBrightnessChanged = () {
-        if (base__printing__ok) //
+        if (base__printing___ok) //
           base__function__call__print__arguments__void(
             "PlatformDispatcher.onPlatformBrightnessChanged",
           );
 
         reporting__indent();
-        if (base__printing__ok) //
+        if (base__printing___ok) //
           report__Object(
             ui.PlatformDispatcher.instance.platformBrightness,
             "PlatformDispatcher.platformBrightness",
@@ -313,13 +313,13 @@ called at last ,to allow ,the slow environments (like android) ,some extra time,
 
 void base__app__run__simple /*
 config. :
-  `environment__phone__ok`
+  `environment__phone___ok`
   `behavior__correct__ok`
 
 tasks:long:
   - add app-splash, as black seems bad */ //
     <entity__type extends gui__base__entity__page___protocol>({
-  required final array<string__raw> app__title__segments /*
+  required final array<string> app__title__segments /*
 example :`["Demo", char__space, "app"]` */
   ,
   required final service__authority__base service__authority,
@@ -328,7 +328,7 @@ example :`["Demo", char__space, "app"]` */
 `debug`* global properties ,like `debugPaintSizeEnabled` ,`debugPaintPointersEnabled` ,`debugRepaintRainbowEnabled` ,`debugRepaintTextRainbowEnabled` ,`debugPaintLayerBordersEnabled` ,`debugDisableClipLayers` ,`debugPrintRebuildDirtyWidgets` ,`debugPrintMouseHoverEvents` ,`debugPrintHitTestResults` ,`debugPrintKeyboardEvents` ,can be set inside
 `theme__colors__set` proc. should be called in the proc.
 wrap every page/overlay ,to handle `base__app__theme__change__channel`
-  ,and preferably the child with `ValueKey(app__theme__id)`(or simply `ValueKey(base__app__theme__colors__ground__back__contrast__dark__ok)` if merely a day/night theme is needed) as `key` (to not re-use ,the tree's existing widgets)
+  ,and preferably the child with `ValueKey(app__theme__id)`(or simply `ValueKey(base__app__theme__colors__ground__back__contrast__dark___ok)` if merely a day/night theme is needed) as `key` (to not re-use ,the tree's existing widgets)
     ,because the framework's `base__app__build__re` is not definitive
   ,because handling above(in tree-node's position or hierarchy) `MaterialApp` ,would re-set the whole app (including navigation[-stack] ,and current page/overlay)
     ,while handling below(as its child) ,would be overridden with page/overlay navigation
@@ -345,7 +345,7 @@ un-"await"-ed to allow the app to normally function ,for non-denial cases */
 
   base__app__title__segments = app__title__segments;
 
-  base__app__theme__colors__ground__back__follow__system__ok = OK;
+  base__app__theme__colors__ground__back__follow__system___ok = OK;
 
   base__app__run(
     init: (final init_ion__status) {
@@ -381,7 +381,7 @@ class gui__base__app__running__simple //
 
     init_ion__status__asyn.handle(
       (final _) {
-        base__app__theme__colors__ground__back__contrast__dark__ok = base__environment__theme__colors__ground__back__contrast__dark__ok();
+        base__app__theme__colors__ground__back__contrast__dark___ok = base__environment__theme__colors__ground__back__contrast__dark___ok();
 
         entity().handle(
           (final entity) {
@@ -395,24 +395,24 @@ class gui__base__app__running__simple //
       _failure__handle,
     );
 
-    init_ion__asyn__raw = base__value__asyn__definitive<entity__type>(
+    init_ion__asyn___raw = base__value__asyn__definitive<entity__type>(
       entity__promise.future,
     );
   }
 
-  late final base__value__asyn__definitive<entity__type> init_ion__asyn__raw;
+  late final base__value__asyn__definitive<entity__type> init_ion__asyn___raw;
   final gui__base__widget__build__function__format splash__build;
 
   @override
   void dispose() {
-    init_ion__asyn__raw.dispose();
+    init_ion__asyn___raw.dispose();
   }
 
   @override
   gui__base__widget widget__build(
     final gui__base__widget__building__context context,
   ) {
-    return init_ion__asyn__raw.handling__widget__build(
+    return init_ion__asyn___raw.handling__widget__build(
       context,
       children: gui__base__value__asyn__handling__children___record(
         child__state__waiting__build: splash__build,
@@ -443,9 +443,9 @@ class gui__base__app__running__simple //
   }
 }
 
-late BOOL base__app__theme__colors__ground__back__follow__system__ok; /*
+late BOOL base__app__theme__colors__ground__back__follow__system___ok; /*
 disabl-ing `app:size:follow:system` would be non-sense ,because the whole sub-system depends on it ,for dynamic siz-ing 
-  ,static siz-ing is the default ,hence can be imitated ,simply ,by avoid-ing `NEMR.px` */
+  ,static siz-ing is the default ,hence can be imitated ,simply ,by avoid-ing `NFP.px` */
 
 class base__app__gui__base__widget extends StatefulWidget {
   const base__app__gui__base__widget({
@@ -484,7 +484,7 @@ class _app__gui__base__widget__state //
 
   @override
   void didChangeMetrics() {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       base__printing__indentation__increase();
       for (final view in ui.PlatformDispatcher.instance.views) {
         view.text__representation().print("view");
@@ -500,7 +500,7 @@ class _app__gui__base__widget__state //
     if (base__app__size__set(
       view: NIL,
     )) {
-      if (base__printing__ok) {
+      if (base__printing___ok) {
         "app:size:set:re_fresh:ok".print();
       }
 
@@ -510,19 +510,19 @@ class _app__gui__base__widget__state //
 
   @override
   void didChangePlatformBrightness() {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       "app:colors:change".print();
     }
 
-    if (base__app__theme__colors__ground__back__follow__system__ok.not) {
+    if (base__app__theme__colors__ground__back__follow__system___ok.not) {
       return;
     }
 
-    base__app__theme__colors__ground__back__contrast__dark__ok = base__environment__theme__colors__ground__back__contrast__dark__ok();
+    base__app__theme__colors__ground__back__contrast__dark___ok = base__environment__theme__colors__ground__back__contrast__dark___ok();
 
     base__app__theme__change__channel.event__dispatch();
 
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       "app:colors:set:re_fresh:ok".print();
     }
 
@@ -533,7 +533,7 @@ class _app__gui__base__widget__state //
   void didChangeAppLifecycleState(
     final AppLifecycleState state,
   ) {
-    if (base__printing__ok) {
+    if (base__printing___ok) {
       state.text__representation().print("app:life_cycle:state:new");
     }
 
@@ -560,7 +560,7 @@ class _app__gui__base__widget__state //
 
 extension FlutterErrorDetails__extension on FlutterErrorDetails {
   ({
-    string__raw error__text,
+    string error__text,
     StackTrace? trace,
   }) convert__text() {
     final //
@@ -574,7 +574,7 @@ extension FlutterErrorDetails__extension on FlutterErrorDetails {
           ..write("\"," "silent" ":\"")
           ..write(silent));
 
-    if (base__program__compilation__debug__ok) {
+    if (base__program__compilation__debug___ok) {
       buffer
         ..write("\"," "informationCollector" ":\"")
         ..write(informationCollector);

@@ -6,7 +6,7 @@ const //
     ),
     base__input__text__filtering__full = base__input__text__filtering(
       r"[\x00-\x09\x0B-\x1F\x7F\x80-\x9F]",
-      allow__ok: NO,
+      allow___ok: NO,
     ) /*
 ASCII
   `web://upload.wikimedia.org/wikipedia/commons/d/dd/ASCII-Table.svg`
@@ -21,7 +21,7 @@ class gui__base__input__text //
     implements gui__base__entity__component___protocol<gui__base__input__text__children___record> {
   gui__base__input__text({
     this.input__type = TextInputType.text,
-    this.line__breaking__ok = NO,
+    this.line__breaking___ok = NO,
     required this.input__text__style,
     required this.cursor__color,
     this.input__capitalization = TextCapitalization.none,
@@ -29,85 +29,85 @@ class gui__base__input__text //
     this.input__filtering = base__input__text__filtering__basic,
     this.input__lines__max = 3,
     this.input__lines__min = 1,
-    final string__raw value__initial = empty__text,
+    final string value__initial = empty__string,
   })  : value__channel = base__value__mutation__event__channel__broadcast(
           value__initial,
         ),
-        controlling__raw = TextEditingController(
+        controlling___raw = TextEditingController(
           text: value__initial,
         ),
-        focussing__raw = FocusNode() {
-    controlling__raw.addListener(
-      controlling__event__handle__raw,
+        focussing___raw = FocusNode() {
+    controlling___raw.addListener(
+      controlling__event__handle___raw,
     );
   }
 
   final TextInputType input__type;
-  final BOOL line__breaking__ok;
+  final BOOL line__breaking___ok;
   final TextStyle input__text__style;
   final Color cursor__color;
   final TextCapitalization input__capitalization;
-  final NIMR input__characters__count__limit /*
+  final NI input__characters__count__limit /*
 wide-char.s */
       ;
   final base__input__text__filtering input__filtering;
-  final NIMR? input__lines__max;
-  final NIMR input__lines__min;
+  final NI? input__lines__max;
+  final NI input__lines__min;
 
-  final base__value__mutation__event__channel__broadcast<string__raw> value__channel;
+  final base__value__mutation__event__channel__broadcast<string> value__channel;
 
-  final TextEditingController controlling__raw;
-  final FocusNode focussing__raw;
+  final TextEditingController controlling___raw;
+  final FocusNode focussing___raw;
 
-  void controlling__event__handle__raw() {
+  void controlling__event__handle___raw() {
     value__channel.value__mutation__dispatch(
-      controlling__raw.text,
+      controlling___raw.text,
     );
   }
 
-  string__raw value() /*{ return value__raw; }*/ {
-    return controlling__raw.value.text;
+  string value() /*{ return value___raw; }*/ {
+    return controlling___raw.value.text;
   }
 
   void value__assign(
-    final string__raw value__new,
+    final string value__new,
   ) /*{
-    value__raw = value__new;
+    value___raw = value__new;
     channel.event__announce();
   }*/
   {
-    controlling__raw.text = value__new; /*
+    controlling___raw.text = value__new; /*
 will invoke `channel.event__announce` */
   }
 
-  BOOL focussed__ok() {
-    return focussing__raw.hasFocus;
+  BOOL focussed___ok() {
+    return focussing___raw.hasFocus;
   }
 
   void focus() {
-    if (focussed__ok()) {
+    if (focussed___ok()) {
       return;
     }
 
-    focussing__raw.requestFocus();
+    focussing___raw.requestFocus();
   }
 
   void focus_de() {
-    if (focussed__ok().not) {
+    if (focussed___ok().not) {
       return;
     }
 
-    focussing__raw.unfocus();
+    focussing___raw.unfocus();
   }
 
   @override
   void dispose() {
-    controlling__raw.removeListener(
-      controlling__event__handle__raw,
+    controlling___raw.removeListener(
+      controlling__event__handle___raw,
     );
 
-    focussing__raw.dispose();
-    controlling__raw.dispose();
+    focussing___raw.dispose();
+    controlling___raw.dispose();
 
     value__channel.dispose();
   }
@@ -127,9 +127,9 @@ FIX :
     final input__characters__count__indication__build = children.input__characters__count__indication__build;
 
     return ListenableBuilder(
-      listenable: focussing__raw,
+      listenable: focussing___raw,
       builder: (final context, final _) {
-        if (focussed__ok().not) {
+        if (focussed___ok().not) {
           return children.child__build(
             context,
           );
@@ -139,20 +139,20 @@ FIX :
           color: base__color__transparent,
           child: TextField(
             decoration: NIL,
-            controller: controlling__raw,
-            focusNode: focussing__raw,
+            controller: controlling___raw,
+            focusNode: focussing___raw,
             style: input__text__style,
             cursorOpacityAnimates: NO,
             cursorColor: cursor__color,
             cursorRadius: Radius.circular(1.px()),
             keyboardType: input__type,
-            textInputAction: (line__breaking__ok //
+            textInputAction: (line__breaking___ok //
                 ? TextInputAction.newline
                 : TextInputAction.done) /*
 because of ambiguity with done-key ,between keyboard-close and form-submission */
             ,
             textCapitalization: input__capitalization,
-            autofocus: focussing__raw.hasFocus,
+            autofocus: focussing___raw.hasFocus,
             maxLines: input__lines__max,
             minLines: input__lines__min,
             inputFormatters: <TextInputFormatter>[
@@ -162,10 +162,10 @@ because of ambiguity with done-key ,between keyboard-close and form-submission *
               ),
               FilteringTextInputFormatter(
                 RegExp(input__filtering.reg_ex),
-                allow: input__filtering.allow__ok,
+                allow: input__filtering.allow___ok,
               ),
             ],
-            keyboardAppearance: (base__app__theme__colors__ground__back__contrast__dark__ok //
+            keyboardAppearance: (base__app__theme__colors__ground__back__contrast__dark___ok //
                 ? Brightness.dark
                 : Brightness.light),
             scrollPhysics: base__scrolling__physics__clamping,
@@ -191,11 +191,11 @@ because of ambiguity with done-key ,between keyboard-close and form-submission *
 class base__input__text__filtering {
   const base__input__text__filtering(
     this.reg_ex, {
-    this.allow__ok = OK,
+    this.allow___ok = OK,
   });
 
-  final string__raw reg_ex;
-  final BOOL allow__ok;
+  final string reg_ex;
+  final BOOL allow___ok;
 }
 
 class gui__base__input__text__children___record {

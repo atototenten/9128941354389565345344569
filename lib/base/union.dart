@@ -9,7 +9,7 @@ class union {
   final array<Type> _types /*
 sub-typing is not supported
 /*must be ordered in narrow-to-wide sequence 
-  ,like `[NIR ,NI2R ,... ,NIMR]` ,because `NI2R` is `NI4R` ,but `NI4R` is-not `NI2R`*/ */
+  ,like `[NI , NFP ,... , string]` ,because `NI2` is `NI4` ,but `NI4` is-not `NI2`*/ */
       ;
 
   dynamic _value;
@@ -20,7 +20,7 @@ sub-typing is not supported
   void value__set(
     final dynamic value__new,
   ) {
-    var type__ok = NO;
+    var type___ok = NO;
 
     _types.iterate(
       (
@@ -28,7 +28,7 @@ sub-typing is not supported
         final e,
       ) {
         if (value__new.runtimeType == e) {
-          type__ok = OK;
+          type___ok = OK;
 
           return NO;
         }
@@ -37,14 +37,14 @@ sub-typing is not supported
       },
     );
 
-    if (type__ok.not) {
+    if (type___ok.not) {
       throw "\"$value__new\" of type `${value__new.runtimeType}` ,cannot be assigned to union$_types";
     }
 
     _value = value__new;
   }
 
-  BOOL equal__ok(
+  BOOL equal___ok(
     final union other,
   ) /*
 `_types` is ignored */
@@ -59,24 +59,24 @@ sub-typing is not supported
     final Object other,
   ) {
     return ((other is union) &&
-        equal__ok(
+        equal___ok(
           other,
         ));
   }
 
-  string__raw convert__text() {
+  string convert__text() {
     return "<${_value.runtimeType}>${_value ?? Null__value__text}";
   }
 
   @override
-  string__raw toString() => //
+  string toString() => //
       convert__text();
 }
 
 void union__test() {
   final u = union(
     NIL,
-    [Null, NIMR, string__raw],
+    [Null, NI, string],
   );
 
   void value__set(
