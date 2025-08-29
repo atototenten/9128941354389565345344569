@@ -25,7 +25,7 @@ value__asyn<void> base__net__reliable__server__simple({
   ))
       .iterate__basic(
     (final _, final interface) {
-      interface.text__representation().print("NetworkInterface");
+      interface.representation__text().print("NetworkInterface");
     },
   );
 
@@ -74,7 +74,7 @@ value__asyn<void> base__net__reliable__server__simple({
   base__net__address__port__convert__text(
     socket__server__central.address.address,
     socket__server__central.port,
-  ).text__representation().print("server.socket.address");
+  ).representation__text().print("server.socket.address");
 }
 
 value__asyn<void>
@@ -110,7 +110,7 @@ request responses :`base__results__basic` */
       try {
         file__path = str__convert__text(
           request,
-        )..text__representation()
+        )..representation__text()
             .print("net:server:simple:file:request:file:path");
       } catch (e, t) {
         base__error__handle(e, t);

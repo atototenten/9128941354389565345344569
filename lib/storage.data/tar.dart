@@ -47,7 +47,7 @@ base__storage__data__tar__table__meta___compo base__storage__data__tar__table__m
       "base__storage__data__tar__table__meta",
     );
 
-    row__id.text__representation().print(
+    row__id.representation__text().print(
           "row__id",
         );
   }
@@ -67,16 +67,16 @@ base__storage__data__tar__table__meta___compo base__storage__data__tar__table__m
   }
 
   if (base__printing___ok) {
-    base__compo__text__representation(
+    base__compo__representation__text(
       "base__storage__data__tar__table__meta__compo",
       {
-        "table__id_": table__id.text__representation(),
-        "row__id_": table__row__id.text__representation(),
-        "rows__count": table__rows__count.text__representation(),
+        "table__id_": table__id.representation__text(),
+        "row__id_": table__row__id.representation__text(),
+        "rows__count": table__rows__count.representation__text(),
       },
-    ).text__representation().print(
+    ).representation__text().print(
       "result",
-      row__id.text__representation(),
+      row__id.representation__text(),
     );
   }
 
@@ -125,10 +125,10 @@ class base__storage__data__tar__meta___compo //
       convert__member__dictionary() {
     return {
       ...super.convert__member__dictionary(),
-      "table__array__bytes__base__storage__data__offset": table__array__bytes__base__storage__data__offset.text__representation(),
-      "tar__meta__bytes__base__storage__data__offset": tar__meta__bytes__base__storage__data__offset.text__representation(),
-      "table__array__bytes": table__array__bytes.text__representation(),
-      "rows__count__multiplier__initial": rows__count__multiplier__initial.text__representation(),
+      "table__array__bytes__base__storage__data__offset": table__array__bytes__base__storage__data__offset.representation__text(),
+      "tar__meta__bytes__base__storage__data__offset": tar__meta__bytes__base__storage__data__offset.representation__text(),
+      "table__array__bytes": table__array__bytes.representation__text(),
+      "rows__count__multiplier__initial": rows__count__multiplier__initial.representation__text(),
     };
   }
 }
@@ -188,7 +188,7 @@ NI base__storage__data__tar__row__add(
       tar__meta.debug__label,
     );
 
-    bytes.text__representation().print("bytes");
+    bytes.representation__text().print("bytes");
   }
 
   base__printing__indentation__increase();
@@ -196,7 +196,7 @@ NI base__storage__data__tar__row__add(
   final row__id = tar__meta.rows__count++;
 
   if (base__printing___ok) {
-    row__id.text__representation().print(
+    row__id.representation__text().print(
           "row__id",
           tar__meta.debug__label,
         );
@@ -252,13 +252,13 @@ NI base__storage__data__tar__row__add(
     if (base__printing___ok) {
       ("${(table__meta.rows__count * tar__meta.row__size)}"
               "(${table__meta.rows__count}(rows) * ${tar__meta.row__size}(row's size))")
-          .text__representation()
+          .representation__text()
           .print(
             "table__new__size",
             tar__meta.debug__label,
           );
 
-      base__storage__data__offset__to__table.text__representation().print(
+      base__storage__data__offset__to__table.representation__text().print(
             "base__storage__data__offset__to__table__new",
             tar__meta.debug__label,
           );
@@ -300,7 +300,7 @@ NI base__storage__data__tar__row__add(
     );
 
     if (base__printing___ok) {
-      base__storage__data__position(ds__meta).text__representation().print(
+      base__storage__data__position(ds__meta).representation__text().print(
             "table__array__new__base__storage__data__offset",
             tar__meta.debug__label,
           );
@@ -349,7 +349,7 @@ base__storage__data__table__row___compo base__storage__data__tar__row(
       tar__meta.debug__label,
     );
 
-    row__id.text__representation().print("row__id");
+    row__id.representation__text().print("row__id");
   }
 
   base__printing__indentation__increase();

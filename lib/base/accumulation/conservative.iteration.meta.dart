@@ -473,14 +473,14 @@ declarative approach */
     );
   }
 
-  base__text__representation //
-      text__representation() {
-    return base__compo__text__representation(
+  base__representation__text //
+      representation__text() {
+    return base__compo__representation__text(
       name: "base__accumulation__conservative__iteration__meta",
       members: {
-        "elements__count__remaining": elements__count__remaining___raw.text__representation(),
-        "elements__offset": elements__offset___raw.text__representation(),
-        "array__current__id": array__current__id___raw.text__representation(),
+        "elements__count__remaining": elements__count__remaining___raw.representation__text(),
+        "elements__offset": elements__offset___raw.representation__text(),
+        "array__current__id": array__current__id___raw.representation__text(),
       },
     );
   }

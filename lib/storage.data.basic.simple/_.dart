@@ -493,7 +493,7 @@ value__asyn<void> base__storage__data__basic__simple__test({
           abc,
         );
 
-        value.text__representation().print("abc__value");
+        value.representation__text().print("abc__value");
 
         if (value != values.abc) {
           throw "$value ~= ${values.abc}";
@@ -505,7 +505,7 @@ value__asyn<void> base__storage__data__basic__simple__test({
           jkl,
         );
 
-        value.text__representation().print("jkl__value");
+        value.representation__text().print("jkl__value");
 
         if (value != values.jkl) {
           throw "$value ~= ${values.jkl}";
@@ -517,7 +517,7 @@ value__asyn<void> base__storage__data__basic__simple__test({
           xyz,
         );
 
-        value.text__representation().print("xyz__value");
+        value.representation__text().print("xyz__value");
 
         if (value != values.xyz) {
           throw "$value ~= ${values.xyz}";

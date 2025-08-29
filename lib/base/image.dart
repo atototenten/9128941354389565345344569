@@ -79,10 +79,10 @@ BS1__array image__convert__bytes(
         null,
       );
 
-  width.text__representation().print("width");
-  height.text__representation().print("height");
-  dimension.text__representation().print("dimension");
-  channel__array__count.text__representation().print("channel__array__count");
+  width.representation__text().print("width");
+  height.representation__text().print("height");
+  dimension.representation__text().print("dimension");
+  channel__array__count.representation__text().print("channel__array__count");
 
   base__iterate__basic(dimension, (final pixel__id) {
     base__iterate__basic(channel__array__count, (final channel__id) {
@@ -130,11 +130,11 @@ BS1__array image__convert__bytes(
   channel__array.iterate__basic(    (final channel__id, final channel) {
       final bys = channel.convert__byte__array();
 
-      bys.text__representation().print(
+      bys.representation__text().print(
             "channel__bys",
           );
 
-      bys.bytes__count.text__representation().print(
+      bys.bytes__count.representation__text().print(
             "channel__bys.count",
           );
 
@@ -147,19 +147,19 @@ BS1__array image__convert__bytes(
     test returned a value, approx `(8 * dimension)` */
             ;
 
-        rep__not__count.text__representation().print(
+        rep__not__count.representation__text().print(
               "sub-pixel, un-repetition, count",
             );
 
-        channel__rep__minor__count__array[channel__id].text__representation().print(
+        channel__rep__minor__count__array[channel__id].representation__text().print(
               "sub-pixel, minor(1-3 inclusive), repetition, count",
             );
 
-        channel__rep__major__count__array[channel__id].text__representation().print(
+        channel__rep__major__count__array[channel__id].representation__text().print(
               "sub-pixel, major(7+ inclusive), repetition, count",
             );
 
-        effectiveness__percentage.toStringAsFixed(2).text__representation().print(
+        effectiveness__percentage.toStringAsFixed(2).representation__text().print(
               "compression, effectiveness, percentage",
             );
       }
@@ -172,7 +172,7 @@ BS1__array image__convert__bytes(
 
   final result = sink.convert__byte__array();
 
-  result.elements__count.text__representation().print(
+  result.elements__count.representation__text().print(
         "result.count",
       );
 

@@ -110,9 +110,9 @@ class storage__file__memory //
         debug__label,
       );
 
-      value.text__representation().print("value");
-      count.text__representation().print("count");
-      offset.text__representation().print("offset");
+      value.representation__text().print("value");
+      count.representation__text().print("count");
+      offset.representation__text().print("offset");
     }
 
     if (count == 0) {
@@ -172,8 +172,8 @@ class storage__file__memory //
         debug__label,
       );
 
-      value.elements__count.text__representation().print("blocks__count");
-      offset.text__representation().print("offset");
+      value.elements__count.representation__text().print("blocks__count");
+      offset.representation__text().print("offset");
     }
 
     if (value.empty___ok()) {
@@ -230,8 +230,8 @@ class storage__file__memory //
         debug__label,
       );
 
-      count.text__representation().print("count");
-      offset.text__representation().print("offset");
+      count.representation__text().print("count");
+      offset.representation__text().print("offset");
     }
 
     final offset__new = (count + offset);
@@ -403,8 +403,8 @@ void storage__file__memory__test() {
   );
 
   file
-    ..read__full().convert__byte__array().text__representation().print("file.read.full")
-    //..read(count: 1, offset: 0).convert__byte__array().text__representation().print("file.read(1,0)")
+    ..read__full().convert__byte__array().representation__text().print("file.read.full")
+    //..read(count: 1, offset: 0).convert__byte__array().representation__text().print("file.read(1,0)")
     ..write__ending(
       array__new__generated(
         5,
@@ -415,10 +415,10 @@ void storage__file__memory__test() {
           ),
         ),
       ),
-    ).text__representation().print("file.write__ending(generate*5)")
+    ).representation__text().print("file.write__ending(generate*5)")
     ..read__full()
         .convert__byte__array()
-        .text__representation(
+        .representation__text(
           elements__truncate___ok: NO,
         )
         .print("file.read.full.1")
@@ -427,7 +427,7 @@ void storage__file__memory__test() {
         .convert(
           (final e) => (e.bytes__count ~/ block__meta.size),
         )
-        .text__representation()
+        .representation__text()
         .print()
-    ..read(count: 2, offset: 3).convert__byte__array().text__representation().print("file.read(2,3)");
+    ..read(count: 2, offset: 3).convert__byte__array().representation__text().print("file.read(2,3)");
 }

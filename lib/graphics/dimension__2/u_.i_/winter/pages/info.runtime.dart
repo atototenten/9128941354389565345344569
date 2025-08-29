@@ -140,13 +140,13 @@ class base__program__info__page__entity //
           ),
           gui__base__listing__item(
             body: gui__base__box__text__primary__secondary(
-              program__compile__platform.text__representation().value,
+              program__compile__platform.representation__text().value,
               "Platform",
             ),
           ),
           gui__base__listing__item(
             body: gui__base__box__text__primary__secondary(
-              program__compile__mode.text__representation().value,
+              program__compile__mode.representation__text().value,
               "Build",
             ),
           ),

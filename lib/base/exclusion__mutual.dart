@@ -124,8 +124,8 @@ an extra ,because the first lock ,is resolved directly ,and not added to the req
     base__printing__indent();
 
     exclusion__mutual
-      ..lock__requests___raw.elements__count().text__representation().print("..lock__requests__count", label)
-      ..locked__ok___raw.text__representation().print("..locked__ok", label);
+      ..lock__requests___raw.elements__count().representation__text().print("..lock__requests__count", label)
+      ..locked__ok___raw.representation__text().print("..locked__ok", label);
 
     base__printing__indent__de();
 

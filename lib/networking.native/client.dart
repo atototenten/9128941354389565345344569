@@ -55,7 +55,7 @@ value__asyn<BS1__array> base__net__reliable__client__simple__communicate({
 
   if (base__printing___ok) {
     result
-        .text__representation()
+        .representation__text()
         .print("net__reliable__client__simple__response");
   }
 

@@ -33,9 +33,9 @@ abstract class base__storage__data__table__meta___protocol /*
   base__compo__member__dictionary //
       convert__member__dictionary() {
     return {
-      "rows__count": rows__count.text__representation(),
-      "rows__count__size__id_": rows__count__size__id.name.text__representation(),
-      "row__size": row__size.text__representation(),
+      "rows__count": rows__count.representation__text(),
+      "rows__count__size__id_": rows__count__size__id.name.representation__text(),
+      "row__size": row__size.representation__text(),
     };
   }
 }

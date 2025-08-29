@@ -155,15 +155,15 @@ the sophisticated engineer-ing, which gave birth to this function
     between different values, in: `print("$i\t${(i & 255) >> 4}\t${i & 255}\t${i >> 8}\t${i & 15}\t${i >> 4}");` */
   {
     final //
-        data__group__level__2__element__id = ((data__element__id >> data__fetch_ing__data__group__level__2__element__array__count__width) & data__fetch_ing__data__group__level__2__element__array__count__max) /*((data:element:id / data:fetch_ing:data:group:level:2:element:arr:count) % data:fetch_ing:data:group:level:2:element:arr:count)*/ ..text__representation().print("data__group__level__2__element__id"),
-        data__group__level__1__element__array = $_data__group__level__2__element__array[data__group__level__2__element__id]..data__group__level__3__id.text__representation().print("data__group__level__1__element__array:exist_ing.data__group__level__3__id"),
-        data__group__level__3__id = (data__element__id >> data__fetch_ing__data__groups__element__array__count__width) /*(data:element:id / data:fetch_ing:data:groups:element:arr:count)*/ ..text__representation().print("data__group__level__3__id") /*
+        data__group__level__2__element__id = ((data__element__id >> data__fetch_ing__data__group__level__2__element__array__count__width) & data__fetch_ing__data__group__level__2__element__array__count__max) /*((data:element:id / data:fetch_ing:data:group:level:2:element:arr:count) % data:fetch_ing:data:group:level:2:element:arr:count)*/ ..representation__text().print("data__group__level__2__element__id"),
+        data__group__level__1__element__array = $_data__group__level__2__element__array[data__group__level__2__element__id]..data__group__level__3__id.representation__text().print("data__group__level__1__element__array:exist_ing.data__group__level__3__id"),
+        data__group__level__3__id = (data__element__id >> data__fetch_ing__data__groups__element__array__count__width) /*(data:element:id / data:fetch_ing:data:groups:element:arr:count)*/ ..representation__text().print("data__group__level__3__id") /*
 `data__group__level__3__id`, instead of `data__group__level__1__element__id`, because
   any data will always get the same location in the `data__group__level__2__element__arr`
     despite the sequence of fetch-ing
   and, the former, requires, less-er memory-space */
         ,
-        data__group__level__1__element__id = (data__element__id & data__fetch_ing__data__group__level__1__element__array__count__max)..text__representation().print("block__data__element__id");
+        data__group__level__1__element__id = (data__element__id & data__fetch_ing__data__group__level__1__element__array__count__max)..representation__text().print("block__data__element__id");
 
     if (data__group__level__1__element__array.data__group__level__3__id == data__group__level__3__id) {
       "path:fast (cached already)".print();
@@ -171,7 +171,7 @@ the sophisticated engineer-ing, which gave birth to this function
       return data__group__level__1__element__array.data__group__level__2__element__array[data__group__level__1__element__id];
     }
 
-    final $data__group__level__1__element__id = (data__element__id >> data__fetch_ing__data__group__level__1__element__array__count__width)..text__representation().print("data__group__level__1__element__id");
+    final $data__group__level__1__element__id = (data__element__id >> data__fetch_ing__data__group__level__1__element__array__count__width)..representation__text().print("data__group__level__1__element__id");
 
     "path:slow (caching now)".print();
 
@@ -264,7 +264,7 @@ value__asyn<void> main() async {
         array__new__generated(
           offset__count.data__element__array__count,
           (final i) => (i + offset__count.data__element__id__offset),
-        )..text__representation().print("data__element__array__fetch ($data__group__level__1__element__id; ${offset__count.data__element__array__count} ,${offset__count.data__element__id__offset})"),
+        )..representation__text().print("data__element__array__fetch ($data__group__level__1__element__id; ${offset__count.data__element__array__count} ,${offset__count.data__element__id__offset})"),
       );
     },
     data__element__array__count: data__element__array__count,
@@ -274,7 +274,7 @@ value__asyn<void> main() async {
 
   {
     const count = (data__element__array__count ~/ 8);
-    count.text__representation().print("count");
+    count.representation__text().print("count");
 
     "load.begin".print();
 
@@ -284,14 +284,14 @@ value__asyn<void> main() async {
         (await fetch_ing.data__element(
           data__element__id,
         ))
-            .text__representation().print("fetch_ing.data__element");
+            .representation__text().print("fetch_ing.data__element");
       },
     );
 
     "...".print();
 
     const offset = (data__element__array__count - count);
-    offset.text__representation().print("offset");
+    offset.representation__text().print("offset");
 
     await base__iterate__basic__asyn(
       count,
@@ -299,7 +299,7 @@ value__asyn<void> main() async {
         (await fetch_ing.data__element(
           (i + offset),
         ))
-            .text__representation().print("fetch_ing.data__element");
+            .representation__text().print("fetch_ing.data__element");
       },
     );
 

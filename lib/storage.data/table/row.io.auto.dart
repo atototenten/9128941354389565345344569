@@ -82,7 +82,7 @@ array<Object?> base__storage__data__table__row__data__array__auto({
   if (base__printing___ok) {
     base__function__call__print("base__storage__data__table__row__data__array__auto");
 
-    row__bytes.text__representation().print("arguments__row__bytes");
+    row__bytes.representation__text().print("arguments__row__bytes");
   }
 
   base__printing__indentation__increase();

@@ -136,8 +136,8 @@ based on byte-id. ,instead of block-id. */ //
         debug__label,
       );
 
-      value.bytes__count.text__representation().print("bytes__count");
-      offset.text__representation().print("offset");
+      value.bytes__count.representation__text().print("bytes__count");
+      offset.representation__text().print("offset");
     }
 
     base__printing__indentation__increase();
@@ -184,8 +184,8 @@ based on byte-id. ,instead of block-id. */ //
         debug__label,
       );
 
-      length.text__representation().print("length");
-      offset.text__representation().print("offset");
+      length.representation__text().print("length");
+      offset.representation__text().print("offset");
     }
 
     base__printing__indentation__increase();
@@ -267,7 +267,7 @@ FIX
   base__compo__member__dictionary //
       members__dictionary() {
     return {
-      "length": length___raw.text__representation(),
+      "length": length___raw.representation__text(),
     };
   }
 

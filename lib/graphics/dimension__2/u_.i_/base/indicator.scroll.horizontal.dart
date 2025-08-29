@@ -31,9 +31,9 @@ gui__base__widget base__indicator__scroll__horizontal({
     init_: (final state) {
       void observer_() {
         final position = controller.position
-            /*..pixels.text__representation().print("pos")
-                  ..minScrollExtent.text__representation().print("min")
-                  ..maxScrollExtent.text__representation().print("max")*/
+            /*..pixels.representation__text().print("pos")
+                  ..minScrollExtent.representation__text().print("min")
+                  ..maxScrollExtent.representation__text().print("max")*/
             ;
 
 /* TASK:

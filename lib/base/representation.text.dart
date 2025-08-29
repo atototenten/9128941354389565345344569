@@ -1,17 +1,17 @@
 part of "_.dart";
 
-class base__text__representation /*
-`text` vs `text__representation`
+class base__representation__text /*
+`text` vs `representation__text`
   the former is a member of the type-system 
     ,while the latter is ,a representation of a value ,and {type-system}-independent abstraction */
 {
-  const base__text__representation(
+  const base__representation__text(
     this.value,
   );
 
   final string value;
 
-  Never text__representation() {
+  Never representation__text() {
     throw Error();
   }
 
@@ -21,12 +21,12 @@ class base__text__representation /*
   }
 }
 
-const Null__text__representation = base__text__representation(
+const Null__representation__text = base__representation__text(
   Null__value__text,
 );
 
-extension base__text__representation__print__extension //
-    on base__text__representation {
+extension base__representation__text__print__extension //
+    on base__representation__text {
   void print([
     final string? path,
     final string? label,
@@ -39,7 +39,7 @@ extension base__text__representation__print__extension //
   }
 }
 
-abstract class base__convert__text__representation___protocol {
-  base__text__representation //
-      text__representation();
+abstract class base__convert__representation__text___protocol {
+  base__representation__text //
+      representation__text();
 }

@@ -16,7 +16,7 @@ usually (storage__directory__permanent__path__absolute + base__storage__file__pa
   }) /*
 the data-base access ,must be exclusive */ async {
     if (base__printing___ok) {
-      base__storage__data__basic__meta__base.sqlite__info().text__representation().print("sqlite__info");
+      base__storage__data__basic__meta__base.sqlite__info().representation__text().print("sqlite__info");
     }
 
     final value = sqlite_async.SqliteDatabase(
@@ -261,9 +261,9 @@ extension SqliteReadContext__operation__extension //
     required final string statement,
     final array<Object?>? statement__arguments,
   }) {
-    statement.text__representation().print("statement");
+    statement.representation__text().print("statement");
     statement__arguments
-        .text__representation(
+        .representation__text(
           elements__truncation__count__threshold: 0,
         )
         .print("statement__arguments");
@@ -1012,7 +1012,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
 
     final tables__count = await meta.tables__count__asyn();
 
-    tables__count.text__representation().print("tables__count");
+    tables__count.representation__text().print("tables__count");
 
     await base__iterate__basic__asyn(
       tables__count,
@@ -1024,7 +1024,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
         );
 
         rows
-            .text__representation(
+            .representation__text(
               elements__truncation__count__threshold: 0,
             )
             .print("tables[$table__id].rows");
@@ -1058,7 +1058,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
 
   {
     final init_ization__needed___ok = await storage.init_ization__needed__ok__auto__asyn();
-    init_ization__needed__ok.text__representation().print("init_ization__needed__ok");
+    init_ization__needed__ok.representation__text().print("init_ization__needed__ok");
   }
 
   await storage__print__auto__asyn();
@@ -1094,7 +1094,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
             columns__meta: columns__meta,
           );
 
-          table__id.text__representation().print("table__id");
+          table__id.representation__text().print("table__id");
 
           final table__row__id = await meta.table__row__add__asyn(
             table__id: table__id,
@@ -1102,7 +1102,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
             row: ["abc-xyz", 27, 76.0],
           );
 
-          table__row__id.value.text__representation().print("table__row__id");
+          table__row__id.value.representation__text().print("table__row__id");
 
           if (abort___ok.not) {
             "mutating".print();

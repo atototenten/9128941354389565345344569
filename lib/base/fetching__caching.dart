@@ -281,7 +281,7 @@ value__asyn<void> base__fetching__caching__test() async {
       elements__count = (3 + (3 * (1 << (block__elements__count__width + blocks__count__width))));
 
   elements__count //
-      .text__representation()
+      .representation__text()
       .print("elements__count");
 
   late final base__fetching__caching<base__fetching__caching__testing__element> fetching;
@@ -293,7 +293,7 @@ value__asyn<void> base__fetching__caching__test() async {
       );
 
       elements__offset__count //
-          .text__representation()
+          .representation__text()
           .print("elements__offset__count (block__id : $block__id)");
 
       final result = array__new__generated(
@@ -325,7 +325,7 @@ value__asyn<void> base__fetching__caching__test() async {
       );
 
       element.value //
-          .text__representation()
+          .representation__text()
           .print("element.value");
 
       if (element.value != element__id) {

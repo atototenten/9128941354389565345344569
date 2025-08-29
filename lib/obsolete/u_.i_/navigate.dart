@@ -42,8 +42,8 @@ class navigation__kampo /*
       message__channel__broadcast__listeners__add(
         channel,
         (final navigate__event) {
-          navigate__event.name.text__representation().print("navigate:event");
-          app__navigation__kampo.navigation().depth.text__representation().print("navigate:depth:before:navigation");
+          navigate__event.name.representation__text().print("navigate:event");
+          app__navigation__kampo.navigation().depth.representation__text().print("navigate:depth:before:navigation");
         },
       );
     }

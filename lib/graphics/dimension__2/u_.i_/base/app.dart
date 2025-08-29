@@ -1,6 +1,6 @@
 part of "_.dart";
 
-late final array<string> base__app__title__segments;
+late array<string> base__app__title__segments;
 
 string base__app__title() => //
     base__app__title__segments.join();
@@ -103,7 +103,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
       }
 
       if (base__printing___ok) {
-        state.name.text__representation().print("app__state__life_cycle");
+        state.name.representation__text().print("app__state__life_cycle");
       }
 
       if (state != app__state__life_cycle) {
@@ -127,8 +127,8 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
 
         report__text__null_able(key___raw.character, "..character");
         report__Object__null_able(key___raw.character?.codeUnits, "..character.codeUnits");
-        report__bool((key__raw is RawKeyDownEvent), "..isRawKeyDownEvent");
-        report__bool((key__raw is RawKeyUpEvent), "..isRawKeyUpEvent");
+        report__bool((key___raw is RawKeyDownEvent), "..isRawKeyDownEvent");
+        report__bool((key___raw is RawKeyUpEvent), "..isRawKeyUpEvent");
 
         final data = key___raw.data;
 
@@ -145,7 +145,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
         reporting__de_indent();
       }
 
-      if /* un-likely */ ((key__raw is RawKeyDownEvent) && //
+      if /* un-likely */ ((key___raw is RawKeyDownEvent) && //
           (key___raw.data.logicalKey == LogicalKeyboardKey.goBack)) //
         navigate__back(
           app__navigation__manager,
@@ -487,11 +487,11 @@ class _app__gui__base__widget__state //
     if (base__printing___ok) {
       base__printing__indentation__increase();
       for (final view in ui.PlatformDispatcher.instance.views) {
-        view.text__representation().print("view");
+        view.representation__text().print("view");
 
         base__printing__indentation__increase();
-        view.physicalSize.text__representation().print("..physicalSize");
-        view.devicePixelRatio.text__representation().print("..devicePixelRatio");
+        view.physicalSize.representation__text().print("..physicalSize");
+        view.devicePixelRatio.representation__text().print("..devicePixelRatio");
         base__printing__indentation__decrease();
       }
       base__printing__indentation__decrease();
@@ -534,7 +534,7 @@ class _app__gui__base__widget__state //
     final AppLifecycleState state,
   ) {
     if (base__printing___ok) {
-      state.text__representation().print("app:life_cycle:state:new");
+      state.representation__text().print("app:life_cycle:state:new");
     }
 
     if (state == base__app__life_cycle__state__channel.value()) {

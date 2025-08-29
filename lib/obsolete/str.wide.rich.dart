@@ -130,9 +130,9 @@ byte__array str__wide__rich__convert__bytes(
       "str__wide__rich__convert__bytes",
     );
 
-    str__wide__rich.text__representation().print("str__wide__rich");
+    str__wide__rich.representation__text().print("str__wide__rich");
 
-    wstr__convert__string(str__wide__rich).text__representation().print("str__wide__rich");
+    wstr__convert__string(str__wide__rich).representation__text().print("str__wide__rich");
   }
 
   base__printing__indentation__increase();

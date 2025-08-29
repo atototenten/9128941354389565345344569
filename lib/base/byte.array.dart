@@ -44,10 +44,10 @@ BOOL byte__array__blank___ok(
   `byte__array__b__clear_ed`
   test: ```
       final bys = [0,0,0,0,0,0,0,0];
-      byte__array__blank___ok(byte__array.fromList(bys+([0,0]..text__representation().print("count")))).text__representation().print("blank?");
-      byte__array__blank___ok(byte__array.fromList(bys+([1,1]..text__representation().print("count")))).text__representation().print("blank?");
-      byte__array__blank___ok(byte__array.fromList(bys+([0,1]..text__representation().print("count")))).text__representation().print("blank?");
-      byte__array__blank___ok(byte__array.fromList(bys+([1,0]..text__representation().print("count")))).text__representation().print("blank?");
+      byte__array__blank___ok(byte__array.fromList(bys+([0,0]..representation__text().print("count")))).representation__text().print("blank?");
+      byte__array__blank___ok(byte__array.fromList(bys+([1,1]..representation__text().print("count")))).representation__text().print("blank?");
+      byte__array__blank___ok(byte__array.fromList(bys+([0,1]..representation__text().print("count")))).representation__text().print("blank?");
+      byte__array__blank___ok(byte__array.fromList(bys+([1,0]..representation__text().print("count")))).representation__text().print("blank?");
 ``` */
 {
   var blank___ok = OK;

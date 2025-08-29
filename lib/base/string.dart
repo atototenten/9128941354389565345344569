@@ -127,10 +127,10 @@ should never be needed(only wanted)
   }
 }
 
-extension text__convert__text__representation__extension on string {
-  base__text__representation //
-      text__representation() {
-    return base__text__representation(
+extension text__convert__representation__text__extension on string {
+  base__representation__text //
+      representation__text() {
+    return base__representation__text(
       "\"${toString()}\"",
     );
   }

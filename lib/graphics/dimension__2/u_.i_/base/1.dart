@@ -1,7 +1,6 @@
 part of "_.dart";
 
-const //
-    gui__base__empty__widget = SizedBox.shrink();
+const gui__base__widget gui__base__empty__widget = SizedBox.shrink();
 
 gui__base__widget gui__base__widget__empty__build(
   final gui__base__widget__building__context context,

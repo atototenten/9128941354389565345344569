@@ -62,7 +62,7 @@ base__storage__file__fast__block _base__storage__file__fast__block__cache__if__n
       storage.debug__label,
     );
 
-    offset.text__representation().print(
+    offset.representation__text().print(
           "offset",
         );
   }
@@ -117,7 +117,7 @@ void _base__storage__file__fast__block__mod__if__needed(
       storage.debug__label,
     );
 
-    block.offset.text__representation().print(
+    block.offset.representation__text().print(
           "block__offset",
         );
   }
@@ -169,8 +169,8 @@ void base__storage__file__fast__read_write /* __caching */ (
       storage.debug__label,
     );
 
-    count.text__representation().print("count");
-    offset.text__representation().print("offset");
+    count.representation__text().print("count");
+    offset.representation__text().print("offset");
   }
 
   base__printing__indentation__increase();
@@ -184,7 +184,7 @@ void base__storage__file__fast__read_write /* __caching */ (
   final offset__aligned = base__storage__file__offset__aligned(offset);
 
   if (base__printing___ok) {
-    offset__aligned.text__representation().print(
+    offset__aligned.representation__text().print(
           "offset__aligned",
           storage.debug__label,
         );
@@ -346,7 +346,7 @@ void base__storage__file__fast__read_write /* __caching */ (
     );
 
     if (base__printing___ok) {
-      count__aligned.text__representation().print(
+      count__aligned.representation__text().print(
             "count__aligned",
             storage.debug__label,
           );
@@ -518,7 +518,7 @@ void base__storage__file__fast__sync(
     storage.blocks__mod_ed.iterate__basic(
       (final element) {
         if (base__printing___ok) {
-          element.offset.text__representation().print(
+          element.offset.representation__text().print(
                 "block__moded__list__block__offset",
                 storage.debug__label,
               );

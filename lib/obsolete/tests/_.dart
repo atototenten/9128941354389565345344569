@@ -62,9 +62,9 @@ void data__fetch__manager__test() {
       data__array__initial:  null,
       data__array__fetch: (final block__id) {
         final data__id__offset__count = data__fetch__block__id__convert__data__id__offset__count(
-          block__id..text__representation().print("block__id"),
+          block__id..representation__text().print("block__id"),
           data__array__count,
-        )..text__representation().print("data__id__offset__count");
+        )..representation__text().print("data__id__offset__count");
 
         if ((data__id__offset__count.data__array__count + data__id__offset__count.data__id__offset) > data__array__count) //
           throw "il-legal memory access $data__array__count";
@@ -93,8 +93,8 @@ void data__fetch__manager__test() {
       fetch_man.data__block__array,
       "fetch_man.data__block__arr",
       (final data__block) {
-        data__block.cluster__id.text__representation().print("data__block.cluster__id");
-        data__block.block__data__array.text__representation().print("data__block.block__data__arr");
+        data__block.cluster__id.representation__text().print("data__block.cluster__id");
+        data__block.block__data__array.representation__text().print("data__block.block__data__arr");
       },
     );
 
@@ -279,18 +279,18 @@ void wstr__test() {
   const s = "abc123xyz😁";
 
   s
-    ..text__representation().print("string")
-    ..codeUnits.text__representation().print("..code_unit_s");
+    ..representation__text().print("string")
+    ..codeUnits.representation__text().print("..code_unit_s");
 
   final //
-      ws = string__unicode__convert__wstr(s, 1)..text__representation().print("ws"),
-      bys = wstr__convert__bytes(ws)..text__representation().print("bys"),
-      chars = wstr__convert__char__unicode__array(bys)..text__representation().print("chars"),
-      bys__fixed = wstr__convert__bytes(ws, u64__size)..text__representation().print("bys__fixed"),
-      chars__fixed = wstr__convert__char__unicode__array(bys__fixed, u64__size)..text__representation().print("chars__fixed"),
-      ews = string__unicode__convert__wstr(s, 1, OK)..text__representation().print("ews"),
-      ebys = wstr__convert__bytes(ews)..text__representation().print("ebys"),
-      echars = wstr__convert__char__unicode__array(ebys,  null, OK)..text__representation().print("echars");
+      ws = string__unicode__convert__wstr(s, 1)..representation__text().print("ws"),
+      bys = wstr__convert__bytes(ws)..representation__text().print("bys"),
+      chars = wstr__convert__char__unicode__array(bys)..representation__text().print("chars"),
+      bys__fixed = wstr__convert__bytes(ws, u64__size)..representation__text().print("bys__fixed"),
+      chars__fixed = wstr__convert__char__unicode__array(bys__fixed, u64__size)..representation__text().print("chars__fixed"),
+      ews = string__unicode__convert__wstr(s, 1, OK)..representation__text().print("ews"),
+      ebys = wstr__convert__bytes(ews)..representation__text().print("ebys"),
+      echars = wstr__convert__char__unicode__array(ebys,  null, OK)..representation__text().print("echars");
 }
 
 void report__test() {
@@ -432,7 +432,7 @@ void str__search__de_limiter__array(
   final int byteCount = encodedBytes.length;
 
   if (b__verbose_output) {
-    byteCount.text__representation().print("byteCount");
+    byteCount.representation__text().print("byteCount");
   }
 
   for (int charCode = 0; charCode < u8__limit; charCode += 1) {
@@ -474,14 +474,14 @@ void bytes__test() {
         (final u) => (u + 1),
         growable: NO,
       ))
-        ..text__representation().print("bys"),
+        ..representation__text().print("bys"),
       offset__ptr = base__value__proxy__kampo<uu>(0);
 
-  bytes__read__view__till(bys, offset__ptr, 95).text__representation().print("bys.new");
-  offset__ptr.value.text__representation().print("offset");
+  bytes__read__view__till(bys, offset__ptr, 95).representation__text().print("bys.new");
+  offset__ptr.value.representation__text().print("offset");
 
-  bytes__read__view__till(bys, offset__ptr, 99).text__representation().print("bys.new_");
-  offset__ptr.value.text__representation().print("offset_");
+  bytes__read__view__till(bys, offset__ptr, 99).representation__text().print("bys.new_");
+  offset__ptr.value.representation__text().print("offset_");
 }
 
 void list__test() {
@@ -526,9 +526,9 @@ void stack__test() {
 
   void print_() => //
       stack
-        ..convert__str(OK).text__representation().print("stack")
+        ..convert__str(OK).representation__text().print("stack")
         ..iterate((final element) {
-          element.text__representation().print("stack.element");
+          element.representation__text().print("stack.element");
 
           return OK;
         });
@@ -561,19 +561,19 @@ void storage__test() {
     final storage__alignment__kampo alignment,
     final string s,
   ) {
-    uu__b__aligned(i, alignment.size).text__representation().print("$s-aligned?");
-    uu__aligned__basic__1(i, alignment.shift__count).text__representation().print("$s-aligned.");
+    uu__b__aligned(i, alignment.size).representation__text().print("$s-aligned?");
+    uu__aligned__basic__1(i, alignment.shift__count).representation__text().print("$s-aligned.");
 
     storage__count__max(
       i,
-      (storage__offset__aligned(i, alignment)..text__representation().print("offset.$s-aligned.")).buffer__offset,
+      (storage__offset__aligned(i, alignment)..representation__text().print("offset.$s-aligned.")).buffer__offset,
       alignment,
-    ).text__representation().print("count.$s-aligned.");
+    ).representation__text().print("count.$s-aligned.");
     print__info(empty__string);
   }
 
   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 24, 25, 30, 100, 250, 500, 600, 2000, 4000, 5000, 7000, 8000, 9000, 10000].iterate__basic((final _, final element) {
-    element.text__representation().print("element");
+    element.representation__text().print("element");
     print__info(empty__string);
 
     print_(element, alignment__mem, "mem");
@@ -603,7 +603,7 @@ void base__storage__file__fast__test() {
     final uu count,
     final uu offset,
   ) {
-    final uu value = (_check__value += 1)..text__representation().print("value");
+    final uu value = (_check__value += 1)..representation__text().print("value");
 
     byte__array__fill(
       storage__buffer,
@@ -627,8 +627,8 @@ void base__storage__file__fast__test() {
         count_ = ((storage__buffer.lastIndexOf(value) + 1) - offset_);
 
     if (base__printing___ok) {
-      offset_.text__representation().print("offset_");
-      count_.text__representation().print("count_");
+      offset_.representation__text().print("offset_");
+      count_.representation__text().print("count_");
     }
 
     if (count != 0) {
@@ -651,7 +651,7 @@ void base__storage__file__fast__test() {
             (b__offset__not__min ? (offset - 1) : offset),
             (b__count__not__max ? (count + (b__offset__not__min ? 2 : 1)) : count),
           )
-          .text__representation().print("storage__buffer.view("
+          .representation__text().print("storage__buffer.view("
               "${(b__offset__not__min ? "($offset - 1)" : offset)}"
               ", ${(b__count__not__max ? "($count + 1)" : count)})");
     }
@@ -711,11 +711,11 @@ void base__storage__file__fast__test() {
       if (base__printing___ok) //
         pool
               ..store.iterate__basic((final element) => //
-                  element.offset.text__representation().print("store.block.offset"))
+                  element.offset.representation__text().print("store.block.offset"))
               ..mod__list.iterate__basic((final element) => //
-                  element.offset.text__representation().print("mod__list.block.offset"))
+                  element.offset.representation__text().print("mod__list.block.offset"))
             /*..free__list.iterate__basic((final element) => //
-              element.size.text__representation().print("free__list.byte__array.size"))*/
+              element.size.representation__text().print("free__list.byte__array.size"))*/
             ;
     }
 
@@ -736,14 +736,14 @@ void uu__test() {
   final data = [
     (127 << 7 << 7),
     (255 << 8 << 8),
-  ]..text__representation().print("ints");
+  ]..representation__text().print("ints");
 
   data.iterate__basic((final index, final element) {
-    final bytes = uu__convert__bytes(element..text__representation().print("int"));
-    getBits([element], 7).text__representation().print("int.bits");
-    getBits(bytes, 8).text__representation().print("int.bytes.bits");
+    final bytes = uu__convert__bytes(element..representation__text().print("int"));
+    getBits([element], 7).representation__text().print("int.bits");
+    getBits(bytes, 8).representation__text().print("int.bytes.bits");
 
-    uu__bytes__convert(bytes)..text__representation().print("new `int`");
+    uu__bytes__convert(bytes)..representation__text().print("new `int`");
   });
 }
 
@@ -752,8 +752,8 @@ void str__test() {
     final array<by> data,
     final array<by> data__correct,
   ) {
-    wstr(byte__array.fromList(data)..text__representation().print("bytes")).bytes__encrypted().text__representation().print("bytes.encrypted");
-    data__correct.text__representation().print("data__correct");
+    wstr(byte__array.fromList(data)..representation__text().print("bytes")).bytes__encrypted().representation__text().print("bytes.encrypted");
+    data__correct.representation__text().print("data__correct");
   }
 
   final //
@@ -772,7 +772,7 @@ void stream__byte__array__test() {
   stream__byte__array__convert__message__byte__array(
     controller.stream,
     (final byte__array bys) => //
-        bys.text__representation().print("bytes"),
+        bys.representation__text().print("bytes"),
     () => //
         print__info("close("),
     error__handle,

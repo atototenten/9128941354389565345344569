@@ -19,10 +19,10 @@ extension BOOL__extension on BOOL {
       !this;
 }
 
-extension BOOL__convert__text__representation__extension on BOOL {
-  base__text__representation //
-      text__representation() {
-    return base__text__representation(
+extension BOOL__convert__representation__text__extension on BOOL {
+  base__representation__text //
+      representation__text() {
+    return base__representation__text(
       (this ? "OK" : "NO"),
     );
   }

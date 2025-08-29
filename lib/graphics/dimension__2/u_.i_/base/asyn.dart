@@ -83,7 +83,7 @@ gui__base__widget gui__base__widget__error__default__build(
   final StackTrace trace,
 ) {
   return ErrorWidget(
-    "${error.text__representation().value}\n\n\n${trace.text__representation().value}",
+    "${error.representation__text().value}\n\n\n${trace.representation__text().value}",
   );
 }
 

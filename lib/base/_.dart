@@ -5,6 +5,8 @@ import "dart:async" as async;
 import "dart:convert" as convert;
 import "dart:math" as math;
 
+import "package:collection/collection.dart" show DeepCollectionEquality;
+
 //
 
 part "accumulation/_.dart";
@@ -25,6 +27,7 @@ part "compo.dart";
 part "java_script.dart";
 part "fetching__caching.dart";
 part "date_time.dart";
+part "DateTime.dart";
 part "dictionary.dart";
 part "Enum.dart";
 part "error.dart";
@@ -39,8 +42,8 @@ part "number/floating-point.dart";
 part "number/fixed-point.dart";
 part "image.dart";
 part "input.text.buffering.dart";
-part "iterable.dart";
-part "iterate.dart";
+part "Iterable.dart";
+part "Iterate.dart";
 part "language.english.dart";
 part "list.dart";
 part "message.dart";
@@ -53,7 +56,7 @@ part "str.dart";
 part "Stream.dart";
 part "string.dart";
 part "string.wide.dart";
-part "text.representation.dart";
+part "representation.text.dart";
 part "TC.dart";
 part "union.dart";
 part "unit.dart";
@@ -67,7 +70,6 @@ part "Object__nilable.dart";
 
 const //
     base__printing___ok = OK,
-    behavior__correct___ok /* prefer correct-ness, over, efficiency or performance; NO guarentee */ = OK,
 //
     environment__phone__android___ok = OK,
     environment__phone__apple___ok = NO,

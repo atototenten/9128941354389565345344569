@@ -13,8 +13,8 @@ including protocol ,like "http://" ,service-path ,and the end-point */,
     final base__net__reliable__web__client__communication__body___union? value,
   }) async {
     if (base__printing___ok) {
-      path.text__representation().print("request.path");
-      value.text__representation().print("request");
+      path.representation__text().print("request.path");
+      value.representation__text().print("request");
     }
 
     final headers = <String, String>{
@@ -34,7 +34,7 @@ including protocol ,like "http://" ,service-path ,and the end-point */,
       case base__net__reliable__web__client__communication__body__json():
         {
           headers["Content-Type"] = "application/json";
-          body = java_script__object__convert__text(
+          body = java_script__type__convert__text(
             value.value,
           );
           break;
@@ -68,10 +68,10 @@ including protocol ,like "http://" ,service-path ,and the end-point */,
                   )) /*
 TASK :
   replace "http." with "this."
-    once "ClientException: Connection closed before full header was received" errors are fixed */;
+    once "ClientException: Connection closed before full header was received" errors are fixed ,by the dart-team */;
 
     if (base__printing___ok) {
-      response.statusCode.text__representation().print("response.status");
+      response.statusCode.representation__text().print("response.status");
     }
 
     final status__code__summary = base__net__web__status__code__convert__summary(
@@ -85,7 +85,7 @@ TASK :
     final response__body = response.body;
 
     if (base__printing___ok) {
-      response__body.text__representation().print("response.text");
+      response__body.representation__text().print("response.text");
     }
 
     if (response__body.empty___ok()) {
@@ -93,7 +93,7 @@ TASK :
     }
 
     return base__value__optional__present__compo(
-      text__convert__java_script__object(
+      /*Isolate.run(() => Utf8Decoder().fuse(JsonDecoder()).convert(response.bodyBytes))*/ text__convert__java_script__type(
         response__body,
       ),
     );
@@ -120,26 +120,27 @@ class base__net__reliable__web__client__communication__body__form //
 
 extension base__net__reliable__web__client__communication__body___union__extension //
     on base__net__reliable__web__client__communication__body___union? {
-  base__text__representation text__representation() {
+  base__representation__text //
+  representation__text() {
     final this_1 = this;
 
     if (this_1 == null) {
-      return Null__text__representation;
+      return Null__representation__text;
     }
 
     return switch (this_1) {
       base__net__reliable__web__client__communication__body__json() => //
-      base__compo__text__representation(
+      base__compo__representation__text(
         name: "base__net__reliable__web__client__communication__body__json",
         members: {
-          "value": this_1.value.text__representation(),
+          "value": this_1.value.representation__text(),
         },
       ),
       base__net__reliable__web__client__communication__body__form() => //
-      base__compo__text__representation(
+      base__compo__representation__text(
         name: "base__net__reliable__web__client__communication__body__form",
         members: {
-          "value": this_1.value.text__representation(),
+          "value": this_1.value.representation__text(),
         },
       ),
     };

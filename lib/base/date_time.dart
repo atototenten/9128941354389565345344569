@@ -2,7 +2,7 @@ part of "_.dart";
 
 class date_time {
   static const //
-      duration__second__micro__seconds__nano = 1000,
+  duration__second__micro__seconds__nano = 1000,
       duration__second__milli__seconds__micro = 1000,
       duration__second__milli__seconds__nano = (duration__second__milli__seconds__micro * duration__second__micro__seconds__nano),
       duration__second__seconds__milli = 1000,
@@ -18,7 +18,7 @@ class date_time {
       duration__month__weeks = 4,
       duration__year__quarter__months = 3,
       duration__year__months = (4 * duration__year__quarter__months),
-      duration__year__weeks = (4 /*quarters*/ * 13 /*((duration__year__quarter__months * duration__month__weeks) + 1)*/),
+      duration__year__weeks = (4 /*quarters*/ * 13 /*((duration__year__quarter__months * duration__month__weeks) + 1)*/ ),
       duration__year__days = 365 /*((duration__year__quarter__months * duration__month__days) + 1)*/,
       duration__decade__years = 10,
       duration__year__cycle__years = 4,
@@ -27,40 +27,39 @@ all values are simplified ,and not exact to solar values
 the granular unit is nano-seconds until a day ,then itself */
 
   static const //
-      offset__years__default = 2022;
+  offset__years__unix = 1970,
+      offset__years__ideal__current = 2020;
 
   static const NI //
-      year__reduced__size = NI1__size,
+  year__reduced__size = NI1__size,
       seconds__reduced__size = NI4__size;
 
   factory date_time.current({
-    final NI offset__years = offset__years__default,
+    required final NI offset__years /*= offset__years__ideal__current*/,
   }) {
     return date_time.DateTime__convert(
-      DateTime.now(),
+      DateTime.now() /* ".toUtc()" is point-less */,
       offset__years: offset__years,
     );
   }
 
   factory date_time.DateTime__convert(
     final DateTime value, {
-    final NI offset__years = offset__years__default,
+    required final NI offset__years /*= offset__years__ideal__current*/,
   }) {
-    final //
-        offset__seconds__micro = DateTime(offset__years).microsecondsSinceEpoch,
-        seconds__micro = (value.microsecondsSinceEpoch - offset__seconds__micro);
+    final offset___DateTime = DateTime.utc(offset__years);
 
     return date_time.raw(
-      seconds__nano___raw: (seconds__micro * duration__second__micro__seconds__nano),
+      seconds__nano___raw: ((value.microsecondsSinceEpoch - offset___DateTime.microsecondsSinceEpoch) * duration__second__micro__seconds__nano),
       offset__years: offset__years,
     );
   }
 
   date_time.minutes__convert(
-    final NI value, {
+    final NI minutes, {
     final NI seconds__nano__remaining = 0,
-    this.offset__years = offset__years__default,
-  }) : seconds__nano___raw = (seconds__nano__remaining + (value * duration__minute__seconds__nano));
+    required this.offset__years /*= offset__years__ideal__current*/,
+  }) : seconds__nano___raw = (seconds__nano__remaining + (minutes * duration__minute__seconds__nano));
 
   const date_time.raw({
     required this.seconds__nano___raw,
@@ -70,27 +69,24 @@ the granular unit is nano-seconds until a day ,then itself */
   final NI seconds__nano___raw /*
 stored as a single combined value ,instead of separate {28(`64-36`)-bits `minutes` ,and 36-bits `seconds__nano`}
   to prevent the wastage of capacity
-    584 years for combined ,while 510 years for separate */
-      ;
+    584 years for combined ,while 510 years for separate */;
   final NI offset__years;
 
   NI minutes() {
     return (seconds__nano___raw ~/ duration__minute__seconds__nano);
   }
 
-  DateTime convert__DateTime({
-    final BOOL global___ok = OK,
-  }) {
-    final offset__seconds__micro = DateTime(offset__years).microsecondsSinceEpoch;
+  DateTime convert__DateTime() {
+    final offset__seconds__micro = DateTime.utc(offset__years).microsecondsSinceEpoch;
 
     return DateTime.fromMicrosecondsSinceEpoch(
       ((seconds__nano___raw ~/ duration__second__micro__seconds__nano) + offset__seconds__micro),
-      isUtc: global___ok,
+      isUtc: OK,
     );
   }
 
   date_time__relative___union convert__relative({
-    date_time? other,
+    date_time? other/* must be after "this" */,
   }) {
     if (other == null) {
       other = date_time.current(
@@ -102,7 +98,7 @@ stored as a single combined value ,instead of separate {28(`64-36`)-bits `minute
       }
     }
 
-    final seconds__nano = (seconds__nano___raw - other.seconds__nano___raw);
+    final seconds__nano = (other.seconds__nano___raw - seconds__nano___raw);
 
     if (seconds__nano < duration__minute__seconds__nano) {
       return date_time__relative__duration__little();
@@ -147,7 +143,7 @@ stored as a single combined value ,instead of separate {28(`64-36`)-bits `minute
 
   string convert__text() {
     final //
-        DateTime = convert__DateTime(),
+    DateTime = convert__DateTime(),
         buffer = (StringBuffer()
           ..write(calendar__gregorian__month__static__text__array[DateTime.month - 1].substring(0, 3))
           ..write(" ")
@@ -174,16 +170,18 @@ stored as a single combined value ,instead of separate {28(`64-36`)-bits `minute
 
   string convert__text__partial() {
     final //
-        DateTime_1 = convert__DateTime(),
-        DateTime__current = DateTime.now(),
-        //
-        year__same___ok = (DateTime_1.year == DateTime__current.year),
+    DateTime_1 = convert__DateTime(),
+        DateTime__current = DateTime.now().toUtc(),
+            //
+            year__same___ok =
+            (DateTime_1.year == DateTime__current.year),
         month__same___ok = (year__same___ok && (DateTime_1.month == DateTime__current.month)),
         day__same___ok = (month__same___ok && (DateTime_1.day == DateTime__current.day)),
         hour__same___ok = (day__same___ok && (DateTime_1.hour == DateTime__current.hour)),
         minute__same___ok = (hour__same___ok && (DateTime_1.minute == DateTime__current.minute)),
-        //
-        buffer = StringBuffer();
+            //
+            buffer =
+            StringBuffer();
 
     if (month__same___ok.not) {
       buffer
@@ -245,8 +243,7 @@ stored as a single combined value ,instead of separate {28(`64-36`)-bits `minute
 }
 
 class date_time__relative__duration__big //
-    implements
-        date_time__relative___union {
+    implements date_time__relative___union {
   const date_time__relative__duration__big(
     this.value, {
     required this.duration,
@@ -258,14 +255,13 @@ class date_time__relative__duration__big //
   @override
   string convert__text /*
 FIX
-  months and minutes ,are visually ambiguous ,for `concise__ok` */
-      ({
+  months and minutes ,are visually ambiguous ,for `concise__ok` */ ({
     final BOOL short___ok = NO,
   }) {
     final duration__title__suffix = //
         ((value == 1) /*F*/ //
-            ? empty__string
-            : "s");
+        ? empty__string
+        : "s");
 
     if (short___ok) {
       final duration__title = switch (duration) {
@@ -282,13 +278,20 @@ FIX
 }
 
 enum date_time__relative__durations //
-{ year, month, week, day, hour, minute }
+{
+  year,
+  month,
+  week,
+  day,
+  hour,
+  minute,
+}
 
 class date_time__relative__duration__little /*
 seconds */ //
     implements
         date_time__relative___union //
-{
+        {
   const date_time__relative__duration__little();
 
   @override
@@ -310,6 +313,8 @@ sealed class date_time__relative___union {
 }
 
 void date_time__test() {
+  const offset__years = date_time.offset__years__ideal__current;
+
   [
     (
       title: "global default",
@@ -381,30 +386,33 @@ void date_time__test() {
 
       final value = date_time.DateTime__convert(
         e.DateTime,
+        offset__years: offset__years,
       );
 
       e.DateTime.toIso8601String().print();
 
       {
         final DateTime = value.convert__DateTime(
-          global___ok: e.global___ok,
+          /*global___ok: e.global___ok,*/
         );
 
         if (DateTime != e.DateTime) {
           throw "${DateTime.toIso8601String()} ~= original";
         }
 
-        DateTime.text__representation().print("DateTime");
+        DateTime.representation__text().print("DateTime");
       }
 
-      value.text__representation().print("text");
+      value.representation__text().print("text");
 
       date_time
-          .current()
+          .current(
+            offset__years: offset__years,
+          )
           .convert__relative(
             other: value,
           )
-          .text__representation()
+          .representation__text()
           .print("relative");
 
       base__print__blank();

@@ -3,16 +3,16 @@ part of "../_.dart";
 value__asyn<void> process(
   final SendPort port__send,
 ) async {
-  Isolate.current.hashCode.text__representation().print("Isolate.current.hashCode");
+  Isolate.current.hashCode.representation__text().print("Isolate.current.hashCode");
 
   final ReceivePort port__receive = ReceivePort()
     ..listen(
       (final Object? message) async {
-        message.text__representation().print("in.port__receive.listen.message");
+        message.representation__text().print("in.port__receive.listen.message");
 
         if (message is byte__array) {
           final byte__array__kampo data = byte__array__bytes__convert(message)
-            ..text__representation().print(
+            ..representation__text().print(
               "in.data__decoded.original",
                null,
               OK,
@@ -41,10 +41,10 @@ value__asyn<void> process(
 }
 
 value__asyn<void> main /*isolate__test*/ () async {
-  Isolate.current.hashCode.text__representation().print("Isolate.current.hashCode");
+  Isolate.current.hashCode.representation__text().print("Isolate.current.hashCode");
 
   final byte__array__kampo data = byte__array__alloc(17) //
-    ..text__representation().print("out.data");
+    ..representation__text().print("out.data");
 
   late final SendPort port__send;
 
@@ -56,7 +56,7 @@ value__asyn<void> main /*isolate__test*/ () async {
         if (message is int) {
           switch (message) {
             case 0:
-              data.text__representation().print(
+              data.representation__text().print(
                 "out.data.new",
                  null,
                 OK,

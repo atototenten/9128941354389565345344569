@@ -1,9 +1,14 @@
 part of "_.dart";
 
 extension base__value__disposal__extension //
-<value__type extends Object> //
-    on value__type {
-  void dispose() {}
+<value___type extends Object> //
+    on value___type {
+  void dispose() {
+    final value = this;
+    if (value is base__dispose___protocol) {
+      value.dispose();
+    }
+  }
 }
 
 class base__value__lazy__compo<value___type> {
@@ -121,6 +126,13 @@ BOOL base__value__same___ok //
   );
 }
 
+BOOL base__value__equal__deep___ok(
+  final Object__nilable value,
+  final Object__nilable other,
+) {
+  return DeepCollectionEquality().equals(value, other);
+}
+
 BOOL base__value__equal___ok //
 <value__type extends Object>(
   final value__type value,
@@ -156,20 +168,20 @@ BOOL base__value__nilable__equal___ok //
   );
 }
 
-base__text__representation //
-base__value__convert__text__representation //
+base__representation__text //
+base__value__convert__representation__text //
 <value__type extends Object>(
   final value__type value,
 ) {
-  return value.text__representation();
+  return value.representation__text();
 }
 
-base__text__representation //
-base__value__nilable__convert__text__representation //
+base__representation__text //
+base__value__nilable__convert__representation__text //
 <value__type extends Object?>(
   final value__type value,
 ) {
-  return value.text__representation();
+  return value.representation__text();
 }
 
 //

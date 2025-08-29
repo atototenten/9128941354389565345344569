@@ -231,11 +231,11 @@ latest run's result :`
       first__id = first.re_place(() {
         "1st container".print();
       })
-        ..text__representation().print("first.re_place"),
+        ..representation__text().print("first.re_place"),
       second__id = second.re_place(() {
         "2nd container".print();
       })
-        ..text__representation().print("second.re_place");
+        ..representation__text().print("second.re_place");
 
   first
     ..invoke()

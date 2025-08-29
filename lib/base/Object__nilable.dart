@@ -5,9 +5,9 @@ typedef Object__nilable = Object?;
 extension base__Object__nilable__extension //
     <type extends Object__nilable> //
     on type {
-  base__text__representation //
-      text__representation /*
-this(global/common/general `convert__text__representation`) is required due to the dart-lang.'s type-system being dynamic/late-deterministic */
+  base__representation__text //
+      representation__text /*
+this(global/common/general `convert__representation__text`) is required due to the dart-lang.'s type-system being dynamic/late-deterministic */
       ({
     final NI elements__truncation__count__threshold /*
 acts on the middle part
@@ -18,11 +18,11 @@ zero is special-case to disable truncation */
     final value = this;
 
     if (value /*is Null*/ == null) {
-      return Null__text__representation;
+      return Null__representation__text;
     }
 
-    if (value is base__convert__text__representation___protocol) {
-      value.text__representation();
+    if (value is base__convert__representation__text___protocol) {
+      value.representation__text();
     }
 
     {
@@ -47,7 +47,7 @@ zero is special-case to disable truncation */
               (final _, final value) {
                 buffer
                   ..write(
-                    value.text__representation(),
+                    value.representation__text(),
                   )
                   ..write(elements__separation);
               },
@@ -61,7 +61,7 @@ zero is special-case to disable truncation */
                 buffer
                   ..write(elements__separation)
                   ..write(
-                    value.text__representation(),
+                    value.representation__text(),
                   );
               },
               count: elements__truncation__count__threshold__half,
@@ -69,7 +69,7 @@ zero is special-case to disable truncation */
             );
           } else {
             buffer.write(
-              value.first.text__representation(),
+              value.first.representation__text(),
             );
 
             value.iterate__basic(
@@ -77,7 +77,7 @@ zero is special-case to disable truncation */
                 buffer
                   ..write(elements__separation)
                   ..write(
-                    value.text__representation(),
+                    value.representation__text(),
                   );
               },
               offset: 1,
@@ -91,7 +91,7 @@ zero is special-case to disable truncation */
 
         buffer.clear();
 
-        return base__text__representation(
+        return base__representation__text(
           result,
         );
       }
@@ -117,9 +117,9 @@ zero is special-case to disable truncation */
               }
 
               buffer
-                ..write(key.text__representation())
+                ..write(key.representation__text())
                 ..write("=")
-                ..write(value.text__representation());
+                ..write(value.representation__text());
             },
           );
         }
@@ -130,13 +130,13 @@ zero is special-case to disable truncation */
 
         buffer.clear();
 
-        return base__text__representation(
+        return base__representation__text(
           result,
         );
       }
     }
 
-    return base__text__representation(
+    return base__representation__text(
       switch (value) {
         BOOL() => (value ? "OK" : "NO"),
          NI() => value.toString(),
@@ -151,13 +151,13 @@ zero is special-case to disable truncation */
     );
   }
 
-  base__text__representation //
-      compo__text__representation(
+  base__representation__text //
+      compo__representation__text(
     final base__compo__member__dictionary members /*
 for proxy/wrapping compo.s ,`empty__string` as key for `.value` member */
     ,
   ) {
-    return base__compo__text__representation(
+    return base__compo__representation__text(
       name: runtimeType.toString(),
       members: members,
     );

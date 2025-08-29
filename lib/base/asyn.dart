@@ -171,8 +171,22 @@ class base__value__asyn__definitive /*
   }
 
   void state__waiting__handle___raw(final value__asyn<value__type> value) {
+    final state = state__channel___raw.value();
+
+    BOOL valid___ok /*
+ensures that the syn.ny has not replaced the state with another
+  during the asyn.-gap
+  through ".state__assign__waiting" or otherwise
+  hence the currently-resolved value is out-dated */ () {
+      return identical(state, state__channel___raw.value());
+    }
+
     value.handle(
       (final value) {
+        if (valid___ok().not) {
+          return;
+        }
+
         state__channel___raw.value__mutation__dispatch(
           base__value__asyn__definitive__state__completion__success<value__type>(
             value,
@@ -180,6 +194,10 @@ class base__value__asyn__definitive /*
         );
       },
       (final error, final trace) {
+        if (valid___ok().not) {
+          return;
+        }
+
         state__channel___raw.value__mutation__dispatch(
           base__value__asyn__definitive__state__completion__failure<value__type>(
             error,
@@ -254,3 +272,48 @@ class base__value__asyn__definitive__state__waiting<value__type> //
 }
 
 sealed class base__value__asyn__definitive__state___union<value__type> {}
+
+void base__value__asyn__definitive__test() {
+  final v = base__value__asyn__definitive(
+    Future.delayed(
+      Duration(seconds: 3),
+      () {
+        print("3 seconds");
+
+        return 3;
+      },
+    ),
+  );
+
+  v.state__assign__waiting(
+    Future.delayed(
+      Duration(seconds: 1),
+      () {
+        print("1 second");
+
+        return 1;
+      },
+    ),
+  );
+
+  Future.delayed(
+    Duration(seconds: 5),
+    () {
+      print("5 seconds");
+
+      final state = v.state();
+
+      print(
+        "AFTER : ${switch (state) {
+          base__value__asyn__definitive__state__waiting<NIS>() => "waiting ...",
+          base__value__asyn__definitive__state__completion__failure<NIS>() => "FAILURE",
+          base__value__asyn__definitive__state__completion__success<NIS>() => //
+          ((state.value == 1) //
+              ? "CORRECT" : "IN-CORRECT"),
+        }}",
+      );
+
+      v.dispose();
+    },
+  );
+}

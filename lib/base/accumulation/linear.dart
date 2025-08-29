@@ -301,7 +301,7 @@ extension base__accumulation__linear__basic__fast__test__extension //
     on base__accumulation__linear__basic__fast<string> {
   void test() {
     void report() {
-      _elements.text__representation().print("elements(${elements__count()})");
+      _elements.representation__text().print("elements(${elements__count()})");
     }
 
     report();
@@ -324,7 +324,7 @@ extension base__accumulation__linear__basic__fast__test__extension //
     remove__element("sixth", text__equal___ok);
     report();
 
-    convert__array().text__representation().print("convert:array");
+    convert__array().representation__text().print("convert:array");
     report();
 
     add("6th");
@@ -334,11 +334,11 @@ extension base__accumulation__linear__basic__fast__test__extension //
     add("10th");
     report();
 
-    convert__array().text__representation().print("convert:array");
+    convert__array().representation__text().print("convert:array");
     report();
 
     iterate__basic((final element) {
-      element.text__representation().print("element");
+      element.representation__text().print("element");
     });
     report();
 
@@ -373,7 +373,7 @@ void base__accumulation__linear__definitive__test() {
   ) {
     accum //
         .convert__array()
-        .text__representation()
+        .representation__text()
         .print(title);
   }
 
@@ -397,7 +397,7 @@ void base__accumulation__linear__definitive__test() {
     ) {
       final element = accum.element(element__id);
 
-      accum.present___ok(element, base__value__equal___ok<string>).text__representation().print("\"${element}\" present in ${name} ?");
+      accum.present___ok(element, base__value__equal___ok<string>).representation__text().print("\"${element}\" present in ${name} ?");
     }
 
     accum__presence__print(accum__element__first__id());

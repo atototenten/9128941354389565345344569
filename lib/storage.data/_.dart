@@ -110,8 +110,8 @@ TASK
   base__compo__member__dictionary //
       convert__member__dictionary() {
     return {
-      "position": position.text__representation(),
-      "wastage": wastage.text__representation(),
+      "position": position.representation__text(),
+      "wastage": wastage.representation__text(),
     };
   }
 }
@@ -268,12 +268,12 @@ base__storage__data__meta___compo base__storage__data__open({
           );
 
   if (base__printing___ok) {
-    position.text__representation().print(
+    position.representation__text().print(
           "data:base:position",
           base__storage__data__storage.debug__label,
         );
 
-    position.text__representation().print(
+    position.representation__text().print(
           "data:base:wastage",
           base__storage__data__storage.debug__label,
         );
@@ -312,9 +312,9 @@ base__storage__data__linux__auto__result___compo base__storage__data__linux__aut
   if (base__printing___ok) {
     base__function__call__print("base__storage__data__linux__auto");
 
-    directory__path.text__representation().print("directory__path");
-    file__name.text__representation().print("file__name");
-    ds__storage__size.text__representation().print("base__storage__data__storage__size");
+    directory__path.representation__text().print("directory__path");
+    file__name.representation__text().print("file__name");
+    ds__storage__size.representation__text().print("base__storage__data__storage__size");
   }
 
   base__printing__indentation__increase();
@@ -431,9 +431,9 @@ void base__storage__data__write__replace /*:preserved*/ (
       ds__meta.debug__label,
     );
 
-    base__storage__data__offset.text__representation().print("base__storage__data__offset");
-    bytes__count.text__representation().print("bytes__count");
-    bytes.text__representation().print("bytes");
+    base__storage__data__offset.representation__text().print("base__storage__data__offset");
+    bytes__count.representation__text().print("bytes__count");
+    bytes.representation__text().print("bytes");
   }
 
   base__printing__indentation__increase();
@@ -450,7 +450,7 @@ void base__storage__data__write__replace /*:preserved*/ (
     );
 
     if (base__printing___ok) {
-      bytes__preserved.text__representation().print(
+      bytes__preserved.representation__text().print(
             "bytes__preserved",
             ds__meta.debug__label,
           );
@@ -484,7 +484,7 @@ NI base__storage__data__write__reserve(
       ds__meta.debug__label,
     );
 
-    count.text__representation().print("count");
+    count.representation__text().print("count");
   }
 
   final base__storage__data__offset = base__storage__data__position(

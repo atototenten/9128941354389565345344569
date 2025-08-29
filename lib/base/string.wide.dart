@@ -3,32 +3,31 @@ part of "_.dart";
 typedef string__wide = BS4__array;
 
 const //
-    unicode__ch__max = 0x10ffff /* 1114111, 0b100001111111111111111 */,
+unicode__ch__max = 0x10ffff /* 1114111, 0b100001111111111111111 */,
     unicode__ch__limit = (unicode__ch__max + 1),
     unicode__ch__size = TCW__size,
     unicode__ch__per__byte__max /*
-  bytes needed, for storing `ch__unicode__max` */
-    = TCW__size;
+  bytes needed, for storing `ch__unicode__max` */ =
+        TCW__size;
 
 NI TCW__bytes__count(final TCW wc) => //
     ((wc < NI07__limit) //
-        ? TC__size
-        : ((wc < NI014__limit) //
-            ? 2
-            : ((wc < NI021__limit) //
+    ? TC__size
+    : ((wc < NI014__limit) //
+          ? 2
+          : ((wc < NI021__limit) //
                 ? 3
                 : throw "`TCW` MUST be `<u21__limit`")));
 
 string__wide text__unicode__convert__string__wide(
   final string s, [
   final NI? chars__count__initial /*
-  usually `NI2__max` */
-  ,
+  usually `NI2__max` */,
 ]) {
   final runes = Runes /* Dart's rune, is, Unicode's code-point */ (s).iterator;
 
   var //
-      chars__count = (chars__count__initial ?? s.chars__count),
+  chars__count = (chars__count__initial ?? s.chars__count),
       /*array<TCW>*/ chars_ = BS4__array(
         chars__count,
       ),
@@ -37,7 +36,7 @@ string__wide text__unicode__convert__string__wide(
   while (runes.moveNext()) {
     if (chars__count == char__id) {
       final //
-          chars__1 = chars_,
+      chars__1 = chars_,
           chars__count_1 = chars__count;
 
       base__copy(
@@ -51,7 +50,8 @@ string__wide text__unicode__convert__string__wide(
 
     final wc = runes.current;
 
-    chars_[char__id++] = ((wc < TC__limit) //
+    chars_[char__id++] =
+        ((wc < TC__limit) //
         ? TC__ascii__convert__ch(wc)
         : wc);
   }
@@ -74,9 +74,9 @@ TCW char__unicode__convert__TCW(
 ) {
   final runes = Runes(char).iterator;
 
-  if (behavior__correct___ok && //
-      runes.moveNext().not) //
+  if (runes.moveNext().not) {
     throw "empty text";
+  }
 
   final wc = runes.current;
 
@@ -119,7 +119,7 @@ byte__array wstr__convert__bytes(
 
   ws.iterate__basic(
     (final _, final wc) => //
-        sink.add__NI(
+    sink.add__NI(
       wc,
     ),
   );
@@ -169,7 +169,7 @@ string__wide wstr__bytes__convert(
     return string__wide(0);*/
 
   final //
-      bytes_ = bytes___compo(
+  bytes_ = bytes___compo(
         bytes,
       ),
       sink = base__accumulation__linear__basic<TCW>();
@@ -197,14 +197,15 @@ string wstr__convert__text(
   }
 
   final //
-      count = ws.elements__count,
+  count = ws.elements__count,
       ws__copy = BS4__array(
         count,
       );
 
   base__iterate__reverse__basic(count, (final wide_char__id) {
     final wc = ws[wide_char__id];
-    ws__copy[wide_char__id] = ((wc < TC__limit) //
+    ws__copy[wide_char__id] =
+        ((wc < TC__limit) //
         ? TC__convert__ch__ascii(wc)
         : wc);
   });

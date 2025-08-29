@@ -123,7 +123,7 @@ app:build__re:ok */
 
       if (base__printing___ok) {
         screen__size__new //
-            .text__representation()
+            .representation__text()
             .print("screen:size:new");
       }
 
@@ -141,7 +141,7 @@ app:build__re:ok */
 
       if (base__printing___ok) {
         screen__padding__permanent__new //
-            .text__representation()
+            .representation__text()
             .print("screen:padding:permanent:new");
       }
 
@@ -162,7 +162,7 @@ app:build__re:ok */
 
       if (base__printing___ok) {
         screen__padding__temporary__new //
-            .text__representation()
+            .representation__text()
             .print("screen:padding:temporary:new");
       }
 
@@ -218,26 +218,26 @@ history
         perfect balance of detail
           small change in value ,not lead to big effect ,in pixel/size
           verbosity ,or value inflation */
-        ..text__representation().print("size:pixel:new");
+        ..representation__text().print("size:pixel:new");
 
-  base__wall__width().text__representation().print("wall:width:new");
+  base__wall__width().representation__text().print("wall:width:new");
 
   /*base__screen__padding /*      */ = /*(base__screen__padding__temporary + base__screen__padding__permanent)*/ EdgeInsets.fromViewPadding(view.padding, view.devicePixelRatio);*/
 
   /*{
-    screen__size.text__representation().print("screen__size");
-    base__wall__width.text__representation().print("base__wall__width");
+    screen__size.representation__text().print("screen__size");
+    base__wall__width.representation__text().print("base__wall__width");
 
-    _size__pixel.text__representation().print("_size__pixel");
-    8.px().text__representation().print("8.px()");
-    16.px().text__representation().print("16.px()");
-    96.px().text__representation().print("64.px()");
+    _size__pixel.representation__text().print("_size__pixel");
+    8.px().representation__text().print("8.px()");
+    16.px().representation__text().print("16.px()");
+    96.px().representation__text().print("64.px()");
 
-    Radius.circular(2.px()).text__representation().print("Radius.circular(2.px())");
-    Radius.circular(4.px()).text__representation().print("Radius.circular(4.px())");
-    Radius.circular(8.px()).text__representation().print("Radius.circular(8.px())");
-    Radius.circular(16.px()).text__representation().print("Radius.circular(16.px())");
-    Radius.circular(32.px()).text__representation().print("Radius.circular(32.px())");
+    Radius.circular(2.px()).representation__text().print("Radius.circular(2.px())");
+    Radius.circular(4.px()).representation__text().print("Radius.circular(4.px())");
+    Radius.circular(8.px()).representation__text().print("Radius.circular(8.px())");
+    Radius.circular(16.px()).representation__text().print("Radius.circular(16.px())");
+    Radius.circular(32.px()).representation__text().print("Radius.circular(32.px())");
   }*/
 
   base__app__size__alter__channel.event__dispatch();

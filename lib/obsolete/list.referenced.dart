@@ -114,7 +114,7 @@ class ReferencedList<T> {
     int i = 0;
 
     while (iterator !=  null) {
-      iterator.data.text__representation().print("${i++}.element.data");
+      iterator.data.representation__text().print("${i++}.element.data");
 
       iterator = iterator.next;
     }
@@ -125,7 +125,7 @@ class ReferencedList<T> {
     int i = (elementCount - 1);
 
     while (iterator !=  null) {
-      iterator.data.text__representation().print("${i--}.element.data");
+      iterator.data.representation__text().print("${i--}.element.data");
 
       iterator = iterator.previous;
     }

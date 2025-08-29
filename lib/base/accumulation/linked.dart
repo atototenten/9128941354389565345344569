@@ -208,10 +208,10 @@ void base__accumulation__linked__test() {
     base__printing__indent();
 
     accumulation
-      ..elements__count___raw.text__representation().print("..elements__count")
-      ..convert__array().join(" ").text__representation().print("..elements")
-      ..element__first___raw?.value.text__representation().print("..element__first")
-      ..element__last___raw?.value.text__representation().print("..element__last");
+      ..elements__count___raw.representation__text().print("..elements__count")
+      ..convert__array().join(" ").representation__text().print("..elements")
+      ..element__first___raw?.value.representation__text().print("..element__first")
+      ..element__last___raw?.value.representation__text().print("..element__last");
 
     base__printing__indent__de();
 

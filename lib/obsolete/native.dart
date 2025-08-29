@@ -34,7 +34,7 @@ abstract class FileOpenMode {
 
 class ReadOnlyFile {
   static bool exists(final string path) => //
-      io.File(path).existsSync()..text__representation().print("ReadOnlyFile.exists(path: \"$path\")");
+      io.File(path).existsSync()..representation__text().print("ReadOnlyFile.exists(path: \"$path\")");
 
   static void create(
     final string path, [
@@ -75,7 +75,7 @@ class ReadOnlyFile {
       file.setPositionSync(position);
     }
 
-    return file.readSync(count)..text__representation().print("$_filePath.read(count: $count, position: $position)");
+    return file.readSync(count)..representation__text().print("$_filePath.read(count: $count, position: $position)");
   }
 
   byte__array read__full() {
@@ -84,7 +84,7 @@ class ReadOnlyFile {
   }
 
   int getPosition() => //
-      file.positionSync()..text__representation().print("$_filePath.getPosition()");
+      file.positionSync()..representation__text().print("$_filePath.getPosition()");
 
   void rePosition(final int newPosition) {
     getPosition();
@@ -98,7 +98,7 @@ class ReadOnlyFile {
       rePosition(newPosition);
 
   int getSize() => //
-      file.lengthSync()..text__representation().print("$_filePath.getSize()");
+      file.lengthSync()..representation__text().print("$_filePath.getSize()");
 
   void print([
     final int byteCount = 1024,
@@ -111,7 +111,7 @@ class ReadOnlyFile {
         .readSync(((size = file.lengthSync()) < byteCount) //
             ? size
             : byteCount)
-        .text__representation().print("$_filePath.text__representation().print(fileSize: $size)");
+        .representation__text().print("$_filePath.representation__text().print(fileSize: $size)");
   }
 
   void close() {

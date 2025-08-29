@@ -12,17 +12,17 @@ void ffi__test() {
         size__sector,
       );
 
-  size__sector.toRadixString(2).text__representation().print("size__sector.bits");
+  size__sector.toRadixString(2).representation__text().print("size__sector.bits");
 
   void mem__print(
     final ffi.Pointer<ffi.NativeType> pointer,
     final string id,
   ) =>
       pointer
-        ..address.text__representation().print("$id.addr")
-        ..address.toRadixString(2).text__representation().print("$id.addr.bits")
+        ..address.representation__text().print("$id.addr")
+        ..address.toRadixString(2).representation__text().print("$id.addr.bits")
         ..free
-        ..address.text__representation().print("$id.free.addr");
+        ..address.representation__text().print("$id.free.addr");
 
   mem__print(mem, "mem");
   mem__print(mem__aligned, "mem__aligned");

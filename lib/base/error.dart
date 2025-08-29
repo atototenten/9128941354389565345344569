@@ -79,7 +79,7 @@ void base__error__print__concise(
   final string? label,
 ]) {
   error //
-      .text__representation()
+      .representation__text()
       .print(
         base__error__code(
           base__error__fatal___ok(error),
@@ -88,6 +88,6 @@ void base__error__print__concise(
       );
 
   (trace ?? StackTrace.current) //
-      .text__representation()
+      .representation__text()
       .print(label);
 }

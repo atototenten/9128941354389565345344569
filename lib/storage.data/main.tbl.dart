@@ -91,7 +91,7 @@ base__storage__data__table__meta___protocol base__storage__data__table__main__op
       ds__meta.debug__label,
     );
 
-    table__main__id.text__representation().print("table__main__id");
+    table__main__id.representation__text().print("table__main__id");
   }
 
   base__printing__indentation__increase();

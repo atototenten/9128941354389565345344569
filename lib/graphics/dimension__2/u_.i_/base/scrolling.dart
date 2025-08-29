@@ -193,19 +193,20 @@ class gui__base__scrolling //
     return v.first;
   }
 
-  base__text__representation offset__range__text__representation() {
+  base__representation__text //
+  offset__range__representation__text() {
     final offset__range_1 = offset__range();
 
     if (offset__range_1 == null) {
-      return Null__text__representation;
+      return Null__representation__text;
     }
 
-    return base__compo__text__representation(
+    return base__compo__representation__text(
       name: "scrolling.offset__range",
       members: {
-        "current": offset__range_1.current.text__representation(),
-        "min": offset__range_1.min.text__representation(),
-        "max": offset__range_1.max.text__representation(),
+        "current": offset__range_1.current.representation__text(),
+        "min": offset__range_1.min.representation__text(),
+        "max": offset__range_1.max.representation__text(),
       },
     );
   }

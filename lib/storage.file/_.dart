@@ -181,9 +181,9 @@ void base__storage__file__io__check__aligned(
       "storage__io__check__aligned",
     );
 
-    count.text__representation().print("count");
-    offset.text__representation().print("offset");
-    alignment.size.text__representation().print("alignment__size");
+    count.representation__text().print("count");
+    offset.representation__text().print("offset");
+    alignment.size.representation__text().print("alignment__size");
   }
 
   if (base__NI__aligned___ok(count, alignment.size).not) {

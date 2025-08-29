@@ -105,7 +105,7 @@ class list__old__kampo<T> {
       iterator = iterator.next;
     }
 
-    //iterator?.value.hashCode.text__representation().print("iter");
+    //iterator?.value.hashCode.representation__text().print("iter");
 
     if (iterator !=  null) /* `value` is contained; checked because, the `next` of last element is also `null`. */ {
       if (previous !=  null) /* element holding `value`, is neither the first(`== first`), nor the only element. */ {

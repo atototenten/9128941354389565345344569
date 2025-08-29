@@ -85,8 +85,8 @@ void preservation__journal__convert__report__info(
   final preservation__journal___compo preservation__journal,
 ) =>
     record__convert__report__info({
-      "store.elements__count": preservation__journal.store.elements__count.text__representation(),
-      "bytes__count": preservation__journal.bytes__count.text__representation(),
+      "store.elements__count": preservation__journal.store.elements__count.representation__text(),
+      "bytes__count": preservation__journal.bytes__count.representation__text(),
     });
 
 typedef bytes__preserved___compo = ({
@@ -103,12 +103,12 @@ report__info bytes__preserved__convert__report__info(
           .cast__byte__array(
             base__storage__data__position__size__id,
           )
-          .text__representation(),
+          .representation__text(),
       "count.by__arr": bytes__preserved.count
           .cast__byte__array(
             base__storage__data__position__size__id,
           )
-          .text__representation(),
+          .representation__text(),
       "by__arr": bytes__preserved.bytes.convert__report__info().value,
     });
 
@@ -148,7 +148,7 @@ void preservation__journal__persist(
   base__printing__indentation__increase();
 
   if (base__printing___ok) {
-    preservation__journal.bytes__count.text__representation().print(
+    preservation__journal.bytes__count.representation__text().print(
           "bytes__count",
         );
   }
@@ -175,10 +175,10 @@ void preservation__journal__persist(
       buffer__array = buffer.array;
 
   if (base__printing___ok) {
-    bytes__count_.text__representation().print("bytes__count_");
-    buffer__count.text__representation().print("buffer__count");
-    buffer__block__count.text__representation().print("buffer__block__count");
-    preservation__journal.store.elements__count.text__representation().print("store.count");
+    bytes__count_.representation__text().print("bytes__count_");
+    buffer__count.representation__text().print("buffer__count");
+    buffer__block__count.representation__text().print("buffer__block__count");
+    preservation__journal.store.elements__count.representation__text().print("store.count");
   }
 
   base__copy(
@@ -273,7 +273,7 @@ void preservation__journal__recover__if__needed({
   );
 
   if (base__printing___ok) {
-    count.text__representation().print(
+    count.representation__text().print(
           "count",
           bytes__preserved__storage.debug__label,
         );
@@ -291,7 +291,7 @@ void preservation__journal__recover__if__needed({
       );
 
       if (base__printing___ok) {
-        count__max.text__representation().print(
+        count__max.representation__text().print(
               "count__max",
               bytes__preserved__storage.debug__label,
             );
@@ -329,25 +329,25 @@ void preservation__journal__recover__if__needed({
               base__storage__data__position__size__id.size,
             );
 
-        offset.text__representation().print("offset");
+        offset.representation__text().print("offset");
 
         offset
             .cast__byte__array(
               base__storage__data__position__size__id,
             )
-            .text__representation()
+            .representation__text()
             .print("offset.bys");
 
-        count.text__representation().print("count");
+        count.representation__text().print("count");
 
         count
             .cast__byte__array(
               base__storage__data__position__size__id,
             )
-            .text__representation()
+            .representation__text()
             .print("count.bys");
 
-        bytes_.text__representation().print("bytes");
+        bytes_.representation__text().print("bytes");
 
         base__storage__file__fast__read_write(
           base__storage__data__storage,

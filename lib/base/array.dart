@@ -54,7 +54,7 @@ extension array__array__merge_ing<element__type> //
       },
     );
 
-    elements__count.text__representation().print("elements__count");
+    elements__count.representation__text().print("elements__count");
 
     var //
     element__offset = 0,
@@ -92,7 +92,7 @@ extension array__array__merge_ing<element__type> //
       [9, 8, 7],
       [0],
       empty__array,
-    ]..text__representation().print("un_merge_ed")).merge().text__representation().print("merge_ed");
+    ]..representation__text().print("un_merge_ed")).merge().representation__text().print("merge_ed");
   }
 }
 
@@ -325,7 +325,7 @@ whole `segment` has been iterated ,and was not un-equal to `this[(i-segment__ele
     ].iterate__basic((final _, final e) {
       final result =
           e.input.search__segment(e.segment) //
-            ..text__representation().print("${e.input}.search__segment(${e.segment})");
+            ..representation__text().print("${e.input}.search__segment(${e.segment})");
       if (result != e.result) {
         throw "un-expected result :($result ~= ${e.result})";
       }
@@ -370,7 +370,7 @@ more run-time efficient ,than `search__segment` */ {
     ].iterate__basic((final _, final e) {
       final result =
           e.input.search__segment__begin(e.segment) //
-            ..text__representation().print("${e.input}.search__segment__begin(${e.segment})");
+            ..representation__text().print("${e.input}.search__segment__begin(${e.segment})");
       if (result != e.result) {
         throw "un-expected result :($result ~= ${e.result})";
       }
@@ -493,7 +493,7 @@ extension element__type__array__report__definitive__extension<element__type> //
     string element(
       final NIS id__diff_,
     ) {
-      return this[element__id + id__diff_].text__representation().value;
+      return this[element__id + id__diff_].representation__text().value;
     }
 
     return ("$element__id: $static__indicate__short_en_ing " + //

@@ -20,15 +20,15 @@ Unicode
 class gui__base__input__text //
     implements gui__base__entity__component___protocol<gui__base__input__text__children___record> {
   gui__base__input__text({
-    this.input__type = TextInputType.text,
+    this.type = TextInputType.text,
     this.line__breaking___ok = NO,
-    required this.input__text__style,
+    required this.text__style,
     required this.cursor__color,
-    this.input__capitalization = TextCapitalization.none,
-    this.input__characters__count__limit = NI1__max,
-    this.input__filtering = base__input__text__filtering__basic,
-    this.input__lines__max = 3,
-    this.input__lines__min = 1,
+    this.capitalization = TextCapitalization.none,
+    this.characters__count__limit = NI1__max,
+    this.filtering = base__input__text__filtering__basic,
+    this.lines__max = 3,
+    this.lines__min = 1,
     final string value__initial = empty__string,
   })  : value__channel = base__value__mutation__event__channel__broadcast(
           value__initial,
@@ -42,17 +42,17 @@ class gui__base__input__text //
     );
   }
 
-  final TextInputType input__type;
+  final TextInputType type;
   final BOOL line__breaking___ok;
-  final TextStyle input__text__style;
+  final TextStyle text__style;
   final Color cursor__color;
-  final TextCapitalization input__capitalization;
-  final NI input__characters__count__limit /*
+  final TextCapitalization capitalization;
+  final NI characters__count__limit /*
 wide-char.s */
       ;
-  final base__input__text__filtering input__filtering;
-  final NI? input__lines__max;
-  final NI input__lines__min;
+  final base__input__text__filtering filtering;
+  final NI? lines__max;
+  final NI lines__min;
 
   final base__value__mutation__event__channel__broadcast<string> value__channel;
 
@@ -124,7 +124,7 @@ FIX :
     final gui__base__widget__building__context context, {
     required covariant final gui__base__input__text__children___record children,
   }) {
-    final input__characters__count__indication__build = children.input__characters__count__indication__build;
+    final characters__count__indication__build = children.characters__count__indication__build;
 
     return ListenableBuilder(
       listenable: focussing___raw,
@@ -141,35 +141,35 @@ FIX :
             decoration: NIL,
             controller: controlling___raw,
             focusNode: focussing___raw,
-            style: input__text__style,
+            style: text__style,
             cursorOpacityAnimates: NO,
             cursorColor: cursor__color,
             cursorRadius: Radius.circular(1.px()),
-            keyboardType: input__type,
+            keyboardType: type,
             textInputAction: (line__breaking___ok //
                 ? TextInputAction.newline
                 : TextInputAction.done) /*
 because of ambiguity with done-key ,between keyboard-close and form-submission */
             ,
-            textCapitalization: input__capitalization,
+            textCapitalization: capitalization,
             autofocus: focussing___raw.hasFocus,
-            maxLines: input__lines__max,
-            minLines: input__lines__min,
+            maxLines: lines__max,
+            minLines: lines__min,
             inputFormatters: <TextInputFormatter>[
               LengthLimitingTextInputFormatter(
-                input__characters__count__limit,
+                characters__count__limit,
                 maxLengthEnforcement: MaxLengthEnforcement.enforced,
               ),
               FilteringTextInputFormatter(
-                RegExp(input__filtering.reg_ex),
-                allow: input__filtering.allow___ok,
+                RegExp(filtering.reg_ex),
+                allow: filtering.allow___ok,
               ),
             ],
             keyboardAppearance: (base__app__theme__colors__ground__back__contrast__dark___ok //
                 ? Brightness.dark
                 : Brightness.light),
             scrollPhysics: base__scrolling__physics__clamping,
-            buildCounter: ((input__characters__count__indication__build == null) //
+            buildCounter: ((characters__count__indication__build == null) //
                 ? null
                 : (
                     final context, {
@@ -177,7 +177,7 @@ because of ambiguity with done-key ,between keyboard-close and form-submission *
                     required final maxLength,
                     required final isFocused,
                   }) {
-                    return input__characters__count__indication__build(
+                    return characters__count__indication__build(
                       context,
                     );
                   }),
@@ -201,11 +201,11 @@ class base__input__text__filtering {
 class gui__base__input__text__children___record {
   const gui__base__input__text__children___record({
     required this.child__build,
-    this.input__characters__count__indication__build,
+    this.characters__count__indication__build,
   });
 
   final gui__base__widget__build__function__format child__build /*
 un-focus-ed */
       ;
-  final gui__base__widget__build__function__format? input__characters__count__indication__build;
+  final gui__base__widget__build__function__format? characters__count__indication__build;
 }

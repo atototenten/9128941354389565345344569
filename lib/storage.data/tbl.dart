@@ -57,8 +57,8 @@ class base__storage__data__tbl__meta___compo //
       convert__member__dictionary() {
     return {
       ...super.convert__member__dictionary(),
-      "table__bytes__base__storage__data__offset": table__bytes__base__storage__data__offset.text__representation(),
-      "rows__count__bytes__base__storage__data__offset": rows__count__bytes__base__storage__data__offset.text__representation(),
+      "table__bytes__base__storage__data__offset": table__bytes__base__storage__data__offset.representation__text(),
+      "rows__count__bytes__base__storage__data__offset": rows__count__bytes__base__storage__data__offset.representation__text(),
     };
   }
 }
@@ -74,7 +74,7 @@ NI /*row__id_*/ base__storage__data__tbl__row__add(
       tbl__meta.debug__label,
     );
 
-    bytes.text__representation().print(
+    bytes.representation__text().print(
           "bytes",
         );
   }
@@ -132,7 +132,7 @@ base__storage__data__table__row___compo base__storage__data__tbl__row(
       tbl__meta.debug__label,
     );
 
-    row__id.text__representation().print("row__id");
+    row__id.representation__text().print("row__id");
   }
 
   base__printing__indentation__increase();

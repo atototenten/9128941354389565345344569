@@ -157,7 +157,7 @@ gui__base__widget pages__directory__page(
             ? child
             : GestureDetector(
                 onTap: () {
-                  file__path.text__representation().print(
+                  file__path.representation__text().print(
                         "file__path",
                       );
 

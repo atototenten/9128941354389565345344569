@@ -10,7 +10,7 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
         promise = value__asyn__meta<BS1__array>();
 
     listen(
-      (final BS1__array data) => accumulation.add(data /*..count.text__representation().print("byteStream.listen.onData.data.count")*/),
+      (final BS1__array data) => accumulation.add(data /*..count.representation__text().print("byteStream.listen.onData.data.count")*/),
       onError: promise.completeError,
       onDone: () => promise.complete(accumulation.convert__byte__array()),
       cancelOnError: OK,
@@ -33,11 +33,11 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
 
     listen(
       (BS1__array data) {
-        data__count = (data..text__representation().print("\n" "stream__BS1__array.listen.onData.data")).bytes__count;
+        data__count = (data..representation__text().print("\n" "stream__BS1__array.listen.onData.data")).bytes__count;
 
         while (OK) {
-          count.text__representation().print("count");
-          accumulation.bytes__count().text__representation().print("accumulation.bytes__count");
+          count.representation__text().print("count");
+          accumulation.bytes__count().representation__text().print("accumulation.bytes__count");
 
           if (count != 0) {
             "1: (count != 0)".print();
@@ -48,15 +48,15 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
               accumulation.add(data);
               count -= data__count;
 
-              count.text__representation().print("count.new");
-              accumulation.bytes__count().text__representation().print("accumulation.bytes__count.new");
+              count.representation__text().print("count.new");
+              accumulation.bytes__count().representation__text().print("accumulation.bytes__count.new");
 
               return;
             } else {
               "1.2".print();
 
               accumulation.add(data.view__partial(0, count));
-              message__handle(accumulation.convert__byte__array()..text__representation().print("reported"));
+              message__handle(accumulation.convert__byte__array()..representation__text().print("reported"));
               accumulation.flush();
               data = data.view(count);
               data__count = (data__count - count);
@@ -75,8 +75,8 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
               accumulation.add(data);
               count = 0;
 
-              count.text__representation().print("count.new");
-              accumulation.bytes__count().text__representation().print("accumulation.bytes__count.new");
+              count.representation__text().print("count.new");
+              accumulation.bytes__count().representation__text().print("accumulation.bytes__count.new");
 
               return;
             } else {
@@ -92,8 +92,8 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
               accumulation.flush();
             }
 
-            count.text__representation().print("count.new");
-            accumulation.bytes__count().text__representation().print("accumulation.bytes__count.new");
+            count.representation__text().print("count.new");
+            accumulation.bytes__count().representation__text().print("accumulation.bytes__count.new");
           }
         }
       },

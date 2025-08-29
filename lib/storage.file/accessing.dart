@@ -11,8 +11,8 @@ base__storage__file__accessing__aligned__meta___union //
       "base__storage__file__accessing__auto",
     );
 
-    length.text__representation().print("length");
-    offset.text__representation().print("offset");
+    length.representation__text().print("length");
+    offset.representation__text().print("offset");
   }
 
   base__printing__indentation__increase();
