@@ -63,12 +63,14 @@ values :
   );
 }
 
+
 (value__asyn<value___type> result, gui__base__entity__overlay___compo overlay) //
 gui__base__overlay__waiting /*
 prefer disabling dismissal/back-navigation gestures
   ,like press ,and drag
 example[-usage] : "
 final (result___asyn, overlay) = gui__base__overlay__waiting(
+  context,
   result__fetch___asyn(),
   waiting__build: waiting__build,
 );
@@ -84,6 +86,7 @@ final (result___asyn, overlay) = gui__base__overlay__waiting(
 final result = await result___asyn;
 " */ //
 <value___type>(
+  final gui__base__widget__building__context context,
   final value__asyn<value___type> value /*
 "value__asyn.sync" can be used for sync. actions
 handles {"value__asyn.value" ,and "value__asyn.delayed"} too */, {
@@ -91,36 +94,30 @@ handles {"value__asyn.value" ,and "value__asyn.delayed"} too */, {
 }) {
   final promise = value__asyn__meta<value___type>();
 
-  gui__base__widget__building__context? context_1;
+  var context__latest = context;
 
   void backward() {
-    final context_2 = context_1;
-
-    if (context_2 == null) {
+    if (context__latest.valid___ok().not) {
       return;
     }
 
-    if (context_2.valid___ok().not) {
-      return;
-    }
-
-    context_2.navigation().backward();
+    context__latest.navigation().backward();
   }
 
-  var complete___ok /*
-needed to handle ,already completed ,and `value__asyn.value` creations */ =
+  var resolved___ok /*
+needed to handle already-resolved asyn.-values */ =
       NO;
 
   value.handle(
     (final value) {
-      complete___ok = OK;
+      resolved___ok = OK;
 
       backward();
 
       promise.complete(value);
     },
     (final e, final t) {
-      complete___ok = OK;
+      resolved___ok = OK;
 
       backward();
 
@@ -132,36 +129,33 @@ needed to handle ,already completed ,and `value__asyn.value` creations */ =
 
   final overlay = gui__base__entity__overlay___compo(
     dispose__handle: NIL,
-    widget__build: (final context_2) {
+    widget__build: (final context_1) {
       if (navigation__back__scheduled___ok) {
         return gui__base__empty__widget;
       }
 
-      if (complete___ok) {
+      if (resolved___ok) {
         navigation__back__scheduled___ok = OK;
 
-        task__schedule(
-          () {
-            context_2.navigation().backward();
-          },
-        );
+        task__schedule(() {
+          context_1.navigation().backward();
+        });
 
         return gui__base__empty__widget;
       }
 
-      context_1 = context_2;
+      context__latest = context_1;
 
       return PopScope(
         canPop: NO,
-        child: waiting__build(
-          context_2,
-        ),
+        child: waiting__build(context_1),
       );
     },
   );
 
   return (promise.future, overlay);
 }
+
 
 class gui__base__overlays__management__children___record {
   const gui__base__overlays__management__children___record({
