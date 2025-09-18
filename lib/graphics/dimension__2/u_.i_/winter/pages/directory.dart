@@ -11,7 +11,7 @@ const //
     file__mode__array = <string>["---", "--x", "-w-", "-wx", "r--", "r-x", "rw-", "rwx"];
 
 string _file__stat__mode__convert__text(
-  final NI mode,
+  final INT mode,
 ) /*
   forked from `dart-sdk/lib/io/file_system_entity.dart`::`FileStat`::`modeString` */
 {

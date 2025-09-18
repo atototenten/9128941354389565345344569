@@ -18,12 +18,12 @@ terminology
 dictionary<key__type, value__type> //
     dictionary__generate //
     <key__type, value__type>(
-  final NI count,
+  final INT count,
   final ({
     key__type key,
     value__type value,
   })
-          Function(NI)
+          Function(INT)
       generate,
 ) {
   final result = <key__type, value__type>{};
@@ -38,7 +38,7 @@ dictionary<key__type, value__type> //
 
 extension dictionary__extension<key__type, value__type> //
     on dictionary<key__type, value__type> {
-  NI get elements__count => //
+  INT get elements__count => //
       length;
 
   BOOL empty___ok() => //

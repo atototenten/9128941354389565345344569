@@ -16,14 +16,14 @@ typedef string = String;
 byte__array text__convert__utf_8__bytes(final string s) => //
     (const convert.Utf8Encoder()).convert(s);
 
-NI? /*id_*/ text__search /*
+INT? /*id_*/ text__search /*
 forked ,from `array__search` */
     (
   final string text_,
   final string segment /*
 sub-string to search */
   , {
-  final NI? offset /*
+  final INT? offset /*
 by-default 0 ,if `reverse:OK` is `NOT OK` ,else `char:last:id` */
   ,
   final BOOL reverse___ok = NO,
@@ -36,7 +36,7 @@ by-default 0 ,if `reverse:OK` is `NOT OK` ,else `char:last:id` */
     );
   }
 
-  final NI result;
+  final INT result;
 
   if /*F*/ (reverse___ok) {
     result = text_.lastIndexOf(
@@ -71,7 +71,7 @@ BOOL text__numbers___ok(
 string utf_8__bytes__convert__text(final byte__array bytes) => //
     (const convert.Utf8Decoder()).convert(bytes);
 
-NI /*(char:bytes:count -1)*/ utf_8__bytes__char__bytes__count__remain_ing(
+INT /*(char:bytes:count -1)*/ utf_8__bytes__char__bytes__count__remain_ing(
   final BS1 b /*char:bytes:first*/,
 ) {
   if (b < 128 /*1000_0000*/) {
@@ -94,11 +94,11 @@ source :`http://stackoverflow.com/questions/26070766/utf-8-how-does-only-0-127-s
 final value__asyn<string> Function(Stream<byte__array>) utf_8__Stream__byte__array__convert__text = //
     (const convert.Utf8Codec()).decodeStream;
 
-final value__asyn<string> Function(Stream<array<NI>>) utf_8__byte__array__Stream__convert__text = //
+final value__asyn<string> Function(Stream<array<INT>>) utf_8__byte__array__Stream__convert__text = //
     (const convert.Utf8Codec()).decodeStream;
 
 extension text__extension on string {
-  NI get chars__count => //
+  INT get chars__count => //
       length;
 
   BOOL empty___ok() => //

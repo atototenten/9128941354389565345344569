@@ -14,7 +14,7 @@ const //
   final BOOL input__b__simple /*
   single-line, not multi-line */
   = OK,
-  final NI input__text__bytes__count__max = NI1__max,
+  final INT input__text__bytes__count__max = NI1__max,
   final string? input__initial,
   required final void Function(
    string__wide input,
@@ -48,7 +48,7 @@ const //
 
     if (base__printing___ok && //
         b__written) //
-      report__NI(
+      report__INT(
         wc,
         "input.new.char",
       );
@@ -113,7 +113,7 @@ const //
               maxHeight: (24 * 18).px(),
             ),
             child: SizedBox(
-              width: NFP.maxFinite,
+              width: APPROX.maxFinite,
               child: gui__base__box__non_button(
                 border__radius: BorderRadius.all(Radius.circular(8.px())),
                 child: Padding(
@@ -289,7 +289,7 @@ gui__base__widget listing__item__input__text__stored({
   final TextInputType input__type = TextInputType.text,
   final TextInputAction input__submit__indicator = TextInputAction.done,
   final TextCapitalization input__capitalization = TextCapitalization.none,
-  final NI input__chars__count__max = NI1__max,
+  final INT input__chars__count__max = NI1__max,
   final input__text__filter___compo input__filter = input__text__filter__basic__print_able___ok,
   required final input__text__function__format input__submit,
   final BOOL indicator__edit_able__b__show = OK,
@@ -403,7 +403,7 @@ widget__stored___compo input__text__overlay__bottom__phone__stored({
   final TextInputType input__type = TextInputType.text,
   final TextInputAction input__submit__indicator = TextInputAction.done,
   final TextCapitalization input__capitalization = TextCapitalization.none,
-  final NI input__chars__count__max = NI1__max,
+  final INT input__chars__count__max = NI1__max,
   final input__text__filter___compo input__filter = input__text__filter__basic__print_able___ok,
   final BOOL b__recursive /*
   recursion: `input__text__overlay__bottom__phone__stored(`, in `input__submit` */

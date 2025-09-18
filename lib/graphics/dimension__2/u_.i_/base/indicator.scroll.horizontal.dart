@@ -18,8 +18,8 @@ const array<Color> //
 
 gui__base__widget base__indicator__scroll__horizontal({
   required final ScrollController controller,
-  final NFP? height /* required for list-view_s */,
-  final NFP? width /* required to decide the need, for the indicator(a persistent stacked widget) */,
+  final APPROX? height /* required for list-view_s */,
+  final APPROX? width /* required to decide the need, for the indicator(a persistent stacked widget) */,
   required final gui__base__widget child /* should be, scrollable, horizontally */,
 }) {
   var //

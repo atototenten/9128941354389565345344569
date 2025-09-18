@@ -1,7 +1,7 @@
 part of "../_.dart";
 
 /*class Form extends StatefulWidget {
-  static const NI //
+  static const INT //
       TYPE_CHOICE_SINGLE = 0,
       TYPE_CHOICE_MULTIPLE = (TYPE_CHOICE_SINGLE + 1),
       TYPE_TEXT = (TYPE_CHOICE_MULTIPLE + 1),

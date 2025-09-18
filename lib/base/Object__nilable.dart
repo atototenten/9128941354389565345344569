@@ -9,7 +9,7 @@ extension base__Object__nilable__extension //
       representation__text /*
 this(global/common/general `convert__representation__text`) is required due to the dart-lang.'s type-system being dynamic/late-deterministic */
       ({
-    final NI elements__truncation__count__threshold /*
+    final INT elements__truncation__count__threshold /*
 acts on the middle part
 applicable on nested arrays and dictionaries
 zero is special-case to disable truncation */
@@ -139,11 +139,11 @@ zero is special-case to disable truncation */
     return base__representation__text(
       switch (value) {
         BOOL() => (value ? "OK" : "NO"),
-         NI() => value.toString(),
-        //NIS() => "NIS(${value.toString()})",
+         INT() => value.toString(),
+        //INT__NEG() => "INT__NEG(${value.toString()})",
         string() => "\"${value.toString()}\"",
         Enum() => value.name,
-        NFP() => "NFP(${value.toString()})",
+        APPROX() => "APPROX(${value.toString()})",
         Type() => value.toString(),
          NISI() => "NISI(${value.toString()})",
         _ => "${value.runtimeType}(${value})",

@@ -101,8 +101,8 @@ string file__name__convert__extension(
 }
 
 typedef base__storage__file__alignment___compo = ({
-  NI shift__count,
-  NI size,
+  INT shift__count,
+  INT size,
 });
 
 const base__storage__file__alignment___compo //
@@ -119,15 +119,15 @@ const base__storage__file__alignment___compo //
 
 typedef io__operation__read_write__function__format = void Function(
   BS1__array buffer,
-  NI count,
-  NI offset,
+  INT count,
+  INT offset,
 );
 
 ({
-  NI offset__aligned,
-  NI buffer__offset /* `__un_aligned` */,
+  INT offset__aligned,
+  INT buffer__offset /* `__un_aligned` */,
 }) base__storage__file__offset__aligned(
-  final NI offset,
+  final INT offset,
   final base__storage__file__alignment___compo block__meta,
 ) {
   final offset__aligned = NI__aligned(
@@ -142,12 +142,12 @@ typedef io__operation__read_write__function__format = void Function(
   );
 }
 
-NI base__storage__file__count__max /*
+INT base__storage__file__count__max /*
   equivalent of `storage__offset__aligned`, despite the in-appropriate name
   not `__aligned` because `count` is not aligned, but `(count +1)`, to get upper-limit, which is max, actually necessary */
     (
-  final NI count,
-  final NI buffer__offset, [
+  final INT count,
+  final INT buffer__offset, [
   final base__storage__file__alignment___compo block__size = base__storage__file__block__size,
 ]) {
   if (count == 0) //
@@ -172,8 +172,8 @@ NI base__storage__file__count__max /*
           which is in-correct; because `offset__new` should be `21000`, instead of `20480`(5 * bk_sz) */
 
 void base__storage__file__io__check__aligned(
-  final NI count,
-  final NI offset,
+  final INT count,
+  final INT offset,
   final base__storage__file__alignment___compo alignment,
 ) {
   if (base__printing___ok) {

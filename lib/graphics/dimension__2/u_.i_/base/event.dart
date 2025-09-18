@@ -1,13 +1,5 @@
 part of "_.dart";
 
-class gui__base__event__channel__handling__children___record {
-  const gui__base__event__channel__handling__children___record({
-    required this.child__build,
-  });
-
-  final gui__base__widget__build__function__format child__build;
-}
-
 extension gui__base__event__channel__broadcast__handling__extension //
     on base__event__channel__broadcast___protocol {
   gui__base__widget handling__widget__build /*
@@ -21,7 +13,7 @@ unicast-channels("base__event__channel__unicast___protocol") should be avoided
     after attaching the new widget
     and the general un-reliability of the invocation-sequence */ (
     final gui__base__widget__building__context context, {
-    required final gui__base__event__channel__handling__children___record children,
+    required final gui__base__widget__build__function__format child__build,
   }) {
     gui__base__widget__building__context? context_1;
 
@@ -40,9 +32,7 @@ unicast-channels("base__event__channel__unicast___protocol") should be avoided
 
         descriptions__remove(build__re);
       },
-      child__build: (final context) {
-        return children.child__build(context);
-      },
+      child__build: child__build,
     );
   }
 }

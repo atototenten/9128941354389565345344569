@@ -1,15 +1,15 @@
 part of "_.dart";
 
-typedef BS1 /* 8-bits ,single-byte */ = NI;
-typedef BS2 /* 16-bits */ = NI;
-typedef BS3 /* 24-bits */ = NI;
-typedef BS4 /* 32-bits */ = NI;
-typedef BS6 /* 48-bits */ = NI;
-typedef BS8 /* 64-bits */ = NI;
-typedef BS12 /* 96-bits */ = NI;
-typedef BS16 /* 128-bits */ = NI;
-typedef BS24 /* 192-bits */ = NI;
-typedef BS32 /* 256-bits */ = NI;
+typedef BS1 /* 8-bits ,single-byte */ = INT;
+typedef BS2 /* 16-bits */ = INT;
+typedef BS3 /* 24-bits */ = INT;
+typedef BS4 /* 32-bits */ = INT;
+typedef BS6 /* 48-bits */ = INT;
+typedef BS8 /* 64-bits */ = INT;
+typedef BS12 /* 96-bits */ = INT;
+typedef BS16 /* 128-bits */ = INT;
+typedef BS24 /* 192-bits */ = INT;
+typedef BS32 /* 256-bits */ = INT;
 
 typedef BS1__array = typed_data.Uint8List;
 typedef BS2__array = typed_data.Uint16List;
@@ -28,11 +28,11 @@ class BS__size__id {
     this.value,
   );
 
-  final NI value;
+  final INT value;
 }
 
 BS__size__id BS__size__convert__id(
-  final NI size,
+  final INT size,
 ) {
   return BS__size__id(
     switch (size) {
@@ -53,7 +53,7 @@ BS__size__id BS__size__convert__id(
 
 extension BS__size__id__conversion //
     on BS__size__id {
-  NI BS__size__id__convert(
+  INT BS__size__id__convert(
     final BS__size__id size__id,
   ) {
     const sizes = [
@@ -78,6 +78,6 @@ extension BS__size__id__conversion //
 }
 
 extension extension__BS4__array on BS4__array {
-  BS4__array view__partial(final NI offset, final NI count) => //
+  BS4__array view__partial(final INT offset, final INT count) => //
       buffer.asUint32List(((offset * 4) + offsetInBytes), count);
 }

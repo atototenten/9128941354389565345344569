@@ -137,12 +137,12 @@ prefer `base__listing__item`
  final gui__base__widget__building__context context,
 { required final string title,
   final string? sub_title,
-  required final NI input__max,
-  required final void Function(NI input) submit__handle,
+  required final INT input__max,
+  required final void Function(INT input) submit__handle,
 }) {
-  NI number = 0;
+  INT number = 0;
   void number__update(
-    final NI number__new,
+    final INT number__new,
   ) {
     if (number__new > input__max) //
       return;
@@ -188,7 +188,7 @@ prefer `base__listing__item`
             height: (base__screen__size().height * 0.3),
             child: Column(
               children: <gui__base__widget>[
-                for (NI row__id = 0; row__id < rows__count; row__id += 1) //
+                for (INT row__id = 0; row__id < rows__count; row__id += 1) //
                   Expanded(
                     child: Row(
                       children: array__new__generated(

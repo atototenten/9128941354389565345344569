@@ -1,23 +1,13 @@
 part of "_.dart";
 
-class gui__base__button__children___record {
-  const gui__base__button__children___record({
-    required this.child__build,
-  });
-
-  final gui__base__widget__build__function__format child__build;
-}
-
 typedef gui__base__button__press__handle__function__format = //
-    procedure__empty__asyn__format /*
+procedure__empty__asyn__format /*
 asyn. ,because
     tracking of completion is required
 not `void`-type ,because
-  `void`-type engulfs all the types ,including `value__asyn<type>` */
-       ;
+  `void`-type engulfs all the types ,including `value__asyn<type>` */;
 
-class gui__base__button //
-    implements gui__base__entity__component___protocol<gui__base__button__children___record> {
+class gui__base__button {
   gui__base__button({
     required this.press__handle,
   }) : pressed__ok___raw = NO;
@@ -26,23 +16,19 @@ class gui__base__button //
 
   BOOL pressed__ok___raw;
 
-  @override
-  void dispose() {}
-
   BOOL //
-      pressed___ok() {
+  pressed___ok() {
     return pressed__ok___raw;
   }
 
   BOOL //
-      waiting___ok() {
+  waiting___ok() {
     return pressed__ok___raw;
   }
 
-  @override
   gui__base__widget widget__build(
     final gui__base__widget__building__context context, {
-    required final gui__base__button__children___record children,
+    required final gui__base__widget__build__function__format child__build,
   }) {
     return gui__base__widget__build(
       child__build: (final context) {
@@ -70,15 +56,15 @@ class gui__base__button //
 
             press__handle() //
                 .handle(
-              (final _) => revert(),
-              (final _, final __) {
-                /*
+                  (final _) => revert(),
+                  (final _, final __) {
+                    /*
 should not happen ,because the user should handle the errors ,but anyways */
-                revert();
-              },
-            );
+                    revert();
+                  },
+                );
           },
-          child: children.child__build(
+          child: child__build(
             context,
           ),
         );
@@ -87,24 +73,15 @@ should not happen ,because the user should handle the errors ,but anyways */
   }
 }
 
-class gui__base__button__selectable__children___record //
-    extends gui__base__button__children___record {
-  const gui__base__button__selectable__children___record({
-    required super.child__build,
-  });
-}
-
 typedef gui__base__button__selectable__press__handle__function__format = //
     BOOL Function();
 
-class gui__base__button__selectable //
-    implements gui__base__entity__component___protocol<gui__base__button__selectable__children___record> {
+class gui__base__button__selectable {
   gui__base__button__selectable({
     required this.press__handle /*
 should not invoke `.selection__switch` ,if the result is `OK`
   ,because otherwise `selection__switch` invoked ,implicitly ,after the press__handle's result
-    ,would re-switch the selection */
-    ,
+    ,would re-switch the selection */,
     this.selected__ok___raw = NO,
   });
 
@@ -113,14 +90,13 @@ should not invoke `.selection__switch` ,if the result is `OK`
   BOOL selected__ok___raw;
 
   BOOL //
-      selected___ok() {
+  selected___ok() {
     return selected__ok___raw;
   }
 
-  @override
   gui__base__widget widget__build(
     final gui__base__widget__building__context context, {
-    required final gui__base__button__children___record children,
+    required final gui__base__widget__build__function__format child__build,
   }) {
     return gui__base__widget__build(
       child__build: (final context) {
@@ -135,14 +111,11 @@ should not invoke `.selection__switch` ,if the result is `OK`
             selected__ok___raw = selected__ok___raw.not;
             context.build__re___raw();
           },
-          child: children.child__build(
+          child: child__build(
             context,
           ),
         );
       },
     );
   }
-
-  @override
-  void dispose() {}
 }

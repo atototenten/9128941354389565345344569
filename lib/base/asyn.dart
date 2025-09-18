@@ -305,9 +305,9 @@ void base__value__asyn__definitive__test() {
 
       print(
         "AFTER : ${switch (state) {
-          base__value__asyn__definitive__state__waiting<NIS>() => "waiting ...",
-          base__value__asyn__definitive__state__completion__failure<NIS>() => "FAILURE",
-          base__value__asyn__definitive__state__completion__success<NIS>() => //
+          base__value__asyn__definitive__state__waiting<INT__NEG>() => "waiting ...",
+          base__value__asyn__definitive__state__completion__failure<INT__NEG>() => "FAILURE",
+          base__value__asyn__definitive__state__completion__success<INT__NEG>() => //
           ((state.value == 1) //
               ? "CORRECT" : "IN-CORRECT"),
         }}",

@@ -349,7 +349,7 @@ efficient, than the, first calling `de_navigate`, then calling `navigate` */ //
   forward__replace__full__page /*
 {pop_until_and_push|{pop_all_and_push|re_set}} */ //
   <entity__type extends gui__base__entity__page___protocol>({
-    final NI? pages__count,
+    final INT? pages__count,
     final Duration animation__duration = gui__base__navigation__animation__duration__default,
     required final entity__type entity,
   }) {
@@ -390,7 +390,7 @@ call-ing multiple times ,acts as many times */ () {
 
   void backward__full /*
 {pop_until|{pop_all|re_set}} */ ({
-    final NI? pages__count,
+    final INT? pages__count,
   }) {
     return popUntil(
       _route__predicate(
@@ -401,7 +401,7 @@ call-ing multiple times ,acts as many times */ () {
 
   RoutePredicate //
   _route__predicate(
-    final NI? pages__count /*
+    final INT? pages__count /*
 cases :
   NIL :remove all previous pages
   0 :remove all previous pages ,until/except/exclud-ing the first page

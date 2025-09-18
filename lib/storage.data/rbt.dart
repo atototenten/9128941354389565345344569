@@ -8,13 +8,13 @@ class base__storage__data__rbt__meta___compo {
     required this.meta__bytes__base__storage__data__offset,
   });
 
-  final NI //
+  final INT //
       bytes__count;
 
   final number__size //
       count__size__id;
 
-  final NI //
+  final INT //
       rbt__bytes__base__storage__data__offset,
       meta__bytes__base__storage__data__offset;
 }

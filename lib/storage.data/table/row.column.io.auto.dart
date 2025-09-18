@@ -19,13 +19,13 @@ void base__storage__data__table__row__column__bytes__auto({
       base__storage__data__table__row__column__type__uit__write(
         column__bytes: column__bytes,
         size__id: column__meta.size__id,
-        value: (data as NI),
+        value: (data as INT),
       );
     } else //
       base__storage__data__table__row__column__type__uit__write__nilable(
         column__bytes: column__bytes,
         size__id: column__meta.size__id,
-        data: (data as NI?),
+        data: (data as INT?),
       );
   } else if /* un-likely */ (table__column.meta.b__nilable && //
       (data == null)) {
@@ -97,7 +97,7 @@ Object? base__storage__data__table__row__column__data__auto({
   required final base__storage__data__meta___compo ds__meta,
   required final base__storage__data__table__column___compo table__column,
   required final BS1__array column__bytes,
-  required final NI column__bytes__base__storage__data__offset,
+  required final INT column__bytes__base__storage__data__offset,
 }) /*
   instead of multiple [consecutive] calls
     prefer calling `base__storage__data__table__row__data__array__auto`

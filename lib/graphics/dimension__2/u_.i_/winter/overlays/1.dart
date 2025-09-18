@@ -23,7 +23,7 @@ gui__base__widget winter__overlay__notice__basic({
         ),
       ),
       child: SizedBox(
-        width: NFP.maxFinite,
+        width: APPROX.maxFinite,
         child: Padding(
           padding: EdgeInsets.all(16.px()),
           child: Column(

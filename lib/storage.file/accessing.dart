@@ -3,8 +3,8 @@ part of "_.dart";
 base__storage__file__accessing__aligned__meta___union //
     base__storage__file__accessing__auto({
   required final base__storage__file__alignment___compo alignment,
-  required NI length,
-  required NI offset,
+  required INT length,
+  required INT offset,
 }) {
   if (base__printing___ok) {
     base__function__call__print(
@@ -183,7 +183,7 @@ class base__storage__file__accessing__aligned__none__meta //
   const base__storage__file__accessing__aligned__none__meta();
 
   @override
-  NI blocks__count() {
+  INT blocks__count() {
     return 0;
   }
 
@@ -215,7 +215,7 @@ class base__storage__file__accessing__aligned__simple__meta //
   final base__storage__file__block__single__partial__meta value;
 
   @override
-  NI blocks__count() {
+  INT blocks__count() {
     return 1;
   }
 
@@ -252,7 +252,7 @@ class base__storage__file__accessing__aligned__complex__meta //
   final base__storage__file__block__single__partial__ending__meta? ending;
 
   @override
-  NI blocks__count() {
+  INT blocks__count() {
     var blocks__count = ((beginning != null) /*F*/ ? 1 : 0);
 
     if (ending != null) {
@@ -292,11 +292,11 @@ abstract class base__storage__file__accessing__aligned__meta__base {
     required this.block__id,
   });
 
-  final NI block__id;
+  final INT block__id;
 }
 
 sealed class base__storage__file__accessing__aligned__meta___union {
-  NI blocks__count();
+  INT blocks__count();
 
   BOOL equal___ok(
     base__storage__file__accessing__aligned__meta___union other,
@@ -312,7 +312,7 @@ class base__storage__file__block__multiple__full__meta //
     required this.blocks__count,
   });
 
-  final NI blocks__count;
+  final INT blocks__count;
 
   @override
   BOOL equal___ok(
@@ -339,7 +339,7 @@ class base__storage__file__block__single__partial__meta //
     required this.offset,
   });
 
-  final NI //
+  final INT //
       length,
       offset /* in block */;
 
@@ -368,9 +368,9 @@ class base__storage__file__block__single__partial__beginning__meta //
     required this.offset,
   });
 
-  final NI offset /* in block */;
+  final INT offset /* in block */;
 
-  NI length(
+  INT length(
     final base__storage__file__alignment___compo alignment,
   ) {
     return (alignment.size - offset);
@@ -400,9 +400,9 @@ class base__storage__file__block__single__partial__ending__meta //
     required this.length,
   });
 
-  final NI length;
+  final INT length;
 
-  NI offset() {
+  INT offset() {
     return 0;
   }
 

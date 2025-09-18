@@ -12,7 +12,7 @@ not nil-able due to dart-lang.'s deficiency
   final accumulation___raw = base__accumulation__linear__basic<array<element__type>>();
   var elements__count___raw = 0;
 
-  NI elements__count() {
+  INT elements__count() {
     return elements__count___raw;
   }
 
@@ -76,7 +76,7 @@ not nil-able due to dart-lang.'s deficiency
     implements
         base__dispose___protocol {
   base__accumulation__linear__basic__fast({
-    final NI capacity__initial__multiplier = 0,
+    final INT capacity__initial__multiplier = 0,
   })  : _elements = array__new__filled(
           ((capacity__initial__multiplier != 0) //
               ? (accumulation__capacity__default << capacity__initial__multiplier)
@@ -88,7 +88,7 @@ not nil-able due to dart-lang.'s deficiency
 
   array<element__type?> _elements;
 
-  NI //
+  INT //
       _elements__count,
       _element__last__id /*
 for quick `add:element` */
@@ -162,7 +162,7 @@ memory-usage is not reduced */
 
   void iterate__basic(
     final void Function(element__type element) operate, {
-    final NI? count /*
+    final INT? count /*
 must not be more than `list_.elements__count` */
     ,
   }) {
@@ -203,7 +203,7 @@ checks not needed ,because `list_.elements__count` is expected to be correct */
   }
 
   element__type element(
-    NI element__id,
+    INT element__id,
   ) /*
 more efficient ,than `convert:array` 
   ,but only for a few element-access ,not full iteration 
@@ -262,7 +262,7 @@ class base__accumulation__linear__basic__fast__iteration /*:forward*/ <element__
 
   final base__accumulation__linear__basic__fast<element__type> _accumulation;
 
-  NI _element__id;
+  INT _element__id;
 
   element__type? element /*:next*/ () {
     element__type? result;
@@ -356,15 +356,15 @@ extension base__accumulation__linear__basic__fast__test__extension //
 void base__accumulation__linear__definitive__test() {
   final accum = base__accumulation__linear__definitive<string>();
 
-  NI accum__element__first__id() {
+  INT accum__element__first__id() {
     return 0;
   }
 
-  NI accum__element__middle__id() {
+  INT accum__element__middle__id() {
     return (accum.elements__count() ~/ 2);
   }
 
-  NI accum__element__last__id() {
+  INT accum__element__last__id() {
     return (accum.elements__count() - 1);
   }
 
@@ -393,7 +393,7 @@ void base__accumulation__linear__definitive__test() {
 
   {
     void accum__presence__print(
-      final NI element__id,
+      final INT element__id,
     ) {
       final element = accum.element(element__id);
 
@@ -407,7 +407,7 @@ void base__accumulation__linear__definitive__test() {
 
   {
     void accum__removal__print(
-      final NI element__id,
+      final INT element__id,
     ) {
       final element = accum.element(element__id);
 
@@ -469,7 +469,7 @@ memory-usage is not reduced */ () {
 
   void remove___raw /*
 individual element
-raw due to being in-efficient ,due to copying */ (final NI element__id) {
+raw due to being in-efficient ,due to copying */ (final INT element__id) {
     element__id__ensure__valid___raw(
       element__id,
     );
@@ -522,7 +522,7 @@ class base__accumulation__linear__basic //
   });
 
   @override
-  NI add__ending(
+  INT add__ending(
     final element__type element,
   ) {
     final element__id = elements__count();
@@ -548,7 +548,7 @@ very efficient (both space, and time) ,than linked-list
   capacity__initial__default = 4;
 
   base__accumulation__linear__base({
-    final NI capacity__initial = capacity__initial__default,
+    final INT capacity__initial = capacity__initial__default,
   }) : elements___raw = array__new__filled(
          capacity__initial,
          base__value__optional__absent__compo(),
@@ -557,9 +557,9 @@ very efficient (both space, and time) ,than linked-list
 
   array<base__value__optional___union<element__type>> elements___raw;
 
-  NI elements__count___raw;
+  INT elements__count___raw;
 
-  NI elements__count() {
+  INT elements__count() {
     return elements__count___raw;
   }
 
@@ -583,11 +583,11 @@ very efficient (both space, and time) ,than linked-list
     return (v != null);
   }
 
-  NI /*element__id*/ ? search(
+  INT /*element__id*/ ? search(
     final element__type element,
     final base__value__equality__function__format<element__type, element__type> element__equal___ok,
   ) {
-    NI? result = NIL;
+    INT? result = NIL;
 
     iterate(
       (final id, final e) {
@@ -609,10 +609,10 @@ very efficient (both space, and time) ,than linked-list
     return result;
   }
 
-  NI /*element__id*/ ? search__definitive(
+  INT /*element__id*/ ? search__definitive(
     final base__value__equality__function__closure__format<element__type> equal___ok,
   ) {
-    NI? result = NIL;
+    INT? result = NIL;
 
     iterate(
       (final id, final e) {
@@ -662,7 +662,7 @@ very efficient (both space, and time) ,than linked-list
   }
 
   element__type element(
-    final NI element__id,
+    final INT element__id,
   ) {
     element__id__ensure__valid___raw(
       element__id,
@@ -672,7 +672,7 @@ very efficient (both space, and time) ,than linked-list
   }
 
   void element__assign(
-    final NI element__id,
+    final INT element__id,
     final element__type value,
   ) {
     element__id__ensure__valid___raw(
@@ -693,7 +693,7 @@ very efficient (both space, and time) ,than linked-list
     elements___raw.first = base__value__optional__present__compo(value);
   }
 
-  NI //
+  INT //
   element__last__id() {
     return (elements__count___raw - 1);
   }
@@ -711,11 +711,11 @@ very efficient (both space, and time) ,than linked-list
 
   void iterate(
     final BOOL Function(
-      NI element__id,
+      INT element__id,
       element__type element,
     )
     element__handle, {
-    NI? count /*
+    INT? count /*
 must not be more than `elements__count` */,
   }) {
     if (count != null) {
@@ -741,7 +741,7 @@ must not be more than `elements__count` */,
     } catch (_) {}
   }
 
-  void element__id__ensure__valid___raw(final NI element__id) {
+  void element__id__ensure__valid___raw(final INT element__id) {
     if (element__id >= elements__count___raw) {
       throw "element__$element__id is not present in the accumulation (not existent)";
     }

@@ -1,9 +1,9 @@
 part of "../_.dart";
 
-NI base__storage__data__table__row__column__type__uit__write({
+INT base__storage__data__table__row__column__type__uit__write({
   required final BS1__array column__bytes,
   required final number__size size__id,
-  required final NI value,
+  required final INT value,
 }) {
   base__copy(
     column__bytes,
@@ -15,10 +15,10 @@ NI base__storage__data__table__row__column__type__uit__write({
   return size__id.size;
 }
 
-NI base__storage__data__table__row__column__type__uit__write__nilable({
+INT base__storage__data__table__row__column__type__uit__write__nilable({
   required final BS1__array column__bytes,
   required final number__size size__id,
-  required final NI? data,
+  required final INT? data,
 }) {
   if (data != null) {
     return base__storage__data__table__row__column__type__uit__write(
@@ -100,7 +100,7 @@ void base__storage__data__table__row__column__type__ear__write({
   required final base__storage__data__meta___compo ds__meta,
   required final number__size elements__count__size__id,
   required final BS1__array column__bytes,
-  required final NI elements__count,
+  required final INT elements__count,
   required final BS1__array elements__bys,
 }) {
   base__copy(
@@ -124,7 +124,7 @@ void base__storage__data__table__row__column__type__ear__write({
 
 void base__storage__data__table__row__column__type__irb__write({
   required final BS1__array column__bytes,
-  required final NI size,
+  required final INT size,
   required final BS1__array data,
 }) {
   base__copy(
@@ -137,8 +137,8 @@ void base__storage__data__table__row__column__type__irb__write({
 void base__storage__data__table__row__column__type__tbl__write({
   required final base__storage__data__meta___compo ds__meta,
   required final number__size rows__count__size__id,
-  required final NI rows__count__max,
-  required final NI row__size,
+  required final INT rows__count__max,
+  required final INT row__size,
   required final BS1__array column__bytes,
 }) =>
     base__storage__data__tbl__create(
@@ -158,7 +158,7 @@ BS1__array base__storage__data__table__row__column__bytes({
       ),
     );
 
-NI /*value*/ base__storage__data__table__row__column__type__uit__read({
+INT /*value*/ base__storage__data__table__row__column__type__uit__read({
   required final BS1__array column__bytes,
   required final number__size size__id,
 }) =>
@@ -166,7 +166,7 @@ NI /*value*/ base__storage__data__table__row__column__type__uit__read({
       size__id,
     );
 
-NI? /*data*/ base__storage__data__table__row__column__type__uit__read__nilable({
+INT? /*data*/ base__storage__data__table__row__column__type__uit__read__nilable({
   required final BS1__array column__bytes,
   required final number__size size__id,
 }) {
@@ -181,8 +181,8 @@ NI? /*data*/ base__storage__data__table__row__column__type__uit__read__nilable({
 }
 
 ({
-  NI count,
-  NI base__storage__data__offset,
+  INT count,
+  INT base__storage__data__offset,
 }) base__storage__data__table__row__column__type__in_direct__bytes__read({
   required final base__storage__data__table__column__type__in_direct__meta___protocol column__meta,
   required final BS1__array column__bytes,

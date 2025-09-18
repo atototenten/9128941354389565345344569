@@ -39,7 +39,7 @@ pill at sheet's top */
 
 gui__base__widget winter__overlay__bottom__base({
   final ui.ImageFilter? back_ground__filter,
-  final NFP? padding__top /*(.25 * (base__screen__size().height - base__screen__padding.top))*/,
+  final APPROX? padding__top /*(.25 * (base__screen__size().height - base__screen__padding.top))*/,
   final Color? back_ground__color,
   final Radius? border__top__radius,
   required final gui__base__widget child,
@@ -79,7 +79,7 @@ gui__base__widget winter__overlay__bottom__base({
 gui__base__widget winter__overlay__bottom__menu(
   final gui__base__widget__building__context context, {
   final ui.ImageFilter? back_ground__filter,
-  final NFP? padding__top,
+  final APPROX? padding__top,
   final Color? back_ground__color,
   final Radius? border__top__radius,
   final BOOL dismiss__swipe__indication___ok = OK,

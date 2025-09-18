@@ -17,7 +17,7 @@ const //
       ffi_.Size size,
     )>()
 external ffi_.Pointer<ffi_.NativeType> malloc(
-  final NI size,
+  final INT size,
 );
 
 @ffi_.Native<

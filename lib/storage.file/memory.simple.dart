@@ -7,25 +7,25 @@ based on byte-id. ,instead of block-id. */ //
   static const length__initial__default = NI2__limit;
 
   storage__file__memory__simple({
-    final NI length__initial = length__initial__default,
+    final INT length__initial = length__initial__default,
   }) : value___raw = byte__array(
           length__initial,
         );
 
   byte__array value___raw;
 
-  NI length___raw = 0;
+  INT length___raw = 0;
 
-  NI capacity___raw() {
+  INT capacity___raw() {
     return value___raw.bytes__count;
   }
 
-  NI length() {
+  INT length() {
     return length___raw;
   }
 
   void length__update__if__needed___raw(
-    final NI offset__new /* end ,`file__length__new` */,
+    final INT offset__new /* end ,`file__length__new` */,
   ) {
     if (offset__new > length___raw) {
       length___raw = offset__new;
@@ -33,7 +33,7 @@ based on byte-id. ,instead of block-id. */ //
   }
 
   void capacity__extend__if__needed___raw(
-    final NI capacity__required,
+    final INT capacity__required,
   ) {
     base__printing__indentation__increase();
 
@@ -66,16 +66,16 @@ based on byte-id. ,instead of block-id. */ //
     base__printing__indentation__decrease();
   }
 
-  NI write__append__blank({
-    required final NI length,
+  INT write__append__blank({
+    required final INT length,
   }) {
     return reserve(
       length: length,
     );
   }
 
-  NI write__append__fill(
-    final NI count, {
+  INT write__append__fill(
+    final INT count, {
     final byte value = 0,
   }) {
     final offset = length___raw;
@@ -89,7 +89,7 @@ based on byte-id. ,instead of block-id. */ //
     return offset;
   }
 
-  NI write__append(
+  INT write__append(
     final byte__array value,
   ) {
     final offset = length___raw;
@@ -103,9 +103,9 @@ based on byte-id. ,instead of block-id. */ //
   }
 
   void write__fill(
-    final NI count, {
+    final INT count, {
     final byte value = 0,
-    required final NI offset,
+    required final INT offset,
   }) {
     final offset__new = (count + offset);
 
@@ -128,7 +128,7 @@ based on byte-id. ,instead of block-id. */ //
 
   void write(
     final byte__array value, {
-    required final NI offset,
+    required final INT offset,
   }) {
     if (base__printing___ok) {
       base__function__call__print(
@@ -175,8 +175,8 @@ based on byte-id. ,instead of block-id. */ //
 
   storage__file__memory__reading__result___union //
       read({
-    required final NI length,
-    required final NI offset,
+    required final INT length,
+    required final INT offset,
   }) {
     if (base__printing___ok) {
       base__function__call__print(
@@ -218,8 +218,8 @@ FIX
     return result;
   }
 
-  NI reserve({
-    required final NI length,
+  INT reserve({
+    required final INT length,
   }) {
     final //
         offset = length___raw,
@@ -235,7 +235,7 @@ FIX
   }
 
   void length__increase({
-    required final NI length,
+    required final INT length,
   }) {
     capacity__extend__if__needed___raw(
       length,
@@ -245,7 +245,7 @@ FIX
   }
 
   void length__decrease({
-    final NI length = 0,
+    final INT length = 0,
   }) {
     length___raw = length;
   }

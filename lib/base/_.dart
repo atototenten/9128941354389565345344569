@@ -94,7 +94,7 @@ const //
     bytes__count__zebi = (bytes__count__exbi << bytes__count__decimal__shift__count),
     bytes__count__yobi = (bytes__count__zebi << bytes__count__decimal__shift__count);
 
-const NI //
+const INT //
     io__buffer__size__default = (bytes__count__kibi << 2);
 
 enum base__results__basic {
@@ -167,17 +167,17 @@ void base__check__features() {
 }
 
 typedef base__copy__result___compo = ({
-  NI dest__offset__new,
-  NI src__offset__new,
+  INT dest__offset__new,
+  INT src__offset__new,
 });
 
 //@attribute__function__inline
 base__copy__result___compo base__copy<T>(
   final array<T> dest,
   final array<T> src, {
-  NI? /*src__*/ count,
-  NI dest__offset = 0,
-  NI src__offset = 0,
+  INT? /*src__*/ count,
+  INT dest__offset = 0,
+  INT src__offset = 0,
 }) {
   count /* end/stop */ = ((count == null) //
       ? (src.elements__count - src__offset)
@@ -207,11 +207,11 @@ abstract class base__dispose__asyn__basic___protocol {
       dispose__asyn();
 }
 
-NI binarySearch(
-  final array<NI> list,
-  final NI element,
+INT binarySearch(
+  final array<INT> list,
+  final INT element,
 ) {
-  NI //
+  INT //
       min = 0,
       mid = 0 /* un-necessary assignment, to avoid the error, by dart's analyzer */,
       max = list.elements__count;
@@ -238,9 +238,9 @@ NI binarySearch(
 }
 
 extension NI__array__bits__extension //
-    on array<NI> {
+    on array<INT> {
   string bits({
-    final NI interval = 4,
+    final INT interval = 4,
   }) {
     final buffer = StringBuffer("[");
 
@@ -274,7 +274,7 @@ extension text__separation__extension //
     on string {
   string separate({
     final string separation = char__space,
-    final NI interval = 3,
+    final INT interval = 3,
     final string? prefix,
   }) {
     final length_1 = length;

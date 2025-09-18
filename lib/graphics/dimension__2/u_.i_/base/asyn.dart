@@ -16,61 +16,47 @@ compared to `FutureBuilder<T>`(of `flutter/widgets/async.dart`)
   child-build are separate ,for each state
     reducing duplication ,and maintaining separation-of-concern */ (
     final gui__base__widget__building__context context, {
-    required final gui__base__value__asyn__handling__children___record<value__type> children,
+    required final gui__base__widget__build__function__format child__state__waiting__build,
+    required final gui__base__widget__state__failure__build__function__format child__state__completion__failure__build /*=gui__base__widget__error__default__build*/,
+    required final gui__base__widget__state__success__build__function__format<value__type> child__state__completion__success__build,
   }) {
     return state__channel().handling__widget__build(
       context,
-      children: gui__base__event__channel__handling__children___record(
-        child__build: (final context) {
-          final state_1 = state();
+      child__build: (final context) {
+        final state_1 = state();
 
-          return switch (state_1) {
-            base__value__asyn__definitive__state__waiting() => //
-            children.child__state__waiting__build(
+        return switch (state_1) {
+          base__value__asyn__definitive__state__waiting() => //
+          child__state__waiting__build(
+            context,
+          ),
+          base__value__asyn__definitive__state__completion___union() => //
+          switch (state_1) {
+            base__value__asyn__definitive__state__completion__success<value__type>() => //
+            child__state__completion__success__build(
               context,
+              state_1.value,
             ),
-            base__value__asyn__definitive__state__completion___union() => //
-            switch (state_1) {
-              base__value__asyn__definitive__state__completion__success<value__type>() => //
-              children.child__state__completion__success__build(
-                context,
-                state_1.value,
-              ),
-              base__value__asyn__definitive__state__completion__failure<value__type>() => //
-              children.child__state__completion__failure__build(
-                context,
-                state_1.error,
-                state_1.trace,
-              ),
-            },
-          };
-        },
-      ),
+            base__value__asyn__definitive__state__completion__failure<value__type>() => //
+            child__state__completion__failure__build(
+              context,
+              state_1.error,
+              state_1.trace,
+            ),
+          },
+        };
+      },
     );
   }
 }
 
-class gui__base__value__asyn__handling__children___record<value__type> {
-  const gui__base__value__asyn__handling__children___record({
-    required this.child__state__waiting__build,
-    required this.child__state__completion__failure__build,
-    required this.child__state__completion__success__build,
-  });
-
-  final gui__base__widget__build__function__format child__state__waiting__build;
-  final gui__base__widget__state__failure__build__function__format child__state__completion__failure__build /*=gui__base__widget__error__default__build*/;
-  final gui__base__widget__state__success__build__function__format<value__type> child__state__completion__success__build;
-}
-
-typedef gui__base__widget__state__success__build__function__format<value__type> //
-=
+typedef gui__base__widget__state__success__build__function__format<value__type> = //
     gui__base__widget Function(
       gui__base__widget__building__context context,
       value__type value,
     );
 
-typedef gui__base__widget__state__failure__build__function__format //
-=
+typedef gui__base__widget__state__failure__build__function__format = //
     gui__base__widget Function(
       gui__base__widget__building__context context,
       Object error,

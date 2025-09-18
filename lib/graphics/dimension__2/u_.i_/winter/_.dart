@@ -59,7 +59,7 @@ var //
     preference__page__background__dark = 0,
     preference__page__background__light = 0;
 
-NI get preference__page__background => //
+INT get preference__page__background => //
     (base__app__theme__colors__ground__back__contrast__dark___ok //
         ? preference__page__background__dark
         : preference__page__background__light);
@@ -115,7 +115,7 @@ final color__random__list = array<Color>.filled(
 );
 
 void app__page__background__change() {
-  final NI bg;
+  final INT bg;
 
   if (base__app__theme__colors__ground__back__contrast__dark___ok) {
     preference__page__background__dark = //
@@ -139,7 +139,7 @@ late LinearGradient //
     _gradient__linear,
     _gradient__linear__selected;
 
-const NI _theme__winter__color__interval = 4;
+const INT _theme__winter__color__interval = 4;
 
 const base__theme__winter = (
   color__set: box__winter__color__set,
@@ -203,7 +203,7 @@ void box__winter__page__background__set() {
 }
 
 void box__winter__color__set() {
-  const NI intensity = ((NI1__limit ~/ _theme__winter__color__interval) - 1);
+  const INT intensity = ((NI1__limit ~/ _theme__winter__color__interval) - 1);
 
   final Color color__background__base__intermediate;
 

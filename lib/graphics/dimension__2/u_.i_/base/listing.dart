@@ -1,13 +1,13 @@
 part of "_.dart";
 
 typedef gui__base__listing__item__build__function__format = //
-    gui__base__widget Function(BuildContext build__context, NI);
+    gui__base__widget Function(BuildContext build__context, INT);
 
 const gui__base__listing__vertical__caching__extent__default = .5;
 
-const NI Function(
-  NI item__id,
-  NI items__count,
+const INT Function(
+  INT item__id,
+  INT items__count,
 )
 gui__base__listing__reverse__item__id = //
     array__reverse__element__id;
@@ -16,7 +16,7 @@ extension base__array__convert__widget__array__extension<value__type extends Obj
     on array<value__type> {
   array<gui__base__widget> convert__widget__array(
     final gui__base__widget separation,
-    final gui__base__widget Function(NI, value__type) element__convert,
+    final gui__base__widget Function(INT, value__type) element__convert,
   ) {
     return base__elements__generate(
       elements__count,
@@ -29,46 +29,31 @@ extension base__array__convert__widget__array__extension<value__type extends Obj
 typedef gui__base__listing__grow_able__listing__widget__function__format =
     gui__base__widget Function(
       gui__base__widget__building__context context,
-      NI items__count,
+      INT items__count,
       gui__base__listing__item__build__function__format item__widget,
     );
 
-class gui__base__list_ing__grow_able__children___record {
-  const gui__base__list_ing__grow_able__children___record({
-    required this.listing__build,
-    required this.item__existing__build,
-    required this.item__new__build,
-    required this.item__new__dummy__build,
-  });
-
-  final gui__base__listing__grow_able__listing__widget__function__format listing__build;
-  final gui__base__listing__item__build__function__format /* 2nd param. is `item__existing__id_` */ ? item__existing__build /*
-not called, if `items__existing__count` is 0 */;
-  final gui__base__listing__item__build__function__format /* 2nd param. is `item__new__id_` */ item__new__build /*
-not called, if `items__new__count` is 0
-call to this function, indicates, that the user is interested, in adding, an item, to the list
-  similar to press-ing, the "Add" floating button */;
-  final gui__base__listing__item__build__function__format /* 2nd param. is `item__new__id_` */ item__new__dummy__build /*
-invoke `store.control()?.add:item` to add-item
-not called, if `items__new__count` is 0
-example :
-  `GestureDetector(onTap: item__array__count__update, child: gui__base__listing__item(body: gui__base__box__text__primary("Add item ${item__id + 1}")))` */;
-}
-
 class gui__base__listing__grow_able<element__new__type> //
-    implements gui__base__entity__component___protocol<gui__base__list_ing__grow_able__children___record> {
+    implements base__dispose___protocol {
   gui__base__listing__grow_able({
     required this.items__existing__count,
     required this.items__new__count__limit,
   }) : _elements__new = base__accumulation__linear__basic<element__new__type>(),
        channel = base__event__channel__broadcast();
 
-  final NI items__existing__count;
-  final NI items__new__count__limit;
+  final INT items__existing__count;
+  final INT items__new__count__limit;
 
   final base__event__channel__broadcast channel;
 
   final base__accumulation__linear__basic<element__new__type> _elements__new;
+
+  @override
+  void dispose() {
+    _elements__new.dispose();
+
+    channel.dispose();
+  }
 
   void add(
     final element__new__type element__new,
@@ -80,53 +65,56 @@ class gui__base__listing__grow_able<element__new__type> //
     channel.event__dispatch();
   }
 
-  /*void remove__element(final NI element__id,) {}*/
+  /*void remove__element(final INT element__id,) {}*/
 
   element__new__type element__new(
-    final NI id,
+    final INT id,
   ) => _elements__new.element(
     id,
   );
 
-  NI elements__new__count() => //
+  INT elements__new__count() => //
       _elements__new.elements__count();
 
-  NI _elements__new__count__definitive() => //
+  INT _elements__new__count__definitive() => //
       elements__new__count();
 
   array<element__new__type> elements__new__convert__array() => //
       _elements__new.convert__array();
 
-  @override
-  void dispose() {
-    _elements__new.dispose();
-
-    channel.dispose();
-  }
-
-  @override
   gui__base__widget widget__build(
     final gui__base__widget__building__context context, {
-    required final gui__base__list_ing__grow_able__children___record children,
+
+    required final gui__base__listing__grow_able__listing__widget__function__format listing__build,
+    required final gui__base__listing__item__build__function__format /* 2nd param. is `item__existing__id_` */ ? item__existing__build /*
+not called, if `items__existing__count` is 0 */,
+    required final gui__base__listing__item__build__function__format /* 2nd param. is `item__new__id_` */ item__new__build /*
+not called, if `items__new__count` is 0
+call to this function, indicates, that the user is interested, in adding, an item, to the list
+  similar to press-ing, the "Add" floating button */,
+    required final gui__base__listing__item__build__function__format /* 2nd param. is `item__new__id_` */ item__new__dummy__build /*
+invoke `store.control()?.add:item` to add-item
+not called, if `items__new__count` is 0
+example :
+  `GestureDetector(onTap: item__array__count__update, child: gui__base__listing__item(body: gui__base__box__text__primary("Add item ${item__id + 1}")))` */,
   }) /*
 "element" is datum(singular form ,of data) ,while "item" is the gui form ,of "element"
   naming is simply naming ,nothing much (sense) */ {
     return channel.handling__widget__build(
       context,
-      children: gui__base__event__channel__handling__children___record(
-        child__build: (final context) {
-          final items__new__count = _elements__new__count__definitive();
+      child__build: (final context) {
+        final items__new__count = _elements__new__count__definitive();
 
-          var items__count = (items__new__count + items__existing__count);
-          if (items__new__count < items__new__count__limit) {
-            items__count += 1;
-          }
+        var items__count = (items__new__count + items__existing__count);
+        if (items__new__count < items__new__count__limit) {
+          items__count += 1;
+        }
 
-          return children.listing__build(
-            context,
-            items__count,
-            (final build__context, var item__id) {
-              /*
+        return listing__build(
+          context,
+          items__count,
+          (final build__context, var item__id) {
+            /*
 (items__new__first___ok /* order ,the new-ly add-ed items ,before exist-ing ones */
     ? ((id < items__new__count) //
         ? items__new__array[base__listing__reverse__item__id(
@@ -147,33 +135,32 @@ class gui__base__listing__grow_able<element__new__type> //
             items__new__count,
           )])) */
 
-              if ((item__id = gui__base__listing__reverse__item__id(
+            if ((item__id = gui__base__listing__reverse__item__id(
+                  item__id,
+                  items__count,
+                )) <
+                items__existing__count) {
+              return (item__existing__build?.call(
+                    build__context,
                     item__id,
-                    items__count,
-                  )) <
-                  items__existing__count) {
-                return (children.item__existing__build?.call(
-                      build__context,
-                      item__id,
-                    ) ??
-                    gui__base__empty__widget);
-              }
+                  ) ??
+                  gui__base__empty__widget);
+            }
 
-              item__id -= items__existing__count;
+            item__id -= items__existing__count;
 
-              return ((item__id /*<*/ != items__new__count) //
-                  ? children.item__new__build(
-                      build__context,
-                      item__id,
-                    )
-                  : children.item__new__dummy__build(
-                      build__context,
-                      item__id,
-                    ));
-            },
-          );
-        },
-      ),
+            return ((item__id /*<*/ != items__new__count) //
+                ? item__new__build(
+                    build__context,
+                    item__id,
+                  )
+                : item__new__dummy__build(
+                    build__context,
+                    item__id,
+                  ));
+          },
+        );
+      },
     );
   }
 }
@@ -210,15 +197,15 @@ must have same elements:count as input/param. */
     channel.event__announce();
   }
 
-  NI elements__new__sav_ed__count() => //
+  INT elements__new__sav_ed__count() => //
       _elements__new__sav_ed.elements__count();
 
   @override
-  NI _elements__new__count__definitive() => //
+  INT _elements__new__count__definitive() => //
       (elements__new__sav_ed__count() + super._elements__new__count__definitive());
 
   element__new__sav_ed__type element__new__sav_ed(
-    final NI id,
+    final INT id,
   ) =>
       _elements__new__sav_ed.element(
         id,
@@ -263,8 +250,8 @@ extension gui__base__listing__grow_able__sav_able__widget //
   gui__base__widget widget //
       <element__new__type, element__new__sav_ed__type>({
     required final gui__base__listing__grow_able__listing__widget__function__format listing,
-    required final NI items__existing__count,
-    required final NI items__new__count__limit,
+    required final INT items__existing__count,
+    required final INT items__new__count__limit,
     required final gui__base__listing__item__build__function__format /* 2nd param. is `item__exist_ing__id` */ ? item__existing__build,
     required final gui__base__listing__item__build__function__format /* 2nd param. is `item__new__sav_ed__id` */ item__new__saved__build,
     required final gui__base__listing__item__build__function__format /* 2nd param. is `item__new__un_sav_ed__id` */

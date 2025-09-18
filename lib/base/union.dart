@@ -9,7 +9,7 @@ class union {
   final array<Type> _types /*
 sub-typing is not supported
 /*must be ordered in narrow-to-wide sequence 
-  ,like `[NI , NFP ,... , string]` ,because `NI2` is `NI4` ,but `NI4` is-not `NI2`*/ */
+  ,like `[INT , APPROX ,... , string]` ,because `NI2` is `NI4` ,but `NI4` is-not `NI2`*/ */
       ;
 
   dynamic _value;
@@ -76,7 +76,7 @@ sub-typing is not supported
 void union__test() {
   final u = union(
     NIL,
-    [Null, NI, string],
+    [Null, INT, string],
   );
 
   void value__set(

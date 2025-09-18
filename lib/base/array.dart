@@ -4,15 +4,15 @@ typedef array<element__type> = List<element__type>;
 
 array<element__type> array__new__copy<element__type>(
   final array<element__type> arr_, {
-  final NI offset = 0,
-  final NI? count,
+  final INT offset = 0,
+  final INT? count,
 }) => arr_.sublist(
   offset,
   ((count ?? arr_.elements__count) + offset),
 );
 
 array<element__type> array__new__filled<element__type>(
-  final NI count,
+  final INT count,
   final element__type value,
 ) => array<element__type>.filled(
   count,
@@ -21,8 +21,8 @@ array<element__type> array__new__filled<element__type>(
 );
 
 array<element__type> array__new__generated<element__type>(
-  final NI count,
-  final element__type Function(NI i) generate,
+  final INT count,
+  final element__type Function(INT i) generate,
 ) => array<element__type>.generate(
   count,
   generate,
@@ -96,13 +96,13 @@ extension array__array__merge_ing<element__type> //
   }
 }
 
-NI array__reverse__element__id(
-  final NI element__id,
-  final NI elements__count,
+INT array__reverse__element__id(
+  final INT element__id,
+  final INT elements__count,
 ) => ((elements__count - 1) - element__id);
 
 BS1__array NI__array__convert__BS1__array(
-  final array<NI> arr,
+  final array<INT> arr,
 ) {
   arr.iterate__reverse__basic(
     (final i, final value) {
@@ -118,10 +118,10 @@ BS1__array NI__array__convert__BS1__array(
 }
 
 extension array__extension<element___type> on array<element___type> {
-  NI get elements__count => //
+  INT get elements__count => //
       length;
 
-  NI get count => //
+  INT get count => //
       length;
 
   BOOL empty___ok() => //
@@ -137,9 +137,9 @@ extension array__extension<element___type> on array<element___type> {
       this[this.elements__count - 1];
 
   void iterate(
-    final BOOL Function(NI element__id, element___type element) operate, {
-    final NI? count,
-    final NI offset = 0,
+    final BOOL Function(INT element__id, element___type element) operate, {
+    final INT? count,
+    final INT offset = 0,
   }) => base__iterate(
     (count ?? (this.elements__count - offset)),
     offset: offset,
@@ -148,9 +148,9 @@ extension array__extension<element___type> on array<element___type> {
   );
 
   void iterate__basic(
-    final void Function(NI element__id, element___type element) operate, {
-    final NI? count,
-    final NI offset = 0,
+    final void Function(INT element__id, element___type element) operate, {
+    final INT? count,
+    final INT offset = 0,
   }) => base__iterate__basic(
     (count ?? (this.elements__count - offset)),
     (final element__id) => //
@@ -159,8 +159,8 @@ extension array__extension<element___type> on array<element___type> {
   );
 
   void iterate__reverse(
-    final BOOL Function(NI element__id, element___type element) operate, {
-    final NI? count,
+    final BOOL Function(INT element__id, element___type element) operate, {
+    final INT? count,
   }) {
     base__iterate__reverse(
       (count ?? this.elements__count),
@@ -174,8 +174,8 @@ extension array__extension<element___type> on array<element___type> {
   }
 
   void iterate__reverse__basic(
-    final void Function(NI element__id, element___type element) operate, {
-    final NI? count,
+    final void Function(INT element__id, element___type element) operate, {
+    final INT? count,
   }) => base__iterate__reverse__basic(
     (count ?? this.elements__count),
     (final element__id) => //
@@ -183,13 +183,13 @@ extension array__extension<element___type> on array<element___type> {
   );
 
   element___type element(
-    final NI element__id,
+    final INT element__id,
   ) => this[element__id];
 
   void fill(
     final element___type value, {
-    NI? count,
-    NI offset = 0,
+    INT? count,
+    INT offset = 0,
   }) {
     count =
         ((count == null) //
@@ -201,14 +201,14 @@ extension array__extension<element___type> on array<element___type> {
     }
   }
 
-  NI? /*
+  INT? /*
 un-equal element's id, if any */
   un_equal__element__id(
     final array<element___type> other, {
-    final NI? count,
-    final NI offset = 0,
+    final INT? count,
+    final INT offset = 0,
   }) {
-    NI? result;
+    INT? result;
 
     base__iterate(
       (count ?? this.elements__count),
@@ -237,16 +237,16 @@ un-equal element's id, if any */
     return (un_equal__element__id(other) == NIL);
   }
 
-  NI? /*
+  INT? /*
 `id` if present ,otherwise NIL */
   search__simple(
     final BOOL Function(element___type) element__equal___ok, {
     final BOOL reverse___ok = NO,
   }) {
-    NI? result;
+    INT? result;
 
     BOOL operate(
-      final NI element__id,
+      final INT element__id,
       final element___type element,
     ) {
       if (element__equal___ok(element).not) {
@@ -265,7 +265,7 @@ un-equal element's id, if any */
     return result;
   }
 
-  NI? search(
+  INT? search(
     final element___type value,
     final BOOL Function(
       element___type element,
@@ -278,10 +278,10 @@ un-equal element's id, if any */
     reverse___ok: reverse___ok,
   );
 
-  NI? /*element__id_*/ search__segment(
+  INT? /*element__id_*/ search__segment(
     final array<element___type> segment,
   ) {
-    NI? segment__element__id;
+    INT? segment__element__id;
 
     iterate(
       (final i, final e) {
@@ -439,7 +439,7 @@ join */ <element__other__type>(
       null);
 
   void element__remove(
-    final NI element__id,
+    final INT element__id,
   ) {
     removeAt(
       element__id,
@@ -467,11 +467,27 @@ join */ <element__other__type>(
 
   Iterable<element__new___type> //
   convert__definitive<element__new___type>(
-    final element__new___type Function(NI, element___type) operate,
+    final element__new___type Function(INT, element___type) operate,
   ) {
     var i = 0;
 
     return this.convert(
+      (final e) {
+        final v = operate(i, e);
+
+        i += 1;
+
+        return v;
+      },
+    );
+  }
+
+  Iterable<element___type> //
+  select__definitive //
+  (final BOOL Function(INT, element___type) operate) {
+    var i = 0;
+
+    return where(
       (final e) {
         final v = operate(i, e);
 
@@ -487,11 +503,11 @@ extension element__type__array__report__definitive__extension<element__type> //
     on array<element__type> {
   string //
   convert__text__concise__definitive(
-    final NI elements__count,
-    final NI element__id,
+    final INT elements__count,
+    final INT element__id,
   ) {
     string element(
-      final NIS id__diff_,
+      final INT__NEG id__diff_,
     ) {
       return this[element__id + id__diff_].representation__text().value;
     }

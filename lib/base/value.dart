@@ -338,7 +338,7 @@ class base__value__channel__broadcast<value__type> //
 
     procedure__empty__format proc_(
       final string title,
-      final NI id,
+      final INT id,
     ) =>
         () => "$title:listen_er :listened ${value()}".print(id.toString());
 

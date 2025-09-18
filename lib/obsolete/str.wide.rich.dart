@@ -221,7 +221,7 @@ byte__array str__wide__rich__convert__bytes(
 
   void text__add(
     final ch text__style,
-    final NI MRescape__sequence__size,
+    final INT MRescape__sequence__size,
   ) {
     text__segment__add(
       (str__iter - (escape__sequence__size + 2)),

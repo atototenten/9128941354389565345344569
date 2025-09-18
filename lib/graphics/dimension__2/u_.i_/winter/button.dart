@@ -1,7 +1,7 @@
 part of "_.dart";
 
 gui__base__widget winter__button__structure({
-  final NFP scale = 1,
+  final APPROX scale = 1,
   final IconData? icon,
   final BOOL icon__trailing___ok = NO,
   required final string text,
@@ -61,19 +61,19 @@ gui__base__widget winter__button__structure({
 }
 
 typedef base__button___compo = gui__base__widget Function({
-  NFP scale,
+  APPROX scale,
   BorderRadius? border__radius,
   BOOL selected___ok,
   IconData? icon,
   BOOL iconAtEnding,
   required string text,
-  NFP? font__size,
+  APPROX? font__size,
   procedure__empty__format? press__handle,
   procedure__empty__format? press__long__handle,
 });
 
 gui__base__widget winter__button({
-  final NFP scale = 1,
+  final APPROX scale = 1,
   final BorderRadius? border__radius,
   final BOOL selected___ok = NO,
   final IconData? icon,
@@ -96,7 +96,7 @@ gui__base__widget winter__button({
     );
 
 gui__base__widget winter__button__floating({
-  final NFP scale = 1,
+  final APPROX scale = 1,
   final BorderRadius? border__radius,
   final BOOL selected___ok = NO,
   final IconData? icon,

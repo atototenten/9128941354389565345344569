@@ -79,7 +79,7 @@ const //
 
 final //
     currencies = <({
-  NI code,
+  INT code,
   string char,
   string title,
 })>[

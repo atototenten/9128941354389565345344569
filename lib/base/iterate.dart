@@ -1,25 +1,25 @@
 part of "_.dart";
 
 void base__iterate__until(
-  NI limit,
-  final BOOL Function(NI i) operate, {
-  NI offset = 0,
+  INT limit,
+  final BOOL Function(INT i) operate, {
+  INT offset = 0,
 }) {
   while ((offset < limit) && operate(offset++));
 }
 
 value__asyn<void> base__iterate__until__asyn(
-  NI limit,
-  final value__asyn<BOOL> Function(NI i) operate, {
-  NI offset = 0,
+  INT limit,
+  final value__asyn<BOOL> Function(INT i) operate, {
+  INT offset = 0,
 }) async {
   while ((offset < limit) && (await operate(offset++)));
 }
 
 void base__iterate__until__basic(
-  final NI limit,
-  final void Function(NI i) operate, {
-  final NI offset = 0,
+  final INT limit,
+  final void Function(INT i) operate, {
+  final INT offset = 0,
 }) =>
     base__iterate__until(
       limit,
@@ -31,9 +31,9 @@ void base__iterate__until__basic(
     );
 
 value__asyn<void> base__iterate__until__basic__asyn(
-  final NI limit,
-  final value__asyn<void> Function(NI i) operate, {
-  final NI offset = 0,
+  final INT limit,
+  final value__asyn<void> Function(INT i) operate, {
+  final INT offset = 0,
 }) =>
     base__iterate__until__asyn(
       limit,
@@ -45,27 +45,27 @@ value__asyn<void> base__iterate__until__basic__asyn(
     );
 
 void base__iterate(
-  NI count,
-  final BOOL Function(NI i) operate, {
-  NI offset = 0,
+  INT count,
+  final BOOL Function(INT i) operate, {
+  INT offset = 0,
 }) {
   count += offset;
   while ((offset < count) && operate(offset++));
 }
 
 value__asyn<void> base__iterate__asyn(
-  NI count,
-  final value__asyn<BOOL> Function(NI i) operate, {
-  NI offset = 0,
+  INT count,
+  final value__asyn<BOOL> Function(INT i) operate, {
+  INT offset = 0,
 }) async {
   count += offset;
   while ((offset < count) && (await operate(offset++)));
 }
 
 void base__iterate__basic(
-  final NI count,
-  final void Function(NI i) operate, {
-  final NI offset = 0,
+  final INT count,
+  final void Function(INT i) operate, {
+  final INT offset = 0,
 }) =>
     base__iterate(
       count,
@@ -77,9 +77,9 @@ void base__iterate__basic(
     );
 
 value__asyn<void> base__iterate__basic__asyn(
-  final NI count,
-  final value__asyn<void> Function(NI i) operate, {
-  final NI offset = 0,
+  final INT count,
+  final value__asyn<void> Function(INT i) operate, {
+  final INT offset = 0,
 }) =>
     base__iterate__asyn(
       count,
@@ -91,8 +91,8 @@ value__asyn<void> base__iterate__basic__asyn(
     );
 
 void base__iterate__reverse /* __high_perf__low_mem */ (
-  NI count,
-  final BOOL Function(NI i) operate,
+  INT count,
+  final BOOL Function(INT i) operate,
 ) {
   if /*F*/ (count == 0) {
     return;
@@ -103,8 +103,8 @@ void base__iterate__reverse /* __high_perf__low_mem */ (
 }
 
 value__asyn<void> base__iterate__reverse__asyn(
-  NI count,
-  final value__asyn<BOOL> Function(NI i) operate,
+  INT count,
+  final value__asyn<BOOL> Function(INT i) operate,
 ) async {
   if /*F*/ (count == 0) {
     return;
@@ -115,8 +115,8 @@ value__asyn<void> base__iterate__reverse__asyn(
 }
 
 void base__iterate__reverse__basic(
-  final NI count,
-  final void Function(NI i) operate,
+  final INT count,
+  final void Function(INT i) operate,
 ) =>
     base__iterate__reverse(
       count,
@@ -127,8 +127,8 @@ void base__iterate__reverse__basic(
     );
 
 value__asyn<void> base__iterate__reverse__basic__asyn(
-  final NI count,
-  final value__asyn<void> Function(NI i) operate,
+  final INT count,
+  final value__asyn<void> Function(INT i) operate,
 ) =>
     base__iterate__reverse__asyn(
       count,
@@ -139,15 +139,15 @@ value__asyn<void> base__iterate__reverse__basic__asyn(
     );
 
 void base__iterate__forever(
-  final BOOL Function(NI i) operate, [
-  NI offset = 0,
+  final BOOL Function(INT i) operate, [
+  INT offset = 0,
 ]) {
   while (operate(offset++));
 }
 
 value__asyn<void> base__iterate__forever__asyn(
-  final value__asyn<BOOL> Function(NI i) operate, [
-  NI offset = 0,
+  final value__asyn<BOOL> Function(INT i) operate, [
+  INT offset = 0,
 ]) async {
   while (await operate(offset++));
 }

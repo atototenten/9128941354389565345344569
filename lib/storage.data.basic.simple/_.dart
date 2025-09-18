@@ -91,7 +91,7 @@ based on `base__storage__data__basic__meta` */
     return result;
   }
 
-  value__asyn<NI?> cell__NI(
+  value__asyn<INT?> cell__INT(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell(
@@ -110,7 +110,7 @@ based on `base__storage__data__basic__meta` */
   value__asyn<BOOL?> cell__BOOL(
     final table__cell__meta__type cell__meta,
   ) async {
-    final result = await cell__NI(
+    final result = await cell__INT(
       cell__meta,
     );
 
@@ -121,7 +121,7 @@ based on `base__storage__data__basic__meta` */
     );
   }
 
-  value__asyn<NIS?> cell__NIS(
+  value__asyn<INT__NEG?> cell__INT__NEG(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell(
@@ -155,7 +155,7 @@ based on `base__storage__data__basic__meta` */
     );
   }
 
-  value__asyn<NFP?> cell__NE(
+  value__asyn<APPROX?> cell__NE(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell__text(
@@ -163,7 +163,7 @@ based on `base__storage__data__basic__meta` */
     );
 
     return result.convert__if(
-      NFP.parse,
+      APPROX.parse,
     );
   }
 }
@@ -194,7 +194,7 @@ empty {`byte__array` and `text`} are equal to nil/absence */ //
   static value__asyn<void> cells__count__update({
     required final base__storage__data__basic__accessing__mutating__meta storage__accessing__meta,
     required final base__storage__data__basic__table__id storage__table__id,
-    required final NI cells__count /*
+    required final INT cells__count /*
 can be increased ,freely
   except during online (any connection open to storage)
   but decreasing leads to space wastage/leakage */
@@ -259,15 +259,15 @@ can be increased ,freely
     final table__cell__meta__type cell__meta,
     final BOOL value,
   ) async {
-    await cell__assign__NI(
+    await cell__assign__INT(
       cell__meta,
       (value ? 1 : 0),
     );
   }
 
-  value__asyn<void> cell__assign__NI(
+  value__asyn<void> cell__assign__INT(
     final table__cell__meta__type cell__meta,
-    final NI value,
+    final INT value,
   ) async {
     await cell__assign(
       cell__meta,
@@ -275,9 +275,9 @@ can be increased ,freely
     );
   }
 
-  value__asyn<void> cell__assign__NIS(
+  value__asyn<void> cell__assign__INT__NEG(
     final table__cell__meta__type cell__meta,
-    final NIS value,
+    final INT__NEG value,
   ) async {
     final //
         negative___ok = value.isNegative,
@@ -305,7 +305,7 @@ can be increased ,freely
 
   value__asyn<void> cell__assign__NE(
     final table__cell__meta__type cell__meta,
-    final NFP value,
+    final APPROX value,
   ) async {
     await cell__assign__text(
       cell__meta,
@@ -347,9 +347,9 @@ should be avoided ,unless necessary
       ({
     required final array<table__cell__meta__type> cells__meta,
     required final BOOL? value__BOOL,
-    required final NI? value__NI,
-    required final NIS? value__NIS,
-    required final NFP? value__NE,
+    required final INT? value__INT,
+    required final INT__NEG? value__INT__NEG,
+    required final APPROX? value__NE,
     required final byte__array? value__byte__array,
     required final string? value__text,
   }) async {
@@ -375,28 +375,28 @@ should be avoided ,unless necessary
             break;
           case base__storage__data__basic__simple__cell__type.NI:
             {
-              if (value__NI == null) {
+              if (value__INT == null) {
                 cell__assign__nil(
                   cell__meta,
                 );
               } else {
-                cell__assign__NI(
+                cell__assign__INT(
                   cell__meta,
-                  value__NI,
+                  value__INT,
                 );
               }
             }
             break;
           case base__storage__data__basic__simple__cell__type.NIS:
             {
-              if (value__NIS == null) {
+              if (value__INT__NEG == null) {
                 cell__assign__nil(
                   cell__meta,
                 );
               } else {
-                cell__assign__NIS(
+                cell__assign__INT__NEG(
                   cell__meta,
-                  value__NIS,
+                  value__INT__NEG,
                 );
               }
             }
@@ -456,7 +456,7 @@ abstract class base__storage__data__basic__simple__cell___protocol {
 }
 
 enum base__storage__data__basic__simple__cell__type //
-{ BOOL, NI, NIS, NE, byte__array, text }
+{ BOOL, INT, INT__NEG, NE, byte__array, text }
 
 value__asyn<void> base__storage__data__basic__simple__test({
   required final base__storage__data__basic__simple__mutating__meta storage,
@@ -484,12 +484,12 @@ value__asyn<void> base__storage__data__basic__simple__test({
           jkl = base__storage__data__basic__simple__testing__cell__jkl(),
           xyz = base__storage__data__basic__simple__testing__cell__xyz();
 
-      await storage.cell__assign__NI(abc, values.abc);
-      await storage.cell__assign__NIS(jkl, values.jkl);
+      await storage.cell__assign__INT(abc, values.abc);
+      await storage.cell__assign__INT__NEG(jkl, values.jkl);
       await storage.cell__assign__NE(xyz, values.xyz);
 
       {
-        final value = await storage.cell__NI(
+        final value = await storage.cell__INT(
           abc,
         );
 
@@ -501,7 +501,7 @@ value__asyn<void> base__storage__data__basic__simple__test({
       }
 
       {
-        final value = await storage.cell__NIS(
+        final value = await storage.cell__INT__NEG(
           jkl,
         );
 
@@ -545,7 +545,7 @@ class base__storage__data__basic__simple__testing__cell__abc //
 
   @override
   base__storage__data__basic__simple__cell__type type() {
-    return base__storage__data__basic__simple__cell__type.NI;
+    return base__storage__data__basic__simple__cell__type.INT;
   }
 }
 
@@ -561,7 +561,7 @@ class base__storage__data__basic__simple__testing__cell__jkl //
 
   @override
   base__storage__data__basic__simple__cell__type type() {
-    return base__storage__data__basic__simple__cell__type.NIS;
+    return base__storage__data__basic__simple__cell__type.INT__NEG
   }
 }
 

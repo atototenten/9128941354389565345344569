@@ -12,10 +12,10 @@ singly chained (backward ref.ing) list */ //
   base__accumulation__chained__element<element__type>? //
       element__last___raw;
 
-  NI //
+  INT //
       elements__count___raw;
 
-  NI elements__count() {
+  INT elements__count() {
     return elements__count___raw;
   }
 

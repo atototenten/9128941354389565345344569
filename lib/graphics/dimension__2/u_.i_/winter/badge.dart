@@ -1,8 +1,8 @@
 part of "_.dart";
 
 gui__base__widget winter__badge__demo__reference({
-  final NFP? width__min_,
-  NFP? offset,
+  final APPROX? width__min_,
+  APPROX? offset,
   required final gui__base__widget /*base__text*/ child,
 }) /*
 must be in a `stack__widget` */

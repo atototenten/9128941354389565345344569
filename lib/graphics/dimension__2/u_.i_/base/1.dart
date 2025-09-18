@@ -56,7 +56,7 @@ for ambiguity removal */
 }
 
 gui__base__widget gui__base__child__padded__widget({
-  required final NFP padding,
+  required final APPROX padding,
   required final gui__base__widget child,
 }) {
   return Padding(
@@ -68,8 +68,8 @@ gui__base__widget gui__base__child__padded__widget({
 }
 
 gui__base__widget gui__base__child__padded__symmetric__widget({
-  final NFP padding__horizontal = 0,
-  final NFP padding__vertical = 0,
+  final APPROX padding__horizontal = 0,
+  final APPROX padding__vertical = 0,
   required final gui__base__widget child,
 }) {
   return Padding(
@@ -82,10 +82,10 @@ gui__base__widget gui__base__child__padded__symmetric__widget({
 }
 
 gui__base__widget gui__base__child__padded__custom__widget({
-  final NFP padding__top = 0,
-  final NFP padding__left = 0,
-  final NFP padding__right = 0,
-  final NFP padding__bottom = 0,
+  final APPROX padding__top = 0,
+  final APPROX padding__left = 0,
+  final APPROX padding__right = 0,
+  final APPROX padding__bottom = 0,
   required final gui__base__widget child,
 }) {
   return Padding(
@@ -100,10 +100,10 @@ gui__base__widget gui__base__child__padded__custom__widget({
 }
 
 gui__base__widget gui__base__child__constrained__widget({
-  final NFP width__min_ = 0,
-  final NFP width__max_ = NFP.maxFinite,
-  final NFP height__min_ = 0,
-  final NFP height__max_ = NFP.maxFinite,
+  final APPROX width__min_ = 0,
+  final APPROX width__max_ = APPROX.maxFinite,
+  final APPROX height__min_ = 0,
+  final APPROX height__max_ = APPROX.maxFinite,
   required final gui__base__widget child,
 }) {
   return ConstrainedBox(
@@ -118,8 +118,8 @@ gui__base__widget gui__base__child__constrained__widget({
 }
 
 gui__base__widget gui__base__child__constrained__tight__widget({
-  final NFP? width,
-  final NFP? height,
+  final APPROX? width,
+  final APPROX? height,
   required final gui__base__widget child,
 }) {
   return SizedBox(
@@ -130,7 +130,7 @@ gui__base__widget gui__base__child__constrained__tight__widget({
 }
 
 gui__base__widget gui__base__child__constrained__tight__square__widget({
-  required final NFP dimension,
+  required final APPROX dimension,
   required final gui__base__widget child,
 }) =>
     SizedBox.square(
@@ -145,16 +145,16 @@ gui__base__widget gui__base__child__constrained__tight__max__widget({
 }) =>
     SizedBox(
       width: (width___ok //
-          ? NFP.maxFinite
+          ? APPROX.maxFinite
           : NIL),
       height: (height___ok //
-          ? NFP.maxFinite
+          ? APPROX.maxFinite
           : NIL),
       child: child,
     );
 
 gui__base__widget gui__base__child__rotated__wise__clock__widget(
-  final NI rotation,
+  final INT rotation,
   final gui__base__widget child,
 ) {
   return RotatedBox(
@@ -164,7 +164,7 @@ gui__base__widget gui__base__child__rotated__wise__clock__widget(
 }
 
 gui__base__widget gui__base__child__rotated__wise__clock__reverse__widget(
-  final NI rotation,
+  final INT rotation,
   final gui__base__widget child,
 ) {
   return RotatedBox(
@@ -176,8 +176,8 @@ gui__base__widget gui__base__child__rotated__wise__clock__reverse__widget(
 //
 
 gui__base__widget gui__base__box__widget({
-  final NFP? width,
-  final NFP? height,
+  final APPROX? width,
+  final APPROX? height,
 }) {
   return SizedBox(
     width: width,
@@ -186,7 +186,7 @@ gui__base__widget gui__base__box__widget({
 }
 
 gui__base__widget gui__base__box__square__widget({
-  required final NFP dimension,
+  required final APPROX dimension,
 }) =>
     SizedBox.square(
       dimension: dimension,
@@ -198,9 +198,9 @@ gui__base__widget gui__base__box__expanded__widget({
 }) =>
     SizedBox(
       width: (width___ok //
-          ? NFP.maxFinite
+          ? APPROX.maxFinite
           : NIL),
       height: (height___ok //
-          ? NFP.maxFinite
+          ? APPROX.maxFinite
           : NIL),
     );

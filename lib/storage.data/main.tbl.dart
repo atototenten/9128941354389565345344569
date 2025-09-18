@@ -83,7 +83,7 @@ void base__storage__data__table__main__array__write(
 base__storage__data__table__meta___protocol base__storage__data__table__main__open(
   final base__storage__data__meta___compo ds__meta, {
   required final base__storage__data__table__main__array___compo table__main__array,
-  required final NI table__main__id,
+  required final INT table__main__id,
 }) {
   if (base__printing___ok) {
     base__function__call__print(

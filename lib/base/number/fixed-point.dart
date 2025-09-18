@@ -9,15 +9,15 @@ class base__number__real__fixed_point___raw {
     this.point = point__default,
   });
 
-  base__number__real__fixed_point___raw.NFP__convert(
-    final NFP value, {
+  base__number__real__fixed_point___raw.APPROX__convert(
+    final APPROX value, {
     this.point = point__default,
   }) : value = (value / point).truncate();
 
-  final NI point;
-  final NIS value;
+  final INT point;
+  final INT__NEG value;
 
-  NFP convert__NFP /*
+  APPROX convert__APPROX /*
 1 -> 0.125
 2 -> 0.25
 3 -> 0.375

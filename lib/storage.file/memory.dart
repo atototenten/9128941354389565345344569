@@ -14,8 +14,8 @@ class base__storage__file__memory__meta //
   @override
   value__asyn<base__storage__file__reading__result___union> //
       read__asyn({
-    required final NI count,
-    required final NI offset,
+    required final INT count,
+    required final INT offset,
   }) {
     final result = file___raw.read(
       count: count,
@@ -33,7 +33,7 @@ class base__storage__file__memory__meta //
   value__asyn<base__storage__file__writing__error?> //
       write__asyn(
     final base__storage__file__blocks value, {
-    required final NI offset,
+    required final INT offset,
   }) {
     file___raw.write(
       value,
@@ -69,9 +69,9 @@ class storage__file__memory //
   final base__storage__file__alignment___compo block__meta;
   final base__accumulation__linear__basic<byte__array> block__accumulation___raw;
 
-  NI blocks__count___raw = 0;
+  INT blocks__count___raw = 0;
 
-  NI //
+  INT //
       blocks__count() {
     return blocks__count___raw;
   }
@@ -86,13 +86,13 @@ class storage__file__memory //
     return (blocks__count___raw != 0);
   }
 
-  NI //
+  INT //
       bytes__count() {
     return (blocks__count___raw * block__meta.size);
   }
 
   void block__ensure__valid___raw(
-    final NI block__id,
+    final INT block__id,
   ) {
     if (block__id > blocks__count___raw) {
       throw "$block__id\\block__id\\ is not existent in the file";
@@ -101,8 +101,8 @@ class storage__file__memory //
 
   void write__fill({
     final byte value = 0,
-    required final NI count,
-    required final NI offset,
+    required final INT count,
+    required final INT offset,
   }) {
     if (base__printing___ok) {
       base__function__call__print(
@@ -144,7 +144,7 @@ class storage__file__memory //
     );
   }
 
-  NI /*offset*/ //
+  INT /*offset*/ //
       write__ending(
     final base__storage__file__blocks value,
   ) {
@@ -164,7 +164,7 @@ class storage__file__memory //
 
   void write(
     final base__storage__file__blocks value, {
-    required final NI offset,
+    required final INT offset,
   }) {
     if (base__printing___ok) {
       base__function__call__print(
@@ -221,8 +221,8 @@ class storage__file__memory //
 
   base__storage__file__blocks //
       read({
-    required final NI count,
-    required final NI offset,
+    required final INT count,
+    required final INT offset,
   }) {
     if (base__printing___ok) {
       base__function__call__print(
@@ -266,10 +266,10 @@ class storage__file__memory //
   }
 
   void operate___raw({
-    required final NI count,
-    required final NI offset,
+    required final INT count,
+    required final INT offset,
     required final void Function(
-      NI block__id,
+      INT block__id,
       base__storage__file__block block,
     ) block__handle,
   }) {
@@ -313,12 +313,12 @@ class storage__file__memory //
   }
 
   void increase({
-    required final NI count,
+    required final INT count,
   }) {
     {
       final bytes__count = (count * block__meta.size);
 
-      NI array__last__bytes__count;
+      INT array__last__bytes__count;
       if /*F*/ (block__accumulation___raw.empty___ok()) {
         array__last__bytes__count = (block__meta.size *
             base__accumulation__conservative__iteration__meta.array__first__elements__count__ideal(
@@ -357,7 +357,7 @@ class storage__file__memory //
   }
 
   /*void decrease({
-    final NI offset = 0,
+    final INT offset = 0,
   });*/
 
   byte__array convert__byte__array() {

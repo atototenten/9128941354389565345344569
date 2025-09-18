@@ -12,7 +12,7 @@ class base__exclusion__mutual //
         lock__requests___raw = base__queue(),
         free__channel___raw = base__event__channel__broadcast();
 
-  final NI lock__requests__count__limit;
+  final INT lock__requests__count__limit;
   final base__queue<base__value__single__procedure__format<base__exclusion__mutual__lock>> lock__requests___raw;
   final base__event__channel__broadcast free__channel___raw;
 

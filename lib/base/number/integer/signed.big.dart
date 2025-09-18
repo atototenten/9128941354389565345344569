@@ -8,8 +8,8 @@ extension NISI__extension on NISI {
   }
 
   NISI endian__little__convert__endian__big({
-    required final NI digits__count,
-    final NI digit__width = 1,
+    required final INT digits__count,
+    final INT digit__width = 1,
   }) {
     var //
         source = this,

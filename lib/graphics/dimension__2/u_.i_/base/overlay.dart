@@ -10,8 +10,8 @@ base__overlay__width__multiple__default__phone = (3 * (1 / 4)),
 
 gui__base__widget base__overlay__base(
   final gui__base__widget__building__context context, {
-  final NFP width__multiple = base__overlay__width__multiple__default__phone,
-  final NFP height__multiple = base__overlay__height__multiple__default__phone,
+  final APPROX width__multiple = base__overlay__width__multiple__default__phone,
+  final APPROX height__multiple = base__overlay__height__multiple__default__phone,
   required final gui__base__widget__build__function__format child__build,
 }) {
   final size__default = base__wall__size__default();
@@ -62,7 +62,6 @@ values :
     },
   );
 }
-
 
 (value__asyn<value___type> result, gui__base__entity__overlay___compo overlay) //
 gui__base__overlay__waiting /*
@@ -156,18 +155,9 @@ needed to handle already-resolved asyn.-values */ =
   return (promise.future, overlay);
 }
 
-
-class gui__base__overlays__management__children___record {
-  const gui__base__overlays__management__children___record({
-    required this.child__build,
-  });
-
-  final gui__base__widget__build__function__format child__build;
-}
-
 class gui__base__overlays__management //
 <entity__type extends gui__base__entity__overlay___compo> //
-    implements gui__base__entity__component___protocol<gui__base__overlays__management__children___record> {
+    implements base__dispose___protocol {
   gui__base__overlays__management() //
     : overlays___raw = base__accumulation__linear__basic(),
       channel___raw = base__event__channel__broadcast();
@@ -200,49 +190,46 @@ class gui__base__overlays__management //
     overlays___raw.dispose();
   }
 
-  @override
   gui__base__widget widget__build(
     final gui__base__widget__building__context context, {
-    required final gui__base__overlays__management__children___record children,
+    required final gui__base__widget__build__function__format child__build,
   }) {
     return channel___raw.handling__widget__build(
       context,
-      children: gui__base__event__channel__handling__children___record(
-        child__build: (final context) {
-          final array<gui__base__widget> stack__children;
-          {
-            final stack__children__accumulation = base__accumulation__linear__basic<gui__base__widget>();
+      child__build: (final context) {
+        final array<gui__base__widget> stack__children;
+        {
+          final stack__children__accumulation = base__accumulation__linear__basic<gui__base__widget>();
 
-            stack__children__accumulation.add__ending(
-              children.child__build(
-                context,
-              ),
-            );
-
-            overlays___raw.iterate(
-              (final _, final overlay) {
-                stack__children__accumulation.add__ending(
-                  overlay.entity.widget__build(
-                    context,
-                  ),
-                );
-
-                return OK;
-              },
-            );
-
-            stack__children = stack__children__accumulation.convert__array();
-
-            stack__children__accumulation.dispose();
-          }
-
-          return gui__base__stack__widget(
-            alignment: Alignment.center,
-            clipping: Clip.none,
-            children: stack__children,
+          stack__children__accumulation.add__ending(
+            child__build(
+              context,
+            ),
           );
-        },
-      ),
+
+          overlays___raw.iterate(
+            (final _, final overlay) {
+              stack__children__accumulation.add__ending(
+                overlay.entity.widget__build(
+                  context,
+                ),
+              );
+
+              return OK;
+            },
+          );
+
+          stack__children = stack__children__accumulation.convert__array();
+
+          stack__children__accumulation.dispose();
+        }
+
+        return gui__base__stack__widget(
+          alignment: Alignment.center,
+          clipping: Clip.none,
+          children: stack__children,
+        );
+      },
     );
   }
 }

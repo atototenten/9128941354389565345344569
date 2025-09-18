@@ -18,7 +18,7 @@ data is plural ,datum/message is singular
 
   final base__accumulation__linear__basic<message__channel__broadcast__observer<message__type>> _observers;
 
-  NI observers__count() {
+  INT observers__count() {
     return this._observers.elements__count;
   }
 

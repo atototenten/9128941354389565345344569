@@ -32,10 +32,10 @@ extension winter__page__base__extension //
      final gui__base__widget__building__context context,{
     final BOOL scroll__direction__reverse___ok = NO,
     required final gui__base__widget heading,
-    required final NI items__count,
-    //final NI items__lanes__count = 1,
+    required final INT items__count,
+    //final INT items__lanes__count = 1,
     required final gui__base__listing__item__build__function__format /* 2nd param. is `item__id_` */ item__build,
-    final NFP? items__separation__size,
+    final APPROX? items__separation__size,
     final gui__base__widget? floating,
   }) {
     /*final gui__base__widget scrollBar = CupertinoScrollbar(

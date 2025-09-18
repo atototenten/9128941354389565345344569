@@ -47,7 +47,7 @@ enum number__size {
     this.size,
   );
 
-  final NI size;
+  final INT size;
 }
 
 class base__storage__data__meta___compo /*
@@ -93,7 +93,7 @@ TASK
   final preservation__journal__compo? //
       preservation__journal;
 
-  NI //
+  INT //
       position /*
   `base__storage__data__position` is `count`(un-aligned), while `ds__meta.size` is `count__max`(aligned) */
       ,
@@ -122,8 +122,8 @@ final //
         ) +
         base__storage__data__main__tbl__offset);
 
-NI base__storage__data__main__tbl__size(
-  final NI rows__count,
+INT base__storage__data__main__tbl__size(
+  final INT rows__count,
 ) =>
     (rows__count * //
         (base__storage__data__table__main__rows__count__size + base__storage__data__position__size__id.size));
@@ -305,7 +305,7 @@ typedef base__storage__data__linux__auto__result___compo = ({
 base__storage__data__linux__auto__result___compo base__storage__data__linux__auto({
   required string directory__path,
   final string file__name = "db",
-  required final NI ds__storage__size,
+  required final INT ds__storage__size,
   final BOOL bytes__b__preserve = OK,
   required final void Function(base__storage__data__linux__auto__result__compo) create__handle,
 }) {
@@ -368,13 +368,13 @@ base__storage__data__linux__auto__result___compo base__storage__data__linux__aut
 }
 
 /*void base__storage__data__position__update__if__needed(
-    final NI position__new,
+    final INT position__new,
   ) {
     if (position__new > base__storage__data__position){
       base__storage__data__position = position__new;}
   }*/
 
-NI base__storage__data__position(
+INT base__storage__data__position(
   final base__storage__data__meta___compo ds__meta,
 ) {
   return (ds__meta.position__change + ds__meta.position);
@@ -382,8 +382,8 @@ NI base__storage__data__position(
 
 BS1__array base__storage__data__read(
   final base__storage__data__meta___compo ds__meta, {
-  required final NI count,
-  required final NI base__storage__data__offset,
+  required final INT count,
+  required final INT base__storage__data__offset,
 }) /*
   also applicable for, `bytes`, `str`(non-wide `text`s), and `wstr__bytes` */
     =>
@@ -396,8 +396,8 @@ BS1__array base__storage__data__read(
 void base__storage__data__write(
   final base__storage__data__meta___compo ds__meta, {
   required final BS1__array bytes,
-  final NI? bytes__count,
-  required final NI base__storage__data__offset,
+  final INT? bytes__count,
+  required final INT base__storage__data__offset,
 }) /*
   should, be used, only, if the write op
     is on garbage, ir-relevent, or obsolete bytes
@@ -417,8 +417,8 @@ void base__storage__data__write(
 void base__storage__data__write__replace /*:preserved*/ (
   final base__storage__data__meta___compo ds__meta, {
   required final BS1__array bytes,
-  required final NI bytes__count,
-  required final NI base__storage__data__offset,
+  required final INT bytes__count,
+  required final INT base__storage__data__offset,
 }) /*
   similar to `transaction`s in other dbms-es; but not as heavy, because, only, the original un-modified bytes, are saved(or preserved)
 
@@ -474,9 +474,9 @@ void base__storage__data__write__replace /*:preserved*/ (
   base__printing__indentation__decrease();
 }
 
-NI base__storage__data__write__reserve(
+INT base__storage__data__write__reserve(
   final base__storage__data__meta___compo ds__meta,
-  final NI count,
+  final INT count,
 ) {
   if (base__printing___ok) {
     base__function__call__print(
@@ -496,10 +496,10 @@ NI base__storage__data__write__reserve(
   return base__storage__data__offset;
 }
 
-NI /*base__storage__data__offset*/ base__storage__data__write__append(
+INT /*base__storage__data__offset*/ base__storage__data__write__append(
   final base__storage__data__meta___compo ds__meta,
   final BS1__array bytes, [
-  NI? count,
+  INT? count,
 ]) /*
   un-preserved write */
 {

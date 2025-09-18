@@ -11,8 +11,8 @@ completely raw and un-cached
       read__asyn /*
 fetch data */
       ({
-    required final NI count,
-    required final NI offset,
+    required final INT count,
+    required final INT offset,
   });
 
   value__asyn<base__storage__file__writing__error?> //
@@ -20,7 +20,7 @@ fetch data */
 re-place data */
       (
     final base__storage__file__blocks value, {
-    required final NI offset,
+    required final INT offset,
   });
 
   @override

@@ -32,7 +32,7 @@ gui__base__widget winter__input__text({
           ),
           gui__base__widget__separat_or__vertical,
           SizedBox(
-            width: NFP.maxFinite,
+            width: APPROX.maxFinite,
             child: winter__box__non_button /* for `color__background__nested` bg */ (
               border__radius: border__radius,
               child: Padding(

@@ -40,7 +40,7 @@ Widget generate__cover__icon() {
       icon__primary /* bottom left */ = flutter__material__icons.home,
       icon__secondary /* top right */ = flutter__material__icons.search;
 
-  const NFP scale = 8 /* 1: 64*64; 2: 128*128 */;
+  const APPROX scale = 8 /* 1: 64*64; 2: 128*128 */;
 
   const List<Color> colors = <Color>[
     Color(0xff26a69a) /* flutter__material__colors.teal[400] */,

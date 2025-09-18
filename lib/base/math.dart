@@ -99,8 +99,8 @@ int _modulo(final int a, final int b) {
   return ((remainder < 0) ? ((b < 0) ? (remainder - b) : (remainder + b)) : remainder);
 }
 
-extension on NFP {
-  NFP truncate__parsable__human() => //
+extension on APPROX {
+  APPROX truncate__parsable__human() => //
       ((this * 100).toInt() / 100);
 }
 

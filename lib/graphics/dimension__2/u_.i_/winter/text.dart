@@ -91,10 +91,10 @@ gui__base__widget winter__box__text__secondary__primary({
 gui__base__widget winter__heading__top__widget({
   required final string heading,
   final string? heading__sub,
-   final NFP heading__size=28,
-   final NFP heading__sub__size=20,
-  final NFP padding__top=0,
-   final NFP padding__bottom=0,
+   final APPROX heading__size=28,
+   final APPROX heading__sub__size=20,
+  final APPROX padding__top=0,
+   final APPROX padding__bottom=0,
 }) {
   final title = gui__base__box__text__widget(
     heading,

@@ -6,7 +6,7 @@ const //
 
 void language__english__count__text__convert__plural__if__needed__buffer(
   final StringBuffer buffer,
-  final NI count,
+  final INT count,
   final string word, [
   final BOOL suffix__s___ok /* {'s'|"es"} */ = OK,
 ]) {
@@ -22,7 +22,7 @@ void language__english__count__text__convert__plural__if__needed__buffer(
 }
 
 string language__english__count__text__convert__plural__if__needed(
-  final NI count,
+  final INT count,
   final string word, [
   final BOOL suffix__s___ok = OK,
 ]) {

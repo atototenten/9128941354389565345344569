@@ -38,8 +38,8 @@ BorderRadius gui__base__listing__item__position__bottom__border__radius([
           ));
 
 BorderRadius gui__base__listing__item__border__radius(
-  final NI item__id,
-  final NI item__array__count, [
+  final INT item__id,
+  final INT item__array__count, [
   final BOOL b__nested = NO,
 ]) =>
     ((item__id == (item__array__count - 1)) /* last item */ //
@@ -49,12 +49,12 @@ BorderRadius gui__base__listing__item__border__radius(
             : gui__base__listing__item__position__top__border__radius(b__nested)));
 
 gui__base__widget winter__listing__item__structure({
-  final NFP? padding__vertical,
-  final NFP? padding__leading,
+  final APPROX? padding__vertical,
+  final APPROX? padding__leading,
   final gui__base__widget? leading,
   required final gui__base__widget body,
   final gui__base__widget? trailing,
-  final NFP? padding__trailing,
+  final APPROX? padding__trailing,
 }) {
   return Padding(
     padding: EdgeInsets.symmetric(
@@ -97,16 +97,16 @@ const //
     listing__item__position__bottom = 2;
 
 gui__base__widget winter__listing__item({
-  /*required final NI position,*/
+  /*required final INT position,*/
   final BorderRadius? border__radius,
   final BOOL selected___ok = NO,
   final BOOL b__expand = OK,
-  final NFP? padding__vertical,
-  final NFP? padding__leading,
+  final APPROX? padding__vertical,
+  final APPROX? padding__leading,
   final gui__base__widget? leading,
   required final gui__base__widget body,
   final gui__base__widget? trailing,
-  final NFP? padding__trailing,
+  final APPROX? padding__trailing,
 }) =>
     winter__box__base(
       border__radius: border__radius,

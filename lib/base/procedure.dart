@@ -69,7 +69,7 @@ app.s :widget(of graphical-user-interface)'s [de-]init ,etc. */ //
   base__procedure__empty__meta__definitive() //
       : assignment__id___raw = 0;
 
-  NI assignment__id___raw /*
+  INT assignment__id___raw /*
 mutation/generation id.
 needed for safe remov-al/re-place
 should only used for intra-container equality ,not inter-container 
@@ -82,17 +82,17 @@ should only used for intra-container equality ,not inter-container
       ;
 
   ({
-    NI id,
+    INT id,
     procedure__empty__format proc,
   })? value___raw;
 
-  NI? _value__id() => //
+  INT? _value__id() => //
       value___raw?.id;
 
   procedure__empty__format? proc_() => //
       value___raw?.proc;
 
-  NI re_place__un_safe(
+  INT re_place__un_safe(
     final procedure__empty__format procedure__new,
   ) {
     final $id = assignment__id___raw++;
@@ -105,8 +105,8 @@ should only used for intra-container equality ,not inter-container
     return $id;
   }
 
-  NI? re_place__safe(
-    final NI procedure__id /*
+  INT? re_place__safe(
+    final INT procedure__id /*
 of currently contain-ed proc. ,not `procedure:new` */
     ,
     final procedure__empty__format procedure__new,
@@ -120,7 +120,7 @@ of currently contain-ed proc. ,not `procedure:new` */
     );
   }
 
-  NI re_place(
+  INT re_place(
     final procedure__empty__format procedure__new,
   ) =>
       re_place__un_safe(
@@ -134,7 +134,7 @@ of currently contain-ed proc. ,not `procedure:new` */
   BOOL /*
 `NO` for `(proc_()==NIL)` */
       re_move__safe(
-    final NI procedure__id,
+    final INT procedure__id,
   ) {
     if (procedure__id != _value__id()) {
       return NO;
@@ -146,7 +146,7 @@ of currently contain-ed proc. ,not `procedure:new` */
   }
 
   BOOL re_move(
-    final NI procedure__id,
+    final INT procedure__id,
   ) =>
       re_move__safe(
         procedure__id,

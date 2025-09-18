@@ -4,7 +4,7 @@ gui__base__widget gui__base__box__text__widget(
   final TextSpan text__segment, {
   final TextAlign text__align = TextAlign.start,
   final TextOverflow text__overflow = TextOverflow.clip,
-  final NI? lines__max,
+  final INT? lines__max,
 }) {
   return RichText(
     text: text__segment,
@@ -37,7 +37,7 @@ TextSpan gui__base__box__text__segments(
 }
 
 TextStyle base__text__style({
-  required final NFP font__size,
+  required final APPROX font__size,
   required final Color? font__color,
   final FontWeight? font__weight,
   final FontStyle? font__style,

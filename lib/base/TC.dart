@@ -1,7 +1,7 @@
 part of "_.dart";
 
-typedef TC = NI;
-typedef TCW = NI;
+typedef TC = INT;
+typedef TCW = INT;
 
 const //
     TC__size = NI07__size,

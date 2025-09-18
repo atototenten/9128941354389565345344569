@@ -33,14 +33,14 @@ void base__storage__data__tar__create(
 }
 
 typedef base__storage__data__tar__table__meta___compo = ({
-  NI id,
-  NI row__id,
-  NI rows__count,
+  INT id,
+  INT row__id,
+  INT rows__count,
 });
 
 base__storage__data__tar__table__meta___compo base__storage__data__tar__table__meta(
-  final NI row__id,
-  final NI rows__count__multiplier__initial,
+  final INT row__id,
+  final INT rows__count__multiplier__initial,
 ) {
   if (base__printing___ok) {
     base__function__call__print(
@@ -54,7 +54,7 @@ base__storage__data__tar__table__meta___compo base__storage__data__tar__table__m
 
   base__printing__indentation__increase();
 
-  NI //
+  INT //
       table__id = 0,
       table__row__id /* table__row__id__offset__to__row */ = row__id,
       table__rows__count /* for the table; `rows_per_table`; `table__rows__count__limit` */ = //
@@ -89,7 +89,7 @@ base__storage__data__tar__table__meta___compo base__storage__data__tar__table__m
   );
 }
 
-NI base__storage__data__tar__bytes__count(final NI table__id) => //
+INT base__storage__data__tar__bytes__count(final INT table__id) => //
     ((table__id + 1) * base__storage__data__position__size__id.size);
 
 class base__storage__data__tar__meta___compo //
@@ -108,17 +108,17 @@ class base__storage__data__tar__meta___compo //
           rows__count__size__id.size,
         );
 
-  NI //
+  INT //
       rows__count__max,
       table__array__bytes__base__storage__data__offset;
 
-  final NI //
+  final INT //
       tar__meta__bytes__base__storage__data__offset;
 
   BS1__array? //
       table__array__bytes;
 
-  final NI //
+  final INT //
       rows__count__multiplier__initial;
 
   base__compo__member__dictionary //
@@ -158,11 +158,11 @@ BS1__array base__storage__data__tar__table__array__bytes(
       tar__meta,
     ));
 
-NI base__storage__data__tar__row__bytes__base__storage__data__offset({
+INT base__storage__data__tar__row__bytes__base__storage__data__offset({
   required final base__storage__data__tar__table__meta___compo table__meta,
-  required final NI row__size,
+  required final INT row__size,
   required final BS1__array table__array__bytes,
-  final NI row__offset = 0,
+  final INT row__offset = 0,
 }) /* macro */ =>
     base__storage__data__table__row__bytes__base__storage__data__offset(
       row__id: table__meta.row__id,
@@ -177,7 +177,7 @@ NI base__storage__data__tar__row__bytes__base__storage__data__offset({
       row__offset: row__offset,
     );
 
-NI base__storage__data__tar__row__add(
+INT base__storage__data__tar__row__add(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tar__meta___compo tar__meta,
   final BS1__array bytes /* refer to `ds__table__row__add__bytes` */,
@@ -338,10 +338,10 @@ void base__storage__data__tar__rows__count__update(
 base__storage__data__table__row___compo base__storage__data__tar__row(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tar__meta___compo tar__meta, {
-  required final NI row__id,
+  required final INT row__id,
   required final BS1__array? bytes,
-  NI? count,
-  final NI row__offset = 0,
+  INT? count,
+  final INT row__offset = 0,
 }) /* refer to `ds_.tbl.row` */ {
   if (base__printing___ok) {
     base__function__call__print(
@@ -413,7 +413,7 @@ base__storage__data__table__row___compo base__storage__data__tar__row(
 base__storage__data__table__row__column___compo base__storage__data__tar__row__column(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tar__meta___compo tar__meta, {
-  required final NI row__id,
+  required final INT row__id,
   required final BS1__array? bytes,
   required final base__storage__data__table__column___compo table__column,
 }) /* macro */ =>
@@ -431,7 +431,7 @@ base__storage__data__table__row__column___compo base__storage__data__tar__row__c
 BS1__array base__storage__data__tar__row__group__bytes(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tar__meta___compo tar__meta, {
-  required final NI group__id,
+  required final INT group__id,
 }) {
   if (base__printing___ok) {
     base__function__call__print(
@@ -463,7 +463,7 @@ BS1__array base__storage__data__tar__row__group__bytes(
     12 is also more, than the usual user's expected count of 10, hence the 2 extra rows, feel like a bonus */
       ;
 
-  NI row__id /*rows__offset*/ = (group__id * row__group__size);
+  INT row__id /*rows__offset*/ = (group__id * row__group__size);
 
   if (!(row__id < tar__meta.rows__count) /*b__exists*/) {
     "table.end".print();
@@ -475,7 +475,7 @@ BS1__array base__storage__data__tar__row__group__bytes(
 
   final sink = base__byte__array__accumulation();
 
-  NI count = (((row__group__size + row__id) > tar__meta.rows__count) //
+  INT count = (((row__group__size + row__id) > tar__meta.rows__count) //
       ? tar__meta.rows__count
       : row__group__size);
 
@@ -522,9 +522,9 @@ void base__storage__data__tar__rows__all__iterate(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tar__meta___compo tar__meta,
   final void Function(
-    NI row__id,
+    INT row__id,
     BS1__array row__bytes,
-    NI row__bytes__base__storage__data__offset,
+    INT row__bytes__base__storage__data__offset,
   ) row__handle,
 ) /*
   REFER
@@ -545,7 +545,7 @@ void base__storage__data__tar__rows__all__iterate(
     throw "tar.table.empty__ok";
   }
 
-  NI row__id__offset = 0;
+  INT row__id__offset = 0;
 
   while (row__id__offset < tar__meta.rows__count) {
     final //
@@ -570,7 +570,7 @@ void base__storage__data__tar__rows__all__iterate(
           base__storage__data__offset: table__bytes__base__storage__data__offset,
         );
 
-    NI table__bytes__offset = 0;
+    INT table__bytes__offset = 0;
 
     base__iterate__basic(
       (((row__id__offset + table__meta.rows__count) < tar__meta.rows__count) //

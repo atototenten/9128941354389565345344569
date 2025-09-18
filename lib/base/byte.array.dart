@@ -1,8 +1,8 @@
 part of "_.dart";
 
 /*
-  primitive (type): fixed size value, like NI, NI8
-  object: allocated value, of struct, like of `struct { NI id; };`
+  primitive (type): fixed size value, like INT, NI8
+  object: allocated value, of struct, like of `struct { INT id; };`
 
 `ARRAY<BS1>`/`byte__array` vs "bytes"
   former :raw representation of an object(or primitive)
@@ -24,8 +24,8 @@ final byte__array //
     empty__bytes = empty__byte__array;
 
 byte__array byte__array__new__generated(
-  final NI count,
-  final NI Function(NI i) generate,
+  final INT count,
+  final INT Function(INT i) generate,
 ) {
   final result = byte__array(count);
 
@@ -39,7 +39,7 @@ byte__array byte__array__new__generated(
 
 BOOL byte__array__blank___ok(
   final byte__array bys, {
-  final NI? count,
+  final INT? count,
 }) /*
   `byte__array__b__clear_ed`
   test: ```
@@ -68,7 +68,7 @@ BOOL byte__array__blank___ok(
 }
 
 byte__array byte__array__blank(
-  final NI count,
+  final INT count,
 ) {
   final result = byte__array(count);
 
@@ -81,9 +81,9 @@ byte__array byte__array__blank(
 }
 
 byte__array byte__array__create /* actually init, not create */ (
-  final array<NI> bytes, {
-  NI? count,
-  final NI result__offset = 0,
+  final array<INT> bytes, {
+  INT? count,
+  final INT result__offset = 0,
 }) {
   final result = byte__array(count ??= bytes.elements__count);
 
@@ -100,9 +100,9 @@ byte__array byte__array__create /* actually init, not create */ (
 byte__array byte__array__array__catinate(
   final array<byte__array> a,
 ) {
-  final NI byteArrayCount = a.length;
+  final INT byteArrayCount = a.length;
 
-  NI //
+  INT //
       i = 0,
       totalByteCount = 0;
 
@@ -113,7 +113,7 @@ byte__array byte__array__array__catinate(
   final result = byte__array(totalByteCount);
 
   i = 0;
-  NI byteOffset = 0;
+  INT byteOffset = 0;
   while (i < byteArrayCount) {
     byteOffset = base__copy(
       result /*.buffer.asUint8List(byteOffset)*/,
@@ -133,7 +133,7 @@ class bytes___compo {
 
   final byte__array bytes;
 
-  NI bytes__offset;
+  INT bytes__offset;
 
   BOOL get iterate___ok => //
       (bytes__offset < bytes.bytes__count);
@@ -143,8 +143,8 @@ class bytes___compo {
         bytes__offset,
       );
 
-  NI read__NI__fixed(
-    final NI size,
+  INT read__NI__fixed(
+    final INT size,
   ) {
     final value = bytes
         .view(
@@ -159,8 +159,8 @@ class bytes___compo {
     return value;
   }
 
-  NI? read__NI__fixed__nilable(
-    final NI size,
+  INT? read__NI__fixed__nilable(
+    final INT size,
   ) {
     final value = read__NI__fixed(
       size,
@@ -171,14 +171,14 @@ class bytes___compo {
         : NIL);
   }
 
-  NIS read__NIS__fixed(
-    final NI size,
+  INT__NEG read__NIS__fixed(
+    final INT size,
   ) =>
       read__NIS__fixed(
         size,
       );
 
-  NI__bytes__convert__result___compo read__NI() {
+  NI__bytes__convert__result___compo read__INT() {
     final result = NI__bytes__convert(
       bytes.view(
         bytes__offset,
@@ -190,14 +190,14 @@ class bytes___compo {
     return result;
   }
 
-  NIS__bytes__convert__result___compo read__NIS() => //
-      read__NIS();
+  NIS__bytes__convert__result___compo read__INT__NEG() => //
+      read__INT__NEG();
 
   ({
-    NI? value,
-    NI count,
+    INT? value,
+    INT count,
   }) read__NI__nilable() {
-    final result = read__NI();
+    final result = read__INT();
 
     return (
       value: ((result.value != 0) //
@@ -214,7 +214,7 @@ class bytes___compo {
       bytes[bytes__offset++];
 
   byte__array read__view__partial(
-    final NI count,
+    final INT count,
   ) {
     final offset = bytes__offset;
 
@@ -227,13 +227,13 @@ class bytes___compo {
   }
 
   byte__array? read__view__partial__auto__nilable([
-    final NI? count__size,
+    final INT? count__size,
   ]) {
     final count = ((count__size != null) //
         ? read__NI__fixed(
             count__size,
           )
-        : read__NI().value);
+        : read__INT().value);
 
     return ((count != 0)
         ? read__view__partial(
@@ -243,7 +243,7 @@ class bytes___compo {
   }
 
   byte__array read__view__partial__auto([
-    final NI? count__size,
+    final INT? count__size,
   ]) =>
       (read__view__partial__auto__nilable(
             count__size,
@@ -319,7 +319,7 @@ class bytes___compo {
 
 void byte__array__fill(
   final byte__array dest, {
-  final NI? count,
+  final INT? count,
   final BS1 value = 0,
 }) =>
     dest.fill(
@@ -328,12 +328,12 @@ void byte__array__fill(
     );
 
 extension byte__array__extension on byte__array {
-  NI get bytes__count => //
+  INT get bytes__count => //
       lengthInBytes;
 
   byte__array view__partial(
-    final NI offset,
-    final NI count,
+    final INT offset,
+    final INT count,
   ) {
     return buffer.asUint8List(
       (offset + offsetInBytes),
@@ -342,7 +342,7 @@ extension byte__array__extension on byte__array {
   }
 
   byte__array view(
-    final NI offset,
+    final INT offset,
   ) {
     return view__partial(
       offset,
@@ -351,8 +351,8 @@ extension byte__array__extension on byte__array {
   }
 
   byte__array separate(
-    final NI offset,
-    final NI count,
+    final INT offset,
+    final INT count,
   ) {
     return /*sublist(offset,(count+offset),)*/ byte__array__create(
       view__partial(
@@ -363,8 +363,8 @@ extension byte__array__extension on byte__array {
     );
   }
 
-  NI convert__NI__endian__little(
-    final NI value__size,
+  INT convert__NI__endian__little(
+    final INT value__size,
   ) {
     var //
         result = 0,
@@ -381,8 +381,8 @@ extension byte__array__extension on byte__array {
     return result;
   }
 
-  NI convert__NI__endian__big(
-    final NI value__size,
+  INT convert__NI__endian__big(
+    final INT value__size,
   ) {
     var //
         result = 0,

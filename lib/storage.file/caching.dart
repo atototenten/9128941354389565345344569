@@ -17,7 +17,7 @@ class base__storage__file__fast__block {
     required this.buffer,
   });
 
-  final NI offset /* aligned */ /* TASK: replace with `__reduced` */;
+  final INT offset /* aligned */ /* TASK: replace with `__reduced` */;
   final BS1__array buffer;
 }
 
@@ -49,12 +49,12 @@ base__storage__file__fast___compo //
           /*free__list: list__compo<byte__array__compo>(),*/
         );
 
-/*uu _iterations(final NI count__max) => //
+/*uu _iterations(final INT count__max) => //
   (count__max >> base__storage__file__block__size.shift__count);*/
 
 base__storage__file__fast__block _base__storage__file__fast__block__cache__if__needed(
   final base__storage__file__fast___compo storage,
-  final NI offset,
+  final INT offset,
 ) {
   if (base__printing___ok) {
     base__function__call__print(
@@ -143,8 +143,8 @@ void _base__storage__file__fast__block__mod__if__needed(
 void base__storage__file__fast__read_write /* __caching */ (
   final base__storage__file__fast___compo storage, {
   required final BS1__array bytes,
-  required NI count,
-  required NI offset,
+  required INT count,
+  required INT offset,
   final BOOL b__write = NO,
 }) /*
   design
@@ -275,7 +275,7 @@ void base__storage__file__fast__read_write /* __caching */ (
 
     /*bytes__*/ offset = 0;
 
-    NI offset__diff;
+    INT offset__diff;
 
     base__printing__indentation__increase();
 
@@ -445,8 +445,8 @@ void base__storage__file__fast__read_write /* __caching */ (
 
 /*void write__direct /*__un_cached*/ (
     final BOOL Function(BS1__array bytes) b__mod,
-    final NI count,
-    final NI offset,
+    final INT count,
+    final INT offset,
   ) {
     if (base__printing___ok) //
       print__info("storage.write__direct(count: $count, offset: $offset)");
@@ -476,8 +476,8 @@ void base__storage__file__fast__read_write /* __caching */ (
 
 BS1__array base__storage__file__fast__read__auto(
   final base__storage__file__fast___compo storage, {
-  required final NI count,
-  required final NI offset,
+  required final INT count,
+  required final INT offset,
 }) {
   final bytes = BS1__array(count);
   base__storage__file__fast__read_write(
@@ -490,8 +490,8 @@ BS1__array base__storage__file__fast__read__auto(
 }
 
 /*BS1__array read__direct(
-    final NI count,
-    final NI offset,
+    final INT count,
+    final INT offset,
   ) {
     BS1__array bytes = empty__byte__array;
 

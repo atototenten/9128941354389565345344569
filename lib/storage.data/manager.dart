@@ -50,7 +50,7 @@ class base__storage__data__manager___compo {
   }
 
   base__storage__data__table__meta___protocol table__main(
-    final NI table__main__id,
+    final INT table__main__id,
   ) {
     return base__storage__data__table__main__open(
       ds__meta,

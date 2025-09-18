@@ -14,10 +14,10 @@ singly linked (forward ref.ing) list */ //
       element__first___raw,
       element__last___raw;
 
-  NI //
+  INT //
       elements__count___raw;
 
-  NI elements__count() {
+  INT elements__count() {
     return elements__count___raw;
   }
 
@@ -197,7 +197,7 @@ class base__accumulation__linked__element //
 }
 
 void base__accumulation__linked__test() {
-  final accumulation = base__accumulation__linked<NI>();
+  final accumulation = base__accumulation__linked<INT>();
 
   void accumulation__print(
     final string title,

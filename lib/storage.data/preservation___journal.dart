@@ -78,7 +78,7 @@ class preservation__journal___compo {
   final base__stack<bytes__preserved__compo> store;
   final base__storage__file__native__linux__meta___compo storage;
 
-  NI bytes__count;
+  INT bytes__count;
 }
 
 void preservation__journal__convert__report__info(
@@ -91,8 +91,8 @@ void preservation__journal__convert__report__info(
 
 typedef bytes__preserved___compo = ({
   BS1__array bytes,
-  NI count,
-  NI offset,
+  INT count,
+  INT offset,
 });
 
 report__info bytes__preserved__convert__report__info(
@@ -115,8 +115,8 @@ report__info bytes__preserved__convert__report__info(
 void preservation__journal__add(
   final preservation__journal___compo preservation__journal,
   final BS1__array bytes,
-  final NI count,
-  final NI offset,
+  final INT count,
+  final INT offset,
 ) {
   if (!preservation__journal.store.present___ok(
     (final bytes__preserved) => //
@@ -189,7 +189,7 @@ void preservation__journal__persist(
     count: bytes__preserved__array__count__size__id.size,
   );
 
-  NI bytes__offset = bytes__preserved__array__count__size__id.size;
+  INT bytes__offset = bytes__preserved__array__count__size__id.size;
 
   preservation__journal.store.iterate__basic(
     (final bytes__preserved) {

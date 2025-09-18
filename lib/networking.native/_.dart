@@ -35,6 +35,6 @@ value__asyn<bool> inet__connect_ed___ok({
 
 string base__net__address__port__convert__text(
   final string address,
-  final NI port,
+  final INT port,
 ) =>
     (address + char__colon + port.toString());

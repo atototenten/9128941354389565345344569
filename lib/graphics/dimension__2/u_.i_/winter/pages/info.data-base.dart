@@ -2,7 +2,7 @@ part of "../_.dart";
 
 /*widget__stored__basic___compo pages__info__data__base__page__stored({
   required final data__base__meta___compo ds__meta,
-  required final NI db__storage__size,
+  required final INT db__storage__size,
 }) {
   final //
       items = <gui__base__widget>[

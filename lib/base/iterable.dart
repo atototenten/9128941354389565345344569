@@ -1,10 +1,10 @@
 part of "_.dart";
 
 Iterable<element___type> base__elements__generate<element___type>(
-  final NI count /*
+  final INT count /*
 excluding "separation"s */,
   final element___type separation,
-  final element___type Function(NI element__id) element,
+  final element___type Function(INT element__id) element,
 ) {
   if (count == 0) {
     return Iterable.empty();
@@ -50,12 +50,12 @@ usage : {
 
   return BorderRadius.all(Radius.circular(radius__inner));
 } */ <element___type>({
-  required final NI elements__count /*
+  required final INT elements__count /*
 excluding {".title" ,".separation__title__and__element" ,and ".elements__separation"} */,
   final element___type? separation__leading__and__elements,
   required final element___type separation__elements,
   required final element___type leading,
-  required final element___type Function(NI element__id, BOOL first___ok, BOOL last___ok) element /*
+  required final element___type Function(INT element__id, BOOL first___ok, BOOL last___ok) element /*
 first/last elements do not have separate generation proc.s
   because an element can be both {first and last} ,if its the only element */,
 }) {
@@ -103,19 +103,20 @@ first/last elements do not have separate generation proc.s
 extension Iterable___extension<element___type> //
     on Iterable<element___type> {
   Iterable<element__new__type> //
-  convert<element__new__type>(
-    final element__new__type Function(element___type) operate,
-  ) {
-    return map<element__new__type>(
-      operate,
-    );
+  convert<element__new__type> //
+  (final element__new__type Function(element___type) operate) {
+    return map<element__new__type>(operate);
   }
 
   array<element___type> //
   convert__array() {
-    return toList(
-      growable: NO,
-    );
+    return toList(growable: NO);
+  }
+
+  Iterable<element___type> //
+  select //
+  (final BOOL Function(element___type) operate) {
+    return where(operate);
   }
 
   BOOL empty___ok() {

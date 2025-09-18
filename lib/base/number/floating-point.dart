@@ -1,6 +1,6 @@
 part of "../_.dart";
 
-typedef NFP = double /* floating-point number */;
+typedef APPROX = double /* floating-point number */;
 
 const //
 NE8__significand__max = ((1 << 52) /*-1*/ /* because ,the sign bit ,is stored separat-ly */ ),
@@ -8,13 +8,13 @@ NE8__significand__max = ((1 << 52) /*-1*/ /* because ,the sign bit ,is stored se
 
 class base__NE__input__digits__fixed {
   base__NE__input__digits__fixed({
-    final NI significand = 0,
+    final INT significand = 0,
     final BOOL significand__negative___ok = NO,
-    final NI significand__digits__count = 3,
+    final INT significand__digits__count = 3,
     final BOOL significand__truncate___ok = NO,
-    final NI exponent = 0,
+    final INT exponent = 0,
     final BOOL exponent__negative___ok = NO,
-    final NI exponent__digits__count = 2,
+    final INT exponent__digits__count = 2,
     final BOOL exponent__truncate___ok = OK,
   }) : significand = base__NIS__text__digits__fixed(
          significand,
@@ -57,7 +57,7 @@ negative-zero is treated as non-negative */ (
       final value = values.first;
 
       if (value.empty__not()) {
-        final significand_1 = NIS.tryParse(
+        final significand_1 = INT__NEG.tryParse(
           value,
         );
 
@@ -76,7 +76,7 @@ negative-zero is treated as non-negative */ (
     }
 
     if (values.elements__count > 1) {
-      final exponent_1 = NIS.tryParse(
+      final exponent_1 = INT__NEG.tryParse(
         values[1],
       );
 

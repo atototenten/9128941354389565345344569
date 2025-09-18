@@ -3,13 +3,13 @@ part of "_.dart";
 const //
     TCW__list__text__initial__size = NI1__max;
 
-NI TCW__list__text__size__increased(
-  final NI size,
+INT TCW__list__text__size__increased(
+  final INT size,
 ) =>
     ((size << 1) | 1);
 
 input__text__buffer___compo input__text__buffer({
-  required final NI text__bytes__count__max,
+  required final INT text__bytes__count__max,
   final string__wide? chars__initial,
 }) {
   if (chars__initial == null) //
@@ -21,7 +21,7 @@ input__text__buffer___compo input__text__buffer({
     );
 
   final text__initial__size = chars__initial.elements__count;
-  NI text__size = TCW__list__text__initial__size;
+  INT text__size = TCW__list__text__initial__size;
 
   while (text__size < text__initial__size) //
     text__size = TCW__list__text__size__increased(
@@ -36,7 +36,7 @@ input__text__buffer___compo input__text__buffer({
     count: text__initial__size,
   );
 
-  NI text__bytes__count = 0;
+  INT text__bytes__count = 0;
 
   chars__initial.iterate__basic(
     (final _, final wc) {
@@ -68,15 +68,15 @@ class input__text__buffer___compo /*
 
   string__wide chars;
 
-  NI size__current;
-  NI bytes__count;
+  INT size__current;
+  INT bytes__count;
 
-  final NI bytes__count__max;
+  final INT bytes__count__max;
 
   /*wstr? text__secondary;
-  NI? text__offset;*/
+  INT? text__offset;*/
 
-  NI get size => //
+  INT get size => //
       chars.elements__count;
 
   BOOL empty___ok() => //
@@ -86,7 +86,7 @@ class input__text__buffer___compo /*
       (size__current == bytes__count);
 
   BOOL $b__write(
-    final NI ws__bytes__count,
+    final INT ws__bytes__count,
   ) =>
       ((bytes__count + ws__bytes__count) > bytes__count__max).not /*
   partially writing `bytes`, until `text__bytes__count__max`'s breach
@@ -96,12 +96,12 @@ class input__text__buffer___compo /*
       ;
 
   void $grow__if__required(
-    NI size__required,
+    INT size__required,
   ) {
     size__required += size__current;
 
     final text__size_ = size;
-    NI text__size__ = text__size_;
+    INT text__size__ = text__size_;
 
     while /* un-likely */ (text__size__ < size__required) //
       text__size__ = TCW__list__text__size__increased(

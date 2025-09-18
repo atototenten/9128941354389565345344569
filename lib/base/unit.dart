@@ -1,7 +1,7 @@
 part of "_.dart";
 
 extension unit__extension //
-    on NI {
+    on INT {
   magnitude__conversion__scale__faulty__result___union //
       magnitude__convert__scale__faulty() {
     final value = this;
@@ -49,11 +49,11 @@ class magnitude__conversion__scale__faulty__result__success //
     required this.scale,
   });
 
-  final NI magnitude;
+  final INT magnitude;
   final units__scale scale;
 
   string convert__text({
-    required final unit unit,
+    required final base__unit unit,
     required final string Function(
       units__scale scale,
     ) scale__prefix,
@@ -94,17 +94,17 @@ the re-scaling is un-necessary
 sealed class magnitude__conversion__scale__faulty__result___union {}
 
 const //
-    units__information__bit = unit(
+    base__units__information__bit = base__unit(
       singular: "bit",
       plural: NIL,
     ),
-    units__information__byte = unit(
+    base__units__information__byte = base__unit(
       singular: "byte",
       plural: NIL,
     );
 
-class unit {
-  const unit({
+class base__unit {
+  const base__unit({
     required this.singular,
     required this.plural /* ?? `join(singular ,"s")` */,
   });
@@ -132,5 +132,5 @@ enum units__scale /*
     this.magnitude,
   );
 
-  final NI magnitude;
+  final INT magnitude;
 }

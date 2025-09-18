@@ -1,6 +1,6 @@
 part of "_.dart";
 
-const NI //
+const INT //
     font__family__interface__title = 0,
     font__family__interface__sub_title = (1 + font__family__interface__title),
     font__family__interface__text = (1 + font__family__interface__sub_title),
@@ -21,8 +21,8 @@ final font__families = array<string>.filled(
   growable: NO,
 );
 
-NFP get font__size__tiny => 12.px();
-NFP get font__size__small => 14.px();
-NFP get font__size__default => 16.px();
-NFP get font__size__large => 18.px();
-NFP get font__size__huge => 20.px();
+APPROX get font__size__tiny => 12.px();
+APPROX get font__size__small => 14.px();
+APPROX get font__size__default => 16.px();
+APPROX get font__size__large => 18.px();
+APPROX get font__size__huge => 20.px();

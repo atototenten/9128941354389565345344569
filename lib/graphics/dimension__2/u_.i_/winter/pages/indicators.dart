@@ -1,7 +1,7 @@
 part of "../_.dart";
 
 gui__base__widget winter__indicate__progress__bar__widget({
-  required final NI parts__count,
+  required final INT parts__count,
   required final base__value__mutation__event__channel__broadcast<NIMR, gui__base__widget__building__context__definitive> progress__channel /*
 progress must be a multiple ,of `parts:count` */
   ,
@@ -68,7 +68,7 @@ if not available ,`border__color` is used */
 }
 
 gui__base__widget winter__waiting__widget({
-  final NFP? radius__size,
+  final APPROX? radius__size,
 }) {
   return Center(
     child: winter__waiting__widget__base(
@@ -78,7 +78,7 @@ gui__base__widget winter__waiting__widget({
 }
 
 gui__base__widget winter__waiting__widget__base({
-  final NFP? radius__size /*size__half*/ /*dynamic*/,
+  final APPROX? radius__size /*size__half*/ /*dynamic*/,
 }) {
   return CupertinoActivityIndicator(
     color: color__foreground__dim,
@@ -95,7 +95,7 @@ gui__base__widget winter__waiting__page() {
 }
 
 gui__base__widget winter__dis_connection__widget({
-  final NFP? size,
+  final APPROX? size,
 }) {
   return Center(
     child: base__icon(

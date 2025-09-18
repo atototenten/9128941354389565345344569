@@ -28,7 +28,7 @@ const //
     ffi__mem__free = free;
 
 ffi_.Pointer<T> ffi__mem__alloc<T extends ffi_.NativeType>(
-  final NI byteCount,
+  final INT byteCount,
 ) {
   final ptr = malloc(
     byteCount,
@@ -41,8 +41,8 @@ ffi_.Pointer<T> ffi__mem__alloc<T extends ffi_.NativeType>(
 }
 
 ffi_.Pointer<T> ffi__mem__aligned__alloc<T extends ffi_.NativeType>(
-  final NI alignment,
-  final NI size,
+  final INT alignment,
+  final INT size,
 ) {
   final //
       ptr = ffi__mem__alloc<ffi_.Pointer<T>>(
@@ -60,10 +60,10 @@ ffi_.Pointer<T> ffi__mem__aligned__alloc<T extends ffi_.NativeType>(
   return ptr.value;
 }
 
-NI ffi__text__count(
+INT ffi__text__count(
   final ffi_.Pointer<ffi_.Uint8> s,
 ) {
-  NI count = 0;
+  INT count = 0;
   while (s[count++] != 0);
   return (count - 1);
 }

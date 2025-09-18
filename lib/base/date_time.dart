@@ -30,12 +30,12 @@ the granular unit is nano-seconds until a day ,then itself */
   offset__years__unix = 1970,
       offset__years__ideal__current = 2020;
 
-  static const NI //
+  static const INT //
   year__reduced__size = NI1__size,
       seconds__reduced__size = NI4__size;
 
   factory date_time.current({
-    required final NI offset__years /*= offset__years__ideal__current*/,
+    required final INT offset__years /*= offset__years__ideal__current*/,
   }) {
     return date_time.DateTime__convert(
       DateTime.now() /* ".toUtc()" is point-less */,
@@ -45,7 +45,7 @@ the granular unit is nano-seconds until a day ,then itself */
 
   factory date_time.DateTime__convert(
     final DateTime value, {
-    required final NI offset__years /*= offset__years__ideal__current*/,
+    required final INT offset__years /*= offset__years__ideal__current*/,
   }) {
     final offset___DateTime = DateTime.utc(offset__years);
 
@@ -56,8 +56,8 @@ the granular unit is nano-seconds until a day ,then itself */
   }
 
   date_time.minutes__convert(
-    final NI minutes, {
-    final NI seconds__nano__remaining = 0,
+    final INT minutes, {
+    final INT seconds__nano__remaining = 0,
     required this.offset__years /*= offset__years__ideal__current*/,
   }) : seconds__nano___raw = (seconds__nano__remaining + (minutes * duration__minute__seconds__nano));
 
@@ -66,13 +66,13 @@ the granular unit is nano-seconds until a day ,then itself */
     required this.offset__years,
   });
 
-  final NI seconds__nano___raw /*
+  final INT seconds__nano___raw /*
 stored as a single combined value ,instead of separate {28(`64-36`)-bits `minutes` ,and 36-bits `seconds__nano`}
   to prevent the wastage of capacity
     584 years for combined ,while 510 years for separate */;
-  final NI offset__years;
+  final INT offset__years;
 
-  NI minutes() {
+  INT minutes() {
     return (seconds__nano___raw ~/ duration__minute__seconds__nano);
   }
 
@@ -249,7 +249,7 @@ class date_time__relative__duration__big //
     required this.duration,
   });
 
-  final NI value;
+  final INT value;
   final date_time__relative__durations duration;
 
   @override

@@ -42,7 +42,7 @@ abstract class gui__base__entity__page___protocol //
   );
 }
 
-abstract class gui__base__entity__component___protocol /*
+/*abstract class gui__base__entity__component___protocol /*
 instances must not ,be created in `widget::build`
   ,even if `.dispose` is set to be invoked ,through `gui__base__widget__build.detach`
     ,because attach/detach are not called ,if tree is re-fresh-ed ,without altering
@@ -62,7 +62,7 @@ not named `build`
     final gui__base__widget__building__context context, {
     required covariant final children__type children,
   });
-}
+}*/
 
 abstract class gui__base__entity___protocol /*
 `::dispose` should be called ,only once

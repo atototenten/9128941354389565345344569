@@ -12,7 +12,7 @@ value__asyn<void> base__net__reliable__server__socket__close__safe(
 value__asyn<void> base__net__reliable__server__simple({
   required final net.InternetAddress
       address /*io.InternetAddress.fromRawAddress(ip__v4,type:io.InternetAddressType.IPv4)*/,
-  required final NI port,
+  required final INT port,
   required final value__asyn<void> Function(
           net.Socket client__socket /* must not be close-ed ,nor dispose-ed */)
       request__handle,
@@ -82,7 +82,7 @@ value__asyn<void>
 request responses :`base__results__basic` */
     ({
   required final net.InternetAddress address,
-  required final NI port,
+  required final INT port,
   required final string directory__path,
 }) {
   final //

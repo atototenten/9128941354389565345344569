@@ -2,7 +2,7 @@ part of "_.dart";
 
 /*value__asyn<BS1__array> inet__communicate__http(
   final string host,
-  final NI port,
+  final INT port,
   final string path /* excluding the query */, {
   final string? query,
   final BS1__array? requestBytes,
@@ -72,7 +72,7 @@ part of "_.dart";
 
 value__asyn<BS1__array?> inet__communicate__http(
   final string host,
-  final NI port,
+  final INT port,
   final string path, {
   final string? query,
   final BS1__array? requestBytes,

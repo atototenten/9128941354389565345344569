@@ -26,8 +26,8 @@ const //
 
 BS1__array image__convert__bytes(
   final BS1__array image, {
-  required final NI width,
-  required final NI height,
+  required final INT width,
+  required final INT height,
   required final BOOL b__alpha,
 }) /*
   `__pixel__sub`
@@ -74,7 +74,7 @@ BS1__array image__convert__bytes(
         channel__array__count,
         0,
       ),
-      channel__rep__value__array = array__new__filled<NI?>(
+      channel__rep__value__array = array__new__filled<INT?>(
         channel__array__count,
         null,
       );
@@ -93,8 +93,8 @@ BS1__array image__convert__bytes(
       if (value__rep != null) {
         if (value__rep != image[id]) {
           channel__array[channel__id]
-            ..add__NI((1 + channel__rep__count__array[channel__id]))
-            ..add__NI(value__rep);
+            ..add__INT((1 + channel__rep__count__array[channel__id]))
+            ..add__INT(value__rep);
 
           if (channel__rep__count__array[channel__id] == 0) //
             channel__rep__not__count__array[channel__id] += 1;
@@ -117,8 +117,8 @@ BS1__array image__convert__bytes(
 
     if (channel__rep__value__array[channel__id] != null) {
       channel__array[channel__id]
-        ..add__NI((1 + channel__rep__count__array[channel__id]))
-        ..add__NI(channel__rep__value__array[channel__id]!);
+        ..add__INT((1 + channel__rep__count__array[channel__id]))
+        ..add__INT(channel__rep__value__array[channel__id]!);
 
       if (channel__rep__count__array[channel__id] == 0) //
         channel__rep__not__count__array[channel__id] += 1;
@@ -165,7 +165,7 @@ BS1__array image__convert__bytes(
       }
 
       sink
-        ..add__NI(bys.bytes__count)
+        ..add__INT(bys.bytes__count)
         ..add(bys);
     },
   );

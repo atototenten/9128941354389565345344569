@@ -20,7 +20,7 @@ typedef base__print__handle__proc_ = //
 );
 
 void base__printing__indentation__increase([
-  final NI value = 1,
+  final INT value = 1,
 ]) /*
 user should be careful, to call de-indent ,before `throw`s ,and early `return`s */
 {
@@ -32,7 +32,7 @@ user should be careful, to call de-indent ,before `throw`s ,and early `return`s 
 const base__printing__indent = base__printing__indentation__increase;
 
 void base__printing__indentation__decrease([
-  final NI value = 1,
+  final INT value = 1,
 ]) {
   if (base__printing___ok //
       &&
@@ -93,7 +93,7 @@ usually `value.debug__label`, or `value.code__hash.cached` */
 }
 
 void base__print__blank([
-  final NI count = 0,
+  final INT count = 0,
 ]) {
   base__print__handle(
     (char__line_feed * count),

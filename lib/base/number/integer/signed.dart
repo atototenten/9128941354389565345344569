@@ -1,6 +1,6 @@
 part of "../../_.dart";
 
-typedef NIS = int;
+typedef INT__NEG = int;
 
 const //
     NIS8__size = NI8__size,
@@ -15,8 +15,8 @@ enum base__NIS__text__digits__fixed__truncation {
 }
 
 typedef NIS__bytes__convert__result___compo = ({
-  NIS value,
-  NI count,
+  INT__NEG value,
+  INT count,
 });
 
 class base__NIS__text__digits__fixed {
@@ -27,16 +27,16 @@ class base__NIS__text__digits__fixed {
     required this.truncation,
   });
 
-  final NI digits__count;
+  final INT digits__count;
 
   final base__NIS__text__digits__fixed__truncation? truncation;
 
-  NI value___raw;
+  INT value___raw;
 
   BOOL negative___ok;
 
   void value__set(
-    NIS value__new,
+    INT__NEG value__new,
   ) {
     if (negative___ok != value__new.isNegative) {
       negative___ok = value__new.isNegative;

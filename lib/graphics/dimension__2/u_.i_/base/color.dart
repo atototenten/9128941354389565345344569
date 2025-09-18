@@ -7,7 +7,7 @@ const //
     base__color__white = Color(0xFFFFFFFF),
     base__color__black = Color(0xFF000000);
 
-const NFP //
+const APPROX //
     image__filter__blur__sensitive__extra /* as foreground of a random picture */ = 64,
     image__filter__blur__sensitive /* sensitive to the background, expected as foreground of a picture */ = 32,
     image__filter__blur__crucial /* for top-navigation, and status-bar's background */ = 16,
@@ -16,7 +16,7 @@ const NFP //
     image__filter__blur__min_ /* for sexy-est look */ = 1;
 
 ui.ImageFilter base__image__filter__blur(
-  final NFP value,
+  final APPROX value,
 ) =>
     ui.ImageFilter.blur(
       sigmaX: value,
@@ -24,19 +24,19 @@ ui.ImageFilter base__image__filter__blur(
     );
 
 Color color__generate({
-  required final NI intensity /*
+  required final INT intensity /*
   throw (lines relative to the offset, of function's body):
     1 */
   ,
   required final BOOL b__dark_mode /* 3..255 vs 255..3, both inclusive, for `OK`(dark), and `NO`(light) respectively */,
   required final BOOL b__solid /* or `b__semi_transparent`(with alpha) */,
-  required final NI interval,
+  required final INT interval,
 }) {
   if ((intensity < (256 ~/ interval)).not) {
     throw "`intensity` MUST be in-range 0...${((256 ~/ interval) - 1)}, inclusive, when `interval` is $interval";
   }
 
-  final ({NI primary, NI secondary}) value = (b__dark_mode
+  final ({INT primary, INT secondary}) value = (b__dark_mode
       ? (
           primary: (((intensity + 1) * interval) - 1),
           secondary: 0,
@@ -52,12 +52,12 @@ Color color__generate({
 }
 
 Color color__value__convert__Color(
-  final NI color__value,
+  final INT color__value,
 ) {
   return Color(0xFF000000 | color__value);
 }
 
-NI Color__convert__color__value(
+INT Color__convert__color__value(
   final Color color,
 ) {
   return (color.value & 0xFFFFFF);
@@ -65,9 +65,9 @@ NI Color__convert__color__value(
 
 Color color__whiten(
   final Color color,
-  final NI intensity,
+  final INT intensity,
 ) {
-  final NI //
+  final INT //
       red = (color.red + intensity),
       green = (color.green + intensity),
       blue = (color.blue + intensity);
@@ -81,13 +81,13 @@ Color color__whiten(
 }
 
 extension Color$whiten on Color {
-  Color whiten(final NI intensity) => //
+  Color whiten(final INT intensity) => //
       color__whiten(this, intensity);
 }
 
 late final _random = math.Random.secure();
 
-NI get _color__random => //
+INT get _color__random => //
     _random.nextInt(NI1__limit);
 
 /** copied from `https://stackoverflow.com/a/43235` */
@@ -109,7 +109,7 @@ forked
 Color color__contrasted(
   final Color color,
 ) {
-  final NFP relativeLuminance = color.computeLuminance();
+  final APPROX relativeLuminance = color.computeLuminance();
 
   return (((relativeLuminance + 0.05) * (relativeLuminance + 0.05) > 0.0525 /* kThreshold */) //
       ? base__color__white
@@ -122,7 +122,7 @@ Color color__contrasted(
   /// This compares the luminosity of the given color to a threshold value that
   /// matches the Material Design specification.
   static Brightness estimateBrightnessForColor(Color color) {
-    final NFP relativeLuminance = color.computeLuminance();
+    final APPROX relativeLuminance = color.computeLuminance();
 
     // See <https://www.w3.org/TR/WCAG20/#contrast-ratiodef>
     // The spec says to use kThreshold=0.0525, but Material Design appears to bias
@@ -130,7 +130,7 @@ Color color__contrasted(
     // doesn't say what value to use, but 0.15 seemed close to what the Material
     // Design spec shows for its color palette on
     // <https://material.io/go/design-theming#color-color-palette>.
-    const NFP kThreshold = 0.15;
+    const APPROX kThreshold = 0.15;
     if ((relativeLuminance + 0.05) * (relativeLuminance + 0.05) > kThreshold) {
       return Brightness.light;
     }

@@ -55,11 +55,11 @@ class base__byte__array__accumulation /*
 
   var bytes__count___raw = 0;
 
-  NI bytes__count() {
+  INT bytes__count() {
     return bytes__count___raw;
   }
 
-  NI byte__next__offset() {
+  INT byte__next__offset() {
     return bytes__count___raw;
   }
 
@@ -93,8 +93,8 @@ class base__byte__array__accumulation /*
   }
 
   void add__NI__fixed(
-    final NI value,
-    final NI value__size,
+    final INT value,
+    final INT value__size,
   ) {
     accumulation___raw.add__ending(
       value.convert__byte__array__endian__little(
@@ -105,16 +105,16 @@ class base__byte__array__accumulation /*
     bytes__count___raw += value__size;
   }
 
-  void add__NI(
-    final NI value,
+  void add__INT(
+    final INT value,
   ) =>
       add(
         value.convert__bytes(),
       );
 
   void add__NI__fixed__nilable(
-    final NI? value,
-    final NI value__size,
+    final INT? value,
+    final INT value__size,
   ) =>
       ((value != null) //
           ? add__NI__fixed(
@@ -124,27 +124,27 @@ class base__byte__array__accumulation /*
           : add__byte(0));
 
   void add__NI__nilable(
-    final NI? value,
+    final INT? value,
   ) =>
       ((value != null) //
-          ? add__NI(
+          ? add__INT(
               (value + 1),
             )
           : add__byte(0));
 
   void add__NIS__fixed(
-    final NIS value,
-    final NI value__size,
+    final INT__NEG value,
+    final INT value__size,
   ) =>
       add__NI__fixed(
         value,
         value__size,
       );
 
-  void add__NIS(
-    final NIS value,
+  void add__INT__NEG(
+    final INT__NEG value,
   ) =>
-      add__NI(
+      add__INT(
         value,
       );
 
@@ -163,7 +163,7 @@ class base__byte__array__accumulation /*
   }
 
   /* string convert__str([final BOOL b_verbose = NO]) {
-    NI //
+    INT //
         counter = 0,
         byteOffset = 0;
 
@@ -171,7 +171,7 @@ class base__byte__array__accumulation /*
 
     ls.iterate__basic(
       (final byte__array bytes) {
-        final NI byteCount = bytes.length;
+        final INT byteCount = bytes.length;
 
         buffer
           ..write("id: ")

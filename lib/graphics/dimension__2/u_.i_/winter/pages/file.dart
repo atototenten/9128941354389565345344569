@@ -7,18 +7,18 @@ gui__base__widget pages__file__page(
   required final base__scrolling scroll__manager,
   required final string title,
   required final BS1__array Function(
-    NI count,
-    NI position,
+    INT count,
+    INT position,
   ) fetch,
-  required final NI count,
-  final NI offset = 0,
+  required final INT count,
+  final INT offset = 0,
 }) /*
   file is a collection of bytes, so the page is actually general purpose
   TASK: currently, limited, to `io__buffer__size__default` */
 {
   final BS1__array file__bytes;
 
-  final NI //
+  final INT //
       segments__count,
       bytes__un_aligned__count;
 
@@ -36,7 +36,7 @@ gui__base__widget pages__file__page(
         : 0);
   }
 
-  BOOL b__aligned(final NI segment__counter) => //
+  BOOL b__aligned(final INT segment__counter) => //
       ((bytes__un_aligned__count == 0) || (segment__counter < segments__count));
 
   return page__foundation(

@@ -26,7 +26,7 @@ value__asyn<void> base__net__reliable__client__socket__close__safe(
 
 value__asyn<BS1__array> base__net__reliable__client__simple__communicate({
   required final net.InternetAddress address,
-  required final NI port,
+  required final INT port,
   required final BS1__array request,
 }) async {
   final socket = await net.Socket.connect(

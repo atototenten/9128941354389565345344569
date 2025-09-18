@@ -225,7 +225,7 @@ class base__program__info__page__entity //
           primary__text: "Runtime Info.",
         ),
         item__array__count: items.length,
-        item__build: (final _, final NI i) => //
+        item__build: (final _, final INT i) => //
             items[i],
       ),
     );

@@ -190,7 +190,7 @@ class hexagon__paint_er extends CustomPainter {
       color__center__right,
       border;
 
-  final NFP border__width;
+  final APPROX border__width;
 
   @override
   void paint(Canvas canvas, Size size) {

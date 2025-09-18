@@ -16,7 +16,7 @@ part of "_.dart";
     ];
 
 string rich_text__www__address__resolve(
-  final NI protocol__id,
+  final INT protocol__id,
   final BS1__array address__bytes__buffer,
 ) {
   final address = (StringBuffer(rich_text__link___protocol__list[protocol__id])
@@ -30,8 +30,8 @@ string rich_text__www__address__resolve(
 gui__base__widget rich_text__image({
   required final ScrollController controller,
   required final value__asyn<BS1__array> image__future,
-  required final NFP width,
-  required final NFP height,
+  required final APPROX width,
+  required final APPROX height,
 }) {
   procedure__empty__format? build__re;
 
@@ -177,7 +177,7 @@ TextStyle base__text__rich__style__code() => //
 array<gui__base__widget> str__wide__rich__bytes__convert({
   required final BS1__array str__wide__rich__bytes,
   required final void Function(text address) text__link__open,
-  required final value__asyn<BS1__array> Function(NI file__id) file__fetch,
+  required final value__asyn<BS1__array> Function(INT file__id) file__fetch,
 }) {
   report__BS1__array(
     str__wide__rich__bytes,
@@ -209,7 +209,7 @@ array<gui__base__widget> str__wide__rich__bytes__convert({
 
   string section__text__read() {
     final //
-        count = section__control__bytes.read__NI().value,
+        count = section__control__bytes.read__INT().value,
         result = wstr__convert__text(
           section__text.view__partial(
             section__text__offset,

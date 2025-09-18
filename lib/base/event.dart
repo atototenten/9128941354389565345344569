@@ -172,7 +172,7 @@ class base__event__channel__broadcast //
     return result;
   }
 
-  NI descriptions__count___raw() {
+  INT descriptions__count___raw() {
     return descriptions___raw.elements__count();
   }
 
@@ -316,8 +316,8 @@ class base__event__channels__owned__broadcast //
 class base__event__channel__broadcast__periodic //
     extends base__event__channel__broadcast {
   factory base__event__channel__broadcast__periodic({
-    required final NI time__unit__count,
-    final NI time__interval /* in milli-seconds */ = Duration.millisecondsPerSecond,
+    required final INT time__unit__count,
+    final INT time__interval /* in milli-seconds */ = Duration.millisecondsPerSecond,
     required final procedure__empty__format time__completion__handle /*
 invoked after the saturation of `time__unit__count`
   ,like on 4th ,for 3 as `time__unit__count` */,
@@ -352,9 +352,9 @@ invoked after the saturation of `time__unit__count`
 
   final delaying__asyn delay___raw;
 
-  NI time__unit__count__current___raw;
+  INT time__unit__count__current___raw;
 
-  NI time__unit__count__current() {
+  INT time__unit__count__current() {
     return time__unit__count__current___raw;
   }
 

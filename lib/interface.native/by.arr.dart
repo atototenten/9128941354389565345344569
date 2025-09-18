@@ -10,15 +10,15 @@ class byte__array___compo {
   );
 
   final ffi_.Pointer<ffi_.Uint8> ptr;
-  final NI count;
+  final INT count;
 
   BS1__array get arr => //
       ptr.asTypedList(count);
 
-  /* NI? check__equal(
+  /* INT? check__equal(
     final byte__array___compo other,
   ) {
-    NI? result /* un-equal id */;
+    INT? result /* un-equal id */;
 
     final bys = array;
     other.arr.iterate((final id, final b) {
@@ -39,15 +39,15 @@ class byte__array___compo {
       (other.ptr.address == ptr.value);
 }
 
-byte__array___compo BS1__array__alloc(final NI count) => //
+byte__array___compo BS1__array__alloc(final INT count) => //
     byte__array___compo(
       ffi__mem__alloc<ffi_.Uint8>(count),
       count,
     );
 
 byte__array___compo BS1__array__aligned__alloc(
-  final NI alignment__size,
-  NI count /*
+  final INT alignment__size,
+  INT count /*
   of `alignment__size`s, or aligned-blocks of memory; not bytes */
   ,
 ) =>
@@ -74,12 +74,12 @@ byte__array___compo BS1__array__bytes__convert(
     byte__array___compo(
       ffi_.Pointer<ffi_.Uint8>.fromAddress(
         bytes.convert__NI__endian__little(
-           NI 8__size,
+           INT 8__size,
         ),
       ),
-       NI __bytes__convert(
+       INT __bytes__convert(
         bytes.view(
-           NI 8__size,
+           INT 8__size,
         ),
       ).value,
     );

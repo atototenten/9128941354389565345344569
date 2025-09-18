@@ -115,7 +115,7 @@ class base__net__reliable__web__client__communication__body__form //
     this.value,
   );
 
-  final dictionary<string, /*BOOL|NFP|string*/ Object> value;
+  final dictionary<string, /*BOOL|APPROX|string*/ Object> value;
 }
 
 extension base__net__reliable__web__client__communication__body___union__extension //

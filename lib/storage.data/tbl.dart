@@ -4,8 +4,8 @@ void base__storage__data__tbl__create(
   final base__storage__data__meta___compo ds__meta, {
   required final BS1__array column__bytes,
   required final number__size rows__count__size__id,
-  required final NI rows__count__max,
-  required final NI row__size,
+  required final INT rows__count__max,
+  required final INT row__size,
 }) {
   if (base__printing___ok) {
     base__function__call__print(
@@ -45,10 +45,10 @@ class base__storage__data__tbl__meta___compo //
     required super.row__size,
     required this.rows__count__max,
     required this.table__bytes__base__storage__data__offset,
-    required final NI tbl__meta__bytes__base__storage__data__offset,
+    required final INT tbl__meta__bytes__base__storage__data__offset,
   }) : rows__count__bytes__base__storage__data__offset = (base__storage__data__position__size__id.size + tbl__meta__bytes__base__storage__data__offset);
 
-  final NI //
+  final INT //
       rows__count__max,
       table__bytes__base__storage__data__offset,
       rows__count__bytes__base__storage__data__offset;
@@ -63,7 +63,7 @@ class base__storage__data__tbl__meta___compo //
   }
 }
 
-NI /*row__id_*/ base__storage__data__tbl__row__add(
+INT /*row__id_*/ base__storage__data__tbl__row__add(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tbl__meta___compo tbl__meta,
   final BS1__array bytes /* any `bytes`__count, more than `row__size`, are ignored */,
@@ -109,7 +109,7 @@ NI /*row__id_*/ base__storage__data__tbl__row__add(
 void base__storage__data__tbl__rows__count__update(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tbl__meta___compo tbl__meta, {
-  required final NI rows__count__base__storage__data__offset,
+  required final INT rows__count__base__storage__data__offset,
 }) =>
     base__storage__data__table__rows__count__update(
       ds__meta,
@@ -120,11 +120,11 @@ void base__storage__data__tbl__rows__count__update(
 base__storage__data__table__row___compo base__storage__data__tbl__row(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tbl__meta___compo tbl__meta, {
-  required final NI row__id,
+  required final INT row__id,
   required final BS1__array? bytes /* write(or mod) | read */,
-  NI? count /* un-check for correct-ness; use with care */,
-  final NI rows__count /* ignored if `count` is non-null */ = 1,
-  final NI row__offset = 0,
+  INT? count /* un-check for correct-ness; use with care */,
+  final INT rows__count /* ignored if `count` is non-null */ = 1,
+  final INT row__offset = 0,
 }) {
   if (base__printing___ok) {
     base__function__call__print(
@@ -190,7 +190,7 @@ base__storage__data__table__row___compo base__storage__data__tbl__row(
 base__storage__data__table__row__column___compo base__storage__data__tbl__row__column(
   final base__storage__data__meta___compo ds__meta,
   final base__storage__data__tbl__meta___compo tbl__meta, {
-  required final NI row__id,
+  required final INT row__id,
   required final BS1__array? bytes,
   required final base__storage__data__table__column___compo table__column,
 }) /* macro */ =>

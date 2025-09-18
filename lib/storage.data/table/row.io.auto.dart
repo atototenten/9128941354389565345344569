@@ -39,7 +39,7 @@ void base__storage__data__table__row__bytes__mod__auto({
   required final base__storage__data__table__columns___compo table__columns,
   required final array<
           ({
-            NI meta__id,
+            INT meta__id,
             Object? data,
           })>
       column__array,
@@ -75,9 +75,9 @@ void base__storage__data__table__row__bytes__mod__auto({
 array<Object?> base__storage__data__table__row__data__array__auto({
   required final base__storage__data__meta___compo ds__meta,
   required final base__storage__data__table__columns___compo table__columns,
-  required final array<NI> column__meta__id__array,
+  required final array<INT> column__meta__id__array,
   required final BS1__array row__bytes,
-  required final NI row__bytes__base__storage__data__offset,
+  required final INT row__bytes__base__storage__data__offset,
 }) /* macro */ {
   if (base__printing___ok) {
     base__function__call__print("base__storage__data__table__row__data__array__auto");
@@ -93,7 +93,7 @@ array<Object?> base__storage__data__table__row__data__array__auto({
       final table__column = table__columns[column__meta__id__array[column__id]];
 
       /*if (base__printing___ok) {
-        report__NI(
+        report__INT(
           table__column.meta.offset,
           "table.column.meta.offset",
         );

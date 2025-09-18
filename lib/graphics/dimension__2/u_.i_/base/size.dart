@@ -60,7 +60,7 @@ mis-alignment between the virtual and physical ,can lead to blurring of edges
     = 1.0;
 
 extension num__convert__pixel__size__scale__extension on num {
-  NFP px() {
+  APPROX px() {
     return (this * _size__pixel);
   }
 }
@@ -89,7 +89,7 @@ more categories are un-necessary
   huge /* desktop/workstation monitor ,television */,
 }
 
-NFP base__wall__width() {
+APPROX base__wall__width() {
   return switch (base__screen__size__category) {
     (base__screen__size__categories.medium || base__screen__size__categories.small) => _screen__size.width,
     base__screen__size__categories.large => base__screen__ample__width__limit.toDouble(),

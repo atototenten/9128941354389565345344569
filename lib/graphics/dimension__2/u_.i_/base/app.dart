@@ -10,7 +10,7 @@ BOOL base__environment__theme__colors__ground__back__contrast__dark___ok() {
 }
 
 final base__app__life_cycle__state__channel = //
-    base__value__mutation__event__channel__broadcast(
+base__value__mutation__event__channel__broadcast(
   AppLifecycleState.detached,
 );
 
@@ -36,12 +36,12 @@ void _FlutterError__onError(
 }
 
 void base__app__run //
-    <entity__type extends gui__base__entity__page___protocol>({
+<entity__type extends gui__base__entity__page___protocol>({
   required final entity__type Function(
     value__asyn<void> init_ion__asyn /*
-indicates the fully init.ion ,of the meta-framework ,and the flutter-framework */
-    ,
-  ) init,
+indicates the fully init.ion ,of the meta-framework ,and the flutter-framework */,
+  )
+  init,
   //required final gui__base__widget__major__build__function__format< entity__type> page__first__build,
 })
 /*
@@ -318,13 +318,11 @@ config. :
 
 tasks:long:
   - add app-splash, as black seems bad */ //
-    <entity__type extends gui__base__entity__page___protocol>({
+<entity__type extends gui__base__entity__page___protocol>({
   required final array<string> app__title__segments /*
-example :`["Demo", char__space, "app"]` */
-  ,
+example :`["Demo", char__space, "app"]` */,
   required final service__authority__base service__authority,
-  required final value__asyn<entity__type> Function()
-      entity /*
+  required final value__asyn<entity__type> Function() entity /*
 `debug`* global properties ,like `debugPaintSizeEnabled` ,`debugPaintPointersEnabled` ,`debugRepaintRainbowEnabled` ,`debugRepaintTextRainbowEnabled` ,`debugPaintLayerBordersEnabled` ,`debugDisableClipLayers` ,`debugPrintRebuildDirtyWidgets` ,`debugPrintMouseHoverEvents` ,`debugPrintHitTestResults` ,`debugPrintKeyboardEvents` ,can be set inside
 `theme__colors__set` proc. should be called in the proc.
 wrap every page/overlay ,to handle `base__app__theme__change__channel`
@@ -333,15 +331,13 @@ wrap every page/overlay ,to handle `base__app__theme__change__channel`
   ,because handling above(in tree-node's position or hierarchy) `MaterialApp` ,would re-set the whole app (including navigation[-stack] ,and current page/overlay)
     ,while handling below(as its child) ,would be overridden with page/overlay navigation
 `storage` is available at this point
-to return non-future value ,prefer using `value__asyn.value` */
-  ,
+to return non-future value ,prefer using `value__asyn.value` */,
   required final gui__base__widget__build__function__format splash__build /*
-must not depend on the meta-framework */
-  ,
+must not depend on the meta-framework */,
 }) {
-  service__authority.handle() /*
-un-"await"-ed to allow the app to normally function ,for non-denial cases */
-      ;
+  service__authority
+      .handle() /*
+un-"await"-ed to allow the app to normally function ,for non-denial cases */;
 
   base__app__title__segments = app__title__segments;
 
@@ -359,9 +355,8 @@ un-"await"-ed to allow the app to normally function ,for non-denial cases */
 }
 
 class gui__base__app__running__simple //
-    <entity__type extends gui__base__entity__page___protocol> //
-    implements
-        gui__base__entity__page___protocol {
+<entity__type extends gui__base__entity__page___protocol> //
+    implements gui__base__entity__page___protocol {
   gui__base__app__running__simple({
     required final value__asyn<void> init_ion__status__asyn,
     required final value__asyn<entity__type> Function() entity,
@@ -414,38 +409,36 @@ class gui__base__app__running__simple //
   ) {
     return init_ion__asyn___raw.handling__widget__build(
       context,
-      children: gui__base__value__asyn__handling__children___record(
-        child__state__waiting__build: splash__build,
-        child__state__completion__failure__build: gui__base__widget__error__default__build,
-        child__state__completion__success__build: (final context, final entity_1) {
-          return MaterialApp(
-            showPerformanceOverlay: NO,
-            /*checkerboardRasterCacheImages: OK,
+      child__state__waiting__build: splash__build,
+      child__state__completion__failure__build: gui__base__widget__error__default__build,
+      child__state__completion__success__build: (final context, final entity_1) {
+        return MaterialApp(
+          showPerformanceOverlay: NO,
+          /*checkerboardRasterCacheImages: OK,
             checkerboardOffscreenLayers: OK,*/
-            home: gui__base__widget__build(
-              child__build: (final context) {
-                return entity_1.widget__build(
-                  context,
-                );
-              },
-            ),
-            title: base__app__title(),
-            color: const Color.fromARGB(NI1__max, 191, 191, 191),
-            locale: base__app__locale,
-            localizationsDelegates: base__app__localizations__delegates,
-            supportedLocales: const <Locale>[base__app__locale],
-            scrollBehavior: base__app__scroll__behavior,
-            themeAnimationStyle: AnimationStyle.noAnimation,
-          );
-        },
-      ),
+          home: gui__base__widget__build(
+            child__build: (final context) {
+              return entity_1.widget__build(
+                context,
+              );
+            },
+          ),
+          title: base__app__title(),
+          color: const Color.fromARGB(NI1__max, 191, 191, 191),
+          locale: base__app__locale,
+          localizationsDelegates: base__app__localizations__delegates,
+          supportedLocales: const <Locale>[base__app__locale],
+          scrollBehavior: base__app__scroll__behavior,
+          themeAnimationStyle: AnimationStyle.noAnimation,
+        );
+      },
     );
   }
 }
 
 late BOOL base__app__theme__colors__ground__back__follow__system___ok; /*
 disabl-ing `app:size:follow:system` would be non-sense ,because the whole sub-system depends on it ,for dynamic siz-ing 
-  ,static siz-ing is the default ,hence can be imitated ,simply ,by avoid-ing `NFP.px` */
+  ,static siz-ing is the default ,hence can be imitated ,simply ,by avoid-ing `APPROX.px` */
 
 class base__app__gui__base__widget extends StatefulWidget {
   const base__app__gui__base__widget({
@@ -461,9 +454,9 @@ class base__app__gui__base__widget extends StatefulWidget {
 }
 
 class _app__gui__base__widget__state //
-    extends State<base__app__gui__base__widget> //
-    with
-        WidgetsBindingObserver {
+    extends
+        State<base__app__gui__base__widget> //
+    with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
@@ -559,24 +552,40 @@ class _app__gui__base__widget__state //
 }
 
 extension FlutterErrorDetails__extension on FlutterErrorDetails {
-  ({
-    string error__text,
-    StackTrace? trace,
-  }) convert__text() {
+  ({string error__text, StackTrace? trace}) convert__text() {
     final //
-        buffer = (StringBuffer()
-          ..write("library" ":\"")
-          ..write(library)
-          ..write("\"," "context" ":\"")
-          ..write(context)
-          ..write("\"," "exception" ":\"")
-          ..write(exception)
-          ..write("\"," "silent" ":\"")
-          ..write(silent));
+    buffer = (StringBuffer()
+      ..write(
+        "library"
+        ":\"",
+      )
+      ..write(library)
+      ..write(
+        "\","
+        "context"
+        ":\"",
+      )
+      ..write(context)
+      ..write(
+        "\","
+        "exception"
+        ":\"",
+      )
+      ..write(exception)
+      ..write(
+        "\","
+        "silent"
+        ":\"",
+      )
+      ..write(silent));
 
     if (base__program__compilation__debug___ok) {
       buffer
-        ..write("\"," "informationCollector" ":\"")
+        ..write(
+          "\","
+          "informationCollector"
+          ":\"",
+        )
         ..write(informationCollector);
     }
 

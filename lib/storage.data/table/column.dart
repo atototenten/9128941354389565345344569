@@ -20,7 +20,7 @@ typedef base__storage__data__table__column___compo = ({
 typedef base__storage__data__table__columns___compo = //
     array<base__storage__data__table__column__compo>;
 
-NI base__storage__data__table__column__size(
+INT base__storage__data__table__column__size(
   final base__storage__data__table__column___compo table__column,
 ) {
   final type = table__column.type;
@@ -41,7 +41,7 @@ NI base__storage__data__table__column__size(
               : throw "${table__column.meta.runtimeType}(column__meta.type) is un-known")));
 }
 
-NI base__storage__data__table__column__row__bytes__offset(
+INT base__storage__data__table__column__row__bytes__offset(
   final base__storage__data__table__column___compo table__column__previous,
 ) =>
     (base__storage__data__table__column__size(
@@ -74,7 +74,7 @@ abstract class base__storage__data__table__column__meta___protocol {
   final BOOL //
       b__nilable;
 
-  final NI /*row__bytes__*/ offset /*
+  final INT /*row__bytes__*/ offset /*
   is calculat-able, whenever required
     but based on the usage count, caching would be more efficient */
       ;
@@ -200,7 +200,7 @@ base__storage__data__table__column___compo //
     base__storage__data__table__column__type__irb(
   final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
-  required final NI size,
+  required final INT size,
 }) {
   return (
     type: base__storage__data__table__column__type___enum.irb,
@@ -223,7 +223,7 @@ class base__storage__data__table__column__type__irb__meta___compo /*
     this.size,
   );
 
-  final NI //
+  final INT //
       size;
 }
 
@@ -358,7 +358,7 @@ abstract class base__storage__data__table__column__type__array__meta___protocol 
           columns__last,
         );
 
-  final NI row__size;
+  final INT row__size;
 
   final base__storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary;
 
@@ -438,7 +438,7 @@ base__storage__data__table__column___compo //
   final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size rows__count__size__id,
-  required final NI rows__count__max,
+  required final INT rows__count__max,
   required final base__storage__data__table__column___compo columns__last,
   final base__storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary,
   required final base__storage__data__table__row__convert__text__function__format row__convert__text,
@@ -474,7 +474,7 @@ class base__storage__data__table__column__type__tbl__meta___compo /*
     super.row__convert__text,
   );
 
-  final NI //
+  final INT //
       rows__count__max;
 }
 
@@ -483,7 +483,7 @@ base__storage__data__table__column___compo //
   final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size rows__count__size__id,
-  final NI rows__count__multiplier__initial = 0,
+  final INT rows__count__multiplier__initial = 0,
   required final base__storage__data__table__column___compo columns__last,
   final base__storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary,
   required final base__storage__data__table__row__convert__text__function__format row__convert__text,
@@ -519,6 +519,6 @@ class base__storage__data__table__column__type__tar__meta___compo /*
     super.row__convert__text,
   );
 
-  final NI //
+  final INT //
       rows__count__multiplier__initial;
 }

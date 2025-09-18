@@ -1,6 +1,6 @@
 part of "../../_.dart";
 
-typedef NI /* general/generic */ = int;
+typedef INT /* general/generic */ = int;
 
 const //
     NI1__size = BS1__size,
@@ -68,25 +68,25 @@ final //
     NI8__limit = (BigInt.from(1) << NI8__width),
     NI8__max = (NI8__limit - BigInt.from(1));
 
-NI NI__base__16__digits__count__convert__size(
-  final NI digits__count,
+INT NI__base__16__digits__count__convert__size(
+  final INT digits__count,
 ) =>
     NI__base__binary__multiple__digits__count__convert__size(
       digits__count,
        NI__base__16__digits__count,
     );
 
-NI NI__base__2__digits__count__convert__size(
-  final NI digits__count /*bits__count*/,
+INT NI__base__2__digits__count__convert__size(
+  final INT digits__count /*bits__count*/,
 ) =>
     NI__base__binary__multiple__digits__count__convert__size(
       digits__count,
        NI__base__2__digits__count,
     );
 
-NI NI__base__binary__multiple__digits__count__convert__size(
-  final NI digits__count,
-  final NI base__binary__multiple__digits__count,
+INT NI__base__binary__multiple__digits__count__convert__size(
+  final INT digits__count,
+  final INT base__binary__multiple__digits__count,
 ) /*{
   return (digits__count.toDouble() / base__binary__multiple__digits__count).ceil();
 }*/
@@ -98,27 +98,27 @@ NI NI__base__binary__multiple__digits__count__convert__size(
   return (1 + ((digits__count - 1) ~/ base__binary__multiple__digits__count));
 }
 
-NI NI__max(
-  final NI size,
+INT NI__max(
+  final INT size,
 ) {
   final shift__count = ((NIM__size - size) * BS1__width);
 
   return (((~0 << shift__count) >>> shift__count));
 }
 
-NI NI__max__basic({
-  required final NI width,
+INT NI__max__basic({
+  required final INT width,
 }) {
   return ((1 << width) - 1);
 }
 
-BOOL base__NI__aligned___ok(final NI value, final NI size) => //
+BOOL base__NI__aligned___ok(final INT value, final INT size) => //
     ((value & (size - 1)) == 0);
 
-NI NI__aligned__alignment__count(final NI value, final NI shift__count) => //
+INT NI__aligned__alignment__count(final INT value, final INT shift__count) => //
     (value >> shift__count);
 
-NI NI__aligned__basic(final NI value, final NI shift__count) => //
+INT NI__aligned__basic(final INT value, final INT shift__count) => //
     (NI__aligned__alignment__count(
           value,
           shift__count,
@@ -130,13 +130,13 @@ NI NI__aligned__basic(final NI value, final NI shift__count) => //
     ;
 
 ({
-  NI value__aligned,
-  NI remainder__un_aligned /* `` */,
+  INT value__aligned,
+  INT remainder__un_aligned /* `` */,
 /* `uu get value => (remainder__un_aligned + value__aligned);` */
 }) NI__aligned(
-  final NI value,
-  final NI alignment__size,
-  final NI alignment__shift__count,
+  final INT value,
+  final INT alignment__size,
+  final INT alignment__shift__count,
 ) {
   /*if (value < block__size__shift.size) {
     return (
@@ -168,8 +168,8 @@ NI NI__aligned__basic(final NI value, final NI shift__count) => //
 }
 
 typedef NI__bytes__convert__result___compo = ({
-  NI value,
-  NI count /* not `value__size`, but actually `bytes__count` */
+  INT value,
+  INT count /* not `value__size`, but actually `bytes__count` */
 });
 
 NI__bytes__convert__result___compo NI__bytes__convert(
@@ -228,7 +228,7 @@ while (OK) {
 }
 ``` */
 
-extension NI__extension on NI {
+extension NI__extension on INT {
   BOOL even___ok /*
 copied from `~/bin/dart-sdk/lib/_internal/wasm/lib/int.dart`::`_BoxedInt`::`isEven` */
       () {
@@ -244,7 +244,7 @@ copied from `~/bin/dart-sdk/lib/_internal/wasm/lib/int.dart`::`_BoxedInt`::`isEv
   }
 
   byte__array convert__byte__array__endian__little(
-    final NI size,
+    final INT size,
   ) /*
 `size` must equal `value.size`
   else illegal-access error
@@ -265,7 +265,7 @@ copied from `~/bin/dart-sdk/lib/_internal/wasm/lib/int.dart`::`_BoxedInt`::`isEv
   }
 
   byte__array convert__byte__array__endian__big(
-    final NI size,
+    final INT size,
   ) {
     var value = this;
 
@@ -315,7 +315,7 @@ do {
       () {
     var value = this;
 
-    final NI size;
+    final INT size;
     {
       var i = 0;
       while ((value < (1 << ((i += 1) * TC__width))).not);
@@ -341,14 +341,14 @@ do {
 }
 
 class number__integer__nilable {
-  static NI value__convert__nilable___raw(
-    final NI value,
+  static INT value__convert__nilable___raw(
+    final INT value,
   ) {
     return (1 + value);
   }
 
-  static NI value__nilable__convert___raw(
-    final NI value,
+  static INT value__nilable__convert___raw(
+    final INT value,
   ) {
     return (value - 1);
   }
@@ -357,18 +357,18 @@ class number__integer__nilable {
       : value___raw = 0;
 
   number__integer__nilable(
-    final NI value,
+    final INT value,
   ) : value___raw = value__convert__nilable___raw(
           value,
         );
 
-  NI value___raw;
+  INT value___raw;
 
   BOOL nil___ok() {
     return (value___raw == 0);
   }
 
-  NI value() {
+  INT value() {
     if (nil___ok()) {
       throw "`(value = NIL)`";
     }
@@ -383,7 +383,7 @@ class number__integer__nilable {
   }
 
   void assign(
-    final NI value,
+    final INT value,
   ) {
     value___raw = value__convert__nilable___raw(
       value,

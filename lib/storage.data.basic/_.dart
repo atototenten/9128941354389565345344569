@@ -122,7 +122,7 @@ requires `sqlite3_flutter_libs` pkg. */ {
   final sqlite_async.SqliteDatabase value___raw;
   final base__event__channel__broadcast accesses__empty__channel___raw;
   final base__exclusion__mutual access__mutating__exclusion___raw;
-  NI accesses__count___raw /*
+  INT accesses__count___raw /*
 excluding mutating-access
   available through `access__mutating__exclusion___raw.locked__ok` proc. */;
 
@@ -308,9 +308,9 @@ abstract class base__storage__data__basic__accessing__meta__base //
 
   value__asyn<
     ({
-      NI occupied /*
+      INT occupied /*
 including `.wasted` */,
-      NI wasted,
+      INT wasted,
     })
   >
   space__usage__summary() async {
@@ -320,8 +320,8 @@ source : `web://powersync.com/blog/sqlite-optimizations-for-ultra-high-performan
     );
 
     return (
-      occupied: (result.first as NI),
-      wasted: (result[1] as NI),
+      occupied: (result.first as INT),
+      wasted: (result[1] as INT),
     );
   }
 
@@ -347,7 +347,7 @@ after re-building
 TASK
   support */
 
-  value__asyn<NI> table__rows__count__asyn___raw({
+  value__asyn<INT> table__rows__count__asyn___raw({
     required final string table__name,
     final string suffix = empty__string,
   }) async {
@@ -355,10 +355,10 @@ TASK
       statement: ("SELECT COUNT(*) FROM " + table__name + suffix),
     );
 
-    return (result.first.first as NI);
+    return (result.first.first as INT);
   }
 
-  value__asyn<NI> table__rows__count__asyn({
+  value__asyn<INT> table__rows__count__asyn({
     required final base__storage__data__basic__table__id table__id,
   }) {
     return table__rows__count__asyn___raw(
@@ -366,7 +366,7 @@ TASK
     );
   }
 
-  value__asyn<NI> tables__count__asyn() /*
+  value__asyn<INT> tables__count__asyn() /*
 excluding, the mandatory, ad default, schema table
 refer to `web://sqlite.org/schematab.html` */ {
     return table__rows__count__asyn___raw(
@@ -424,8 +424,8 @@ ignored if `result__columns__meta == NIL` */ =
     final array<base__storage__data__basic__table__column__meta>? result__order__columns__meta /*
 if NIL ,then resulting rows ,are un-order-ed ,or the order is un-defin-ed ,and "result__order__ascend_ing__ok" is ignored  */,
     final BOOL result__order__ascend_ing___ok /* otherwise descend-ing */ = OK,
-    final NI? result__rows__count__limit,
-    final NI? result__rows__id__offset /*
+    final INT? result__rows__count__limit,
+    final INT? result__rows__id__offset /*
 `result__order__columns__meta` should also be passed */,
   }) /*
 example
@@ -549,7 +549,7 @@ class base__storage__data__basic__table__column__id {
     this.value,
   );
 
-  final NI value;
+  final INT value;
 }
 
 typedef base__storage__data__basic__table__row = array<Object?>;
@@ -667,7 +667,7 @@ can add only-single row */ ({
         );
 
     return base__storage__data__basic__table__row__id(
-      ((result.first.first as NI) - 1),
+      ((result.first.first as INT) - 1),
     );
   }
 
@@ -699,7 +699,7 @@ can add multiple-rows ,as well as a single-row */ ({
     }
 
     return base__storage__data__basic__table__row__id(
-      (result.first.first as NI),
+      (result.first.first as INT),
     );
   }
 
@@ -872,7 +872,7 @@ abstract class base__storage__data__basic__table__row__id__base {
     this.value,
   );
 
-  final NI value;
+  final INT value;
 }
 
 extension SqliteWriteContext__operation__extension //
@@ -896,7 +896,7 @@ extension SqliteWriteContext__operation__extension //
 enum base__storage__data__basic__table__column__data__type {
   nil("NULL") /*Null*/,
   number__integer__auto("INTEGER") /*NIS*/,
-  number__exponential("REAL") /*NFP*/,
+  number__exponential("REAL") /*APPROX*/,
   bytes("BLOB") /*byte__array*/,
   text("TEXT") /*string*/ /*
 prefer `.byte__array`, unless searching is required */;
@@ -924,7 +924,7 @@ final //
            ? (1 + column__previous__meta.id)
            : 0);
 
-  final NI id;
+  final INT id;
   /*final string name;*/
   final base__storage__data__basic__table__column__data__type type;
   final BOOL nil_able___ok;
@@ -994,7 +994,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
           "SELECT COUNT(*) FROM sqlite_schema WHERE type = 'table'",
         );
 
-        final tables__count = (result.rows.first.first as NI);
+        final tables__count = (result.rows.first.first as INT);
 
         "tables__count : $tables__count".print();
 

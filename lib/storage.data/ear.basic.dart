@@ -2,12 +2,12 @@ part of "_.dart";
 
 ({
   BS1__array element__bytes,
-  NI element__base__storage__data__offset,
+  INT element__base__storage__data__offset,
 }) base__storage__data__ear__element__read__basic(
   final base__storage__data__meta___compo ds__meta, {
-  required final NI element__id /* un-check-ed for existence, of element, in array */,
+  required final INT element__id /* un-check-ed for existence, of element, in array */,
   required final BS1__array meta__bytes /* table's `row__column__bytes` */,
-  required final NI element__size,
+  required final INT element__size,
 }) /*
   element(-id) is NOT checked, for existence */
 {
@@ -29,12 +29,12 @@ part of "_.dart";
 
 ({
   BS1__array elements__bytes,
-  NI elements__count,
+  INT elements__count,
 }) base__storage__data__ear__read__basic(
   final base__storage__data__meta___compo ds__meta, {
   required final BS1__array meta__bytes,
   required final number__size elements__count__size__id,
-  required final NI element__size,
+  required final INT element__size,
 }) {
   final elements__count = meta__bytes
       .view(

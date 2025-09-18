@@ -19,17 +19,17 @@ element-access style
   static const //
       array__first__elements__count__doubling__initial__default = 2;
 
-  static NI //
+  static INT //
       array__elements__count__ideal___raw({
-    required final NI array__id,
-    required final NI array__first__elements__count__doubling__initial,
+    required final INT array__id,
+    required final INT array__first__elements__count__doubling__initial,
   }) {
     return (1 << (array__id + array__first__elements__count__doubling__initial));
   }
 
-  static NI //
+  static INT //
       array__first__elements__count__ideal({
-    required final NI array__first__elements__count__doubling__initial,
+    required final INT array__first__elements__count__doubling__initial,
   }) {
     return array__elements__count__ideal___raw(
       array__id: 0,
@@ -38,7 +38,7 @@ element-access style
   }
 
   base__accumulation__conservative__iteration__meta({
-    required final NI elements__count /*
+    required final INT elements__count /*
 can be zero */
     ,
     this.array__first__elements__count__doubling__initial = array__first__elements__count__doubling__initial__default,
@@ -46,10 +46,10 @@ can be zero */
         elements__offset___raw = 0,
         elements__count__remaining___raw = elements__count;
 
-  final NI //
+  final INT //
       array__first__elements__count__doubling__initial;
 
-  NI //
+  INT //
       elements__count__remaining___raw /*
 from `.elements__offset`
   hence including the current array's elements */
@@ -59,7 +59,7 @@ from `.elements__offset`
 
   BOOL //
       elements__remaining__ok___raw({
-    required final NI array__current__elements__count__ideal,
+    required final INT array__current__elements__count__ideal,
   }) {
     return (elements__count__remaining___raw >= array__current__elements__count__ideal);
   }
@@ -71,7 +71,7 @@ from `.elements__offset`
     );
   }
 
-  NI //
+  INT //
       elements__remaining__count /*
 excluding the current-array's elements */
       () {
@@ -88,7 +88,7 @@ excluding the current-array's elements */
     return (elements__count__remaining___raw - array__current__elements__count__ideal);
   }
 
-  NI //
+  INT //
       array__current__elements__count___raw /*
 needed only for the last iteration
   other(non-last) iterations {can and should} use {ideal elements-count}
@@ -108,7 +108,7 @@ needed only for the last iteration
     return array__current__elements__count__ideal;
   }
 
-  NI //
+  INT //
       array__current__elements__count__ideal___raw() {
     return array__elements__count__ideal___raw(
       array__id: array__current__id___raw,
@@ -116,7 +116,7 @@ needed only for the last iteration
     );
   }
 
-  NI //
+  INT //
       array__previous__elements__count__ideal___raw() {
     if (iteration__current__first___ok()) {
       throw "in-valid call : `iteration__current__first__ok`";
@@ -132,7 +132,7 @@ needed only for the last iteration
 
   BOOL //
       iteration__current__last__ok___raw({
-    required final NI array__current__elements__count__ideal,
+    required final INT array__current__elements__count__ideal,
   }) {
     return (elements__count__remaining___raw < array__current__elements__count__ideal);
   }
@@ -151,10 +151,10 @@ needed only for the last iteration
   }
 
   ({
-    NI elements__offset,
+    INT elements__offset,
     ({
-      NI id,
-      NI elements__count,
+      INT id,
+      INT elements__count,
     }) array,
   }) //
       iteration__current__meta() {
@@ -168,7 +168,7 @@ needed only for the last iteration
   }
 
   void iterate__forward___raw({
-    required final NI array__current__elements__count__ideal,
+    required final INT array__current__elements__count__ideal,
   }) {
     {
       final iteration__current__last__ok_1 = iteration__current__last__ok___raw(
@@ -194,7 +194,7 @@ to next-array in the accum. */
     );
   }
 
-  NI /*array__current__elements__count__ideal*/ iterate__backward___raw() {
+  INT /*array__current__elements__count__ideal*/ iterate__backward___raw() {
     {
       final iteration__current__first__ok_1 = iteration__current__first___ok();
 
@@ -246,11 +246,11 @@ re-set */
     }
   }
 
-  NI /*array__elements__offset*/ //
+  INT /*array__elements__offset*/ //
       iterate__forward__until /*
 forward-iterate until the element is present in the current-array */
       (
-    NI element__id,
+    INT element__id,
   ) {
     element__id -= elements__offset___raw;
 
@@ -289,12 +289,12 @@ current array is either last ,or the needed one */
     return element__id;
   }
 
-  NI /*array__elements__offset*/ //
+  INT /*array__elements__offset*/ //
       iterate__backward__until /*
 backward-iterating equivalent of `.iterate__forward__until`
   although control-flow is asymmetric ,due to being based on beginning/offset */
       (
-    NI element__id,
+    INT element__id,
   ) {
     if (element__id >= elements__offset___raw) {
       throw "in-valid call : `(element__id >= .elements__offset)`($element__id >= $elements__offset___raw)";
@@ -320,13 +320,13 @@ for reason to not use `array__current__elements__count__raw`
 iterate for `count` number of elements ,beginning with `offset`
 declarative approach */
       ({
-    required final NI? count,
-    final NI offset = 0,
+    required final INT? count,
+    final INT offset = 0,
     required final BOOL /*iterate___ok*/ Function(
-      NI elements__offset,
-      NI array__id,
-      NI array__elements__count,
-      NI array__elements__offset,
+      INT elements__offset,
+      INT array__id,
+      INT array__elements__count,
+      INT array__elements__offset,
     ) array__handle,
   }) {
     if (((count != null) //
@@ -336,7 +336,7 @@ declarative approach */
       throw "in-valid call : `((count + offset) > (.elements__count__remaining + .elements__offset))`((${count ?? Null__value__text} + $offset) >= ($elements__count__remaining___raw + $elements__offset___raw))";
     }
 
-    NI //
+    INT //
         iteration__count,
         array__elements__offset;
 
@@ -437,11 +437,11 @@ declarative approach */
   }
 
   void iterate__auto__granular({
-    required final NI? count,
-    final NI offset = 0,
+    required final INT? count,
+    final INT offset = 0,
     required final BOOL /*iterate___ok*/ Function(
-      NI accumulation__element__id /* `(array__element__id + accumulation__elements__offset)` */,
-      NI array__offset /*array__element__id*/,
+      INT accumulation__element__id /* `(array__element__id + accumulation__elements__offset)` */,
+      INT array__offset /*array__element__id*/,
     ) element__handle,
   }) {
     iterate__auto(

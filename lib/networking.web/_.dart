@@ -28,7 +28,7 @@ enum base__net__request__results {
 
 base__net__request__results //
 base__net__web__status__code__convert__summary(
-  final NI status__code,
+  final INT status__code,
 ) {
   if ((status__code == /*HttpStatus.ok*/ 200) || ((status__code > 200) && (status__code < 300))) {
     return base__net__request__results.success;

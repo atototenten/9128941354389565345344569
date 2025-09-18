@@ -9,7 +9,7 @@ class base__stack //
 
   final base__accumulation__chained<element__type> accumulation___raw;
 
-  NI elements__count() {
+  INT elements__count() {
     return accumulation___raw.elements__count();
   }
 
