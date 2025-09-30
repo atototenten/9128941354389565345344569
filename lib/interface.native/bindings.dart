@@ -62,8 +62,8 @@ external ffi_.Pointer<ffi_.Uint8> strerrordesc_np(
     )>()
 external s32 posix_memalign(
   final ffi_.Pointer<ffi_.Pointer<ffi_.NativeType>> ptr,
-  final NI8R alignment,
-  final NI8R size,
+  final INT__8 alignment,
+  final INT__8 size,
 ) /*
   error-code is NOT available through `ffi__errno(`, but `return`ed */
 ;
@@ -92,7 +92,7 @@ external s32 access(
 external s32 open64(
   final ffi_.Pointer<ffi_.Uint8> file__path,
   final u31 flags,
-  final NI4R mode,
+  final INT__4R mode,
 );
 
 @ffi_.Native<
@@ -119,7 +119,7 @@ external s32 fallocate(
 external u63 pread64(
   final u31 fd,
   final ffi_.Pointer<ffi_.Uint8> buffer,
-  final NI8R count,
+  final INT__8 count,
   final u63 offset,
 );
 
@@ -133,7 +133,7 @@ external u63 pread64(
 external u63 pwrite64(
   final u31 fd,
   final ffi_.Pointer<ffi_.Uint8> buffer,
-  final NI8R count,
+  final INT__8 count,
   final u63 offset,
 );
 
@@ -173,18 +173,18 @@ external s32 close(
 
 final //
     ioctl__name = "ioctl",
-    ioctl__NI8__ptr = library__global.lookupFunction<
+    ioctl__INT__8__ptr = library__global.lookupFunction<
         ffi_.Int32 Function(ffi_.Int32 fd, ffi_.Uint64 request, ffi_.Pointer<ffi_.Uint64>) /*
   `int ioctl(int fd, unsigned long request, ...);`
     $`man 2 ioctl` */
         ,
-        s32 Function(u31 fd, NI8R request, ffi_.Pointer<ffi_.Uint64>)>(
+        s32 Function(u31 fd, INT__8 request, ffi_.Pointer<ffi_.Uint64>)>(
       ioctl__name,
       isLeaf: false,
     ),
     ioctl__s32__ptr = library__global.lookupFunction<
         ffi_.Int32 Function(ffi_.Int32 fd, ffi_.Uint64 request, ffi_.Pointer<ffi_.Int32>), //
-        s32 Function(u31 fd, NI8R request, ffi_.Pointer<ffi_.Int32>)>(
+        s32 Function(u31 fd, INT__8 request, ffi_.Pointer<ffi_.Int32>)>(
       ioctl__name,
       isLeaf: false,
     );

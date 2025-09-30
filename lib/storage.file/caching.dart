@@ -339,7 +339,7 @@ void base__storage__file__fast__read_write /* __caching */ (
       all the reads(or caches), should happen in a single syscall, instead of, per-block basis
         maybe, before the while loop, because the system alread has the info */
 
-    final count__aligned = NI__aligned(
+    final count__aligned = INT__aligned(
       count,
       base__storage__file__block__size.size,
       base__storage__file__block__size.shift__count,

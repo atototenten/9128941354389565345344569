@@ -104,7 +104,7 @@ class base__storage__data__tar__meta___compo //
     ,
     this.table__array__bytes,
     required this.rows__count__multiplier__initial,
-  }) : rows__count__max = NI__max(
+  }) : rows__count__max = INT__max(
           rows__count__size__id.size,
         );
 

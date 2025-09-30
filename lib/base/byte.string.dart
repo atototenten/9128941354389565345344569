@@ -36,17 +36,17 @@ BS__size__id BS__size__convert__id(
 ) {
   return BS__size__id(
     switch (size) {
-       NI1__size => 0,
-       NI2__size => 1,
-       NI3__size => 2,
-       NI4__size => 3,
-       NI6__size => 4,
-       NI8__size => 5,
-       NI12__size => 6,
-       NI16__size => 7,
-       NI24__size => 8,
-       NI32__size => 9,
-      _ => throw "$size(size), is too large, than the limit $NI32__size(NI32__size)",
+       INT__1__size => 0,
+       INT__2__size => 1,
+       INT__3__size => 2,
+       INT__4__size => 3,
+       INT__6__size => 4,
+       INT__8__size => 5,
+       INT__12__size => 6,
+       INT__16__size => 7,
+       INT__24__size => 8,
+       INT__32__size => 9,
+      _ => throw "$size(size), is too large, than the limit $INT__32__size(INT__32__size)",
     },
   );
 }
@@ -57,16 +57,16 @@ extension BS__size__id__conversion //
     final BS__size__id size__id,
   ) {
     const sizes = [
-       NI1__size,
-       NI2__size,
-       NI3__size,
-       NI4__size,
-       NI6__size,
-       NI8__size,
-       NI12__size,
-       NI16__size,
-       NI24__size,
-       NI32__size,
+       INT__1__size,
+       INT__2__size,
+       INT__3__size,
+       INT__4__size,
+       INT__6__size,
+       INT__8__size,
+       INT__12__size,
+       INT__16__size,
+       INT__24__size,
+       INT__32__size,
     ];
 
     if ((size__id.value < sizes.length).not) {

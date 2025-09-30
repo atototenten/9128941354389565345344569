@@ -18,7 +18,7 @@ extension byte__array__conversion__number__integer__extension //
       cast__number__integer(
     final number__size size,
   ) {
-    return convert__NI__endian__little(
+    return convert__INT__endian__little(
       size.size,
     );
   }

@@ -1,10 +1,5 @@
 part of "_.dart";
 
-late array<string> base__app__title__segments;
-
-string base__app__title() => //
-    base__app__title__segments.join();
-
 BOOL base__environment__theme__colors__ground__back__contrast__dark___ok() {
   return (ui.PlatformDispatcher.instance.platformBrightness == Brightness.dark);
 }
@@ -259,7 +254,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
 
             reporting__indent();
             report__Object(view.physicalSize, "..physicalSize");
-            report__NE(view.devicePixelRatio, "..devicePixelRatio");
+            report__APPROX(view.devicePixelRatio, "..devicePixelRatio");
             reporting__de_indent();
           });
         reporting__de_indent();
@@ -319,8 +314,7 @@ config. :
 tasks:long:
   - add app-splash, as black seems bad */ //
 <entity__type extends gui__base__entity__page___protocol>({
-  required final array<string> app__title__segments /*
-example :`["Demo", char__space, "app"]` */,
+  required final string app__title,
   required final service__authority__base service__authority,
   required final value__asyn<entity__type> Function() entity /*
 `debug`* global properties ,like `debugPaintSizeEnabled` ,`debugPaintPointersEnabled` ,`debugRepaintRainbowEnabled` ,`debugRepaintTextRainbowEnabled` ,`debugPaintLayerBordersEnabled` ,`debugDisableClipLayers` ,`debugPrintRebuildDirtyWidgets` ,`debugPrintMouseHoverEvents` ,`debugPrintHitTestResults` ,`debugPrintKeyboardEvents` ,can be set inside
@@ -339,13 +333,12 @@ must not depend on the meta-framework */,
       .handle() /*
 un-"await"-ed to allow the app to normally function ,for non-denial cases */;
 
-  base__app__title__segments = app__title__segments;
-
   base__app__theme__colors__ground__back__follow__system___ok = OK;
 
   base__app__run(
     init: (final init_ion__status) {
       return gui__base__app__running__simple<entity__type>(
+        app__title: app__title,
         init_ion__status__asyn: init_ion__status,
         entity: entity,
         splash__build: splash__build,
@@ -358,6 +351,7 @@ class gui__base__app__running__simple //
 <entity__type extends gui__base__entity__page___protocol> //
     implements gui__base__entity__page___protocol {
   gui__base__app__running__simple({
+    required this.app__title,
     required final value__asyn<void> init_ion__status__asyn,
     required final value__asyn<entity__type> Function() entity,
     required this.splash__build,
@@ -395,6 +389,7 @@ class gui__base__app__running__simple //
     );
   }
 
+  final string app__title;
   late final base__value__asyn__definitive<entity__type> init_ion__asyn___raw;
   final gui__base__widget__build__function__format splash__build;
 
@@ -423,8 +418,8 @@ class gui__base__app__running__simple //
               );
             },
           ),
-          title: base__app__title(),
-          color: const Color.fromARGB(NI1__max, 191, 191, 191),
+          title: app__title,
+          color: const Color.fromARGB(INT__1__max, 191, 191, 191),
           locale: base__app__locale,
           localizationsDelegates: base__app__localizations__delegates,
           supportedLocales: const <Locale>[base__app__locale],

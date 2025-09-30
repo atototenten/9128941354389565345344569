@@ -42,8 +42,8 @@ Color color__generate({
           secondary: 0,
         )
       : (
-          primary: ((NI1__limit - (intensity * interval)) - 1),
-          secondary: NI1__max,
+          primary: ((INT__1__limit - (intensity * interval)) - 1),
+          secondary: INT__1__max,
         ));
 
   return (b__solid //
@@ -74,9 +74,9 @@ Color color__whiten(
 
   return Color.fromARGB(
     color.alpha,
-    ((red < NI1__limit) ? red : NI1__max),
-    ((green < NI1__limit) ? green : NI1__max),
-    ((blue < NI1__limit) ? blue : NI1__max),
+    ((red < INT__1__limit) ? red : INT__1__max),
+    ((green < INT__1__limit) ? green : INT__1__max),
+    ((blue < INT__1__limit) ? blue : INT__1__max),
   );
 }
 
@@ -88,14 +88,14 @@ extension Color$whiten on Color {
 late final _random = math.Random.secure();
 
 INT get _color__random => //
-    _random.nextInt(NI1__limit);
+    _random.nextInt(INT__1__limit);
 
 /** copied from `https://stackoverflow.com/a/43235` */
 Color color__random(
   final Color color,
 ) =>
     Color.fromARGB(
-       NI1__max,
+       INT__1__max,
       ((_color__random + color.red) ~/ 2),
       ((_color__random + color.green) ~/ 2),
       ((_color__random + color.blue) ~/ 2),

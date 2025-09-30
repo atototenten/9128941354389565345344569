@@ -38,7 +38,7 @@ value__asyn<BS1__array> base__net__reliable__client__simple__communicate({
       OK,
     )
     /*..add(
-       NI__convert__BS1__array__little_endian(
+       INT__convert__BS1__array__little_endian(
         request.bytes__count,
         base__net__request__size__size,
       ),

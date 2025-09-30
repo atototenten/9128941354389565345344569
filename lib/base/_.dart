@@ -85,7 +85,7 @@ const //
 const //
     bytes__count__decimal__shift__count = 10,
     bytes__count__kibi = /*(1 << bytes__count__decimal__shift__count)*/
-        (NI1__limit << 2),
+        (INT__1__limit << 2),
     bytes__count__mebi = (bytes__count__kibi << bytes__count__decimal__shift__count),
     bytes__count__gibi = (bytes__count__mebi << bytes__count__decimal__shift__count),
     bytes__count__tebi = (bytes__count__gibi << bytes__count__decimal__shift__count),
@@ -119,7 +119,7 @@ extension base__results__basic__ensurance__extension //
 }
 
 const //
-    result__code__size = NI1__size,
+    result__code__size = INT__1__size,
 //
     zero = '${0}', //
     one = '${1}',
@@ -237,7 +237,7 @@ INT binarySearch(
   return -mid;
 }
 
-extension NI__array__bits__extension //
+extension INT__array__bits__extension //
     on array<INT> {
   string bits({
     final INT interval = 4,

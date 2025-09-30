@@ -185,7 +185,7 @@ array<gui__base__widget> str__wide__rich__bytes__convert({
   );
 
   final //
-      section__control__size = NI__bytes__convert(
+      section__control__size = INT__bytes__convert(
         str__wide__rich__bytes,
       ),
       section__control__bytes = bytes___compo(
@@ -373,7 +373,7 @@ const _sample = (
         r"\n"
   r"\n"
 //
-  r"\i" "512:256:f${(NI4__max + NI3__max)}"
+  r"\i" "512:256:f${(INT__4__max + INT__3__max)}"
   r"\i" "350:156:w${"http://src"}" r"\"
   r"\ar"
   r"\se" "- Someone (" r"\"

@@ -1,26 +1,26 @@
 part of "../../_.dart";
 
-typedef NISI /* infinite */ = BigInt;
+typedef INT__NEG__BIG /* infinite */ = BigInt;
 
-extension NISI__extension on NISI {
+extension INT__NEG__BIG__extension on INT__NEG__BIG {
   BOOL value__zero___ok() {
     return ((bitLength == 0) && isNegative.not);
   }
 
-  NISI endian__little__convert__endian__big({
+  INT__NEG__BIG endian__little__convert__endian__big({
     required final INT digits__count,
     final INT digit__width = 1,
   }) {
     var //
         source = this,
-        mask = ((NISI.one << digit__width) - NISI.one),
-        destination = NISI.zero;
+        mask = ((INT__NEG__BIG.one << digit__width) - INT__NEG__BIG.one),
+        destination = INT__NEG__BIG.zero;
 
     base__iterate__reverse__basic(
       digits__count,
       (final _) {
         final source__1 = (source & mask);
-        if (source__1 != NISI.zero) {
+        if (source__1 != INT__NEG__BIG.zero) {
           destination = ((destination << digit__width) | source__1);
         } else {
           destination <<= digit__width;

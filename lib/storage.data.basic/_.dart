@@ -21,7 +21,7 @@ the data-base access ,must be exclusive */ async {
 
     final value = sqlite_async.SqliteDatabase(
       path: file__path,
-      maxReaders: NI1__limit,
+      maxReaders: INT__1__limit,
       options: sqlite_async.SqliteOptions(
         journalMode: sqlite_async.SqliteJournalMode.wal,
         journalSizeLimit: 0,
@@ -895,7 +895,7 @@ extension SqliteWriteContext__operation__extension //
 
 enum base__storage__data__basic__table__column__data__type {
   nil("NULL") /*Null*/,
-  number__integer__auto("INTEGER") /*NIS*/,
+  number__integer__auto("INTEGER") /*INT__NEG*/,
   number__exponential("REAL") /*APPROX*/,
   bytes("BLOB") /*byte__array*/,
   text("TEXT") /*string*/ /*
@@ -974,7 +974,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
   {
     final value = sqlite_async.SqliteDatabase(
       path: file__path,
-      maxReaders: NI1__limit,
+      maxReaders: INT__1__limit,
       options: sqlite_async.SqliteOptions(
         journalMode: sqlite_async.SqliteJournalMode.wal,
         journalSizeLimit: 0,

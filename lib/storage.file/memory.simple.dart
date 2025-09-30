@@ -4,7 +4,7 @@ part of "_.dart";
 based on byte-id. ,instead of block-id. */ //
     implements
         base__dispose___protocol {
-  static const length__initial__default = NI2__limit;
+  static const length__initial__default = INT__2__limit;
 
   storage__file__memory__simple({
     final INT length__initial = length__initial__default,

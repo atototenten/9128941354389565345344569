@@ -9,7 +9,7 @@ import "dart:io" as net;
 part "server.dart";
 part "client.dart";
 
-const base__net__request__size__size = NI4__size;
+const base__net__request__size__size = INT__4__size;
 
 final base__net__ip__local__v4 = BS1__array.fromList(
   const [127, 0, 0, 1],

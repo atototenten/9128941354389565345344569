@@ -203,7 +203,7 @@ void box__winter__page__background__set() {
 }
 
 void box__winter__color__set() {
-  const INT intensity = ((NI1__limit ~/ _theme__winter__color__interval) - 1);
+  const INT intensity = ((INT__1__limit ~/ _theme__winter__color__interval) - 1);
 
   final Color color__background__base__intermediate;
 

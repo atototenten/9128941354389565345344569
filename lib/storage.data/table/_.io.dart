@@ -3,25 +3,25 @@ part of "../_.dart";
 /*INT base__storage__data__table__rows__count__size(
   final INT rows__count,
 ) {
-  if (rows__count < NI1__limit) {
-    return NI1__size;
-  } else if (!(NI2__size > base__storage__data__position__size__id.size) /*
-  "`NI2__size` is NOT MORE than `base__storage__data__position__size__id.size`"
-  equal to "`NI2__size` is EQUAL OR LESS than `base__storage__data__position__size__id.size`"
+  if (rows__count < INT__1__limit) {
+    return INT__1__size;
+  } else if (!(INT__2__size > base__storage__data__position__size__id.size) /*
+  "`INT__2__size` is NOT MORE than `base__storage__data__position__size__id.size`"
+  equal to "`INT__2__size` is EQUAL OR LESS than `base__storage__data__position__size__id.size`"
   if `base__storage__data__position__size__id.size` is standard(`u`*`__size`)
-    also equal to "`NI2__size` is EQUAL to `base__storage__data__position__size__id.size`" */
+    also equal to "`INT__2__size` is EQUAL to `base__storage__data__position__size__id.size`" */
       && //
-      (rows__count < NI2__limit)) {
-    return NI2__size;
-  } else if (!(NI3__size > base__storage__data__position__size__id.size) && //
-      (rows__count < NI3__limit)) {
-    return NI3__size;
-  } else if (!(NI4__size > base__storage__data__position__size__id.size) && //
-      (rows__count < NI4__limit)) {
-    return NI4__size;
-  } else if (!(NI8__size > base__storage__data__position__size__id.size) && //
-      (rows__count < NI8__limit)) {
-    return NI8__size;
+      (rows__count < INT__2__limit)) {
+    return INT__2__size;
+  } else if (!(INT__3__size > base__storage__data__position__size__id.size) && //
+      (rows__count < INT__3__limit)) {
+    return INT__3__size;
+  } else if (!(INT__4__size > base__storage__data__position__size__id.size) && //
+      (rows__count < INT__4__limit)) {
+    return INT__4__size;
+  } else if (!(INT__8__size > base__storage__data__position__size__id.size) && //
+      (rows__count < INT__8__limit)) {
+    return INT__8__size;
   } else {
     throw "$rows__count(row__count) exceeds the limits of $base__storage__data__position__size__id.size(base__storage__data__position__size__id.size)";
   }

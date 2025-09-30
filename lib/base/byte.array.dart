@@ -1,7 +1,7 @@
 part of "_.dart";
 
 /*
-  primitive (type): fixed size value, like INT, NI8
+  primitive (type): fixed size value, like INT, INT__8
   object: allocated value, of struct, like of `struct { INT id; };`
 
 `ARRAY<BS1>`/`byte__array` vs "bytes"
@@ -143,14 +143,14 @@ class bytes___compo {
         bytes__offset,
       );
 
-  INT read__NI__fixed(
+  INT read__INT__fixed(
     final INT size,
   ) {
     final value = bytes
         .view(
           bytes__offset,
         )
-        .convert__NI__endian__little(
+        .convert__INT__endian__little(
           size,
         );
 
@@ -159,10 +159,10 @@ class bytes___compo {
     return value;
   }
 
-  INT? read__NI__fixed__nilable(
+  INT? read__INT__fixed__nilable(
     final INT size,
   ) {
-    final value = read__NI__fixed(
+    final value = read__INT__fixed(
       size,
     );
 
@@ -171,15 +171,15 @@ class bytes___compo {
         : NIL);
   }
 
-  INT__NEG read__NIS__fixed(
+  INT__NEG read__INT__NEG__fixed(
     final INT size,
   ) =>
-      read__NIS__fixed(
+      read__INT__NEG__fixed(
         size,
       );
 
-  NI__bytes__convert__result___compo read__INT() {
-    final result = NI__bytes__convert(
+  INT__bytes__convert__result___compo read__INT() {
+    final result = INT__bytes__convert(
       bytes.view(
         bytes__offset,
       ),
@@ -190,13 +190,13 @@ class bytes___compo {
     return result;
   }
 
-  NIS__bytes__convert__result___compo read__INT__NEG() => //
+  INT__NEG__bytes__convert__result___compo read__INT__NEG() => //
       read__INT__NEG();
 
   ({
     INT? value,
     INT count,
-  }) read__NI__nilable() {
+  }) read__INT__nilable() {
     final result = read__INT();
 
     return (
@@ -230,7 +230,7 @@ class bytes___compo {
     final INT? count__size,
   ]) {
     final count = ((count__size != null) //
-        ? read__NI__fixed(
+        ? read__INT__fixed(
             count__size,
           )
         : read__INT().value);
@@ -255,7 +255,7 @@ class bytes___compo {
       () {
     final //
         bytes__offset_ = bytes__offset,
-        count = NI__bytes__convert(
+        count = INT__bytes__convert(
           bytes.view(
             bytes__offset_,
           ),
@@ -363,7 +363,7 @@ extension byte__array__extension on byte__array {
     );
   }
 
-  INT convert__NI__endian__little(
+  INT convert__INT__endian__little(
     final INT value__size,
   ) {
     var //
@@ -381,7 +381,7 @@ extension byte__array__extension on byte__array {
     return result;
   }
 
-  INT convert__NI__endian__big(
+  INT convert__INT__endian__big(
     final INT value__size,
   ) {
     var //

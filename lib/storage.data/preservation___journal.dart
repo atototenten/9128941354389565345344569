@@ -157,11 +157,11 @@ void preservation__journal__persist(
       bytes__count_ = (preservation__journal.bytes__count + //
           (preservation__journal.store.elements__count * (bytes__preserved__count__size__id.size + base__storage__data__position__size__id.size)) +
           bytes__preserved__array__count__size__id.size),
-      buffer__block__count = (NI__aligned__alignment__count(
+      buffer__block__count = (INT__aligned__alignment__count(
             bytes__count_,
             base__storage__file__block__size.shift__count,
           ) +
-          (!base__NI__aligned___ok(
+          (!base__INT__aligned___ok(
             bytes__count_,
             base__storage__file__block__size.size,
           )
@@ -319,13 +319,13 @@ void preservation__journal__recover__if__needed({
       count,
       (final _) {
         final //
-            count = bytes.read__NI__fixed(
+            count = bytes.read__INT__fixed(
               bytes__preserved__count__size__id.size,
             ),
             bytes_ = bytes.read__view__partial(
               count,
             ),
-            offset = bytes.read__NI__fixed(
+            offset = bytes.read__INT__fixed(
               base__storage__data__position__size__id.size,
             );
 

@@ -3,17 +3,16 @@ part of "_.dart";
 typedef Object__nilable = Object?;
 
 extension base__Object__nilable__extension //
-    <type extends Object__nilable> //
+<type extends Object__nilable> //
     on type {
   base__representation__text //
-      representation__text /*
-this(global/common/general `convert__representation__text`) is required due to the dart-lang.'s type-system being dynamic/late-deterministic */
-      ({
+  representation__text /*
+this(global/common/general `convert__representation__text`) is required due to the dart-lang.'s type-system being dynamic/late-deterministic */ ({
     final INT elements__truncation__count__threshold /*
 acts on the middle part
 applicable on nested arrays and dictionaries
-zero is special-case to disable truncation */
-    = NI1__limit,
+zero is special-case to disable truncation */ =
+        INT__1__limit,
   }) {
     final value = this;
 
@@ -30,7 +29,7 @@ zero is special-case to disable truncation */
 
       if (value is array<Object__nilable>) {
         final //
-            buffer = StringBuffer(),
+        buffer = StringBuffer(),
             elements__count = value.elements__count;
 
         buffer
@@ -139,23 +138,22 @@ zero is special-case to disable truncation */
     return base__representation__text(
       switch (value) {
         BOOL() => (value ? "OK" : "NO"),
-         INT() => value.toString(),
-        //INT__NEG() => "INT__NEG(${value.toString()})",
+        INT__NEG() => "${value.isNegative.not ? "+" : empty__string}${value.toString()}",
+        INT() => value.toString(),
         string() => "\"${value.toString()}\"",
         Enum() => value.name,
         APPROX() => "APPROX(${value.toString()})",
         Type() => value.toString(),
-         NISI() => "NISI(${value.toString()})",
+        INT__NEG__BIG() => "INT__NEG__BIG(${value.toString()})",
         _ => "${value.runtimeType}(${value})",
       },
     );
   }
 
   base__representation__text //
-      compo__representation__text(
+  compo__representation__text(
     final base__compo__member__dictionary members /*
-for proxy/wrapping compo.s ,`empty__string` as key for `.value` member */
-    ,
+for proxy/wrapping compo.s ,`empty__string` as key for `.value` member */,
   ) {
     return base__compo__representation__text(
       name: runtimeType.toString(),

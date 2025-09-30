@@ -106,7 +106,7 @@ typedef base__storage__file__alignment___compo = ({
 });
 
 const base__storage__file__alignment___compo //
-    alignment__mem = (shift__count: 3, size: NI8__size),
+    alignment__mem = (shift__count: 3, size: INT__8__size),
     alignment__disk = (shift__count: 9, size: 512),
     alignment__flash = (shift__count: 12, size /* alignment */ : 4096),
     alignment__modern__normal /* 256 k. */ = (shift__count: 18, size: (256 * 1024)),
@@ -130,7 +130,7 @@ typedef io__operation__read_write__function__format = void Function(
   final INT offset,
   final base__storage__file__alignment___compo block__meta,
 ) {
-  final offset__aligned = NI__aligned(
+  final offset__aligned = INT__aligned(
     offset,
     block__meta.size,
     block__meta.shift__count,
@@ -153,14 +153,14 @@ INT base__storage__file__count__max /*
   if (count == 0) //
     return 0;
 
-  if (base__NI__aligned___ok(
+  if (base__INT__aligned___ok(
     count,
     block__size.size,
   )) {
     return count;
   }
 
-  return NI__aligned__basic(
+  return INT__aligned__basic(
     ((count + buffer__offset) /* reasoning available */ /* TASK: understand, then FIX, if any */ + block__size.size),
     block__size.shift__count,
   );
@@ -186,11 +186,11 @@ void base__storage__file__io__check__aligned(
     alignment.size.representation__text().print("alignment__size");
   }
 
-  if (base__NI__aligned___ok(count, alignment.size).not) {
+  if (base__INT__aligned___ok(count, alignment.size).not) {
     throw "`count` is NOT aligned";
   }
 
-  if (base__NI__aligned___ok(offset, alignment.size).not) {
+  if (base__INT__aligned___ok(offset, alignment.size).not) {
     throw "`offset` is NOT aligned";
   }
 }

@@ -75,7 +75,7 @@ needed for safe remov-al/re-place
 should only used for intra-container equality ,not inter-container 
   ,because the id is container-level ,not program-level
 `_id uu` is better than `_id Object` 
-  ,because `uu` uses ,the whole NI8R space 
+  ,because `uu` uses ,the whole INT__8 space 
     ,while `Object` uses much less than `u48`-bits 
       ,also much more likeliness-of-conflict 
         ,due to memory re-alloc./re-use/re-cycle */

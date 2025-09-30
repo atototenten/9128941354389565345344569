@@ -4,12 +4,12 @@ typedef TC = INT;
 typedef TCW = INT;
 
 const //
-    TC__size = NI07__size,
+    TC__size = INT__07__size,
     TC__width = (BS1__width - 1),
-    TC__limit = (NI1__limit >> 1),
+    TC__limit = (INT__1__limit >> 1),
     TC__max = (TC__limit - 1),
 //
-    TCW__size = NI3__size;
+    TCW__size = INT__3__size;
 
 const //
     TC__number__zero = 0,

@@ -27,7 +27,7 @@ base__storage__file__accessing__aligned__meta___union //
     result = base__storage__file__accessing__aligned__none__meta();
   } else {
     final //
-        offset__aligned___ok = base__NI__aligned___ok(
+        offset__aligned___ok = base__INT__aligned___ok(
           offset,
           alignment.size,
         ),
@@ -35,7 +35,7 @@ base__storage__file__accessing__aligned__meta___union //
           offset,
           alignment,
         ),
-        block__id = NI__aligned__alignment__count(
+        block__id = INT__aligned__alignment__count(
           offset__aligned___compo.offset__aligned,
           alignment.shift__count,
         );
@@ -99,7 +99,7 @@ aligned equivalent case (`offset__aligned__ok`)
 
         middle = NIL;
       } else {
-        final blocks__count = NI__aligned__alignment__count(
+        final blocks__count = INT__aligned__alignment__count(
           length__aligned___compo.offset__aligned,
           alignment.shift__count,
         );
@@ -130,7 +130,7 @@ aligned equivalent case (`offset__aligned__ok`)
         ending = NIL;
       } else {
         final //
-            length__aligned___ok = base__NI__aligned___ok(
+            length__aligned___ok = base__INT__aligned___ok(
               length,
               alignment.size,
             ),

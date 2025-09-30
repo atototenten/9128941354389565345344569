@@ -72,13 +72,13 @@ class box extends StatelessWidget {
       final int color__value,
     ) =>
         Color.fromARGB(
-           NI1__max,
+           INT__1__max,
           color__value,
           color__value,
           color__value,
         );
 
-    final color__value = (NI1__max - difference);
+    final color__value = (INT__1__max - difference);
 
     /* FIX :handle color:value overflow */
 
@@ -137,13 +137,13 @@ usable for gems in video-games */
       final int color__value,
     ) =>
         Color.fromARGB(
-           NI1__max,
+           INT__1__max,
           color__value,
           color__value,
           color__value,
         );
 
-    var color__value = NI1__max;
+    var color__value = INT__1__max;
 
     final //
         base__color = color(color__value),

@@ -537,8 +537,8 @@ guide: `
 
     [
       (
-        doubling: NI4__width,
-        result: (array__first__elements__count__ideal: NI4__limit,),
+        doubling: INT__4__width,
+        result: (array__first__elements__count__ideal: INT__4__limit,),
       ),
       (
         doubling: 0,

@@ -8,7 +8,7 @@ void gui__base__app__example() {
 
 void _app__example() {
   base__app__run__simple(
-    app__title__segments: ["example", " ", "app"],
+    app__title: "example-app",
     service__authority: service__authority__local(),
     entity: () => //
         value__asyn.delayed(

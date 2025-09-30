@@ -14,7 +14,7 @@ const //
   final BOOL input__b__simple /*
   single-line, not multi-line */
   = OK,
-  final INT input__text__bytes__count__max = NI1__max,
+  final INT input__text__bytes__count__max = INT__1__max,
   final string? input__initial,
   required final void Function(
    string__wide input,
@@ -289,7 +289,7 @@ gui__base__widget listing__item__input__text__stored({
   final TextInputType input__type = TextInputType.text,
   final TextInputAction input__submit__indicator = TextInputAction.done,
   final TextCapitalization input__capitalization = TextCapitalization.none,
-  final INT input__chars__count__max = NI1__max,
+  final INT input__chars__count__max = INT__1__max,
   final input__text__filter___compo input__filter = input__text__filter__basic__print_able___ok,
   required final input__text__function__format input__submit,
   final BOOL indicator__edit_able__b__show = OK,
@@ -403,7 +403,7 @@ widget__stored___compo input__text__overlay__bottom__phone__stored({
   final TextInputType input__type = TextInputType.text,
   final TextInputAction input__submit__indicator = TextInputAction.done,
   final TextCapitalization input__capitalization = TextCapitalization.none,
-  final INT input__chars__count__max = NI1__max,
+  final INT input__chars__count__max = INT__1__max,
   final input__text__filter___compo input__filter = input__text__filter__basic__print_able___ok,
   final BOOL b__recursive /*
   recursion: `input__text__overlay__bottom__phone__stored(`, in `input__submit` */

@@ -9,7 +9,7 @@ class union {
   final array<Type> _types /*
 sub-typing is not supported
 /*must be ordered in narrow-to-wide sequence 
-  ,like `[INT , APPROX ,... , string]` ,because `NI2` is `NI4` ,but `NI4` is-not `NI2`*/ */
+  ,like `[INT , APPROX ,... , string]` ,because `INT2` is `INT4` ,but `INT4` is-not `INT2`*/ */
       ;
 
   dynamic _value;

@@ -73,7 +73,7 @@ byte__array___compo BS1__array__bytes__convert(
 ) =>
     byte__array___compo(
       ffi_.Pointer<ffi_.Uint8>.fromAddress(
-        bytes.convert__NI__endian__little(
+        bytes.convert__INT__endian__little(
            INT 8__size,
         ),
       ),

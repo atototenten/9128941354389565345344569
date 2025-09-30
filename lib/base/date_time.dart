@@ -31,8 +31,8 @@ the granular unit is nano-seconds until a day ,then itself */
       offset__years__ideal__current = 2020;
 
   static const INT //
-  year__reduced__size = NI1__size,
-      seconds__reduced__size = NI4__size;
+  year__reduced__size = INT__1__size,
+      seconds__reduced__size = INT__4__size;
 
   factory date_time.current({
     required final INT offset__years /*= offset__years__ideal__current*/,

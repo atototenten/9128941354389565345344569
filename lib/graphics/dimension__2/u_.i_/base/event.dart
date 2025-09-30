@@ -15,24 +15,22 @@ unicast-channels("base__event__channel__unicast___protocol") should be avoided
     final gui__base__widget__building__context context, {
     required final gui__base__widget__build__function__format child__build,
   }) {
-    gui__base__widget__building__context? context_1;
-
-    void build__re() {
-      context_1?.build__re___raw();
-    }
-
     return gui__base__widget__definitive__build(
       attach__handle: (final context) {
-        context_1 = context;
+        void build__re() {
+          context.build__re___raw();
+        }
 
         descriptions__add(build__re);
-      },
-      detach__handle: () {
-        context_1 = NIL;
 
-        descriptions__remove(build__re);
+        return (build__re: build__re);
       },
-      child__build: child__build,
+      detach__handle: (final storage) {
+        descriptions__remove(storage.build__re);
+      },
+      child__build: (final context, _) {
+        return child__build(context);
+      },
     );
   }
 }

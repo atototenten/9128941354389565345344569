@@ -3,11 +3,11 @@ part of "../_.dart";
 typedef APPROX = double /* floating-point number */;
 
 const //
-NE8__significand__max = ((1 << 52) /*-1*/ /* because ,the sign bit ,is stored separat-ly */ ),
-    NE8__exponent__max = ((1 << 10) - 1 /* because ,exponent can also be ,negative */ );
+APPROX__8__significand__max = ((1 << 52) /*-1*/ /* because ,the sign bit ,is stored separat-ly */ ),
+    APPROX__8__exponent__max = ((1 << 10) - 1 /* because ,exponent can also be ,negative */ );
 
-class base__NE__input__digits__fixed {
-  base__NE__input__digits__fixed({
+class base__APPROX__input__digits__fixed {
+  base__APPROX__input__digits__fixed({
     final INT significand = 0,
     final BOOL significand__negative___ok = NO,
     final INT significand__digits__count = 3,
@@ -16,26 +16,26 @@ class base__NE__input__digits__fixed {
     final BOOL exponent__negative___ok = NO,
     final INT exponent__digits__count = 2,
     final BOOL exponent__truncate___ok = OK,
-  }) : significand = base__NIS__text__digits__fixed(
+  }) : significand = base__INT__NEG__text__digits__fixed(
          significand,
          negative___ok: significand__negative___ok,
          digits__count: significand__digits__count,
          truncation:
              (significand__truncate___ok //
-             ? base__NIS__text__digits__fixed__truncation.ending
+             ? base__INT__NEG__text__digits__fixed__truncation.ending
              : NIL),
        ),
-       exponent = base__NIS__text__digits__fixed(
+       exponent = base__INT__NEG__text__digits__fixed(
          exponent,
          negative___ok: exponent__negative___ok,
          digits__count: exponent__digits__count,
          truncation:
              (exponent__truncate___ok //
-             ? base__NIS__text__digits__fixed__truncation.beginning
+             ? base__INT__NEG__text__digits__fixed__truncation.beginning
              : NIL),
        );
 
-  final base__NIS__text__digits__fixed //
+  final base__INT__NEG__text__digits__fixed //
   significand,
       exponent;
 
@@ -96,8 +96,8 @@ negative-zero is treated as non-negative */ (
   }
 }
 
-extension base__NE__input__digits__fixed__test //
-    on base__NE__input__digits__fixed {
+extension base__APPROX__input__digits__fixed__test //
+    on base__APPROX__input__digits__fixed {
   void test() {
     [
       "0",
@@ -117,7 +117,7 @@ extension base__NE__input__digits__fixed__test //
       ".1234",
     ].iterate__basic(
       (final _, final string v) {
-        base__NE__input__digits__fixed(
+        base__APPROX__input__digits__fixed(
             significand__truncate___ok: OK,
           )
           ..value__set__parse(v)

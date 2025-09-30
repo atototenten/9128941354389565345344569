@@ -11,18 +11,18 @@ unicode__ch__max = 0x10ffff /* 1114111, 0b100001111111111111111 */,
         TCW__size;
 
 INT TCW__bytes__count(final TCW wc) => //
-    ((wc < NI07__limit) //
+    ((wc < INT__07__limit) //
     ? TC__size
-    : ((wc < NI014__limit) //
+    : ((wc < INT__014__limit) //
           ? 2
-          : ((wc < NI021__limit) //
+          : ((wc < INT__021__limit) //
                 ? 3
                 : throw "`TCW` MUST be `<u21__limit`")));
 
 string__wide text__unicode__convert__string__wide(
   final string s, [
   final INT? chars__count__initial /*
-  usually `NI2__max` */,
+  usually `INT__2__max` */,
 ]) {
   final runes = Runes /* Dart's rune, is, Unicode's code-point */ (s).iterator;
 
@@ -156,7 +156,7 @@ byte__array wstr__convert__bytes(
     },
     ((chars__count__prefixed__size !=  null) //
         ? chars__count__prefixed__size
-        : NI__bytes__convert(bytes).count),
+        : INT__bytes__convert(bytes).count),
   );
 
   return result;

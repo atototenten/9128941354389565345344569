@@ -101,12 +101,12 @@ INT array__reverse__element__id(
   final INT elements__count,
 ) => ((elements__count - 1) - element__id);
 
-BS1__array NI__array__convert__BS1__array(
+BS1__array INT__array__convert__BS1__array(
   final array<INT> arr,
 ) {
   arr.iterate__reverse__basic(
     (final i, final value) {
-      if /*F*/ (value > NI1__max) {
+      if /*F*/ (value > INT__1__max) {
         throw "$value(`array[$i]`) exceeds the limits of `by`";
       }
     },

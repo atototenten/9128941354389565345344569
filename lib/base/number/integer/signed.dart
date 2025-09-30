@@ -3,24 +3,24 @@ part of "../../_.dart";
 typedef INT__NEG = int;
 
 const //
-    NIS8__size = NI8__size,
-    NIS8__limit = (1 << ((NI8__size * BS1__width) - 1)),
-    NIS8__max = (NIS8__limit - 1),
+    INT__NEG__8__size = INT__8__size,
+    INT__NEG__8__limit = (1 << ((INT__8__size * BS1__width) - 1)),
+    INT__NEG__8__max = (INT__NEG__8__limit - 1),
 //
-    NISM__size = NIS8__size;
+    INT__NEG__size = INT__NEG__8__size;
 
-enum base__NIS__text__digits__fixed__truncation {
+enum base__INT__NEG__text__digits__fixed__truncation {
   beginning,
   ending,
 }
 
-typedef NIS__bytes__convert__result___compo = ({
+typedef INT__NEG__bytes__convert__result___compo = ({
   INT__NEG value,
   INT count,
 });
 
-class base__NIS__text__digits__fixed {
-  base__NIS__text__digits__fixed(
+class base__INT__NEG__text__digits__fixed {
+  base__INT__NEG__text__digits__fixed(
     this.value___raw, {
     required this.negative___ok,
     required this.digits__count,
@@ -29,7 +29,7 @@ class base__NIS__text__digits__fixed {
 
   final INT digits__count;
 
-  final base__NIS__text__digits__fixed__truncation? truncation;
+  final base__INT__NEG__text__digits__fixed__truncation? truncation;
 
   INT value___raw;
 
@@ -75,7 +75,7 @@ class base__NIS__text__digits__fixed {
             buffer.write(value__text);
           }
           break;
-        case base__NIS__text__digits__fixed__truncation.beginning:
+        case base__INT__NEG__text__digits__fixed__truncation.beginning:
           {
             buffer.write(
               value__text.substring(
@@ -85,7 +85,7 @@ class base__NIS__text__digits__fixed {
             );
           }
           break;
-        case base__NIS__text__digits__fixed__truncation.ending:
+        case base__INT__NEG__text__digits__fixed__truncation.ending:
           {
             buffer.write(
               value__text.substring(

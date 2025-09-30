@@ -5,7 +5,7 @@ part of "../_.dart";
   required final gui__base__widget page__title,
   required final INT item__array__count,
   final array<INT>? selection__array__initial,
-  final ({INT min, INT max}) selection__array__constraints = (min: 1 /* 0, to allow submit-ing anytime, without even a single selection */, max: NI1__max),
+  final ({INT min, INT max}) selection__array__constraints = (min: 1 /* 0, to allow submit-ing anytime, without even a single selection */, max: INT__1__max),
   required final gui__base__listing__item__build__function__format listing__item__body__build,
   final IconData? submit__button__icon = flutter__icon__done,
   final string submit__button__title = "Submit",

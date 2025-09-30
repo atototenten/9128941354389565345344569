@@ -86,13 +86,13 @@ class base__byte__array__accumulation /*
     final BS1 b,
   ) {
     accumulation___raw.add__ending(
-      b.NI1__convert__byte__array(),
+      b.INT__1__convert__byte__array(),
     );
 
     bytes__count___raw += 1;
   }
 
-  void add__NI__fixed(
+  void add__INT__fixed(
     final INT value,
     final INT value__size,
   ) {
@@ -112,18 +112,18 @@ class base__byte__array__accumulation /*
         value.convert__bytes(),
       );
 
-  void add__NI__fixed__nilable(
+  void add__INT__fixed__nilable(
     final INT? value,
     final INT value__size,
   ) =>
       ((value != null) //
-          ? add__NI__fixed(
+          ? add__INT__fixed(
               (value + 1),
               value__size,
             )
           : add__byte(0));
 
-  void add__NI__nilable(
+  void add__INT__nilable(
     final INT? value,
   ) =>
       ((value != null) //
@@ -132,11 +132,11 @@ class base__byte__array__accumulation /*
             )
           : add__byte(0));
 
-  void add__NIS__fixed(
+  void add__INT__NEG__fixed(
     final INT__NEG value,
     final INT value__size,
   ) =>
-      add__NI__fixed(
+      add__INT__fixed(
         value,
         value__size,
       );

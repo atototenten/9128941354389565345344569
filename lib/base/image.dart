@@ -22,7 +22,7 @@ part of "_.dart";
   `https://q-viper.github.io/2021/05/24/coding-run-length-encoding-in-python/` */
 
 const //
-    image__dimension__size = NI2__size;
+    image__dimension__size = INT__2__size;
 
 BS1__array image__convert__bytes(
   final BS1__array image, {

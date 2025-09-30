@@ -20,7 +20,7 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
   }
 
   void convert__messages({
-    final INT message__size__size = NI4__size,
+    final INT message__size__size = INT__4__size,
     required final base__message__handle__procedure<BS1__array> message__handle,
     required final dispose__procedure__format channel__close__handle,
     required final base__error__handle__proc_ channel__error__handle,
@@ -86,7 +86,7 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
               data = data.view(count);
               data__count -= count;
 
-              count = accumulation.convert__byte__array().convert__NI__endian__little(
+              count = accumulation.convert__byte__array().convert__INT__endian__little(
                     message__size__size,
                   );
               accumulation.flush();

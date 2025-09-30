@@ -1,9 +1,9 @@
 part of "_.dart";
 
-gui__base__widget gui__base__widget__definitive__build({
-  required final gui__base__widget__attach__proc__format attach__handle,
-  required final gui__base__widget__detach__proc__format detach__handle,
-  required final gui__base__widget__build__function__format child__build,
+gui__base__widget gui__base__widget__definitive__build<storage___type>({
+  required final gui__base__widget__attach__procedure__format<storage___type> attach__handle,
+  required final gui__base__widget__detach__procedure__format<storage___type> detach__handle,
+  required final gui__base__widget__definitive__build__procedure__format<storage___type> child__build,
 }) {
   return _widget__definitive__building(
     attach__handle: attach__handle,
@@ -13,9 +13,12 @@ gui__base__widget gui__base__widget__definitive__build({
 }
 
 @immutable
-class _widget__definitive__building /*
-prefer wrapping with `RepaintBoundary`
-inspired by "StatefulBuilder" of "flutter/widgets/basic.dart" */ //
+class _widget__definitive__building<storage___type> /*
+- prefer wrapping with `RepaintBoundary`
+- def.ing the storage as a member of {widget returning closure}'s env. ,is in-correct approach
+  because instantiation will happen at every call of closure
+    while widget's attaching/detaching happens just once ,when the widget's element is {added to}/{removed from} the element-tree
+- inspired by "StatefulBuilder" of "flutter/widgets/basic.dart" */ //
     extends StatefulWidget {
   const _widget__definitive__building({
     required this.attach__handle,
@@ -24,29 +27,31 @@ inspired by "StatefulBuilder" of "flutter/widgets/basic.dart" */ //
 refer to "_widget__building.child__build" */,
   });
 
-  final gui__base__widget__attach__proc__format attach__handle;
-  final gui__base__widget__detach__proc__format detach__handle;
-  final gui__base__widget__build__function__format child__build;
+  final gui__base__widget__attach__procedure__format<storage___type> attach__handle;
+  final gui__base__widget__detach__procedure__format<storage___type> detach__handle;
+  final gui__base__widget__definitive__build__procedure__format<storage___type> child__build;
 
   @override
-  _widget__definitive__building__state //
+  _widget__definitive__building__state<storage___type> //
   createState() {
-    return _widget__definitive__building__state();
+    return _widget__definitive__building__state<storage___type>();
   }
 }
 
-class _widget__definitive__building__state //
-    extends State<_widget__definitive__building> {
+class _widget__definitive__building__state<storage___type> //
+    extends State<_widget__definitive__building<storage___type>> {
+  late storage___type storage;
+
   @override
   void initState() {
     super.initState();
 
-    widget.attach__handle(context);
+    storage = widget.attach__handle(context);
   }
 
   @override
   void dispose() {
-    widget.detach__handle();
+    widget.detach__handle(storage);
 
     super.dispose();
   }
@@ -55,11 +60,11 @@ class _widget__definitive__building__state //
   void didUpdateWidget /*
 useless ,for us(the base meta-framework)
   because widget has no relevant data-members
-    and all the data is handled otherwise */ (/*covariant*/ final _widget__definitive__building widget__old) {
+    and all the data is handled otherwise */ (/*covariant*/ final _widget__definitive__building<storage___type> widget__old) {
     super.didUpdateWidget(widget__old);
 
-    widget__old.detach__handle();
-    widget.attach__handle(context);
+    widget__old.detach__handle(storage);
+    storage = widget.attach__handle(context);
   }
 
   @override
@@ -69,7 +74,7 @@ useless ,for us(the base meta-framework)
     } /*
 "context_1" guaranteed(by the framework) to be same ,as ".context" */
 
-    return widget.child__build(context);
+    return widget.child__build(context, storage);
   }
 }
 

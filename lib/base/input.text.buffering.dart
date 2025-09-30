@@ -1,7 +1,7 @@
 part of "_.dart";
 
 const //
-    TCW__list__text__initial__size = NI1__max;
+    TCW__list__text__initial__size = INT__1__max;
 
 INT TCW__list__text__size__increased(
   final INT size,

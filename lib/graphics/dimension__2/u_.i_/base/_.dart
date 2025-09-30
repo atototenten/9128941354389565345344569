@@ -163,11 +163,16 @@ typedef gui__base__widget__build__function__format = //
       gui__base__widget__building__context,
     );
 
-typedef gui__base__widget__detach__proc__format = //
-    void Function();
+typedef gui__base__widget__definitive__build__procedure__format<storage___type> = //
+    gui__base__widget Function(
+      gui__base__widget__building__context building__context,storage___type storage,
+    );
 
-typedef gui__base__widget__attach__proc__format = //
-    void Function(
+typedef gui__base__widget__detach__procedure__format<storage___type> = //
+    void Function(storage___type storage);
+
+typedef gui__base__widget__attach__procedure__format<storage___type> = //
+    storage___type Function(
       gui__base__widget__building__context,
     );
 

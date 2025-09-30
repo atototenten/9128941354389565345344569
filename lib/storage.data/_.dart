@@ -29,19 +29,19 @@ final
     base__storage__data__main__tbl__offset = (0 /* padding to achieve alignment */ + base__storage__data__wastage__size__id.size + base__storage__data__wastage__offset),
     base__storage__data__table__main__rows__count__size /*
   because we do not know the exact requirements, so the maximum is chosen */
-    = NI16__size,
-    base__storage__data__main__tbl__rows__count__max = NI1__max; /*
+    = INT__16__size,
+    base__storage__data__main__tbl__rows__count__max = INT__1__max; /*
   {max|siz}es are chosen, finely, to keep, `data:base:position`, `data:base:wastage`, and `main:tbl`
     in a single block of `base__storage__file__block__size.alignment__flash`
       hence maintain a(not "the") perfect-alignment */
 
 enum number__size {
-  byte__string__1(NI1__size),
-  byte__string__2(NI2__size),
-  byte__string__4(NI4__size),
-  byte__string__8(NI8__size),
-  byte__string__16(NI16__size),
-  byte__string__32(NI32__size);
+  byte__string__1(INT__1__size),
+  byte__string__2(INT__2__size),
+  byte__string__4(INT__4__size),
+  byte__string__8(INT__8__size),
+  byte__string__16(INT__16__size),
+  byte__string__32(INT__32__size);
 
   const number__size(
     this.size,

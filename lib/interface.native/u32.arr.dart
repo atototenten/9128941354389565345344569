@@ -21,7 +21,7 @@ BS4__array___compo BS4__array__alloc(
 ) =>
     BS4__array___compo(
       ffi__mem__alloc<ffi_.Uint32>(
-        (count * NI4__size),
+        (count * INT__4__size),
       ),
       count,
     );

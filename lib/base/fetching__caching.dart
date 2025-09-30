@@ -45,7 +45,7 @@ TASK
     return base__fetching__caching.raw(
       elements__count: elements__count,
       block__elements__count__width: block__elements__count__width,
-      block__elements__count__max: NI__max__basic(
+      block__elements__count__max: INT__max__basic(
         width: block__elements__count__width,
       ),
       blocks__count__max: (blocks__count - 1),

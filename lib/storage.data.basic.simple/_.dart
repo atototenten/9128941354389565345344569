@@ -4,7 +4,7 @@ import "package:base/storage.data.basic/_.dart";
 final //
     base__storage__data__basic__simple__column__meta___raw = base__storage__data__basic__table__column__meta(
       NIL,
-      base__storage__data__basic__table__column__data__type.byte__array,
+      base__storage__data__basic__table__column__data__type.bytes,
     ),
     base__storage__data__basic__simple__columns__meta___raw = array__new__element__single(
       base__storage__data__basic__simple__column__meta___raw,
@@ -100,7 +100,7 @@ based on `base__storage__data__basic__meta` */
 
     return result.convert__if(
       (final bytes) {
-        return NI__bytes__convert(
+        return INT__bytes__convert(
           bytes,
         ).value;
       },
@@ -130,7 +130,7 @@ based on `base__storage__data__basic__meta` */
 
     return result.convert__if(
       (final bytes) {
-        final result = NI__bytes__convert(
+        final result = INT__bytes__convert(
           bytes.view(1),
         ).value;
 
@@ -155,7 +155,7 @@ based on `base__storage__data__basic__meta` */
     );
   }
 
-  value__asyn<APPROX?> cell__NE(
+  value__asyn<APPROX?> cell__APPROX(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell__text(
@@ -303,7 +303,7 @@ can be increased ,freely
     );
   }
 
-  value__asyn<void> cell__assign__NE(
+  value__asyn<void> cell__assign__APPROX(
     final table__cell__meta__type cell__meta,
     final APPROX value,
   ) async {
@@ -349,7 +349,7 @@ should be avoided ,unless necessary
     required final BOOL? value__BOOL,
     required final INT? value__INT,
     required final INT__NEG? value__INT__NEG,
-    required final APPROX? value__NE,
+    required final APPROX? value__APPROX,
     required final byte__array? value__byte__array,
     required final string? value__text,
   }) async {
@@ -373,7 +373,7 @@ should be avoided ,unless necessary
               }
             }
             break;
-          case base__storage__data__basic__simple__cell__type.NI:
+          case base__storage__data__basic__simple__cell__type.INT:
             {
               if (value__INT == null) {
                 cell__assign__nil(
@@ -387,7 +387,7 @@ should be avoided ,unless necessary
               }
             }
             break;
-          case base__storage__data__basic__simple__cell__type.NIS:
+          case base__storage__data__basic__simple__cell__type.INT__NEG:
             {
               if (value__INT__NEG == null) {
                 cell__assign__nil(
@@ -401,16 +401,16 @@ should be avoided ,unless necessary
               }
             }
             break;
-          case base__storage__data__basic__simple__cell__type.NE:
+          case base__storage__data__basic__simple__cell__type.APPROX:
             {
-              if (value__NE == null) {
+              if (value__APPROX == null) {
                 cell__assign__nil(
                   cell__meta,
                 );
               } else {
-                cell__assign__NE(
+                cell__assign__APPROX(
                   cell__meta,
-                  value__NE,
+                  value__APPROX,
                 );
               }
             }
@@ -456,7 +456,7 @@ abstract class base__storage__data__basic__simple__cell___protocol {
 }
 
 enum base__storage__data__basic__simple__cell__type //
-{ BOOL, INT, INT__NEG, NE, byte__array, text }
+{ BOOL, INT, INT__NEG, APPROX, byte__array, text }
 
 value__asyn<void> base__storage__data__basic__simple__test({
   required final base__storage__data__basic__simple__mutating__meta storage,
@@ -486,7 +486,7 @@ value__asyn<void> base__storage__data__basic__simple__test({
 
       await storage.cell__assign__INT(abc, values.abc);
       await storage.cell__assign__INT__NEG(jkl, values.jkl);
-      await storage.cell__assign__NE(xyz, values.xyz);
+      await storage.cell__assign__APPROX(xyz, values.xyz);
 
       {
         final value = await storage.cell__INT(
@@ -513,7 +513,7 @@ value__asyn<void> base__storage__data__basic__simple__test({
       }
 
       {
-        final value = await storage.cell__NE(
+        final value = await storage.cell__APPROX(
           xyz,
         );
 
@@ -561,7 +561,7 @@ class base__storage__data__basic__simple__testing__cell__jkl //
 
   @override
   base__storage__data__basic__simple__cell__type type() {
-    return base__storage__data__basic__simple__cell__type.INT__NEG
+    return base__storage__data__basic__simple__cell__type.INT__NEG;
   }
 }
 
@@ -577,6 +577,6 @@ class base__storage__data__basic__simple__testing__cell__xyz //
 
   @override
   base__storage__data__basic__simple__cell__type type() {
-    return base__storage__data__basic__simple__cell__type.NE;
+    return base__storage__data__basic__simple__cell__type.APPROX;
   }
 }

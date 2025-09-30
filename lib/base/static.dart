@@ -69,7 +69,7 @@ const //
       "Sunday",
     ],
 //
-    file__type__array__count__size = NI2__size,
+    file__type__array__count__size = INT__2__size,
     file__type__static__text__graphic__image = "image",
     file__type__static__text__graphic__symbol = "symbol",
     file__type__static__text__array = <string>[

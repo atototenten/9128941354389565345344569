@@ -25,7 +25,7 @@ class gui__base__input__text //
     required this.text__style,
     required this.cursor__color,
     this.capitalization = TextCapitalization.none,
-    this.characters__count__limit = NI1__max,
+    this.characters__count__limit = INT__1__max,
     this.filtering = base__input__text__filtering__basic,
     this.lines__max = 3,
     this.lines__min = 1,
