@@ -11,26 +11,58 @@ extension base__value__disposal__extension //
   }
 }
 
-class base__value__lazy__compo<value___type> {
-  base__value__lazy__compo({
+class base__value__lazy___compo<value___type> {
+  base__value__lazy___compo({
     required this.value__fetch,
-  }) : value___raw = base__value__optional__absent__compo();
+  }) : _value = base__value__optional__absent__compo<value___type>();
 
   final value___type Function() value__fetch;
 
-  base__value__optional___union<value___type> value___raw;
+  base__value__optional___union<value___type> _value;
 
   value___type value() {
-    final value = value___raw;
+    final value = _value;
 
-    return switch (value) {
-      base__value__optional__present__compo<value___type>() => value.value,
-      base__value__optional__absent__compo<value___type>() => value__fetch(),
-    };
+    switch (value) {
+      case base__value__optional__present__compo<value___type>():
+        return value.value;
+
+      case base__value__optional__absent__compo<value___type>():
+        {
+          final value = value__fetch();
+
+          _value = base__value__optional__present__compo(value);
+
+          return value;
+        }
+    }
   }
 
   void flush() {
-    value___raw = base__value__optional__absent__compo();
+    _value = base__value__optional__absent__compo<value___type>();
+  }
+}
+
+class base__value__lazy__compact___compo<value___type> {
+  base__value__lazy__compact___compo({
+    required final value___type Function() value__fetch,
+  }) : _value__fetch = value__fetch;
+
+  value___type Function()? _value__fetch;
+  late final value___type _value;
+
+  value___type value() {
+    final value__fetch = _value__fetch;
+
+    if (value__fetch == null) {
+      return _value;
+    }
+
+    _value = value__fetch();
+
+    _value__fetch = NIL;
+
+    return _value;
   }
 }
 
