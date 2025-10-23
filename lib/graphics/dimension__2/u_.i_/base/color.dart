@@ -1,33 +1,43 @@
 part of "_.dart";
 
 const //
-    base__color__transparent = base__color__transparent__dark,
+base__color__transparent = base__color__transparent__dark,
     base__color__transparent__light = Color(0x00FFFFFF),
     base__color__transparent__dark = /*Color(0x00000000)*/ flutter__material__colors.transparent,
     base__color__white = Color(0xFFFFFFFF),
     base__color__black = Color(0xFF000000);
 
 const APPROX //
-    image__filter__blur__sensitive__extra /* as foreground of a random picture */ = 64,
+image__filter__blur__sensitive__extra /* as foreground of a random picture */ = 64,
     image__filter__blur__sensitive /* sensitive to the background, expected as foreground of a picture */ = 32,
     image__filter__blur__crucial /* for top-navigation, and status-bar's background */ = 16,
     image__filter__blur__default = 8,
     image__filter__blur__clear /* for quite sexy look */ = 4,
     image__filter__blur__min_ /* for sexy-est look */ = 1;
 
+Color base__color__grey({
+  required final APPROX alpha,
+  required final APPROX color,
+}) {
+  return Color.from(
+    alpha: alpha,
+    red: color,
+    green: color,
+    blue: color,
+  );
+}
+
 ui.ImageFilter base__image__filter__blur(
   final APPROX value,
-) =>
-    ui.ImageFilter.blur(
-      sigmaX: value,
-      sigmaY: value,
-    );
+) => ui.ImageFilter.blur(
+  sigmaX: value,
+  sigmaY: value,
+);
 
 Color color__generate({
   required final INT intensity /*
   throw (lines relative to the offset, of function's body):
-    1 */
-  ,
+    1 */,
   required final BOOL b__dark_mode /* 3..255 vs 255..3, both inclusive, for `OK`(dark), and `NO`(light) respectively */,
   required final BOOL b__solid /* or `b__semi_transparent`(with alpha) */,
   required final INT interval,
@@ -68,7 +78,7 @@ Color color__whiten(
   final INT intensity,
 ) {
   final INT //
-      red = (color.red + intensity),
+  red = (color.red + intensity),
       green = (color.green + intensity),
       blue = (color.blue + intensity);
 
@@ -93,13 +103,12 @@ INT get _color__random => //
 /** copied from `https://stackoverflow.com/a/43235` */
 Color color__random(
   final Color color,
-) =>
-    Color.fromARGB(
-       INT__1__max,
-      ((_color__random + color.red) ~/ 2),
-      ((_color__random + color.green) ~/ 2),
-      ((_color__random + color.blue) ~/ 2),
-    );
+) => Color.fromARGB(
+  INT__1__max,
+  ((_color__random + color.red) ~/ 2),
+  ((_color__random + color.green) ~/ 2),
+  ((_color__random + color.blue) ~/ 2),
+);
 
 /*
 forked
@@ -111,7 +120,7 @@ Color color__contrasted(
 ) {
   final APPROX relativeLuminance = color.computeLuminance();
 
-  return (((relativeLuminance + 0.05) * (relativeLuminance + 0.05) > 0.0525 /* kThreshold */) //
+  return (((relativeLuminance + 0.05) * (relativeLuminance + 0.05) > 0.0525 /* kThreshold */ ) //
       ? base__color__white
       : base__color__black);
 }
@@ -140,10 +149,8 @@ Color color__contrasted(
 
 Color color__sensitive(
   final Color color,
-) =>
-    color__contrasted(color);
+) => color__contrasted(color);
 
 Color color__high_contrast(
   final Color color,
-) =>
-    color__contrasted(color);
+) => color__contrasted(color);

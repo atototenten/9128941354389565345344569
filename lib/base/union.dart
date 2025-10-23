@@ -45,8 +45,7 @@ sub-typing is not supported
   }
 
   BOOL equal___ok(
-    final union other,
-  ) /*
+    final union other) /*
 `_types` is ignored */
   {
     return ((runtimeType == other.runtimeType) //
@@ -56,8 +55,7 @@ sub-typing is not supported
 
   @override
   BOOL operator ==(
-    final Object other,
-  ) {
+    final Object other) {
     return ((other is union) &&
         equal___ok(
           other,

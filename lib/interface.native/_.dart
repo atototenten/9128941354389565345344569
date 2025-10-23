@@ -72,7 +72,7 @@ byte__array___compo ffi__text__convert(
   final string s,
 ) {
   final //
-      bytes = text__convert__utf_8__bytes(s),
+      bytes = string__convert__utf_8__bytes(s),
       bytes__count = bytes.bytes__count,
       result = BS1__array__alloc(bytes__count + 1);
 
@@ -89,7 +89,7 @@ byte__array___compo ffi__text__convert(
 string ffi__convert__text(
   final ffi_.Pointer<ffi_.Uint8> bytes,
 ) =>
-    utf_8__bytes__convert__text(
+    utf_8__bytes__convert__string(
       bytes.asTypedList(
         ffi__text__count(
           bytes,

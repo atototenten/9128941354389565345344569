@@ -1,6 +1,6 @@
 import "_.dart";
 
-string TC__ascii__array__new__generated(
+string CHAR__ASCII__array__new__generated(
   final BOOL code___ok /* {char-code | char} */,
 ) /*
   special cases are not handled
@@ -57,8 +57,8 @@ tilde ~""";
 
   final //
       prefix = (code___ok //
-          ? "TC__ascii__"
-          : "TC__"),
+          ? "CHAR__ASCII__"
+          : "CHAR__"),
       result = StringBuffer() //
         ..write("TC //");
 

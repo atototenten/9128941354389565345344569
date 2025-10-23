@@ -13,7 +13,7 @@ typedef string = String;
       but the last encountered `charCode` was 244(at `byteCounter` 169856)
     the `byteCount` of the `encodedBytes` was 4388733 */
 
-byte__array text__convert__utf_8__bytes(final string s) => //
+byte__array string__convert__utf_8__bytes(final string s) => //
     (const convert.Utf8Encoder()).convert(s);
 
 INT? /*id_*/ text__search /*
@@ -68,7 +68,7 @@ BOOL text__numbers___ok(
   return OK;
 }
 
-string utf_8__bytes__convert__text(final byte__array bytes) => //
+string utf_8__bytes__convert__string(final byte__array bytes) => //
     (const convert.Utf8Decoder()).convert(bytes);
 
 INT /*(char:bytes:count -1)*/ utf_8__bytes__char__bytes__count__remain_ing(

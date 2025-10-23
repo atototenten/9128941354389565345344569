@@ -21,8 +21,9 @@ part "math.dart";
 part "BOOL.dart";
 part "byte.string.dart";
 part "byte.array.dart";
-part "ch.ascii.dart";
-part "char.dart";
+part "CHAR.ASCII.dart";
+part "CHAR.BASIC.dart";
+part "CHAR.dart";
 part "compo.dart";
 part "java_script.dart";
 part "fetching__caching.dart";
@@ -57,7 +58,6 @@ part "Stream.dart";
 part "string.dart";
 part "string.wide.dart";
 part "representation.text.dart";
-part "TC.dart";
 part "union.dart";
 part "unit.dart";
 part "value.dart";
@@ -69,9 +69,10 @@ part "Object__nilable.dart";
     any function, marked `async`, or using `await` in body, MUST return `Future`, NOT `FutureOr` */
 
 const //
-    base__printing___ok = OK,
-//
-    environment__phone__android___ok = OK,
+base__printing___ok = OK,
+        //
+        environment__phone__android___ok =
+        OK,
     environment__phone__apple___ok = NO,
     environment__phone___ok = (environment__phone__android___ok || environment__phone__apple___ok),
     environment__work_station__unix___ok /*BSD|GNU|Linux*/ = !environment__phone___ok,
@@ -80,12 +81,11 @@ const //
 const Null NIL = null;
 
 const //
-    Null__value__text = "NIL";
+Null__value__text = "NIL";
 
 const //
-    bytes__count__decimal__shift__count = 10,
-    bytes__count__kibi = /*(1 << bytes__count__decimal__shift__count)*/
-        (INT__1__limit << 2),
+bytes__count__decimal__shift__count = 10,
+    bytes__count__kibi = /*(1 << bytes__count__decimal__shift__count)*/ (INT__1__limit << 2),
     bytes__count__mebi = (bytes__count__kibi << bytes__count__decimal__shift__count),
     bytes__count__gibi = (bytes__count__mebi << bytes__count__decimal__shift__count),
     bytes__count__tebi = (bytes__count__gibi << bytes__count__decimal__shift__count),
@@ -95,7 +95,7 @@ const //
     bytes__count__yobi = (bytes__count__zebi << bytes__count__decimal__shift__count);
 
 const INT //
-    io__buffer__size__default = (bytes__count__kibi << 2);
+io__buffer__size__default = (bytes__count__kibi << 2);
 
 enum base__results__basic {
   success,
@@ -106,8 +106,7 @@ enum base__results__basic {
 extension base__results__basic__ensurance__extension //
     on base__results__basic {
   void ensure__success /*
-`throw`s `base__results__basic.`{`failure`|`error`} */
-      () {
+`throw`s `base__results__basic.`{`failure`|`error`} */ () {
     final value = this;
 
     if (value == base__results__basic.success) {
@@ -119,24 +118,26 @@ extension base__results__basic__ensurance__extension //
 }
 
 const //
-    result__code__size = INT__1__size,
-//
-    zero = '${0}', //
-    one = '${1}',
-    two = '${2}',
-    three = '${3}',
-//
-    static__indicate__truncat_ion = "...",
+result__code__size = INT__1__size,
+        //
+        zero =
+        "${0}", //
+    one = "${1}",
+    two = "${2}",
+    three = "${3}",
+        //
+        static__indicate__truncat_ion =
+        "...",
     static__indicate__short_en_ing = static__indicate__truncat_ion,
-//
-    empty__string = '',
-    empty__array = <dynamic>[];
+        //
+        empty__string =
+        "";
 
-const TC //
-    checksum__sha__256__size = 32;
+const CHAR //
+checksum__sha__256__size = 32;
 
 const //
-    attribute__function__inline = pragma("vm:prefer-inline");
+attribute__function__inline = pragma("vm:prefer-inline");
 
 extension nil__conversion__extension<type extends Object> on type? {
   result__type? convert__if<result__type>(
@@ -157,7 +158,7 @@ extension nil__conversion__extension<type extends Object> on type? {
 late final base__random__safe = math.Random.secure();
 
 BOOL base__check__endian__host__little() {
-  return ((BS2__array(1)..[0] = 256 /* because we want to check the index 0, not 1 */).buffer.asUint8List()[0] == 0);
+  return ((BS2__array(1)..[0] = 256 /* because we want to check the index 0, not 1 */ ).buffer.asUint8List()[0] == 0);
 }
 
 void base__check__features() {
@@ -172,19 +173,30 @@ typedef base__copy__result___compo = ({
 });
 
 //@attribute__function__inline
-base__copy__result___compo base__copy<T>(
-  final array<T> dest,
-  final array<T> src, {
-  INT? /*src__*/ count,
+base__copy__result___compo base__copy<element___type>(
+  final array<element___type> dest,
+  final array<element___type> src, {
+  final INT? /*src__*/ count,
   INT dest__offset = 0,
   INT src__offset = 0,
 }) {
-  count /* end/stop */ = ((count == null) //
+  final end =
+      ((count == null) //
       ? (src.elements__count - src__offset)
       : (count + src__offset));
 
-  while (src__offset < count) //
-    dest[dest__offset++] = src[src__offset++];
+  if (OK) {
+    while (src__offset < end) {
+      dest[dest__offset++] = src[src__offset++];
+    }
+  } else {
+    dest.setRange(
+      dest__offset,
+      end,
+      src,
+      src__offset,
+    );
+  }
 
   return (
     dest__offset__new: dest__offset,
@@ -197,14 +209,14 @@ abstract class base__dispose___protocol {
 }
 
 abstract class base__dispose__asyn___protocol //
-    <error__type extends Enum> {
+<error__type extends Enum> {
   value__asyn<error__type?> //
-      dispose__asyn();
+  dispose__asyn();
 }
 
 abstract class base__dispose__asyn__basic___protocol {
   value__asyn__basic<void> //
-      dispose__asyn();
+  dispose__asyn();
 }
 
 INT binarySearch(
@@ -212,7 +224,7 @@ INT binarySearch(
   final INT element,
 ) {
   INT //
-      min = 0,
+  min = 0,
       mid = 0 /* un-necessary assignment, to avoid the error, by dart's analyzer */,
       max = list.elements__count;
 
@@ -222,14 +234,15 @@ INT binarySearch(
     if (element < _element) //
       max = mid;
     else if (element > _element) //
-      min = (mid += /*
+      min =
+          (mid += /*
   if the `element` is NOT found,
     the assignment ensures that correct index(for insertion), hence correct `-mid`, is returned
       for all values, without the assignment, the negative-index is correct, for some values, but not all
 
   mere this trick has been copied from the source code of "gnu classpath",
     which was also, found to be highly in-efficient, than open-jdk's implementation, checkout later */
-          1);
+              1);
     else //
       return mid;
   }
@@ -327,13 +340,15 @@ extension text__separation__extension //
 
     final elements__count = ((length_1 - offset) ~/ interval);
 
-    final result = array__new__filled<string>(
-      elements__count,
-      empty__string,
-    )..first = substring(
-        0,
-        offset,
-      );
+    final result =
+        array__new__filled<string>(
+            elements__count,
+            empty__string,
+          )
+          ..first = substring(
+            0,
+            offset,
+          );
 
     base__iterate__reverse__basic(
       (elements__count - 1),

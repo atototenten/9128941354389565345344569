@@ -1,12 +1,12 @@
 part of "_.dart";
 
-const TCW //
-    TC__unicode__bullet = 8226,
-    TC__unicode__currency__rupee = 8377 /* symbol of Indian National Rupee */;
+const CHAR__UNICODE //
+    CHAR__UNICODE__bullet = 8226,
+    CHAR__UNICODE__currency__rupee = 8377 /* symbol of Indian National Rupee */;
 
 final string //
-    char__bullet = string.fromCharCode(TC__unicode__bullet),
-    char__currency__rupee = string.fromCharCode(TC__unicode__currency__rupee);
+    char__bullet = string.fromCharCode(CHAR__UNICODE__bullet),
+    char__currency__rupee = string.fromCharCode(CHAR__UNICODE__currency__rupee);
 
 const //
     number__ordinal__static__sting__array = <string>[
@@ -84,7 +84,7 @@ final //
   string title,
 })>[
   (
-    code: TC__unicode__currency__rupee,
+    code: CHAR__UNICODE__currency__rupee,
     char: char__currency__rupee,
     title: "Indian Rupees",
   ),

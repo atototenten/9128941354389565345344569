@@ -1,14 +1,20 @@
 part of "_.dart";
 
-const //
-base__input__text__filtering__basic = base__input__text__filtering(
-      r"[ -~]",
-    ),
-    base__input__text__filtering__full =
-        base__input__text__filtering(
-          r"[\x00-\x09\x0B-\x1F\x7F\x80-\x9F]",
-          allow___ok: NO,
-        ) /*
+class gui__base__input__text___compo /*
+- focussing("FocusNode") has not been exposed intentionally
+    due to it being defective
+      and pressing-region("TapRegion") being the better approach ,to handle focussing */ //
+    implements base__dispose___protocol {
+  static final //
+  text__filtering__basic___formatting = FilteringTextInputFormatter(
+        r"[ -~]",
+        allow: OK,
+      ),
+      text__filtering__full___formatting =
+          FilteringTextInputFormatter(
+            r"[\x00-\x09\x0B-\x1F\x7F\x80-\x9F]",
+            allow: NO,
+          ) /*
 ASCII
   `web://upload.wikimedia.org/wikipedia/commons/d/dd/ASCII-Table.svg`
 Unicode
@@ -17,97 +23,51 @@ Unicode
   `web://en.wikipedia.org/wiki/C0_and_C1_control_codes`
   `web://unicode.org/reports/tr36/` */;
 
-class gui__base__input__text //
-    implements base__dispose___protocol {
-  gui__base__input__text({
-    this.type = TextInputType.text,
-    this.line__breaking___ok = NO,
-    required this.text__style,
-    required this.cursor__color,
-    this.capitalization = TextCapitalization.none,
-    this.characters__count__limit = INT__1__max,
-    this.filtering = base__input__text__filtering__basic,
-    this.lines__max = 3,
-    this.lines__min = 1,
-    final string value__initial = empty__string,
-  }) : value__channel = base__value__mutation__event__channel__broadcast(
-         value__initial,
-       ),
-       controlling___raw = TextEditingController(
-         text: value__initial,
-       ),
-       focussing___raw = FocusNode() {
-    controlling___raw.addListener(
-      controlling__event__handle___raw,
+  static TextInputFormatter characters__count__limiting___formatting({
+    final INT max /*
+in Unicode's Grapheme-clusters */ =
+        INT__1__max,
+  }) {
+    return LengthLimitingTextInputFormatter(
+      max,
+      maxLengthEnforcement: MaxLengthEnforcement.enforced,
     );
   }
 
-  final TextInputType type;
-  final BOOL line__breaking___ok;
-  final TextStyle text__style;
-  final Color cursor__color;
-  final TextCapitalization capitalization;
-  final INT characters__count__limit /*
-wide-char.s */;
-  final base__input__text__filtering filtering;
-  final INT? lines__max;
-  final INT lines__min;
+  gui__base__input__text___compo({
+    final string value = empty__string,
+  }) : _value___channel = base__event__channel__broadcast(),
+       _controlling = TextEditingController(text: value) {
+    _controlling.addListener(_controlling__event__handle);
+  }
 
-  final base__value__mutation__event__channel__broadcast<string> value__channel;
+  final base__event__channel__broadcast _value___channel;
 
-  final TextEditingController controlling___raw;
-  final FocusNode focussing___raw;
+  final TextEditingController _controlling;
 
   @override
   void dispose() {
-    controlling___raw.removeListener(
-      controlling__event__handle___raw,
-    );
+    _controlling.removeListener(_controlling__event__handle);
+    _controlling.dispose();
 
-    focussing___raw.dispose();
-    controlling___raw.dispose();
-
-    value__channel.dispose();
+    _value___channel.dispose();
   }
 
-  void controlling__event__handle___raw() {
-    value__channel.value__mutation__dispatch(
-      controlling___raw.text,
-    );
+  void _controlling__event__handle() {
+    _value___channel.event__dispatch();
   }
 
-  string value() /*{ return value___raw; }*/ {
-    return controlling___raw.value.text;
-  }
+  base__event__channel__broadcast___protocol value___channel() => //
+      _value___channel;
+
+  string value() => //
+      _controlling.value.text;
 
   void value__assign(
     final string value__new,
-  ) /*{
-    value___raw = value__new;
-    channel.event__announce();
-  }*/ {
-    controlling___raw.text = value__new; /*
+  ) {
+    _controlling.text = value__new; /*
 will invoke `channel.event__announce` */
-  }
-
-  BOOL focussed___ok() {
-    return focussing___raw.hasFocus;
-  }
-
-  void focus() {
-    if (focussed___ok()) {
-      return;
-    }
-
-    focussing___raw.requestFocus();
-  }
-
-  void focus_de() {
-    if (focussed___ok().not) {
-      return;
-    }
-
-    focussing___raw.unfocus();
   }
 
   gui__base__widget widget__build /*
@@ -118,80 +78,71 @@ FIX :
     but (strangely) in-between numbers are directly(and correctly) receiv-ed, into input, and NOT through key broadcast
       ,most probably a {flutter-side}-issue */ (
     final gui__base__widget__building__context context, {
-    required final gui__base__widget__build__function__format child__build /*
-un-focus-ed */,
-    required final gui__base__widget__build__function__format? characters__count__indication__build,
+    final TextInputType type = TextInputType.text,
+    final BOOL secret___ok = NO,
+    required final TextStyle text__style,
+    required final Color cursor__color,
+    final TextCapitalization capitalization = TextCapitalization.none,
+    final array<TextInputFormatter>? formatting,
+    final ({
+      INT /*
+valid range : 1 to ".lines__max" */
+      min,
+      INT? /*
+valid values
+  - NIL : no limit
+  - 1 : horizontally scrolling single-line
+  - 2 to INT.MAX : vertically scrolling multiple-lines */
+      max,
+    })?
+    height__lines = (
+      min: 1,
+      max: 3,
+    ),
   }) {
-    return ListenableBuilder(
-      listenable: focussing___raw,
-      builder: (final context, final _) {
-        if (focussed___ok().not) {
-          return child__build(
-            context,
-          );
-        }
-
-        return Material(
-          color: base__color__transparent,
-          child: TextField(
-            decoration: NIL,
-            controller: controlling___raw,
-            focusNode: focussing___raw,
-            style: text__style,
-            cursorOpacityAnimates: NO,
-            cursorColor: cursor__color,
-            cursorRadius: Radius.circular(1.px()),
-            keyboardType: type,
-            textInputAction:
-                (line__breaking___ok //
-                ? TextInputAction.newline
-                : TextInputAction.done) /*
-because of ambiguity with done-key ,between keyboard-close and form-submission */,
-            textCapitalization: capitalization,
-            autofocus: focussing___raw.hasFocus,
-            maxLines: lines__max,
-            minLines: lines__min,
-            inputFormatters: <TextInputFormatter>[
-              LengthLimitingTextInputFormatter(
-                characters__count__limit,
-                maxLengthEnforcement: MaxLengthEnforcement.enforced,
-              ),
-              FilteringTextInputFormatter(
-                RegExp(filtering.reg_ex),
-                allow: filtering.allow___ok,
-              ),
-            ],
-            keyboardAppearance:
-                (base__app__theme__colors__ground__back__contrast__dark___ok //
-                ? Brightness.dark
-                : Brightness.light),
-            scrollPhysics: base__scrolling__physics__clamping,
-            buildCounter:
-                ((characters__count__indication__build == null) //
-                ? null
-                : (
-                    final context, {
-                    required final currentLength,
-                    required final maxLength,
-                    required final isFocused,
-                  }) {
-                    return characters__count__indication__build(
-                      context,
-                    );
-                  }),
-          ),
-        );
-      },
+    return Material(
+      color:
+          (base__app__theme__colors__ground__back__contrast__dark___ok //
+          ? base__color__transparent__dark
+          : base__color__transparent__light),
+      child: TextField(
+        controller: _controlling,
+        focusNode: NIL,
+        autofocus: OK /*
+intentional ,because wrapping with boolean-based transitioning ,with a default-state ,is recommended approach */,
+        decoration: NIL,
+        style: text__style,
+        cursorOpacityAnimates: NO,
+        cursorColor: cursor__color,
+        cursorRadius: Radius.circular(1.px()),
+        cursorWidth: 2.px(),
+        keyboardType: type,
+        textInputAction:
+            ((type == TextInputType.multiline) //
+            ? TextInputAction.newline
+            : TextInputAction.done) /*
+behavior-standardization to prevent ambiguity
+  between keyboard-close and form-submission
+  induced by the users */,
+        textCapitalization: capitalization,
+        textAlignVertical: TextAlignVertical.center,
+        textDirection: TextDirection.ltr,
+        obscureText: secret___ok,
+        autocorrect: secret___ok.not,
+        enableSuggestions: secret___ok.not,
+        enableIMEPersonalizedLearning: secret___ok.not,
+        scrollPadding: EdgeInsets.zero,
+        clipBehavior: Clip.none,
+        expands: (height__lines == null),
+        maxLines: height__lines?.max,
+        minLines: height__lines?.min,
+        inputFormatters: formatting,
+        keyboardAppearance:
+            (base__app__theme__colors__ground__back__contrast__dark___ok //
+            ? Brightness.dark
+            : Brightness.light),
+        scrollPhysics: gui__base__scrolling___compo.scrolling__physics__clamping,
+      ),
     );
   }
-}
-
-class base__input__text__filtering {
-  const base__input__text__filtering(
-    this.reg_ex, {
-    this.allow___ok = OK,
-  });
-
-  final string reg_ex;
-  final BOOL allow___ok;
 }

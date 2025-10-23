@@ -1,9 +1,9 @@
 part of "_.dart";
 
 const //
-    TCW__list__text__initial__size = INT__1__max;
+    CHAR__UNICODE__list__text__initial__size = INT__1__max;
 
-INT TCW__list__text__size__increased(
+INT CHAR__UNICODE__list__text__size__increased(
   final INT size,
 ) =>
     ((size << 1) | 1);
@@ -14,17 +14,17 @@ input__text__buffer___compo input__text__buffer({
 }) {
   if (chars__initial == null) //
     return input__text__buffer___compo._(
-      chars: string__wide(TCW__list__text__initial__size),
+      chars: string__wide(CHAR__UNICODE__list__text__initial__size),
       size__current: 0,
       bytes__count: 0,
       bytes__count__max: text__bytes__count__max,
     );
 
   final text__initial__size = chars__initial.elements__count;
-  INT text__size = TCW__list__text__initial__size;
+  INT text__size = CHAR__UNICODE__list__text__initial__size;
 
   while (text__size < text__initial__size) //
-    text__size = TCW__list__text__size__increased(
+    text__size = CHAR__UNICODE__list__text__size__increased(
       text__size,
     );
 
@@ -40,7 +40,7 @@ input__text__buffer___compo input__text__buffer({
 
   chars__initial.iterate__basic(
     (final _, final wc) {
-      text__bytes__count += TCW__bytes__count(wc);
+      text__bytes__count += CHAR__UNICODE__bytes__count(wc);
     },
   );
 
@@ -104,7 +104,7 @@ class input__text__buffer___compo /*
     INT text__size__ = text__size_;
 
     while /* un-likely */ (text__size__ < size__required) //
-      text__size__ = TCW__list__text__size__increased(
+      text__size__ = CHAR__UNICODE__list__text__size__increased(
         text__size__,
       );
 
@@ -120,9 +120,9 @@ class input__text__buffer___compo /*
   }
 
   BOOL write__append__TCW(
-    final TCW wc,
+    final CHAR__UNICODE wc
   ) {
-    final wc__bytes__count = TCW__bytes__count(wc);
+    final wc__bytes__count = CHAR__UNICODE__bytes__count(wc);
 
     if ($b__write(
       wc__bytes__count,
@@ -148,7 +148,7 @@ class input__text__buffer___compo /*
 
     ws.iterate__basic(
       (final _, final wc) {
-        wstr__bytes__count += TCW__bytes__count(wc);
+        wstr__bytes__count += CHAR__UNICODE__bytes__count(wc);
       },
     );
 
@@ -180,7 +180,7 @@ class input__text__buffer___compo /*
 
   BOOL backspace() {
     if (size__current != 0) {
-      bytes__count -= TCW__bytes__count(
+      bytes__count -= CHAR__UNICODE__bytes__count(
         chars[(size__current -= 1)],
       );
 

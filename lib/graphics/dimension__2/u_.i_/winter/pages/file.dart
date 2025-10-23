@@ -186,9 +186,9 @@ gui__base__widget pages__file__page(
                           (final i) {
                             final c = bytes[i];
 
-                            return (TC__ascii__valid__and__printable___ok(c) //
+                            return (CHAR__ASCII__valid__and__printable___ok(c) //
                                 ? string.fromCharCode(c)
-                                : ((c == TC__ascii__non_printable__line_feed) //
+                                : ((c == CHAR__ASCII__non_printable__line_feed) //
                                     ? r"\n"
                                     : text__binary[i]));
                           },

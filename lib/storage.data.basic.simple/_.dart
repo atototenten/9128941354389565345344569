@@ -151,7 +151,7 @@ based on `base__storage__data__basic__meta` */
     );
 
     return result.convert__if(
-      utf_8__bytes__convert__text,
+      utf_8__bytes__convert__string,
     );
   }
 
@@ -334,7 +334,7 @@ can be increased ,freely
     } else {
       await cell__assign(
         cell__meta,
-        text__convert__utf_8__bytes(
+        string__convert__utf_8__bytes(
           value,
         ),
       );

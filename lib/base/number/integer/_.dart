@@ -60,9 +60,9 @@ const //
     INT__04__limit = (1 << INT__04__width),
     INT__04__max = (INT__04__limit - 1),
     INT__07__size = INT__1__size,
-    INT__07__limit = (1 << TC__width),
-    INT__014__limit = (1 << (2 * TC__width)),
-    INT__021__limit = (1 << (3 * TC__width));
+    INT__07__limit = (1 << CHAR__width),
+    INT__014__limit = (1 << (2 * CHAR__width)),
+    INT__021__limit = (1 << (3 * CHAR__width));
 
 final //
     INT__8__limit = (BigInt.from(1) << INT__8__width),
@@ -201,7 +201,7 @@ INT__bytes__convert__result___compo INT__bytes__convert(
       break;
 
     iter += 1;
-    shift__count += TC__width;
+    shift__count += CHAR__width;
   }
 
   return (
@@ -318,7 +318,7 @@ do {
     final INT size;
     {
       var i = 0;
-      while ((value < (1 << ((i += 1) * TC__width))).not);
+      while ((value < (1 << ((i += 1) * CHAR__width))).not);
 
       size = i;
     }
@@ -330,7 +330,7 @@ do {
     do {
       bytes[i] = (value & 127 /* (1 << BITS_PER_SEGMENT) */);
 
-      if ((value >>= TC__width) != 0) /* more data left */ //
+      if ((value >>= CHAR__width) != 0) /* more data left */ //
         bytes[i] |= 128;
 
       i += 1;

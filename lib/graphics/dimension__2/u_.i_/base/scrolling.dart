@@ -1,139 +1,95 @@
 part of "_.dart";
 
-typedef gui__base__widget__sliver = gui__base__widget;
-
-typedef gui__base__widget__sliver__build__function__format = //
-    gui__base__widget__sliver Function(
-      gui__base__widget__building__context context,
-    );
-
-typedef base__scrolling__axis__direction = ({AxisDirection main, AxisDirection cross});
-
-const //
-base__app__scroll__behavior = _scroll__behavior(),
-    //
-    base__scrolling__physics__clamping = ClampingScrollPhysics(
-      parent: RangeMaintainingScrollPhysics(),
-    ),
-    base__scrolling__physics__natural = BouncingScrollPhysics(
-      parent: RangeMaintainingScrollPhysics(),
-    ),
-    base__scrolling__physics__natural__fast = BouncingScrollPhysics(
-      decelerationRate: ScrollDecelerationRate.fast,
-      parent: RangeMaintainingScrollPhysics(),
-    ),
-    base__scrolling__physics__natural__always = BouncingScrollPhysics(
-      parent: AlwaysScrollableScrollPhysics(),
-    ),
-    //
-    base__scrolling__axis__direction__vertical = (
-      main: AxisDirection.down,
-      cross: AxisDirection.right,
-    ),
-    base__scrolling__axis__direction__vertical__reverse = (
-      main: AxisDirection.up,
-      cross: AxisDirection.right,
-    ),
-    base__scrolling__axis__direction__horizontal = (
-      main: AxisDirection.right,
-      cross: AxisDirection.down,
-    ),
-    base__scrolling__axis__direction__horizontal__reverse = (
-      main: AxisDirection.left,
-      cross: AxisDirection.down,
-    );
-
-const //
-gui__base__scrolling__offset__default = 0.0;
-
-class gui__base__scrolling //
+class gui__base__scrolling___compo //
     implements base__dispose___protocol {
-  factory gui__base__scrolling({
-    required final base__scrolling__axis__direction axis__direction,
-    required final ScrollPhysics physics,
-    final APPROX caching__extent = 0,
-    final APPROX offset = gui__base__scrolling__offset__default,
-  }) {
-    late final gui__base__scrolling value;
-
-    value = gui__base__scrolling._(
-      axis__direction: axis__direction,
-      physics: physics,
-      caching__extent: caching__extent,
-      control___raw: ScrollController(
-        initialScrollOffset: offset,
-        keepScrollOffset: NO,
-        onAttach: (final position) {
-          final offset = value.offset();
-
-          position. /*jumpTo*/ correctPixels(
-            offset,
-          );
-
-          value._offset = NIL;
-        },
-        onDetach: (final position) {
-          value._offset = position.pixels;
-        },
+  static const //
+  scrolling__behavior = _scrolling__behavior___compo(),
+          //
+          scrolling__axis__main__direction__vertical =
+          AxisDirection.down,
+      scrolling__axis__main__direction__vertical__reverse = AxisDirection.up,
+      scrolling__axis__main__direction__horizontal = AxisDirection.right,
+      scrolling__axis__main__direction__horizontal__reverse = AxisDirection.left,
+      //
+      scrolling__physics__clamping = ClampingScrollPhysics(
+        parent: RangeMaintainingScrollPhysics(),
       ),
-      offset: offset,
-    );
+      scrolling__physics__natural = BouncingScrollPhysics(
+        parent: RangeMaintainingScrollPhysics(),
+      ),
+      scrolling__physics__natural__fast = BouncingScrollPhysics(
+        decelerationRate: ScrollDecelerationRate.fast,
+        parent: RangeMaintainingScrollPhysics(),
+      ),
+      scrolling__physics__natural__always = BouncingScrollPhysics(
+        parent: AlwaysScrollableScrollPhysics(),
+      ),
+          //
+          children__caching__extent__default =
+          .5,
+          offset__default =
+          0.0;
 
-    return value;
+  gui__base__scrolling___compo({
+    required this.scrolling__axis__main__direction,
+    required this.scrolling__physics,
+    required this.children__caching__extent,
+    final APPROX offset = offset__default,
+  }) : _offset = offset {
+    _controlling = ScrollController(
+      initialScrollOffset: _offset,
+      keepScrollOffset: NO,
+      onAttach: (final position) {
+        position. /*jumpTo*/ correctPixels(_offset);
+      },
+      onDetach: (final position) {
+        _offset = position.pixels;
+      },
+    );
   }
 
-  gui__base__scrolling._({
-    required this.axis__direction,
-    required this.physics,
-    required this.caching__extent,
-    required this.control___raw,
-    final APPROX? offset,
-  }) : _offset = offset;
+  final AxisDirection scrolling__axis__main__direction;
+  final ScrollPhysics scrolling__physics;
+  final APPROX children__caching__extent;
 
-  final base__scrolling__axis__direction axis__direction;
-  final ScrollPhysics physics;
-  final APPROX caching__extent;
+  late final ScrollController _controlling;
 
-  final ScrollController control___raw;
-
-  APPROX? _offset;
+  APPROX _offset;
 
   @override
   void dispose() {
-    control___raw.dispose();
+    _controlling.dispose();
   }
 
-  APPROX offset() {
-    return (_offset ?? gui__base__scrolling__offset__default);
+  BOOL? position__min__ok() {
+    final position__details_1 = position__details();
+
+    if (position__details_1 == null) {
+      return NIL;
+    }
+
+    return (position__details_1.offset == position__details_1.min);
   }
 
-  BOOL? offset__min___ok() {
-    return switch (_offset) {
-      NIL => NIL,
-      gui__base__scrolling__offset__default => OK,
-      _ => NO,
-    };
-  }
-
-  ({APPROX current, APPROX min, APPROX max})? offset__range() {
-    final position = position___raw();
+  ({APPROX offset, APPROX min, APPROX max__estimation})? position__details() {
+    final position = _position();
 
     if (position == null) {
       return NIL;
     }
 
     return (
-      current: position.pixels,
+      offset: position.pixels,
       min: position.minScrollExtent,
-      max: position.maxScrollExtent,
+      max__estimation: position.maxScrollExtent,
     );
   }
 
-  BOOL scroll__position__begin({
+  BOOL position__scroll__min({
     final INT duration__seconds__milli = /*(1000 ~/ 3)*/ 96,
     final Curve curve = Curves.ease,
   }) {
-    final position = position___raw();
+    final position = _position();
 
     if (position == null) {
       return NO;
@@ -154,34 +110,22 @@ class gui__base__scrolling //
     return OK;
   }
 
-  BOOL scroll__instant({
+  BOOL position__scroll__instant({
     required final APPROX offset,
   }) {
-    final position = position___raw();
+    final position = _position();
 
     if (position == null) {
       return NO;
     }
 
-    position.jumpTo(
-      offset,
-    );
+    position.jumpTo(offset);
 
     return OK;
   }
 
-  BOOL? position__min__ok___raw() {
-    final position = position___raw();
-
-    if (position == null) {
-      return NIL;
-    }
-
-    return (position.pixels == position.minScrollExtent);
-  }
-
-  ScrollPosition? position___raw() {
-    final v = control___raw.positions;
+  ScrollPosition? _position() {
+    final v = _controlling.positions;
 
     if (v.empty___ok()) {
       return NIL;
@@ -190,54 +134,87 @@ class gui__base__scrolling //
     return v.first;
   }
 
-  base__representation__text //
-  offset__range__representation__text() {
-    final offset__range_1 = offset__range();
-
-    if (offset__range_1 == null) {
-      return Null__representation__text;
-    }
-
-    return base__compo__representation__text(
-      name: "scrolling.offset__range",
-      members: {
-        "current": offset__range_1.current.representation__text(),
-        "min": offset__range_1.min.representation__text(),
-        "max": offset__range_1.max.representation__text(),
-      },
-    );
-  }
-
   gui__base__widget widget__build(
     final gui__base__widget__building__context context, {
-    required final array<gui__base__widget__sliver__build__function__format> slivers__build,
-  }) {
-    return Scrollable(
-      axisDirection: axis__direction.main,
-      controller: control___raw,
-      physics: physics,
-      scrollBehavior: base__app__scroll__behavior,
-      viewportBuilder: (final context, final offset) {
-        return Viewport(
-          axisDirection: axis__direction.main,
-          crossAxisDirection: axis__direction.cross,
+    final EdgeInsetsGeometry? padding,
+    final gui__base__widget? children__separation,
+    required final INT children__count,
+    required final gui__base__widget Function(
+      gui__base__widget__building__context building__context,
+      INT child__id,
+    )
+    child__build,
+  }) => //
+  Scrollable(
+    axisDirection: scrolling__axis__main__direction,
+    controller: _controlling,
+    physics: scrolling__physics,
+    scrollBehavior: scrolling__behavior,
+    viewportBuilder:
+        (final context, final offset) => //
+        Viewport(
+          axisDirection: scrolling__axis__main__direction,
+          crossAxisDirection: switch (scrolling__axis__main__direction) {
+            (AxisDirection.up || AxisDirection.down) => AxisDirection. /*towards_*/ right /*_from_left*/,
+            (AxisDirection.left || AxisDirection.right) => AxisDirection.down /* from up towards down */,
+          },
           offset: offset,
-          cacheExtent: caching__extent,
-          slivers: slivers__build.convert(
-            (final sliver__build) {
-              return sliver__build(
-                context,
-              );
-            },
-          ).convert__array(),
-        );
-      },
-    );
-  }
+          cacheExtent: children__caching__extent,
+          cacheExtentStyle: CacheExtentStyle.viewport,
+          clipBehavior: Clip.none,
+          slivers: () {
+            final sliver =
+                ((children__separation == null) //
+                ? SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      addAutomaticKeepAlives: NO,
+                      addRepaintBoundaries: NO,
+                      addSemanticIndexes: NO,
+                      //
+                      childCount: ((children__count * 2) - 1),
+                      (final context, final child__id) {
+                        if (child__id.isOdd) {
+                          return children__separation;
+                        }
+
+                        return RepaintBoundary(
+                          child: child__build(
+                            context,
+                            (child__id ~/ 2),
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                : SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      addAutomaticKeepAlives: NO,
+                      addSemanticIndexes: NO,
+                      //
+                      addRepaintBoundaries: OK,
+                      //
+                      childCount: children__count,
+                      child__build,
+                    ),
+                  ));
+
+            if (padding == null) {
+              return [sliver];
+            }
+
+            return [
+              SliverPadding(
+                padding: padding,
+                sliver: sliver,
+              ),
+            ];
+          }(),
+        ),
+  );
 }
 
-class _scroll__behavior extends ScrollBehavior {
-  const _scroll__behavior();
+class _scrolling__behavior___compo extends ScrollBehavior {
+  const _scrolling__behavior___compo();
 
   @override
   Set<ui.PointerDeviceKind> get dragDevices => //
@@ -253,19 +230,20 @@ class _scroll__behavior extends ScrollBehavior {
     final BuildContext context,
     final gui__base__widget child,
     final ScrollableDetails details,
-  ) => ( /*kDebugMode //
-          ? RawScrollbar(
-              controller: details.controller,
-              child: child,
-            )
-          :*/ child);
+  ) => //
+  ( /*base__program__compilation__debug___ok //
+      ? RawScrollbar(
+          controller: details.controller,
+          child: child,
+        ):*/ child);
 
   @override
   gui__base__widget buildOverscrollIndicator(
     final BuildContext context,
     final gui__base__widget child,
     final ScrollableDetails details,
-  ) => StretchingOverscrollIndicator(
+  ) => //
+  StretchingOverscrollIndicator(
     axisDirection: details.direction,
     child: child,
   );
@@ -277,5 +255,5 @@ class _scroll__behavior extends ScrollBehavior {
 
   @override
   ScrollPhysics getScrollPhysics(final BuildContext context) => //
-      base__scrolling__physics__natural;
+      gui__base__scrolling___compo.scrolling__physics__natural;
 }

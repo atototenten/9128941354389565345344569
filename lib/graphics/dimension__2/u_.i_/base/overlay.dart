@@ -55,15 +55,16 @@ values :
 
       return Align(
         alignment: notice__position,
-        child: notice__build(
-          context,
-        ),
+        child: notice__build(context),
       );
     },
   );
 }
 
-(value__asyn<value___type> result, gui__base__entity__overlay___compo overlay) //
+({
+  value__asyn<value___type> value___asyn,
+  gui__base__entity__overlay___compo overlay,
+}) //
 gui__base__overlay__waiting /*
 prefer disabling dismissal/back-navigation gestures
   ,like press ,and drag
@@ -152,105 +153,70 @@ needed to handle already-resolved asyn.-values */ =
     },
   );
 
-  return (promise.future, overlay);
+  return (
+    value___asyn: promise.future,
+    overlay: overlay,
+  );
 }
 
 class gui__base__overlays__management //
-<entity__type extends gui__base__entity__overlay___compo> //
+<overlay___type extends gui__base__entity__overlay___compo> //
     implements base__dispose___protocol {
   gui__base__overlays__management() //
-    : overlays___raw = base__accumulation__linear__basic(),
-      channel___raw = base__event__channel__broadcast();
+    : _overlays = base__accumulation__linear__basic(),
+      _channel = base__event__channel__broadcast();
 
-  final base__accumulation__linear__basic<base__overlay<entity__type>> overlays___raw;
-  final base__event__channel__broadcast channel___raw;
+  final base__accumulation__linear__basic<overlay___type> _overlays;
+  final base__event__channel__broadcast _channel;
 
   void add(
-    final base__overlay<entity__type> overlay,
+    final overlay___type overlay /*
+widget suggestions
+  - prefer `Align`-widget
+    ,for non-center pos.
+  - prefer `TapRegion`-widget
+    ,to support touch-based dismiss behavior */,
   ) {
-    overlays___raw.add__ending(
-      overlay,
-    );
+    _overlays.add__ending(overlay);
 
-    channel___raw.event__dispatch();
+    _channel.event__dispatch();
   }
 
   @override
   void dispose() {
-    channel___raw.dispose();
+    _channel.dispose();
 
-    overlays___raw.iterate(
-      (final _, final overlay) {
-        overlay.dispose();
+    _overlays.iterate((final _, final overlay) {
+      overlay.dispose();
 
-        return OK;
-      },
-    );
+      return OK;
+    });
 
-    overlays___raw.dispose();
+    _overlays.dispose();
   }
 
   gui__base__widget widget__build(
     final gui__base__widget__building__context context, {
     required final gui__base__widget__build__function__format child__build,
   }) {
-    return channel___raw.handling__widget__build(
+    return _channel.handling__widget__build(
       context,
       child__build: (final context) {
-        final array<gui__base__widget> stack__children;
-        {
-          final stack__children__accumulation = base__accumulation__linear__basic<gui__base__widget>();
-
-          stack__children__accumulation.add__ending(
-            child__build(
-              context,
-            ),
-          );
-
-          overlays___raw.iterate(
-            (final _, final overlay) {
-              stack__children__accumulation.add__ending(
-                overlay.entity.widget__build(
-                  context,
-                ),
-              );
-
-              return OK;
-            },
-          );
-
-          stack__children = stack__children__accumulation.convert__array();
-
-          stack__children__accumulation.dispose();
-        }
-
         return gui__base__stack__widget(
           alignment: Alignment.center,
           clipping: Clip.none,
-          children: stack__children,
+          children: [
+            child__build(context),
+            ..._overlays //
+                .convert__array()
+                .convert(
+                  (overlay) => //
+                      overlay.widget__build(context),
+                ),
+          ],
         );
       },
     );
-  }
-}
-
-class base__overlay //
-<entity__type extends gui__base__entity__overlay___compo> //
-    implements base__dispose___protocol {
-  const base__overlay({
-    required this.entity /*
-widget suggestions
-  - prefer `Align`-widget
-    ,for non-center pos.
-  - prefer `TapRegion`-widget
-    ,to support touch-based dismiss behavior */,
-  });
-
-  final entity__type entity;
-
-  @override
-  void dispose() {
-    entity.dispose();
   }
 }
 

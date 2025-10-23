@@ -1,7 +1,7 @@
 part of "_.dart";
 
 base__storage__file__accessing__aligned__meta___union //
-    base__storage__file__accessing__auto({
+base__storage__file__accessing__auto({
   required final base__storage__file__alignment___compo alignment,
   required INT length,
   required INT offset,
@@ -27,7 +27,7 @@ base__storage__file__accessing__aligned__meta___union //
     result = base__storage__file__accessing__aligned__none__meta();
   } else {
     final //
-        offset__aligned___ok = base__INT__aligned___ok(
+    offset__aligned___ok = base__INT__aligned___ok(
           offset,
           alignment.size,
         ),
@@ -48,8 +48,7 @@ example :`
         |   ---  |        |
 `
 aligned equivalent case (`offset__aligned__ok`)
-  is covered by `result.end` */
-    {
+  is covered by `result.end` */ {
       if (base__printing___ok) {
         "block__single__ok".print();
       }
@@ -62,7 +61,8 @@ aligned equivalent case (`offset__aligned__ok`)
         ),
       );
 
-      /*length -= length*/ length = 0;
+      /*length -= length*/
+      length = 0;
     } else {
       final base__storage__file__block__single__partial__beginning__meta? beginning;
       final base__storage__file__block__multiple__full__meta? middle;
@@ -87,7 +87,7 @@ aligned equivalent case (`offset__aligned__ok`)
         offset = (alignment.size + offset__aligned___compo.offset__aligned);
       }
 
-      final length__aligned___compo = base__storage__file__offset__aligned(
+      final length__aligned = base__storage__file__offset__aligned(
         length,
         alignment,
       );
@@ -100,7 +100,7 @@ aligned equivalent case (`offset__aligned__ok`)
         middle = NIL;
       } else {
         final blocks__count = INT__aligned__alignment__count(
-          length__aligned___compo.offset__aligned,
+          length__aligned.offset__aligned,
           alignment.shift__count,
         );
 
@@ -130,15 +130,15 @@ aligned equivalent case (`offset__aligned__ok`)
         ending = NIL;
       } else {
         final //
-            length__aligned___ok = base__INT__aligned___ok(
+        length__aligned___ok = base__INT__aligned___ok(
               length,
               alignment.size,
             ),
-            block__bytes__count = length__aligned___compo.buffer__offset /*
-`length__aligned___compo.offset__aligned` can become outdated
-  but `.buffer__offset` is valid
-  due to `middle`-case's `length -= blocks__bytes__count` */
-            ;
+            block__bytes__count = length__aligned
+                .buffer__offset /*
+"length__aligned.offset__aligned" can become outdated
+  but ".buffer__offset" is valid
+  due to "middle"-case's "length -= blocks__bytes__count" */;
 
         if /*F*/ (length__aligned___ok) {
           if (block__bytes__count != 0) {
@@ -178,8 +178,7 @@ aligned equivalent case (`offset__aligned__ok`)
 }
 
 class base__storage__file__accessing__aligned__none__meta //
-    implements
-        base__storage__file__accessing__aligned__meta___union {
+    implements base__storage__file__accessing__aligned__meta___union {
   const base__storage__file__accessing__aligned__none__meta();
 
   @override
@@ -188,25 +187,21 @@ class base__storage__file__accessing__aligned__none__meta //
   }
 
   @override
-  BOOL equal___ok(
-    final base__storage__file__accessing__aligned__meta___union other,
-  ) {
+  BOOL equal___ok(final base__storage__file__accessing__aligned__meta___union other) {
     return (other is base__storage__file__accessing__aligned__none__meta);
   }
 
   @override
-  bool operator ==(
-    final Object other,
-  ) {
+  bool operator ==(final Object other) {
     return ((other is base__storage__file__accessing__aligned__meta___union) && //
         equal___ok(other));
   }
 }
 
 class base__storage__file__accessing__aligned__simple__meta //
-    extends base__storage__file__accessing__aligned__meta__base //
-    implements
-        base__storage__file__accessing__aligned__meta___union {
+    extends
+        base__storage__file__accessing__aligned__meta__base //
+    implements base__storage__file__accessing__aligned__meta___union {
   const base__storage__file__accessing__aligned__simple__meta({
     required super.block__id,
     required this.value,
@@ -220,26 +215,22 @@ class base__storage__file__accessing__aligned__simple__meta //
   }
 
   @override
-  BOOL equal___ok(
-    final base__storage__file__accessing__aligned__meta___union other,
-  ) {
+  BOOL equal___ok(final base__storage__file__accessing__aligned__meta___union other) {
     return ((other is base__storage__file__accessing__aligned__simple__meta) && //
-        value.equal___ok(value));
+        value.equal___ok(other.value));
   }
 
   @override
-  bool operator ==(
-    final Object other,
-  ) {
+  bool operator ==(final Object other) {
     return ((other is base__storage__file__accessing__aligned__meta___union) && //
         equal___ok(other));
   }
 }
 
 class base__storage__file__accessing__aligned__complex__meta //
-    extends base__storage__file__accessing__aligned__meta__base //
-    implements
-        base__storage__file__accessing__aligned__meta___union {
+    extends
+        base__storage__file__accessing__aligned__meta__base //
+    implements base__storage__file__accessing__aligned__meta___union {
   const base__storage__file__accessing__aligned__complex__meta({
     required super.block__id,
     required this.beginning,
@@ -269,9 +260,7 @@ class base__storage__file__accessing__aligned__complex__meta //
   }
 
   @override
-  BOOL equal___ok(
-    final base__storage__file__accessing__aligned__meta___union other,
-  ) {
+  BOOL equal___ok(final base__storage__file__accessing__aligned__meta___union other) {
     return ((other is base__storage__file__accessing__aligned__complex__meta) && //
         base__value__nilable__equal___ok(beginning, other.beginning) && //
         base__value__nilable__equal___ok(middle, other.middle) && //
@@ -279,9 +268,7 @@ class base__storage__file__accessing__aligned__complex__meta //
   }
 
   @override
-  bool operator ==(
-    final Object other,
-  ) {
+  bool operator ==(final Object other) {
     return ((other is base__storage__file__accessing__aligned__meta___union) && //
         equal___ok(other));
   }
@@ -298,16 +285,13 @@ abstract class base__storage__file__accessing__aligned__meta__base {
 sealed class base__storage__file__accessing__aligned__meta___union {
   INT blocks__count();
 
-  BOOL equal___ok(
-    base__storage__file__accessing__aligned__meta___union other,
-  );
+  BOOL equal___ok(base__storage__file__accessing__aligned__meta___union other);
 }
 
 //
 
 class base__storage__file__block__multiple__full__meta //
-    implements
-        base__storage__file__block__meta___union {
+    implements base__storage__file__block__meta___union {
   const base__storage__file__block__multiple__full__meta({
     required this.blocks__count,
   });
@@ -315,55 +299,45 @@ class base__storage__file__block__multiple__full__meta //
   final INT blocks__count;
 
   @override
-  BOOL equal___ok(
-    final base__storage__file__block__meta___union other,
-  ) {
+  BOOL equal___ok(final base__storage__file__block__meta___union other) {
     return ((other is base__storage__file__block__multiple__full__meta) && //
         (blocks__count == other.blocks__count));
   }
 
   @override
-  bool operator ==(
-    final Object other,
-  ) {
+  bool operator ==(final Object other) {
     return ((other is base__storage__file__block__meta___union) && //
         equal___ok(other));
   }
 }
 
 class base__storage__file__block__single__partial__meta //
-    implements
-        base__storage__file__block__meta___union {
+    implements base__storage__file__block__meta___union {
   const base__storage__file__block__single__partial__meta({
     required this.length,
     required this.offset,
   });
 
   final INT //
-      length,
+  length,
       offset /* in block */;
 
   @override
-  BOOL equal___ok(
-    final base__storage__file__block__meta___union other,
-  ) {
+  BOOL equal___ok(final base__storage__file__block__meta___union other) {
     return ((other is base__storage__file__block__single__partial__meta) && //
         (length == other.length) && //
         (offset == other.offset));
   }
 
   @override
-  bool operator ==(
-    final Object other,
-  ) {
+  bool operator ==(final Object other) {
     return ((other is base__storage__file__block__meta___union) && //
         equal___ok(other));
   }
 }
 
 class base__storage__file__block__single__partial__beginning__meta //
-    implements
-        base__storage__file__block__meta___union {
+    implements base__storage__file__block__meta___union {
   const base__storage__file__block__single__partial__beginning__meta({
     required this.offset,
   });
@@ -377,25 +351,20 @@ class base__storage__file__block__single__partial__beginning__meta //
   }
 
   @override
-  BOOL equal___ok(
-    final base__storage__file__block__meta___union other,
-  ) {
+  BOOL equal___ok(final base__storage__file__block__meta___union other) {
     return ((other is base__storage__file__block__single__partial__beginning__meta) && //
         (offset == other.offset));
   }
 
   @override
-  bool operator ==(
-    final Object other,
-  ) {
+  bool operator ==(final Object other) {
     return ((other is base__storage__file__block__meta___union) && //
         equal___ok(other));
   }
 }
 
 class base__storage__file__block__single__partial__ending__meta //
-    implements
-        base__storage__file__block__meta___union {
+    implements base__storage__file__block__meta___union {
   const base__storage__file__block__single__partial__ending__meta({
     required this.length,
   });
@@ -407,50 +376,44 @@ class base__storage__file__block__single__partial__ending__meta //
   }
 
   @override
-  BOOL equal___ok(
-    final base__storage__file__block__meta___union other,
-  ) {
+  BOOL equal___ok(final base__storage__file__block__meta___union other) {
     return ((other is base__storage__file__block__single__partial__ending__meta) && //
         (length == other.length));
   }
 
   @override
-  bool operator ==(
-    final Object other,
-  ) {
+  bool operator ==(final Object other) {
     return ((other is base__storage__file__block__meta___union) && //
         equal___ok(other));
   }
 }
 
 sealed class base__storage__file__block__meta___union {
-  BOOL equal___ok(
-    base__storage__file__block__meta___union other,
-  );
+  BOOL equal___ok(base__storage__file__block__meta___union other);
 }
 
 void base__storage__file__accessing__auto__test() {
   const //
-      generate___ok /*
-disable `base__printing__ok` */
-      = NO,
-      //
-      alignment = alignment__modern__normal;
+  generate___ok /*
+disable `base__printing__ok` */ =
+          NO,
+          //
+          alignment =
+          alignment__modern__normal;
 
   final //
-      length__aligned = alignment.size,
+  length__aligned = alignment.size,
       length__aligned__double = (2 * length__aligned),
       length__aligned__triple = (3 * length__aligned),
       /*length__aligned__quintuple = (5 * length__aligned),
       length__aligned__octuple = (8 * length__aligned),*/
       //
       _expectations /*
-formatted after generation */
-      = <array<base__storage__file__accessing__aligned__meta___union>>[
+formatted after generation */ = <array<base__storage__file__accessing__aligned__meta___union>>[
         [
-/* length :0 ,offset :0 ;end :0 */
+          /* length :0 ,offset :0 ;end :0 */
           base__storage__file__accessing__aligned__none__meta(),
-/* length :1 ,offset :0 ;end :1 */
+          /* length :1 ,offset :0 ;end :1 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: NIL,
@@ -459,7 +422,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :262143 ,offset :0 ;end :262143 */
+          /* length :262143 ,offset :0 ;end :262143 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: NIL,
@@ -468,7 +431,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :262144 ,offset :0 ;end :262144 */
+          /* length :262144 ,offset :0 ;end :262144 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: NIL,
@@ -477,7 +440,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :262145 ,offset :0 ;end :262145 */
+          /* length :262145 ,offset :0 ;end :262145 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: NIL,
@@ -488,7 +451,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :524287 ,offset :0 ;end :524287 */
+          /* length :524287 ,offset :0 ;end :524287 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: NIL,
@@ -499,7 +462,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :524288 ,offset :0 ;end :524288 */
+          /* length :524288 ,offset :0 ;end :524288 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: NIL,
@@ -508,7 +471,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :524289 ,offset :0 ;end :524289 */
+          /* length :524289 ,offset :0 ;end :524289 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: NIL,
@@ -519,7 +482,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :786431 ,offset :0 ;end :786431 */
+          /* length :786431 ,offset :0 ;end :786431 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: NIL,
@@ -530,7 +493,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :786432 ,offset :0 ;end :786432 */
+          /* length :786432 ,offset :0 ;end :786432 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: NIL,
@@ -539,7 +502,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :786433 ,offset :0 ;end :786433 */
+          /* length :786433 ,offset :0 ;end :786433 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: NIL,
@@ -552,9 +515,9 @@ formatted after generation */
           ),
         ],
         [
-/* length :0 ,offset :1 ;end :1 */
+          /* length :0 ,offset :1 ;end :1 */
           base__storage__file__accessing__aligned__none__meta(),
-/* length :1 ,offset :1 ;end :2 */
+          /* length :1 ,offset :1 ;end :2 */
           base__storage__file__accessing__aligned__simple__meta(
             block__id: 0,
             value: base__storage__file__block__single__partial__meta(
@@ -562,7 +525,7 @@ formatted after generation */
               offset: 1,
             ),
           ),
-/* length :262143 ,offset :1 ;end :262144 */
+          /* length :262143 ,offset :1 ;end :262144 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -571,7 +534,7 @@ formatted after generation */
             middle: NIL,
             ending: NIL,
           ),
-/* length :262144 ,offset :1 ;end :262145 */
+          /* length :262144 ,offset :1 ;end :262145 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -582,7 +545,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :262145 ,offset :1 ;end :262146 */
+          /* length :262145 ,offset :1 ;end :262146 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -593,7 +556,7 @@ formatted after generation */
               length: 2,
             ),
           ),
-/* length :524287 ,offset :1 ;end :524288 */
+          /* length :524287 ,offset :1 ;end :524288 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -604,7 +567,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :524288 ,offset :1 ;end :524289 */
+          /* length :524288 ,offset :1 ;end :524289 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -617,7 +580,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :524289 ,offset :1 ;end :524290 */
+          /* length :524289 ,offset :1 ;end :524290 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -630,7 +593,7 @@ formatted after generation */
               length: 2,
             ),
           ),
-/* length :786431 ,offset :1 ;end :786432 */
+          /* length :786431 ,offset :1 ;end :786432 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -641,7 +604,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :786432 ,offset :1 ;end :786433 */
+          /* length :786432 ,offset :1 ;end :786433 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -654,7 +617,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :786433 ,offset :1 ;end :786434 */
+          /* length :786433 ,offset :1 ;end :786434 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -669,9 +632,9 @@ formatted after generation */
           ),
         ],
         [
-/* length :0 ,offset :262143 ;end :262143 */
+          /* length :0 ,offset :262143 ;end :262143 */
           base__storage__file__accessing__aligned__none__meta(),
-/* length :1 ,offset :262143 ;end :262144 */
+          /* length :1 ,offset :262143 ;end :262144 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -680,7 +643,7 @@ formatted after generation */
             middle: NIL,
             ending: NIL,
           ),
-/* length :262143 ,offset :262143 ;end :524286 */
+          /* length :262143 ,offset :262143 ;end :524286 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -691,7 +654,7 @@ formatted after generation */
               length: 262142,
             ),
           ),
-/* length :262144 ,offset :262143 ;end :524287 */
+          /* length :262144 ,offset :262143 ;end :524287 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -702,7 +665,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :262145 ,offset :262143 ;end :524288 */
+          /* length :262145 ,offset :262143 ;end :524288 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -713,7 +676,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :524287 ,offset :262143 ;end :786430 */
+          /* length :524287 ,offset :262143 ;end :786430 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -726,7 +689,7 @@ formatted after generation */
               length: 262142,
             ),
           ),
-/* length :524288 ,offset :262143 ;end :786431 */
+          /* length :524288 ,offset :262143 ;end :786431 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -739,7 +702,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :524289 ,offset :262143 ;end :786432 */
+          /* length :524289 ,offset :262143 ;end :786432 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -750,7 +713,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :786431 ,offset :262143 ;end :1048574 */
+          /* length :786431 ,offset :262143 ;end :1048574 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -763,7 +726,7 @@ formatted after generation */
               length: 262142,
             ),
           ),
-/* length :786432 ,offset :262143 ;end :1048575 */
+          /* length :786432 ,offset :262143 ;end :1048575 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -776,7 +739,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :786433 ,offset :262143 ;end :1048576 */
+          /* length :786433 ,offset :262143 ;end :1048576 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 0,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -789,9 +752,9 @@ formatted after generation */
           ),
         ],
         [
-/* length :0 ,offset :262144 ;end :262144 */
+          /* length :0 ,offset :262144 ;end :262144 */
           base__storage__file__accessing__aligned__none__meta(),
-/* length :1 ,offset :262144 ;end :262145 */
+          /* length :1 ,offset :262144 ;end :262145 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: NIL,
@@ -800,7 +763,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :262143 ,offset :262144 ;end :524287 */
+          /* length :262143 ,offset :262144 ;end :524287 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: NIL,
@@ -809,7 +772,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :262144 ,offset :262144 ;end :524288 */
+          /* length :262144 ,offset :262144 ;end :524288 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: NIL,
@@ -818,7 +781,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :262145 ,offset :262144 ;end :524289 */
+          /* length :262145 ,offset :262144 ;end :524289 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: NIL,
@@ -829,7 +792,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :524287 ,offset :262144 ;end :786431 */
+          /* length :524287 ,offset :262144 ;end :786431 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: NIL,
@@ -840,7 +803,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :524288 ,offset :262144 ;end :786432 */
+          /* length :524288 ,offset :262144 ;end :786432 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: NIL,
@@ -849,7 +812,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :524289 ,offset :262144 ;end :786433 */
+          /* length :524289 ,offset :262144 ;end :786433 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: NIL,
@@ -860,7 +823,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :786431 ,offset :262144 ;end :1048575 */
+          /* length :786431 ,offset :262144 ;end :1048575 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: NIL,
@@ -871,7 +834,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :786432 ,offset :262144 ;end :1048576 */
+          /* length :786432 ,offset :262144 ;end :1048576 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: NIL,
@@ -880,7 +843,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :786433 ,offset :262144 ;end :1048577 */
+          /* length :786433 ,offset :262144 ;end :1048577 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: NIL,
@@ -893,9 +856,9 @@ formatted after generation */
           ),
         ],
         [
-/* length :0 ,offset :262145 ;end :262145 */
+          /* length :0 ,offset :262145 ;end :262145 */
           base__storage__file__accessing__aligned__none__meta(),
-/* length :1 ,offset :262145 ;end :262146 */
+          /* length :1 ,offset :262145 ;end :262146 */
           base__storage__file__accessing__aligned__simple__meta(
             block__id: 1,
             value: base__storage__file__block__single__partial__meta(
@@ -903,7 +866,7 @@ formatted after generation */
               offset: 1,
             ),
           ),
-/* length :262143 ,offset :262145 ;end :524288 */
+          /* length :262143 ,offset :262145 ;end :524288 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -912,7 +875,7 @@ formatted after generation */
             middle: NIL,
             ending: NIL,
           ),
-/* length :262144 ,offset :262145 ;end :524289 */
+          /* length :262144 ,offset :262145 ;end :524289 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -923,7 +886,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :262145 ,offset :262145 ;end :524290 */
+          /* length :262145 ,offset :262145 ;end :524290 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -934,7 +897,7 @@ formatted after generation */
               length: 2,
             ),
           ),
-/* length :524287 ,offset :262145 ;end :786432 */
+          /* length :524287 ,offset :262145 ;end :786432 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -945,7 +908,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :524288 ,offset :262145 ;end :786433 */
+          /* length :524288 ,offset :262145 ;end :786433 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -958,7 +921,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :524289 ,offset :262145 ;end :786434 */
+          /* length :524289 ,offset :262145 ;end :786434 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -971,7 +934,7 @@ formatted after generation */
               length: 2,
             ),
           ),
-/* length :786431 ,offset :262145 ;end :1048576 */
+          /* length :786431 ,offset :262145 ;end :1048576 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -982,7 +945,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :786432 ,offset :262145 ;end :1048577 */
+          /* length :786432 ,offset :262145 ;end :1048577 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -995,7 +958,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :786433 ,offset :262145 ;end :1048578 */
+          /* length :786433 ,offset :262145 ;end :1048578 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1010,9 +973,9 @@ formatted after generation */
           ),
         ],
         [
-/* length :0 ,offset :524287 ;end :524287 */
+          /* length :0 ,offset :524287 ;end :524287 */
           base__storage__file__accessing__aligned__none__meta(),
-/* length :1 ,offset :524287 ;end :524288 */
+          /* length :1 ,offset :524287 ;end :524288 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1021,7 +984,7 @@ formatted after generation */
             middle: NIL,
             ending: NIL,
           ),
-/* length :262143 ,offset :524287 ;end :786430 */
+          /* length :262143 ,offset :524287 ;end :786430 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1032,7 +995,7 @@ formatted after generation */
               length: 262142,
             ),
           ),
-/* length :262144 ,offset :524287 ;end :786431 */
+          /* length :262144 ,offset :524287 ;end :786431 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1043,7 +1006,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :262145 ,offset :524287 ;end :786432 */
+          /* length :262145 ,offset :524287 ;end :786432 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1054,7 +1017,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :524287 ,offset :524287 ;end :1048574 */
+          /* length :524287 ,offset :524287 ;end :1048574 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1067,7 +1030,7 @@ formatted after generation */
               length: 262142,
             ),
           ),
-/* length :524288 ,offset :524287 ;end :1048575 */
+          /* length :524288 ,offset :524287 ;end :1048575 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1080,7 +1043,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :524289 ,offset :524287 ;end :1048576 */
+          /* length :524289 ,offset :524287 ;end :1048576 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1091,7 +1054,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :786431 ,offset :524287 ;end :1310718 */
+          /* length :786431 ,offset :524287 ;end :1310718 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1104,7 +1067,7 @@ formatted after generation */
               length: 262142,
             ),
           ),
-/* length :786432 ,offset :524287 ;end :1310719 */
+          /* length :786432 ,offset :524287 ;end :1310719 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1117,7 +1080,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :786433 ,offset :524287 ;end :1310720 */
+          /* length :786433 ,offset :524287 ;end :1310720 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 1,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1130,9 +1093,9 @@ formatted after generation */
           ),
         ],
         [
-/* length :0 ,offset :524288 ;end :524288 */
+          /* length :0 ,offset :524288 ;end :524288 */
           base__storage__file__accessing__aligned__none__meta(),
-/* length :1 ,offset :524288 ;end :524289 */
+          /* length :1 ,offset :524288 ;end :524289 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: NIL,
@@ -1141,7 +1104,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :262143 ,offset :524288 ;end :786431 */
+          /* length :262143 ,offset :524288 ;end :786431 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: NIL,
@@ -1150,7 +1113,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :262144 ,offset :524288 ;end :786432 */
+          /* length :262144 ,offset :524288 ;end :786432 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: NIL,
@@ -1159,7 +1122,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :262145 ,offset :524288 ;end :786433 */
+          /* length :262145 ,offset :524288 ;end :786433 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: NIL,
@@ -1170,7 +1133,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :524287 ,offset :524288 ;end :1048575 */
+          /* length :524287 ,offset :524288 ;end :1048575 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: NIL,
@@ -1181,7 +1144,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :524288 ,offset :524288 ;end :1048576 */
+          /* length :524288 ,offset :524288 ;end :1048576 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: NIL,
@@ -1190,7 +1153,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :524289 ,offset :524288 ;end :1048577 */
+          /* length :524289 ,offset :524288 ;end :1048577 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: NIL,
@@ -1201,7 +1164,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :786431 ,offset :524288 ;end :1310719 */
+          /* length :786431 ,offset :524288 ;end :1310719 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: NIL,
@@ -1212,7 +1175,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :786432 ,offset :524288 ;end :1310720 */
+          /* length :786432 ,offset :524288 ;end :1310720 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: NIL,
@@ -1221,7 +1184,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :786433 ,offset :524288 ;end :1310721 */
+          /* length :786433 ,offset :524288 ;end :1310721 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: NIL,
@@ -1234,9 +1197,9 @@ formatted after generation */
           ),
         ],
         [
-/* length :0 ,offset :524289 ;end :524289 */
+          /* length :0 ,offset :524289 ;end :524289 */
           base__storage__file__accessing__aligned__none__meta(),
-/* length :1 ,offset :524289 ;end :524290 */
+          /* length :1 ,offset :524289 ;end :524290 */
           base__storage__file__accessing__aligned__simple__meta(
             block__id: 2,
             value: base__storage__file__block__single__partial__meta(
@@ -1244,7 +1207,7 @@ formatted after generation */
               offset: 1,
             ),
           ),
-/* length :262143 ,offset :524289 ;end :786432 */
+          /* length :262143 ,offset :524289 ;end :786432 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1253,7 +1216,7 @@ formatted after generation */
             middle: NIL,
             ending: NIL,
           ),
-/* length :262144 ,offset :524289 ;end :786433 */
+          /* length :262144 ,offset :524289 ;end :786433 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1264,7 +1227,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :262145 ,offset :524289 ;end :786434 */
+          /* length :262145 ,offset :524289 ;end :786434 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1275,7 +1238,7 @@ formatted after generation */
               length: 2,
             ),
           ),
-/* length :524287 ,offset :524289 ;end :1048576 */
+          /* length :524287 ,offset :524289 ;end :1048576 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1286,7 +1249,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :524288 ,offset :524289 ;end :1048577 */
+          /* length :524288 ,offset :524289 ;end :1048577 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1299,7 +1262,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :524289 ,offset :524289 ;end :1048578 */
+          /* length :524289 ,offset :524289 ;end :1048578 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1312,7 +1275,7 @@ formatted after generation */
               length: 2,
             ),
           ),
-/* length :786431 ,offset :524289 ;end :1310720 */
+          /* length :786431 ,offset :524289 ;end :1310720 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1323,7 +1286,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :786432 ,offset :524289 ;end :1310721 */
+          /* length :786432 ,offset :524289 ;end :1310721 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1336,7 +1299,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :786433 ,offset :524289 ;end :1310722 */
+          /* length :786433 ,offset :524289 ;end :1310722 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1351,9 +1314,9 @@ formatted after generation */
           ),
         ],
         [
-/* length :0 ,offset :786431 ;end :786431 */
+          /* length :0 ,offset :786431 ;end :786431 */
           base__storage__file__accessing__aligned__none__meta(),
-/* length :1 ,offset :786431 ;end :786432 */
+          /* length :1 ,offset :786431 ;end :786432 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1362,7 +1325,7 @@ formatted after generation */
             middle: NIL,
             ending: NIL,
           ),
-/* length :262143 ,offset :786431 ;end :1048574 */
+          /* length :262143 ,offset :786431 ;end :1048574 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1373,7 +1336,7 @@ formatted after generation */
               length: 262142,
             ),
           ),
-/* length :262144 ,offset :786431 ;end :1048575 */
+          /* length :262144 ,offset :786431 ;end :1048575 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1384,7 +1347,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :262145 ,offset :786431 ;end :1048576 */
+          /* length :262145 ,offset :786431 ;end :1048576 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1395,7 +1358,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :524287 ,offset :786431 ;end :1310718 */
+          /* length :524287 ,offset :786431 ;end :1310718 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1408,7 +1371,7 @@ formatted after generation */
               length: 262142,
             ),
           ),
-/* length :524288 ,offset :786431 ;end :1310719 */
+          /* length :524288 ,offset :786431 ;end :1310719 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1421,7 +1384,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :524289 ,offset :786431 ;end :1310720 */
+          /* length :524289 ,offset :786431 ;end :1310720 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1432,7 +1395,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :786431 ,offset :786431 ;end :1572862 */
+          /* length :786431 ,offset :786431 ;end :1572862 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1445,7 +1408,7 @@ formatted after generation */
               length: 262142,
             ),
           ),
-/* length :786432 ,offset :786431 ;end :1572863 */
+          /* length :786432 ,offset :786431 ;end :1572863 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1458,7 +1421,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :786433 ,offset :786431 ;end :1572864 */
+          /* length :786433 ,offset :786431 ;end :1572864 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 2,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1471,9 +1434,9 @@ formatted after generation */
           ),
         ],
         [
-/* length :0 ,offset :786432 ;end :786432 */
+          /* length :0 ,offset :786432 ;end :786432 */
           base__storage__file__accessing__aligned__none__meta(),
-/* length :1 ,offset :786432 ;end :786433 */
+          /* length :1 ,offset :786432 ;end :786433 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: NIL,
@@ -1482,7 +1445,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :262143 ,offset :786432 ;end :1048575 */
+          /* length :262143 ,offset :786432 ;end :1048575 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: NIL,
@@ -1491,7 +1454,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :262144 ,offset :786432 ;end :1048576 */
+          /* length :262144 ,offset :786432 ;end :1048576 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: NIL,
@@ -1500,7 +1463,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :262145 ,offset :786432 ;end :1048577 */
+          /* length :262145 ,offset :786432 ;end :1048577 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: NIL,
@@ -1511,7 +1474,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :524287 ,offset :786432 ;end :1310719 */
+          /* length :524287 ,offset :786432 ;end :1310719 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: NIL,
@@ -1522,7 +1485,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :524288 ,offset :786432 ;end :1310720 */
+          /* length :524288 ,offset :786432 ;end :1310720 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: NIL,
@@ -1531,7 +1494,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :524289 ,offset :786432 ;end :1310721 */
+          /* length :524289 ,offset :786432 ;end :1310721 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: NIL,
@@ -1542,7 +1505,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :786431 ,offset :786432 ;end :1572863 */
+          /* length :786431 ,offset :786432 ;end :1572863 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: NIL,
@@ -1553,7 +1516,7 @@ formatted after generation */
               length: 262143,
             ),
           ),
-/* length :786432 ,offset :786432 ;end :1572864 */
+          /* length :786432 ,offset :786432 ;end :1572864 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: NIL,
@@ -1562,7 +1525,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :786433 ,offset :786432 ;end :1572865 */
+          /* length :786433 ,offset :786432 ;end :1572865 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: NIL,
@@ -1575,9 +1538,9 @@ formatted after generation */
           ),
         ],
         [
-/* length :0 ,offset :786433 ;end :786433 */
+          /* length :0 ,offset :786433 ;end :786433 */
           base__storage__file__accessing__aligned__none__meta(),
-/* length :1 ,offset :786433 ;end :786434 */
+          /* length :1 ,offset :786433 ;end :786434 */
           base__storage__file__accessing__aligned__simple__meta(
             block__id: 3,
             value: base__storage__file__block__single__partial__meta(
@@ -1585,7 +1548,7 @@ formatted after generation */
               offset: 1,
             ),
           ),
-/* length :262143 ,offset :786433 ;end :1048576 */
+          /* length :262143 ,offset :786433 ;end :1048576 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1594,7 +1557,7 @@ formatted after generation */
             middle: NIL,
             ending: NIL,
           ),
-/* length :262144 ,offset :786433 ;end :1048577 */
+          /* length :262144 ,offset :786433 ;end :1048577 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1605,7 +1568,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :262145 ,offset :786433 ;end :1048578 */
+          /* length :262145 ,offset :786433 ;end :1048578 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1616,7 +1579,7 @@ formatted after generation */
               length: 2,
             ),
           ),
-/* length :524287 ,offset :786433 ;end :1310720 */
+          /* length :524287 ,offset :786433 ;end :1310720 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1627,7 +1590,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :524288 ,offset :786433 ;end :1310721 */
+          /* length :524288 ,offset :786433 ;end :1310721 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1640,7 +1603,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :524289 ,offset :786433 ;end :1310722 */
+          /* length :524289 ,offset :786433 ;end :1310722 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1653,7 +1616,7 @@ formatted after generation */
               length: 2,
             ),
           ),
-/* length :786431 ,offset :786433 ;end :1572864 */
+          /* length :786431 ,offset :786433 ;end :1572864 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1664,7 +1627,7 @@ formatted after generation */
             ),
             ending: NIL,
           ),
-/* length :786432 ,offset :786433 ;end :1572865 */
+          /* length :786432 ,offset :786433 ;end :1572865 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1677,7 +1640,7 @@ formatted after generation */
               length: 1,
             ),
           ),
-/* length :786433 ,offset :786433 ;end :1572866 */
+          /* length :786433 ,offset :786433 ;end :1572866 */
           base__storage__file__accessing__aligned__complex__meta(
             block__id: 3,
             beginning: base__storage__file__block__single__partial__beginning__meta(
@@ -1748,13 +1711,12 @@ formatted after generation */
 
             (switch (file__accessing) {
               base__storage__file__accessing__aligned__none__meta() => //
-                "${text__segment}base__storage__file__accessing__aligned__none__meta(),",
+              "${text__segment}base__storage__file__accessing__aligned__none__meta(),",
               base__storage__file__accessing__aligned__simple__meta() => //
-                "${text__segment}base__storage__file__accessing__aligned__simple__meta(block__id:${file__accessing.block__id},value:base__storage__file__block__single__partial__meta(length:${file__accessing.value.length},offset:${file__accessing.value.offset},),),",
+              "${text__segment}base__storage__file__accessing__aligned__simple__meta(block__id:${file__accessing.block__id},value:base__storage__file__block__single__partial__meta(length:${file__accessing.value.length},offset:${file__accessing.value.offset},),),",
               base__storage__file__accessing__aligned__complex__meta() => //
-                "${text__segment}base__storage__file__accessing__aligned__complex__meta(block__id:${file__accessing.block__id},beginning:${file__accessing.beginning.convert__if((final beginning) => "base__storage__file__block__single__partial__beginning__meta(offset:${beginning.offset},)") ?? Null__value__text},middle:${file__accessing.middle.convert__if((final middle) => "base__storage__file__block__multiple__full__meta(blocks__count:${middle.blocks__count},)") ?? Null__value__text},ending:${file__accessing.ending.convert__if((final ending) => "base__storage__file__block__single__partial__ending__meta(length:${ending.length},)") ?? Null__value__text},),",
-            })
-                .print___raw();
+              "${text__segment}base__storage__file__accessing__aligned__complex__meta(block__id:${file__accessing.block__id},beginning:${file__accessing.beginning.convert__if((final beginning) => "base__storage__file__block__single__partial__beginning__meta(offset:${beginning.offset},)") ?? Null__value__text},middle:${file__accessing.middle.convert__if((final middle) => "base__storage__file__block__multiple__full__meta(blocks__count:${middle.blocks__count},)") ?? Null__value__text},ending:${file__accessing.ending.convert__if((final ending) => "base__storage__file__block__single__partial__ending__meta(length:${ending.length},)") ?? Null__value__text},),",
+            }).print___raw();
           } else {
             switch (file__accessing) {
               case base__storage__file__accessing__aligned__none__meta():
@@ -1820,4 +1782,7 @@ formatted after generation */
   if (generate___ok) {
     "];".print___raw();
   }
-}
+}/*
+FIX
+  - test with "offset : 100 ; till/length : 1000 ; alignment : 512"
+    edge-case suggested by gemini-2.5-pro */

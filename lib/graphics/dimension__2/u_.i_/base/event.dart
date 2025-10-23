@@ -16,6 +16,7 @@ unicast-channels("base__event__channel__unicast___protocol") should be avoided
     required final gui__base__widget__build__function__format child__build,
   }) {
     return gui__base__widget__definitive__build(
+      context,
       attach__handle: (final context) {
         void build__re() {
           context.build__re___raw();
@@ -45,7 +46,7 @@ class gui__base__event__channel__handling__widget //
   });
 
   final base__event__channel__broadcast___protocol channel;
-  final gui__base__event__channel__handling__children___record children;
+  final gui__base__event__channel__handling__children___compo children;
 
   @override
   gui__base__event__channel__handling__widget__state //

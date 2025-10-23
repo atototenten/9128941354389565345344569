@@ -71,6 +71,7 @@ import "package:flutter/rendering.dart" //
         RendererBinding,
         RenderView,
         ViewConfiguration,
+        CacheExtentStyle,
         //
         debugPaintSizeEnabled,
         debugPaintPointersEnabled,
@@ -84,7 +85,7 @@ import "package:path_provider/path_provider.dart" as path_provider;
 part "1.dart";
 part "app.dart";
 part "asyn.dart";
-part "building.dart";
+part "widget.building.dart";
 part "button.dart";
 part "color.dart";
 part "colors.dart";
@@ -159,22 +160,19 @@ typedef gui__base__widget__building__context = BuildContext;
 /*late gui__base__widget__building__context _app__context;*/
 
 typedef gui__base__widget__build__function__format = //
-    gui__base__widget Function(
-      gui__base__widget__building__context,
-    );
+    gui__base__widget Function(gui__base__widget__building__context building__context);
 
 typedef gui__base__widget__definitive__build__procedure__format<storage___type> = //
-    gui__base__widget Function(
-      gui__base__widget__building__context building__context,storage___type storage,
-    );
+    gui__base__widget Function(gui__base__widget__building__context building__context, storage___type storage);
 
 typedef gui__base__widget__detach__procedure__format<storage___type> = //
     void Function(storage___type storage);
 
 typedef gui__base__widget__attach__procedure__format<storage___type> = //
-    storage___type Function(
-      gui__base__widget__building__context,
-    );
+    storage___type Function(gui__base__widget__building__context building__context);
+
+typedef gui__base__event__handle__procedure__format = //
+    void Function(gui__base__widget__building__context);
 
 void base__app__build__re()
 /*{ _app__context.build__re__recursive(); }*/

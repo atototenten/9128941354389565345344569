@@ -39,12 +39,12 @@ class gui__base__listing__grow_able<element__new__type> //
     required this.items__existing__count,
     required this.items__new__count__limit,
   }) : _elements__new = base__accumulation__linear__basic<element__new__type>(),
-       channel = base__event__channel__broadcast();
+       _channel = base__event__channel__broadcast();
 
   final INT items__existing__count;
   final INT items__new__count__limit;
 
-  final base__event__channel__broadcast channel;
+  final base__event__channel__broadcast _channel;
 
   final base__accumulation__linear__basic<element__new__type> _elements__new;
 
@@ -52,8 +52,12 @@ class gui__base__listing__grow_able<element__new__type> //
   void dispose() {
     _elements__new.dispose();
 
-    channel.dispose();
+    _channel.dispose();
   }
+
+  base__event__channel__broadcast___protocol //
+  channel() => //
+      _channel;
 
   void add(
     final element__new__type element__new,
@@ -62,7 +66,7 @@ class gui__base__listing__grow_able<element__new__type> //
       element__new,
     );
 
-    channel.event__dispatch();
+    _channel.event__dispatch();
   }
 
   /*void remove__element(final INT element__id,) {}*/
@@ -100,7 +104,7 @@ example :
   }) /*
 "element" is datum(singular form ,of data) ,while "item" is the gui form ,of "element"
   naming is simply naming ,nothing much (sense) */ {
-    return channel.handling__widget__build(
+    return _channel.handling__widget__build(
       context,
       child__build: (final context) {
         final items__new__count = _elements__new__count__definitive();

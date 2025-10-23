@@ -16,8 +16,7 @@ class byte__array___compo {
       ptr.asTypedList(count);
 
   /* INT? check__equal(
-    final byte__array___compo other,
-  ) {
+    final byte__array___compo other) {
     INT? result /* un-equal id */;
 
     final bys = array;

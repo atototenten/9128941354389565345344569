@@ -423,7 +423,7 @@ class gui__base__app__running__simple //
           locale: base__app__locale,
           localizationsDelegates: base__app__localizations__delegates,
           supportedLocales: const <Locale>[base__app__locale],
-          scrollBehavior: base__app__scroll__behavior,
+          scrollBehavior: gui__base__scrolling___compo.scrolling__behavior,
           themeAnimationStyle: AnimationStyle.noAnimation,
         );
       },

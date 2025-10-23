@@ -28,7 +28,7 @@ str text__ascii__convert__str(
   base__iterate__reverse__basic(
     chars__count,
     (final char__id) {
-      result[char__id] = TC__ascii__convert__ch(
+      result[char__id] = CHAR__ASCII__convert__ch(
         s.codeUnitAt(
           char__id,
         ),
@@ -55,7 +55,7 @@ string str__convert__text(
   base__iterate__reverse__basic(
     count,
     (final char__id) {
-      result[char__id] = TC__convert__ch__ascii(
+      result[char__id] = CHAR__convert__ch__ascii(
         s[char__id],
       );
     },

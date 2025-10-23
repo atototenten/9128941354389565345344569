@@ -19,10 +19,10 @@ gui__base__widget input__text__overlay__bottom__keyboard({
 {
   const //
       row__numbers__key__array__count = language__hindi__numbers__count,
-      row__numbers__key__value__offset = TC__ascii__number__zero,
+      row__numbers__key__value__offset = CHAR__ASCII__number__zero,
 //
       row__alphabets__key__array__count = row__numbers__key__array__count,
-      row__alphabets__key__value__offset = TC__ascii__alphabet__case__lower__a,
+      row__alphabets__key__value__offset = CHAR__ASCII__alphabet__case__lower__a,
       row__alphabets__1__key__array__count = row__alphabets__key__array__count,
       row__alphabets__1__key__value__offset = (row__alphabets__key__array__count + row__alphabets__key__value__offset),
       row__alphabets__2__key__array__count = (language__latin__english__alphabets__count - row__alphabets__1__key__array__count - row__alphabets__key__array__count),
@@ -187,7 +187,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__bracket__round__open,
+                                CHAR__ASCII__bracket__round__open,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -197,7 +197,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__bracket__round__close,
+                                CHAR__ASCII__bracket__round__close,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -207,7 +207,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__comma,
+                                CHAR__ASCII__comma,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -226,7 +226,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__question,
+                                CHAR__ASCII__question,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -236,7 +236,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__dot,
+                                CHAR__ASCII__dot,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -259,7 +259,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__dash,
+                                CHAR__ASCII__dash,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -269,7 +269,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__exclamation,
+                                CHAR__ASCII__exclamation,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -279,7 +279,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__question,
+                                CHAR__ASCII__question,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -289,7 +289,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__bracket__round__open,
+                                CHAR__ASCII__bracket__round__open,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -299,7 +299,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__bracket__round__close,
+                                CHAR__ASCII__bracket__round__close,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -309,7 +309,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__colon,
+                                CHAR__ASCII__colon,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -319,7 +319,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__comma,
+                                CHAR__ASCII__comma,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -329,7 +329,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__colon__semi,
+                                CHAR__ASCII__colon__semi,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,
@@ -339,7 +339,7 @@ gui__base__widget input__text__overlay__bottom__keyboard({
                           child: _button(
                             child: gui__base__box__text__widget(
                               string.fromCharCode(
-                                TC__ascii__dot,
+                                CHAR__ASCII__dot,
                               ),
                             ),
                             press__handle: base__empty__procedure__empty,

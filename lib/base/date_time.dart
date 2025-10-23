@@ -47,10 +47,8 @@ the granular unit is nano-seconds until a day ,then itself */
     final DateTime value, {
     required final INT offset__years /*= offset__years__ideal__current*/,
   }) {
-    final offset___DateTime = DateTime.utc(offset__years);
-
     return date_time.raw(
-      seconds__nano___raw: ((value.microsecondsSinceEpoch - offset___DateTime.microsecondsSinceEpoch) * duration__second__micro__seconds__nano),
+      seconds__nano___raw: ((value.microsecondsSinceEpoch - DateTime.utc(offset__years).microsecondsSinceEpoch) * duration__second__micro__seconds__nano),
       offset__years: offset__years,
     );
   }

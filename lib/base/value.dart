@@ -69,9 +69,7 @@ must be same as the impl.ion itself */
 extension base__value__equality__check__extension //
 <value__type extends base__value__equality__check___protocol> //
     on value__type? {
-  BOOL value__nilable__equal___ok(
-    final value__type? other,
-  ) {
+  BOOL value__nilable__equal___ok(final value__type? other) {
     final value = this;
 
     /*if ((value == null) && //
@@ -120,10 +118,7 @@ BOOL base__value__same___ok //
   final value__type value,
   final value__type other,
 ) {
-  return identical(
-    value,
-    other,
-  );
+  return identical(value, other);
 }
 
 BOOL base__value__equal__deep___ok(
@@ -162,10 +157,7 @@ BOOL base__value__nilable__equal___ok //
     return (value == other);
   }
 
-  return value__equal___ok(
-    value,
-    other,
-  );
+  return value__equal___ok(value, other);
 }
 
 base__representation__text //
@@ -289,25 +281,44 @@ like `dart:flutter:ValueNotifier` */ //
 typedef base__value__channel__broadcast__handling__format<value__type> = //
     base__value__single__procedure__format<value__type>;
 
+abstract class base__value__channel__broadcast___protocol<value__type> {
+  void value__handle(final base__value__channel__broadcast__handling__format<value__type> handle);
+
+  void value__handling__cancel(final base__value__channel__broadcast__handling__format<value__type> handle);
+}
+
 class base__value__channel__broadcast<value__type> //
-    implements base__dispose___protocol {
+    implements
+        base__value__channel__broadcast___protocol<value__type>, //
+        base__dispose___protocol {
   base__value__channel__broadcast() //
-    : handlings___raw = base__accumulation__linear__basic();
+    : _handlings = base__accumulation__linear__definitive();
 
-  final base__accumulation__linear__basic<base__value__channel__broadcast__handling__format<value__type>> handlings___raw;
+  final base__accumulation__linear__definitive<base__value__channel__broadcast__handling__format<value__type>> _handlings;
 
-  void value__handle(
-    final base__value__channel__broadcast__handling__format<value__type> handle,
-  ) {
-    handlings___raw.add__ending(
-      handle,
-    );
+  @override
+  void dispose() {
+    _handlings.dispose();
   }
 
-  void value__dispatch(
-    final value__type value,
-  ) {
-    handlings___raw.iterate(
+  @override
+  void value__handle(final base__value__channel__broadcast__handling__format<value__type> handle) {
+    _handlings.add__ending(handle);
+  }
+
+  @override
+  void value__handling__cancel(final base__value__channel__broadcast__handling__format<value__type> handle) {
+    final element__id = _handlings.search(handle, base__value__equal___ok);
+
+    if (element__id == null) {
+      throw Exception();
+    }
+
+    _handlings.remove___raw(element__id);
+  }
+
+  void value__dispatch(final value__type value) {
+    _handlings.iterate(
       (final id, final handle) {
         handle(
           value,
@@ -316,11 +327,6 @@ class base__value__channel__broadcast<value__type> //
         return OK;
       },
     );
-  }
-
-  @override
-  void dispose() {
-    handlings___raw.dispose();
   }
 }
 

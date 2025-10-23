@@ -3,16 +3,15 @@ part of "_.dart";
 typedef string__wide = BS4__array;
 
 const //
-unicode__ch__max = 0x10ffff /* 1114111, 0b100001111111111111111 */,
-    unicode__ch__limit = (unicode__ch__max + 1),
-    unicode__ch__size = TCW__size,
-    unicode__ch__per__byte__max /*
+CHAR__UNICODE__max = 0x10ffff /* 1114111, 0b100001111111111111111 */,
+    CHAR__UNICODE__limit = (CHAR__UNICODE__max + 1),
+    CHAR__UNICODE__per__byte__max /*
   bytes needed, for storing `ch__unicode__max` */ =
-        TCW__size;
+        CHAR__UNICODE__size;
 
-INT TCW__bytes__count(final TCW wc) => //
+INT CHAR__UNICODE__bytes__count(final CHAR__UNICODE wc) => //
     ((wc < INT__07__limit) //
-    ? TC__size
+    ? CHAR__size
     : ((wc < INT__014__limit) //
           ? 2
           : ((wc < INT__021__limit) //
@@ -51,8 +50,8 @@ string__wide text__unicode__convert__string__wide(
     final wc = runes.current;
 
     chars_[char__id++] =
-        ((wc < TC__limit) //
-        ? TC__ascii__convert__ch(wc)
+        ((wc < CHAR__limit) //
+        ? CHAR__ASCII__convert__ch(wc)
         : wc);
   }
 
@@ -69,7 +68,7 @@ string__wide text__unicode__convert__string__wide(
   return result;
 }
 
-TCW char__unicode__convert__TCW(
+CHAR__UNICODE char__unicode__convert__TCW(
   final string char,
 ) {
   final runes = Runes(char).iterator;
@@ -80,8 +79,8 @@ TCW char__unicode__convert__TCW(
 
   final wc = runes.current;
 
-  return ((wc < TC__limit) //
-      ? TC__ascii__convert__ch(wc)
+  return ((wc < CHAR__limit) //
+      ? CHAR__ASCII__convert__ch(wc)
       : wc);
 }
 
@@ -113,7 +112,7 @@ TCW char__unicode__convert__TCW(
       excluding the prePended size
       compared to 4388733, of `Utf8::enCode`*/ */ /* *** outdated info *** */
 byte__array wstr__convert__bytes(
-  final array<TCW> ws,
+  final array<CHAR__UNICODE> ws,
 ) {
   final sink = base__byte__array__accumulation();
 
@@ -149,9 +148,9 @@ byte__array wstr__convert__bytes(
     (final i) {
       final wc = bytes[iter];
 
-      if ((wc < TC__ascii__limit) || (ascii___ok = NO)) {
+      if ((wc < CHAR__ASCII__limit) || (ascii___ok = NO)) {
         if (ascii___ok || (ascii___ok = OK).not) //
-          result[iter] = TC__encrypt(wc);
+          result[iter] = CHAR__encrypt(wc);
       }
     },
     ((chars__count__prefixed__size !=  null) //
@@ -172,7 +171,7 @@ string__wide wstr__bytes__convert(
   bytes_ = bytes___compo(
         bytes,
       ),
-      sink = base__accumulation__linear__basic<TCW>();
+      sink = base__accumulation__linear__basic<CHAR__UNICODE>();
 
   while (bytes_.iterate___ok) {
     sink.add__ending(
@@ -205,8 +204,8 @@ string wstr__convert__text(
   base__iterate__reverse__basic(count, (final wide_char__id) {
     final wc = ws[wide_char__id];
     ws__copy[wide_char__id] =
-        ((wc < TC__limit) //
-        ? TC__convert__ch__ascii(wc)
+        ((wc < CHAR__limit) //
+        ? CHAR__convert__ch__ascii(wc)
         : wc);
   });
 

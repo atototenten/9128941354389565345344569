@@ -91,7 +91,7 @@ extension array__array__merge_ing<element__type> //
       [6, 5, 4],
       [9, 8, 7],
       [0],
-      empty__array,
+      [],
     ]..representation__text().print("un_merge_ed")).merge().representation__text().print("merge_ed");
   }
 }
@@ -228,8 +228,7 @@ un-equal element's id, if any */
   }
 
   BOOL equal___ok(
-    final array<element___type> other,
-  ) {
+    final array<element___type> other) {
     if (elements__count != other.elements__count) {
       return NO;
     }
