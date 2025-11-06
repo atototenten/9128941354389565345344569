@@ -1,7 +1,7 @@
 part of "../_.dart";
 
 BorderRadius gui__base__listing__item__position__top__border__radius([
-  final BOOL b__nested = NO,
+  final BOOL b__nested = FALSE,
 ]) =>
     (!b__nested //
         ? BorderRadius.vertical(
@@ -14,7 +14,7 @@ BorderRadius gui__base__listing__item__position__top__border__radius([
           ));
 
 BorderRadius gui__base__listing__item__position__middle__border__radius([
-  final BOOL b__nested = NO,
+  final BOOL b__nested = FALSE,
 ]) =>
     (!b__nested //
         ? BorderRadius.all(
@@ -25,7 +25,7 @@ BorderRadius gui__base__listing__item__position__middle__border__radius([
           ));
 
 BorderRadius gui__base__listing__item__position__bottom__border__radius([
-  final BOOL b__nested = NO,
+  final BOOL b__nested = FALSE,
 ]) =>
     (!b__nested //
         ? BorderRadius.vertical(
@@ -40,7 +40,7 @@ BorderRadius gui__base__listing__item__position__bottom__border__radius([
 BorderRadius gui__base__listing__item__border__radius(
   final INT item__id,
   final INT item__array__count, [
-  final BOOL b__nested = NO,
+  final BOOL b__nested = FALSE,
 ]) =>
     ((item__id == (item__array__count - 1)) /* last item */ //
         ? gui__base__listing__item__position__bottom__border__radius(b__nested)
@@ -99,8 +99,8 @@ const //
 gui__base__widget winter__listing__item({
   /*required final INT position,*/
   final BorderRadius? border__radius,
-  final BOOL selected___ok = NO,
-  final BOOL b__expand = OK,
+  final BOOL selected___ok = FALSE,
+  final BOOL b__expand = TRUE,
   final APPROX? padding__vertical,
   final APPROX? padding__leading,
   final gui__base__widget? leading,
@@ -131,7 +131,7 @@ gui__base__widget winter__listing__item__info__summary({
       onTap: press__handle,
       child: winter__box__base(
         border__radius: border__radius,
-        b__highlight: NO,
+        b__highlight: FALSE,
         child: winter__listing__item__structure(
           padding__vertical: size__pixel__padding__vertical,
           padding__leading: size__pixel__padding__horizontal,

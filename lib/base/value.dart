@@ -106,19 +106,19 @@ extension base__value__equality__check__extension //
 
     /*if ((value == null) && //
         (other == null)) {
-      return OK;
+      return TRUE;
     }
 
     if /*(((value == null) && (other != null)) || ((value != null) && (other == null)))*/ //
         ((value == null) || //
             (other == null)) {
-      return NO;
+      return FALSE;
     }*/
 
     if (value == null) {
       return (other == null);
     } else if (other == null) {
-      return NO;
+      return FALSE;
     }
 
     return value.equal___ok(
@@ -176,13 +176,13 @@ BOOL base__value__nilable__equal___ok //
 }) {
   if ((value == null) && //
       (other == null)) {
-    return OK;
+    return TRUE;
   }
 
   if /*(((value == null) && (other != null)) || ((value != null) && (other == null)))*/ //
   ((value == null) || //
       (other == null)) {
-    return NO;
+    return FALSE;
   }
 
   if /*F*/ (value__equal___ok == null) {
@@ -356,7 +356,7 @@ class base__value__channel__broadcast<value__type> //
           value,
         );
 
-        return OK;
+        return TRUE;
       },
     );
   }

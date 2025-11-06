@@ -16,7 +16,7 @@ void test__list() /*
   const count = 99999999;
 
   final //
-      ls = /*List<u8>.empty(growable: OK)*/ list<u8>(),
+      ls = /*List<u8>.empty(growable: TRUE)*/ list<u8>(),
       w = Stopwatch()..start();
 
   uu i = count;

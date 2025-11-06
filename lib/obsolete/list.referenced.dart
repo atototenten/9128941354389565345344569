@@ -132,7 +132,7 @@ class ReferencedList<T> {
   }
 
   List<T> iterateAndCollectData({
-    final bool growable = NO,
+    final bool growable = FALSE,
   }) {
     ReferencedListElement<T>? iterator = first;
 

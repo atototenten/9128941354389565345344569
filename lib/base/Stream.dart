@@ -13,7 +13,7 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
       (final BS1__array data) => accumulation.add(data /*..count.representation__text().print("byteStream.listen.onData.data.count")*/),
       onError: promise.completeError,
       onDone: () => promise.complete(accumulation.convert__byte__array()),
-      cancelOnError: OK,
+      cancelOnError: TRUE,
     );
 
     return promise.future;
@@ -35,7 +35,7 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
       (BS1__array data) {
         data__count = (data..representation__text().print("\n" "stream__BS1__array.listen.onData.data")).bytes__count;
 
-        while (OK) {
+        while (true) {
           count.representation__text().print("count");
           accumulation.bytes__count().representation__text().print("accumulation.bytes__count");
 
@@ -101,7 +101,7 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
         return channel__error__handle(e, t);
       },
       onDone: channel__close__handle,
-      cancelOnError: OK,
+      cancelOnError: TRUE,
     );
   }
 }
@@ -118,7 +118,7 @@ extension Stream__array__extension<data__type> //
       (final data) => accumulation.add__ending(data),
       onError: promise.completeError,
       onDone: () => promise.complete(accumulation.convert__array()),
-      cancelOnError: OK,
+      cancelOnError: TRUE,
     );
 
     return promise.future;

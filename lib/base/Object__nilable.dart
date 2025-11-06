@@ -102,7 +102,7 @@ zero is special-case to disable truncation */ =
           ..write("](");
 
         if (value.empty__not()) {
-          var first___ok = OK;
+          var first___ok = TRUE;
 
           value.forEach(
             (
@@ -110,7 +110,7 @@ zero is special-case to disable truncation */ =
               final value,
             ) {
               if (first___ok) {
-                first___ok = NO;
+                first___ok = FALSE;
               } else {
                 buffer.write(elements__separation);
               }
@@ -137,7 +137,7 @@ zero is special-case to disable truncation */ =
 
     return base__representation__text(
       switch (value) {
-        BOOL() => (value ? "OK" : "NO"),
+        BOOL() => (value ? "TRUE" : "FALSE"),
         INT__NEG() => "${value.isNegative.not ? "+" : empty__string}${value.toString()}",
         INT() => value.toString(),
         string() => "\"${value.toString()}\"",

@@ -27,7 +27,7 @@ void base__storage__data__table__row__bytes__auto({
             )
           : row__bytes),
       data: data__array[column__id],
-      b__initial: OK,
+      b__initial: TRUE,
     ),
   );
 
@@ -64,7 +64,7 @@ void base__storage__data__table__row__bytes__mod__auto({
           table__column.meta.offset,
         ),
         data: column.data,
-        b__initial: NO,
+        b__initial: FALSE,
       );
     },
   );

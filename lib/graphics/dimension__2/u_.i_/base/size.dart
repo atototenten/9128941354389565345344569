@@ -107,7 +107,7 @@ app:build__re:ok */
   view ??= ui.PlatformDispatcher.instance.implicitView!;
 
   {
-    var result = NO;
+    var result = FALSE;
 
     if (view.physicalSize.isEmpty) {
       if (base__printing___ok) {
@@ -116,7 +116,7 @@ app:build__re:ok */
 
       if (_screen__size != base__screen__ample__size__default) {
         _screen__size = base__screen__ample__size__default;
-        result = OK;
+        result = TRUE;
       }
     } else {
       final screen__size__new = (view.physicalSize / view.devicePixelRatio);
@@ -129,7 +129,7 @@ app:build__re:ok */
 
       if (screen__size__new != _screen__size) {
         _screen__size = screen__size__new;
-        result = OK;
+        result = TRUE;
       }
     }
 
@@ -149,7 +149,7 @@ app:build__re:ok */
         _screen__padding__permanent = screen__padding__permanent__new;
 
         if (result.not) {
-          result = OK;
+          result = TRUE;
         }
       }
     }
@@ -170,13 +170,13 @@ app:build__re:ok */
         _screen__padding__temporary = screen__padding__temporary__new;
 
         if (result.not) {
-          result = OK;
+          result = TRUE;
         }
       }
     }
 
     if (result.not) {
-      return NO;
+      return FALSE;
     }
   }
 
@@ -242,5 +242,5 @@ history
 
   base__app__size__alter__channel.event__dispatch();
 
-  return OK;
+  return TRUE;
 }

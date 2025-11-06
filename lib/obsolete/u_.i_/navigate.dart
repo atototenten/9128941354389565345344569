@@ -52,7 +52,7 @@ class navigation__kampo /*
       _navigate__element(
         /*page__initial__build,*/
         page__initial__depart_ure__handle,
-        /*not(OK),*/
+        /*not(TRUE),*/
       ),
     );
 
@@ -133,8 +133,8 @@ value__asyn<void> navigate__forward__overlay(
     context,
     _page_route(
       builder: overlay__build,
-      maintainState: OK,
-      fullscreenDialog: OK,
+      maintainState: TRUE,
+      fullscreenDialog: TRUE,
     ),
   );
 }
@@ -160,7 +160,7 @@ value__asyn<void> navigate__forward__overlay__bottom(
     context,
     ModalBottomSheetRoute<void>(
       builder: overlay__build,
-      isScrollControlled: OK,
+      isScrollControlled: TRUE,
       backgroundColor: flutter__material__colors.transparent,
       elevation: 0,
       clipBehavior: Clip.none,
@@ -170,11 +170,11 @@ value__asyn<void> navigate__forward__overlay__bottom(
           screen__size.height,
         ),
       ),
-      isDismissible: OK,
+      isDismissible: TRUE,
       modalBarrierColor: flutter__material__colors.transparent,
-      enableDrag: OK,
-      showDragHandle: OK,
-      useSafeArea: NO,
+      enableDrag: TRUE,
+      showDragHandle: TRUE,
+      useSafeArea: FALSE,
     ),
   );
 }
@@ -200,7 +200,7 @@ value__asyn<void> navigate__forward__page(
     context,
     _page_route(
       builder: page__build,
-      maintainState: NO,
+      maintainState: FALSE,
     ),
   );
 }
@@ -229,7 +229,7 @@ efficient, than the, first calling `de_navigate`, then calling `navigate` */
   return _navigator_state(context).pushReplacement<void, void>(
     _page_route(
       builder: page__build,
-      maintainState: NO,
+      maintainState: FALSE,
     ),
   );
 }
@@ -267,7 +267,7 @@ appbar's back navigation button is not shown */
     return _navigator_state(context).pushAndRemoveUntil<void>(
       _page_route(
         builder: page__build,
-        maintainState: NO,
+        maintainState: FALSE,
       ),
       (final _) => NO,
     );
@@ -296,16 +296,16 @@ appbar's back navigation button is not shown */
     return _navigator_state(context).pushAndRemoveUntil<void>(
       _page_route(
         builder: page__build,
-        maintainState: NO,
+        maintainState: FALSE,
       ),
       (final _) {
         if /*F*/ (pages__count_ == 0) {
-          return OK;
+          return TRUE;
         }
 
         pages__count_ -= 1;
 
-        return NO;
+        return FALSE;
       },
     );
   }

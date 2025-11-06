@@ -75,7 +75,7 @@ void data__fetch__manager__test() {
         );
       },
       data__array__count: data__array__count,
-      b__progression__reverse: NO,
+      b__progression__reverse: FALSE,
     ),
     data__fetch__manager(
       data__array__initial: array__new__generated(
@@ -86,7 +86,7 @@ void data__fetch__manager__test() {
         throw Error();
       },
       data__array__count: data__array__count,
-      b__progression__reverse: NO,
+      b__progression__reverse: FALSE,
     ),
   ].iterate__basic((final _, final fetch_man) {
     report__array(
@@ -122,8 +122,8 @@ void image__test() {
       dimension = (width * height);
 
   [
-    (111, 111, b__alpha: OK),
-    (55, 222, b__alpha: NO),
+    (111, 111, b__alpha: TRUE),
+    (55, 222, b__alpha: FALSE),
   ].iterate__basic((final case__id, final values) {
     final //
         channel__count = (values.b__alpha ? 4 : 3),
@@ -201,7 +201,7 @@ void image__test() {
       image__buffer.asUint8List(),
       width: image.width,
       height: image.height,
-      b__alpha: NO,
+      b__alpha: FALSE,
     );
   }
 }
@@ -333,7 +333,7 @@ void report__test() {
         (u8__limit - 1),
         (final iter) => //
             (iter + 1),
-        growable: NO,
+        growable: FALSE,
       ),
       uu__report,
       "small array",
@@ -345,7 +345,7 @@ void report__test() {
         u8__limit,
         (final iter) => //
             (iter + 1),
-        growable: NO,
+        growable: FALSE,
       ),
       uu__report,
       "perfect array",
@@ -357,7 +357,7 @@ void report__test() {
         (u8__limit + 1),
         (final iter) => //
             (iter + 1),
-        growable: NO,
+        growable: FALSE,
       ),
       uu__report,
       "just a bit large, array",
@@ -369,7 +369,7 @@ void report__test() {
         (u8__limit + 10),
         (final iter) => //
             (iter + 1),
-        growable: NO,
+        growable: FALSE,
       ),
       uu__report,
       "large array",
@@ -381,7 +381,7 @@ void report__test() {
         (u8__limit + 10),
         (final iter) => //
             (iter + 1),
-        growable: NO,
+        growable: FALSE,
       )),
       "byte array",
       "label_",
@@ -425,7 +425,7 @@ void report__test() {
 void str__search__de_limiter__array(
   final byte__array encodedBytes,
   final string encoder_name, {
-  final bool b__verbose_output = NO,
+  final bool b__verbose_output = FALSE,
 }) {
   final List<int> possibleDeLimiters = <int>[];
 
@@ -436,12 +436,12 @@ void str__search__de_limiter__array(
   }
 
   for (int charCode = 0; charCode < u8__limit; charCode += 1) {
-    bool isCharCodeAbsent = OK;
+    bool isCharCodeAbsent = TRUE;
 
     int byteCounter = 0;
     while (byteCounter < byteCount) {
       if ((encodedBytes[byteCounter++] == charCode) && isCharCodeAbsent) {
-        isCharCodeAbsent = NO;
+        isCharCodeAbsent = FALSE;
 
         break;
       }
@@ -472,7 +472,7 @@ void bytes__test() {
       bys = byte__array.fromList(array<u8>.generate(
         99,
         (final u) => (u + 1),
-        growable: NO,
+        growable: FALSE,
       ))
         ..representation__text().print("bys"),
       offset__ptr = base__value__proxy__kampo<uu>(0);
@@ -526,11 +526,11 @@ void stack__test() {
 
   void print_() => //
       stack
-        ..convert__str(OK).representation__text().print("stack")
+        ..convert__str(TRUE).representation__text().print("stack")
         ..iterate((final element) {
           element.representation__text().print("stack.element");
 
-          return OK;
+          return TRUE;
         });
 
   const uu count = 3;
@@ -541,14 +541,14 @@ void stack__test() {
     stack.add(iter);
     print_();
 
-    return OK;
+    return TRUE;
   });
 
   base__iterate(count, (final _) {
     stack.remove();
     print_();
 
-    return OK;
+    return TRUE;
   });
 
   stack.remove();

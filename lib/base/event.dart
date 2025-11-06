@@ -51,14 +51,14 @@ class base__event__channel__unicast //
     final event__handle__procedure__format description,
   ) {
     if (description___raw != NIL) {
-      return NO;
+      return FALSE;
     }
 
     description__assign___raw(
       description,
     );
 
-    return OK;
+    return TRUE;
   }
 
   @override
@@ -87,12 +87,12 @@ class base__event__channel__unicast //
     if (description__equal___ok(
       description,
     ).not) {
-      return NO;
+      return FALSE;
     }
 
     description__remove___raw();
 
-    return OK;
+    return TRUE;
   }
 
   @override
@@ -155,17 +155,17 @@ class base__event__channel__broadcast //
   BOOL descriptions__present___ok(
     final event__handle__procedure__format description,
   ) {
-    var result = NO;
+    var result = FALSE;
 
     descriptions___raw.iterate(
       (final id, final e) {
         if (description != e) {
-          return OK;
+          return TRUE;
         }
 
-        result = OK;
+        result = TRUE;
 
-        return NO;
+        return FALSE;
       },
     );
 
@@ -183,14 +183,14 @@ class base__event__channel__broadcast //
     descriptions___raw.iterate(
       (final id, final e) {
         if (description != e) {
-          return OK;
+          return TRUE;
         }
 
         descriptions___raw.remove___raw(
           id,
         );
 
-        return NO;
+        return FALSE;
       },
     );
   }
@@ -208,7 +208,7 @@ class base__event__channel__broadcast //
           description();
         } catch (_, _) {}
 
-        return OK;
+        return TRUE;
       },
     );
   }
@@ -253,14 +253,14 @@ class base__event__channels__broadcast //
   BOOL descriptions__present___ok(
     final event__handle__procedure__format description,
   ) {
-    var result = NO;
+    var result = FALSE;
 
     channels__iterate___raw(
       (final channel) {
         if (channel.descriptions__present___ok(
           description,
         )) {
-          result = OK;
+          result = TRUE;
         }
       },
     );

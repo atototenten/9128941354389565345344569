@@ -13,7 +13,7 @@ const //
   = input__text__work_station__type__ascii,
   final BOOL input__b__simple /*
   single-line, not multi-line */
-  = OK,
+  = TRUE,
   final INT input__text__bytes__count__max = INT__1__max,
   final string? input__initial,
   required final void Function(
@@ -278,21 +278,21 @@ gui__base__widget $text(
     );
 
 gui__base__widget listing__item__input__text__stored({
-  final BOOL input__b__required /* mandatory field ? */ = NO,
+  final BOOL input__b__required /* mandatory field ? */ = FALSE,
   required final string title,
   final string? sub_title /* info */,
   required final string hint /*
   example, or sample */
   ,
   final string? input__initial,
-  /*final BOOL b__chars__counter__show = NO,*/
+  /*final BOOL b__chars__counter__show = FALSE,*/
   final TextInputType input__type = TextInputType.text,
   final TextInputAction input__submit__indicator = TextInputAction.done,
   final TextCapitalization input__capitalization = TextCapitalization.none,
   final INT input__chars__count__max = INT__1__max,
   final input__text__filter___compo input__filter = input__text__filter__basic__print_able___ok,
   required final input__text__function__format input__submit,
-  final BOOL indicator__edit_able__b__show = OK,
+  final BOOL indicator__edit_able__b__show = TRUE,
 }) {
   var input = input__initial;
 
@@ -399,7 +399,7 @@ widget__stored___compo input__text__overlay__bottom__phone__stored({
   example, or sample */
   ,
   final string? input__initial,
-  /*final BOOL b__chars__counter__show = NO,*/
+  /*final BOOL b__chars__counter__show = FALSE,*/
   final TextInputType input__type = TextInputType.text,
   final TextInputAction input__submit__indicator = TextInputAction.done,
   final TextCapitalization input__capitalization = TextCapitalization.none,
@@ -407,7 +407,7 @@ widget__stored___compo input__text__overlay__bottom__phone__stored({
   final input__text__filter___compo input__filter = input__text__filter__basic__print_able___ok,
   final BOOL b__recursive /*
   recursion: `input__text__overlay__bottom__phone__stored(`, in `input__submit` */
-  = NO,
+  = FALSE,
   required final input__text__function__format input__submit,
 }) /*
   FIX
@@ -457,7 +457,7 @@ widget__stored___compo input__text__overlay__bottom__phone__stored({
     the fix would merely increase correct-ness */
           +
           size__pixel__padding__vertical__double),
-      vertical__b__expand: NO,
+      vertical__b__expand: FALSE,
       item__array: [
         Padding(
           padding: EdgeInsets.symmetric(

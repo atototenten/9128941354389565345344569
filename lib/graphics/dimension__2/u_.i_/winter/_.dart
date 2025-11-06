@@ -111,7 +111,7 @@ late Color //
 final color__random__list = array<Color>.filled(
   colors__random.length,
   base__color__transparent__dark,
-  growable: NO,
+  growable: FALSE,
 );
 
 void app__page__background__change() {
@@ -164,8 +164,8 @@ Color _color__dark__relative(
     =>
     color__generate(
       intensity: intensity,
-      b__dark_mode: OK,
-      b__solid: NO,
+      b__dark_mode: TRUE,
+      b__solid: FALSE,
       interval: interval,
     );
 
@@ -179,8 +179,8 @@ Color _color__light__relative(
     =>
     color__generate(
       intensity: intensity,
-      b__dark_mode: NO,
-      b__solid: NO,
+      b__dark_mode: FALSE,
+      b__solid: FALSE,
       interval: interval,
     );
 
@@ -296,12 +296,12 @@ void box__winter__color__set() {
     systemNavigationBarIconBrightness: (base__app__theme__colors__ground__back__contrast__dark___ok //
         ? Brightness.light
         : Brightness.dark),
-    systemNavigationBarContrastEnforced: NO,
+    systemNavigationBarContrastEnforced: FALSE,
     statusBarColor: base__color__transparent__dark,
     statusBarIconBrightness: (base__app__theme__colors__ground__back__contrast__dark___ok //
         ? Brightness.light
         : Brightness.dark),
-    systemStatusBarContrastEnforced: NO,
+    systemStatusBarContrastEnforced: FALSE,
   ));
 
   _gradient__linear = LinearGradient(
@@ -325,7 +325,7 @@ void box__winter__color__set() {
 
 gui__base__widget winter__box__base({
   final BorderRadius? border__radius,
-  final BOOL b__highlight = NO,
+  final BOOL b__highlight = FALSE,
   required final gui__base__widget child,
 }) /* frosted */ =>
     DecoratedBox(
@@ -343,7 +343,7 @@ gui__base__widget winter__box__base({
 
 gui__base__widget winter__box__base__simple({
   final BorderRadius? border__radius,
-  final BOOL b__highlight = NO,
+  final BOOL b__highlight = FALSE,
   required final gui__base__widget child,
 }) =>
     DecoratedBox(
@@ -361,7 +361,7 @@ gui__base__widget winter__box__base__simple({
 
 gui__base__widget _box__shadowed({
   final BorderRadius? border__radius,
-  final BOOL b__highlight = NO,
+  final BOOL b__highlight = FALSE,
   required final gui__base__widget child,
 }) =>
     DecoratedBox(
@@ -382,7 +382,7 @@ gui__base__widget _box__shadowed({
     );
 
 gui__base__widget winter__box__non_button({
-  final BOOL b__highlight = NO,
+  final BOOL b__highlight = FALSE,
   final BorderRadius? border__radius,
   required final gui__base__widget child,
 }) /* colored */ =>
@@ -406,7 +406,7 @@ gui__base__widget winter__box__non_button({
     );
 
 gui__base__widget winter__box__button({
-  final BOOL b__highlight = NO,
+  final BOOL b__highlight = FALSE,
   BorderRadius? border__radius,
   required final gui__base__widget child,
   final VoidCallback? onSinglePress,
@@ -453,7 +453,7 @@ gui__base__widget winter__box__floating({
 
 gui__base__widget winter__box__button__floating({
   BorderRadius? border__radius,
-  final BOOL b__highlight = NO,
+  final BOOL b__highlight = FALSE,
   final ui.ImageFilter? blur,
   required final gui__base__widget child,
   final VoidCallback? onSinglePress,

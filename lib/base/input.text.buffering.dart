@@ -135,9 +135,9 @@ class input__text__buffer___compo /*
 
       bytes__count += wc__bytes__count;
 
-      return OK;
+      return TRUE;
     } else {
-      return NO;
+      return FALSE;
     }
   }
 
@@ -172,9 +172,9 @@ class input__text__buffer___compo /*
 
       bytes__count += wstr__bytes__count;
 
-      return OK;
+      return TRUE;
     } else {
-      return NO;
+      return FALSE;
     }
   }
 
@@ -184,9 +184,9 @@ class input__text__buffer___compo /*
         chars[(size__current -= 1)],
       );
 
-      return OK;
+      return TRUE;
     } else {
-      return NO;
+      return FALSE;
     }
   }
 

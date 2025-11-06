@@ -50,7 +50,7 @@ TextStyle base__text__style({
   final TextOverflow text__overflow = TextOverflow.clip,
 }) {
   return TextStyle(
-    inherit: NO,
+    inherit: FALSE,
     color: font__color,
     fontSize: font__size,
     fontWeight: font__weight,

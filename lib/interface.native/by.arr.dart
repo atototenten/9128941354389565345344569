@@ -22,10 +22,10 @@ class byte__array___compo {
     final bys = array;
     other.arr.iterate((final id, final b) {
       if (b == bys[id]) //
-        return OK;
+        return TRUE;
 
       result = id;
-      return NO;
+      return FALSE;
     });
 
     return result;

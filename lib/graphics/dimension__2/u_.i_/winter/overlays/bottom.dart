@@ -25,7 +25,7 @@ gui__base__widget overlay__bottom__alert(
 
 gui__base__widget overlay__bottom__confirm__item({
   final BorderRadius? border__radius,
-  final BOOL action__destructive___ok = NO,
+  final BOOL action__destructive___ok = FALSE,
   required final string title,
   final string? sub_title,
   final gui__base__widget? trailing,
@@ -55,8 +55,8 @@ gui__base__widget overlay__bottom__confirm(
 }) =>
     winter__overlay__bottom__menu(
       context,
-      dismiss__swipe__indication___ok: NO,
-      button__close___ok: NO,
+      dismiss__swipe__indication___ok: FALSE,
+      button__close___ok: FALSE,
       title: title,
       sub_title: sub_title,
       body: Padding(
@@ -89,7 +89,7 @@ gui__base__widget overlay__bottom__confirm(
               child: winter__listing__item(
                 border__radius:
                     gui__base__listing__item__position__bottom__border__radius(),
-                selected___ok: OK,
+                selected___ok: TRUE,
                 body: winter__box__text__primary__secondary__auto(
                   primary__text: cancel__title,
                   secondary__text: cancel__sub_title,
@@ -243,7 +243,7 @@ prefer `base__listing__item`
                         },
                       ),
                       _input__number__button(
-                        selected___ok: OK,
+                        selected___ok: TRUE,
                         child: base__icon(
                           flutter__icon__done,
                           size: 24.px(),
@@ -268,7 +268,7 @@ prefer `base__listing__item`
 } */
 
 gui__base__widget _input__number__button({
-  final BOOL selected___ok = NO,
+  final BOOL selected___ok = FALSE,
   required final gui__base__widget child,
   required final procedure__empty__format press__handle,
   final procedure__empty__format? press__long__handle,

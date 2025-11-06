@@ -223,11 +223,11 @@ must have same elements:count as input/param. */
   }
 
   void save__allow() {
-    if (_save__allow___ok == OK) {
+    if (_save__allow___ok == true) {
       return;
     }
 
-    _save__allow___ok = OK;
+    _save__allow___ok = TRUE;
     channel.event__announce();
   }
 
@@ -291,11 +291,11 @@ not visible ,if no elements ,are un-sav-ed */
       item__new__dummy__build: item__new__dummy__build,
       /*floating__button: ((save__button != null)
           ? (final context) {
-              if /*F*/ (_save__allow___ok == OK) {
+              if /*F*/ (_save__allow___ok == true) {
                 return save__button;
               }
 
-              if /*F*/ (_save__allow___ok == NO) {
+              if /*F*/ (_save__allow___ok == false) {
                 return gui__base__empty__widget;
               }
 

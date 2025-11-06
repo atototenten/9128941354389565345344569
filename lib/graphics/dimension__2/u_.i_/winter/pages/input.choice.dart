@@ -23,7 +23,7 @@ const //
     listing__key = gui__base__widget__key__unique();
     listing__build__re();
 
-    return OK;
+    return TRUE;
   }
 
   return page__foundation(

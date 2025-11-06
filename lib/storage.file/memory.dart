@@ -291,7 +291,7 @@ class storage__file__memory //
           array__id,
         );
 
-        return OK;
+        return TRUE;
       },
       element__handle: (
         final accumulation__element__id,
@@ -307,7 +307,7 @@ class storage__file__memory //
           ),
         );
 
-        return OK;
+        return TRUE;
       },
     );
   }
@@ -334,7 +334,7 @@ class storage__file__memory //
         array__last__bytes__count = block__accumulation___raw.element__last().bytes__count;
       }
 
-      while (OK) {
+      while (true) {
         {
           array__last__bytes__count *= 2;
 
@@ -419,7 +419,7 @@ void storage__file__memory__test() {
     ..read__full()
         .convert__byte__array()
         .representation__text(
-          elements__truncate___ok: NO,
+          elements__truncate___ok: FALSE,
         )
         .print("file.read.full.1")
     ..block__accumulation__raw

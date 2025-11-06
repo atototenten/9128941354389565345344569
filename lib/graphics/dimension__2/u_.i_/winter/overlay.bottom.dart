@@ -82,8 +82,8 @@ gui__base__widget winter__overlay__bottom__menu(
   final APPROX? padding__top,
   final Color? back_ground__color,
   final Radius? border__top__radius,
-  final BOOL dismiss__swipe__indication___ok = OK,
-  final BOOL button__close___ok = OK,
+  final BOOL dismiss__swipe__indication___ok = TRUE,
+  final BOOL button__close___ok = TRUE,
   required final string title,
   final string? sub_title,
   required final gui__base__widget? body /*
@@ -103,7 +103,7 @@ if input:text is present ,prefer padding items ,through `SizedBox(height: base__
           SizedBox(
             height: size__pixel__padding__vertical,
           ),
-          gui__base__stack__widget(
+          gui__base__stack___widget(
             alignment: Alignment.topCenter,
             children: [
               if (dismiss__swipe__indication___ok) //

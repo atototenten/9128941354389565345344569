@@ -38,14 +38,14 @@ BOOL base__error__fatal___ok //
   final Object error,
 ) {
   if (error is Error) {
-    return NO;
+    return FALSE;
   }
 
   if (error is Exception) {
-    return OK;
+    return TRUE;
   }
 
-  return OK /* default/most-likely */;
+  return TRUE /* default/most-likely */;
 }
 
 string //

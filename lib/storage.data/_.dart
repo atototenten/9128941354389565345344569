@@ -178,7 +178,7 @@ base__storage__data__meta___compo base__storage__data__create({
       buffer.ptr,
       base__storage__file__block__size.size,
       base__storage__data__position__offset,
-      b__write: OK,
+      b__write: TRUE,
     );
 
     base__storage__file__native__linux__sync(
@@ -199,7 +199,7 @@ base__storage__data__meta___compo base__storage__data__create({
       buffer.ptr,
       base__storage__file__block__size.size,
       0,
-      b__write: OK,
+      b__write: TRUE,
     );
 
     base__storage__file__native__linux__sync(
@@ -306,7 +306,7 @@ base__storage__data__linux__auto__result___compo base__storage__data__linux__aut
   required string directory__path,
   final string file__name = "db",
   required final INT ds__storage__size,
-  final BOOL bytes__b__preserve = OK,
+  final BOOL bytes__b__preserve = TRUE,
   required final void Function(base__storage__data__linux__auto__result__compo) create__handle,
 }) {
   if (base__printing___ok) {
@@ -411,7 +411,7 @@ void base__storage__data__write(
       bytes: bytes,
       count: (bytes__count ?? bytes.bytes__count),
       offset: base__storage__data__offset,
-      b__write: OK,
+      b__write: TRUE,
     );
 
 void base__storage__data__write__replace /*:preserved*/ (
@@ -595,7 +595,7 @@ void base__storage__data__sync(
       buffer.ptr,
       base__storage__file__block__size.size,
       0,
-      b__write: OK,
+      b__write: TRUE,
     );
 
     base__storage__file__native__linux__sync(

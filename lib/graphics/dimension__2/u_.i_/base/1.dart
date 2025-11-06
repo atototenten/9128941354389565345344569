@@ -8,17 +8,77 @@ gui__base__widget gui__base__widget__empty__build(
   return gui__base__empty__widget;
 }
 
-gui__base__widget gui__base__stack__widget({
+gui__base__widget gui__base__widget__building__boundary__build(
+  final gui__base__widget__building__context context, {
+  required final Key key,
+  required final gui__base__widget child,
+}) {
+  return SizedBox(
+    key: key,
+    child: child,
+  );
+}
+
+gui__base__widget gui__base__widget__painting__boundary__build(
+  final gui__base__widget__building__context context, {
+  required final gui__base__widget child,
+}) {
+  return RepaintBoundary(
+    child: child,
+  );
+}
+
+gui__base__widget gui__base__widget__sequence___widget(
+  final gui__base__widget__building__context context, {
+  final Axis direction = Axis.vertical,
+  final axis__alignment___enum? axis__main__alignment /*
+arg.'s presence leads to expansion (similar to "BOOL expand___ok = TRUE") */,
+  final axis__alignment___enum axis__cross__alignment = axis__alignment___enum.center,
+  final APPROX spacing = 0,
+  required final array<gui__base__widget> children,
+}) {
+  return Flex(
+    direction: direction,
+    mainAxisSize:
+        ((axis__main__alignment == null) //
+        ? MainAxisSize.min
+        : MainAxisSize.max),
+    mainAxisAlignment: switch (axis__main__alignment) {
+      axis__alignment___enum.beginning => MainAxisAlignment.start,
+      axis__alignment___enum.center => MainAxisAlignment.center,
+      axis__alignment___enum.ending => MainAxisAlignment.end,
+      null => /*NIL*/ MainAxisAlignment.start,
+    },
+    crossAxisAlignment: switch (axis__cross__alignment) {
+      axis__alignment___enum.beginning => CrossAxisAlignment.start,
+      axis__alignment___enum.center => CrossAxisAlignment.center,
+      axis__alignment___enum.ending => CrossAxisAlignment.end,
+    },
+    clipBehavior: Clip.none,
+    textDirection: TextDirection.ltr,
+    verticalDirection: VerticalDirection.down,
+    textBaseline: NIL,
+    spacing: spacing,
+    children: children,
+  );
+}
+
+enum axis__alignment___enum {
+  beginning,
+  center,
+  ending,
+}
+
+gui__base__widget gui__base__stack___widget({
   final AlignmentGeometry alignment = AlignmentDirectional.topStart,
-  final StackFit fit = StackFit.loose,
-  final Clip clipping = Clip.hardEdge,
+  final StackFit fitting = StackFit.loose,
   required final array<gui__base__widget> children,
 }) {
   return Stack(
     alignment: alignment,
     textDirection: TextDirection.ltr,
-    fit: fit,
-    clipBehavior: clipping,
+    fit: fitting,
+    clipBehavior: Clip.none,
     children: children,
   );
 }
@@ -40,118 +100,6 @@ gui__base__widget gui__base__gesture__press__handling__widget({
     child: child,
   );
 }
-
-//
-
-gui__base__widget gui__base__child__keyed__widget /*
-for ambiguity removal */
-    ({
-  required final Key key,
-  required final gui__base__widget child,
-}) {
-  return SizedBox.shrink(
-    key: key,
-    child: child,
-  );
-}
-
-gui__base__widget gui__base__child__padded__widget({
-  required final APPROX padding,
-  required final gui__base__widget child,
-}) {
-  return Padding(
-    padding: EdgeInsets.all(
-      padding.px(),
-    ),
-    child: child,
-  );
-}
-
-gui__base__widget gui__base__child__padded__symmetric__widget({
-  final APPROX padding__horizontal = 0,
-  final APPROX padding__vertical = 0,
-  required final gui__base__widget child,
-}) {
-  return Padding(
-    padding: EdgeInsets.symmetric(
-      horizontal: padding__horizontal.px(),
-      vertical: padding__vertical.px(),
-    ),
-    child: child,
-  );
-}
-
-gui__base__widget gui__base__child__padded__custom__widget({
-  final APPROX padding__top = 0,
-  final APPROX padding__left = 0,
-  final APPROX padding__right = 0,
-  final APPROX padding__bottom = 0,
-  required final gui__base__widget child,
-}) {
-  return Padding(
-    padding: EdgeInsets.only(
-      top: padding__top.px(),
-      left: padding__left.px(),
-      right: padding__right.px(),
-      bottom: padding__bottom.px(),
-    ),
-    child: child,
-  );
-}
-
-gui__base__widget gui__base__child__constrained__widget({
-  final APPROX width__min_ = 0,
-  final APPROX width__max_ = APPROX.maxFinite,
-  final APPROX height__min_ = 0,
-  final APPROX height__max_ = APPROX.maxFinite,
-  required final gui__base__widget child,
-}) {
-  return ConstrainedBox(
-    constraints: BoxConstraints(
-      minWidth: width__min_,
-      maxWidth: width__max_,
-      minHeight: height__min_,
-      maxHeight: height__max_,
-    ),
-    child: child,
-  );
-}
-
-gui__base__widget gui__base__child__constrained__tight__widget({
-  final APPROX? width,
-  final APPROX? height,
-  required final gui__base__widget child,
-}) {
-  return SizedBox(
-    width: width,
-    height: height,
-    child: child,
-  );
-}
-
-gui__base__widget gui__base__child__constrained__tight__square__widget({
-  required final APPROX dimension,
-  required final gui__base__widget child,
-}) =>
-    SizedBox.square(
-      dimension: dimension,
-      child: child,
-    );
-
-gui__base__widget gui__base__child__constrained__tight__max__widget({
-  final BOOL width___ok = OK,
-  final BOOL height___ok = OK,
-  required final gui__base__widget child,
-}) =>
-    SizedBox(
-      width: (width___ok //
-          ? APPROX.maxFinite
-          : NIL),
-      height: (height___ok //
-          ? APPROX.maxFinite
-          : NIL),
-      child: child,
-    );
 
 gui__base__widget gui__base__child__rotated__wise__clock__widget(
   final INT rotation,
@@ -187,20 +135,24 @@ gui__base__widget gui__base__box__widget({
 
 gui__base__widget gui__base__box__square__widget({
   required final APPROX dimension,
-}) =>
-    SizedBox.square(
-      dimension: dimension,
-    );
+}) {
+  return SizedBox.square(
+    dimension: dimension,
+  );
+}
 
 gui__base__widget gui__base__box__expanded__widget({
-  final BOOL width___ok = OK,
-  final BOOL height___ok = OK,
-}) =>
-    SizedBox(
-      width: (width___ok //
-          ? APPROX.maxFinite
-          : NIL),
-      height: (height___ok //
-          ? APPROX.maxFinite
-          : NIL),
-    );
+  final BOOL width___ok = TRUE,
+  final BOOL height___ok = TRUE,
+}) {
+  return SizedBox(
+    width:
+        (width___ok //
+        ? APPROX.maxFinite
+        : NIL),
+    height:
+        (height___ok //
+        ? APPROX.maxFinite
+        : NIL),
+  );
+}

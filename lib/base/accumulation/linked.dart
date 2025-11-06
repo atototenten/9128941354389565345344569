@@ -115,7 +115,7 @@ if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy defaul
     final element__type element,
     final base__value__equality__function__format<element__type,element__type> equal___ok,
   ) {
-    var present___ok = NO;
+    var present___ok = FALSE;
 
     iterate(
       (final element_1) {
@@ -125,12 +125,12 @@ if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy defaul
         );
 
         if (equal__ok_1.not) {
-          return OK;
+          return TRUE;
         }
 
-        present___ok = OK;
+        present___ok = TRUE;
 
-        return NO;
+        return FALSE;
       },
     );
 
@@ -156,7 +156,7 @@ TASK
           e.value,
         );
 
-        return OK;
+        return TRUE;
       },
     );
 

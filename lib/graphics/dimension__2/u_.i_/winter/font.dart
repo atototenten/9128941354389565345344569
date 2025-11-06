@@ -18,7 +18,7 @@ const //
 final font__families = array<string>.filled(
   font__count,
   font__family__default,
-  growable: NO,
+  growable: FALSE,
 );
 
 APPROX get font__size__tiny => 12.px();

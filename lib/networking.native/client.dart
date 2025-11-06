@@ -7,14 +7,14 @@ value__asyn<bool> base__net__connect_ed___ok({
     final result = await net.InternetAddress.lookup(host);
     if (result.empty__not() && //
         result.first.rawAddress.empty__not()) {
-      return OK;
+      return TRUE;
     }
   } on net.SocketException catch (_) {
   } catch (e) {
     rethrow;
   }
 
-  return NO;
+  return FALSE;
 }
 
 value__asyn<void> base__net__reliable__client__socket__close__safe(
@@ -35,7 +35,7 @@ value__asyn<BS1__array> base__net__reliable__client__simple__communicate({
   )
     ..setOption(
       net.SocketOption.tcpNoDelay,
-      OK,
+      TRUE,
     )
     /*..add(
        INT__convert__BS1__array__little_endian(

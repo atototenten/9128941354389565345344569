@@ -202,7 +202,7 @@ array<gui__base__widget> str__wide__rich__bytes__convert({
       widget__list /* lines, in-case of text */ = list<gui__base__widget>();
 
   var //
-      text__segment__list /* could be, a word, words, sentences, or else, of text */ = list<InlineSpan>() /*array<InlineSpan>.filled(count,const TextSpan(),growable: NO)*/,
+      text__segment__list /* could be, a word, words, sentences, or else, of text */ = list<InlineSpan>() /*array<InlineSpan>.filled(count,const TextSpan(),growable: FALSE)*/,
       section__text__offset = 0;
 
   Alignment text__alignment = Alignment.centerLeft;

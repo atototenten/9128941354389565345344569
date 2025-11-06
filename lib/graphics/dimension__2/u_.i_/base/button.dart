@@ -10,7 +10,7 @@ not `void`-type ,because
 class gui__base__button {
   gui__base__button({
     required this.press__handle,
-  }) : pressed__ok___raw = NO;
+  }) : pressed__ok___raw = FALSE;
 
   final gui__base__button__press__handle__function__format press__handle;
 
@@ -34,11 +34,11 @@ class gui__base__button {
       child__build: (final context) {
         return gui__base__gesture__press__handling__widget(
           press__down__handle: (_) {
-            pressed__ok___raw = OK;
+            pressed__ok___raw = TRUE;
             context.build__re___raw();
           },
           press__cancel__handle: () {
-            pressed__ok___raw = NO;
+            pressed__ok___raw = FALSE;
             context.build__re___raw();
           },
           press__handle: () {
@@ -46,11 +46,11 @@ class gui__base__button {
               return;
             }
 
-            pressed__ok___raw = OK;
+            pressed__ok___raw = TRUE;
             context.build__re___raw();
 
             void revert() {
-              pressed__ok___raw = NO;
+              pressed__ok___raw = FALSE;
               context.build__re();
             }
 
@@ -82,7 +82,7 @@ class gui__base__button__selectable {
 should not invoke `.selection__switch` ,if the result is `OK`
   ,because otherwise `selection__switch` invoked ,implicitly ,after the press__handle's result
     ,would re-switch the selection */,
-    this.selected__ok___raw = NO,
+    this.selected__ok___raw = FALSE,
   });
 
   final gui__base__button__selectable__press__handle__function__format press__handle;

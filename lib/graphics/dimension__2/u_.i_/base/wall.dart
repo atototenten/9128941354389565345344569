@@ -16,7 +16,7 @@ gui__base__widget base__wall__base(
     child: base__app__size__alter__channel.handling__widget__build(
       context,
       child__build: (final context) {
-        return gui__base__child__constrained__tight__widget(
+        return SizedBox(
           width: size.width,
           height: size.height,
           child: base__app__theme__change__channel.handling__widget__build(

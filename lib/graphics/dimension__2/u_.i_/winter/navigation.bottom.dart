@@ -64,7 +64,7 @@ typedef navigation__bottom__item___compo = ({
         ),
       );
     },
-    growable: NO,
+    growable: FALSE,
   );
 
   return gui__base__box__floating(

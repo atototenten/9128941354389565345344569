@@ -25,7 +25,7 @@ void base__iterate__until__basic(
       limit,
       (final i) {
         operate(i);
-        return OK;
+        return TRUE;
       },
       offset: offset,
     );
@@ -39,7 +39,7 @@ value__asyn<void> base__iterate__until__basic__asyn(
       limit,
       (final i) async {
         await operate(i);
-        return OK;
+        return TRUE;
       },
       offset: offset,
     );
@@ -71,7 +71,7 @@ void base__iterate__basic(
       count,
       (final i) {
         operate(i);
-        return OK;
+        return TRUE;
       },
       offset: offset,
     );
@@ -85,7 +85,7 @@ value__asyn<void> base__iterate__basic__asyn(
       count,
       (final i) async {
         await operate(i);
-        return OK;
+        return TRUE;
       },
       offset: offset,
     );
@@ -122,7 +122,7 @@ void base__iterate__reverse__basic(
       count,
       (final i) {
         operate(i);
-        return OK;
+        return TRUE;
       },
     );
 
@@ -134,7 +134,7 @@ value__asyn<void> base__iterate__reverse__basic__asyn(
       count,
       (final i) async {
         await operate(i);
-        return OK;
+        return TRUE;
       },
     );
 

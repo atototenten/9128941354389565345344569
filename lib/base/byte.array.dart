@@ -50,16 +50,16 @@ BOOL byte__array__blank___ok(
       byte__array__blank___ok(byte__array.fromList(bys+([1,0]..representation__text().print("count")))).representation__text().print("blank?");
 ``` */
 {
-  var blank___ok = OK;
+  var blank___ok = TRUE;
 
   bys.iterate(
     (final _, final element) {
       if (element == 0) {
-        return OK;
+        return TRUE;
       }
 
-      blank___ok = NO;
-      return NO;
+      blank___ok = FALSE;
+      return FALSE;
     },
     count: (count ?? bys.bytes__count),
   );
@@ -293,7 +293,7 @@ class bytes___compo {
       bytes,
       (final element__id, final element) {
         if (element != b) {
-          return OK;
+          return TRUE;
         }
 
         final count = (element__id - bytes__offset);
@@ -308,7 +308,7 @@ class bytes___compo {
           );
         }
 
-        return NO;
+        return FALSE;
       },
       offset: bytes__offset,
     );

@@ -10,7 +10,7 @@ gui__base__widget base__icon(
 }) /*
 fork of `flutter/widgets/icon.dart`::`Icon` */
 {
-  return gui__base__child__constrained__tight__square__widget(
+  return SizedBox.square(
     dimension: size,
     child: Center(
       child: flutter__icon__basic(

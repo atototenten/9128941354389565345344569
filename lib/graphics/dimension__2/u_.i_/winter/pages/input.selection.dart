@@ -47,24 +47,24 @@ part of "../_.dart";
         if (button__flush__show___ok) //
           count__build__re?.call();
         else {
-          button__flush__show___ok = OK;
+          button__flush__show___ok = TRUE;
 
           button__build__re?.call();
         }
       } else {
         if (!button__submit__show___ok) //
-          button__submit__show___ok = OK;
+          button__submit__show___ok = TRUE;
 
         if (!button__flush__show___ok) //
-          button__flush__show___ok = OK;
+          button__flush__show___ok = TRUE;
 
         button__build__re?.call();
       }
 
-      return OK;
+      return TRUE;
     }
 
-    return NO;
+    return FALSE;
   }
 
   BOOL de_select___ok(
@@ -75,29 +75,29 @@ part of "../_.dart";
       base__value__same___ok,
     );
 
-    BOOL button__build__re___ok = NO;
+    BOOL button__build__re___ok = FALSE;
 
     if (selection__accumulation.empty___ok()) {
-      button__flush__show___ok = NO;
-      button__build__re___ok = OK;
+      button__flush__show___ok = FALSE;
+      button__build__re___ok = TRUE;
     }
 
     if ((selection__accumulation.elements__count() < selection__array__constraints.min) && //
         button__submit__show___ok) {
-      button__submit__show___ok = NO;
+      button__submit__show___ok = FALSE;
 
       if (NOT(button__build__re___ok)) {
-        button__build__re___ok = OK;
+        button__build__re___ok = TRUE;
       }
     }
 
     if ((!(selection__accumulation.elements__count() < selection__array__constraints.min) && //
             !(selection__accumulation.elements__count() > selection__array__constraints.max)) && //
         !button__submit__show___ok) {
-      button__submit__show___ok = OK;
+      button__submit__show___ok = TRUE;
 
       if (!button__build__re___ok) {
-        button__build__re___ok = OK;
+        button__build__re___ok = TRUE;
       }
     }
 
@@ -107,16 +107,16 @@ part of "../_.dart";
       count__build__re?.call();
     }
 
-    return OK;
+    return TRUE;
   }
 
   void flush__handle() {
     selection__accumulation.flush();
 
     if (selection__array__constraints.min != 0) //
-      button__submit__show___ok = NO;
+      button__submit__show___ok = FALSE;
 
-    button__flush__show___ok = NO;
+    button__flush__show___ok = FALSE;
 
     listing__key = gui__base__widget__key__unique();
     listing__build__re?.call();
@@ -153,7 +153,7 @@ part of "../_.dart";
                   (button__build__re = NIL),
               build: (final _) => //
                   ((button__submit__show___ok || button__flush__show___ok)
-                      ? gui__base__stack__widget(
+                      ? gui__base__stack___widget(
                           children: <gui__base__widget>[
                             Padding(
                               padding: EdgeInsets.only(
@@ -187,7 +187,7 @@ part of "../_.dart";
                                           left: Radius.circular(4.px()),
                                           right: Radius.circular(12.px()),
                                         ),
-                                        selected___ok: OK,
+                                        selected___ok: TRUE,
                                         icon: submit__button__icon,
                                         title: submit__button__title,
                                         press__handle: () => //

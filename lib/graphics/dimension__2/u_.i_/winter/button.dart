@@ -3,7 +3,7 @@ part of "_.dart";
 gui__base__widget winter__button__structure({
   final APPROX scale = 1,
   final IconData? icon,
-  final BOOL icon__trailing___ok = NO,
+  final BOOL icon__trailing___ok = FALSE,
   required final string text,
 }) {
   final //
@@ -75,9 +75,9 @@ typedef base__button___compo = gui__base__widget Function({
 gui__base__widget winter__button({
   final APPROX scale = 1,
   final BorderRadius? border__radius,
-  final BOOL selected___ok = NO,
+  final BOOL selected___ok = FALSE,
   final IconData? icon,
-  final BOOL iconAtEnding = NO,
+  final BOOL iconAtEnding = FALSE,
   required final string text,
   final procedure__empty__format? press__handle,
   final procedure__empty__format? press__long__handle,
@@ -98,9 +98,9 @@ gui__base__widget winter__button({
 gui__base__widget winter__button__floating({
   final APPROX scale = 1,
   final BorderRadius? border__radius,
-  final BOOL selected___ok = NO,
+  final BOOL selected___ok = FALSE,
   final IconData? icon,
-  final BOOL iconAtEnding = NO,
+  final BOOL iconAtEnding = FALSE,
   required final string text,
   final procedure__empty__format? press__handle,
   final procedure__empty__format? press__long__handle,

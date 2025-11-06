@@ -15,7 +15,7 @@ value__asyn<void> process(
             ..representation__text().print(
               "in.data__decoded.original",
                null,
-              OK,
+              TRUE,
             );
 
           port__send.send(0);
@@ -59,7 +59,7 @@ value__asyn<void> main /*isolate__test*/ () async {
               data.representation__text().print(
                 "out.data.new",
                  null,
-                OK,
+                TRUE,
               );
               break;
             case 1:

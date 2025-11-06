@@ -64,7 +64,7 @@ class navigation__kampo {
 navigation__kampo navigation(
   final base__widget__build__function__format widget__build,
   final procedure? de_init_, [
-  final bool b__transition__instant = NO,
+  final bool b__transition__instant = FALSE,
 ]) =>
     navigation__kampo(
       base__widget__building(
@@ -156,7 +156,7 @@ navigation__manager__kampo navigation__manager({
         /*if (last_ ==  null) //
             throw "(navigation__history.last.previous ==  null)";*/
 
-        return gui__base__stack__widget(
+        return gui__base__stack___widget(
           children: <base__widget>[
             IgnorePointer(
               child: last_.value.widget,
@@ -172,7 +172,7 @@ navigation__manager__kampo navigation__manager({
 
 void navigate__forward__page(
   final navigation__manager__kampo navigation__manager, {
-  final bool b__transition__instant = NO,
+  final bool b__transition__instant = FALSE,
   required final procedure? departure__handle,
   required final base__widget__build__function__format page__build,
 }) {
@@ -191,7 +191,7 @@ void navigate__forward__page(
 
 void navigate__forward__overlay(
   final navigation__manager__kampo navigation__manager, {
-  final bool b__transition__instant = NO,
+  final bool b__transition__instant = FALSE,
   required final procedure? close__handle,
   required final base__widget__build__function__format overlay__build,
 }) {
@@ -210,7 +210,7 @@ void navigate__forward__overlay(
 
 void navigate__forward__overlay__bottom(
   final navigation__manager__kampo navigation__manager, {
-  final bool b__transition__instant = NO,
+  final bool b__transition__instant = FALSE,
   required final procedure? dismiss__handle,
   required final base__widget__build__function__format overlay__build,
 }) {
@@ -237,7 +237,7 @@ void history__remove(
 
 void navigate__forward__replace__page(
   final navigation__manager__kampo navigation__manager, {
-  final bool b__transition__instant = NO,
+  final bool b__transition__instant = FALSE,
   required final procedure? departure__handle,
   required final base__widget__build__function__format page__build,
 }) /*
@@ -259,7 +259,7 @@ void navigate__forward__replace__page(
 
 void navigate__forward__replace__overlay(
   final navigation__manager__kampo navigation__manager, {
-  final bool b__transition__instant = NO,
+  final bool b__transition__instant = FALSE,
   required final procedure? close__handle,
   required final base__widget__build__function__format overlay__build,
 }) {
@@ -277,7 +277,7 @@ void navigate__forward__replace__overlay(
 
 void navigate__forward__replace__overlay__bottom(
   final navigation__manager__kampo navigation__manager, {
-  final bool b__transition__instant = NO,
+  final bool b__transition__instant = FALSE,
   required final procedure? dismiss__handle,
   required final base__widget__build__function__format overlay__build,
 }) {
@@ -350,7 +350,7 @@ void history__flush(
 
 void navigate__re_set(
   final navigation__manager__kampo navigation__manager, {
-  final bool b__transition__instant = NO,
+  final bool b__transition__instant = FALSE,
   required final procedure? departure__handle,
   required final base__widget__build__function__format page__build,
 }) {

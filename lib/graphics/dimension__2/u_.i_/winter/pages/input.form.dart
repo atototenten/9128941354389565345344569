@@ -56,7 +56,7 @@ class _FormState extends State<Form> {
 
     children = List<gui__base__widget>.filled(itemCount = bytes[byteCounter++], gui__base__empty__widget);
 
-    requiredFields = List<bool>.filled(itemCount, NO);
+    requiredFields = List<bool>.filled(itemCount, FALSE);
 
     while (byteCounter < byteCount) {
       requiredFields[itemCounter] = (((firstByte = bytes[byteCounter++]) & 1) == 1);
@@ -67,7 +67,7 @@ class _FormState extends State<Form> {
             firstByte = bytes[byteCounter++]; // TASK: first 2 bits are free
 
             children[itemCounter++] = ChoiceInputFormItem(
-              isMultiChoice: NO,
+              isMultiChoice: FALSE,
               title: ascii__convert__str__ascii(bytes.sublist(byteCounter, (byteCounter = bytes.indexOf(0, byteCounter)))),
               infoText: ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter)))),
               items: List<string>.generate(
@@ -75,7 +75,7 @@ class _FormState extends State<Form> {
                 (final int i) {
                   return ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter))));
                 },
-                growable: NO,
+                growable: FALSE,
               ),
               result: Pointer<int?>(null),
             );
@@ -88,7 +88,7 @@ class _FormState extends State<Form> {
             firstByte = bytes[byteCounter++]; // TASK: first 2 bits are free
 
             children[itemCounter++] = ChoiceInputFormItem(
-              isMultiChoice: OK,
+              isMultiChoice: TRUE,
               title: ascii__convert__str__ascii(bytes.sublist(byteCounter, (byteCounter = bytes.indexOf(0, byteCounter)))),
               infoText: ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter)))),
               items: List<string>.generate(
@@ -96,7 +96,7 @@ class _FormState extends State<Form> {
                 (final int i) {
                   return ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter))));
                 },
-                growable: NO,
+                growable: FALSE,
               ),
               result: Pointer<List<int>>(<int>[]),
             );
@@ -172,8 +172,8 @@ class _FormState extends State<Form> {
               case (TextInputFormItem.TYPE_NUMBER_MATH):
                 {
                   inputType = const TextInputType.numberWithOptions(
-                    signed: OK,
-                    decimal: OK,
+                    signed: TRUE,
+                    decimal: TRUE,
                   );
 
                   textCapitalization = TextCapitalization.none;
@@ -330,7 +330,7 @@ class _ChoiceInputFormItemState extends State<ChoiceInputFormItem> {
                   body: gui__base__box__text__primary__secondary(
                     primary__text: List<string>.generate(selections.length, (final int i) {
                       return widget.items[selections[i]];
-                    }, growable: NO)
+                    }, growable: FALSE)
                         .join('\n'),
                     secondary__text: widget.title,
                   ),

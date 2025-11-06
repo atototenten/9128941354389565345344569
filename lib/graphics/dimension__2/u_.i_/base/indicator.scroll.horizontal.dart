@@ -39,7 +39,7 @@ gui__base__widget base__indicator__scroll__horizontal({
 /* TASK:
   animate the following `setState`s */
 
-        BOOL b__build__re = NO;
+        BOOL b__build__re = FALSE;
 
         if ((position.pixels == position.minScrollExtent) && //
             (colors__left == _pictures__present__colors)) {
@@ -47,14 +47,14 @@ gui__base__widget base__indicator__scroll__horizontal({
 
           //print__info("atMin");
 
-          b__build__re = OK;
+          b__build__re = TRUE;
         } else if ((position.pixels == position.maxScrollExtent) && //
             (colors__right == _pictures__present__colors)) {
           colors__right = _pictures__present__colors__empty;
 
           //print__info("atMax");
 
-          b__build__re = OK;
+          b__build__re = TRUE;
         }
 
         if ((position.pixels > position.minScrollExtent) && //
@@ -62,7 +62,7 @@ gui__base__widget base__indicator__scroll__horizontal({
           colors__left = _pictures__present__colors;
 
           if (!b__build__re) {
-            b__build__re = OK;
+            b__build__re = TRUE;
           }
         }
 
@@ -71,7 +71,7 @@ gui__base__widget base__indicator__scroll__horizontal({
           colors__right = _pictures__present__colors;
 
           if (!b__build__re) {
-            b__build__re = OK;
+            b__build__re = TRUE;
           }
         }
 
@@ -126,7 +126,7 @@ gui__base__widget base__indicator__scroll__horizontal({
             final constraints,
           ) =>
               ((width > constraints.maxWidth)
-                  ? gui__base__stack__widget(
+                  ? gui__base__stack___widget(
                       children: [
                         child,
                         overlay,
@@ -134,7 +134,7 @@ gui__base__widget base__indicator__scroll__horizontal({
                     )
                   : child),
         )
-      : gui__base__stack__widget(
+      : gui__base__stack___widget(
           children: [
             child,
             overlay,

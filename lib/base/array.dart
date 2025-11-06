@@ -17,7 +17,7 @@ array<element__type> array__new__filled<element__type>(
 ) => array<element__type>.filled(
   count,
   value,
-  growable: NO,
+  growable: FALSE,
 );
 
 array<element__type> array__new__generated<element__type>(
@@ -26,7 +26,7 @@ array<element__type> array__new__generated<element__type>(
 ) => array<element__type>.generate(
   count,
   generate,
-  growable: NO,
+  growable: FALSE,
 );
 
 array<element__type> //
@@ -100,6 +100,24 @@ INT array__reverse__element__id(
   final INT element__id,
   final INT elements__count,
 ) => ((elements__count - 1) - element__id);
+
+class base__array__elements__separated__generation__meta___compo {
+  const base__array__elements__separated__generation__meta___compo({
+    required final INT elements__count,
+  }) : elements__count__adjusted = ((elements__count * 2 /* for ".elements__separation"s */ ) - 1 /* to exclude the ".elements__separation" after the last-element */ );
+
+  final INT elements__count__adjusted;
+
+  INT? element__id({
+    required final INT element__id__adjusted,
+  }) {
+    if (element__id__adjusted.isOdd) {
+      return NIL;
+    }
+
+    return (element__id__adjusted ~/ 2);
+  }
+}
 
 BS1__array INT__array__convert__BS1__array(
   final array<INT> arr,
@@ -215,22 +233,21 @@ un-equal element's id, if any */
       offset: offset,
       (final element__id) {
         if (this[element__id] == other[element__id]) {
-          return OK;
+          return TRUE;
         }
 
         result = element__id;
 
-        return NO;
+        return FALSE;
       },
     );
 
     return result;
   }
 
-  BOOL equal___ok(
-    final array<element___type> other) {
+  BOOL equal___ok(final array<element___type> other) {
     if (elements__count != other.elements__count) {
-      return NO;
+      return FALSE;
     }
 
     return (un_equal__element__id(other) == NIL);
@@ -240,7 +257,7 @@ un-equal element's id, if any */
 `id` if present ,otherwise NIL */
   search__simple(
     final BOOL Function(element___type) element__equal___ok, {
-    final BOOL reverse___ok = NO,
+    final BOOL reverse___ok = FALSE,
   }) {
     INT? result;
 
@@ -249,12 +266,12 @@ un-equal element's id, if any */
       final element___type element,
     ) {
       if (element__equal___ok(element).not) {
-        return OK;
+        return TRUE;
       }
 
       result = element__id;
 
-      return NO;
+      return FALSE;
     }
 
     (reverse___ok //
@@ -271,7 +288,7 @@ un-equal element's id, if any */
       element___type value,
     )
     element__equal___ok, {
-    final BOOL reverse___ok = NO,
+    final BOOL reverse___ok = FALSE,
   }) => search__simple(
     (final e) => element__equal___ok(e, value),
     reverse___ok: reverse___ok,
@@ -292,21 +309,21 @@ whole `segment` has been iterated ,and was not un-equal to `this[(i-segment__ele
 `e` is the last element ,of `this` */ ) /*
 whole `segment` has been iterated ,and was not un-equal to `this[(i-segment__element__id)..segment.elements__count]` */ {
             segment__element__id = (i - $segment__element__id) /* result */;
-            return NO;
+            return FALSE;
           }
 
           if /*T*/ (e != segment[$segment__element__id]) {
             segment__element__id = NIL;
           }
 
-          return OK;
+          return TRUE;
         }
 
         if (e == segment.first) {
           segment__element__id = 0;
         }
 
-        return OK;
+        return TRUE;
       },
     );
 
@@ -339,20 +356,20 @@ equality is not considered prefix
 more run-time efficient ,than `search__segment` */ {
     if ((elements__count > segment.elements__count).not) /*
 `segment` can prefix `this` ,only if ,`segment`'s length is less than `this` */ {
-      return NO;
+      return FALSE;
     } else if (first != segment.first) {
-      return NO;
+      return FALSE;
     }
 
-    var prefix_ed___ok = OK;
+    var prefix_ed___ok = TRUE;
 
     segment.iterate__reverse(
       (final i, final e) {
         if (e == this[i]) {
-          return OK;
+          return TRUE;
         } else {
-          prefix_ed___ok = NO;
-          return NO;
+          prefix_ed___ok = FALSE;
+          return FALSE;
         }
       },
     );
@@ -362,10 +379,10 @@ more run-time efficient ,than `search__segment` */ {
 
   void search__segment__begin__test() {
     [
-      (input: [0, 1, 2, 3], segment: [0, 1], result: OK),
-      (input: [0, 1, 2, 3], segment: [1, 2], result: NO),
-      (input: [0, 1, 2, 3], segment: [0, 1, 2, 3], result: NO),
-      (input: [0, 1, 2], segment: [0, 1, 2, 3], result: NO),
+      (input: [0, 1, 2, 3], segment: [0, 1], result: TRUE),
+      (input: [0, 1, 2, 3], segment: [1, 2], result: FALSE),
+      (input: [0, 1, 2, 3], segment: [0, 1, 2, 3], result: FALSE),
+      (input: [0, 1, 2], segment: [0, 1, 2, 3], result: FALSE),
     ].iterate__basic((final _, final e) {
       final result =
           e.input.search__segment__begin(e.segment) //
@@ -385,7 +402,7 @@ join */ <element__other__type>(
 
     iterate__basic(
       (final _, final element) {
-        var equal___ok = NO;
+        var equal___ok = FALSE;
 
         other.iterate__reverse(
           (final _, final element__other) {
@@ -395,12 +412,12 @@ join */ <element__other__type>(
             );
 
             if (equal__ok_1.not) {
-              return OK;
+              return TRUE;
             }
 
-            equal___ok = OK;
+            equal___ok = TRUE;
 
-            return NO;
+            return FALSE;
           },
         );
 
@@ -424,7 +441,7 @@ join */ <element__other__type>(
   ) =>
       (search__simple(
         element__equal___ok,
-        reverse___ok: OK,
+        reverse___ok: TRUE,
       ) !=
       null);
 
@@ -433,7 +450,7 @@ join */ <element__other__type>(
   ) =>
       (search__simple(
         element__equal___ok,
-        reverse___ok: OK,
+        reverse___ok: TRUE,
       ) ==
       null);
 
@@ -450,18 +467,18 @@ join */ <element__other__type>(
   ) {
     final element__id = search__simple(
       element__equal___ok,
-      reverse___ok: OK,
+      reverse___ok: TRUE,
     );
 
     if (element__id == null) {
-      return NO;
+      return FALSE;
     }
 
     element__remove(
       element__id,
     );
 
-    return OK;
+    return TRUE;
   }
 
   Iterable<element__new___type> //

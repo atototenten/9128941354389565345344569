@@ -27,7 +27,7 @@ gui__base__widget winter__button__icon__circled(
 
 /* gui__base__widget winter__listing__item__expandable({
   final BorderRadius? border__radius,
-  BOOL b__expanded = NO,
+  BOOL b__expanded = FALSE,
   final gui__base__widget? collapsed__leading,
   final void Function(procedure__empty collapse)? expand__handle,
   final void Function(procedure__empty expand)? collapse__handle,
@@ -37,12 +37,12 @@ gui__base__widget winter__button__icon__circled(
   procedure__empty__format? build__re;
 
   void expand() {
-    b__expanded = OK;
+    b__expanded = TRUE;
     build__re?.call();
   }
 
   void collapse() {
-    b__expanded = NO;
+    b__expanded = FALSE;
     build__re?.call();
   }
 

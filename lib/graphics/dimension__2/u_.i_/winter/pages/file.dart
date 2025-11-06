@@ -77,7 +77,7 @@ gui__base__widget pages__file__page(
             file__segment__size,
             (final i) => //
                 bytes[i].toString(),
-            growable: NO,
+            growable: FALSE,
           );
         } else {
           bytes = file__bytes.view__partial(
@@ -88,7 +88,7 @@ gui__base__widget pages__file__page(
           text__binary = array<string>.filled(
             file__segment__size,
             empty__string,
-            growable: NO,
+            growable: FALSE,
           );
 
           base__iterate__basic(
@@ -99,7 +99,7 @@ gui__base__widget pages__file__page(
 
         array<string> text__current = text__binary;
 
-        BOOL b__binary = OK;
+        BOOL b__binary = TRUE;
 
         array<string>? text__ascii;
 
@@ -144,7 +144,7 @@ gui__base__widget pages__file__page(
                           text__align: TextAlign.end,
                         ),
                       ),
-                      growable: NO,
+                      growable: FALSE,
                     );
                   else {
                     row__children = array<gui__base__widget>.filled(
@@ -152,7 +152,7 @@ gui__base__widget pages__file__page(
                       const Expanded(
                         child: gui__base__empty__widget,
                       ),
-                      growable: NO,
+                      growable: FALSE,
                     );
 
                     base__iterate__basic(
@@ -192,14 +192,14 @@ gui__base__widget pages__file__page(
                                     ? r"\n"
                                     : text__binary[i]));
                           },
-                          growable: NO,
+                          growable: FALSE,
                         ));
 
-                        b__binary = NO;
+                        b__binary = FALSE;
                       } else {
                         text__current = text__binary;
 
-                        b__binary = OK;
+                        b__binary = TRUE;
                       }
 
                       state.build__re();

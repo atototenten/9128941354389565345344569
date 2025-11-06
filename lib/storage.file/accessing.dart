@@ -396,7 +396,7 @@ void base__storage__file__accessing__auto__test() {
   const //
   generate___ok /*
 disable `base__printing__ok` */ =
-          NO,
+          FALSE,
           //
           alignment =
           alignment__modern__normal;

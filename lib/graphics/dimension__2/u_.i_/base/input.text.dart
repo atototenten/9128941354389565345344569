@@ -8,12 +8,12 @@ class gui__base__input__text___compo /*
   static final //
   text__filtering__basic___formatting = FilteringTextInputFormatter(
         r"[ -~]",
-        allow: OK,
+        allow: TRUE,
       ),
       text__filtering__full___formatting =
           FilteringTextInputFormatter(
             r"[\x00-\x09\x0B-\x1F\x7F\x80-\x9F]",
-            allow: NO,
+            allow: FALSE,
           ) /*
 ASCII
   `web://upload.wikimedia.org/wikipedia/commons/d/dd/ASCII-Table.svg`
@@ -22,6 +22,8 @@ Unicode
   `web://en.wikipedia.org/wiki/Unicode_control_characters`,
   `web://en.wikipedia.org/wiki/C0_and_C1_control_codes`
   `web://unicode.org/reports/tr36/` */;
+
+  static const height__lines__default = (min: 1, max: 3);
 
   static TextInputFormatter characters__count__limiting___formatting({
     final INT max /*
@@ -79,26 +81,24 @@ FIX :
       ,most probably a {flutter-side}-issue */ (
     final gui__base__widget__building__context context, {
     final TextInputType type = TextInputType.text,
-    final BOOL secret___ok = NO,
+    final BOOL secret___ok = FALSE,
     required final TextStyle text__style,
     required final Color cursor__color,
     final TextCapitalization capitalization = TextCapitalization.none,
     final array<TextInputFormatter>? formatting,
     final ({
-      INT /*
+          INT /*
 valid range : 1 to ".lines__max" */
-      min,
-      INT? /*
+          min,
+          INT? /*
 valid values
   - NIL : no limit
   - 1 : horizontally scrolling single-line
   - 2 to INT.MAX : vertically scrolling multiple-lines */
-      max,
-    })?
-    height__lines = (
-      min: 1,
-      max: 3,
-    ),
+          max,
+        })?
+        height__lines =
+        height__lines__default,
   }) {
     return Material(
       color:
@@ -108,11 +108,11 @@ valid values
       child: TextField(
         controller: _controlling,
         focusNode: NIL,
-        autofocus: OK /*
+        autofocus: TRUE /*
 intentional ,because wrapping with boolean-based transitioning ,with a default-state ,is recommended approach */,
         decoration: NIL,
         style: text__style,
-        cursorOpacityAnimates: NO,
+        cursorOpacityAnimates: FALSE,
         cursorColor: cursor__color,
         cursorRadius: Radius.circular(1.px()),
         cursorWidth: 2.px(),

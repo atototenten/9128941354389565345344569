@@ -18,7 +18,7 @@ BOOL _PlatformDispatcher__onError(
     trace,
   );
 
-  return OK;
+  return TRUE;
 }
 
 void _FlutterError__onError(
@@ -150,7 +150,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
           key___raw,
         );
 
-      return <string, bool>{"handled" /*b__handled*/ : OK};
+      return <string, bool>{"handled" /*b__handled*/ : TRUE};
     }); /*
   forked
     from `flutter/src/services/binding.dart`::`mixin ServicesBinding`
@@ -223,7 +223,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
               binding = RendererBinding.instance,
               views = binding.renderViews;
 
-          BOOL force_frame = NO;
+          BOOL force_frame = FALSE;
 
           for (final RenderView view in views) {
             force_frame = (force_frame || (view.child != null));
@@ -333,7 +333,7 @@ must not depend on the meta-framework */,
       .handle() /*
 un-"await"-ed to allow the app to normally function ,for non-denial cases */;
 
-  base__app__theme__colors__ground__back__follow__system___ok = OK;
+  base__app__theme__colors__ground__back__follow__system___ok = TRUE;
 
   base__app__run(
     init: (final init_ion__status) {
@@ -408,9 +408,9 @@ class gui__base__app__running__simple //
       child__state__completion__failure__build: gui__base__widget__error__default__build,
       child__state__completion__success__build: (final context, final entity_1) {
         return MaterialApp(
-          showPerformanceOverlay: NO,
-          /*checkerboardRasterCacheImages: OK,
-            checkerboardOffscreenLayers: OK,*/
+          showPerformanceOverlay: FALSE,
+          /*checkerboardRasterCacheImages: TRUE,
+            checkerboardOffscreenLayers: TRUE,*/
           home: gui__base__widget__build(
             child__build: (final context) {
               return entity_1.widget__build(

@@ -30,7 +30,7 @@ extension winter__page__base__extension //
     on winter__page__base {
   gui__base__widget widget(
      final gui__base__widget__building__context context,{
-    final BOOL scroll__direction__reverse___ok = NO,
+    final BOOL scroll__direction__reverse___ok = FALSE,
     required final gui__base__widget heading,
     required final INT items__count,
     //final INT items__lanes__count = 1,
@@ -53,9 +53,9 @@ extension winter__page__base__extension //
 
     final sliver = SliverList(
       delegate: SliverChildBuilderDelegate(
-        addAutomaticKeepAlives: NO,
-        addRepaintBoundaries: NO,
-        addSemanticIndexes: NO,
+        addAutomaticKeepAlives: FALSE,
+        addRepaintBoundaries: FALSE,
+        addSemanticIndexes: FALSE,
         childCount: ((items__count * 2) - 1),
         (final context, var item__id) {
           if (item__id.isOdd) {
@@ -80,7 +80,7 @@ extension winter__page__base__extension //
 
     final screen__padding = base__screen__padding();
 
-    return gui__base__stack__widget(
+    return gui__base__stack___widget(
       alignment: AlignmentDirectional.topCenter,
       children: <gui__base__widget>[
         gui__base__child__constrained__tight__max__widget(
@@ -100,9 +100,9 @@ extension winter__page__base__extension //
                     heading,
                     gui__base__widget__separat_or__vertical,
                   ],
-                  addAutomaticKeepAlives: NO,
-                  addRepaintBoundaries: NO,
-                  addSemanticIndexes: NO,
+                  addAutomaticKeepAlives: FALSE,
+                  addRepaintBoundaries: FALSE,
+                  addSemanticIndexes: FALSE,
                 ),
               ),
               SliverPadding(
@@ -159,7 +159,7 @@ extension winter__page__base__extension //
                 image__filter__blur__crucial,
               ),
               child: gui__base__child__constrained__tight__max__widget(
-                height___ok: NO,
+                height___ok: FALSE,
                 child: gui__base__child__constrained__tight__widget(
                   height: screen__padding.top,
                 ),

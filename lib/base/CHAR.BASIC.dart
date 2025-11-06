@@ -452,11 +452,11 @@ BOOL CHAR__array__b__valid(
 
   do {
     if (CHAR__b__valid(s[count -= 1])) {
-      return NO;
+      return FALSE;
     }
   } while (count != 0);
 
-  return OK;
+  return TRUE;
 }
 
 CHAR CHAR__convert__ch__ascii(final CHAR c) => //

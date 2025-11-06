@@ -144,10 +144,10 @@ needed only for the last iteration
         throw "exception : `(array__current__id___raw != 0)`($array__current__id___raw != 0)";
       }
 
-      return OK;
+      return TRUE;
     }
 
-    return NO;
+    return FALSE;
   }
 
   ({
@@ -268,7 +268,7 @@ last-array ,hence no-where to forward */
       }
     }
 
-    while (OK) {
+    while (true) {
       final array__current__elements__count__ideal = array__current__elements__count__ideal___raw();
 
       if (element__id < array__current__elements__count__ideal) /*
@@ -300,7 +300,7 @@ backward-iterating equivalent of `.iterate__forward__until`
       throw "in-valid call : `(element__id >= .elements__offset)`($element__id >= $elements__offset___raw)";
     }
 
-    while (OK) {
+    while (true) {
       final array__current__elements__count__ideal = iterate__backward___raw();
 
       element__id -= array__current__elements__count__ideal /*
@@ -400,7 +400,7 @@ declarative approach */
       return;
     }
 
-    while (OK) {
+    while (true) {
       final //
           array__current__elements__count = array__current__elements__count___raw(),
           array__last___ok = (iteration__count <= array__current__elements__count),
@@ -453,7 +453,7 @@ declarative approach */
         final array__elements__count,
         final array__elements__offset,
       ) {
-        var iterate___ok = OK;
+        var iterate___ok = TRUE;
 
         base__iterate(
           array__elements__count,
@@ -653,7 +653,7 @@ guide: `
             ),
             result = e.result;
 
-        var failed___ok = NO;
+        var failed___ok = FALSE;
 
         try {
           iteration__meta.iterate__forward__until(
@@ -664,7 +664,7 @@ guide: `
             rethrow;
           }
 
-          failed___ok = OK;
+          failed___ok = TRUE;
         }
 
         if (result == null) {
@@ -840,7 +840,7 @@ guide: `
           element__handle: (final accumulation__element__id, final array__offset) {
             count -= 1;
 
-            return OK;
+            return TRUE;
           },
         );
 

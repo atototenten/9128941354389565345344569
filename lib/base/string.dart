@@ -26,7 +26,7 @@ sub-string to search */
   final INT? offset /*
 by-default 0 ,if `reverse:OK` is `NOT OK` ,else `char:last:id` */
   ,
-  final BOOL reverse___ok = NO,
+  final BOOL reverse___ok = FALSE,
 }) {
   if ((offset != null) && (offset < text_.chars__count).not) {
     throw RangeError.range(
@@ -62,10 +62,10 @@ BOOL text__numbers___ok(
 ) {
   for (final c in s.codeUnits) {
     if ((c < 48) || (c > 57)) {
-      return NO;
+      return FALSE;
     }
   }
-  return OK;
+  return TRUE;
 }
 
 string utf_8__bytes__convert__string(final byte__array bytes) => //

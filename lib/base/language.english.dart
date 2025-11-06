@@ -8,7 +8,7 @@ void language__english__count__text__convert__plural__if__needed__buffer(
   final StringBuffer buffer,
   final INT count,
   final string word, [
-  final BOOL suffix__s___ok /* {'s'|"es"} */ = OK,
+  final BOOL suffix__s___ok /* {'s'|"es"} */ = TRUE,
 ]) {
   buffer
     ..write(count)
@@ -24,7 +24,7 @@ void language__english__count__text__convert__plural__if__needed__buffer(
 string language__english__count__text__convert__plural__if__needed(
   final INT count,
   final string word, [
-  final BOOL suffix__s___ok = OK,
+  final BOOL suffix__s___ok = TRUE,
 ]) {
   final buffer = StringBuffer();
 

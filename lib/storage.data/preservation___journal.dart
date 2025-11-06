@@ -224,7 +224,7 @@ void preservation__journal__persist(
     buffer.ptr,
     buffer__count,
     0,
-    b__write: OK,
+    b__write: TRUE,
   );
 
   base__storage__file__native__linux__sync(
@@ -354,7 +354,7 @@ void preservation__journal__recover__if__needed({
           bytes: bytes_,
           count: count,
           offset: offset,
-          b__write: OK,
+          b__write: TRUE,
         );
       },
     );

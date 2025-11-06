@@ -79,7 +79,7 @@ stored as a single combined value ,instead of separate {28(`64-36`)-bits `minute
 
     return DateTime.fromMicrosecondsSinceEpoch(
       ((seconds__nano___raw ~/ duration__second__micro__seconds__nano) + offset__seconds__micro),
-      isUtc: OK,
+      isUtc: TRUE,
     );
   }
 
@@ -254,7 +254,7 @@ class date_time__relative__duration__big //
   string convert__text /*
 FIX
   months and minutes ,are visually ambiguous ,for `concise__ok` */ ({
-    final BOOL short___ok = NO,
+    final BOOL short___ok = FALSE,
   }) {
     final duration__title__suffix = //
         ((value == 1) /*F*/ //
@@ -294,7 +294,7 @@ seconds */ //
 
   @override
   string convert__text({
-    final BOOL short___ok = NO,
+    final BOOL short___ok = FALSE,
   }) {
     if (short___ok) {
       return "moments ago";
@@ -306,7 +306,7 @@ seconds */ //
 
 sealed class date_time__relative___union {
   string convert__text({
-    final BOOL short___ok = NO,
+    final BOOL short___ok = FALSE,
   });
 }
 
@@ -317,12 +317,12 @@ void date_time__test() {
     (
       title: "global default",
       DateTime: DateTime.now().toUtc(),
-      global___ok: OK,
+      global___ok: TRUE,
     ),
     (
       title: "non-global(local) default",
       DateTime: DateTime.now(),
-      global___ok: NO,
+      global___ok: FALSE,
     ),
     (
       title: "before a minute",
@@ -331,7 +331,7 @@ void date_time__test() {
           minutes: 1,
         ),
       ),
-      global___ok: NO,
+      global___ok: FALSE,
     ),
     (
       title: "before an hour",
@@ -340,7 +340,7 @@ void date_time__test() {
           hours: 1,
         ),
       ),
-      global___ok: NO,
+      global___ok: FALSE,
     ),
     (
       title: "before a day",
@@ -349,7 +349,7 @@ void date_time__test() {
           days: 1,
         ),
       ),
-      global___ok: NO,
+      global___ok: FALSE,
     ),
     (
       title: "before 45 days",
@@ -358,7 +358,7 @@ void date_time__test() {
           days: 45,
         ),
       ),
-      global___ok: NO,
+      global___ok: FALSE,
     ),
     (
       title: "before 400 days",
@@ -367,7 +367,7 @@ void date_time__test() {
           days: 400,
         ),
       ),
-      global___ok: NO,
+      global___ok: FALSE,
     ),
     (
       title: "before 800 days",
@@ -376,7 +376,7 @@ void date_time__test() {
           days: 800,
         ),
       ),
-      global___ok: NO,
+      global___ok: FALSE,
     ),
   ].iterate__basic(
     (final i, final e) {

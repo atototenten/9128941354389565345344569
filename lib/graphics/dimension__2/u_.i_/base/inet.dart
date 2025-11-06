@@ -6,8 +6,8 @@ part of "_.dart";
   final string path /* excluding the query */, {
   final string? query,
   final BS1__array? requestBytes,
-  final BOOL allowCached /* for offline, and similar situations */ = NO,
-  final BOOL preferCached /* for static(that do NOT change, usually) files, like icons, fonts, pictures */ = NO,
+  final BOOL allowCached /* for offline, and similar situations */ = FALSE,
+  final BOOL preferCached /* for static(that do NOT change, usually) files, like icons, fonts, pictures */ = FALSE,
 }) async {
   /*final File? cache = Storage.getCache(path);
   if (preferCached && (cache !=  null)) {
@@ -76,8 +76,8 @@ value__asyn<BS1__array?> inet__communicate__http(
   final string path, {
   final string? query,
   final BS1__array? requestBytes,
-  final BOOL allowCached = NO,
-  final BOOL preferCached = NO,
+  final BOOL allowCached = FALSE,
+  final BOOL preferCached = FALSE,
 }) async {
   final string _path = (webAddressSchemePrefix +
       "://" + //

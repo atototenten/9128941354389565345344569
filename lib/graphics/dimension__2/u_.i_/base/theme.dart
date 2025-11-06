@@ -7,7 +7,7 @@ late BOOL //
 `{
   final hour = DateTime.now().hour;
   if (((hour > 18) || (hour < 6)).not) {
-    base__app__theme__colors__ground__back__contrast__dark___ok = NO;
+    base__app__theme__colors__ground__back__contrast__dark___ok = FALSE;
   }
 }` */
     ;

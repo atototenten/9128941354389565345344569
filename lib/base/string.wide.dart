@@ -141,15 +141,15 @@ byte__array wstr__convert__bytes(
   BOOL ascii___ok /*
   char is standalone, or single-byte (ascii, not unicode)
     hence needs encryption */
-      = OK;
+      = TRUE;
 
   base__iterate__basic(
     bytes__count,
     (final i) {
       final wc = bytes[iter];
 
-      if ((wc < CHAR__ASCII__limit) || (ascii___ok = NO)) {
-        if (ascii___ok || (ascii___ok = OK).not) //
+      if ((wc < CHAR__ASCII__limit) || (ascii___ok = FALSE)) {
+        if (ascii___ok || (ascii___ok = TRUE).not) //
           result[iter] = CHAR__encrypt(wc);
       }
     },

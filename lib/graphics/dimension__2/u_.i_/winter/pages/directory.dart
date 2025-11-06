@@ -47,7 +47,7 @@ gui__base__widget pages__directory__page(
   = '/',
   final BOOL choose__b__type__file /*
   user should be allowed to choose a, file, or directory */
-  = OK /* file|directory */,
+  = TRUE /* file|directory */,
   required final void Function(text path) choose__handle,
 }) {
   final dir = io.Directory(directory__path);
@@ -55,12 +55,12 @@ gui__base__widget pages__directory__page(
   /*if (!dir.existsSync()) //
     return overylays__file_system__in_existence__alert(
       directory__path,
-      b__directory: OK,
+      b__directory: TRUE,
     );*/
 
   final //
       file__array = dir.listSync(
-        followLinks: NO,
+        followLinks: FALSE,
       ),
       file__array__count = file__array.elements__count;
 

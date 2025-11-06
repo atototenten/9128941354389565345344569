@@ -17,20 +17,20 @@ void divide(
       if (deno < 0) /* `deno` is ALSO -ve, hence result in +ve, as -ve cancel each other */ {
         _nume = -nume;
         _deno = -deno;
-        isNegative = NO;
+        isNegative = FALSE;
       } else /* ONLY `nume` is -ve, hence result in -ve */ {
         _nume = -nume;
         _deno = deno;
-        isNegative = OK;
+        isNegative = TRUE;
       }
     } else if (deno < 0) /* ONLY `deno` is -ve, hence result in -ve */ {
       _nume = nume;
       _deno = -deno;
-      isNegative = OK;
+      isNegative = TRUE;
     } else {
       _nume = nume;
       _deno = deno;
-      isNegative = NO;
+      isNegative = FALSE;
     }
   }
 

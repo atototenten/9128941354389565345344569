@@ -27,8 +27,7 @@ class gui__base__scrolling___compo //
           //
           children__caching__extent__default =
           .5,
-          offset__default =
-          0.0;
+      offset__default = 0.0;
 
   gui__base__scrolling___compo({
     required this.scrolling__axis__main__direction,
@@ -38,7 +37,7 @@ class gui__base__scrolling___compo //
   }) : _offset = offset {
     _controlling = ScrollController(
       initialScrollOffset: _offset,
-      keepScrollOffset: NO,
+      keepScrollOffset: FALSE,
       onAttach: (final position) {
         position. /*jumpTo*/ correctPixels(_offset);
       },
@@ -92,7 +91,7 @@ class gui__base__scrolling___compo //
     final position = _position();
 
     if (position == null) {
-      return NO;
+      return FALSE;
     }
 
     if (position.pixels > position.minScrollExtent) {
@@ -107,7 +106,7 @@ class gui__base__scrolling___compo //
       );
     }
 
-    return OK;
+    return TRUE;
   }
 
   BOOL position__scroll__instant({
@@ -116,12 +115,12 @@ class gui__base__scrolling___compo //
     final position = _position();
 
     if (position == null) {
-      return NO;
+      return FALSE;
     }
 
     position.jumpTo(offset);
 
-    return OK;
+    return TRUE;
   }
 
   ScrollPosition? _position() {
@@ -137,22 +136,16 @@ class gui__base__scrolling___compo //
   gui__base__widget widget__build(
     final gui__base__widget__building__context context, {
     final EdgeInsetsGeometry? padding,
-    final gui__base__widget? children__separation,
     required final INT children__count,
-    required final gui__base__widget Function(
-      gui__base__widget__building__context building__context,
-      INT child__id,
-    )
-    child__build,
-  }) => //
-  Scrollable(
-    axisDirection: scrolling__axis__main__direction,
-    controller: _controlling,
-    physics: scrolling__physics,
-    scrollBehavior: scrolling__behavior,
-    viewportBuilder:
-        (final context, final offset) => //
-        Viewport(
+    required final gui__base__scrolling__child__build___procedure__format child__build,
+  }) {
+    return Scrollable(
+      axisDirection: scrolling__axis__main__direction,
+      controller: _controlling,
+      physics: scrolling__physics,
+      scrollBehavior: scrolling__behavior,
+      viewportBuilder: (final context, final offset) {
+        return Viewport(
           axisDirection: scrolling__axis__main__direction,
           crossAxisDirection: switch (scrolling__axis__main__direction) {
             (AxisDirection.up || AxisDirection.down) => AxisDirection. /*towards_*/ right /*_from_left*/,
@@ -163,40 +156,16 @@ class gui__base__scrolling___compo //
           cacheExtentStyle: CacheExtentStyle.viewport,
           clipBehavior: Clip.none,
           slivers: () {
-            final sliver =
-                ((children__separation == null) //
-                ? SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      addAutomaticKeepAlives: NO,
-                      addRepaintBoundaries: NO,
-                      addSemanticIndexes: NO,
-                      //
-                      childCount: ((children__count * 2) - 1),
-                      (final context, final child__id) {
-                        if (child__id.isOdd) {
-                          return children__separation;
-                        }
-
-                        return RepaintBoundary(
-                          child: child__build(
-                            context,
-                            (child__id ~/ 2),
-                          ),
-                        );
-                      },
-                    ),
-                  )
-                : SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      addAutomaticKeepAlives: NO,
-                      addSemanticIndexes: NO,
-                      //
-                      addRepaintBoundaries: OK,
-                      //
-                      childCount: children__count,
-                      child__build,
-                    ),
-                  ));
+            final sliver = SliverList(
+              delegate: SliverChildBuilderDelegate(
+                addAutomaticKeepAlives: FALSE,
+                addRepaintBoundaries: FALSE,
+                addSemanticIndexes: FALSE,
+                //
+                childCount: children__count,
+                child__build,
+              ),
+            );
 
             if (padding == null) {
               return [sliver];
@@ -209,9 +178,17 @@ class gui__base__scrolling___compo //
               ),
             ];
           }(),
-        ),
-  );
+        );
+      },
+    );
+  }
 }
+
+typedef gui__base__scrolling__child__build___procedure__format = //
+    gui__base__widget Function(
+      gui__base__widget__building__context building__context,
+      INT child__id,
+    );
 
 class _scrolling__behavior___compo extends ScrollBehavior {
   const _scrolling__behavior___compo();

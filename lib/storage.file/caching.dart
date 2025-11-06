@@ -145,7 +145,7 @@ void base__storage__file__fast__read_write /* __caching */ (
   required final BS1__array bytes,
   required INT count,
   required INT offset,
-  final BOOL b__write = NO,
+  final BOOL b__write = FALSE,
 }) /*
   design
     throws `if ((count <= 0) || (offset < 0))`
@@ -497,7 +497,7 @@ BS1__array base__storage__file__fast__read__auto(
 
     write__direct((final bytes_) {
       bytes = bytes_;
-      return NO;
+      return FALSE;
     }, count, offset);
 
     return bytes;
@@ -529,7 +529,7 @@ void base__storage__file__fast__sync(
           element.buffer,
           base__storage__file__block__size.size,
           element.offset,
-          b__write: OK,
+          b__write: TRUE,
         );
       },
     );

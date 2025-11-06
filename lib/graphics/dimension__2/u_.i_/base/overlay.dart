@@ -66,9 +66,10 @@ values :
   gui__base__entity__overlay___compo overlay,
 }) //
 gui__base__overlay__waiting /*
-prefer disabling dismissal/back-navigation gestures
-  ,like press ,and drag
-example[-usage] : "
+- must be exclusive (one at a time)
+- prefer disabling dismissal/back-navigation gestures
+  like press ,and drag
+- example[-usage] : "
 final (result___asyn, overlay) = gui__base__overlay__waiting(
   context,
   result__fetch___asyn(),
@@ -78,8 +79,8 @@ final (result___asyn, overlay) = gui__base__overlay__waiting(
 /*await*/ context
   .navigation()
     .forward__overlay__bottom(
-      gesture__press__background__dismiss___ok: NO,
-      gesture__drag__bottom__dismiss___ok: NO,
+      gesture__press__background__dismiss___ok: FALSE,
+      gesture__drag__bottom__dismiss___ok: FALSE,
       entity: overlay,
     );
 
@@ -106,18 +107,18 @@ handles {"value__asyn.value" ,and "value__asyn.delayed"} too */, {
 
   var resolved___ok /*
 needed to handle already-resolved asyn.-values */ =
-      NO;
+      FALSE;
 
   value.handle(
     (final value) {
-      resolved___ok = OK;
+      resolved___ok = TRUE;
 
       backward();
 
       promise.complete(value);
     },
     (final e, final t) {
-      resolved___ok = OK;
+      resolved___ok = TRUE;
 
       backward();
 
@@ -125,7 +126,7 @@ needed to handle already-resolved asyn.-values */ =
     },
   );
 
-  var navigation__back__scheduled___ok = NO;
+  var navigation__back__scheduled___ok = FALSE;
 
   final overlay = gui__base__entity__overlay___compo(
     dispose__handle: NIL,
@@ -135,7 +136,7 @@ needed to handle already-resolved asyn.-values */ =
       }
 
       if (resolved___ok) {
-        navigation__back__scheduled___ok = OK;
+        navigation__back__scheduled___ok = TRUE;
 
         task__schedule(() {
           context_1.navigation().backward();
@@ -147,7 +148,7 @@ needed to handle already-resolved asyn.-values */ =
       context__latest = context_1;
 
       return PopScope(
-        canPop: NO,
+        canPop: FALSE,
         child: waiting__build(context_1),
       );
     },
@@ -189,7 +190,7 @@ widget suggestions
     _overlays.iterate((final _, final overlay) {
       overlay.dispose();
 
-      return OK;
+      return TRUE;
     });
 
     _overlays.dispose();
@@ -202,9 +203,8 @@ widget suggestions
     return _channel.handling__widget__build(
       context,
       child__build: (final context) {
-        return gui__base__stack__widget(
+        return gui__base__stack___widget(
           alignment: Alignment.center,
-          clipping: Clip.none,
           children: [
             child__build(context),
             ..._overlays //

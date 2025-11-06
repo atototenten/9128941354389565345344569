@@ -9,13 +9,13 @@ APPROX__8__significand__max = ((1 << 52) /*-1*/ /* because ,the sign bit ,is sto
 class base__APPROX__input__digits__fixed {
   base__APPROX__input__digits__fixed({
     final INT significand = 0,
-    final BOOL significand__negative___ok = NO,
+    final BOOL significand__negative___ok = FALSE,
     final INT significand__digits__count = 3,
-    final BOOL significand__truncate___ok = NO,
+    final BOOL significand__truncate___ok = FALSE,
     final INT exponent = 0,
-    final BOOL exponent__negative___ok = NO,
+    final BOOL exponent__negative___ok = FALSE,
     final INT exponent__digits__count = 2,
-    final BOOL exponent__truncate___ok = OK,
+    final BOOL exponent__truncate___ok = TRUE,
   }) : significand = base__INT__NEG__text__digits__fixed(
          significand,
          negative___ok: significand__negative___ok,
@@ -118,7 +118,7 @@ extension base__APPROX__input__digits__fixed__test //
     ].iterate__basic(
       (final _, final string v) {
         base__APPROX__input__digits__fixed(
-            significand__truncate___ok: OK,
+            significand__truncate___ok: TRUE,
           )
           ..value__set__parse(v)
           ..value__convert__text().print();

@@ -55,7 +55,7 @@ class list__old__kampo<T> {
   void iterate__basic(final void Function(T element) function) => //
       iterate((final T element) {
         function(element);
-        return OK;
+        return TRUE;
       });
 
   /*T? contained(final bool Function(T element) b__check) {
@@ -66,10 +66,10 @@ class list__old__kampo<T> {
         {
       if (b__check(element_)) {
         result = element_;
-        return NO;
+        return FALSE;
       }
 
-      return OK;
+      return TRUE;
     });
 
     return result;
@@ -81,7 +81,7 @@ class list__old__kampo<T> {
   bool b__contained(
     final T element,
   ) {
-    bool result = NO;
+    bool result = FALSE;
 
     this.iterate((final element_) => //
         ((element_ != element) || !(result = OK)));
@@ -129,19 +129,19 @@ class list__old__kampo<T> {
   }
 
   array<T> convert__array([
-    final bool b__growable = NO,
+    final bool b__growable = FALSE,
   ]) {
     final result = array<T?>.filled(
       count,
        null,
-      growable: NO,
+      growable: FALSE,
     );
 
     {
       uu i = 0;
       this.iterate((final element) {
         result[i++] = element;
-        return OK;
+        return TRUE;
       });
     }
 
@@ -153,7 +153,7 @@ class list__old__kampo<T> {
   }
 
   string convert__string([
-    final bool b_verbose = NO,
+    final bool b_verbose = FALSE,
   ]) {
     final buffer = StringBuffer("count: ") //
       ..write(count);

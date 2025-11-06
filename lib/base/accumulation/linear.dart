@@ -52,7 +52,7 @@ not nil-able due to dart-lang.'s deficiency
             dest__offset: offset,
           ).dest__offset__new;
 
-          return OK;
+          return TRUE;
         },
       );
     }
@@ -122,16 +122,16 @@ will be non-NIL ,because `list_.elements__count` is expected to be correct */
   BOOL present___ok(
     final element__type element,
   ) {
-    var result = NO;
+    var result = FALSE;
 
     _elements.iterate(
       (final _, final e) {
         if (e == element) {
-          result = OK;
-          return NO;
+          result = TRUE;
+          return FALSE;
         }
 
-        return OK;
+        return TRUE;
       },
     );
 
@@ -214,18 +214,18 @@ more efficient ,than `convert:array`
     _elements.iterate(
       (final _, final e) {
         if (e == null) {
-          return OK;
+          return TRUE;
         }
 
         if (element__id == 0) {
           result = e;
 
-          return NO;
+          return FALSE;
         }
 
         element__id -= 1;
 
-        return OK;
+        return TRUE;
       },
     );
 
@@ -273,7 +273,7 @@ class base__accumulation__linear__basic__fast__iteration /*:forward*/ <element__
           result = element;
           _element__id = (1 + element__id);
 
-          return false;
+          return FALSE;
         }
 
         return true;
@@ -490,6 +490,10 @@ raw due to being in-efficient ,due to copying */ (final INT element__id) {
     );
 
     elements__count___raw -= 1;
+
+    if (elements__count___raw == 0) {
+      elements___raw.first = base__value__optional__absent__compo();
+    }
   }
 }
 
@@ -597,12 +601,12 @@ very efficient (both space, and time) ,than linked-list
         );
 
         if (equal___ok.not) {
-          return OK;
+          return TRUE;
         }
 
         result = id;
 
-        return NO;
+        return FALSE;
       },
     );
 
@@ -619,12 +623,12 @@ very efficient (both space, and time) ,than linked-list
         final equal___ok_1 = equal___ok(e);
 
         if (equal___ok_1.not) {
-          return OK;
+          return TRUE;
         }
 
         result = id;
 
-        return NO;
+        return FALSE;
       },
     );
 

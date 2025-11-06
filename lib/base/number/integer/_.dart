@@ -180,7 +180,7 @@ INT__bytes__convert__result___compo INT__bytes__convert(
     its NOT parallel-able
       because its un-determin-able, which byte contains the bit-sequence info
         while each byte of `uu:bytes` contains the status(of remaining data)
-          so the `bytes` can be brOKen into multiple pars and de-cod-ed independently, then joined, to form complete result
+          so the `bytes` can be broken into multiple pars and de-cod-ed independently, then joined, to form complete result
     if only a few value(s), need to be de-cod-ed, then there is not-much benefit, of leaving the simplicity of `INT__bytes__convert`
   TASK
     consider moving to `bool iterate(TCW)` accepting,
@@ -192,7 +192,7 @@ INT__bytes__convert__result___compo INT__bytes__convert(
       shift__count = 0,
       bytes__iter = 0;
 
-  while (OK) {
+  while (true) {
     final b = bytes[bytes__iter++];
 
     value |= (b & 127) << shift__count;
@@ -219,7 +219,7 @@ INT__bytes__convert__result___compo INT__bytes__convert(
 ```
 result = 0;
 shift = 0;
-while (OK) {
+while (true) {
   byte = next byte in input;
   result |= (low-order 7 bits of byte) << shift;
   if (high-order bit of byte == 0)

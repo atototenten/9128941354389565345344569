@@ -21,7 +21,7 @@ value__asyn<bool> inet__connect_ed___ok({
   try {
     final result = await net.InternetAddress.lookup(host);
     if (result.empty__not() && result.first.rawAddress.empty__not()) {
-      return OK;
+      return TRUE;
     }
   } catch (e) {
     if (e is net.SocketException) {
@@ -30,7 +30,7 @@ value__asyn<bool> inet__connect_ed___ok({
     }
   }
 
-  return NO;
+  return FALSE;
 }
 
 string base__net__address__port__convert__text(

@@ -30,7 +30,7 @@ base__representation__text //
     ..write("(");
 
   if (members.empty__not()) {
-    var first___ok = OK;
+    var first___ok = TRUE;
 
     members.forEach(
       (
@@ -40,7 +40,7 @@ base__representation__text //
         if (first___ok.not) {
           buffer.write(",");
         } else {
-          first___ok = NO;
+          first___ok = FALSE;
         }
 
         buffer

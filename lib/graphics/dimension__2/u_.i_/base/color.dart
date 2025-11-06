@@ -16,8 +16,8 @@ image__filter__blur__sensitive__extra /* as foreground of a random picture */ = 
     image__filter__blur__min_ /* for sexy-est look */ = 1;
 
 Color base__color__grey({
-  required final APPROX alpha,
   required final APPROX color,
+  final APPROX alpha = 1.0,
 }) {
   return Color.from(
     alpha: alpha,
@@ -25,6 +25,24 @@ Color base__color__grey({
     green: color,
     blue: color,
   );
+}
+
+extension Color___extension //
+    on Color {
+  Color mutate /*
+- useful in brightening/whitening/darkening a color
+  usually for gradients
+- example : "gradient(begin: theme__accent___color ,end: theme__accent___color.mutate(color: .250))" */ ({
+    required final APPROX color,
+    final APPROX alpha = 0,
+  }) {
+    return Color.from(
+      alpha: (a + alpha).clamp(0, 1),
+      red: (r + color).clamp(0, 1),
+      green: (g + color).clamp(0, 1),
+      blue: (b + color).clamp(0, 1),
+    );
+  }
 }
 
 ui.ImageFilter base__image__filter__blur(

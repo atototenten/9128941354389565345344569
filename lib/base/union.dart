@@ -20,7 +20,7 @@ sub-typing is not supported
   void value__set(
     final dynamic value__new,
   ) {
-    var type___ok = NO;
+    var type___ok = FALSE;
 
     _types.iterate(
       (
@@ -28,12 +28,12 @@ sub-typing is not supported
         final e,
       ) {
         if (value__new.runtimeType == e) {
-          type___ok = OK;
+          type___ok = TRUE;
 
-          return NO;
+          return FALSE;
         }
 
-        return OK;
+        return TRUE;
       },
     );
 

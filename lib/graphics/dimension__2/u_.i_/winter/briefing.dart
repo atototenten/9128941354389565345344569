@@ -30,7 +30,7 @@ class Briefing extends Statelesswidget___compo {
     final List<gui__base__widget> children = List<gui__base__widget>.filled(
       widgetCount,
       separator,
-      growable: NO,
+      growable: FALSE,
     );
 
     int widgetCounter = 0;
@@ -42,7 +42,7 @@ class Briefing extends Statelesswidget___compo {
 
     final EdgeInsets briefingTextPadding = EdgeInsets.all(4.px());
 
-    while (OK) {
+    while (true) {
       children[widgetCounter++] = Padding(
         padding: briefingTextPadding,
         child: Text(

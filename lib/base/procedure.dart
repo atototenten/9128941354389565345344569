@@ -49,14 +49,14 @@ invokation possibly leads to side-effects */
     final value = value___raw;
 
     if (value == null) {
-      return NO;
+      return FALSE;
     }
 
     value();
 
     value___raw = NIL;
 
-    return OK;
+    return TRUE;
   }
 }
 
@@ -132,17 +132,17 @@ of currently contain-ed proc. ,not `procedure:new` */
   }
 
   BOOL /*
-`NO` for `(proc_()==NIL)` */
+"FALSE" for "(proc_() = NIL)" */
       re_move__safe(
     final INT procedure__id,
   ) {
     if (procedure__id != _value__id()) {
-      return NO;
+      return FALSE;
     }
 
     re_move__un_safe();
 
-    return OK;
+    return TRUE;
   }
 
   BOOL re_move(
@@ -158,12 +158,12 @@ calls the `procedure` ,if available */
     final $proc_ = proc_();
 
     if ($proc_ == null) {
-      return NO;
+      return FALSE;
     }
 
     $proc_();
 
-    return OK;
+    return TRUE;
   }
 
   @override

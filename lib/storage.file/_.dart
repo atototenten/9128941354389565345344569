@@ -70,7 +70,7 @@ string file__path__convert__name(
   final char__id = text__search(
     file__path,
     base__storage__file__path__separation__char,
-    reverse___ok: OK,
+    reverse___ok: TRUE,
   );
 
   if (char__id == null) {
@@ -88,7 +88,7 @@ string file__name__convert__extension(
   final char__id = text__search(
     file__name,
     char__dot,
-    reverse___ok: OK,
+    reverse___ok: TRUE,
   );
 
   if (char__id == null) {

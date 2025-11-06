@@ -107,7 +107,7 @@ base__storage__data__table__column___compo //
   final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size size__id,
-  final BOOL b__nilable = NO,
+  final BOOL b__nilable = FALSE,
 }) {
   return (
     type: base__storage__data__table__column__type___enum.uit,
@@ -143,7 +143,7 @@ base__storage__data__table__column___compo //
   final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final base__storage__data__table__column__type__ear__meta___compo column,
-  final BOOL b__nilable = NO,
+  final BOOL b__nilable = FALSE,
 }) {
   return (
     type: base__storage__data__table__column__type___enum.iid,
@@ -172,7 +172,7 @@ base__storage__data__table__column___compo //
   final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size size__id,
-  final BOOL b__nilable = NO,
+  final BOOL b__nilable = FALSE,
 }) {
   return (
     type: base__storage__data__table__column__type___enum.eid,
@@ -207,7 +207,7 @@ base__storage__data__table__column___compo //
     meta: base__storage__data__table__column__type__irb__meta___compo(
       name,
       table__column__previous,
-      NO,
+      FALSE,
       size,
     ),
   );
@@ -248,7 +248,7 @@ base__storage__data__table__column___compo //
   final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size count__size__id,
-  final BOOL b__nilable = NO,
+  final BOOL b__nilable = FALSE,
 }) {
   return (
     type: base__storage__data__table__column__type___enum.rbt,
@@ -277,7 +277,7 @@ base__storage__data__table__column___compo //
   final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size count__size__id,
-  final BOOL b__nilable = NO,
+  final BOOL b__nilable = FALSE,
 }) {
   return (
     type: base__storage__data__table__column__type___enum.bst,
@@ -306,7 +306,7 @@ base__storage__data__table__column___compo //
   final string name, {
   required final base__storage__data__table__column__compo? table__column__previous,
   required final number__size count__size__id,
-  final BOOL b__nilable = NO,
+  final BOOL b__nilable = FALSE,
 }) {
   return (
     type: base__storage__data__table__column__type___enum.wst,
@@ -378,7 +378,7 @@ base__storage__data__table__column___compo //
   required final base__storage__data__table__column___compo columns__last,
   final base__storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary,
   required final base__storage__data__table__row__convert__text__function__format row__convert__text,
-  final BOOL b__nilable = NO,
+  final BOOL b__nilable = FALSE,
 }) {
   return (
     type: base__storage__data__table__column__type___enum.ear,
@@ -442,7 +442,7 @@ base__storage__data__table__column___compo //
   required final base__storage__data__table__column___compo columns__last,
   final base__storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary,
   required final base__storage__data__table__row__convert__text__function__format row__convert__text,
-  final BOOL b__nilable = NO,
+  final BOOL b__nilable = FALSE,
 }) {
   return (
     type: base__storage__data__table__column__type___enum.tbl,
@@ -487,7 +487,7 @@ base__storage__data__table__column___compo //
   required final base__storage__data__table__column___compo columns__last,
   final base__storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary,
   required final base__storage__data__table__row__convert__text__function__format row__convert__text,
-  final BOOL b__nilable = NO,
+  final BOOL b__nilable = FALSE,
 }) {
   return (
     type: base__storage__data__table__column__type___enum.tar,

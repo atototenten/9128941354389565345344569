@@ -15,7 +15,7 @@ extension gui__base__widget__building__context__navigation___extension
     final BOOL root___ok /*
 useful for `overlay`s
 run-time expensive op. */ =
-        NO,
+        FALSE,
   }) {
     return Navigator.of(
       this,
@@ -41,7 +41,7 @@ extension gui__base__navigation___extension
   forward__overlay //
   <entity__type extends gui__base__entity__overlay___compo>({
     final Color background__color = gui__base__navigation__overlay__background__color,
-    final BOOL gesture__press__background__dismiss___ok = OK,
+    final BOOL gesture__press__background__dismiss___ok = TRUE,
     final Duration animation__duration = gui__base__navigation__animation__duration__default,
     required final entity__type entity,
   }) {
@@ -62,7 +62,7 @@ extension gui__base__navigation___extension
   forward__replace__overlay //
   <entity__type extends gui__base__entity__overlay___compo>({
     final Color background__color = gui__base__navigation__overlay__background__color,
-    final BOOL gesture__press__background__dismiss___ok = OK,
+    final BOOL gesture__press__background__dismiss___ok = TRUE,
     final Duration animation__duration = gui__base__navigation__animation__duration__default,
     required final entity__type entity,
   }) {
@@ -103,7 +103,7 @@ extension gui__base__navigation___extension
             context,
           );
         },
-        fullscreenDialog: OK,
+        fullscreenDialog: TRUE,
       );
     }
 
@@ -113,8 +113,8 @@ extension gui__base__navigation___extension
       barrierColor: background__color,
       barrierDismissible: gesture__press__background__dismiss___ok,
       barrierLabel: empty__string,
-      useSafeArea: NO,
-      fullscreenDialog: OK,
+      useSafeArea: FALSE,
+      fullscreenDialog: TRUE,
       animationStyle: AnimationStyle(
         duration: animation__duration,
         reverseDuration: animation__duration,
@@ -126,8 +126,8 @@ extension gui__base__navigation___extension
   forward__overlay__bottom //
   <entity__type extends gui__base__entity__overlay___compo>({
     final Color background__color = gui__base__navigation__overlay__background__color,
-    final BOOL gesture__press__background__dismiss___ok = OK,
-    final BOOL gesture__drag__bottom__dismiss___ok = OK,
+    final BOOL gesture__press__background__dismiss___ok = TRUE,
+    final BOOL gesture__drag__bottom__dismiss___ok = TRUE,
     required final entity__type entity,
   }) {
     return _entity__overlay__handle(
@@ -148,8 +148,8 @@ extension gui__base__navigation___extension
   forward__overlay__bottom__transition__instant //
   <entity__type extends gui__base__entity__overlay___compo>({
     final Color background__color = gui__base__navigation__overlay__background__color,
-    final BOOL gesture__press__background__dismiss___ok = OK,
-    final BOOL gesture__drag__bottom__dismiss___ok = OK,
+    final BOOL gesture__press__background__dismiss___ok = TRUE,
+    final BOOL gesture__drag__bottom__dismiss___ok = TRUE,
     required final TickerProvider vsync,
     required final entity__type entity,
   }) {
@@ -176,8 +176,8 @@ extension gui__base__navigation___extension
   forward__replace__overlay__bottom //
   <entity__type extends gui__base__entity__overlay___compo>({
     final Color background__color = gui__base__navigation__overlay__background__color,
-    final BOOL gesture__press__background__dismiss___ok = OK,
-    final BOOL gesture__drag__bottom__dismiss___ok = OK,
+    final BOOL gesture__press__background__dismiss___ok = TRUE,
+    final BOOL gesture__drag__bottom__dismiss___ok = TRUE,
     required final entity__type entity,
   }) {
     return _entity__overlay__handle(
@@ -198,8 +198,8 @@ extension gui__base__navigation___extension
   forward__replace__overlay__bottom__transition__instant //
   <entity__type extends gui__base__entity__overlay___compo>({
     final Color background__color = gui__base__navigation__overlay__background__color,
-    final BOOL gesture__press__background__dismiss___ok = OK,
-    final BOOL gesture__drag__bottom__dismiss___ok = OK,
+    final BOOL gesture__press__background__dismiss___ok = TRUE,
+    final BOOL gesture__drag__bottom__dismiss___ok = TRUE,
     required final TickerProvider vsync,
     required final entity__type entity,
   }) {
@@ -233,7 +233,7 @@ extension gui__base__navigation___extension
   ) {
     return ModalBottomSheetRoute<void>(
       builder: entity.widget__build,
-      isScrollControlled: OK,
+      isScrollControlled: TRUE,
       backgroundColor:
           (base__app__theme__colors__ground__back__contrast__dark___ok //
           ? base__color__transparent__dark
@@ -252,9 +252,9 @@ extension gui__base__navigation___extension
       modalBarrierColor: background__color,
       barrierLabel: empty__string,
       enableDrag: gesture__drag__bottom__dismiss___ok,
-      showDragHandle: NO,
+      showDragHandle: FALSE,
       transitionAnimationController: transition__control,
-      useSafeArea: NO,
+      useSafeArea: FALSE,
     );
   }
 
@@ -410,7 +410,7 @@ cases :
     no issue ,if `pages:count` exceeds the {navigat-ion}-stack's depth/elements:count */,
   ) {
     if (pages__count == null) {
-      return (final _) => NO;
+      return (final _) => FALSE;
     }
 
     if /*F*/ (pages__count == 0) {
@@ -421,12 +421,12 @@ cases :
 
     return (final _) {
       if /*F*/ (_pages__count == 0) {
-        return OK;
+        return TRUE;
       }
 
       _pages__count -= 1;
 
-      return NO;
+      return FALSE;
     };
   }
 
@@ -448,7 +448,7 @@ cases :
 
     return /*CupertinoPageRoute<void>*/ MaterialPageRoute<void>(
       builder: page__build,
-      maintainState: NO,
+      maintainState: FALSE,
     );
   }
 }

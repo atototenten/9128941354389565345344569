@@ -68,7 +68,7 @@ should be compliant with `progress_ion__reverse__ok` */
 must be `>= data:group:level:3:element:arr:count` 
   ,in which case ,`data:fetch_ing` is overkill ,anyways */
     ,
-    //final bool progress_ion__reverse___ok /*{back|for}_ward*/ = NO,
+    //final bool progress_ion__reverse___ok /*{back|for}_ward*/ = FALSE,
   }) async {
     const //
         data__element__array__offset = 0,

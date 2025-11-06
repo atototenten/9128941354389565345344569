@@ -69,11 +69,11 @@ part "Object__nilable.dart";
     any function, marked `async`, or using `await` in body, MUST return `Future`, NOT `FutureOr` */
 
 const //
-base__printing___ok = OK,
+base__printing___ok = TRUE,
         //
         environment__phone__android___ok =
-        OK,
-    environment__phone__apple___ok = NO,
+        TRUE,
+    environment__phone__apple___ok = FALSE,
     environment__phone___ok = (environment__phone__android___ok || environment__phone__apple___ok),
     environment__work_station__unix___ok /*BSD|GNU|Linux*/ = !environment__phone___ok,
     environment__work_station___ok = environment__work_station__unix___ok;
@@ -185,7 +185,7 @@ base__copy__result___compo base__copy<element___type>(
       ? (src.elements__count - src__offset)
       : (count + src__offset));
 
-  if (OK) {
+  if (true) {
     while (src__offset < end) {
       dest[dest__offset++] = src[src__offset++];
     }

@@ -8,7 +8,7 @@ class base__exclusion__mutual //
 
   base__exclusion__mutual({
     this.lock__requests__count__limit = lock__requests__count__limit__default,
-  })  : locked__ok___raw = NO,
+  })  : locked__ok___raw = FALSE,
         lock__requests___raw = base__queue(),
         free__channel___raw = base__event__channel__broadcast();
 
@@ -30,7 +30,7 @@ user must not dispose */ //
 
   void lock__free__handle___raw() {
     if (lock__requests___raw.empty___ok()) {
-      locked__ok___raw = NO;
+      locked__ok___raw = FALSE;
 
       free__channel___raw.event__dispatch();
     } else {
@@ -51,7 +51,7 @@ user must not dispose */ //
   ) {
     if (locked__ok___raw) {
       if (lock__requests___raw.elements__count() >= lock__requests__count__limit) {
-        return NO;
+        return FALSE;
       }
 
       lock__requests___raw.add(
@@ -62,7 +62,7 @@ user must not dispose */ //
         throw "exception : `(${lock__requests___raw.elements__count()}\\lock__requests__count\\ > 0)`";
       }
 
-      locked__ok___raw = OK;
+      locked__ok___raw = TRUE;
 
       lock__handle(
         base__exclusion__mutual__lock(
@@ -71,7 +71,7 @@ user must not dispose */ //
       );
     }
 
-    return OK;
+    return TRUE;
   }
 
   @override

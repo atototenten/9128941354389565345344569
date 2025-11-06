@@ -9,7 +9,7 @@ extension base__byte__array__accumulation__linear__extension //
       (final id, final e) {
         bytes__count += e.bytes__count;
 
-        return OK;
+        return TRUE;
       },
     );
 
@@ -37,7 +37,7 @@ extension base__byte__array__accumulation__linear__extension //
           dest__offset: bytes__offset,
         ).dest__offset__new;
 
-        return OK;
+        return TRUE;
       },
     );
   }
@@ -162,7 +162,7 @@ class base__byte__array__accumulation /*
     return bytes;
   }
 
-  /* string convert__str([final BOOL b_verbose = NO]) {
+  /* string convert__str([final BOOL b_verbose = FALSE]) {
     INT //
         counter = 0,
         byteOffset = 0;

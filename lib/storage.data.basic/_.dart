@@ -414,8 +414,8 @@ if NIL ,then all the columns ,but respecting the "conditions" argument
 if empty ,then the column-id column ,is implicit */,
     final BOOL result__column__id___ok /*
 ignored if `result__columns__meta == NIL` */ =
-        NO,
-    final BOOL result__rows__distinct___ok = NO,
+        FALSE,
+    final BOOL result__rows__distinct___ok = FALSE,
     required final string? result__conditions /*
   example: "\(column__name) LIKE ?"
     '?' indicates substitution, from "conditions__arguments" */,
@@ -423,7 +423,7 @@ ignored if `result__columns__meta == NIL` */ =
   example: "Dr%", "%@mail.com" */,
     final array<base__storage__data__basic__table__column__meta>? result__order__columns__meta /*
 if NIL ,then resulting rows ,are un-order-ed ,or the order is un-defin-ed ,and "result__order__ascend_ing__ok" is ignored  */,
-    final BOOL result__order__ascend_ing___ok /* otherwise descend-ing */ = OK,
+    final BOOL result__order__ascend_ing___ok /* otherwise descend-ing */ = TRUE,
     final INT? result__rows__count__limit,
     final INT? result__rows__id__offset /*
 `result__order__columns__meta` should also be passed */,
@@ -463,7 +463,7 @@ example
       table__columns__id__join___raw(
         statement__buffer,
         result__order__columns__meta,
-        NO,
+        FALSE,
       );
 
       statement__buffer
@@ -499,7 +499,7 @@ example
   value__asyn<array<base__storage__data__basic__table__row>> table__rows__all__asyn({
     required final base__storage__data__basic__table__id table__id,
     final array<base__storage__data__basic__table__column__meta>? result__columns__meta,
-    final BOOL result__column__id___ok = NO,
+    final BOOL result__column__id___ok = FALSE,
   }) {
     return table__rows__asyn(
       table__id: table__id,
@@ -913,12 +913,12 @@ typedef _column__data__type = base__storage__data__table__column__data__type;
 final //
   _column__abc = _column__meta(NIL,_column__data__type.integer__un_signed),
   _column__jkl = _column__meta(_column__abc,_column__data__type.integer__auto),
-  _column__xyz = _column__meta(_column__jkl,_column__data__type.bytes, nil_able___ok: OK),
+  _column__xyz = _column__meta(_column__jkl,_column__data__type.bytes, nil_able___ok: TRUE),
   _columns__meta = [_column__abc, _column__jkl, _column__xyz];` */ {
   base__storage__data__basic__table__column__meta(
     final base__storage__data__basic__table__column__meta? column__previous__meta,
     this.type, {
-    this.nil_able___ok = NO,
+    this.nil_able___ok = FALSE,
   }) : id =
            ((column__previous__meta != null) //
            ? (1 + column__previous__meta.id)
@@ -1064,7 +1064,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
   await storage__print__auto__asyn();
 
   {
-    var abort___ok = OK;
+    var abort___ok = TRUE;
 
     await base__iterate__forever__asyn(
       (final _) async {
@@ -1073,7 +1073,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
         if (meta == null) {
           "ISSUE : `(storage.access__mutating__meta() = NIL)`".print();
 
-          return NO;
+          return FALSE;
         } else {
           final //
           name = base__storage__data__basic__table__column__meta(
@@ -1109,16 +1109,16 @@ value__asyn<void> base__storage__data__basic__meta__test(
 
             await meta.complete__asyn();
 
-            return NO;
+            return FALSE;
           }
 
-          abort___ok = NO;
+          abort___ok = FALSE;
 
           "aborting".print();
 
           await meta.abort__asyn();
 
-          return OK;
+          return TRUE;
         }
       },
     );

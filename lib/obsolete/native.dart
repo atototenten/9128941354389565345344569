@@ -38,7 +38,7 @@ class ReadOnlyFile {
 
   static void create(
     final string path, [
-    final bool recursive = NO,
+    final bool recursive = FALSE,
   ]) {
     report__info("ReadOnlyFile.create(path: \"$path\", recursive: $recursive)");
 

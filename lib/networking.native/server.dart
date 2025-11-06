@@ -17,11 +17,11 @@ value__asyn<void> base__net__reliable__server__simple({
           net.Socket client__socket /* must not be close-ed ,nor dispose-ed */)
       request__handle,
   final base__error__handle__proc_? request__listen__error__handle,
-  final BOOL latency__low___ok = NO,
+  final BOOL latency__low___ok = FALSE,
 }) async {
   (await net.NetworkInterface.list(
-    includeLoopback: OK,
-    includeLinkLocal: OK,
+    includeLoopback: TRUE,
+    includeLinkLocal: TRUE,
   ))
       .iterate__basic(
     (final _, final interface) {
@@ -45,7 +45,7 @@ value__asyn<void> base__net__reliable__server__simple({
         "client.address".print(client__address);
 
         if (latency__low___ok) {
-          if (client__socket.setOption(net.SocketOption.tcpNoDelay, OK).not) {
+          if (client__socket.setOption(net.SocketOption.tcpNoDelay, TRUE).not) {
             throw "client.socket.option.t_c_p_.no_delay.set";
           }
         }

@@ -264,9 +264,9 @@ byte__array str__wide__rich__convert__bytes(
   uu str__text__count(final ch c) {
     uu count = 0;
 
-    bool b__continutation = NO;
+    bool b__continutation = FALSE;
 
-    while (OK) {
+    while (true) {
       final str__offset = //
           (!b__continutation //
               ? str__iter
@@ -303,12 +303,12 @@ byte__array str__wide__rich__convert__bytes(
       }
 
       if (!b__continutation) //
-        b__continutation = OK;
+        b__continutation = TRUE;
 
       final count_ = ((str__iter - 1) - str__offset);
 
       if /* un-likely */ (!((count_ == 0) /*
-  OK, when escap-ed `c`, is the first char */
+  TRUE, when escap-ed `c`, is the first char */
           )) {
         list__add(text__segment__list, (
           offset: str__offset,
