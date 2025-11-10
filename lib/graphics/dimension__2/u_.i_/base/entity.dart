@@ -37,9 +37,7 @@ abstract class gui__base__entity__page___protocol //
     implements
         gui__base__entity___protocol {
   gui__base__widget //
-      widget__build(
-    final gui__base__widget__building__context context,
-  );
+      widget__build(final gui__base__widget__building__context context);
 }
 
 /*abstract class gui__base__entity__component___protocol /*

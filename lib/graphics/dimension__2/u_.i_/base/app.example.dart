@@ -31,9 +31,7 @@ class _app__example__entity //
   const _app__example__entity();
 
   @override
-  gui__base__widget widget__build(
-    final gui__base__widget__building__context context,
-  ) {
+  gui__base__widget widget__build(final gui__base__widget__building__context context) {
     return ColoredBox(
       color: flutter__material__colors.green,
       child: gui__base__box__expanded__widget(),

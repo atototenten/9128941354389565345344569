@@ -311,7 +311,7 @@ config. :
   `environment__phone___ok`
   `behavior__correct__ok`
 
-tasks:long:
+tasks.long:
   - add app-splash, as black seems bad */ //
 <entity__type extends gui__base__entity__page___protocol>({
   required final string app__title,
@@ -384,25 +384,21 @@ class gui__base__app__running__simple //
       _failure__handle,
     );
 
-    init_ion__asyn___raw = base__value__asyn__definitive<entity__type>(
-      entity__promise.future,
-    );
+    _init_ion__asyn = entity__promise.future;
   }
 
   final string app__title;
-  late final base__value__asyn__definitive<entity__type> init_ion__asyn___raw;
+  late final value__asyn<entity__type> _init_ion__asyn;
   final gui__base__widget__build__function__format splash__build;
 
   @override
   void dispose() {
-    init_ion__asyn___raw.dispose();
+    _init_ion__asyn.dispose();
   }
 
   @override
-  gui__base__widget widget__build(
-    final gui__base__widget__building__context context,
-  ) {
-    return init_ion__asyn___raw.handling__widget__build(
+  gui__base__widget widget__build(final gui__base__widget__building__context context) {
+    return _init_ion__asyn._handling__widget__build(
       context,
       child__state__waiting__build: splash__build,
       child__state__completion__failure__build: gui__base__widget__error__default__build,
@@ -410,7 +406,7 @@ class gui__base__app__running__simple //
         return MaterialApp(
           showPerformanceOverlay: FALSE,
           /*checkerboardRasterCacheImages: TRUE,
-            checkerboardOffscreenLayers: TRUE,*/
+          checkerboardOffscreenLayers: TRUE,*/
           home: gui__base__widget__build(
             child__build: (final context) {
               return entity_1.widget__build(

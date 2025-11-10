@@ -9,42 +9,42 @@ not nil-able due to dart-lang.'s deficiency
     implements base__dispose___protocol {
   base__array__array__accumulation__linear__basic();
 
-  final accumulation___raw = base__accumulation__linear__basic<array<element__type>>();
-  var elements__count___raw = 0;
+  final _accumulation = base__accumulation__linear__basic<array<element__type>>();
+  var _elements__count = 0;
 
   INT elements__count() {
-    return elements__count___raw;
+    return _elements__count;
   }
 
   void flush() {
-    accumulation___raw.flush();
-    elements__count___raw = 0;
+    _accumulation.flush();
+    _elements__count = 0;
   }
 
   void shrink() {
-    accumulation___raw.shrink();
+    _accumulation.shrink();
   }
 
   void add__ending(
     final array<element__type> elements,
   ) {
-    accumulation___raw.add__ending(
+    _accumulation.add__ending(
       elements,
     );
 
-    elements__count___raw += elements.elements__count;
+    _elements__count += elements.elements__count;
   }
 
   array<element__type> convert__array() {
     final result = array__new__filled<element__type?>(
-      elements__count___raw,
+      _elements__count,
       NIL,
     );
 
     {
       var offset = 0;
 
-      accumulation___raw.iterate(
+      _accumulation.iterate(
         (final id, final e) {
           offset = base__copy(
             result,
@@ -58,14 +58,14 @@ not nil-able due to dart-lang.'s deficiency
     }
 
     return array__new__generated(
-      elements__count___raw,
+      _elements__count,
       (final i) => result[i]!,
     );
   }
 
   @override
   void dispose() {
-    accumulation___raw.dispose();
+    _accumulation.dispose();
   }
 }
 
@@ -411,7 +411,7 @@ void base__accumulation__linear__definitive__test() {
     ) {
       final element = accum.element(element__id);
 
-      accum.remove___raw(element__id);
+      accum.remove(element__id);
 
       accum__print("${name} without \"${element}\"");
     }
@@ -464,36 +464,41 @@ required because element-removal can in-validate element-ids
 
   void remove__last /*
 memory-usage is not reduced */ () {
-    elements__count___raw -= 1;
+    if (_elements__count == 0) {
+      throw Exception("no element ,to remove");
+    }
+
+    _elements__reduce__once();
   }
 
-  void remove___raw /*
-individual element
-raw due to being in-efficient ,due to copying */ (final INT element__id) {
-    element__id__ensure__valid___raw(
-      element__id,
-    );
+  void remove /*
+- in-efficient ,due to copying */ (final INT element__id) {
+    element__id__ensure__valid___raw(element__id);
 
     /*base__iterate__basic(
-      (elements__count___raw - (element__id - 1) /* converting offset to count */ ),
+      (_elements__count - (element__id - 1) /* converting offset to count */ ),
       (final i) {
-        elements___raw[element__id] = elements___raw[1 + element__id];
+        _elements[element__id] = _elements[1 + element__id];
       },
       offset: element__id,
     )*/
     base__iterate__until__basic(
-      elements__count___raw,
+      _elements__count,
       (final i) {
-        elements___raw[i - 1] = elements___raw[i];
+        _elements[i - 1] = _elements[i];
       },
       offset: (1 + element__id),
     );
 
-    elements__count___raw -= 1;
+    _elements__reduce__once();
+  }
 
-    if (elements__count___raw == 0) {
-      elements___raw.first = base__value__optional__absent__compo();
-    }
+  void _elements__reduce__once() {
+    _elements__count -= 1;
+
+    _elements[_elements__count] = base__value__optional__absent__compo(); /*
+    allowing garbage-memory collection
+      hence preventing memory-leak */
   }
 }
 
@@ -553,26 +558,26 @@ very efficient (both space, and time) ,than linked-list
 
   base__accumulation__linear__base({
     final INT capacity__initial = capacity__initial__default,
-  }) : elements___raw = array__new__filled(
+  }) : _elements = array__new__filled(
          capacity__initial,
          base__value__optional__absent__compo(),
        ),
-       elements__count___raw = 0;
+       _elements__count = 0;
 
-  array<base__value__optional___union<element__type>> elements___raw;
+  array<base__value__optional___union<element__type>> _elements;
 
-  INT elements__count___raw;
+  INT _elements__count;
 
   INT elements__count() {
-    return elements__count___raw;
+    return _elements__count;
   }
 
   BOOL empty___ok() {
-    return (elements__count___raw == 0);
+    return (_elements__count == 0);
   }
 
   BOOL empty__not() {
-    return (elements__count___raw != 0);
+    return (_elements__count != 0);
   }
 
   BOOL present___ok(
@@ -638,79 +643,75 @@ very efficient (both space, and time) ,than linked-list
   void add__ending(
     final element__type element,
   ) {
-    if /*F*/ (elements__count___raw == elements___raw.elements__count) {
-      if (elements__count___raw == 0) {
-        elements___raw = array__new__filled(
+    if /*F*/ (_elements__count == _elements.elements__count) {
+      if (_elements__count == 0) {
+        _elements = array__new__filled(
           capacity__initial__default,
           base__value__optional__absent__compo(),
         );
       } else {
-        final elements__old = elements___raw;
+        final elements__old = _elements;
 
-        elements___raw = array__new__filled(
-          (2 * elements__count___raw /*capacity*/ ),
+        _elements = array__new__filled(
+          (2 * _elements__count /*capacity*/ ),
           base__value__optional__absent__compo(),
         );
 
         base__copy(
-          elements___raw,
+          _elements,
           elements__old,
-          count: elements__count___raw,
+          count: _elements__count,
         );
       }
     }
 
-    elements___raw[elements__count___raw] = base__value__optional__present__compo(element);
+    _elements[_elements__count] = base__value__optional__present__compo(element);
 
-    elements__count___raw += 1;
+    _elements__count += 1;
   }
 
   element__type element(
     final INT element__id,
   ) {
-    element__id__ensure__valid___raw(
-      element__id,
-    );
+    element__id__ensure__valid___raw(element__id);
 
-    return (elements___raw[element__id] as base__value__optional__present__compo<element__type>).value;
+    return (_elements[element__id] as base__value__optional__present__compo<element__type>).value;
   }
 
   void element__assign(
     final INT element__id,
     final element__type value,
   ) {
-    element__id__ensure__valid___raw(
-      element__id,
-    );
+    element__id__ensure__valid___raw(element__id);
 
-    elements___raw[element__id] = base__value__optional__present__compo(value);
+    _elements[element__id] = base__value__optional__present__compo(value);
   }
 
   element__type //
   element__first() {
-    return (elements___raw.first as base__value__optional__present__compo<element__type>).value;
+    return (_elements.first as base__value__optional__present__compo<element__type>).value;
   }
 
   void element__first__assign(
     final element__type value,
   ) {
-    elements___raw.first = base__value__optional__present__compo(value);
+    _elements.first = base__value__optional__present__compo(value);
   }
 
   INT //
   element__last__id() {
-    return (elements__count___raw - 1);
+    return (_elements__count - 1);
   }
 
   element__type //
   element__last() {
-    return (elements___raw[element__last__id()] as base__value__optional__present__compo<element__type>).value;
+    return (_elements[element__last__id()] as base__value__optional__present__compo<element__type>).value;
   }
 
   void element__last__assign(
     final element__type value,
   ) {
-    elements___raw[element__last__id()] = base__value__optional__present__compo(value);
+    _elements[element__last__id()] = base__value__optional__present__compo(value);
   }
 
   void iterate(
@@ -723,30 +724,26 @@ very efficient (both space, and time) ,than linked-list
 must not be more than `elements__count` */,
   }) {
     if (count != null) {
-      element__id__ensure__valid___raw(
-        count,
-      );
+      element__id__ensure__valid___raw(count - 1);
     } else {
-      count = elements__count___raw;
+      count = _elements__count;
     }
 
-    try {
-      elements___raw.iterate(
-        (final i, final e) {
-          final iterate___ok = element__handle(
-            i,
-            (e as base__value__optional__present__compo<element__type>).value,
-          );
+    _elements.iterate(
+      (final i, final e) {
+        final iterate___ok = element__handle(
+          i,
+          (e as base__value__optional__present__compo<element__type>).value,
+        );
 
-          return iterate___ok;
-        },
-        count: count,
-      );
-    } catch (_) {}
+        return iterate___ok;
+      },
+      count: count,
+    );
   }
 
   void element__id__ensure__valid___raw(final INT element__id) {
-    if (element__id >= elements__count___raw) {
+    if (element__id >= _elements__count) {
       throw "element__$element__id is not present in the accumulation (not existent)";
     }
   }
@@ -757,19 +754,19 @@ must not be more than `elements__count` */,
     }
 
     return array__new__generated(
-      elements__count___raw,
-      (final i) => (elements___raw[i] as base__value__optional__present__compo<element__type>).value,
+      _elements__count,
+      (final i) => (_elements[i] as base__value__optional__present__compo<element__type>).value,
     );
   }
 
   void flush() /*
 size/memory/space is not reduced
   but, merely the data, is flush-ed */ {
-    elements___raw.fill(
+    _elements.fill(
       base__value__optional__absent__compo(),
     );
 
-    elements__count___raw = 0;
+    _elements__count = 0;
   }
 
   void shrink() /*
@@ -777,13 +774,13 @@ size reduction, is not exponent-ional
   hence disturbs the growth formula
     so use, only if required */ {
     if (empty___ok()) {
-      elements___raw = array__new__empty();
+      _elements = array__new__empty();
 
-      elements__count___raw = 0;
+      _elements__count = 0;
     } else {
-      elements___raw = array__new__generated(
-        elements__count___raw,
-        (final i) => elements___raw[i],
+      _elements = array__new__generated(
+        _elements__count,
+        (final i) => _elements[i],
       );
     }
   }

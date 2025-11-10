@@ -26,11 +26,11 @@ compared to `FutureBuilder<T>`(of `flutter/widgets/async.dart`)
         final state_1 = state();
 
         return switch (state_1) {
-          base__value__asyn__definitive__state__waiting() => //
+          base__value__asyn__definitive__state__waiting<value__type>() => //
           child__state__waiting__build(
             context,
           ),
-          base__value__asyn__definitive__state__completion___union() => //
+          base__value__asyn__definitive__state__completion___union<value__type>() => //
           switch (state_1) {
             base__value__asyn__definitive__state__completion__success<value__type>() => //
             child__state__completion__success__build(
@@ -73,52 +73,55 @@ gui__base__widget gui__base__widget__error__default__build(
   );
 }
 
-gui__base__widget _value__asyn__handling__widget /*
+extension _value__asyn__handling__extension<value__type> //
+    on value__asyn<value__type> {
+  gui__base__widget _handling__widget__build /*
 compared to "FutureBuilder<T>"(of "flutter/widgets/async.dart")
   "value__type" can be nil-able
     unlike "FutureBuilder" which silently behaves in-correctly
       instead of supporting ,failing ,or error-ing out
         due to "snapshot.data" being internally nil-able
           despite its type-decl.ion being un-constrained
-            breaking the promise of void-safety */ <value__type>({
-  required final value__asyn<value__type> value,
-  required final gui__base__widget__build__function__format child__state__waiting__build,
-  required final gui__base__widget__state__success__build__function__format<value__type> child__state__completion__success__build,
-  required final gui__base__widget__state__failure__build__function__format child__state__completion__failure__build,
-}) {
-  return FutureBuilder<value__type>(
-    future: value,
-    builder: (final context, final snap_shot) {
-      switch (snap_shot.connectionState) {
-        case ConnectionState.done:
-          {
-            if (snap_shot.hasError) {
-              return child__state__completion__failure__build(
-                context,
-                snap_shot.error!,
-                snap_shot.stackTrace!,
-              );
-            } /*
+            breaking the promise of void-safety */ (
+    final gui__base__widget__building__context context, {
+    required final gui__base__widget__build__function__format child__state__waiting__build,
+    required final gui__base__widget__state__success__build__function__format<value__type> child__state__completion__success__build,
+    required final gui__base__widget__state__failure__build__function__format child__state__completion__failure__build,
+  }) {
+    return FutureBuilder<value__type>(
+      future: this,
+      builder: (final context, final snap_shot) {
+        switch (snap_shot.connectionState) {
+          case ConnectionState.done:
+            {
+              if (snap_shot.hasError) {
+                return child__state__completion__failure__build(
+                  context,
+                  snap_shot.error!,
+                  snap_shot.stackTrace!,
+                );
+              } /*
 "snap_shot.hasData" cannot handle "value__type" being nil */
 
-            return child__state__completion__success__build(
-              context,
-              (snap_shot.data as value__type) /*
+              return child__state__completion__success__build(
+                context,
+                (snap_shot.data as value__type) /*
 "snap_shot.data!" is in-correct if "value__type" is nil */,
-            );
-          }
-        case ConnectionState.waiting:
-          {
-            return child__state__waiting__build(
-              context,
-            );
-          }
+              );
+            }
+          case ConnectionState.waiting:
+            {
+              return child__state__waiting__build(
+                context,
+              );
+            }
 
-        default /*
+          default /*
 should never happen
   because `future` param. is non-nil */ :
-          throw "un-known connection-state";
-      }
-    },
-  );
+            throw "un-known connection-state";
+        }
+      },
+    );
+  }
 }

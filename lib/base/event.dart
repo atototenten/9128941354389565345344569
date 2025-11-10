@@ -186,9 +186,7 @@ class base__event__channel__broadcast //
           return TRUE;
         }
 
-        descriptions___raw.remove___raw(
-          id,
-        );
+        descriptions___raw.remove(id);
 
         return FALSE;
       },
@@ -225,9 +223,12 @@ class base__event__channels__broadcast //
     implements base__event__channel__broadcast__dispose___protocol {
   base__event__channels__broadcast(
     final array<base__event__channel__broadcast__dispose___protocol> channels,
-  ) : channels___raw = channels;
+  ) : _channels = channels;
 
-  final array<base__event__channel__broadcast__dispose___protocol> channels___raw;
+  final array<base__event__channel__broadcast__dispose___protocol> _channels;
+
+  @override
+  void dispose() {}
 
   void channels__iterate___raw(
     final void Function(
@@ -235,7 +236,7 @@ class base__event__channels__broadcast //
     )
     operate,
   ) {
-    channels___raw.iterate__reverse__basic((final i, final e) => operate(e));
+    _channels.iterate__reverse__basic((final i, final e) => operate(e));
   }
 
   @override
@@ -290,9 +291,6 @@ class base__event__channels__broadcast //
       (final channel) => channel.event__dispatch(),
     );
   }
-
-  @override
-  void dispose() {}
 }
 
 class base__event__channels__owned__broadcast //
@@ -315,56 +313,53 @@ class base__event__channels__owned__broadcast //
 
 class base__event__channel__broadcast__periodic //
     extends base__event__channel__broadcast {
-  factory base__event__channel__broadcast__periodic({
-    required final INT time__unit__count,
-    final INT time__interval /* in milli-seconds */ = Duration.millisecondsPerSecond,
-    required final procedure__empty__format time__completion__handle /*
-invoked after the saturation of `time__unit__count`
-  ,like on 4th ,for 3 as `time__unit__count` */,
-  }) {
-    late final base__event__channel__broadcast__periodic result;
-
-    result = base__event__channel__broadcast__periodic._(
-      delay___raw: delaying__asyn.periodic(
-        Duration(
-          milliseconds: time__interval,
-        ),
-        (final _) {
-          result.time__unit__count__current___raw += 1;
-          if (result.time__unit__count__current___raw < time__unit__count) {
-            result.event__dispatch();
-          } else {
-            result.delay___raw.cancel();
-            time__completion__handle();
-          }
-        },
+  base__event__channel__broadcast__periodic({
+    required this.time__unit__count,
+    final INT time__interval /* in milli-seconds */ = date_time.duration__second__seconds__milli,
+    required final procedure__empty__format completion__handle /*
+invoked after the saturation of "time__unit__count"
+  ,like on 4th ,for 3 as "time__unit__count" */,
+  }) : _time__unit__count__current = time__unit__count {
+    _delaying = delaying__asyn.periodic(
+      Duration(
+        milliseconds: time__interval,
       ),
-      time__unit__count__current___raw: 0,
-    );
+      (final _) {
+        final valid___ok = (_time__unit__count__current > 0);
+        _time__unit__count__current -= 1;
 
-    return result;
+        if (valid___ok) {
+          event__dispatch();
+          return;
+        }
+
+        _delaying.cancel();
+        completion__handle();
+      },
+    );
   }
 
-  base__event__channel__broadcast__periodic._({
-    required this.delay___raw,
-    required this.time__unit__count__current___raw,
-  });
+  final INT time__unit__count;
 
-  final delaying__asyn delay___raw;
+  late final delaying__asyn _delaying;
 
-  INT time__unit__count__current___raw;
+  INT _time__unit__count__current;
+
+  INT time__unit__count__remaining() {
+    return _time__unit__count__current;
+  }
 
   INT time__unit__count__current() {
-    return time__unit__count__current___raw;
+    return (time__unit__count - _time__unit__count__current);
   }
 
-  BOOL time__unit__count__current__first___ok() {
-    return (time__unit__count__current___raw == 0);
+  BOOL time__unit__count__current__final___ok() {
+    return (_time__unit__count__current == 0);
   }
 
   @override
   void dispose() {
-    delay___raw.cancel();
+    _delaying.cancel();
 
     super.dispose();
   }

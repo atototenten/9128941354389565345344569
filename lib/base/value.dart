@@ -346,7 +346,7 @@ class base__value__channel__broadcast<value__type> //
       throw Exception();
     }
 
-    _handlings.remove___raw(element__id);
+    _handlings.remove(element__id);
   }
 
   void value__dispatch(final value__type value) {

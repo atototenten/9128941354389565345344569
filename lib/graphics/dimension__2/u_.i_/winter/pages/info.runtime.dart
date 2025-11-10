@@ -25,9 +25,7 @@ class base__program__info__page__entity //
   final base__scrolling scroll__manager;
 
   @override
-  gui__base__widget widget(
-    final gui__base__widget__building__context context,
-  ) {
+  gui__base__widget widget(final gui__base__widget__building__context context) {
     final //
         border__radius = BorderRadius.all(Radius.circular(12.px())),
         mediaQueryData = MediaQuery.of(context),
