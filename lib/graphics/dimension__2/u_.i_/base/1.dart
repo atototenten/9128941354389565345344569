@@ -69,7 +69,8 @@ enum axis__alignment___enum {
   ending,
 }
 
-gui__base__widget gui__base__stack___widget({
+gui__base__widget gui__base__widget__stack___widget(
+  final gui__base__widget__building__context context, {
   final AlignmentGeometry alignment = AlignmentDirectional.topStart,
   final StackFit fitting = StackFit.loose,
   required final array<gui__base__widget> children,
