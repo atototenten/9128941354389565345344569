@@ -67,7 +67,7 @@ gui__base__widget overlay__bottom__confirm(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <gui__base__widget>[
-            gui__base__gesture__press__handling__widget(
+            gui__base__gesture__detection__widget(
               press__handle: () {
                 context.navigation().backward();
                 proceed__handle();
@@ -84,7 +84,7 @@ gui__base__widget overlay__bottom__confirm(
               ),
             ),
             gui__base__widget__separat_or__vertical,
-            gui__base__gesture__press__handling__widget(
+            gui__base__gesture__detection__widget(
               press__handle: () => context.navigation().backward(),
               child: winter__listing__item(
                 border__radius:

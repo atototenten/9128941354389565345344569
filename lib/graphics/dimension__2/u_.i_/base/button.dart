@@ -32,7 +32,7 @@ class gui__base__button {
   }) {
     return gui__base__widget__build(
       child__build: (final context) {
-        return gui__base__gesture__press__handling__widget(
+        return gui__base__gesture__detection__widget(
           press__down__handle: (_) {
             pressed__ok___raw = TRUE;
             context.build__re___raw();
@@ -100,7 +100,7 @@ should not invoke `.selection__switch` ,if the result is `OK`
   }) {
     return gui__base__widget__build(
       child__build: (final context) {
-        return gui__base__gesture__press__handling__widget(
+        return gui__base__gesture__detection__widget(
           press__handle: () {
             final switch___ok = press__handle();
 

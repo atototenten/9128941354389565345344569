@@ -84,7 +84,7 @@ gui__base__widget gui__base__widget__stack___widget(
   );
 }
 
-gui__base__widget gui__base__gesture__press__handling__widget({
+gui__base__widget gui__base__gesture__detection__widget({
   final HitTestBehavior? behavior,
   required final procedure__empty__format press__handle,
   final void Function(TapDownDetails details)? press__down__handle,
@@ -98,6 +98,16 @@ gui__base__widget gui__base__gesture__press__handling__widget({
     onTapUp: press__up__handle,
     onTapCancel: press__cancel__handle,
     behavior: behavior,
+    child: child,
+  );
+}
+
+gui__base__widget gui__base__gesture__detection__target__widget(
+  final gui__base__widget__building__context context, {
+  required final gui__base__widget child,
+}) {
+  return ColoredBox(
+    color: base__color__transparent,
     child: child,
   );
 }

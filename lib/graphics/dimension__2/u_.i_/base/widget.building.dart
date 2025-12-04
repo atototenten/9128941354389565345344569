@@ -41,7 +41,6 @@ class _widget__definitive__building<storage___type> /*
 - inspired by "StatefulBuilder" of "flutter/widgets/basic.dart" */ //
     extends StatefulWidget {
   const _widget__definitive__building({
-    super.key,
     required this.attach__handle,
     required this.detach__handle,
     required this.child__build /*
@@ -103,20 +102,22 @@ class _widget__definitive__building__state<storage___type> //
 gui__base__widget gui__base__widget__build({
   required final gui__base__widget__build__function__format child__build,
 }) {
-  return _widget__building(child__build);
+  return _widget__building(
+    child__build: child__build,
+  );
 }
 
 @immutable
 class _widget__building /*
 inspired by "Builder" of "flutter/widgets/basic.dart" */ //
     extends StatelessWidget {
-  const _widget__building(
-    this.child__build /*
+  const _widget__building({
+    required this.child__build /*
 must be nullipotent(side-effect free)
   and should not contain any other code, than g.u.i. presentation
 can be invoked anytime ,and any number of times
   and timing is un-deterministic */,
-  );
+  });
 
   final gui__base__widget__build__function__format child__build;
 

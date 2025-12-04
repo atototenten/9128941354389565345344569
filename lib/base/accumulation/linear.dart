@@ -475,20 +475,9 @@ memory-usage is not reduced */ () {
 - in-efficient ,due to copying */ (final INT element__id) {
     element__id__ensure__valid___raw(element__id);
 
-    /*base__iterate__basic(
-      (_elements__count - (element__id - 1) /* converting offset to count */ ),
-      (final i) {
-        _elements[element__id] = _elements[1 + element__id];
-      },
-      offset: element__id,
-    )*/
-    base__iterate__until__basic(
-      _elements__count,
-      (final i) {
-        _elements[i - 1] = _elements[i];
-      },
-      offset: (1 + element__id),
-    );
+    for (var i = (1 + element__id); i < _elements__count; i += 1) {
+      _elements[i - 1] = _elements[i];
+    }
 
     _elements__reduce__once();
   }

@@ -398,7 +398,7 @@ class gui__base__app__running__simple //
 
   @override
   gui__base__widget widget__build(final gui__base__widget__building__context context) {
-    return _init_ion__asyn._handling__widget__build(
+    return _init_ion__asyn.handling__widget__build(
       context,
       child__state__waiting__build: splash__build,
       child__state__completion__failure__build: gui__base__widget__error__default__build,

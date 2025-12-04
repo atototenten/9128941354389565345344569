@@ -203,7 +203,8 @@ widget suggestions
     return _channel.handling__widget__build(
       context,
       child__build: (final context) {
-        return gui__base__stack___widget(
+        return gui__base__widget__stack___widget(
+          context,
           alignment: Alignment.center,
           children: [
             child__build(context),

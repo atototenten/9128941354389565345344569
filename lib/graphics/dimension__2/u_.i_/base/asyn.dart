@@ -1,6 +1,6 @@
 part of "_.dart";
 
-extension gui__base__value__asyn__definitive__handling__extension<value__type> //
+extension gui__base__value__asyn__definitive__handling___extension<value__type> //
     on base__value__asyn__definitive<value__type> {
   gui__base__widget handling__widget__build /*
 compared to `FutureBuilder<T>`(of `flutter/widgets/async.dart`)
@@ -73,9 +73,9 @@ gui__base__widget gui__base__widget__error__default__build(
   );
 }
 
-extension _value__asyn__handling__extension<value__type> //
+extension value__asyn__handling___extension<value__type> //
     on value__asyn<value__type> {
-  gui__base__widget _handling__widget__build /*
+  gui__base__widget handling__widget__build /*
 compared to "FutureBuilder<T>"(of "flutter/widgets/async.dart")
   "value__type" can be nil-able
     unlike "FutureBuilder" which silently behaves in-correctly

@@ -5,6 +5,11 @@ class gui__base__input__text___compo /*
     due to it being defective
       and pressing-region("TapRegion") being the better approach ,to handle focussing */ //
     implements base__dispose___protocol {
+  static const //
+  char__secret__replacement__default = "•",
+      char__secret__replacement__big = "●",
+      char__secret__replacement__huge = "⬤";
+
   static final //
   text__filtering__basic___formatting = FilteringTextInputFormatter(
         r"[ -~]",
@@ -81,9 +86,14 @@ FIX :
       ,most probably a {flutter-side}-issue */ (
     final gui__base__widget__building__context context, {
     final TextInputType type = TextInputType.text,
-    final BOOL secret___ok = FALSE,
+    final string? char__replacement,
     required final TextStyle text__style,
-    required final Color cursor__color,
+    required final ({
+      Color color,
+      Radius radius,
+      APPROX width,
+    })
+    cursor,
     final TextCapitalization capitalization = TextCapitalization.none,
     final array<TextInputFormatter>? formatting,
     final ({
@@ -99,7 +109,10 @@ valid values
         })?
         height__lines =
         height__lines__default,
+    final event__handle__procedure__format? editing__completion__handle,
   }) {
+    final secret___ok = (char__replacement != null);
+
     return Material(
       color:
           (base__app__theme__colors__ground__back__contrast__dark___ok //
@@ -113,22 +126,23 @@ intentional ,because wrapping with boolean-based transitioning ,with a default-s
         decoration: NIL,
         style: text__style,
         cursorOpacityAnimates: FALSE,
-        cursorColor: cursor__color,
-        cursorRadius: Radius.circular(1.px()),
-        cursorWidth: 2.px(),
+        cursorColor: cursor.color,
+        cursorRadius: cursor.radius,
+        cursorWidth: cursor.width,
         keyboardType: type,
         textInputAction:
             ((type == TextInputType.multiline) //
             ? TextInputAction.newline
-            : TextInputAction.done) /*
-behavior-standardization to prevent ambiguity
-  between keyboard-close and form-submission
-  induced by the users */,
+            : TextInputAction.done),
         textCapitalization: capitalization,
         textAlignVertical: TextAlignVertical.center,
         textDirection: TextDirection.ltr,
         obscureText: secret___ok,
-        autocorrect: secret___ok.not,
+        obscuringCharacter:
+            (secret___ok //
+            ? char__replacement
+            : char__space),
+        autocorrect: FALSE,
         enableSuggestions: secret___ok.not,
         enableIMEPersonalizedLearning: secret___ok.not,
         scrollPadding: EdgeInsets.zero,
@@ -142,6 +156,15 @@ behavior-standardization to prevent ambiguity
             ? Brightness.dark
             : Brightness.light),
         scrollPhysics: gui__base__scrolling___compo.scrolling__physics__clamping,
+        onEditingComplete: () {
+          _controlling.clearComposing();
+
+          if (editing__completion__handle == null) {
+            return;
+          }
+
+          editing__completion__handle();
+        },
       ),
     );
   }
