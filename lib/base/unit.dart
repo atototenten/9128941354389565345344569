@@ -1,50 +1,50 @@
 part of "_.dart";
 
-extension unit__extension //
+extension base__unit__extension //
     on INT {
-  magnitude__conversion__scale__faulty__result___union //
+  base__magnitude__conversion__scale__faulty__result___union //
       magnitude__convert__scale__faulty() {
     final value = this;
 
     if (value < units__scale.kilo.magnitude) {
-      return magnitude__conversion__scale__faulty__result__moot();
+      return base__magnitude__conversion__scale__faulty__result__moot();
     }
 
     if (value < units__scale.mega.magnitude) {
-      return magnitude__conversion__scale__faulty__result__success(
+      return base__magnitude__conversion__scale__faulty__result__success(
         magnitude: (value ~/ units__scale.kilo.magnitude),
         scale: units__scale.kilo,
       );
     } else if (value < units__scale.giga.magnitude) {
-      return magnitude__conversion__scale__faulty__result__success(
+      return base__magnitude__conversion__scale__faulty__result__success(
         magnitude: (value ~/ units__scale.mega.magnitude),
         scale: units__scale.mega,
       );
     } else if (value < units__scale.tera.magnitude) {
-      return magnitude__conversion__scale__faulty__result__success(
+      return base__magnitude__conversion__scale__faulty__result__success(
         magnitude: (value ~/ units__scale.giga.magnitude),
         scale: units__scale.giga,
       );
     } else if (value < units__scale.peta.magnitude) {
-      return magnitude__conversion__scale__faulty__result__success(
+      return base__magnitude__conversion__scale__faulty__result__success(
         magnitude: (value ~/ units__scale.tera.magnitude),
         scale: units__scale.tera,
       );
     } else if (value < units__scale.exa.magnitude) {
-      return magnitude__conversion__scale__faulty__result__success(
+      return base__magnitude__conversion__scale__faulty__result__success(
         magnitude: (value ~/ units__scale.peta.magnitude),
         scale: units__scale.peta,
       );
     }
 
-    return magnitude__conversion__scale__faulty__result__failure();
+    return base__magnitude__conversion__scale__faulty__result__failure();
   }
 }
 
-class magnitude__conversion__scale__faulty__result__success //
+class base__magnitude__conversion__scale__faulty__result__success //
     implements
-        magnitude__conversion__scale__faulty__result___union {
-  const magnitude__conversion__scale__faulty__result__success({
+        base__magnitude__conversion__scale__faulty__result___union {
+  const base__magnitude__conversion__scale__faulty__result__success({
     required this.magnitude,
     required this.scale,
   });
@@ -75,23 +75,23 @@ class magnitude__conversion__scale__faulty__result__success //
   }
 }
 
-class magnitude__conversion__scale__faulty__result__failure /*
+class base__magnitude__conversion__scale__faulty__result__failure /*
 the scale is immense
   beyond measurable ,either currently ,or absolutely */ //
     implements
-        magnitude__conversion__scale__faulty__result___union {
-  const magnitude__conversion__scale__faulty__result__failure();
+        base__magnitude__conversion__scale__faulty__result___union {
+  const base__magnitude__conversion__scale__faulty__result__failure();
 }
 
-class magnitude__conversion__scale__faulty__result__moot /*
+class base__magnitude__conversion__scale__faulty__result__moot /*
 the re-scaling is un-necessary
   due to the magnitude being less than the smallest scale */ //
     implements
-        magnitude__conversion__scale__faulty__result___union {
-  const magnitude__conversion__scale__faulty__result__moot();
+        base__magnitude__conversion__scale__faulty__result___union {
+  const base__magnitude__conversion__scale__faulty__result__moot();
 }
 
-sealed class magnitude__conversion__scale__faulty__result___union {}
+sealed class base__magnitude__conversion__scale__faulty__result___union {}
 
 const //
     base__units__information__bit = base__unit(

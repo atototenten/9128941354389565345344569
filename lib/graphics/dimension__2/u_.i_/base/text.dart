@@ -27,7 +27,7 @@ TextSpan gui__base__box__text__segment(
 }
 
 TextSpan gui__base__box__text__segments(
-  final array<InlineSpan> value, {
+  final ARRAY<InlineSpan> value, {
   final TextStyle? style,
 }) {
   return TextSpan(
@@ -42,10 +42,10 @@ TextStyle base__text__style({
   final FontWeight? font__weight,
   final FontStyle? font__style,
   final Paint? ground__fore,
-  final array<FontFeature>? font__features,
+  final ARRAY<FontFeature>? font__features,
   final TextDecoration? decoration,
   required final string? font__family,
-  required final array<string>? font__family__default,
+  required final ARRAY<string>? font__family__default,
   final string? package,
   final TextOverflow text__overflow = TextOverflow.clip,
 }) {
@@ -75,7 +75,7 @@ for `base__text__style.ground__fore`
     ..color = base__color__white);
 }
 
-array<string>? base__text__font__family__default() {
+ARRAY<string>? base__text__font__family__default() {
   return Typography.material2021().black.bodyMedium?.fontFamilyFallback /*
 copied from `Theme.of(context).textTheme.bodyMedium`'s src. */
       ;

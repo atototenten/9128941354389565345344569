@@ -11,14 +11,14 @@ inerrant (never fail(eval. into error)) */ //
 = value__asyn<value__type>;
 
 typedef value__asyn__meta<value__type> //
-= async.Completer /* promise */ <value__type>;
+= dart__async.Completer /* promise */ <value__type>;
 
 typedef value__asyn /*
 prefer creating as soon as possible, to reduce/shorten the resolving time */ <value__type> //
-= async.Future<value__type>;
+= dart__async.Future<value__type>;
 
 typedef delaying__asyn //
-= async.Timer;
+= dart__async.Timer;
 
 const //
 base__delay__duration__none = Duration.zero,
@@ -45,7 +45,7 @@ value__asyn__basic<void> base__delay({
 void task__schedule(
   final procedure__empty__format proc_,
 ) {
-  async.scheduleMicrotask(
+  dart__async.scheduleMicrotask(
     proc_,
   );
 }

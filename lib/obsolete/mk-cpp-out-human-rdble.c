@@ -51,7 +51,7 @@ int main(int args__count,
 
 	mem__ALLOC__ARRAY(file__bys, io__BUFFER__SIZE)
 
-	const ch 
+	const ch
 		FIRST__STATEMENT__char = FIRST__STATEMENT[0],
 		FIRST__STATEMENT__char_ = FIRST__STATEMENT[1],
 		*FIRST__STATEMENT__str = FIRST__STATEMENT,

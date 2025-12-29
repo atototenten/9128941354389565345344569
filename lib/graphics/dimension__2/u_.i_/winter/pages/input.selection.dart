@@ -4,12 +4,12 @@ part of "../_.dart";
   required final base__scrolling scroll__manager,
   required final gui__base__widget page__title,
   required final INT item__array__count,
-  final array<INT>? selection__array__initial,
+  final ARRAY<INT>? selection__array__initial,
   final ({INT min, INT max}) selection__array__constraints = (min: 1 /* 0, to allow submit-ing anytime, without even a single selection */, max: INT__1__max),
   required final gui__base__listing__item__build__function__format listing__item__body__build,
   final IconData? submit__button__icon = flutter__icon__done,
   final string submit__button__title = "Submit",
-  required final void Function(array<INT> selection__id__array) submit__handle,
+  required final void Function(ARRAY<INT> selection__id__array) submit__handle,
 }) {
   final selection__accumulation = base__accumulation__linear__basic__definitive<INT>();
 

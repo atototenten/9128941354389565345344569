@@ -6,7 +6,7 @@ const //
     base__printing__label__width__default = 39 /*
 16 width (128 bits) integer,
   in hexa-decimal representation, which gives 32(16 * 2),
-  separated with char__space(or `integerSeparator`, which is ':' currently), which gives additional 7((32 ~/ 4) -1) chars */
+  separated with base__chars__space___string(or `integerSeparator`, which is ':' currently), which gives additional 7((32 ~/ 4) -1) chars */
     ,
     base__printing__indentation__size = 4;
 
@@ -60,28 +60,28 @@ usually `value.debug__label`, or `value.code__hash.cached` */
 
     buffer
       ..write(((chars__count < base__printing__label__width) //
-          ? (label + (char__space * (base__printing__label__width - chars__count)))
+          ? (label + (base__chars__space___string * (base__printing__label__width - chars__count)))
           : ((chars__count > base__printing__label__width) //
-              ? (label.substring(0, (base__printing__label__width - 1)) + char__plus)
+              ? (label.substring(0, (base__printing__label__width - 1)) + base__chars__plus___string)
               : label.substring(0, base__printing__label__width))))
-      ..write(char__space * 2);
+      ..write(base__chars__space___string * 2);
   } else {
-    buffer.write(char__space * (base__printing__label__width + 2));
+    buffer.write(base__chars__space___string * (base__printing__label__width + 2));
   }
 
   if (_indentation > 0) {
-    buffer.write(char__space * (_indentation * base__printing__indentation__size));
+    buffer.write(base__chars__space___string * (_indentation * base__printing__indentation__size));
   }
 
   if (path != null) {
     buffer
       ..write(path)
-      ..write(char__equal);
+      ..write(base__chars__equal___string);
   }
 
   buffer
     ..write(value)
-    ..write(char__slash__backward) /*..write(char__line_feed)*/;
+    ..write(base__chars__slash__backward___string) /*..write(char__line_feed)*/;
 
   final result = buffer.toString();
 
@@ -96,7 +96,7 @@ void base__print__blank([
   final INT count = 0,
 ]) {
   base__print__handle(
-    (char__line_feed * count),
+    (base__chars__line_feed___string * count),
   );
 }
 

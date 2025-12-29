@@ -61,7 +61,7 @@ invokation possibly leads to side-effects */
 }
 
 class base__procedure__empty__meta__definitive /*
-`procedure__empty__container` 
+`procedure__empty__container`
   ,with `._value`-management ,like [un-]safe remov-al/replac-ment
 app.s :widget(of graphical-user-interface)'s [de-]init ,etc. */ //
     implements
@@ -72,12 +72,12 @@ app.s :widget(of graphical-user-interface)'s [de-]init ,etc. */ //
   INT assignment__id___raw /*
 mutation/generation id.
 needed for safe remov-al/re-place
-should only used for intra-container equality ,not inter-container 
+should only used for intra-container equality ,not inter-container
   ,because the id is container-level ,not program-level
-`_id uu` is better than `_id Object` 
-  ,because `uu` uses ,the whole INT__8 space 
-    ,while `Object` uses much less than `u48`-bits 
-      ,also much more likeliness-of-conflict 
+`_id uu` is better than `_id Object`
+  ,because `uu` uses ,the whole INT__8 space
+    ,while `Object` uses much less than `u48`-bits
+      ,also much more likeliness-of-conflict
         ,due to memory re-alloc./re-use/re-cycle */
       ;
 

@@ -1,9 +1,9 @@
 part of "_.dart";
 
-typedef array<element__type> = List<element__type>;
+typedef ARRAY<element__type> = List<element__type>;
 
-array<element__type> array__new__copy<element__type>(
-  final array<element__type> arr_, {
+ARRAY<element__type> array__new__copy<element__type>(
+  final ARRAY<element__type> arr_, {
   final INT offset = 0,
   final INT? count,
 }) => arr_.sublist(
@@ -11,32 +11,32 @@ array<element__type> array__new__copy<element__type>(
   ((count ?? arr_.elements__count) + offset),
 );
 
-array<element__type> array__new__filled<element__type>(
+ARRAY<element__type> array__new__filled<element__type>(
   final INT count,
   final element__type value,
-) => array<element__type>.filled(
+) => ARRAY<element__type>.filled(
   count,
   value,
   growable: FALSE,
 );
 
-array<element__type> array__new__generated<element__type>(
+ARRAY<element__type> array__new__generated<element__type>(
   final INT count,
   final element__type Function(INT i) generate,
-) => array<element__type>.generate(
+) => ARRAY<element__type>.generate(
   count,
   generate,
   growable: FALSE,
 );
 
-array<element__type> //
+ARRAY<element__type> //
 array__new__empty<element__type>() => //
 array__new__generated<element__type>(
   0,
   (final _) => throw Exception(),
 );
 
-array<element__type> array__new__element__single<element__type>(
+ARRAY<element__type> array__new__element__single<element__type>(
   final element__type value,
 ) => array__new__filled<element__type>(
   1,
@@ -44,8 +44,8 @@ array<element__type> array__new__element__single<element__type>(
 );
 
 extension array__array__merge_ing<element__type> //
-    on array<array<element__type>> {
-  array<element__type> merge() {
+    on ARRAY<ARRAY<element__type>> {
+  ARRAY<element__type> merge() {
     var elements__count = 0;
 
     iterate__reverse__basic(
@@ -120,7 +120,7 @@ class base__array__elements__separated__generation__meta___compo {
 }
 
 BS1__array INT__array__convert__BS1__array(
-  final array<INT> arr,
+  final ARRAY<INT> arr,
 ) {
   arr.iterate__reverse__basic(
     (final i, final value) {
@@ -135,7 +135,8 @@ BS1__array INT__array__convert__BS1__array(
   );
 }
 
-extension array__extension<element___type> on array<element___type> {
+extension ARRAY___extension<element___type> //
+    on ARRAY<element___type> {
   INT get elements__count => //
       length;
 
@@ -148,7 +149,7 @@ extension array__extension<element___type> on array<element___type> {
   BOOL empty__not() => //
       (this.elements__count != 0);
 
-  array<element___type>? empty__not__else__nil() => //
+  ARRAY<element___type>? empty__not__else__nil() => //
       (empty__not() ? this : NIL);
 
   element___type element__last() => //
@@ -222,7 +223,7 @@ extension array__extension<element___type> on array<element___type> {
   INT? /*
 un-equal element's id, if any */
   un_equal__element__id(
-    final array<element___type> other, {
+    final ARRAY<element___type> other, {
     final INT? count,
     final INT offset = 0,
   }) {
@@ -245,7 +246,7 @@ un-equal element's id, if any */
     return result;
   }
 
-  BOOL equal___ok(final array<element___type> other) {
+  BOOL equal___ok(final ARRAY<element___type> other) {
     if (elements__count != other.elements__count) {
       return FALSE;
     }
@@ -295,7 +296,7 @@ un-equal element's id, if any */
   );
 
   INT? /*element__id_*/ search__segment(
-    final array<element___type> segment,
+    final ARRAY<element___type> segment,
   ) {
     INT? segment__element__id;
 
@@ -349,9 +350,9 @@ whole `segment` has been iterated ,and was not un-equal to `this[(i-segment__ele
   }
 
   BOOL search__segment__begin(
-    final array<element___type> segment,
+    final ARRAY<element___type> segment,
   ) /*
-equality is not considered prefix 
+equality is not considered prefix
   ,like `abc` is prefixed to `abcxyz` ,but neither `abcxyz` ,nor `xyzabc`
 more run-time efficient ,than `search__segment` */ {
     if ((elements__count > segment.elements__count).not) /*
@@ -393,9 +394,9 @@ more run-time efficient ,than `search__segment` */ {
     });
   }
 
-  array<element___type> search__multiple /*
+  ARRAY<element___type> search__multiple /*
 join */ <element__other__type>(
-    final array<element__other__type> other,
+    final ARRAY<element__other__type> other,
     final base__value__equality__function__format<element___type, element__other__type> element__equal___ok,
   ) {
     final accumulation = base__accumulation__linear__basic<element___type>();
@@ -513,10 +514,35 @@ join */ <element__other__type>(
       },
     );
   }
+
+  Iterable<Iterable<element___type>> split /*
+  - example
+    - input : ARRAY(1 ,2 ,3 ,0 ,4 ,5 ,6 ,0 ,7 ,8 ,9)..split((e) { RETURN (e = 0) })
+      output : ARRAY(ARRAY(1 ,2 ,3) ,ARRAY(4 ,5 ,6) ,ARRAY(7 ,8 ,9)) */ (
+    final BOOL Function(element___type) split___ok,
+  ) sync* {
+    var offset = 0;
+
+    while (offset < this.length) {
+      yield () sync* {
+        while (offset < this.length) {
+          final e = this[offset];
+
+          if (split___ok(e)) {
+            return;
+          }
+
+          offset += 1;
+
+          yield e;
+        }
+      }();
+    }
+  }
 }
 
 extension element__type__array__report__definitive__extension<element__type> //
-    on array<element__type> {
+    on ARRAY<element__type> {
   string //
   convert__text__concise__definitive(
     final INT elements__count,

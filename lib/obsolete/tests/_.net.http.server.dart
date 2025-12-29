@@ -6,19 +6,19 @@ const //
 
 void main /*
 arg.s :
-  - "address"(optional) 
-    ,used for listen-ing 
+  - "address"(optional)
+    ,used for listen-ing
     ,by default "127.0.0.1"
-  - "port"(optional) 
-    ,used for listen-ing 
+  - "port"(optional)
+    ,used for listen-ing
     ,by default "8192"
-  - "app__:address"(optional) 
-    ,used for CORS 
-    ,like "xyz.app/abc" 
+  - "app__:address"(optional)
+    ,used for CORS
+    ,like "xyz.app/abc"
     ,by default ,dynamic ,"request.headers.origin"
 sends only 3 status-codes ,as response ,200/OK ,400/bad-request/client-issue ,500/{internal|server}-issue */
     (
-  final array<string> info__,
+  final ARRAY<string> info__,
 ) async {
   info__.representation__text().print("information");
 

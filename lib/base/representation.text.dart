@@ -2,7 +2,7 @@ part of "_.dart";
 
 class base__representation__text /*
 `text` vs `representation__text`
-  the former is a member of the type-system 
+  the former is a member of the type-system
     ,while the latter is ,a representation of a value ,and {type-system}-independent abstraction */
 {
   const base__representation__text(

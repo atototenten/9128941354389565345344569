@@ -1,20 +1,19 @@
 part of "_.dart";
 
 const //
-    CHAR__UNICODE__list__text__initial__size = INT__1__max;
+CHAR__UNICODE__list__text__initial__size = INT__1__max;
 
 INT CHAR__UNICODE__list__text__size__increased(
   final INT size,
-) =>
-    ((size << 1) | 1);
+) => ((size << 1) | 1);
 
 input__text__buffer___compo input__text__buffer({
   required final INT text__bytes__count__max,
-  final string__wide? chars__initial,
+  final STRING__UNICODE? chars__initial,
 }) {
   if (chars__initial == null) //
     return input__text__buffer___compo._(
-      chars: string__wide(CHAR__UNICODE__list__text__initial__size),
+      chars: STRING__UNICODE(CHAR__UNICODE__list__text__initial__size),
       size__current: 0,
       bytes__count: 0,
       bytes__count__max: text__bytes__count__max,
@@ -28,7 +27,7 @@ input__text__buffer___compo input__text__buffer({
       text__size,
     );
 
-  final chars = string__wide(text__size);
+  final chars = STRING__UNICODE(text__size);
 
   base__copy(
     chars,
@@ -57,8 +56,7 @@ class input__text__buffer___compo /*
     in-between writ-ing
       whenever the user, moves the caret, using arrow keys; update `text__offset`
         only when, user presses, some key, copy(not view) the `text`, from `text__offset`, to `text__size`; into `text__secondary`, and update the `text__size`
-          whenever the caret is moved, back to end, AND some key is pressed, write the `text__secondary`, to `text`, at `text__size` as offset, then assign `null` to `text__secondary` */
-{
+          whenever the caret is moved, back to end, AND some key is pressed, write the `text__secondary`, to `text`, at `text__size` as offset, then assign `null` to `text__secondary` */ {
   input__text__buffer___compo._({
     required this.chars,
     required this.size__current,
@@ -66,7 +64,7 @@ class input__text__buffer___compo /*
     required this.bytes__count__max,
   });
 
-  string__wide chars;
+  STRING__UNICODE chars;
 
   INT size__current;
   INT bytes__count;
@@ -87,13 +85,12 @@ class input__text__buffer___compo /*
 
   BOOL $b__write(
     final INT ws__bytes__count,
-  ) =>
-      ((bytes__count + ws__bytes__count) > bytes__count__max).not /*
+  ) => ((bytes__count + ws__bytes__count) > bytes__count__max)
+      .not /*
   partially writing `bytes`, until `text__bytes__count__max`'s breach
     could break, unicode's grapheme-cluster-s, and code-point-s
       like, 3-byte char's 2 bytes get written, while the last one is left out
-        hence breaking, the whole text */
-      ;
+        hence breaking, the whole text */;
 
   void $grow__if__required(
     INT size__required,
@@ -112,16 +109,14 @@ class input__text__buffer___compo /*
       final chars__old = chars;
 
       base__copy(
-        (chars = string__wide(text__size__)),
+        (chars = STRING__UNICODE(text__size__)),
         chars__old,
         count: size__current,
       );
     }
   }
 
-  BOOL write__append__TCW(
-    final CHAR__UNICODE wc
-  ) {
+  BOOL write__append__TCW(final CHAR__UNICODE wc) {
     final wc__bytes__count = CHAR__UNICODE__bytes__count(wc);
 
     if ($b__write(
@@ -141,8 +136,8 @@ class input__text__buffer___compo /*
     }
   }
 
-  BOOL write__append__string__wide(
-    final string__wide ws,
+  BOOL write__append__STRING__UNICODE(
+    final STRING__UNICODE ws,
   ) {
     var wstr__bytes__count = 0;
 
@@ -190,23 +185,22 @@ class input__text__buffer___compo /*
     }
   }
 
-  string__wide read__full() => //
-      (empty___ok().not
-          ? chars.view__partial(
-              0,
-              size__current,
-            )
-          : string__wide(0));
+  STRING__UNICODE read__full() => //
+  (empty___ok().not
+      ? chars.view__partial(
+          0,
+          size__current,
+        )
+      : STRING__UNICODE(0));
 
   void clear() /*
-  memory efficiency is NOT increased */
-  {
+  memory efficiency is NOT increased */ {
     size__current = 0;
     bytes__count = 0;
   }
 
-  string__wide convert__wstr__compact() {
-    final result = string__wide(size__current);
+  STRING__UNICODE convert__wstr__compact() {
+    final result = STRING__UNICODE(size__current);
 
     base__copy(
       result,
@@ -219,6 +213,6 @@ class input__text__buffer___compo /*
 
   void free() {
     clear();
-    chars = string__wide(0);
+    chars = STRING__UNICODE(0);
   }
 }

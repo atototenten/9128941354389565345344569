@@ -1,9 +1,10 @@
-import "dart:core";
-import "dart:typed_data" as typed_data;
+import "dart:core" /*as dart__core*/;
 
-import "dart:async" as async;
-import "dart:convert" as convert;
-import "dart:math" as math;
+import "dart:isolate" as dart__isolate;
+import "dart:typed_data" as dart__typed_data;
+import "dart:async" as dart__async;
+import "dart:convert" as dart__convert;
+import "dart:math" as dart__math;
 
 import "package:collection/collection.dart" show DeepCollectionEquality;
 
@@ -15,14 +16,13 @@ part "accumulation/chained.dart";
 part "accumulation/conservative.iteration.meta.dart";
 part "accumulation/linear.dart";
 part "accumulation/linked.dart";
-part "array.dart";
+part "ARRAY.dart";
 part "asyn.dart";
 part "math.dart";
 part "BOOL.dart";
 part "byte.string.dart";
 part "byte.array.dart";
 part "CHAR.ASCII.dart";
-part "CHAR.BASIC.dart";
 part "CHAR.dart";
 part "compo.dart";
 part "java_script.dart";
@@ -43,6 +43,7 @@ part "number/floating-point.dart";
 part "number/fixed-point.dart";
 part "image.dart";
 part "input.text.buffering.dart";
+part "isolating.dart";
 part "Iterable.dart";
 part "Iterate.dart";
 part "language.english.dart";
@@ -53,15 +54,14 @@ part "procedure.dart";
 part "queue.dart";
 part "stack.dart";
 part "static.dart";
-part "str.dart";
 part "Stream.dart";
 part "string.dart";
-part "string.wide.dart";
 part "representation.text.dart";
 part "union.dart";
 part "unit.dart";
 part "value.dart";
 part "Object__nilable.dart";
+part "UNICODE.dart";
 
 /*
   `(Object? == (Object | Null))`
@@ -133,7 +133,7 @@ result__code__size = INT__1__size,
         empty__string =
         "";
 
-const CHAR //
+const //
 checksum__sha__256__size = 32;
 
 const //
@@ -155,7 +155,7 @@ extension nil__conversion__extension<type extends Object> on type? {
   }
 }
 
-late final base__random__safe = math.Random.secure();
+late final base__random__safe = dart__math.Random.secure();
 
 BOOL base__check__endian__host__little() {
   return ((BS2__array(1)..[0] = 256 /* because we want to check the index 0, not 1 */ ).buffer.asUint8List()[0] == 0);
@@ -174,8 +174,8 @@ typedef base__copy__result___compo = ({
 
 //@attribute__function__inline
 base__copy__result___compo base__copy<element___type>(
-  final array<element___type> dest,
-  final array<element___type> src, {
+  final ARRAY<element___type> dest,
+  final ARRAY<element___type> src, {
   final INT? /*src__*/ count,
   INT dest__offset = 0,
   INT src__offset = 0,
@@ -220,7 +220,7 @@ abstract class base__dispose__asyn__basic___protocol {
 }
 
 INT binarySearch(
-  final array<INT> list,
+  final ARRAY<INT> list,
   final INT element,
 ) {
   INT //
@@ -251,7 +251,7 @@ INT binarySearch(
 }
 
 extension INT__array__bits__extension //
-    on array<INT> {
+    on ARRAY<INT> {
   string bits({
     final INT interval = 4,
   }) {
@@ -286,7 +286,7 @@ extension INT__array__bits__extension //
 extension text__separation__extension //
     on string {
   string separate({
-    final string separation = char__space,
+    final string separation = base__chars__space___string,
     final INT interval = 3,
     final string? prefix,
   }) {
@@ -331,7 +331,7 @@ extension text__separation__extension //
     return buffer.toString();
   }
 
-  array<string> separate__array({
+  ARRAY<string> separate__array({
     final int interval = 3,
   }) {
     final length_1 = length;

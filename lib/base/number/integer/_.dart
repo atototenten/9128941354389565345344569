@@ -2,6 +2,8 @@ part of "../../_.dart";
 
 typedef INT /* general/generic */ = int;
 
+typedef INT__BIG__NATIVE = INT;
+
 const //
     INT__1__size = BS1__size,
     INT__1__width = (INT__1__size * BS1__width),

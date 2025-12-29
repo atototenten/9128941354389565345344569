@@ -12,7 +12,7 @@ void language__english__count__text__convert__plural__if__needed__buffer(
 ]) {
   buffer
     ..write(count)
-    ..write(char__space)
+    ..write(base__chars__space___string)
     ..write(word);
 
   if (count != 1) //

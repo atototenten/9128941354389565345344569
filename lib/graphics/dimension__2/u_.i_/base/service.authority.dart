@@ -13,8 +13,8 @@ class service__authority //
     this.data__handle,
   );
 
-  final array<service__authority__source> sources /*
-resolving is 
+  final ARRAY<service__authority__source> sources /*
+resolving is
   ,from begin to end ,but stops if any source denies
     ,simply logical-OR towards denial */;
   final value__asyn<gui__base__widget?> Function(base__value__optional___union<java_script__type>) data__handle;

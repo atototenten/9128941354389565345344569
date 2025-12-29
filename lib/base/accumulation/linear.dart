@@ -9,7 +9,7 @@ not nil-able due to dart-lang.'s deficiency
     implements base__dispose___protocol {
   base__array__array__accumulation__linear__basic();
 
-  final _accumulation = base__accumulation__linear__basic<array<element__type>>();
+  final _accumulation = base__accumulation__linear__basic<ARRAY<element__type>>();
   var _elements__count = 0;
 
   INT elements__count() {
@@ -26,7 +26,7 @@ not nil-able due to dart-lang.'s deficiency
   }
 
   void add__ending(
-    final array<element__type> elements,
+    final ARRAY<element__type> elements,
   ) {
     _accumulation.add__ending(
       elements,
@@ -35,7 +35,7 @@ not nil-able due to dart-lang.'s deficiency
     _elements__count += elements.elements__count;
   }
 
-  array<element__type> convert__array() {
+  ARRAY<element__type> convert__array() {
     final result = array__new__filled<element__type?>(
       _elements__count,
       NIL,
@@ -70,7 +70,7 @@ not nil-able due to dart-lang.'s deficiency
 }
 
 /*class base__accumulation__linear__basic__fast<element__type extends Object> /*
-`accumulation` with element-removal capability 
+`accumulation` with element-removal capability
   ,at the cost of ,element-access efficiency (due to additional in-direct-ion ,per element) ,and in-efficient iteration
     ,still more efficient than linked-list-ing */ //
     implements
@@ -86,7 +86,7 @@ not nil-able due to dart-lang.'s deficiency
         _elements__count = 0,
         _element__last__id = 0;
 
-  array<element__type?> _elements;
+  ARRAY<element__type?> _elements;
 
   INT //
       _elements__count,
@@ -177,7 +177,7 @@ must not be more than `list_.elements__count` */
     );
   }
 
-  array<element__type> convert__array() {
+  ARRAY<element__type> convert__array() {
     var offset = 0;
 
     return array__new__generated(
@@ -205,8 +205,8 @@ checks not needed ,because `list_.elements__count` is expected to be correct */
   element__type element(
     INT element__id,
   ) /*
-more efficient ,than `convert:array` 
-  ,but only for a few element-access ,not full iteration 
+more efficient ,than `convert:array`
+  ,but only for a few element-access ,not full iteration
     ,otherwise `iteration` should be preferred */
   {
     element__type? result;
@@ -237,7 +237,7 @@ more efficient ,than `convert:array`
   }
 
   base__accumulation__linear__basic__fast__iteration iteration() /*
-more efficient ,than `element` 
+more efficient ,than `element`
   ,for multiple element-access ,but the iteration can only be first-to-last */
   {
     return base__accumulation__linear__basic__fast__iteration(
@@ -433,7 +433,7 @@ void base__accumulation__linear__definitive__test() {
 
 extension array__convert__accumulation__linear__definitive__extension //
 <element__type extends Object?> //
-    on array<element__type> {
+    on ARRAY<element__type> {
   base__accumulation__linear__definitive<element__type> //
   convert__accumulation__linear() {
     final result = base__accumulation__linear__definitive<element__type>(
@@ -493,7 +493,7 @@ memory-usage is not reduced */ () {
 
 extension array__convert__accumulation__linear__basic__extension //
 <element__type extends Object?> //
-    on array<element__type> {
+    on ARRAY<element__type> {
   base__accumulation__linear__basic<element__type> //
   convert__accumulation__linear() {
     final result = base__accumulation__linear__basic<element__type>(
@@ -553,7 +553,7 @@ very efficient (both space, and time) ,than linked-list
        ),
        _elements__count = 0;
 
-  array<base__value__optional___union<element__type>> _elements;
+  ARRAY<base__value__optional___union<element__type>> _elements;
 
   INT _elements__count;
 
@@ -737,7 +737,7 @@ must not be more than `elements__count` */,
     }
   }
 
-  array<element__type> convert__array() {
+  ARRAY<element__type> convert__array() {
     if (empty___ok()) {
       return array__new__empty();
     }

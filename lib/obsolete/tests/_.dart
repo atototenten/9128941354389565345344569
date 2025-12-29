@@ -244,7 +244,7 @@ void base__storage__file__native__linux__test() {
   /*byte__array__fill(
     buf.arr,
     count: base__storage__file__block__size.size,
-    value: ascii__ch__non_printable__line_feed,
+    value: ascii__ch__in_visible__line_feed,
   );
 
   base__copy(
@@ -329,7 +329,7 @@ void report__test() {
   `u8__limit` is the threshold, in `report__arr`, to decide the tuncat-ion of, the report of the elements */
 
     report__array(
-      array<uu>.generate(
+      ARRAY<uu>.generate(
         (u8__limit - 1),
         (final iter) => //
             (iter + 1),
@@ -341,7 +341,7 @@ void report__test() {
     );
 
     report__array(
-      array<uu>.generate(
+      ARRAY<uu>.generate(
         u8__limit,
         (final iter) => //
             (iter + 1),
@@ -353,7 +353,7 @@ void report__test() {
     );
 
     report__array(
-      array<uu>.generate(
+      ARRAY<uu>.generate(
         (u8__limit + 1),
         (final iter) => //
             (iter + 1),
@@ -365,7 +365,7 @@ void report__test() {
     );
 
     report__array(
-      array<uu>.generate(
+      ARRAY<uu>.generate(
         (u8__limit + 10),
         (final iter) => //
             (iter + 1),
@@ -377,7 +377,7 @@ void report__test() {
     );
 
     report__bys(
-      byte__array.fromList(array<by>.generate(
+      byte__array.fromList(ARRAY<by>.generate(
         (u8__limit + 10),
         (final iter) => //
             (iter + 1),
@@ -469,7 +469,7 @@ void str__search__de_limiter__array(
 
 void bytes__test() {
   final //
-      bys = byte__array.fromList(array<u8>.generate(
+      bys = byte__array.fromList(ARRAY<u8>.generate(
         99,
         (final u) => (u + 1),
         growable: FALSE,
@@ -749,8 +749,8 @@ void uu__test() {
 
 void str__test() {
   void _(
-    final array<by> data,
-    final array<by> data__correct,
+    final ARRAY<by> data,
+    final ARRAY<by> data__correct,
   ) {
     wstr(byte__array.fromList(data)..representation__text().print("bytes")).bytes__encrypted().representation__text().print("bytes.encrypted");
     data__correct.representation__text().print("data__correct");

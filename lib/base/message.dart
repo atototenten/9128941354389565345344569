@@ -8,7 +8,7 @@ typedef base__message__handle__procedure<message__type> = //
 
 class message__channel__broadcast<message__type> /*
 like `dart:Stream`
-`:unicast` is not needed 
+`:unicast` is not needed
   ,because the run-time cost/overhead ,of added in-direct-ion ,would exceed the benefits
 data is plural ,datum/message is singular
   datum is called message ,because it arrives */

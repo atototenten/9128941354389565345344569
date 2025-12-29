@@ -1,7 +1,7 @@
 part of "_.dart";
 
 /*
-const array<Color> //
+const ARRAY<Color> //
     _pictures__present__colors = <Color>[
       Color.fromARGB(191 /* ((0.75 * 256) -1) */, 0, 0, 0),
       Color.fromARGB(127, 0, 0, 0),

@@ -2,7 +2,7 @@ part of "_.dart";
 
 typedef base__block__fetch__asyn__procedure__format //
     <element__type extends base__dispose__asyn__basic___protocol>
-    = value__asyn<array<element__type>> Function(
+    = value__asyn<ARRAY<element__type>> Function(
   INT block__id,
 );
 
@@ -77,7 +77,7 @@ fixed because re-loading the affected block (of which ,the elements-count has be
 
   final base__block__fetch__asyn__procedure__format<element__type> block__fetch__asyn;
 
-  final array<base__fetching__caching__block<element__type>?> blocks___raw;
+  final ARRAY<base__fetching__caching__block<element__type>?> blocks___raw;
 
   ({
     INT elements__offset /* not in block */,
@@ -215,7 +215,7 @@ class base__fetching__caching__block__elements__waiting //
     this.value__asyn_1,
   );
 
-  final value__asyn<array<element__type>> value__asyn_1;
+  final value__asyn<ARRAY<element__type>> value__asyn_1;
 
   @override
   value__asyn<void> dispose__asyn() async {
@@ -235,7 +235,7 @@ class base__fetching__caching__block__elements__present //
     this.value,
   );
 
-  final array<element__type> value;
+  final ARRAY<element__type> value;
 
   @override
   value__asyn<void> dispose__asyn() async {
@@ -250,7 +250,7 @@ sealed class base__fetching__caching__block__elements___union //
     implements
         base__dispose__asyn__basic___protocol {
   static value__asyn<void> elements__dispose<element__type extends base__dispose__asyn__basic___protocol>(
-    final array<element__type> elements,
+    final ARRAY<element__type> elements,
   ) async {
     await base__iterate__reverse__basic__asyn(
       elements.elements__count,

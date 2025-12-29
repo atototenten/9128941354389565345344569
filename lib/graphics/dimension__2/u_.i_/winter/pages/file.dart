@@ -65,7 +65,7 @@ gui__base__widget pages__file__page(
             b__aligned_ = b__aligned(segment__counter);
 
         final BS1__array bytes;
-        final array<string> text__binary;
+        final ARRAY<string> text__binary;
 
         if (b__aligned_) {
           bytes = file__bytes.view__partial(
@@ -73,7 +73,7 @@ gui__base__widget pages__file__page(
             file__segment__size,
           );
 
-          text__binary = array<string>.generate(
+          text__binary = ARRAY<string>.generate(
             file__segment__size,
             (final i) => //
                 bytes[i].toString(),
@@ -85,7 +85,7 @@ gui__base__widget pages__file__page(
             bytes__un_aligned__count,
           );
 
-          text__binary = array<string>.filled(
+          text__binary = ARRAY<string>.filled(
             file__segment__size,
             empty__string,
             growable: FALSE,
@@ -97,11 +97,11 @@ gui__base__widget pages__file__page(
                   (text__binary[i] = bytes[i].toString()));
         }
 
-        array<string> text__current = text__binary;
+        ARRAY<string> text__current = text__binary;
 
         BOOL b__binary = TRUE;
 
-        array<string>? text__ascii;
+        ARRAY<string>? text__ascii;
 
         return Row(
           children: <gui__base__widget>[
@@ -131,10 +131,10 @@ gui__base__widget pages__file__page(
               flex: file__segment__size,
               child: gui__base__widget__build__definitive(
                 build: (final state) {
-                  final array<gui__base__widget> row__children;
+                  final ARRAY<gui__base__widget> row__children;
 
                   if (b__aligned_) //
-                    row__children = array<gui__base__widget>.generate(
+                    row__children = ARRAY<gui__base__widget>.generate(
                       file__segment__size,
                       (final i) => //
                           Expanded(
@@ -147,7 +147,7 @@ gui__base__widget pages__file__page(
                       growable: FALSE,
                     );
                   else {
-                    row__children = array<gui__base__widget>.filled(
+                    row__children = ARRAY<gui__base__widget>.filled(
                       file__segment__size,
                       const Expanded(
                         child: gui__base__empty__widget,
@@ -179,7 +179,7 @@ gui__base__widget pages__file__page(
                       if (b__binary) {
                         text__current = //
                             (text__ascii ??= //
-                                array<string>.generate(
+                                ARRAY<string>.generate(
                           (b__aligned_ //
                               ? file__segment__size
                               : bytes__un_aligned__count),
@@ -188,7 +188,7 @@ gui__base__widget pages__file__page(
 
                             return (CHAR__ASCII__valid__and__printable___ok(c) //
                                 ? string.fromCharCode(c)
-                                : ((c == CHAR__ASCII__non_printable__line_feed) //
+                                : ((c == CHAR__ASCII__in_visible__line_feed) //
                                     ? r"\n"
                                     : text__binary[i]));
                           },

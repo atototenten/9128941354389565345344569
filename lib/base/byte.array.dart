@@ -81,7 +81,7 @@ byte__array byte__array__blank(
 }
 
 byte__array byte__array__create /* actually init, not create */ (
-  final array<INT> bytes, {
+  final ARRAY<INT> bytes, {
   INT? count,
   final INT result__offset = 0,
 }) {
@@ -98,7 +98,7 @@ byte__array byte__array__create /* actually init, not create */ (
 }
 
 byte__array byte__array__array__catinate(
-  final array<byte__array> a,
+  final ARRAY<byte__array> a,
 ) {
   final INT byteArrayCount = a.length;
 

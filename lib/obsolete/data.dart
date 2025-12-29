@@ -32,9 +32,9 @@ const
 class data__fetch_ing<data__type>
 /*
 behaves like a ring
-after ,completely independent ,discovery ,design ,and development 
-  ,a chat-bot was asked about any similar existing discovery ,with a description 
-    ,which concluded ,that the creation is not first-of-its-kind 
+after ,completely independent ,discovery ,design ,and development
+  ,a chat-bot was asked about any similar existing discovery ,with a description
+    ,which concluded ,that the creation is not first-of-its-kind
       ,and called "circular buffer"/"rolling"/"sliding window" cach-ing ,in the software industry
 
 the rationale behind ,the difference between groups ,being 16 ,is simple
@@ -55,7 +55,7 @@ TASK
         because change is less-likely */
 {
   static value__asyn<data__fetch_ing<data__type>> init_<data__type>({
-    required final array<data__type> /*
+    required final ARRAY<data__type> /*
 `elements:count`: `data:fetch_ing:group:level:3:element:arr:count` */
         ?
         data__element__array__init_ial /*
@@ -65,7 +65,7 @@ should be compliant with `progress_ion__reverse__ok` */
 `count` ,`offset` :`data:fetch_ing:data:group:level:1:element:id:convert:data:element:id:offset:count` */
         data__element__array__fetch,
     required final uu data__element__array__count /*
-must be `>= data:group:level:3:element:arr:count` 
+must be `>= data:group:level:3:element:arr:count`
   ,in which case ,`data:fetch_ing` is overkill ,anyways */
     ,
     //final bool progress_ion__reverse___ok /*{back|for}_ward*/ = FALSE,
@@ -75,7 +75,7 @@ must be `>= data:group:level:3:element:arr:count`
         data__group__level__3__id = (data__element__array__offset >> data__fetch_ing__data__groups__element__array__count__width),
         group__level__2__element__array__count = data__fetch_ing__data__group__level__2__element__array__count;
 
-    final array<data__fetch_ing__data__group__level__1__kampo<data__type>> result;
+    final ARRAY<data__fetch_ing__data__group__level__1__kampo<data__type>> result;
 
     if (data__element__array__init_ial == null) {
       final $accumulation = base__accumulation__linear__basic<data__fetch_ing__data__group__level__1__kampo<data__type>>(
@@ -135,8 +135,8 @@ must be `>= data:group:level:3:element:arr:count`
     this.$_data__element__array__fetch,
   );
 
-  final array<data__fetch_ing__data__group__level__1__kampo<data__type>> $_data__group__level__2__element__array /*
-  `final array<data__type> data__element__array; uu data__element__array__count__current/* number of data, already fetch-ed */;`
+  final ARRAY<data__fetch_ing__data__group__level__1__kampo<data__type>> $_data__group__level__2__element__array /*
+  `final ARRAY<data__type> data__element__array; uu data__element__array__count__current/* number of data, already fetch-ed */;`
     would have been sufficient, if the fetch ops were, increasing only
       instead of both, increase, or decrease
       because `data__fetch_ing__data__groups__element__id` could be calculated, from `data__element__array__count__current` */
@@ -194,16 +194,16 @@ class data__fetch_ing__data__group__level__1__kampo<data__type> {
   });
 
   final uu data__group__level__3__id;
-  final array<data__type> data__group__level__2__element__array;
+  final ARRAY<data__type> data__group__level__2__element__array;
   ({
     uu data__group__level__3__id,
-    value__asyn<array<data__type>> $Future,
+    value__asyn<ARRAY<data__type>> $Future,
   })? future__fetch__buffer; /*
 FIX :use ,after improving the names ,and renam-ing */
 }
 
 typedef data__fetch_ing__data__group__level__1__element__array__fetch__function__format<data__type> = //
-    value__asyn<array<data__type>> Function(
+    value__asyn<ARRAY<data__type>> Function(
   uu data__group__level__1__element__id,
 );
 

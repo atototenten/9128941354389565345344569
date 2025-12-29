@@ -27,7 +27,7 @@ zero is special-case to disable truncation */ =
     {
       const elements__separation = ",";
 
-      if (value is array<Object__nilable>) {
+      if (value is ARRAY<Object__nilable>) {
         final //
         buffer = StringBuffer(),
             elements__count = value.elements__count;

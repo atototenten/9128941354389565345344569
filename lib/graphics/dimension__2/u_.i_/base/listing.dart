@@ -13,8 +13,8 @@ gui__base__listing__reverse__item__id = //
     array__reverse__element__id;
 
 extension base__array__convert__widget__array__extension<value__type extends Object?> //
-    on array<value__type> {
-  array<gui__base__widget> convert__widget__array(
+    on ARRAY<value__type> {
+  ARRAY<gui__base__widget> convert__widget__array(
     final gui__base__widget separation,
     final gui__base__widget Function(INT, value__type) element__convert,
   ) {
@@ -83,7 +83,7 @@ class gui__base__listing__grow_able<element__new__type> //
   INT _elements__new__count__definitive() => //
       elements__new__count();
 
-  array<element__new__type> elements__new__convert__array() => //
+  ARRAY<element__new__type> elements__new__convert__array() => //
       _elements__new.convert__array();
 
   gui__base__widget widget__build(
@@ -181,11 +181,11 @@ example :
   BOOL? _save__allow___ok;
 
   void save__elements(
-    final array<element__new__sav_ed__type> elements__new__sav_ed__array /*
+    final ARRAY<element__new__sav_ed__type> elements__new__sav_ed__array /*
 must have same elements:count as input/param. */
     ,
   ) /*
-`elements:new`[`:array`] should not be cached after this proc. 
+`elements:new`[`:array`] should not be cached after this proc.
   ,because its flush-ed */
   {
     _elements__new.flush();
@@ -215,7 +215,7 @@ must have same elements:count as input/param. */
         id,
       );
 
-  array<element__new__sav_ed__type> elements__new__sav_ed__convert__array() => //
+  ARRAY<element__new__sav_ed__type> elements__new__sav_ed__convert__array() => //
       _elements__new__sav_ed.convert__array();
 
   BOOL? save__allow___ok() {

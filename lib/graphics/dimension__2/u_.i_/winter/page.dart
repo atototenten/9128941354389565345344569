@@ -166,7 +166,7 @@ extension winter__page__base__extension //
               ),
             ),
           ) /*
-      TASK.long: add linear blur, blurring smoothly (blending), instead of a hard edge, 
+      TASK.long: add linear blur, blurring smoothly (blending), instead of a hard edge,
         as given at: `https://github.com/flutter/flutter/issues/48212#issuecomment-592166594`
           (from `https://stackoverflow.com/a/62885475`)*/
         ,

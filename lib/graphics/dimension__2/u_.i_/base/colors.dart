@@ -166,7 +166,7 @@ const //
       (dark: Color(0xff7da4e3), light: Color(0xff98bbf5)) /** very light blue */,
     ];
 
-const _colors = <array<Color>>[
+const _colors = <ARRAY<Color>>[
   <Color>[Color(0x16ffffff), Color(0xff14c6c6), Color(0xff00a396)], // blue-green bright
   <Color>[Color(0x16ffffff), Color(0xff3e8bff), Color(0xff437aff)], // sexy, but faded
   <Color>[Color(0x16ffffff), Color(0xfffd9e7e), Color(0xfffa63bd)], // sexy
@@ -193,7 +193,7 @@ const _colors = <array<Color>>[
 const INT //
     _color__background__page__foreground__intensity = 63;
 
-final colors__background__page__gradient_contrasts__dark = <array<Color>>[
+final colors__background__page__gradient_contrasts__dark = <ARRAY<Color>>[
       <Color>[Color.fromARGB(255, 23, 23, 23), Color.fromARGB(255, 15, 15, 15)],
       <Color>[Color.fromARGB(255, 39, 39, 39), Color.fromARGB(255, 31, 31, 31)],
       <Color>[Color(0xff38285C), Color(0xff0b1345)] /*
@@ -202,7 +202,7 @@ final colors__background__page__gradient_contrasts__dark = <array<Color>>[
     `http://f-droid.org/packages/com.sweak.qralarm`
     `http://play.google.com/store/apps/details?id=com.sweak.qralarm` */
       ,
-      <Color>[Color(0xff3e2627), Color(0xff13151f)] /* 
+      <Color>[Color(0xff3e2627), Color(0xff13151f)] /*
   copied from "Hood" social media app,
     `http://www.hood.live`
     `http://play.google.com/store/apps/details?id=com.zorro.app` */
@@ -210,7 +210,7 @@ final colors__background__page__gradient_contrasts__dark = <array<Color>>[
       <Color>[Color(0xff325f71), Color.fromARGB(255, 10, 20, 37)] /* forked from `http://www.nopcommerce.com/Themes/OfficialSite/Content/images/illustration.png` */,
       <Color>[Color(0xff104470), Color(0xff325f71)] /* copied from a picture */,
     ],
-    colors__background__page__gradient_contrasts__light = <array<Color>>[
+    colors__background__page__gradient_contrasts__light = <ARRAY<Color>>[
       <Color>[Color.fromARGB(255, 191, 191, 191), Color.fromARGB(255, 127, 127, 127)],
       <Color>[
         Color.fromARGB(255, 105, 240, 174).whiten(_color__background__page__foreground__intensity),

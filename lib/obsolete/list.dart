@@ -128,10 +128,10 @@ class list__old__kampo<T> {
     }
   }
 
-  array<T> convert__array([
+  ARRAY<T> convert__array([
     final bool b__growable = FALSE,
   ]) {
-    final result = array<T?>.filled(
+    final result = ARRAY<T?>.filled(
       count,
        null,
       growable: FALSE,
@@ -145,7 +145,7 @@ class list__old__kampo<T> {
       });
     }
 
-    return array<T>.generate(
+    return ARRAY<T>.generate(
       count,
       (final i) => result[i]!,
       growable: b__growable,

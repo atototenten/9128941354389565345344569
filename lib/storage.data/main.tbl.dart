@@ -6,7 +6,7 @@ part of "_.dart";
     latter is the persisted(to ds.), representation, of `table__main__arr` */
 
 typedef base__storage__data__table__main__array___compo = //
-    array<base__storage__data__table__column__compo>;
+    ARRAY<base__storage__data__table__column__compo>;
 
 void base__storage__data__table__main__array__write(
   final base__storage__data__meta___compo ds__meta, {

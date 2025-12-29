@@ -91,7 +91,7 @@ should be wrap-ed in a `GestureDetector` ,to navigate to a new page(or maybe an 
 
 gui__base__widget winter__input__text__search__body({
   final string hint__title = "Search for",
-  required final array<string> hint__items,
+  required final ARRAY<string> hint__items,
 }) =>
     Wrap(
       children: <gui__base__widget>[

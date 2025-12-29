@@ -1,7 +1,7 @@
 part of "../_.dart";
 
 typedef base__storage__data__table__columns__array___compo = //
-    array<base__storage__data__table__columns__compo>;
+    ARRAY<base__storage__data__table__columns__compo>;
 
 string base__storage__data__table__column__meta__convert__text(
   final base__storage__data__table__column___compo column,

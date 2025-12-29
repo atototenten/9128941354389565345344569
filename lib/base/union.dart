@@ -6,9 +6,9 @@ class union {
     this._types,
   );
 
-  final array<Type> _types /*
+  final ARRAY<Type> _types /*
 sub-typing is not supported
-/*must be ordered in narrow-to-wide sequence 
+/*must be ordered in narrow-to-wide sequence
   ,like `[INT , APPROX ,... , string]` ,because `INT2` is `INT4` ,but `INT4` is-not `INT2`*/ */
       ;
 

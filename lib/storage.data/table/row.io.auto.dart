@@ -4,7 +4,7 @@ void base__storage__data__table__row__bytes__auto({
   required final base__storage__data__meta___compo ds__meta,
   required final base__storage__data__table__columns___compo table__columns,
   required final BS1__array row__bytes,
-  required final array<Object?> /*
+  required final ARRAY<Object?> /*
   `count` MUST NOT `< table__columns.count` */
       data__array,
 }) {
@@ -37,7 +37,7 @@ void base__storage__data__table__row__bytes__auto({
 void base__storage__data__table__row__bytes__mod__auto({
   required final base__storage__data__meta___compo ds__meta,
   required final base__storage__data__table__columns___compo table__columns,
-  required final array<
+  required final ARRAY<
           ({
             INT meta__id,
             Object? data,
@@ -72,10 +72,10 @@ void base__storage__data__table__row__bytes__mod__auto({
   base__printing__indentation__decrease();
 }
 
-array<Object?> base__storage__data__table__row__data__array__auto({
+ARRAY<Object?> base__storage__data__table__row__data__array__auto({
   required final base__storage__data__meta___compo ds__meta,
   required final base__storage__data__table__columns___compo table__columns,
-  required final array<INT> column__meta__id__array,
+  required final ARRAY<INT> column__meta__id__array,
   required final BS1__array row__bytes,
   required final INT row__bytes__base__storage__data__offset,
 }) /* macro */ {

@@ -15,7 +15,7 @@ const //
     font__family__default = "Roboto",
     font__family__default__mono = "monospace";
 
-final font__families = array<string>.filled(
+final font__families = ARRAY<string>.filled(
   font__count,
   font__family__default,
   growable: FALSE,

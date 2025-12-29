@@ -35,7 +35,7 @@ gui__base__widget gui__base__widget__sequence___widget(
 arg.'s presence leads to expansion (similar to "BOOL expand___ok = TRUE") */,
   final axis__alignment___enum axis__cross__alignment = axis__alignment___enum.center,
   final APPROX spacing = 0,
-  required final array<gui__base__widget> children,
+  required final ARRAY<gui__base__widget> children,
 }) {
   return Flex(
     direction: direction,
@@ -73,7 +73,7 @@ gui__base__widget gui__base__widget__stack___widget(
   final gui__base__widget__building__context context, {
   final AlignmentGeometry alignment = AlignmentDirectional.topStart,
   final StackFit fitting = StackFit.loose,
-  required final array<gui__base__widget> children,
+  required final ARRAY<gui__base__widget> children,
 }) {
   return Stack(
     alignment: alignment,

@@ -46,7 +46,7 @@ negative-zero is treated as non-negative */ (
     final string value__new,
   ) {
     final values = value__new.split(
-      char__dot,
+      base__chars__dot___string,
     );
 
     if (values.elements__count > 2) {
@@ -92,7 +92,7 @@ negative-zero is treated as non-negative */ (
 
   string //
   value__convert__text() {
-    return (significand.value__convert__text() + char__dot + exponent.value__convert__text());
+    return (significand.value__convert__text() + base__chars__dot___string + exponent.value__convert__text());
   }
 }
 

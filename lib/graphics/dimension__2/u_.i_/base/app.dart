@@ -384,11 +384,15 @@ class gui__base__app__running__simple //
       _failure__handle,
     );
 
-    _init_ion__asyn = entity__promise.future;
+    _init_ion__asyn = /*base__value__asyn__definitive<entity__type>(*/ entity__promise.future /*,)*/;
   }
 
   final string app__title;
-  late final value__asyn<entity__type> _init_ion__asyn;
+  late final value__asyn<entity__type> /*
+    TASK : move to "base__value__asyn__definitive"
+      once re-starting works
+        in arethos-tracking app. */
+  _init_ion__asyn;
   final gui__base__widget__build__function__format splash__build;
 
   @override
@@ -428,7 +432,7 @@ class gui__base__app__running__simple //
 }
 
 late BOOL base__app__theme__colors__ground__back__follow__system___ok; /*
-disabl-ing `app:size:follow:system` would be non-sense ,because the whole sub-system depends on it ,for dynamic siz-ing 
+disabl-ing `app:size:follow:system` would be non-sense ,because the whole sub-system depends on it ,for dynamic siz-ing
   ,static siz-ing is the default ,hence can be imitated ,simply ,by avoid-ing `APPROX.px` */
 
 class base__app__gui__base__widget extends StatefulWidget {

@@ -345,7 +345,7 @@ can be increased ,freely
 should be avoided ,unless necessary
   due to being a simple in-efficient iterating impl. */
       ({
-    required final array<table__cell__meta__type> cells__meta,
+    required final ARRAY<table__cell__meta__type> cells__meta,
     required final BOOL? value__BOOL,
     required final INT? value__INT,
     required final INT__NEG? value__INT__NEG,

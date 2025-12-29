@@ -132,7 +132,7 @@ extension Iterable___extension<element___type> //
     return map<element__new__type>(operate);
   }
 
-  array<element___type> //
+  ARRAY<element___type> //
   convert__array() {
     return toList(growable: FALSE);
   }

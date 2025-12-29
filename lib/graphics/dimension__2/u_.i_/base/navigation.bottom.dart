@@ -10,7 +10,7 @@ class gui__base__navigation__bottom //
        );
 
   final base__value__mutation__event__channel__broadcast<INT> chosen__id__channel;
-  final array<bool /*switch__ok*/ Function()?> items__press__handle;
+  final ARRAY<bool /*switch__ok*/ Function()?> items__press__handle;
 
   @override
   void dispose() {
@@ -19,7 +19,7 @@ class gui__base__navigation__bottom //
 
   gui__base__widget widget__build(
     final gui__base__widget__building__context context, {
-    required final array<gui__base__widget Function(gui__base__widget__building__context context, BOOL chosen___ok)> items__build,
+    required final ARRAY<gui__base__widget Function(gui__base__widget__building__context context, BOOL chosen___ok)> items__build,
   }) {
     return chosen__id__channel.handling__widget__build(
       context,
@@ -29,7 +29,7 @@ class gui__base__navigation__bottom //
         return Row(
           /*mainAxisAlignment: MainAxisAlignment.spaceAround,*/
           /*
-non-functional ,with `GestureDetector.behavior` ,being `HitTestBehavior.translucent` 
+non-functional ,with `GestureDetector.behavior` ,being `HitTestBehavior.translucent`
   ,while wrap-ing each `children`'s element ,with `Expanded` ,has equal effect */
           children: array__new__generated(
             items__press__handle.elements__count,

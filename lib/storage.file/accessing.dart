@@ -409,7 +409,7 @@ disable `base__printing__ok` */ =
       length__aligned__octuple = (8 * length__aligned),*/
       //
       _expectations /*
-formatted after generation */ = <array<base__storage__file__accessing__aligned__meta___union>>[
+formatted after generation */ = <ARRAY<base__storage__file__accessing__aligned__meta___union>>[
         [
           /* length :0 ,offset :0 ;end :0 */
           base__storage__file__accessing__aligned__none__meta(),
@@ -1676,7 +1676,7 @@ formatted after generation */ = <array<base__storage__file__accessing__aligned__
       ];
 
   if (generate___ok) {
-    "const _expectations = <array<base__storage__file__accessing__aligned__meta___union>>[".print___raw();
+    "const _expectations = <ARRAY<base__storage__file__accessing__aligned__meta___union>>[".print___raw();
   }
 
   array__new__generated(

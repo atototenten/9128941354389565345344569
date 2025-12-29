@@ -1,224 +1,148 @@
 part of "_.dart";
 
-const CHAR //
-    CHAR__ASCII__non_printable__null = 0,
-    CHAR__ASCII__non_printable__tab__horizontal = 9,
-    CHAR__ASCII__non_printable__line_feed = 10,
-    CHAR__ASCII__non_printable__tab__vertical = 11,
-    CHAR__ASCII__non_printable__carriage_return = 13,
-    CHAR__ASCII__non_printable__escape = 27,
-    CHAR__ASCII__non_printable__separator__file = 28,
-    CHAR__ASCII__non_printable__separator__group = 29,
-    CHAR__ASCII__non_printable__separator__record = 30,
-    CHAR__ASCII__non_printable__separator__unit = 31,
-    CHAR__ASCII__non_printable__delete = 127,
-//
-    CHAR__ASCII__space = 32,
-    CHAR__ASCII__exclamation = 33,
-    CHAR__ASCII__quote__double = 34,
-    CHAR__ASCII__hash = 35,
-    CHAR__ASCII__dollar = 36,
-    CHAR__ASCII__percent = 37,
-    CHAR__ASCII__ampersand = 38,
-    CHAR__ASCII__quote__single = 39,
-    CHAR__ASCII__bracket__round__open = 40,
-    CHAR__ASCII__bracket__round__close = 41,
-    CHAR__ASCII__asterisk = 42,
-    CHAR__ASCII__plus = 43,
-    CHAR__ASCII__comma = 44,
-    CHAR__ASCII__dash = 45,
-    CHAR__ASCII__dot = 46,
-    CHAR__ASCII__slash__forward = 47,
-//
-    CHAR__ASCII__number__zero = 48,
-    CHAR__ASCII__number__one = 49,
-    CHAR__ASCII__number__two = 50,
-    CHAR__ASCII__number__three = 51,
-    CHAR__ASCII__number__four = 52,
-    CHAR__ASCII__number__five = 53,
-    CHAR__ASCII__number__six = 54,
-    CHAR__ASCII__number__seven = 55,
-    CHAR__ASCII__number__eight = 56,
-    CHAR__ASCII__number__nine = 57,
-//
-    CHAR__ASCII__colon = 58,
-    CHAR__ASCII__colon__semi = 59,
-    CHAR__ASCII__bracket__angle__open = 60,
-    CHAR__ASCII__equal = 61,
-    CHAR__ASCII__bracket__angle__close = 62,
-    CHAR__ASCII__question = 63,
-    CHAR__ASCII__at = 64,
-//
-    CHAR__ASCII__alphabet__case__upper__a = 65,
-    CHAR__ASCII__alphabet__A = CHAR__ASCII__alphabet__case__upper__a,
-    CHAR__ASCII__alphabet__case__upper__b = 66,
-    CHAR__ASCII__alphabet__B = CHAR__ASCII__alphabet__case__upper__b,
-    CHAR__ASCII__alphabet__case__upper__c = 67,
-    CHAR__ASCII__alphabet__C = CHAR__ASCII__alphabet__case__upper__c,
-    CHAR__ASCII__alphabet__case__upper__d = 68,
-    CHAR__ASCII__alphabet__D = CHAR__ASCII__alphabet__case__upper__d,
-    CHAR__ASCII__alphabet__case__upper__e = 69,
-    CHAR__ASCII__alphabet__E = CHAR__ASCII__alphabet__case__upper__e,
-    CHAR__ASCII__alphabet__case__upper__f = 70,
-    CHAR__ASCII__alphabet__F = CHAR__ASCII__alphabet__case__upper__f,
-    CHAR__ASCII__alphabet__case__upper__g = 71,
-    CHAR__ASCII__alphabet__G = CHAR__ASCII__alphabet__case__upper__g,
-    CHAR__ASCII__alphabet__case__upper__h = 72,
-    CHAR__ASCII__alphabet__H = CHAR__ASCII__alphabet__case__upper__h,
-    CHAR__ASCII__alphabet__case__upper__i = 73,
-    CHAR__ASCII__alphabet__I = CHAR__ASCII__alphabet__case__upper__i,
-    CHAR__ASCII__alphabet__case__upper__j = 74,
-    CHAR__ASCII__alphabet__J = CHAR__ASCII__alphabet__case__upper__j,
-    CHAR__ASCII__alphabet__case__upper__k = 75,
-    CHAR__ASCII__alphabet__K = CHAR__ASCII__alphabet__case__upper__k,
-    CHAR__ASCII__alphabet__case__upper__l = 76,
-    CHAR__ASCII__alphabet__L = CHAR__ASCII__alphabet__case__upper__l,
-    CHAR__ASCII__alphabet__case__upper__m = 77,
-    CHAR__ASCII__alphabet__M = CHAR__ASCII__alphabet__case__upper__m,
-    CHAR__ASCII__alphabet__case__upper__n = 78,
-    CHAR__ASCII__alphabet__N = CHAR__ASCII__alphabet__case__upper__n,
-    CHAR__ASCII__alphabet__case__upper__o = 79,
-    CHAR__ASCII__alphabet__O = CHAR__ASCII__alphabet__case__upper__o,
-    CHAR__ASCII__alphabet__case__upper__p = 80,
-    CHAR__ASCII__alphabet__P = CHAR__ASCII__alphabet__case__upper__p,
-    CHAR__ASCII__alphabet__case__upper__q = 81,
-    CHAR__ASCII__alphabet__Q = CHAR__ASCII__alphabet__case__upper__q,
-    CHAR__ASCII__alphabet__case__upper__r = 82,
-    CHAR__ASCII__alphabet__R = CHAR__ASCII__alphabet__case__upper__r,
-    CHAR__ASCII__alphabet__case__upper__s = 83,
-    CHAR__ASCII__alphabet__S = CHAR__ASCII__alphabet__case__upper__s,
-    CHAR__ASCII__alphabet__case__upper__t = 84,
-    CHAR__ASCII__alphabet__T = CHAR__ASCII__alphabet__case__upper__t,
-    CHAR__ASCII__alphabet__case__upper__u = 85,
-    CHAR__ASCII__alphabet__U = CHAR__ASCII__alphabet__case__upper__u,
-    CHAR__ASCII__alphabet__case__upper__v = 86,
-    CHAR__ASCII__alphabet__V = CHAR__ASCII__alphabet__case__upper__v,
-    CHAR__ASCII__alphabet__case__upper__w = 87,
-    CHAR__ASCII__alphabet__W = CHAR__ASCII__alphabet__case__upper__w,
-    CHAR__ASCII__alphabet__case__upper__x = 88,
-    CHAR__ASCII__alphabet__X = CHAR__ASCII__alphabet__case__upper__x,
-    CHAR__ASCII__alphabet__case__upper__y = 89,
-    CHAR__ASCII__alphabet__Y = CHAR__ASCII__alphabet__case__upper__y,
-    CHAR__ASCII__alphabet__case__upper__z = 90,
-    CHAR__ASCII__alphabet__Z = CHAR__ASCII__alphabet__case__upper__z,
-//
-    CHAR__ASCII__bracket__square__open = 91,
-    CHAR__ASCII__slash__backward = 92,
-    CHAR__ASCII__bracket__square__close = 93,
-    CHAR__ASCII__caret = 94,
-    CHAR__ASCII__under_score = 95,
-    CHAR__ASCII__quote__back = 96,
-//
-    CHAR__ASCII__alphabet__case__lower__a = 97,
-    CHAR__ASCII__alphabet__a = CHAR__ASCII__alphabet__case__lower__a,
-    CHAR__ASCII__alphabet__case__lower__b = 98,
-    CHAR__ASCII__alphabet__b = CHAR__ASCII__alphabet__case__lower__b,
-    CHAR__ASCII__alphabet__case__lower__c = 99,
-    CHAR__ASCII__alphabet__c = CHAR__ASCII__alphabet__case__lower__c,
-    CHAR__ASCII__alphabet__case__lower__d = 100,
-    CHAR__ASCII__alphabet__d = CHAR__ASCII__alphabet__case__lower__d,
-    CHAR__ASCII__alphabet__case__lower__e = 101,
-    CHAR__ASCII__alphabet__e = CHAR__ASCII__alphabet__case__lower__e,
-    CHAR__ASCII__alphabet__case__lower__f = 102,
-    CHAR__ASCII__alphabet__f = CHAR__ASCII__alphabet__case__lower__f,
-    CHAR__ASCII__alphabet__case__lower__g = 103,
-    CHAR__ASCII__alphabet__g = CHAR__ASCII__alphabet__case__lower__g,
-    CHAR__ASCII__alphabet__case__lower__h = 104,
-    CHAR__ASCII__alphabet__h = CHAR__ASCII__alphabet__case__lower__h,
-    CHAR__ASCII__alphabet__case__lower__i = 105,
-    CHAR__ASCII__alphabet__i = CHAR__ASCII__alphabet__case__lower__i,
-    CHAR__ASCII__alphabet__case__lower__j = 106,
-    CHAR__ASCII__alphabet__j = CHAR__ASCII__alphabet__case__lower__j,
-    CHAR__ASCII__alphabet__case__lower__k = 107,
-    CHAR__ASCII__alphabet__k = CHAR__ASCII__alphabet__case__lower__k,
-    CHAR__ASCII__alphabet__case__lower__l = 108,
-    CHAR__ASCII__alphabet__l = CHAR__ASCII__alphabet__case__lower__l,
-    CHAR__ASCII__alphabet__case__lower__m = 109,
-    CHAR__ASCII__alphabet__m = CHAR__ASCII__alphabet__case__lower__m,
-    CHAR__ASCII__alphabet__case__lower__n = 110,
-    CHAR__ASCII__alphabet__n = CHAR__ASCII__alphabet__case__lower__n,
-    CHAR__ASCII__alphabet__case__lower__o = 111,
-    CHAR__ASCII__alphabet__o = CHAR__ASCII__alphabet__case__lower__o,
-    CHAR__ASCII__alphabet__case__lower__p = 112,
-    CHAR__ASCII__alphabet__p = CHAR__ASCII__alphabet__case__lower__p,
-    CHAR__ASCII__alphabet__case__lower__q = 113,
-    CHAR__ASCII__alphabet__q = CHAR__ASCII__alphabet__case__lower__q,
-    CHAR__ASCII__alphabet__case__lower__r = 114,
-    CHAR__ASCII__alphabet__r = CHAR__ASCII__alphabet__case__lower__r,
-    CHAR__ASCII__alphabet__case__lower__s = 115,
-    CHAR__ASCII__alphabet__s = CHAR__ASCII__alphabet__case__lower__s,
-    CHAR__ASCII__alphabet__case__lower__t = 116,
-    CHAR__ASCII__alphabet__t = CHAR__ASCII__alphabet__case__lower__t,
-    CHAR__ASCII__alphabet__case__lower__u = 117,
-    CHAR__ASCII__alphabet__u = CHAR__ASCII__alphabet__case__lower__u,
-    CHAR__ASCII__alphabet__case__lower__v = 118,
-    CHAR__ASCII__alphabet__v = CHAR__ASCII__alphabet__case__lower__v,
-    CHAR__ASCII__alphabet__case__lower__w = 119,
-    CHAR__ASCII__alphabet__w = CHAR__ASCII__alphabet__case__lower__w,
-    CHAR__ASCII__alphabet__case__lower__x = 120,
-    CHAR__ASCII__alphabet__x = CHAR__ASCII__alphabet__case__lower__x,
-    CHAR__ASCII__alphabet__case__lower__y = 121,
-    CHAR__ASCII__alphabet__y = CHAR__ASCII__alphabet__case__lower__y,
-    CHAR__ASCII__alphabet__case__lower__z = 122,
-    CHAR__ASCII__alphabet__z = CHAR__ASCII__alphabet__case__lower__z,
-//
-    CHAR__ASCII__bracket__curly__open = 123,
-    CHAR__ASCII__pipe = 124,
-    CHAR__ASCII__bracket__curly__close = 125,
-    CHAR__ASCII__tilde = 126;
+enum CHAR__ASCII /*
+  web://org.wikipedia/ASCII */ {
+  null___in_visible(empty__string) /* "NIL", "^@" */,
+  start_of_heading___in_visible(empty__string) /* "SOH", "^A" */,
+  start_of_text___in_visible(empty__string) /* "STX", "^B" */,
+  end_of_text___in_visible(empty__string) /* "ETX", "^C" */,
+  end_of_transmission___in_visible(empty__string) /* "EOT", "^D" */,
+  enquiry___in_visible(empty__string) /* "ENQ", "^E" */,
+  acknowledgement___in_visible(empty__string) /* "ACK", "^F" */,
+  bell___in_visible(empty__string) /* "BEL", "^G" */,
+  backspace___in_visible(empty__string) /* "BS", "^H" */,
+  horizontal_tab___in_visible(empty__string) /* "HT", "^I" */,
+  //
+  line_feed___in_visible(base__chars__line_feed___string) /* "LF", "^J" */,
+  //
+  vertical_tab___in_visible(empty__string) /* "VT", "^K" */,
+  form_feed___in_visible(empty__string) /* "FF", "^L" */,
+  carriage_return___in_visible(empty__string) /* "CR", "^M" */,
+  shift_out___in_visible(empty__string) /* "SO", "^N" */,
+  shift_in___in_visible(empty__string) /* "SI", "^O" */,
+  data_link_escape___in_visible(empty__string) /* "DLE", "^P" */,
+  device_control_one___in_visible(empty__string) /* "DC1", "^Q" */,
+  device_control_two___in_visible(empty__string) /* "DC2", "^R" */,
+  device_control_three___in_visible(empty__string) /* "DC3", "^S" */,
+  device_control_four___in_visible(empty__string) /* "DC4", "^T" */,
+  negative_acknowledgement___in_visible(empty__string) /* "NAK", "^U" */,
+  synchronous_idle___in_visible(empty__string) /* "SYN", "^V" */,
+  end_of_transmission_block___in_visible(empty__string) /* "ETB", "^W" */,
+  cancel___in_visible(empty__string) /* "CAN", "^X" */,
+  end_of_medium___in_visible(empty__string) /* "EM", "^Y" */,
+  substitute___in_visible(empty__string) /* "SUB", "^Z" */,
+  escape___in_visible(empty__string) /* "ESC", "^[" */,
+  file_separator___in_visible(empty__string) /* "FS", "^\" */,
+  group_separator___in_visible(empty__string) /* "GS", "^]" */,
+  record_separator___in_visible(empty__string) /* "RS", "^^" */,
+  unit_separator___in_visible(empty__string) /* "US", "^_" */,
+  //
+  space(base__chars__space___string),
+  exclamation(base__chars__exclamation___string),
+  quote__double(base__chars__quote__double___string),
+  hash(base__chars__hash___string),
+  dollar(base__chars__dollar___string),
+  percent(base__chars__percent___string),
+  ampersand(base__chars__ampersand___string),
+  quote__single(base__chars__quote__single___string),
+  bracket__round__open(base__chars__bracket__round__open___string),
+  bracket__round__close(base__chars__bracket__round__close___string),
+  asterisk(base__chars__asterisk___string),
+  plus(base__chars__plus___string),
+  comma(base__chars__comma___string),
+  dash(base__chars__dash___string),
+  dot(base__chars__dot___string),
+  slash__forward(base__chars__slash__forward___string),
+  //
+  number__zero(base__chars__number__zero___string),
+  number__one(base__chars__number__one___string),
+  number__two(base__chars__number__two___string),
+  number__three(base__chars__number__three___string),
+  number__four(base__chars__number__four___string),
+  number__five(base__chars__number__five___string),
+  number__six(base__chars__number__six___string),
+  number__seven(base__chars__number__seven___string),
+  number__eight(base__chars__number__eight___string),
+  number__nine(base__chars__number__nine___string),
+  //
+  colon(base__chars__colon___string),
+  colon__semi(base__chars__colon__semi___string),
+  bracket__angle__open(base__chars__less_than___string),
+  equal(base__chars__equal___string),
+  bracket__angle__close(base__chars__more_than___string),
+  question(base__chars__question___string),
+  at(base__chars__at___string),
+  //
+  alphabet__case__upper__a(base__chars__alphabet__case__upper__a___string),
+  alphabet__case__upper__b(base__chars__alphabet__case__upper__b___string),
+  alphabet__case__upper__c(base__chars__alphabet__case__upper__c___string),
+  alphabet__case__upper__d(base__chars__alphabet__case__upper__d___string),
+  alphabet__case__upper__e(base__chars__alphabet__case__upper__e___string),
+  alphabet__case__upper__f(base__chars__alphabet__case__upper__f___string),
+  alphabet__case__upper__g(base__chars__alphabet__case__upper__g___string),
+  alphabet__case__upper__h(base__chars__alphabet__case__upper__h___string),
+  alphabet__case__upper__i(base__chars__alphabet__case__upper__i___string),
+  alphabet__case__upper__j(base__chars__alphabet__case__upper__j___string),
+  alphabet__case__upper__k(base__chars__alphabet__case__upper__k___string),
+  alphabet__case__upper__l(base__chars__alphabet__case__upper__l___string),
+  alphabet__case__upper__m(base__chars__alphabet__case__upper__m___string),
+  alphabet__case__upper__n(base__chars__alphabet__case__upper__n___string),
+  alphabet__case__upper__o(base__chars__alphabet__case__upper__o___string),
+  alphabet__case__upper__p(base__chars__alphabet__case__upper__p___string),
+  alphabet__case__upper__q(base__chars__alphabet__case__upper__q___string),
+  alphabet__case__upper__r(base__chars__alphabet__case__upper__r___string),
+  alphabet__case__upper__s(base__chars__alphabet__case__upper__s___string),
+  alphabet__case__upper__t(base__chars__alphabet__case__upper__t___string),
+  alphabet__case__upper__u(base__chars__alphabet__case__upper__u___string),
+  alphabet__case__upper__v(base__chars__alphabet__case__upper__v___string),
+  alphabet__case__upper__w(base__chars__alphabet__case__upper__w___string),
+  alphabet__case__upper__x(base__chars__alphabet__case__upper__x___string),
+  alphabet__case__upper__y(base__chars__alphabet__case__upper__y___string),
+  alphabet__case__upper__z(base__chars__alphabet__case__upper__z___string),
+  //
+  bracket__square__open(base__chars__bracket__square__open___string),
+  slash__backward(base__chars__slash__backward___string),
+  bracket__square__close(base__chars__bracket__square__close___string),
+  caret(base__chars__caret___string),
+  under_score(base__chars__underscore___string),
+  quote__back(base__chars__quote__back___string),
+  //
+  alphabet__case__lower__a(base__chars__alphabet__case__lower__a___string),
+  alphabet__case__lower__b(base__chars__alphabet__case__lower__b___string),
+  alphabet__case__lower__c(base__chars__alphabet__case__lower__c___string),
+  alphabet__case__lower__d(base__chars__alphabet__case__lower__d___string),
+  alphabet__case__lower__e(base__chars__alphabet__case__lower__e___string),
+  alphabet__case__lower__f(base__chars__alphabet__case__lower__f___string),
+  alphabet__case__lower__g(base__chars__alphabet__case__lower__g___string),
+  alphabet__case__lower__h(base__chars__alphabet__case__lower__h___string),
+  alphabet__case__lower__i(base__chars__alphabet__case__lower__i___string),
+  alphabet__case__lower__j(base__chars__alphabet__case__lower__j___string),
+  alphabet__case__lower__k(base__chars__alphabet__case__lower__k___string),
+  alphabet__case__lower__l(base__chars__alphabet__case__lower__l___string),
+  alphabet__case__lower__m(base__chars__alphabet__case__lower__m___string),
+  alphabet__case__lower__n(base__chars__alphabet__case__lower__n___string),
+  alphabet__case__lower__o(base__chars__alphabet__case__lower__o___string),
+  alphabet__case__lower__p(base__chars__alphabet__case__lower__p___string),
+  alphabet__case__lower__q(base__chars__alphabet__case__lower__q___string),
+  alphabet__case__lower__r(base__chars__alphabet__case__lower__r___string),
+  alphabet__case__lower__s(base__chars__alphabet__case__lower__s___string),
+  alphabet__case__lower__t(base__chars__alphabet__case__lower__t___string),
+  alphabet__case__lower__u(base__chars__alphabet__case__lower__u___string),
+  alphabet__case__lower__v(base__chars__alphabet__case__lower__v___string),
+  alphabet__case__lower__w(base__chars__alphabet__case__lower__w___string),
+  alphabet__case__lower__x(base__chars__alphabet__case__lower__x___string),
+  alphabet__case__lower__y(base__chars__alphabet__case__lower__y___string),
+  alphabet__case__lower__z(base__chars__alphabet__case__lower__z___string),
+  //
+  bracket__curly__open(base__chars__bracket__curly__open___string),
+  pipe(base__chars__pipe___string),
+  bracket__curly__close(base__chars__bracket__curly__close___string),
+  tilde(base__chars__tilde___string),
+  //
+  delete___in_visible(empty__string) /* "DEL", "^?" */
+  ;
 
-const //
-    CHAR__ASCII__limit = CHAR__limit,
-    CHAR__ASCII__max = CHAR__max;
+  final string visual__representation;
 
-BOOL CHAR__ASCII__valid___ok(final CHAR c) => //
-    (c < CHAR__ASCII__limit);
-
-BOOL CHAR__ASCII__valid__and__printable___ok(final CHAR c) => //
-    ((c < CHAR__ASCII__max) && (c < CHAR__ASCII__space).not);
-
-BOOL CHAR__ASCII__number__non__zero__not(final CHAR c) => //
-    ((c < CHAR__ASCII__number__one) || (c > CHAR__ASCII__number__nine));
-
-BOOL CHAR__ASCII__number__non__zero___ok(final CHAR c) => //
-    CHAR__ASCII__number__non__zero__not(c).not;
-
-BOOL CHAR__ASCII__number__not(final CHAR c) => //
-    (CHAR__ASCII__number__non__zero__not(c) && (c != CHAR__ASCII__number__zero));
-
-BOOL CHAR__ASCII__number___ok(final CHAR c) => //
-    (CHAR__ASCII__number__non__zero___ok(c) || (c == CHAR__ASCII__number__zero));
-
-BOOL CHAR__ASCII__alphabet__case__lower__not(final CHAR c) => //
-    ((c < CHAR__ASCII__alphabet__case__lower__a) || (c > CHAR__ASCII__alphabet__case__lower__z));
-
-BOOL CHAR__ASCII__alphabet__case__lower___ok(final CHAR c) => //
-    CHAR__ASCII__alphabet__case__lower__not(c).not;
-
-BOOL CHAR__ASCII__alphabet__case__upper__not(final CHAR c) => //
-    ((c < CHAR__ASCII__alphabet__case__upper__a) || (c > CHAR__ASCII__alphabet__case__upper__z));
-
-BOOL CHAR__ASCII__alphabet__case__upper___ok(final CHAR c) => //
-    CHAR__ASCII__alphabet__case__upper__not(c).not;
-
-BOOL CHAR__ASCII__alphabet__not(final CHAR c) => //
-    (CHAR__ASCII__alphabet__case__lower__not(c) && //
-        CHAR__ASCII__alphabet__case__upper__not(c));
-
-BOOL CHAR__ASCII__alphabet___ok(final CHAR c) => //
-    CHAR__ASCII__alphabet__not(c).not;
-
-BOOL CHAR__ASCII__alphabet__case__upper__ok__basic(final CHAR c) => //
-    (c < CHAR__ASCII__alphabet__case__lower__a);
-
-BOOL CHAR__ASCII__alphabet__case__lower__ok__basic(final CHAR c) => //
-    (c > CHAR__ASCII__alphabet__case__upper__z);
-
-const CHAR //
-    _convertion__case__value = (CHAR__limit >> 2);
-
-CHAR CHAR__ASCII__alphabet__case__upper__convert__lower(final CHAR c) => //
-    (c + _convertion__case__value);
-
-CHAR CHAR__ASCII__alphabet__case__lower__convert__upper(final CHAR c) => //
-    (c - _convertion__case__value);
+  const CHAR__ASCII(this.visual__representation);
+}

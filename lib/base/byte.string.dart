@@ -11,10 +11,10 @@ typedef BS16 /* 128-bits */ = INT;
 typedef BS24 /* 192-bits */ = INT;
 typedef BS32 /* 256-bits */ = INT;
 
-typedef BS1__array = typed_data.Uint8List;
-typedef BS2__array = typed_data.Uint16List;
-typedef BS4__array = typed_data.Uint32List;
-typedef BS8__array = typed_data.Uint64List;
+typedef BS1__array = dart__typed_data.Uint8List;
+typedef BS2__array = dart__typed_data.Uint16List;
+typedef BS4__array = dart__typed_data.Uint32List;
+typedef BS8__array = dart__typed_data.Uint64List;
 
 const //
     BS01__width = 1,

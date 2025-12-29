@@ -277,7 +277,7 @@
 
 	the real programmatic deletion, of non-empty directory,
 		requires recursion, which could easily overflow the stack,
-			on directories with super large number of sub-directories, like servers, 
+			on directories with super large number of sub-directories, like servers,
 		hence leaving this highly care requiring task, on gnu programs, which are written by experts, of c and linux */
 
 #define io__DELETE(file__path) \

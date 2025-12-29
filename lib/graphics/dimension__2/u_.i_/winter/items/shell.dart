@@ -77,7 +77,7 @@ gui__base__widget winter__listing__shell__title({
 
 gui__base__widget winter__listing__shell({
   final BorderRadius? border__radius,
-  required final array<gui__base__widget> items,
+  required final ARRAY<gui__base__widget> items,
 }) =>
     winter__box__base(
       border__radius: border__radius,

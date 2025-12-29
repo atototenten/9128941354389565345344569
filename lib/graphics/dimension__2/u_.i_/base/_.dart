@@ -195,7 +195,7 @@ should be avoided ,in favor of a reliable (consistently reproducible) value (lik
     /*/* must not be `const` */ ValueKey(Object())*/ UniqueKey();
 
 value__asyn<string?> //
-base__environment__clipboard__text() async {
+base__environment__clip_board__text() async {
   return ((await Clipboard.hasStrings()) //
       ? (await Clipboard.getData(
           Clipboard.kTextPlain,
@@ -204,7 +204,7 @@ base__environment__clipboard__text() async {
 }
 
 value__asyn<void> //
-base__environment__clipboard__set__text({
+base__environment__clip_board__set__text({
   required final string value,
 }) {
   return Clipboard.setData(

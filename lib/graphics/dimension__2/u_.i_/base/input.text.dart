@@ -78,7 +78,7 @@ will invoke `channel.event__announce` */
   }
 
   gui__base__widget widget__build /*
-de-focus-ing is not auto. 
+de-focus-ing is not auto.
   ,prefer invok-ing `store.focus__remove` ,in `submit__handle`
 FIX :
   input, with number(s), as first(of input) char, instead of an alphabet, is receiv-ed through `app__key__broadcast`
@@ -95,7 +95,7 @@ FIX :
     })
     cursor,
     final TextCapitalization capitalization = TextCapitalization.none,
-    final array<TextInputFormatter>? formatting,
+    final ARRAY<TextInputFormatter>? formatting,
     final ({
           INT /*
 valid range : 1 to ".lines__max" */
@@ -141,7 +141,7 @@ intentional ,because wrapping with boolean-based transitioning ,with a default-s
         obscuringCharacter:
             (secret___ok //
             ? char__replacement
-            : char__space),
+            : base__chars__space___string),
         autocorrect: FALSE,
         enableSuggestions: secret___ok.not,
         enableIMEPersonalizedLearning: secret___ok.not,

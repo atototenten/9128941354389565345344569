@@ -16,7 +16,7 @@ part of "_.dart";
         further reduction will cause byte alignment issues
     if alpha is 0, hence pixel is invisible
       make it empty
-      
+
   `https://compress-or-die.com/Understanding-PNG`
   `https://phoboslab.org/log/2021/11/qoi-fast-lossless-image-compression`
   `https://q-viper.github.io/2021/05/24/coding-run-length-encoding-in-python/` */

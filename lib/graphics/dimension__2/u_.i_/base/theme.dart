@@ -15,7 +15,7 @@ late BOOL //
 late BOOL //
     base__app__interface__simple___ok /*
 `(base__screen__width <= base__screen__ample__width)`
-should be avoided ,because of great increase ,in deviation ,from the standard interface 
+should be avoided ,because of great increase ,in deviation ,from the standard interface
   ,further increasing the complexity ,for similicity seekers ,because the standard guides ,would stop working */
     ;
 

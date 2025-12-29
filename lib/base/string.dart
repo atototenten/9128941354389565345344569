@@ -8,13 +8,13 @@ typedef string = String;
       `{192, 193}, `
       `{245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255}}`
       charCodes can be used as de-limiter(or separator), in the encoded texts
-    all the 256(possible single-byte) byte values, were en-countered, 
-      by 3078013 as `byteCounter`, and 243 as `charCode`, 
+    all the 256(possible single-byte) byte values, were en-countered,
+      by 3078013 as `byteCounter`, and 243 as `charCode`,
       but the last encountered `charCode` was 244(at `byteCounter` 169856)
     the `byteCount` of the `encodedBytes` was 4388733 */
 
 byte__array string__convert__utf_8__bytes(final string s) => //
-    (const convert.Utf8Encoder()).convert(s);
+    (const dart__convert.Utf8Encoder()).convert(s);
 
 INT? /*id_*/ text__search /*
 forked ,from `array__search` */
@@ -69,7 +69,7 @@ BOOL text__numbers___ok(
 }
 
 string utf_8__bytes__convert__string(final byte__array bytes) => //
-    (const convert.Utf8Decoder()).convert(bytes);
+    (const dart__convert.Utf8Decoder()).convert(bytes);
 
 INT /*(char:bytes:count -1)*/ utf_8__bytes__char__bytes__count__remain_ing(
   final BS1 b /*char:bytes:first*/,
@@ -92,10 +92,10 @@ source :`http://stackoverflow.com/questions/26070766/utf-8-how-does-only-0-127-s
 }
 
 final value__asyn<string> Function(Stream<byte__array>) utf_8__Stream__byte__array__convert__text = //
-    (const convert.Utf8Codec()).decodeStream;
+    (const dart__convert.Utf8Codec()).decodeStream;
 
-final value__asyn<string> Function(Stream<array<INT>>) utf_8__byte__array__Stream__convert__text = //
-    (const convert.Utf8Codec()).decodeStream;
+final value__asyn<string> Function(Stream<ARRAY<INT>>) utf_8__byte__array__Stream__convert__text = //
+    (const dart__convert.Utf8Codec()).decodeStream;
 
 extension text__extension on string {
   INT get chars__count => //

@@ -2,9 +2,9 @@ part of "../_.dart";
 
 /*widget__build__stored___compo data__base__table__explore__page__stored({
   required final string db__name,
-  required final array<data__base__table__column__meta___protocol> table__main,
+  required final ARRAY<data__base__table__column__meta___protocol> table__main,
   required final data__base__meta___compo ds__meta,
-  required final array<data__base__table__columns__meta__compo> columns__meta__array,
+  required final ARRAY<data__base__table__columns__meta__compo> columns__meta__array,
 }) {
   final //
       scroll__manager_ = scroll__manager();
@@ -46,8 +46,8 @@ part of "../_.dart";
 
 widget__build__stored___compo data__base__table__rows__page__stored({
   required final data__base__meta___compo ds__meta,
-  required final array<data__base__table__columns__meta__compo> columns__meta__array,
-  required final array<data__base__table__column__meta___protocol> column__meta__array,
+  required final ARRAY<data__base__table__columns__meta__compo> columns__meta__array,
+  required final ARRAY<data__base__table__column__meta___protocol> column__meta__array,
   required final string name,
 }) {
   final //
@@ -90,8 +90,8 @@ widget__build__stored___compo data__base__table__rows__page__stored({
 
 widget__build__stored___compo data__base__table__columns__page__stored({
   required final data__base__meta___compo ds__meta,
-  required final array<data__base__table__columns__meta__compo> columns__meta__array,
-  required final array<data__base__table__column__meta___protocol> column__meta__array,
+  required final ARRAY<data__base__table__columns__meta__compo> columns__meta__array,
+  required final ARRAY<data__base__table__column__meta___protocol> column__meta__array,
   required final string name,
 }) {
   final //

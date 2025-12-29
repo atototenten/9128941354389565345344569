@@ -26,7 +26,7 @@ abstract class service__authority__source {
 
   value__asyn</*service__authority__result*/base__value__optional___union<java_script__type>/* {deny|handle} ?? allow */> //
   resolve() /*
-should be conservative ,towards allow-ing 
+should be conservative ,towards allow-ing
   ,like on error ,otherwise losing the `service__authority__source` will break the service */;
 }
 

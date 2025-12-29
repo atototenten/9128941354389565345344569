@@ -108,7 +108,7 @@ late Color //
     color__green,
     color__blue;
 
-final color__random__list = array<Color>.filled(
+final color__random__list = ARRAY<Color>.filled(
   colors__random.length,
   base__color__transparent__dark,
   growable: FALSE,

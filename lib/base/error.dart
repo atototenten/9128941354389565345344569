@@ -10,7 +10,7 @@ generic-type `error__type extends Object` cannot be used
     ,due to call-graph being random ,in almost-all cases */
       error,
       StackTrace trace /*=StackTrace.current*/ /*
-call-sequence of the proc.-calls 
+call-sequence of the proc.-calls
   ,including the code's {library-name ,relative-{file-path} ,line-id.} */,
     );
 
@@ -53,8 +53,8 @@ base__error__code(
   final BOOL error__fatal___ok,
 ) {
   return (error__fatal___ok //
-      ? char__alphabet__case__upper__f /* Fatal */
-      : char__alphabet__case__upper__e /* Error */ );
+      ? base__chars__alphabet__case__upper__f___string /* Fatal */
+      : base__chars__alphabet__case__upper__e___string /* Error */ );
 }
 
 void base__error__print(

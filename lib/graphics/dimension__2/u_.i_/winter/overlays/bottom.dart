@@ -109,7 +109,7 @@ gui__base__widget overlay__bottom__options(
   final gui__base__widget__building__context context, {
   required final string title,
   final string? sub_title,
-  required final array<gui__base__widget>
+  required final ARRAY<gui__base__widget>
       option__array /*
 prefer `base__listing__item`
   with position-based `border__radius`, and in-between `gui__base__widget__separat_or__vertical`

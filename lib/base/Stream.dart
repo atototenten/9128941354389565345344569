@@ -108,11 +108,11 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
 
 extension Stream__array__extension<data__type> //
     on Stream<data__type> {
-  value__asyn<array<data__type>> //
+  value__asyn<ARRAY<data__type>> //
       convert__array__asyn() {
     final //
         accumulation = base__accumulation__linear__basic<data__type>(),
-        promise = value__asyn__meta<array<data__type>>();
+        promise = value__asyn__meta<ARRAY<data__type>>();
 
     listen(
       (final data) => accumulation.add__ending(data),

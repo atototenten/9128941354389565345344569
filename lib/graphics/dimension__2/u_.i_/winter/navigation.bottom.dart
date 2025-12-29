@@ -6,7 +6,7 @@ typedef navigation__bottom__item___compo = ({
 });
 
 /* gui__base__widget navigation__bottom__my_bmw__stored({
-  required final array<navigation__bottom__item__compo> page__array /*
+  required final ARRAY<navigation__bottom__item__compo> page__array /*
   prefer, to keep the `(count < 4)`
     to avoid looking bloated, or congested */
   ,
@@ -24,7 +24,7 @@ typedef navigation__bottom__item___compo = ({
 
   INT page__chosen__id = page__chosen__initial__id;
 
-  late final array<gui__base__widget> items;
+  late final ARRAY<gui__base__widget> items;
 
   void page__switch(
     final INT page__id,
@@ -43,7 +43,7 @@ typedef navigation__bottom__item___compo = ({
     page__array[page__id].press__handle();
   }
 
-  items = array<gui__base__widget>.generate(
+  items = ARRAY<gui__base__widget>.generate(
     page__array__count,
     (final page__id) {
       return RepaintBoundary(

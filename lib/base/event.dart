@@ -222,10 +222,10 @@ class base__event__channel__broadcast //
 class base__event__channels__broadcast //
     implements base__event__channel__broadcast__dispose___protocol {
   base__event__channels__broadcast(
-    final array<base__event__channel__broadcast__dispose___protocol> channels,
+    final ARRAY<base__event__channel__broadcast__dispose___protocol> channels,
   ) : _channels = channels;
 
-  final array<base__event__channel__broadcast__dispose___protocol> _channels;
+  final ARRAY<base__event__channel__broadcast__dispose___protocol> _channels;
 
   @override
   void dispose() {}

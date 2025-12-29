@@ -18,7 +18,7 @@ typedef base__storage__data__table__column___compo = ({
 });
 
 typedef base__storage__data__table__columns___compo = //
-    array<base__storage__data__table__column__compo>;
+    ARRAY<base__storage__data__table__column__compo>;
 
 INT base__storage__data__table__column__size(
   final base__storage__data__table__column___compo table__column,
@@ -336,12 +336,12 @@ typedef base__storage__data__table__row__convert__text__summary__function__forma
   string sub_title,
 })
         Function(
-  array<Object?> data__array,
+  ARRAY<Object?> data__array,
 );
 
 typedef base__storage__data__table__row__convert__text__function__format = //
     string Function(
-  array<Object?> data__array,
+  ARRAY<Object?> data__array,
 );
 
 abstract class base__storage__data__table__column__type__array__meta___protocol //

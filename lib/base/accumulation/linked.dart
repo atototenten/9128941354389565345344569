@@ -137,7 +137,7 @@ if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy defaul
     return present___ok;
   }
 
-  array<element__type> convert__array /*
+  ARRAY<element__type> convert__array /*
 TASK
   eliminate intermediate conversion to `base__accumulation__linear__basic`
     also in `base__accumulation__chained` */

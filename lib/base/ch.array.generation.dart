@@ -8,10 +8,9 @@ string CHAR__ASCII__array__new__generated(
       and lang dependence
     '$' -> r'$'
     ''' -> '\''
-    '\' -> r'\' */
-{
+    '\' -> r'\' */ {
   const //
-      a = r"""
+  a = r"""
 exclamation !
 quote__double "
 hash #
@@ -56,11 +55,13 @@ bracket__curly__close }
 tilde ~""";
 
   final //
-      prefix = (code___ok //
+  prefix =
+          (code___ok //
           ? "CHAR__ASCII__"
           : "CHAR__"),
-      result = StringBuffer() //
-        ..write("TC //");
+      result =
+          StringBuffer() //
+            ..write("TC //");
 
   void write___raw(final string s) => //
       result.write("  $s,\n");
@@ -70,7 +71,7 @@ tilde ~""";
 
   void process(final string s) {
     s.split("\n").forEach((final s_) {
-      final s__ = s_.split(char__space);
+      final s__ = s_.split(base__chars__space___string);
       write(s__[0], s__[1].codeUnitAt(0));
     });
   }
@@ -79,7 +80,7 @@ tilde ~""";
 
   for (int i = 0; i < 26; i += 1) {
     final //
-        cu = (65 + i),
+    cu = (65 + i),
         su = string.fromCharCode(cu),
         cl = (97 + i),
         sl = string.fromCharCode(cl);
@@ -92,7 +93,7 @@ tilde ~""";
 
   for (int i = 0; i < 26; i += 1) {
     final //
-        c = (97 + i),
+    c = (97 + i),
         s = string.fromCharCode(c);
     write("alphabet__case__lower__$s", c);
     write___raw("  ${prefix}alphabet__$s = ${prefix}alphabet__case__lower__$s,\n");

@@ -1,13 +1,31 @@
 part of "_.dart";
 
-typedef string__wide = BS4__array;
-
 const //
 CHAR__UNICODE__max = 0x10ffff /* 1114111, 0b100001111111111111111 */,
     CHAR__UNICODE__limit = (CHAR__UNICODE__max + 1),
     CHAR__UNICODE__per__byte__max /*
-  bytes needed, for storing `ch__unicode__max` */ =
-        CHAR__UNICODE__size;
+  bytes needed, for storing "CHAR__UNICODE__max" */ =
+        3;
+
+typedef CHAR__UNICODE = INT;
+
+typedef CHAR__UNICODE__BASIC = CHAR__ASCII;
+
+typedef STRING__UNICODE = BS4__array;
+
+extension STRING__UNICODE___extension //
+    on STRING__UNICODE {
+  string convert__STRING__UNICODE() {
+    return string.fromCharCodes(this);
+  }
+}
+
+extension STRING__UNICODE__conversion___extension //
+    on string {
+  STRING__UNICODE convert__STRING__UNICODE() {
+    return STRING__UNICODE.fromList(this.runes.convert__array());
+  }
+}
 
 INT CHAR__UNICODE__bytes__count(final CHAR__UNICODE wc) => //
     ((wc < INT__07__limit) //
@@ -17,72 +35,6 @@ INT CHAR__UNICODE__bytes__count(final CHAR__UNICODE wc) => //
           : ((wc < INT__021__limit) //
                 ? 3
                 : throw "`TCW` MUST be `<u21__limit`")));
-
-string__wide text__unicode__convert__string__wide(
-  final string s, [
-  final INT? chars__count__initial /*
-  usually `INT__2__max` */,
-]) {
-  final runes = Runes /* Dart's rune, is, Unicode's code-point */ (s).iterator;
-
-  var //
-  chars__count = (chars__count__initial ?? s.chars__count),
-      /*array<TCW>*/ chars_ = BS4__array(
-        chars__count,
-      ),
-      char__id = 0;
-
-  while (runes.moveNext()) {
-    if (chars__count == char__id) {
-      final //
-      chars__1 = chars_,
-          chars__count_1 = chars__count;
-
-      base__copy(
-        (chars_ = BS4__array(chars__count *= 2)),
-        chars__1,
-        count: chars__count_1,
-      );
-
-      //chars_.mem_:free()
-    }
-
-    final wc = runes.current;
-
-    chars_[char__id++] =
-        ((wc < CHAR__limit) //
-        ? CHAR__ASCII__convert__ch(wc)
-        : wc);
-  }
-
-  final result = string__wide(char__id);
-
-  base__copy(
-    result,
-    chars_,
-    count: char__id,
-  );
-
-  //chars_.mem_:free()
-
-  return result;
-}
-
-CHAR__UNICODE char__unicode__convert__TCW(
-  final string char,
-) {
-  final runes = Runes(char).iterator;
-
-  if (runes.moveNext().not) {
-    throw "empty text";
-  }
-
-  final wc = runes.current;
-
-  return ((wc < CHAR__limit) //
-      ? CHAR__ASCII__convert__ch(wc)
-      : wc);
-}
 
 /*
   code-point is separated, into parts of 7 bit, each
@@ -103,16 +55,16 @@ CHAR__UNICODE char__unicode__convert__TCW(
   /*conclusions, after the execution of `DelimiterTester::testUnicode` function are:
     NO charCode can be used as de-limiter(or separator), in the enCoded texts,
       ONLY the prePended size can be used to separate these texts
-      but, the ONLY charCode containing 0(or `NIL`, or `'\0'`) is 128, 
+      but, the ONLY charCode containing 0(or `NIL`, or `'\0'`) is 128,
         because 128 requires the 8th bit,
           hence needs 2 bytes after enCoding,
           the second byte is 129, while the first byte is the culprit 0,
     all the 256(possible single-byte) byte values, were en-countered, by 32384 as byteCounter
-    the `byteCount` of the `encodedBytes` was 3325823, 
+    the `byteCount` of the `encodedBytes` was 3325823,
       excluding the prePended size
       compared to 4388733, of `Utf8::enCode`*/ */ /* *** outdated info *** */
 byte__array wstr__convert__bytes(
-  final array<CHAR__UNICODE> ws,
+  final ARRAY<CHAR__UNICODE> ws,
 ) {
   final sink = base__byte__array__accumulation();
 
@@ -161,11 +113,11 @@ byte__array wstr__convert__bytes(
   return result;
 }*/
 
-string__wide wstr__bytes__convert(
+STRING__UNICODE wstr__bytes__convert(
   final byte__array bytes,
 ) {
   /*if (bytes.empty___ok) //
-    return string__wide(0);*/
+    return STRING__UNICODE(0);*/
 
   final //
   bytes_ = bytes___compo(
@@ -179,41 +131,11 @@ string__wide wstr__bytes__convert(
     );
   }
 
-  final result = string__wide.fromList(
+  final result = STRING__UNICODE.fromList(
     sink.convert__array(),
   );
 
   sink.dispose();
-
-  return result;
-}
-
-string wstr__convert__text(
-  final string__wide ws,
-) {
-  if /*F*/ (ws.empty___ok()) {
-    return empty__string;
-  }
-
-  final //
-  count = ws.elements__count,
-      ws__copy = BS4__array(
-        count,
-      );
-
-  base__iterate__reverse__basic(count, (final wide_char__id) {
-    final wc = ws[wide_char__id];
-    ws__copy[wide_char__id] =
-        ((wc < CHAR__limit) //
-        ? CHAR__convert__ch__ascii(wc)
-        : wc);
-  });
-
-  final result = string.fromCharCodes(
-    ws__copy,
-  );
-
-  //ws__copy.mem_:free()
 
   return result;
 }

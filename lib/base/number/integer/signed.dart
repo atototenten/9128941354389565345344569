@@ -60,7 +60,7 @@ class base__INT__NEG__text__digits__fixed {
 
     if (negative___ok) {
       buffer.write(
-        char__dash,
+        base__chars__dash___string,
       );
     }
 

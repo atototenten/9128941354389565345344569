@@ -239,10 +239,10 @@ required for write op.ions */ () {
 
 extension SqliteReadContext__operation__extension //
     on sqlite_async.SqliteReadContext {
-  value__asyn<array<array<Object?>>> //
+  value__asyn<ARRAY<ARRAY<Object?>>> //
   operate__asyn___raw({
     required final string statement,
-    final array<Object?>? statement__arguments,
+    final ARRAY<Object?>? statement__arguments,
   }) async {
     statement__print___raw(
       statement: statement,
@@ -259,7 +259,7 @@ extension SqliteReadContext__operation__extension //
 
   void statement__print___raw({
     required final string statement,
-    final array<Object?>? statement__arguments,
+    final ARRAY<Object?>? statement__arguments,
   }) {
     statement.representation__text().print("statement");
     statement__arguments
@@ -328,7 +328,7 @@ source : `web://powersync.com/blog/sqlite-optimizations-for-ultra-high-performan
   /*value__asyn<void> build__re__asyn({
     required final string file__path,
     required final base__storage__data__basic__table__column__id? Function(
-      array<base__storage__data__basic__table__cell__id> /*
+      ARRAY<base__storage__data__basic__table__cell__id> /*
 empty for root-table */
           table__path,
     ) table__build__re__column /*
@@ -377,7 +377,7 @@ refer to `web://sqlite.org/schematab.html` */ {
 
   void table__columns__id__join___raw(
     final StringBuffer buffer,
-    final array<base__storage__data__basic__table__column__meta> columns__meta,
+    final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
     final BOOL result__column__id___ok,
   ) {
     if (columns__meta.empty___ok() /* because sqlite mandates non-empty selection-columns */ ) {
@@ -405,11 +405,11 @@ refer to `web://sqlite.org/schematab.html` */ {
     );
   }
 
-  value__asyn<array<base__storage__data__basic__table__row>> /*
+  value__asyn<ARRAY<base__storage__data__basic__table__row>> /*
 the first column of each row ,is the unique id ,of the row ,its type ,is un-signed integer ,and range 1..s64 */
   table__rows__asyn({
     required final base__storage__data__basic__table__id table__id,
-    required final array<base__storage__data__basic__table__column__meta>? result__columns__meta /*
+    required final ARRAY<base__storage__data__basic__table__column__meta>? result__columns__meta /*
 if NIL ,then all the columns ,but respecting the "conditions" argument
 if empty ,then the column-id column ,is implicit */,
     final BOOL result__column__id___ok /*
@@ -419,9 +419,9 @@ ignored if `result__columns__meta == NIL` */ =
     required final string? result__conditions /*
   example: "\(column__name) LIKE ?"
     '?' indicates substitution, from "conditions__arguments" */,
-    required final array<Object?>? result__conditions__arguments /*
+    required final ARRAY<Object?>? result__conditions__arguments /*
   example: "Dr%", "%@mail.com" */,
-    final array<base__storage__data__basic__table__column__meta>? result__order__columns__meta /*
+    final ARRAY<base__storage__data__basic__table__column__meta>? result__order__columns__meta /*
 if NIL ,then resulting rows ,are un-order-ed ,or the order is un-defin-ed ,and "result__order__ascend_ing__ok" is ignored  */,
     final BOOL result__order__ascend_ing___ok /* otherwise descend-ing */ = TRUE,
     final INT? result__rows__count__limit,
@@ -496,9 +496,9 @@ example
     );
   }
 
-  value__asyn<array<base__storage__data__basic__table__row>> table__rows__all__asyn({
+  value__asyn<ARRAY<base__storage__data__basic__table__row>> table__rows__all__asyn({
     required final base__storage__data__basic__table__id table__id,
-    final array<base__storage__data__basic__table__column__meta>? result__columns__meta,
+    final ARRAY<base__storage__data__basic__table__column__meta>? result__columns__meta,
     final BOOL result__column__id___ok = FALSE,
   }) {
     return table__rows__asyn(
@@ -513,7 +513,7 @@ example
   value__asyn<base__storage__data__basic__table__row?> table__row__asyn({
     required final base__storage__data__basic__table__id table__id,
     required final base__storage__data__basic__table__row__id table__row__id,
-    required final array<base__storage__data__basic__table__column__meta>? result__columns__meta,
+    required final ARRAY<base__storage__data__basic__table__column__meta>? result__columns__meta,
   }) async {
     final rows = await table__rows__asyn(
       table__id: table__id,
@@ -552,7 +552,7 @@ class base__storage__data__basic__table__column__id {
   final INT value;
 }
 
-typedef base__storage__data__basic__table__row = array<Object?>;
+typedef base__storage__data__basic__table__row = ARRAY<Object?>;
 
 class base__storage__data__basic__table__id //
     extends base__storage__data__basic__table__row__id__base {
@@ -586,7 +586,7 @@ table-id.'s assignment is fully-defined
   equal to row-id. */ */
   > //
   table__add__asyn({
-    required final array<base__storage__data__basic__table__column__meta> columns__meta,
+    required final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
   }) async {
     final //
     table__id__value = await tables__count__asyn(),
@@ -637,7 +637,7 @@ avoid `AUTOINCREMENT`
 
   /*value__asyn<void> table__remove__asyn({
     required final base__storage__data__basic__table__id table__id,
-    required final array<base__storage__data__basic__table__column__meta> columns__meta,
+    required final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
   }) async {
     await value___raw.operate__asyn___raw(
       statement: ("DROP TABLE " + table__id.convert__name___raw()),
@@ -653,7 +653,7 @@ row-id.'s assignment/sequence is well-defined ,as always increasing integer ,beg
   table__row__add__asyn /*
 can add only-single row */ ({
     required final base__storage__data__basic__table__id table__id,
-    required final array<base__storage__data__basic__table__column__meta> columns__meta,
+    required final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
     required final base__storage__data__basic__table__row row,
   }) async {
     final //
@@ -678,8 +678,8 @@ of `rows.first` */
   table__rows__add__asyn /*
 can add multiple-rows ,as well as a single-row */ ({
     required final base__storage__data__basic__table__id table__id,
-    required final array<base__storage__data__basic__table__column__meta> columns__meta,
-    required final array<base__storage__data__basic__table__row> rows,
+    required final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
+    required final ARRAY<base__storage__data__basic__table__row> rows,
   }) async {
     final statement = table__row__addition__statement___raw(
       table__id: table__id,
@@ -706,7 +706,7 @@ can add multiple-rows ,as well as a single-row */ ({
   string //
   table__row__addition__statement___raw({
     required final base__storage__data__basic__table__id table__id,
-    required final array<base__storage__data__basic__table__column__meta> columns__meta,
+    required final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
   }) {
     final //
     columns__count = columns__meta.elements__count,
@@ -744,7 +744,7 @@ can add multiple-rows ,as well as a single-row */ ({
   value__asyn<void> table__row__cells__assign__asyn({
     required final base__storage__data__basic__table__id table__id,
     required final base__storage__data__basic__table__row__id table__row__id,
-    required final array<base__storage__data__basic__table__column> columns,
+    required final ARRAY<base__storage__data__basic__table__column> columns,
   }) async {
     final //
     statement__buffer = StringBuffer("UPDATE ")
@@ -879,7 +879,7 @@ extension SqliteWriteContext__operation__extension //
     on sqlite_async.SqliteWriteContext {
   value__asyn<void> operate__compound__asyn___raw({
     required final string statement,
-    required final array<array<Object?>> statement__arguments,
+    required final ARRAY<ARRAY<Object?>> statement__arguments,
   }) {
     statement__print___raw(
       statement: statement,

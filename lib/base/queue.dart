@@ -59,7 +59,7 @@ dart's `ListQueue` should be preferred
     );
   }
 
-  array<element__type> convert__array() {
+  ARRAY<element__type> convert__array() {
     return accumulation___raw.convert__array();
   }
 

@@ -49,12 +49,12 @@ struct PatternOccurrencesContainer *findAllInString(const char *string, const ch
 
 		if (charOfString == firstCharOfPattern) {
 			const uu offset = stringCharCounter;
-			printf("\t\t" "'%c'(%hu)(charOfString) == `firstCharOfPattern`" "\n" "\t\t" "%lu(offset)" "\n", 
+			printf("\t\t" "'%c'(%hu)(charOfString) == `firstCharOfPattern`" "\n" "\t\t" "%lu(offset)" "\n",
 							 charOfString, charOfString, (offset -1));
 
 			ii patternCharCounter = 1;
 			while(patternCharCounter < patternCharCount) {
-				/*printf("\t\t\t" "'%c'(%hu)(string[%lu]) vs '%hu'(pattern[%ld])" "\n", 
+				/*printf("\t\t\t" "'%c'(%hu)(string[%lu]) vs '%hu'(pattern[%ld])" "\n",
 									 string[stringCharCounter], string[stringCharCounter], stringCharCounter, pattern[patternCharCounter], patternCharCounter);*/
 
 				if (string[stringCharCounter++] != pattern[patternCharCounter++]) {
@@ -120,8 +120,8 @@ void replaceAllInString(char *string, const char *pattern/** from */, const char
 	MEM__FREE(newString)
 
 	struct _LinkedList *iterator;
-	for (iterator = (*occurrences).first; iterator != NULL; iterator = (*iterator).next) 
-		printf("%p(iterator), %lu((*iterator).offset), %p((*iterator).next)\n", 
+	for (iterator = (*occurrences).first; iterator != NULL; iterator = (*iterator).next)
+		printf("%p(iterator), %lu((*iterator).offset), %p((*iterator).next)\n",
 			iterator, (*iterator).offset, (*iterator).next);
 }
 

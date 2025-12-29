@@ -11,7 +11,7 @@ const //
 
 typedef base__storage__file__blocks /*
 each and every block' `.bytes__count` must be equal */
-    = array<base__storage__file__block>;
+    = ARRAY<base__storage__file__block>;
 
 class base__storage__file__block /*
 required to allow single-copy and mandate alignment */
@@ -87,7 +87,7 @@ string file__name__convert__extension(
 ) {
   final char__id = text__search(
     file__name,
-    char__dot,
+    base__chars__dot___string,
     reverse___ok: TRUE,
   );
 

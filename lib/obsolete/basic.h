@@ -120,8 +120,8 @@ typedef ssize_t ssz;
 typedef u31 res/*
 	`result`
 	`INDICATE_SUCCESS` on success,
-		otherwise 
-			either some special non-error value, like `FILE__RESULT__END_OF_FILE` of `_IO__READ__BLOCKING`, 
+		otherwise
+			either some special non-error value, like `FILE__RESULT__END_OF_FILE` of `_IO__READ__BLOCKING`,
 			or a error value, like a private `errno`,
 				to eliminate the need for the `errno.h` provided `errno`,
 					which is a mere complexity, due to its variable.global nature
@@ -303,7 +303,7 @@ int main(void) {
 	{ log(history__file__path, format, __VA_ARGS__); }`
 	`__HISTORY__LOG` is appended to all the `parameter`s' ids, to prevent
 	any of the symbols(functions, and variables), present(not only declared) in `HISTORY__LOG` to match any parameter's id, for example
-	suppose `HISTORY__LOG` has a variable, `int fp`, declared, in the 1st line, of its body, before `log(` function; and 
+	suppose `HISTORY__LOG` has a variable, `int fp`, declared, in the 1st line, of its body, before `log(` function; and
 	`HISTORY__LOG` is called, with an argument variable, named `fp` as `file__path`; then
 	the `log(` function will not be passed with `file__path` as it should have been, but the `int`eger `fp`; which will break the system,
 	this is a simple case, and will be caught by the compiler, because of the data-type mis-match, but suppose some complex happening takes place, in this or any other macro-function, where
@@ -342,10 +342,10 @@ int main(void) {
 
 /*
 	`params`:
-		in-parentheses, 
-			1 indexed, 
-			comma separated; 
-			index-of parameter(s), 
+		in-parentheses,
+			1 indexed,
+			comma separated;
+			index-of parameter(s),
 			expected to NOT be `NULL`
 	
 	example:
@@ -358,8 +358,8 @@ int main(void) {
 			`p1` parameter can be `NULL`, but
 			`p2` can NOT be `NULL`
 	
-	docs: 
-		`https://gcc.gnu.org/onlinedocs/gcc-4.7.2/gcc/Function-Attributes.html`, 
+	docs:
+		`https://gcc.gnu.org/onlinedocs/gcc-4.7.2/gcc/Function-Attributes.html`,
 			then find-in-page for "nonnull"
 
 	forked from `__attribute_nonnull__` */
