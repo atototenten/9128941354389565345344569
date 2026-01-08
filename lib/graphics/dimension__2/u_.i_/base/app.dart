@@ -409,6 +409,7 @@ class gui__base__app__running__simple //
       child__state__completion__success__build: (final context, final entity_1) {
         return MaterialApp(
           showPerformanceOverlay: FALSE,
+          debugShowCheckedModeBanner: FALSE,
           /*checkerboardRasterCacheImages: TRUE,
           checkerboardOffscreenLayers: TRUE,*/
           home: gui__base__widget__build(
