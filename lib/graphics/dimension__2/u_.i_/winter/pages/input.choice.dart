@@ -51,8 +51,8 @@ const //
               item__id,
             ),
             selected__icon: icon__chosen,
-            selection__handle: (final _) async => choice__update(item__id),
-            de_selection__handle: (final _) async => choice__update(null),
+            selection__handle: (_) async => choice__update(item__id),
+            de_selection__handle: (_) async => choice__update(null),
           ),
           floating: ((chosen__id != null)
               ? base__button__floating(

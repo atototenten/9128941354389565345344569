@@ -88,7 +88,7 @@ void data__fetch__manager__test() {
       data__array__count: data__array__count,
       b__progression__reverse: FALSE,
     ),
-  ].iterate__basic((final _, final fetch_man) {
+  ].iterate__basic((_, final fetch_man) {
     report__array(
       fetch_man.data__block__array,
       "fetch_man.data__block__arr",
@@ -130,7 +130,7 @@ void image__test() {
         image = byte__array__array__catinate(
           array__new__generated(
             dimension,
-            (final _) => //
+            (_) => //
                 byte__array__new__generated(
                     channel__count,
                     (final iter) => //
@@ -217,7 +217,7 @@ void str__wide__rich__test() {
         r"11a:2;"
         r"12\|3\||456|abc|"
         r"\|789|01\|\|\|2|def|") /* table */,
-  ].iterate__basic((final _, final s) {
+  ].iterate__basic((_, final s) {
     str__wide__rich__bytes__convert(
       str__wide__rich__convert__bytes(
         string__unicode__convert__wstr(
@@ -464,7 +464,7 @@ void str__search__de_limiter__array(
           : possibleDeLimiters.join(", ")) + //
       (b__verbose_output //
           ? " charCodes can be used as de-limiter(or separator), in $encoder_name encoded strings"
-          : empty__string));
+          : empty___string));
 }
 
 void bytes__test() {
@@ -544,7 +544,7 @@ void stack__test() {
     return TRUE;
   });
 
-  base__iterate(count, (final _) {
+  base__iterate(count, (_) {
     stack.remove();
     print_();
 
@@ -569,12 +569,12 @@ void storage__test() {
       (storage__offset__aligned(i, alignment)..representation__text().print("offset.$s-aligned.")).buffer__offset,
       alignment,
     ).representation__text().print("count.$s-aligned.");
-    print__info(empty__string);
+    print__info(empty___string);
   }
 
-  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 24, 25, 30, 100, 250, 500, 600, 2000, 4000, 5000, 7000, 8000, 9000, 10000].iterate__basic((final _, final element) {
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 24, 25, 30, 100, 250, 500, 600, 2000, 4000, 5000, 7000, 8000, 9000, 10000].iterate__basic((_, final element) {
     element.representation__text().print("element");
-    print__info(empty__string);
+    print__info(empty___string);
 
     print_(element, alignment__mem, "mem");
     print_(element, alignment__disk, "disk");
@@ -656,7 +656,7 @@ void base__storage__file__fast__test() {
               ", ${(b__count__not__max ? "($count + 1)" : count)})");
     }
 
-    print__info(empty__string);
+    print__info(empty___string);
   }
 
   {

@@ -60,7 +60,7 @@ Color color__generate({
   required final BOOL b__solid /* or `b__semi_transparent`(with alpha) */,
   required final INT interval,
 }) {
-  if ((intensity < (256 ~/ interval)).not) {
+  if ((intensity < (256 ~/ interval)).NOT) {
     throw "`intensity` MUST be in-range 0...${((256 ~/ interval) - 1)}, inclusive, when `interval` is $interval";
   }
 

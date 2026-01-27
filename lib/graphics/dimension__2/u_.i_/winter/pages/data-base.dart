@@ -9,7 +9,7 @@ part of "../_.dart";
   final //
       scroll__manager_ = scroll__manager();
 
-  gui__base__widget page(final _) => //
+  gui__base__widget page(_) => //
       page__foundation(
         base__list_ing__generat_ed(
           scroll__manager: scroll__manager_,
@@ -18,7 +18,7 @@ part of "../_.dart";
             secondary__text: (table__main.elements__count.toString() + " Tables"),
           ),
           item__array__count: table__main.elements__count,
-          item__build: (final _, final table__id) {
+          item__build: (_, final table__id) {
             final column__meta = table__main[table__id];
 
             return GestureDetector(
@@ -53,7 +53,7 @@ widget__build__stored___compo data__base__table__rows__page__stored({
   final //
       scroll__manager_ = scroll__manager();
 
-  gui__base__widget page(final _) => //
+  gui__base__widget page(_) => //
       page__foundation(
         base__list_ing__generat_ed(
           scroll__manager: scroll__manager_,
@@ -62,7 +62,7 @@ widget__build__stored___compo data__base__table__rows__page__stored({
             secondary__text: (column__meta__array.elements__count.toString() + " Rows"),
           ),
           item__array__count: column__meta__array.elements__count,
-          item__build: (final _, final column__id) {
+          item__build: (_, final column__id) {
             final column__meta = column__meta__array[column__id];
 
             return GestureDetector(
@@ -97,7 +97,7 @@ widget__build__stored___compo data__base__table__columns__page__stored({
   final //
       scroll__manager_ = scroll__manager();
 
-  gui__base__widget page(final _) => //
+  gui__base__widget page(_) => //
       page__foundation(
         base__list_ing__generat_ed(
           scroll__manager: scroll__manager_,
@@ -106,7 +106,7 @@ widget__build__stored___compo data__base__table__columns__page__stored({
             secondary__text: (column__meta__array.elements__count.toString() + " Columns"),
           ),
           item__array__count: column__meta__array.elements__count,
-          item__build: (final _, final column__id) => //
+          item__build: (_, final column__id) => //
               gui__base__listing__item(
             body: gui__base__box__text__primary(
               data__base__table__column__meta__convert__text(

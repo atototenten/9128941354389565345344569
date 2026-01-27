@@ -28,7 +28,7 @@ by-default 0 ,if `reverse:OK` is `NOT OK` ,else `char:last:id` */
   ,
   final BOOL reverse___ok = FALSE,
 }) {
-  if ((offset != null) && (offset < text_.chars__count).not) {
+  if ((offset != null) && (offset < text_.chars__count).NOT) {
     throw RangeError.range(
       offset,
       0,

@@ -53,7 +53,7 @@ BOOL byte__array__blank___ok(
   var blank___ok = TRUE;
 
   bys.iterate(
-    (final _, final element) {
+    (_, final element) {
       if (element == 0) {
         return TRUE;
       }

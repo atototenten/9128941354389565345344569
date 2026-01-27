@@ -366,7 +366,7 @@ int main(void) {
 //#define _NON_NULL(params) __attribute__ ((__nonnull__ params))
 
 #define STRING__BLANK ""
-#define empty__string STRING__BLANK
+#define empty___string STRING__BLANK
 #define STRING__ERROR "***ERROR***"
 
 /*
@@ -398,7 +398,7 @@ int main(void) {
 		print__ERROR__ABORT(result, format, __VA_ARGS__)
 
 #define res__CHECK__SUCCESS__ELSE__REPORT__BASIC__ABORT(result) \
-	res__CHECK__SUCCESS__ELSE__REPORT__ABORT(result, empty__string, NULL)
+	res__CHECK__SUCCESS__ELSE__REPORT__ABORT(result, empty___string, NULL)
 
 #define _TEST__COMPARE__SIZE(a, b) \
 	if(sizeof(a) != sizeof(b)) \

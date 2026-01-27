@@ -56,7 +56,7 @@ BS1__array image__convert__bytes(
       channel__array__count = (!b__alpha ? 3 : 4),
       channel__array = array__new__generated(
         channel__array__count,
-        (final _) => base__byte__array__accumulation(),
+        (_) => base__byte__array__accumulation(),
       ),
       channel__rep__count__array = array__new__filled(
         channel__array__count,

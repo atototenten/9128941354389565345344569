@@ -231,7 +231,7 @@ byte__array str__wide__rich__convert__bytes(
     {
       list__iterate__basic(
         text__segment__list,
-        (final _, final string __segment) => //
+        (_, final string __segment) => //
             (count += text__segment.count),
       );
 
@@ -441,10 +441,10 @@ byte__array str__wide__rich__convert__bytes(
 
                         base__iterate__basic(
                             row__array__count,
-                            (final _) => //
+                            (_) => //
                                 base__iterate__basic(
                                     column__array__count,
-                                    (final _) => //
+                                    (_) => //
                                         sink.add__uu(str__text__count(
                                           ch__pipe,
                                         ))));
@@ -491,10 +491,10 @@ byte__array str__wide__rich__convert__bytes(
       sink__size = sink.bytes__count,
       text__section = base__array__accumulation<wch>();
 
-  list__iterate__basic(text__segment__list__list, (final _, final string __segment__list) {
+  list__iterate__basic(text__segment__list__list, (_, final string __segment__list) {
     list__iterate__basic(
         text__segment__list,
-        (final _, final string __segment) => //
+        (_, final string __segment) => //
             base__array__accumulation__add__array(
               text__section,
               str__wide__rich.view__partial(
@@ -620,7 +620,7 @@ void str__wide__rich__bytes__convert__report(
             column__array__count = section__control.read__uu().value,
             column__b__number__array = array__new__generated(
                 column__array__count,
-                (final _) => //
+                (_) => //
                     section__control.read__byte()),
             row__array__count = section__control.read__uu().value;
 

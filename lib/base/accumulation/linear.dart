@@ -108,7 +108,7 @@ for quick `add:element` */
 
       _elements = array__new__generated(
         _elements__count,
-        (final _) => iteration.element()! /*
+        (_) => iteration.element()! /*
 will be non-NIL ,because `list_.elements__count` is expected to be correct */
         ,
       ) /*
@@ -125,7 +125,7 @@ will be non-NIL ,because `list_.elements__count` is expected to be correct */
     var result = FALSE;
 
     _elements.iterate(
-      (final _, final e) {
+      (_, final e) {
         if (e == element) {
           result = TRUE;
           return FALSE;
@@ -170,7 +170,7 @@ must not be more than `list_.elements__count` */
 
     base__iterate__basic(
       (count ?? _elements__count),
-      (final _) => //
+      (_) => //
           operate(
         iteration.element()!,
       ),
@@ -212,7 +212,7 @@ more efficient ,than `convert:array`
     element__type? result;
 
     _elements.iterate(
-      (final _, final e) {
+      (_, final e) {
         if (e == null) {
           return TRUE;
         }
@@ -441,7 +441,7 @@ extension array__convert__accumulation__linear__definitive__extension //
     );
 
     iterate__basic(
-      (final _, final element) {
+      (_, final element) {
         result.add__ending(
           element,
         );
@@ -501,7 +501,7 @@ extension array__convert__accumulation__linear__basic__extension //
     );
 
     iterate__basic(
-      (final _, final element) {
+      (_, final element) {
         result.add__ending(
           element,
         );
@@ -594,7 +594,7 @@ very efficient (both space, and time) ,than linked-list
           e,
         );
 
-        if (equal___ok.not) {
+        if (equal___ok.NOT) {
           return TRUE;
         }
 
@@ -616,7 +616,7 @@ very efficient (both space, and time) ,than linked-list
       (final id, final e) {
         final equal___ok_1 = equal___ok(e);
 
-        if (equal___ok_1.not) {
+        if (equal___ok_1.NOT) {
           return TRUE;
         }
 

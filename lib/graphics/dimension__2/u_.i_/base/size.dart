@@ -148,7 +148,7 @@ app:build__re:ok */
       if (screen__padding__permanent__new != _screen__padding__permanent) {
         _screen__padding__permanent = screen__padding__permanent__new;
 
-        if (result.not) {
+        if (result.NOT) {
           result = TRUE;
         }
       }
@@ -169,13 +169,13 @@ app:build__re:ok */
       if (screen__padding__temporary__new != _screen__padding__temporary) {
         _screen__padding__temporary = screen__padding__temporary__new;
 
-        if (result.not) {
+        if (result.NOT) {
           result = TRUE;
         }
       }
     }
 
-    if (result.not) {
+    if (result.NOT) {
       return FALSE;
     }
   }

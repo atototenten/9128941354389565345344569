@@ -150,7 +150,7 @@ void report__base__storage__data__table__columns__meta__recursive__fancy(
   final base__storage__data__table__columns__array___compo table__columns__array,
   final base__storage__data__table__columns___compo columns,
 ) =>
-    columns.iterate__basic((final _, final column) {
+    columns.iterate__basic((_, final column) {
       report__history__write(base__printing__indentation__increaseation__text * base__printing__indentation__increaseation);
       report__history__write(column__meta.name);
 

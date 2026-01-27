@@ -320,7 +320,7 @@ do {
     final INT size;
     {
       var i = 0;
-      while ((value < (1 << ((i += 1) * CHAR__width))).not);
+      while ((value < (1 << ((i += 1) * CHAR__width))).NOT);
 
       size = i;
     }

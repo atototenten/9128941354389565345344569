@@ -22,7 +22,7 @@ mut.ion is syn.ized ,in cache
         scheduling__meta = value__asyn__meta<value__asyn<void>>(),
         syn_izing__meta = value__asyn__meta<void>();
 
-    task__schedule(
+    task__urgent__schedule(
       () {
         scheduling__meta.complete(
           syn_izing__meta.future,
@@ -43,7 +43,7 @@ mut.ion has been syn.ized (cache has been updated) ,and live(globally visible) *
         scheduling__meta = value__asyn__meta<value__asyn<void>>(),
         syn_izing__meta = value__asyn__meta<void>();
 
-    task__schedule(
+    task__urgent__schedule(
       () {
         scheduling__meta.complete(
           syn_izing__meta.future,
@@ -317,7 +317,7 @@ void preservation__journal__recover__if__needed({
 
     base__iterate__reverse__basic(
       count,
-      (final _) {
+      (_) {
         final //
             count = bytes.read__INT__fixed(
               bytes__preserved__count__size__id.size,

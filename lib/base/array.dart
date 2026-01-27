@@ -33,7 +33,7 @@ ARRAY<element__type> //
 array__new__empty<element__type>() => //
 array__new__generated<element__type>(
   0,
-  (final _) => throw Exception(),
+  (_) => throw Exception(),
 );
 
 ARRAY<element__type> array__new__element__single<element__type>(
@@ -49,7 +49,7 @@ extension array__array__merge_ing<element__type> //
     var elements__count = 0;
 
     iterate__reverse__basic(
-      (final _, final e) {
+      (_, final e) {
         elements__count += e.elements__count;
       },
     );
@@ -87,6 +87,7 @@ extension array__array__merge_ing<element__type> //
 
   void merge__test() {
     ([
+      [],
       [3, 2, 1],
       [6, 5, 4],
       [9, 8, 7],
@@ -266,7 +267,7 @@ un-equal element's id, if any */
       final INT element__id,
       final element___type element,
     ) {
-      if (element__equal___ok(element).not) {
+      if (element__equal___ok(element).NOT) {
         return TRUE;
       }
 
@@ -339,7 +340,7 @@ whole `segment` has been iterated ,and was not un-equal to `this[(i-segment__ele
       (input: [0, 1, 2, 3], segment: [1, 2], result: 1),
       (input: [0, 1, 2, 3], segment: [1, 2, 3], result: 1),
       (input: [0, 1, 2, 3], segment: [1, 3], result: NIL),
-    ].iterate__basic((final _, final e) {
+    ].iterate__basic((_, final e) {
       final result =
           e.input.search__segment(e.segment) //
             ..representation__text().print("${e.input}.search__segment(${e.segment})");
@@ -355,7 +356,7 @@ whole `segment` has been iterated ,and was not un-equal to `this[(i-segment__ele
 equality is not considered prefix
   ,like `abc` is prefixed to `abcxyz` ,but neither `abcxyz` ,nor `xyzabc`
 more run-time efficient ,than `search__segment` */ {
-    if ((elements__count > segment.elements__count).not) /*
+    if ((elements__count > segment.elements__count).NOT) /*
 `segment` can prefix `this` ,only if ,`segment`'s length is less than `this` */ {
       return FALSE;
     } else if (first != segment.first) {
@@ -384,7 +385,7 @@ more run-time efficient ,than `search__segment` */ {
       (input: [0, 1, 2, 3], segment: [1, 2], result: FALSE),
       (input: [0, 1, 2, 3], segment: [0, 1, 2, 3], result: FALSE),
       (input: [0, 1, 2], segment: [0, 1, 2, 3], result: FALSE),
-    ].iterate__basic((final _, final e) {
+    ].iterate__basic((_, final e) {
       final result =
           e.input.search__segment__begin(e.segment) //
             ..representation__text().print("${e.input}.search__segment__begin(${e.segment})");
@@ -402,17 +403,17 @@ join */ <element__other__type>(
     final accumulation = base__accumulation__linear__basic<element___type>();
 
     iterate__basic(
-      (final _, final element) {
+      (_, final element) {
         var equal___ok = FALSE;
 
         other.iterate__reverse(
-          (final _, final element__other) {
+          (_, final element__other) {
             final equal__ok_1 = element__equal___ok(
               element,
               element__other,
             );
 
-            if (equal__ok_1.not) {
+            if (equal__ok_1.NOT) {
               return TRUE;
             }
 
@@ -482,40 +483,7 @@ join */ <element__other__type>(
     return TRUE;
   }
 
-  Iterable<element__new___type> //
-  convert__definitive<element__new___type>(
-    final element__new___type Function(INT, element___type) operate,
-  ) {
-    var i = 0;
-
-    return this.convert(
-      (final e) {
-        final v = operate(i, e);
-
-        i += 1;
-
-        return v;
-      },
-    );
-  }
-
-  Iterable<element___type> //
-  select__definitive //
-  (final BOOL Function(INT, element___type) operate) {
-    var i = 0;
-
-    return where(
-      (final e) {
-        final v = operate(i, e);
-
-        i += 1;
-
-        return v;
-      },
-    );
-  }
-
-  Iterable<Iterable<element___type>> split /*
+  VENDING<ARRAY<element___type>> split /*
   - example
     - input : ARRAY(1 ,2 ,3 ,0 ,4 ,5 ,6 ,0 ,7 ,8 ,9)..split((e) { RETURN (e = 0) })
       output : ARRAY(ARRAY(1 ,2 ,3) ,ARRAY(4 ,5 ,6) ,ARRAY(7 ,8 ,9)) */ (
@@ -524,19 +492,23 @@ join */ <element__other__type>(
     var offset = 0;
 
     while (offset < this.length) {
-      yield () sync* {
-        while (offset < this.length) {
-          final e = this[offset];
+      var offset_1 = offset;
 
-          if (split___ok(e)) {
-            return;
-          }
+      while (offset_1 < this.length) {
+        final e = element(offset_1);
 
-          offset += 1;
-
-          yield e;
+        if (split___ok(e)) {
+          break;
         }
-      }();
+
+        offset_1 += 1;
+      }
+
+      final result = this.sublist(offset, offset_1);
+
+      offset = offset_1;
+
+      yield result;
     }
   }
 }
@@ -555,15 +527,15 @@ extension element__type__array__report__definitive__extension<element__type> //
     }
 
     return ("$element__id: $static__indicate__short_en_ing " + //
-        (((element__id - 4) > 0) ? " ,${element(-4)}" : empty__string) +
-        (((element__id - 3) > 0) ? " ,${element(-3)}" : empty__string) +
-        (((element__id - 2) > 0) ? " ,${element(-2)}" : empty__string) +
-        (((element__id - 1) > 0) ? " ,${element(-1)}" : empty__string) + //
+        (((element__id - 4) > 0) ? " ,${element(-4)}" : empty___string) +
+        (((element__id - 3) > 0) ? " ,${element(-3)}" : empty___string) +
+        (((element__id - 2) > 0) ? " ,${element(-2)}" : empty___string) +
+        (((element__id - 1) > 0) ? " ,${element(-1)}" : empty___string) + //
         "   ,${element(0)}  " + //
-        (((element__id + 1) < elements__count) ? " ,${element(1)}" : empty__string) +
-        (((element__id + 2) < elements__count) ? " ,${element(2)}" : empty__string) +
-        (((element__id + 3) < elements__count) ? " ,${element(3)}" : empty__string) +
-        (((element__id + 4) < elements__count) ? " ,${element(4)}" : empty__string) + //
+        (((element__id + 1) < elements__count) ? " ,${element(1)}" : empty___string) +
+        (((element__id + 2) < elements__count) ? " ,${element(2)}" : empty___string) +
+        (((element__id + 3) < elements__count) ? " ,${element(3)}" : empty___string) +
+        (((element__id + 4) < elements__count) ? " ,${element(4)}" : empty___string) + //
         static__indicate__short_en_ing);
   }
 }

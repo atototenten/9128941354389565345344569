@@ -54,7 +54,7 @@ void base__storage__data__table__row__bytes__mod__auto({
   base__printing__indentation__increase();
 
   column__array.iterate__reverse__basic(
-    (final _, final column) {
+    (_, final column) {
       final table__column = table__columns[column.meta__id];
 
       base__storage__data__table__row__column__bytes__auto(

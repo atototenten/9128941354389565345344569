@@ -1,6 +1,6 @@
 part of "_.dart";
 
-class base__queue /*
+class base__queue___compo /*
 dart's `ListQueue` should be preferred
   which is also more efficient(space and run-time)
     due to lack of linking and in-direction in elements
@@ -8,43 +8,48 @@ dart's `ListQueue` should be preferred
     <element__type extends Object?> //
     implements
         base__dispose___protocol {
-  base__queue() //
-      : accumulation___raw = base__accumulation__linked();
+  base__queue___compo() //
+      : _accumulation = base__accumulation__linked___compo();
 
-  final base__accumulation__linked<element__type> accumulation___raw;
+  final base__accumulation__linked___compo<element__type> _accumulation;
+
+  @override
+  void dispose() {
+    _accumulation.dispose();
+  }
+
+  void flush() {
+    _accumulation.flush();
+  }
 
   INT elements__count() {
-    return accumulation___raw.elements__count();
+    return _accumulation.elements__count();
   }
 
   BOOL empty___ok() {
-    return accumulation___raw.empty___ok();
-  }
-
-  BOOL empty__not() {
-    return accumulation___raw.empty__not();
+    return _accumulation.empty___ok();
   }
 
   base__accumulation__linked__element<element__type>? element() {
-    return accumulation___raw.element__first();
+    return _accumulation.element__first();
   }
 
   void add(
     final element__type value,
   ) {
-    accumulation___raw.add__ending(
+    _accumulation.add__ending(
       value,
     );
   }
 
   void remove() {
-    accumulation___raw.remove__first();
+    _accumulation.remove__first();
   }
 
   void iterate(
     final BOOL Function(base__accumulation__linked__element<element__type> element) element__handle,
   ) {
-    accumulation___raw.iterate(
+    _accumulation.iterate(
       element__handle,
     );
   }
@@ -53,22 +58,13 @@ dart's `ListQueue` should be preferred
     final element__type element,
     final base__value__equality__function__format<element__type,element__type> equal___ok,
   ) {
-    return accumulation___raw.present___ok(
+    return _accumulation.present___ok(
       element,
       equal___ok,
     );
   }
 
   ARRAY<element__type> convert__array() {
-    return accumulation___raw.convert__array();
-  }
-
-  void flush() {
-    accumulation___raw.flush();
-  }
-
-  @override
-  void dispose() {
-    accumulation___raw.dispose();
+    return _accumulation.convert__array();
   }
 }

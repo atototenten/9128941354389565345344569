@@ -69,12 +69,12 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
     }
 
     base__platform__init_().handle(
-      (final _) => _success__handle(),
+      (_) => _success__handle(),
       _failure__handle,
     );
 
     base__storage__init_().handle(
-      (final _) => _success__handle(),
+      (_) => _success__handle(),
       _failure__handle,
     );
 
@@ -369,7 +369,7 @@ class gui__base__app__running__simple //
     }
 
     init_ion__status__asyn.handle(
-      (final _) {
+      (_) {
         base__app__theme__colors__ground__back__contrast__dark___ok = base__environment__theme__colors__ground__back__contrast__dark___ok();
 
         entity().handle(
@@ -503,7 +503,7 @@ class _app__gui__base__widget__state //
       "app:colors:change".print();
     }
 
-    if (base__app__theme__colors__ground__back__follow__system___ok.not) {
+    if (base__app__theme__colors__ground__back__follow__system___ok.NOT) {
       return;
     }
 
@@ -540,7 +540,7 @@ class _app__gui__base__widget__state //
   }
 
   @override
-  Widget build(final _) {
+  Widget build(_) {
     return widget.child__build(
       context,
     );

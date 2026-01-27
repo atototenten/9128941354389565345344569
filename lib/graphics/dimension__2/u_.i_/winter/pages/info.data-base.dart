@@ -50,7 +50,7 @@ part of "../_.dart";
           primary__text: "Data-base Info.",
         ),
         item__array__count: items.elements__count,
-        item__build: (final _, final i) => //
+        item__build: (_, final i) => //
             items[i],
       ),
     ),

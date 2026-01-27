@@ -135,7 +135,7 @@ navigation__manager__kampo navigation__manager({
         );
       },
       de_init_: broadcast_.flush,
-      build: (final _) {
+      build: (_) {
         if (base__printing___ok) //
           base__function__call__print__arguments__void(
             "navigation.build",

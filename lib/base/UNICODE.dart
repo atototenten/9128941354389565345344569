@@ -69,7 +69,7 @@ byte__array wstr__convert__bytes(
   final sink = base__byte__array__accumulation();
 
   ws.iterate__basic(
-    (final _, final wc) => //
+    (_, final wc) => //
     sink.add__INT(
       wc,
     ),
@@ -101,7 +101,7 @@ byte__array wstr__convert__bytes(
       final wc = bytes[iter];
 
       if ((wc < CHAR__ASCII__limit) || (ascii___ok = FALSE)) {
-        if (ascii___ok || (ascii___ok = TRUE).not) //
+        if (ascii___ok || (ascii___ok = TRUE).NOT) //
           result[iter] = CHAR__encrypt(wc);
       }
     },

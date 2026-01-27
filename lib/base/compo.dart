@@ -35,7 +35,7 @@ base__compo__representation__text({
         final name,
         final value,
       ) {
-        if (first___ok.not) {
+        if (first___ok.NOT) {
           buffer.write(",");
         } else {
           first___ok = FALSE;

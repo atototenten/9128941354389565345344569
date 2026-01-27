@@ -24,7 +24,7 @@ sub-typing is not supported
 
     _types.iterate(
       (
-        final _,
+        _,
         final e,
       ) {
         if (value__new.runtimeType == e) {
@@ -37,7 +37,7 @@ sub-typing is not supported
       },
     );
 
-    if (type___ok.not) {
+    if (type___ok.NOT) {
       throw "\"$value__new\" of type `${value__new.runtimeType}` ,cannot be assigned to union$_types";
     }
 

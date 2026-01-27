@@ -241,7 +241,7 @@ re-set */
   void elements__remaining__ensure___raw() {
     final elements__remaining__ok_1 = elements__remaining___ok();
 
-    if (elements__remaining__ok_1.not) {
+    if (elements__remaining__ok_1.NOT) {
       throw "exception : `elements__remaining__not`";
     }
   }
@@ -415,7 +415,7 @@ declarative approach */
         array__elements__offset,
       );
 
-      if /*F*/ (iterate___ok.not || //
+      if /*F*/ (iterate___ok.NOT || //
           array__last___ok) {
         break;
       }
@@ -668,7 +668,7 @@ guide: `
         }
 
         if (result == null) {
-          if (failed___ok.not) {
+          if (failed___ok.NOT) {
             throw "tests__$name[$i] should have failed";
           }
         } else if ((iteration__meta.elements__count__remaining___raw != result.elements__count__remaining) || //

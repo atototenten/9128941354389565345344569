@@ -86,7 +86,7 @@ class base__event__channel__unicast //
   ) {
     if (description__equal___ok(
       description,
-    ).not) {
+    ).NOT) {
       return FALSE;
     }
 
@@ -204,7 +204,7 @@ class base__event__channel__broadcast //
       (final id, final description) {
         try {
           description();
-        } catch (_, _) {}
+        } catch (_) {}
 
         return TRUE;
       },
@@ -324,7 +324,7 @@ invoked after the saturation of "time__unit__count"
       Duration(
         milliseconds: time__interval,
       ),
-      (final _) {
+      (_) {
         final valid___ok = (_time__unit__count__current > 0);
         _time__unit__count__current -= 1;
 

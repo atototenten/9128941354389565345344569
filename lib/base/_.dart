@@ -44,7 +44,7 @@ part "number/fixed-point.dart";
 part "image.dart";
 part "input.text.buffering.dart";
 part "isolating.dart";
-part "Iterable.dart";
+part "VENDING.dart";
 part "Iterate.dart";
 part "language.english.dart";
 part "list.dart";
@@ -130,7 +130,7 @@ result__code__size = INT__1__size,
         "...",
     static__indicate__short_en_ing = static__indicate__truncat_ion,
         //
-        empty__string =
+        empty___string =
         "";
 
 const //
@@ -162,7 +162,7 @@ BOOL base__check__endian__host__little() {
 }
 
 void base__check__features() {
-  if (base__check__endian__host__little().not) {
+  if (base__check__endian__host__little().NOT) {
     throw "host, byte-order, in-compatible: refer `b__endian__host__little`";
   }
 }
@@ -316,7 +316,7 @@ extension text__separation__extension //
 
     base__iterate__reverse__basic(
       ((length_1 - offset) ~/ interval),
-      (final _) {
+      (_) {
         buffer
           ..write(separation)
           ..write(
@@ -343,7 +343,7 @@ extension text__separation__extension //
     final result =
         array__new__filled<string>(
             elements__count,
-            empty__string,
+            empty___string,
           )
           ..first = substring(
             0,

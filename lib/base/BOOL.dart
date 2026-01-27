@@ -7,14 +7,12 @@ TRUE = true,
     FALSE = /*false*/ !TRUE;
 
 /*BOOL NOT(final BOOL value) => //
-    value.not;*/
+    value.NOT;*/
 
-extension BOOL__extension on BOOL {
-  BOOL get not => //
+extension BOOL___extension on BOOL {
+  BOOL get NOT => //
       !this;
-}
 
-extension BOOL__convert__representation__text__extension on BOOL {
   base__representation__text //
   representation__text() {
     return base__representation__text(

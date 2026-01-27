@@ -53,7 +53,7 @@ gui__base__widget winter__button__icon__circled(
     de_init_: (final context) {
       build__re = NIL;
     },
-    build: (final _) {
+    build: (_) {
       return (b__expanded
           ? expanded__widget(
               base__button__icon__circled(

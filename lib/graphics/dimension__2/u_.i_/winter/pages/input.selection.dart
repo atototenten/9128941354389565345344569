@@ -15,7 +15,7 @@ part of "../_.dart";
 
   if (selection__array__initial != null) {
     selection__array__initial.iterate__basic(
-      (final _, final item__id) {
+      (_, final item__id) {
         selection__accumulation.add(
           item__id,
         );
@@ -142,8 +142,8 @@ part of "../_.dart";
               item__id,
             ),
             body: listing__item__body__build(build__context, item__id),
-            selection__handle: (final _) async => select___ok(item__id),
-            de_selection__handle: (final _) async => de_select___ok(item__id),
+            selection__handle: (_) async => select___ok(item__id),
+            de_selection__handle: (_) async => de_select___ok(item__id),
           ),
           floating: RepaintBoundary(
             child: gui__base__widget__build__definitive(
@@ -151,7 +151,7 @@ part of "../_.dart";
                   (button__build__re = state_.build__re),
               de_init_: () => //
                   (button__build__re = NIL),
-              build: (final _) => //
+              build: (_) => //
                   ((button__submit__show___ok || button__flush__show___ok)
                       ? gui__base__stack___widget(
                           children: <gui__base__widget>[
@@ -206,7 +206,7 @@ part of "../_.dart";
                                       (count__build__re = state__.build__re),
                                   de_init_: () => //
                                       (count__build__re = NIL),
-                                  build: (final _) => //
+                                  build: (_) => //
                                       gui__base__box__floating(
                                     border__radius: BorderRadius.all(Radius.circular(12.px())),
                                     child: Padding(

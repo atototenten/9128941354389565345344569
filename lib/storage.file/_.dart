@@ -92,7 +92,7 @@ string file__name__convert__extension(
   );
 
   if (char__id == null) {
-    return empty__string;
+    return empty___string;
   }
 
   return file__name.substring(
@@ -186,11 +186,11 @@ void base__storage__file__io__check__aligned(
     alignment.size.representation__text().print("alignment__size");
   }
 
-  if (base__INT__aligned___ok(count, alignment.size).not) {
+  if (base__INT__aligned___ok(count, alignment.size).NOT) {
     throw "`count` is NOT aligned";
   }
 
-  if (base__INT__aligned___ok(offset, alignment.size).not) {
+  if (base__INT__aligned___ok(offset, alignment.size).NOT) {
     throw "`offset` is NOT aligned";
   }
 }

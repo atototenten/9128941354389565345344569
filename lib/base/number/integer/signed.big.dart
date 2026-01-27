@@ -4,7 +4,7 @@ typedef INT__NEG__BIG /* infinite */ = BigInt;
 
 extension INT__NEG__BIG__extension on INT__NEG__BIG {
   BOOL value__zero___ok() {
-    return ((bitLength == 0) && isNegative.not);
+    return ((bitLength == 0) && isNegative.NOT);
   }
 
   INT__NEG__BIG endian__little__convert__endian__big({
@@ -18,7 +18,7 @@ extension INT__NEG__BIG__extension on INT__NEG__BIG {
 
     base__iterate__reverse__basic(
       digits__count,
-      (final _) {
+      (_) {
         final source__1 = (source & mask);
         if (source__1 != INT__NEG__BIG.zero) {
           destination = ((destination << digit__width) | source__1);

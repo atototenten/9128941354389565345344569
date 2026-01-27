@@ -56,8 +56,8 @@ class gui__base__button {
 
             press__handle() //
                 .handle(
-                  (final _) => revert(),
-                  (final _, final __) {
+                  (_) => revert(),
+                  (_, __) {
                     /*
 should not happen ,because the user should handle the errors ,but anyways */
                     revert();
@@ -104,11 +104,11 @@ should not invoke `.selection__switch` ,if the result is `OK`
           press__handle: () {
             final switch___ok = press__handle();
 
-            if (switch___ok.not) {
+            if (switch___ok.NOT) {
               return;
             }
 
-            selected__ok___raw = selected__ok___raw.not;
+            selected__ok___raw = selected__ok___raw.NOT;
             context.build__re___raw();
           },
           child: child__build(

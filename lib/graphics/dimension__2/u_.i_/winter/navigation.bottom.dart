@@ -52,7 +52,7 @@ typedef navigation__bottom__item___compo = ({
               (build__re__array[page__id] = state.build__re___raw),
           de_init_: () => //
               (build__re__array[page__id] =  null),
-          build: (final _) => //
+          build: (_) => //
               ((page__id == page__chosen__id)
                   ? _button__selected(
                       page__array[page__id].icon,

@@ -42,12 +42,11 @@ value__asyn__basic<void> base__delay({
   );
 }
 
-void task__schedule(
-  final procedure__empty__format proc_,
-) {
-  dart__async.scheduleMicrotask(
-    proc_,
-  );
+void task__urgent__schedule/*
+  use-cases
+    - linearizing/preventing recursion
+        using the event-loop */(final procedure__empty__format handle) {
+  dart__async.scheduleMicrotask(handle);
 }
 
 extension value__asyn__basic__extension //
@@ -183,7 +182,7 @@ ensures that the syn.ny has not replaced the state with another
 
     value.handle(
       (final value) {
-        if (valid___ok().not) {
+        if (valid___ok().NOT) {
           return;
         }
 
@@ -194,7 +193,7 @@ ensures that the syn.ny has not replaced the state with another
         );
       },
       (final error, final trace) {
-        if (valid___ok().not) {
+        if (valid___ok().NOT) {
           return;
         }
 

@@ -9,5 +9,5 @@ num__range__contains //
 ) {
   return ((value < beginning) || //
           (value > ending))
-      .not;
+      .NOT;
 }

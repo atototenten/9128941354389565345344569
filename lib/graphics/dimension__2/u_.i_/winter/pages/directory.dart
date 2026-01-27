@@ -70,10 +70,10 @@ gui__base__widget pages__directory__page(
       scroll__manager: scroll__manager,
       page__title: base__page__title__aligned__center(
         primary__text: directory__path,
-        secondary__text: (file__array__count.toString() + " file" + ((file__array__count > 1) ? 's' : empty__string)),
+        secondary__text: (file__array__count.toString() + " file" + ((file__array__count > 1) ? 's' : empty___string)),
       ),
       item__array__count: file__array__count,
-      item__build: (final _, final file__id) {
+      item__build: (_, final file__id) {
         final //
             file = file__array[file__id],
             file__path = file.path,
@@ -86,7 +86,7 @@ gui__base__widget pages__directory__page(
                 file__path__convert__name(file__path),
                 (StringBuffer(b__type__file //
                         ? (getSeparatedString(stat.size.toString()) + "  bytes" '\n')
-                        : empty__string)
+                        : empty___string)
                       ..write(stat.type.toString())
                       ..write("  (type)" '\n')
                       ..write(_file__stat__mode__convert__text(stat.mode))

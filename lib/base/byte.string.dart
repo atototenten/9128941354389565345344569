@@ -69,7 +69,7 @@ extension BS__size__id__conversion //
        INT__32__size,
     ];
 
-    if ((size__id.value < sizes.length).not) {
+    if ((size__id.value < sizes.length).NOT) {
       throw "un-known ${size__id.value}(size__id)";
     }
 

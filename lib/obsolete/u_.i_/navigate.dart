@@ -269,12 +269,12 @@ appbar's back navigation button is not shown */
         builder: page__build,
         maintainState: FALSE,
       ),
-      (final _) => NO,
+      (_) => NO,
     );
   } else {
     base__iterate__basic(
       pages__count,
-      (final _) {
+      (_) {
         app__navigation__kampo.history__remove();
       },
     );
@@ -298,7 +298,7 @@ appbar's back navigation button is not shown */
         builder: page__build,
         maintainState: FALSE,
       ),
-      (final _) {
+      (_) {
         if /*F*/ (pages__count_ == 0) {
           return TRUE;
         }

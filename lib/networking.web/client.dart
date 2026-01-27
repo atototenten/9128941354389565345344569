@@ -56,6 +56,11 @@ including protocol ,like "http://" ,service-path ,and the end-point */,
             await ((body == null)
                 ? http.get(
                     path__parsed,
+                    headers:
+                        (headers
+                            .empty___ok() //
+                        ? NIL
+                        : headers),
                   )
                 : http.post(
                     path__parsed,

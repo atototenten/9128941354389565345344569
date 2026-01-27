@@ -42,7 +42,7 @@ in Unicode's Grapheme-clusters */ =
   }
 
   gui__base__input__text___compo({
-    final string value = empty__string,
+    final string value = empty___string,
   }) : _value___channel = base__event__channel__broadcast(),
        _controlling = TextEditingController(text: value) {
     _controlling.addListener(_controlling__event__handle);
@@ -143,8 +143,8 @@ intentional ,because wrapping with boolean-based transitioning ,with a default-s
             ? char__replacement
             : base__chars__space___string),
         autocorrect: FALSE,
-        enableSuggestions: secret___ok.not,
-        enableIMEPersonalizedLearning: secret___ok.not,
+        enableSuggestions: secret___ok.NOT,
+        enableIMEPersonalizedLearning: secret___ok.NOT,
         scrollPadding: EdgeInsets.zero,
         clipBehavior: Clip.none,
         expands: (height__lines == null),

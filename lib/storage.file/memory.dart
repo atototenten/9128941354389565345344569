@@ -134,7 +134,7 @@ class storage__file__memory //
     operate___raw(
       count: count,
       offset: offset,
-      block__handle: (final _, final block) {
+      block__handle: (_, final block) {
         byte__array__fill(
           block.value___raw,
           count: block__meta.size,
@@ -251,7 +251,7 @@ class storage__file__memory //
     operate___raw(
       count: count,
       offset: offset,
-      block__handle: (final _, final block) {
+      block__handle: (_, final block) {
         block__accumulation.add__ending(
           block,
         );
@@ -411,7 +411,7 @@ void storage__file__memory__test() {
         (final i) => base__storage__file__block(
           byte__array__new__generated(
             file.block__meta.size,
-            (final _) => i,
+            (_) => i,
           ),
         ),
       ),

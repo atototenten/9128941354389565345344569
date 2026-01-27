@@ -91,36 +91,22 @@ compared to "FutureBuilder<T>"(of "flutter/widgets/async.dart")
     return FutureBuilder<value__type>(
       future: this,
       builder: (final context, final snap_shot) {
-        switch (snap_shot.connectionState) {
-          case ConnectionState.done:
-            {
-              if (snap_shot.hasError) {
-                return child__state__completion__failure__build(
-                  context,
-                  snap_shot.error!,
-                  snap_shot.stackTrace!,
-                );
-              } /*
+        if (snap_shot.connectionState == ConnectionState.waiting) {
+          return child__state__waiting__build(context);
+        } else if (snap_shot.hasError) {
+          return child__state__completion__failure__build(
+            context,
+            snap_shot.error!,
+            snap_shot.stackTrace!,
+          );
+        } /*
 "snap_shot.hasData" cannot handle "value__type" being nil */
 
-              return child__state__completion__success__build(
-                context,
-                (snap_shot.data as value__type) /*
+        return child__state__completion__success__build(
+          context,
+          (snap_shot.data as value__type) /*
 "snap_shot.data!" is in-correct if "value__type" is nil */,
-              );
-            }
-          case ConnectionState.waiting:
-            {
-              return child__state__waiting__build(
-                context,
-              );
-            }
-
-          default /*
-should never happen
-  because `future` param. is non-nil */ :
-            throw "un-known connection-state";
-        }
+        );
       },
     );
   }

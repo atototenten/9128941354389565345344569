@@ -181,13 +181,13 @@ stored as a single combined value ,instead of separate {28(`64-36`)-bits `minute
             buffer =
             StringBuffer();
 
-    if (month__same___ok.not) {
+    if (month__same___ok.NOT) {
       buffer
         ..write(calendar__gregorian__month__static__text__array[DateTime_1.month - 1].substring(0, 3))
         ..write(" ");
     }
 
-    if (day__same___ok.not) {
+    if (day__same___ok.NOT) {
       buffer
         ..write(DateTime_1.day)
         ..write(" (")
@@ -195,18 +195,18 @@ stored as a single combined value ,instead of separate {28(`64-36`)-bits `minute
         ..write(")");
     }
 
-    if (year__same___ok.not) {
+    if (year__same___ok.NOT) {
       buffer
         ..write(", ")
         ..write(DateTime_1.year);
     }
 
-    if (day__same___ok.not) {
+    if (day__same___ok.NOT) {
       buffer //
           .write("; ");
     }
 
-    if (hour__same___ok.not) {
+    if (hour__same___ok.NOT) {
       buffer
         ..write(DateTime_1.hour)
         ..write(":");
@@ -258,7 +258,7 @@ FIX
   }) {
     final duration__title__suffix = //
         ((value == 1) /*F*/ //
-        ? empty__string
+        ? empty___string
         : "s");
 
     if (short___ok) {

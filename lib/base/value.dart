@@ -432,18 +432,18 @@ NOTE :
 
   print_();
 
-  void f(final _) => print__info(0);
+  void f(_) => print__info(0);
   broadcast.observer__add(f);
 
   print_();
 
-  void f1(final _) => print__info(1);
+  void f1(_) => print__info(1);
   broadcast.observer__add(f1);
 
-  void f2(final _) => print__info(2);
+  void f2(_) => print__info(2);
   broadcast.observer__add(f2);
 
-  void f3(final _) => print__info(3);
+  void f3(_) => print__info(3);
   broadcast.observer__add(f3);
 
   print_();

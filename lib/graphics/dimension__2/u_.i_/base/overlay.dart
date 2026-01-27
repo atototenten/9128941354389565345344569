@@ -44,7 +44,7 @@ values :
         delaying__asyn(
           notice__duration,
           () {
-            if (context.valid___ok().not) {
+            if (context.valid___ok().NOT) {
               return;
             }
 
@@ -98,7 +98,7 @@ handles {"value__asyn.value" ,and "value__asyn.delayed"} too */, {
   var context__latest = context;
 
   void backward() {
-    if (context__latest.valid___ok().not) {
+    if (context__latest.valid___ok().NOT) {
       return;
     }
 
@@ -138,7 +138,7 @@ needed to handle already-resolved asyn.-values */ =
       if (resolved___ok) {
         navigation__back__scheduled___ok = TRUE;
 
-        task__schedule(() {
+        task__urgent__schedule(() {
           context_1.navigation().backward();
         });
 
@@ -187,7 +187,7 @@ widget suggestions
   void dispose() {
     _channel.dispose();
 
-    _overlays.iterate((final _, final overlay) {
+    _overlays.iterate((_, final overlay) {
       overlay.dispose();
 
       return TRUE;

@@ -116,7 +116,7 @@ extension base__APPROX__input__digits__fixed__test //
       "1234",
       ".1234",
     ].iterate__basic(
-      (final _, final string v) {
+      (_, final string v) {
         base__APPROX__input__digits__fixed(
             significand__truncate___ok: TRUE,
           )

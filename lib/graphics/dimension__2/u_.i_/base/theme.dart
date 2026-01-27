@@ -6,7 +6,7 @@ late BOOL //
     base__app__theme__colors__ground__back__contrast__dark___ok /*
 `{
   final hour = DateTime.now().hour;
-  if (((hour > 18) || (hour < 6)).not) {
+  if (((hour > 18) || (hour < 6)).NOT) {
     base__app__theme__colors__ground__back__contrast__dark___ok = FALSE;
   }
 }` */
@@ -20,7 +20,7 @@ should be avoided ,because of great increase ,in deviation ,from the standard in
     ;
 
 void base__app__theme__colors__ground__back__contrast__dark__ok__switch() {
-  base__app__theme__colors__ground__back__contrast__dark___ok = base__app__theme__colors__ground__back__contrast__dark___ok.not;
+  base__app__theme__colors__ground__back__contrast__dark___ok = base__app__theme__colors__ground__back__contrast__dark___ok.NOT;
 
   /*base__app__build__re()*/ base__app__theme__change__channel.event__dispatch();
 }

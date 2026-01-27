@@ -44,7 +44,7 @@ gui__base__widget rich_text__image({
       image = image_;
       build__re?.call();
     },
-    error__indicate: (final _) => //
+    error__indicate: (_) => //
         SizedBox(
       width: width,
       height: height,

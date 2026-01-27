@@ -40,7 +40,7 @@ base__storage__file__accessing__auto({
           alignment.shift__count,
         );
 
-    if /*F*/ (offset__aligned___ok.not && //
+    if /*F*/ (offset__aligned___ok.NOT && //
         ((length + offset__aligned___compo.buffer__offset) < alignment.size)) /*
 branch is required
   because `block__partial__begin__meta` implies `(length = block__bytes__count\alignment__size\)`

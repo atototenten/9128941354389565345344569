@@ -558,7 +558,7 @@ void base__storage__file__fast__flush(
 
   base__printing__indentation__increase();
 
-  if (storage.blocks__cach_ed.empty___ok.not) {
+  if (storage.blocks__cach_ed.empty___ok.NOT) {
     storage.blocks__cach_ed
       ..iterate__basic((final block) {
         /*free__list.add*/ /*block.buffer.mem_:free()*/

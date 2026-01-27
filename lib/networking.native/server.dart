@@ -24,7 +24,7 @@ value__asyn<void> base__net__reliable__server__simple({
     includeLinkLocal: TRUE,
   ))
       .iterate__basic(
-    (final _, final interface) {
+    (_, final interface) {
       interface.representation__text().print("NetworkInterface");
     },
   );
@@ -45,7 +45,7 @@ value__asyn<void> base__net__reliable__server__simple({
         "client.address".print(client__address);
 
         if (latency__low___ok) {
-          if (client__socket.setOption(net.SocketOption.tcpNoDelay, TRUE).not) {
+          if (client__socket.setOption(net.SocketOption.tcpNoDelay, TRUE).NOT) {
             throw "client.socket.option.t_c_p_.no_delay.set";
           }
         }
@@ -123,7 +123,7 @@ request responses :`base__results__basic` */
           (directory__path + base__storage__file__path__separation__char + file__path),
         );
 
-        if (file.existsSync().not) {
+        if (file.existsSync().NOT) {
           socket.add(result__failure__code__BS1__array);
         }
 

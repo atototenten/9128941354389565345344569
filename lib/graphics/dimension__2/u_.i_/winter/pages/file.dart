@@ -60,7 +60,7 @@ gui__base__widget pages__file__page(
       item__array__count: ((bytes__un_aligned__count > 0) //
           ? (segments__count + 1)
           : segments__count),
-      item__build: (final _, final segment__counter) {
+      item__build: (_, final segment__counter) {
         final //
             b__aligned_ = b__aligned(segment__counter);
 
@@ -87,7 +87,7 @@ gui__base__widget pages__file__page(
 
           text__binary = ARRAY<string>.filled(
             file__segment__size,
-            empty__string,
+            empty___string,
             growable: FALSE,
           );
 

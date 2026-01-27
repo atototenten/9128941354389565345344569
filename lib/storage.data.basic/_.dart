@@ -142,7 +142,7 @@ required for read op.ions */ () async {
               statement: "BEGIN",
             )
             .handle(
-              (final _) {
+              (_) {
                 result.complete(
                   base__storage__data__basic__accessing__meta.raw(
                     value,
@@ -201,7 +201,7 @@ required for write op.ions */ () {
                   statement: "BEGIN IMMEDIATE",
                 )
                 .handle(
-                  (final _) {
+                  (_) {
                     result.complete(
                       base__storage__data__basic__accessing__mutating__meta.raw(
                         value,
@@ -227,7 +227,7 @@ required for write op.ions */ () {
       },
     );
 
-    if (ok.not) {
+    if (ok.NOT) {
       return NIL;
     }
 
@@ -349,7 +349,7 @@ TASK
 
   value__asyn<INT> table__rows__count__asyn___raw({
     required final string table__name,
-    final string suffix = empty__string,
+    final string suffix = empty___string,
   }) async {
     final result = await value___raw.operate__asyn___raw(
       statement: ("SELECT COUNT(*) FROM " + table__name + suffix),
@@ -613,7 +613,7 @@ avoid `AUTOINCREMENT`
             column__meta.type.name,
           );
 
-        if (column__meta.nil_able___ok.not) {
+        if (column__meta.nil_able___ok.NOT) {
           statement__buffer
             ..write(char__space)
             ..write("NOT ")
@@ -950,7 +950,7 @@ class base__storage__data__basic__table__column {
   final buffer = StringBuffer("x'");
 
   bytes.iterate__basic(
-    (final _, final byte) {
+    (_, final byte) {
       buffer.write(
         byte.toRadixString(16),
       );
@@ -1067,7 +1067,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
     var abort___ok = TRUE;
 
     await base__iterate__forever__asyn(
-      (final _) async {
+      (_) async {
         final meta = await storage.accessing__mutating__meta__asyn();
 
         if (meta == null) {
@@ -1104,7 +1104,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
 
           table__row__id.value.representation__text().print("table__row__id");
 
-          if (abort___ok.not) {
+          if (abort___ok.NOT) {
             "mutating".print();
 
             await meta.complete__asyn();

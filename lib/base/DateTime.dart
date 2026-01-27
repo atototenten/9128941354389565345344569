@@ -2,7 +2,7 @@ part of "_.dart";
 
 extension DateTime___extension on DateTime {
   DateTime select__date() {
-    if (isUtc.not) {
+    if (isUtc.NOT) {
       return DateTime(year, month, day);
     }
 

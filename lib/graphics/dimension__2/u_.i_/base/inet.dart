@@ -109,8 +109,8 @@ value__asyn<BS1__array?> inet__communicate__http(
 
       Registrar.registerObject(response.OK, "response.OK");
 
-      if ((response.OK as bool).not) {
-        Registrar.error__handle("`((response.OK as bool).not)`", StackTrace.empty);
+      if ((response.OK as bool).NOT) {
+        Registrar.error__handle("`((response.OK as bool).NOT)`", StackTrace.empty);
 
         return  null;
       }

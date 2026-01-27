@@ -64,7 +64,7 @@ singly chained (backward ref.ing) list */ //
         element,
       );
 
-      if (iterate___ok.not) {
+      if (iterate___ok.NOT) {
         break;
       }
 
@@ -85,7 +85,7 @@ singly chained (backward ref.ing) list */ //
           element_1.value,
         );
 
-        if (equal__ok_1.not) {
+        if (equal__ok_1.NOT) {
           return TRUE;
         }
 

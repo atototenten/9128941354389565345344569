@@ -43,7 +43,7 @@ zero is special-case to disable truncation */ =
             final elements__truncation__count__threshold__half = (elements__truncation__count__threshold >> 1);
 
             value.iterate__basic(
-              (final _, final value) {
+              (_, final value) {
                 buffer
                   ..write(
                     value.representation__text(),
@@ -56,7 +56,7 @@ zero is special-case to disable truncation */ =
             buffer.write(static__indicate__short_en_ing);
 
             value.iterate__basic(
-              (final _, final value) {
+              (_, final value) {
                 buffer
                   ..write(elements__separation)
                   ..write(
@@ -72,7 +72,7 @@ zero is special-case to disable truncation */ =
             );
 
             value.iterate__basic(
-              (final _, final value) {
+              (_, final value) {
                 buffer
                   ..write(elements__separation)
                   ..write(
@@ -138,7 +138,7 @@ zero is special-case to disable truncation */ =
     return base__representation__text(
       switch (value) {
         BOOL() => (value ? "TRUE" : "FALSE"),
-        INT__NEG() => "${value.isNegative.not ? "+" : empty__string}${value.toString()}",
+        INT__NEG() => "${value.isNegative.NOT ? "+" : empty___string}${value.toString()}",
         INT() => value.toString(),
         string() => "\"${value.toString()}\"",
         Enum() => value.name,
@@ -153,7 +153,7 @@ zero is special-case to disable truncation */ =
   base__representation__text //
   compo__representation__text(
     final base__compo__member__dictionary members /*
-for proxy/wrapping compo.s ,`empty__string` as key for `.value` member */,
+for proxy/wrapping compo.s ,`empty___string` as key for `.value` member */,
   ) {
     return base__compo__representation__text(
       name: runtimeType.toString(),

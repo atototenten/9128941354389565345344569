@@ -38,7 +38,7 @@ input__text__buffer___compo input__text__buffer({
   INT text__bytes__count = 0;
 
   chars__initial.iterate__basic(
-    (final _, final wc) {
+    (_, final wc) {
       text__bytes__count += CHAR__UNICODE__bytes__count(wc);
     },
   );
@@ -86,7 +86,7 @@ class input__text__buffer___compo /*
   BOOL $b__write(
     final INT ws__bytes__count,
   ) => ((bytes__count + ws__bytes__count) > bytes__count__max)
-      .not /*
+      .NOT /*
   partially writing `bytes`, until `text__bytes__count__max`'s breach
     could break, unicode's grapheme-cluster-s, and code-point-s
       like, 3-byte char's 2 bytes get written, while the last one is left out
@@ -142,7 +142,7 @@ class input__text__buffer___compo /*
     var wstr__bytes__count = 0;
 
     ws.iterate__basic(
-      (final _, final wc) {
+      (_, final wc) {
         wstr__bytes__count += CHAR__UNICODE__bytes__count(wc);
       },
     );
@@ -186,7 +186,7 @@ class input__text__buffer___compo /*
   }
 
   STRING__UNICODE read__full() => //
-  (empty___ok().not
+  (empty___ok().NOT
       ? chars.view__partial(
           0,
           size__current,

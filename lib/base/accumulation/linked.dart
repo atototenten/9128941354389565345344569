@@ -1,40 +1,36 @@
 part of "../_.dart";
 
-class base__accumulation__linked /*
+class base__accumulation__linked___compo /*
 singly linked (forward ref.ing) list */ //
     <element__type extends Object?> //
     implements
         base__dispose___protocol {
-  base__accumulation__linked() //
-      : element__first___raw = NIL,
-        element__last___raw = NIL,
-        elements__count___raw = 0;
+  base__accumulation__linked___compo() //
+      : _element__first = NIL,
+        _element__last = NIL,
+        _elements__count = 0;
 
   base__accumulation__linked__element<element__type>? //
-      element__first___raw,
-      element__last___raw;
+      _element__first,
+      _element__last;
 
   INT //
-      elements__count___raw;
+      _elements__count;
 
   INT elements__count() {
-    return elements__count___raw;
+    return _elements__count;
   }
 
   BOOL empty___ok() {
     return (elements__count() == 0);
   }
 
-  BOOL empty__not() {
-    return (elements__count() != 0);
-  }
-
   base__accumulation__linked__element<element__type>? element__first() {
-    return element__first___raw;
+    return _element__first;
   }
 
   base__accumulation__linked__element<element__type>? element__last() {
-    return element__last___raw;
+    return _element__last;
   }
 
   void add__beginning /* add to front (prepend) */ (
@@ -42,16 +38,16 @@ singly linked (forward ref.ing) list */ //
   ) {
     final only___ok = empty___ok();
 
-    element__first___raw = base__accumulation__linked__element<element__type>(
+    _element__first = base__accumulation__linked__element<element__type>(
       value,
-      next___raw: element__first___raw,
+      next___raw: _element__first,
     );
 
     if /*F*/ (only___ok) {
-      element__last___raw = element__first___raw;
+      _element__last = _element__first;
     }
 
-    elements__count___raw += 1;
+    _elements__count += 1;
   }
 
   void add__ending /* add to rear (append) */ (
@@ -65,14 +61,14 @@ singly linked (forward ref.ing) list */ //
     if /*F*/ (empty___ok()) /*
 `element` is first and only */
     {
-      element__first___raw = element;
+      _element__first = element;
     } else {
-      element__last___raw!.next___raw = element;
+      _element__last!.next___raw = element;
     }
 
-    element__last___raw = element;
+    _element__last = element;
 
-    elements__count___raw += 1;
+    _elements__count += 1;
   }
 
   void remove__first() {
@@ -80,12 +76,12 @@ singly linked (forward ref.ing) list */ //
       return;
     }
 
-    element__first___raw = element__first___raw?.next___raw;
+    _element__first = _element__first?.next___raw;
 
-    elements__count___raw -= 1;
+    _elements__count -= 1;
 
     if (empty___ok()) {
-      element__last___raw = NIL;
+      _element__last = NIL;
     }
   }
 
@@ -96,14 +92,14 @@ if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy defaul
   void iterate(
     final BOOL Function(base__accumulation__linked__element<element__type> element) element__handle,
   ) {
-    var element = element__first___raw;
+    var element = _element__first;
 
     while (element != null) {
       final iterate___ok = element__handle(
         element,
       );
 
-      if (iterate___ok.not) {
+      if (iterate___ok.NOT) {
         break;
       }
 
@@ -124,7 +120,7 @@ if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy defaul
           element_1.value,
         );
 
-        if (equal__ok_1.not) {
+        if (equal__ok_1.NOT) {
           return TRUE;
         }
 
@@ -168,10 +164,10 @@ TASK
   }
 
   void flush() {
-    element__first___raw = NIL;
-    element__last___raw = NIL;
+    _element__first = NIL;
+    _element__last = NIL;
 
-    elements__count___raw = 0;
+    _elements__count = 0;
   }
 
   @override
@@ -197,7 +193,7 @@ class base__accumulation__linked__element //
 }
 
 void base__accumulation__linked__test() {
-  final accumulation = base__accumulation__linked<INT>();
+  final accumulation = base__accumulation__linked___compo<INT>();
 
   void accumulation__print(
     final string title,
@@ -208,10 +204,10 @@ void base__accumulation__linked__test() {
     base__printing__indent();
 
     accumulation
-      ..elements__count___raw.representation__text().print("..elements__count")
+      .._elements__count.representation__text().print("..elements__count")
       ..convert__array().join(" ").representation__text().print("..elements")
-      ..element__first___raw?.value.representation__text().print("..element__first")
-      ..element__last___raw?.value.representation__text().print("..element__last");
+      .._element__first?.value.representation__text().print("..element__first")
+      .._element__last?.value.representation__text().print("..element__last");
 
     base__printing__indent__de();
 

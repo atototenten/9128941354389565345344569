@@ -47,7 +47,7 @@ non-functional ,with `GestureDetector.behavior` ,being `HitTestBehavior.transluc
                     if (press__handle != null) {
                       final switch___ok = press__handle();
 
-                      if (switch___ok.not) {
+                      if (switch___ok.NOT) {
                         return;
                       }
                     }

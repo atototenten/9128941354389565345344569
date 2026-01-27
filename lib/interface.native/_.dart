@@ -98,7 +98,7 @@ string ffi__convert__text(
     );
 
 ffi_.Pointer<ffi_.Int32> ffi__errno() => //
-    (environment__phone__android___ok.not //
+    (environment__phone__android___ok.NOT //
             ? ffi__binding__errno_location
             : ffi__binding__errno) /*
   source: `https://github.com/termux/termux-packages/issues/10244#issuecomment-1103748373` */

@@ -279,8 +279,8 @@ enum CHAR /*
   }
 }
 
-extension CHAR__Iterable___extension //
-    on Iterable<CHAR> {
+extension CHAR__VENDING___extension //
+    on VENDING<CHAR> {
   string convert__string() {
     final chars = this.convert((final char) {
       final char__ascii = char.convert__CHAR__ASCII();

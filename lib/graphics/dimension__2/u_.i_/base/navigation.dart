@@ -89,16 +89,16 @@ extension gui__base__navigation___extension
   }) {
     if (animation__duration == Duration.zero) {
       RawDialogRoute<void>(
-        pageBuilder: (final context, _, _) {
+        pageBuilder: (final context, _, __) {
           return entity.widget__build(
             context,
           );
         },
         barrierDismissible: gesture__press__background__dismiss___ok,
         barrierColor: background__color,
-        barrierLabel: empty__string,
+        barrierLabel: empty___string,
         transitionDuration: Duration.zero,
-        transitionBuilder: (final context, _, _, _) {
+        transitionBuilder: (final context, _, __, ___) {
           return entity.widget__build(
             context,
           );
@@ -112,7 +112,7 @@ extension gui__base__navigation___extension
       builder: entity.widget__build,
       barrierColor: background__color,
       barrierDismissible: gesture__press__background__dismiss___ok,
-      barrierLabel: empty__string,
+      barrierLabel: empty___string,
       useSafeArea: FALSE,
       fullscreenDialog: TRUE,
       animationStyle: AnimationStyle(
@@ -250,7 +250,7 @@ extension gui__base__navigation___extension
       }(),
       isDismissible: gesture__press__background__dismiss___ok,
       modalBarrierColor: background__color,
-      barrierLabel: empty__string,
+      barrierLabel: empty___string,
       enableDrag: gesture__drag__bottom__dismiss___ok,
       showDragHandle: FALSE,
       transitionAnimationController: transition__control,
@@ -410,7 +410,7 @@ cases :
     no issue ,if `pages:count` exceeds the {navigat-ion}-stack's depth/elements:count */,
   ) {
     if (pages__count == null) {
-      return (final _) => FALSE;
+      return (_) => FALSE;
     }
 
     if /*F*/ (pages__count == 0) {
@@ -419,7 +419,7 @@ cases :
 
     var _pages__count = pages__count;
 
-    return (final _) {
+    return (_) {
       if /*F*/ (_pages__count == 0) {
         return TRUE;
       }
@@ -436,7 +436,7 @@ cases :
   ) {
     if (animation__duration == Duration.zero) {
       return PageRouteBuilder<void>(
-        pageBuilder: (final context, final _, final __) {
+        pageBuilder: (final context, _, __) {
           return page__build(
             context,
           );
