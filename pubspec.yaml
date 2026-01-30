@@ -9,7 +9,6 @@ publish_to: "none"
 
 environment:
   sdk: ^3.10.0
-  flutter: ^3.40.0
 
 dependencies:
   collection: ^1.19.1
