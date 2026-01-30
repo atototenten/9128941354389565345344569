@@ -29,7 +29,7 @@ string rich_text__www__address__resolve(
 
 gui__base__widget rich_text__image({
   required final ScrollController controller,
-  required final value__asyn<BS1__array> image__future,
+  required final ASYN<BS1__array> image__future,
   required final APPROX width,
   required final APPROX height,
 }) {
@@ -177,7 +177,7 @@ TextStyle base__text__rich__style__code() => //
 ARRAY<gui__base__widget> str__wide__rich__bytes__convert({
   required final BS1__array str__wide__rich__bytes,
   required final void Function(text address) text__link__open,
-  required final value__asyn<BS1__array> Function(INT file__id) file__fetch,
+  required final ASYN<BS1__array> Function(INT file__id) file__fetch,
 }) {
   report__BS1__array(
     str__wide__rich__bytes,

@@ -6,11 +6,11 @@ TASK
     which can lead to side-effects ,and affect the data-base's safety guarantee */
 
 /*
-  value__asyn /*
+  ASYN /*
 mut.ion-syn.izing has been scheduled
   to be performed after all the accesses are complete */
       <
-          value__asyn /*
+          ASYN /*
 mut.ion has been syn.ized (in the cache)
   and persisted (in the file) */
           <void>> complete /*
@@ -19,8 +19,8 @@ mut.ion is syn.ized ,in cache
     requiring all the accesses ,to wait ,until persisted */
       () {
     final //
-        scheduling__meta = value__asyn__meta<value__asyn<void>>(),
-        syn_izing__meta = value__asyn__meta<void>();
+        scheduling__meta = ASYN__PROMISE<ASYN<void>>(),
+        syn_izing__meta = ASYN__PROMISE<void>();
 
     task__urgent__schedule(
       () {
@@ -33,15 +33,15 @@ mut.ion is syn.ized ,in cache
     return scheduling__meta.future;
   }
 
-  value__asyn /*
+  ASYN /*
 relevant data (cached file-blocks affected by the mut.ion) has been copied ,mut.ed ,and scheduled for persistance */
       <
-          value__asyn /*
+          ASYN /*
 mut.ion has been syn.ized (cache has been updated) ,and live(globally visible) */
           <void>> complete__lazy() {
     final //
-        scheduling__meta = value__asyn__meta<value__asyn<void>>(),
-        syn_izing__meta = value__asyn__meta<void>();
+        scheduling__meta = ASYN__PROMISE<ASYN<void>>(),
+        syn_izing__meta = ASYN__PROMISE<void>();
 
     task__urgent__schedule(
       () {

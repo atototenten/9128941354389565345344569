@@ -26,7 +26,7 @@ will be cleaned ,before the environment's next run-time session ,or after the cu
   return _directory__temporary__path;
 }
 
-value__asyn<void> base__storage__init_() async {
+ASYN<void> base__storage__init_() async {
   /*base__platform__web__support__not__throw();*/
   if (base__program__compilation__platform == base__program__compilation__platforms.web) {
     return;
@@ -49,12 +49,12 @@ class base__storage__cache__file {
   final BS1__array bytes;
 }
 
-/* external value__asyn<void> base__storage__cache__file__set(
+/* external ASYN<void> base__storage__cache__file__set(
   final string path,
   final BS1__array bytes, [
   final int? mod__latest__date_time,
 ]);
 
-external value__asyn<base__storage__cache__file?> base__storage__cache__file__get(
+external ASYN<base__storage__cache__file?> base__storage__cache__file__get(
   final string path,
 ); */

@@ -1,23 +1,23 @@
 part of "_.dart";
 
 /*
-`value__asyn__hybrid<value__type>`/`UNION (value__asyn<value__type> ,value__type)`/`asyn.FutureOr<value__type>`
+`value__asyn__hybrid<value___type>`/`UNION (ASYN<value___type> ,value__type)`/`asyn.FutureOr<value___type>`
   is not supported ,because
     mixing asyn. and syn. ,naturally leads to asyn.
       just-like math.'s negative and positive signs (respectively) */
 
-typedef value__asyn__basic<value__type> /*
+typedef ASYN__BASIC<value___type> /*
 inerrant (never fail(eval. into error)) */ //
-= value__asyn<value__type>;
+= ASYN<value___type>;
 
-typedef value__asyn__meta<value__type> //
-= dart__async.Completer /* promise */ <value__type>;
+typedef ASYN__PROMISE<value___type> //
+= dart__async.Completer /* promise */ <value___type>;
 
-typedef value__asyn /*
-prefer creating as soon as possible, to reduce/shorten the resolving time */ <value__type> //
-= dart__async.Future<value__type>;
+typedef ASYN /*
+prefer creating as soon as possible, to reduce/shorten the resolving time */ <value___type> //
+= dart__async.Future<value___type>;
 
-typedef delaying__asyn //
+typedef DELAYING //
 = dart__async.Timer;
 
 const //
@@ -26,18 +26,14 @@ base__delay__duration__none = Duration.zero,
       milliseconds: (1 ~/ 3),
     );
 
-final empty__value__asyn__void = value__asyn<void>.value(
-  NIL,
-);
-
-value__asyn__basic<void> base__delay({
+ASYN__BASIC<void> base__delay___asyn({
   final Duration? duration,
 }) {
   if (duration == Duration.zero) {
-    return value__asyn__basic.value(NIL);
+    return ASYN__BASIC.syncValue(NIL);
   }
 
-  return value__asyn__basic<void>.delayed(
+  return ASYN__BASIC.delayed(
     (duration ?? base__delay__duration__realistic),
   );
 }
@@ -49,11 +45,11 @@ void task__urgent__schedule/*
   dart__async.scheduleMicrotask(handle);
 }
 
-extension value__asyn__basic__extension //
-<value__type> //
-    on value__asyn__basic<value__type> {
+extension ASYN__BASIC__extension //
+<value___type> //
+    on ASYN__BASIC<value___type> {
   void basic__handle(
-    final base__value__single__procedure__format<value__type> value__handle,
+    final base__value__single__procedure__format<value___type> value__handle,
   ) {
     then<void>(
       value__handle,
@@ -63,10 +59,10 @@ extension value__asyn__basic__extension //
 }
 
 extension value__asyn__extension //
-<value__type> //
-    on value__asyn<value__type> {
+<value___type> //
+    on ASYN<value___type> {
   void handle(
-    final base__value__single__procedure__format<value__type> value__handle,
+    final base__value__single__procedure__format<value___type> value__handle,
     final base__error__handle__proc_? error__handle,
   ) {
     then<void>(
@@ -76,17 +72,9 @@ extension value__asyn__extension //
   }
 }
 
-value__asyn<void> base__delaying__asyn([
-  final Duration? duration,
-]) {
-  return value__asyn<void>.delayed(
-    (duration ?? base__delay__duration__realistic),
-  );
-}
-
-extension base__value__asyn__definitive__dispose___extension //
-<value__type extends base__dispose___protocol> //
-    on base__value__asyn__definitive<value__type> {
+extension asyn__definitive__dispose___extension //
+<value___type extends base__dispose___protocol> //
+    on ASYN__DEFINITIVE<value___type> {
   void value__dispose() {
     handle___raw(
       (final v) {
@@ -97,42 +85,42 @@ extension base__value__asyn__definitive__dispose___extension //
   }
 }
 
-class base__value__asyn__definitive /*
-"base__value__asyn__definitive<value___type?>.completion__success" is same as "base__value__asyn__definitive.blank"(un-init.ized state) */ <value__type> //
+class ASYN__DEFINITIVE /*
+"ASYN__DEFINITIVE<value___type?>.completion__success" is same as "ASYN__DEFINITIVE.blank"(un-init.ized state) */ <value___type> //
     implements base__dispose___protocol {
-  factory base__value__asyn__definitive(
-    final value__asyn<value__type> value,
-  ) = base__value__asyn__definitive.waiting;
+  factory ASYN__DEFINITIVE(
+    final ASYN<value___type> value,
+  ) = ASYN__DEFINITIVE.waiting;
 
-  base__value__asyn__definitive.waiting(
-    final value__asyn<value__type> value,
+  ASYN__DEFINITIVE.waiting(
+    final ASYN<value___type> value,
   ) : _state__channel = base__value__mutation__event__channel__broadcast(
-        base__value__asyn__definitive__state__waiting<value__type>(
+        asyn__definitive__state__waiting<value___type>(
           value,
         ),
       ) {
     state__waiting__handle___raw(value);
   }
 
-  base__value__asyn__definitive.completion__success(
-    final value__type value,
+  ASYN__DEFINITIVE.completion__success(
+    final value___type value,
   ) : _state__channel = base__value__mutation__event__channel__broadcast(
-        base__value__asyn__definitive__state__completion__success<value__type>(
+        asyn__definitive__state__completion__success<value___type>(
           value,
         ),
       );
 
-  base__value__asyn__definitive.completion__failure(
+  ASYN__DEFINITIVE.completion__failure(
     final Object error,
     final StackTrace trace,
   ) : _state__channel = base__value__mutation__event__channel__broadcast(
-        base__value__asyn__definitive__state__completion__failure<value__type>(
+        asyn__definitive__state__completion__failure<value___type>(
           error,
           trace,
         ),
       );
 
-  final base__value__mutation__event__channel__broadcast<base__value__asyn__definitive__state___union<value__type>> _state__channel;
+  final base__value__mutation__event__channel__broadcast<asyn__definitive__state___union<value___type>> _state__channel;
 
   @override
   void dispose() {
@@ -143,15 +131,15 @@ class base__value__asyn__definitive /*
     return _state__channel;
   }
 
-  base__value__asyn__definitive__state___union<value__type> state() {
+  asyn__definitive__state___union<value___type> state() {
     return _state__channel.value();
   }
 
   void state__assign__waiting(
-    final value__asyn<value__type> value,
+    final ASYN<value___type> value,
   ) {
     _state__channel.value__mutation__dispatch(
-      base__value__asyn__definitive__state__waiting<value__type>(
+      asyn__definitive__state__waiting<value___type>(
         value,
       ),
     );
@@ -160,16 +148,16 @@ class base__value__asyn__definitive /*
   }
 
   void state__assign__completion__success(
-    final value__type value,
+    final value___type value,
   ) {
     _state__channel.value__mutation__dispatch(
-      base__value__asyn__definitive__state__completion__success<value__type>(
+      asyn__definitive__state__completion__success<value___type>(
         value,
       ),
     );
   }
 
-  void state__waiting__handle___raw(final value__asyn<value__type> value) {
+  void state__waiting__handle___raw(final ASYN<value___type> value) {
     final state = _state__channel.value();
 
     BOOL valid___ok /*
@@ -187,7 +175,7 @@ ensures that the syn.ny has not replaced the state with another
         }
 
         _state__channel.value__mutation__dispatch(
-          base__value__asyn__definitive__state__completion__success<value__type>(
+          asyn__definitive__state__completion__success<value___type>(
             value,
           ),
         );
@@ -198,7 +186,7 @@ ensures that the syn.ny has not replaced the state with another
         }
 
         _state__channel.value__mutation__dispatch(
-          base__value__asyn__definitive__state__completion__failure<value__type>(
+          asyn__definitive__state__completion__failure<value___type>(
             error,
             trace,
           ),
@@ -209,27 +197,27 @@ ensures that the syn.ny has not replaced the state with another
 
   void handle___raw /*
 ignores the future state-channel events */ (
-    final base__value__single__procedure__format<value__type> value__handle,
+    final base__value__single__procedure__format<value___type> value__handle,
     final base__error__handle__proc_? error__handle,
   ) {
     final state = _state__channel.value();
 
     switch (state) {
-      case base__value__asyn__definitive__state__waiting<value__type>():
+      case asyn__definitive__state__waiting<value___type>():
         state.value.handle(
           value__handle,
           error__handle,
         );
         break;
 
-      case base__value__asyn__definitive__state__completion__failure<value__type>():
+      case asyn__definitive__state__completion__failure<value___type>():
         error__handle?.call(
           state.error,
           state.trace,
         );
         break;
 
-      case base__value__asyn__definitive__state__completion__success<value__type>():
+      case asyn__definitive__state__completion__success<value___type>():
         value__handle(
           state.value,
         );
@@ -238,9 +226,9 @@ ignores the future state-channel events */ (
   }
 }
 
-class base__value__asyn__definitive__state__completion__failure<value__type> //
-    implements base__value__asyn__definitive__state__completion___union<value__type> {
-  const base__value__asyn__definitive__state__completion__failure(
+class asyn__definitive__state__completion__failure<value___type> //
+    implements asyn__definitive__state__completion___union<value___type> {
+  const asyn__definitive__state__completion__failure(
     this.error,
     this.trace,
   );
@@ -249,31 +237,31 @@ class base__value__asyn__definitive__state__completion__failure<value__type> //
   final StackTrace trace;
 }
 
-class base__value__asyn__definitive__state__completion__success<value__type> //
-    implements base__value__asyn__definitive__state__completion___union<value__type> {
-  const base__value__asyn__definitive__state__completion__success(
+class asyn__definitive__state__completion__success<value___type> //
+    implements asyn__definitive__state__completion___union<value___type> {
+  const asyn__definitive__state__completion__success(
     this.value,
   );
 
-  final value__type value;
+  final value___type value;
 }
 
-sealed class base__value__asyn__definitive__state__completion___union<value__type> //
-    implements base__value__asyn__definitive__state___union<value__type> {}
+sealed class asyn__definitive__state__completion___union<value___type> //
+    implements asyn__definitive__state___union<value___type> {}
 
-class base__value__asyn__definitive__state__waiting<value__type> //
-    implements base__value__asyn__definitive__state___union<value__type> {
-  base__value__asyn__definitive__state__waiting(
+class asyn__definitive__state__waiting<value___type> //
+    implements asyn__definitive__state___union<value___type> {
+  asyn__definitive__state__waiting(
     this.value,
   );
 
-  final value__asyn<value__type> value;
+  final ASYN<value___type> value;
 }
 
-sealed class base__value__asyn__definitive__state___union<value__type> {}
+sealed class asyn__definitive__state___union<value___type> {}
 
-void base__value__asyn__definitive__test() {
-  final v = base__value__asyn__definitive(
+void asyn__definitive__test() {
+  final v = ASYN__DEFINITIVE(
     Future.delayed(
       Duration(seconds: 3),
       () {
@@ -304,9 +292,9 @@ void base__value__asyn__definitive__test() {
 
       print(
         "AFTER : ${switch (state) {
-          base__value__asyn__definitive__state__waiting<INT__NEG>() => "waiting ...",
-          base__value__asyn__definitive__state__completion__failure<INT__NEG>() => "FAILURE",
-          base__value__asyn__definitive__state__completion__success<INT__NEG>() => //
+          asyn__definitive__state__waiting<INT__NEG>() => "waiting ...",
+          asyn__definitive__state__completion__failure<INT__NEG>() => "FAILURE",
+          asyn__definitive__state__completion__success<INT__NEG>() => //
           ((state.value == 1) //
               ? "CORRECT" : "IN-CORRECT"),
         }}",

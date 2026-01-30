@@ -1,6 +1,6 @@
 part of "_.dart";
 
-value__asyn<bool> base__net__connect_ed___ok({
+ASYN<bool> base__net__connect_ed___ok({
   final string host = "example.com",
 }) async {
   try {
@@ -17,14 +17,14 @@ value__asyn<bool> base__net__connect_ed___ok({
   return FALSE;
 }
 
-value__asyn<void> base__net__reliable__client__socket__close__safe(
+ASYN<void> base__net__reliable__client__socket__close__safe(
   final net.Socket socket,
 ) async {
   await socket.flush();
   await socket.close();
 }
 
-value__asyn<BS1__array> base__net__reliable__client__simple__communicate({
+ASYN<BS1__array> base__net__reliable__client__simple__communicate({
   required final net.InternetAddress address,
   required final INT port,
   required final BS1__array request,

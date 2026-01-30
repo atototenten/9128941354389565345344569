@@ -5,7 +5,7 @@ procedure__empty__asyn__format /*
 asyn. ,because
     tracking of completion is required
 not `void`-type ,because
-  `void`-type engulfs all the types ,including `value__asyn<type>` */;
+  `void`-type engulfs all the types ,including `ASYN<type>` */;
 
 class gui__base__button {
   gui__base__button({

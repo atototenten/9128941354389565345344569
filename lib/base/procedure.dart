@@ -4,7 +4,7 @@ typedef procedure__format = Function;
 typedef function__format = Function;
 
 typedef procedure__empty__format = void Function();
-typedef procedure__empty__asyn__format = value__asyn<void> Function();
+typedef procedure__empty__asyn__format = ASYN<void> Function();
 
 typedef event__handle__procedure__format = procedure__empty__format;
 
@@ -19,12 +19,12 @@ void base__procedure__empty__invoke(
   proc_();
 }
 
-typedef base__value__single__procedure__format<value__type> //
-    = void Function(value__type value);
+typedef base__value__single__procedure__format<value___type> //
+    = void Function(value___type value);
 
-void base__procedure__value__single__invoke<value__type>(
-  final base__value__single__procedure__format<value__type> proc_,
-  final value__type value,
+void base__procedure__value__single__invoke<value___type>(
+  final base__value__single__procedure__format<value___type> proc_,
+  final value___type value,
 ) {
   proc_(
     value,

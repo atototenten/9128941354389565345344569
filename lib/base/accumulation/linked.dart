@@ -2,7 +2,7 @@ part of "../_.dart";
 
 class base__accumulation__linked___compo /*
 singly linked (forward ref.ing) list */ //
-    <element__type extends Object?> //
+    <element___type extends Object?> //
     implements
         base__dispose___protocol {
   base__accumulation__linked___compo() //
@@ -10,7 +10,7 @@ singly linked (forward ref.ing) list */ //
         _element__last = NIL,
         _elements__count = 0;
 
-  base__accumulation__linked__element<element__type>? //
+  base__accumulation__linked__element<element___type>? //
       _element__first,
       _element__last;
 
@@ -25,20 +25,20 @@ singly linked (forward ref.ing) list */ //
     return (elements__count() == 0);
   }
 
-  base__accumulation__linked__element<element__type>? element__first() {
+  base__accumulation__linked__element<element___type>? element__first() {
     return _element__first;
   }
 
-  base__accumulation__linked__element<element__type>? element__last() {
+  base__accumulation__linked__element<element___type>? element__last() {
     return _element__last;
   }
 
   void add__beginning /* add to front (prepend) */ (
-    final element__type value,
+    final element___type value,
   ) {
     final only___ok = empty___ok();
 
-    _element__first = base__accumulation__linked__element<element__type>(
+    _element__first = base__accumulation__linked__element<element___type>(
       value,
       next___raw: _element__first,
     );
@@ -51,9 +51,9 @@ singly linked (forward ref.ing) list */ //
   }
 
   void add__ending /* add to rear (append) */ (
-    final element__type value,
+    final element___type value,
   ) {
-    final element = base__accumulation__linked__element<element__type>(
+    final element = base__accumulation__linked__element<element___type>(
       value,
       next___raw: NIL,
     );
@@ -90,7 +90,7 @@ not impl.ed ,due to being in-efficient for the data-struct.
 if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy default accumulation */
 
   void iterate(
-    final BOOL Function(base__accumulation__linked__element<element__type> element) element__handle,
+    final BOOL Function(base__accumulation__linked__element<element___type> element) element__handle,
   ) {
     var element = _element__first;
 
@@ -108,8 +108,8 @@ if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy defaul
   }
 
   BOOL present___ok(
-    final element__type element,
-    final base__value__equality__function__format<element__type,element__type> equal___ok,
+    final element___type element,
+    final base__value__equality__function__format<element___type, element___type> equal___ok,
   ) {
     var present___ok = FALSE;
 
@@ -133,7 +133,7 @@ if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy defaul
     return present___ok;
   }
 
-  ARRAY<element__type> convert__array /*
+  ARRAY<element___type> convert__array /*
 TASK
   eliminate intermediate conversion to `base__accumulation__linear__basic`
     also in `base__accumulation__chained` */
@@ -142,7 +142,7 @@ TASK
       return array__new__empty();
     }
 
-    final accumulation = base__accumulation__linear__basic<element__type>(
+    final accumulation = base__accumulation__linear__basic<element___type>(
       capacity__initial: elements__count(),
     );
 
@@ -181,15 +181,15 @@ TASK
 }
 
 class base__accumulation__linked__element //
-    <element__type extends Object?> {
+    <element___type extends Object?> {
   base__accumulation__linked__element(
     this.value, {
     required this.next___raw,
   });
 
-  final element__type value;
+  final element___type value;
 
-  base__accumulation__linked__element<element__type>? next___raw;
+  base__accumulation__linked__element<element___type>? next___raw;
 }
 
 void base__accumulation__linked__test() {

@@ -37,7 +37,7 @@ extension gui__base__navigation___extension
     on //
         gui__base__navigation___compo /*
 {`dismiss`|`depart_ure`|`de_init_`|`dispose`}`:handle` can be achieved by ,`::handle`-ing the `navigate:forward:`* `return`-ed `async_:value` ,then calling the proc. */ {
-  value__asyn<void> //
+  ASYN<void> //
   forward__overlay //
   <entity__type extends gui__base__entity__overlay___compo>({
     final Color background__color = gui__base__navigation__overlay__background__color,
@@ -58,7 +58,7 @@ extension gui__base__navigation___extension
     );
   }
 
-  value__asyn<void> //
+  ASYN<void> //
   forward__replace__overlay //
   <entity__type extends gui__base__entity__overlay___compo>({
     final Color background__color = gui__base__navigation__overlay__background__color,
@@ -122,7 +122,7 @@ extension gui__base__navigation___extension
     );
   }
 
-  value__asyn<void> //
+  ASYN<void> //
   forward__overlay__bottom //
   <entity__type extends gui__base__entity__overlay___compo>({
     final Color background__color = gui__base__navigation__overlay__background__color,
@@ -144,7 +144,7 @@ extension gui__base__navigation___extension
     );
   }
 
-  /*value__asyn<void> //
+  /*ASYN<void> //
   forward__overlay__bottom__transition__instant //
   <entity__type extends gui__base__entity__overlay___compo>({
     final Color background__color = gui__base__navigation__overlay__background__color,
@@ -172,7 +172,7 @@ extension gui__base__navigation___extension
     );
   }*/
 
-  value__asyn<void> //
+  ASYN<void> //
   forward__replace__overlay__bottom //
   <entity__type extends gui__base__entity__overlay___compo>({
     final Color background__color = gui__base__navigation__overlay__background__color,
@@ -194,7 +194,7 @@ extension gui__base__navigation___extension
     );
   }
 
-  /*value__asyn<void> //
+  /*ASYN<void> //
   forward__replace__overlay__bottom__transition__instant //
   <entity__type extends gui__base__entity__overlay___compo>({
     final Color background__color = gui__base__navigation__overlay__background__color,
@@ -258,10 +258,10 @@ extension gui__base__navigation___extension
     );
   }
 
-  /*value__asyn<void> //
+  /*ASYN<void> //
   _instant(
     final TickerProvider vsync,
-    final value__asyn<void> Function(
+    final ASYN<void> Function(
       AnimationController transition__control,
     )
     value__asyn,
@@ -272,25 +272,25 @@ extension gui__base__navigation___extension
       reverseDuration: Duration.zero,
     );
 
-    await value__asyn(
+    await ASYN(
       transition__control,
     );
 
     transition__control.dispose();
   }*/
 
-  value__asyn<void> //
+  ASYN<void> //
   _entity__overlay__handle //
   <entity__type extends gui__base__entity__overlay___compo>(
     final entity__type entity,
-    final value__asyn<void> future,
+    final ASYN<void> future,
   ) async {
     await future;
 
     entity.dispose();
   }
 
-  value__asyn<void> //
+  ASYN<void> //
   forward__page /*
 push ,next */ //
   <entity__type extends gui__base__entity__page___protocol>({
@@ -308,7 +308,7 @@ push ,next */ //
     );
   }
 
-  value__asyn<void> /*
+  ASYN<void> /*
 completes ,when the "route" is de-navigated */
   _forward(
     final Route<void> route,
@@ -318,7 +318,7 @@ completes ,when the "route" is de-navigated */
     );
   }
 
-  value__asyn<void> //
+  ASYN<void> //
   forward__replace__page /*
 efficient, than the, first calling `de_navigate`, then calling `navigate` */ //
   <entity__type extends gui__base__entity__page___protocol>({
@@ -336,7 +336,7 @@ efficient, than the, first calling `de_navigate`, then calling `navigate` */ //
     );
   }
 
-  value__asyn<void> //
+  ASYN<void> //
   _forward__replace(
     final Route<void> route,
   ) {
@@ -345,7 +345,7 @@ efficient, than the, first calling `de_navigate`, then calling `navigate` */ //
     );
   }
 
-  value__asyn<void> //
+  ASYN<void> //
   forward__replace__full__page /*
 {pop_until_and_push|{pop_all_and_push|re_set}} */ //
   <entity__type extends gui__base__entity__page___protocol>({
@@ -367,11 +367,11 @@ efficient, than the, first calling `de_navigate`, then calling `navigate` */ //
     );
   }
 
-  value__asyn<void> //
+  ASYN<void> //
   _entity__page__handle //
   <entity__type extends gui__base__entity__page___protocol>(
     final entity__type entity,
-    final value__asyn<void> future,
+    final ASYN<void> future,
   ) async {
     await future;
 
@@ -453,6 +453,6 @@ cases :
   }
 }
 
-value__asyn<void> gui__base__app__exit() {
+ASYN<void> gui__base__app__exit() {
   return SystemNavigator.pop();
 }

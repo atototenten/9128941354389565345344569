@@ -17,7 +17,7 @@ part "accumulation/conservative.iteration.meta.dart";
 part "accumulation/linear.dart";
 part "accumulation/linked.dart";
 part "ARRAY.dart";
-part "asyn.dart";
+part "ASYN.dart";
 part "math.dart";
 part "BOOL.dart";
 part "byte.string.dart";
@@ -54,7 +54,7 @@ part "procedure.dart";
 part "queue.dart";
 part "stack.dart";
 part "static.dart";
-part "Stream.dart";
+part "STREAM.dart";
 part "string.dart";
 part "representation.text.dart";
 part "union.dart";
@@ -65,7 +65,7 @@ part "UNICODE.dart";
 
 /*
   `(Object? == (Object | Null))`
-  `(FutureOr<void> == (value__asyn<void> | void))`
+  `(FutureOr<void> == (ASYN<void> | void))`
     any function, marked `async`, or using `await` in body, MUST return `Future`, NOT `FutureOr` */
 
 const //
@@ -210,12 +210,12 @@ abstract class base__dispose___protocol {
 
 abstract class base__dispose__asyn___protocol //
 <error__type extends Enum> {
-  value__asyn<error__type?> //
+  ASYN<error__type?> //
   dispose__asyn();
 }
 
 abstract class base__dispose__asyn__basic___protocol {
-  value__asyn__basic<void> //
+  ASYN__BASIC<void> //
   dispose__asyn();
 }
 

@@ -11,22 +11,22 @@ terminology
   associative-array is fundamentally defective ,due to not being contiguous
   table is in-correct ,because its not merely key-value ,but any number of columns
   object is possibly correct ,but has a very different meaning in relevant lang.s ,and is un-related to the english meaning */
-    <key__type, value__type>
+    <key___type, value___type>
     = //
-    Map<key__type, value__type>;
+    Map<key___type, value___type>;
 
-dictionary<key__type, value__type> //
+dictionary<key___type, value___type> //
     dictionary__generate //
-    <key__type, value__type>(
+    <key___type, value___type>(
   final INT count,
   final ({
-    key__type key,
-    value__type value,
+    key___type key,
+    value___type value,
   })
           Function(INT)
       generate,
 ) {
-  final result = <key__type, value__type>{};
+  final result = <key___type, value___type>{};
 
   base__iterate__basic(count, (final i) {
     final kv = generate(i);
@@ -36,8 +36,8 @@ dictionary<key__type, value__type> //
   return result;
 }
 
-extension dictionary__extension<key__type, value__type> //
-    on dictionary<key__type, value__type> {
+extension dictionary__extension<key___type, value___type> //
+    on dictionary<key___type, value___type> {
   INT get elements__count => //
       length;
 

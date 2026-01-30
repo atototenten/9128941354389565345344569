@@ -2,14 +2,14 @@ part of "../_.dart";
 
 class base__array__array__accumulation__linear__basic //
 <
-  element__type extends Object? /*
+  element___type extends Object? /*
 not nil-able due to dart-lang.'s deficiency
   ,of not allowing dynamic-checking for generic-type's nil-ability */
 > //
     implements base__dispose___protocol {
   base__array__array__accumulation__linear__basic();
 
-  final _accumulation = base__accumulation__linear__basic<ARRAY<element__type>>();
+  final _accumulation = base__accumulation__linear__basic<ARRAY<element___type>>();
   var _elements__count = 0;
 
   INT elements__count() {
@@ -26,7 +26,7 @@ not nil-able due to dart-lang.'s deficiency
   }
 
   void add__ending(
-    final ARRAY<element__type> elements,
+    final ARRAY<element___type> elements,
   ) {
     _accumulation.add__ending(
       elements,
@@ -35,8 +35,8 @@ not nil-able due to dart-lang.'s deficiency
     _elements__count += elements.elements__count;
   }
 
-  ARRAY<element__type> convert__array() {
-    final result = array__new__filled<element__type?>(
+  ARRAY<element___type> convert__array() {
+    final result = array__new__filled<element___type?>(
       _elements__count,
       NIL,
     );
@@ -69,7 +69,7 @@ not nil-able due to dart-lang.'s deficiency
   }
 }
 
-/*class base__accumulation__linear__basic__fast<element__type extends Object> /*
+/*class base__accumulation__linear__basic__fast<element___type extends Object> /*
 `accumulation` with element-removal capability
   ,at the cost of ,element-access efficiency (due to additional in-direct-ion ,per element) ,and in-efficient iteration
     ,still more efficient than linked-list-ing */ //
@@ -86,7 +86,7 @@ not nil-able due to dart-lang.'s deficiency
         _elements__count = 0,
         _element__last__id = 0;
 
-  ARRAY<element__type?> _elements;
+  ARRAY<element___type?> _elements;
 
   INT //
       _elements__count,
@@ -120,7 +120,7 @@ will be non-NIL ,because `list_.elements__count` is expected to be correct */
   }
 
   BOOL present___ok(
-    final element__type element,
+    final element___type element,
   ) {
     var result = FALSE;
 
@@ -141,8 +141,8 @@ will be non-NIL ,because `list_.elements__count` is expected to be correct */
   void remove /*
 memory-usage is not reduced */
       (
-    final element__type element,
-    final base__value__equality__function__format<element__type,element__type> element__equal___ok /*base__value__same__ok*/,
+    final element___type element,
+    final base__value__equality__function__format<element___type, element___type> element__equal___ok /*base__value__same__ok*/,
   ) {
     final //
         elements = _elements,
@@ -161,7 +161,7 @@ memory-usage is not reduced */
   }
 
   void iterate__basic(
-    final void Function(element__type element) operate, {
+    final void Function(element___type element) operate, {
     final INT? count /*
 must not be more than `list_.elements__count` */
     ,
@@ -177,7 +177,7 @@ must not be more than `list_.elements__count` */
     );
   }
 
-  ARRAY<element__type> convert__array() {
+  ARRAY<element___type> convert__array() {
     var offset = 0;
 
     return array__new__generated(
@@ -198,18 +198,18 @@ checks not needed ,because `list_.elements__count` is expected to be correct */
         ;
   }
 
-  element__type first() {
+  element___type first() {
     return element(0);
   }
 
-  element__type element(
+  element___type element(
     INT element__id,
   ) /*
 more efficient ,than `convert:array`
   ,but only for a few element-access ,not full iteration
     ,otherwise `iteration` should be preferred */
   {
-    element__type? result;
+    element___type? result;
 
     _elements.iterate(
       (_, final e) {
@@ -252,7 +252,7 @@ more efficient ,than `element`
   }
 }
 
-class base__accumulation__linear__basic__fast__iteration /*:forward*/ <element__type extends Object> /*
+class base__accumulation__linear__basic__fast__iteration /*:forward*/ <element___type extends Object> /*
 `flush` must be called ,after calling `_accumulation::accumulation:remove:element` */ //
     implements
         base__dispose___protocol {
@@ -260,12 +260,12 @@ class base__accumulation__linear__basic__fast__iteration /*:forward*/ <element__
     _accumulation,
   ) : _element__id = 0;
 
-  final base__accumulation__linear__basic__fast<element__type> _accumulation;
+  final base__accumulation__linear__basic__fast<element___type> _accumulation;
 
   INT _element__id;
 
-  element__type? element /*:next*/ () {
-    element__type? result;
+  element___type? element /*:next*/ () {
+    element___type? result;
 
     _accumulation._elements.iterate(
       (final element__id, final element) {
@@ -284,7 +284,7 @@ class base__accumulation__linear__basic__fast__iteration /*:forward*/ <element__
     return result;
   }
 
-  element__type? iterate() => //
+  element___type? iterate() => //
       element();
 
   void flush() {
@@ -432,11 +432,11 @@ void base__accumulation__linear__definitive__test() {
 }
 
 extension array__convert__accumulation__linear__definitive__extension //
-<element__type extends Object?> //
-    on ARRAY<element__type> {
-  base__accumulation__linear__definitive<element__type> //
+<element___type extends Object?> //
+    on ARRAY<element___type> {
+  base__accumulation__linear__definitive<element___type> //
   convert__accumulation__linear() {
-    final result = base__accumulation__linear__definitive<element__type>(
+    final result = base__accumulation__linear__definitive<element___type>(
       capacity__initial: elements__count,
     );
 
@@ -456,8 +456,8 @@ class base__accumulation__linear__definitive /*
 required because element-removal can in-validate element-ids
   and generation-id would rarely be useful
     due to generation-change being the whole point ,of an accum. */ //
-<element__type extends Object?> //
-    extends base__accumulation__linear__base<element__type> {
+<element___type extends Object?> //
+    extends base__accumulation__linear__base<element___type> {
   base__accumulation__linear__definitive({
     super.capacity__initial,
   });
@@ -492,11 +492,11 @@ memory-usage is not reduced */ () {
 }
 
 extension array__convert__accumulation__linear__basic__extension //
-<element__type extends Object?> //
-    on ARRAY<element__type> {
-  base__accumulation__linear__basic<element__type> //
+<element___type extends Object?> //
+    on ARRAY<element___type> {
+  base__accumulation__linear__basic<element___type> //
   convert__accumulation__linear() {
-    final result = base__accumulation__linear__basic<element__type>(
+    final result = base__accumulation__linear__basic<element___type>(
       capacity__initial: elements__count,
     );
 
@@ -513,15 +513,15 @@ extension array__convert__accumulation__linear__basic__extension //
 }
 
 class base__accumulation__linear__basic //
-<element__type extends Object?> //
-    extends base__accumulation__linear__base<element__type> {
+<element___type extends Object?> //
+    extends base__accumulation__linear__base<element___type> {
   base__accumulation__linear__basic({
     super.capacity__initial,
   });
 
   @override
   INT add__ending(
-    final element__type element,
+    final element___type element,
   ) {
     final element__id = elements__count();
 
@@ -534,7 +534,7 @@ class base__accumulation__linear__basic //
 }
 
 abstract class base__accumulation__linear__base //
-<element__type extends Object?> /*
+<element___type extends Object?> /*
 very efficient (both space, and time) ,than linked-list
   ,because
     no storage of un-essential members ,like ref.s to next and/or previous, elements
@@ -553,7 +553,7 @@ very efficient (both space, and time) ,than linked-list
        ),
        _elements__count = 0;
 
-  ARRAY<base__value__optional___union<element__type>> _elements;
+  ARRAY<base__value__optional___union<element___type>> _elements;
 
   INT _elements__count;
 
@@ -570,8 +570,8 @@ very efficient (both space, and time) ,than linked-list
   }
 
   BOOL present___ok(
-    final element__type element,
-    final base__value__equality__function__format<element__type, element__type> element__equal___ok,
+    final element___type element,
+    final base__value__equality__function__format<element___type, element___type> element__equal___ok,
   ) {
     final v = search(
       element,
@@ -582,8 +582,8 @@ very efficient (both space, and time) ,than linked-list
   }
 
   INT /*element__id*/ ? search(
-    final element__type element,
-    final base__value__equality__function__format<element__type, element__type> element__equal___ok,
+    final element___type element,
+    final base__value__equality__function__format<element___type, element___type> element__equal___ok,
   ) {
     INT? result = NIL;
 
@@ -608,7 +608,7 @@ very efficient (both space, and time) ,than linked-list
   }
 
   INT /*element__id*/ ? search__definitive(
-    final base__value__equality__function__closure__format<element__type> equal___ok,
+    final base__value__equality__function__closure__format<element___type> equal___ok,
   ) {
     INT? result = NIL;
 
@@ -630,7 +630,7 @@ very efficient (both space, and time) ,than linked-list
   }
 
   void add__ending(
-    final element__type element,
+    final element___type element,
   ) {
     if /*F*/ (_elements__count == _elements.elements__count) {
       if (_elements__count == 0) {
@@ -659,30 +659,30 @@ very efficient (both space, and time) ,than linked-list
     _elements__count += 1;
   }
 
-  element__type element(
+  element___type element(
     final INT element__id,
   ) {
     element__id__ensure__valid___raw(element__id);
 
-    return (_elements[element__id] as base__value__optional__present__compo<element__type>).value;
+    return (_elements[element__id] as base__value__optional__present__compo<element___type>).value;
   }
 
   void element__assign(
     final INT element__id,
-    final element__type value,
+    final element___type value,
   ) {
     element__id__ensure__valid___raw(element__id);
 
     _elements[element__id] = base__value__optional__present__compo(value);
   }
 
-  element__type //
+  element___type //
   element__first() {
-    return (_elements.first as base__value__optional__present__compo<element__type>).value;
+    return (_elements.first as base__value__optional__present__compo<element___type>).value;
   }
 
   void element__first__assign(
-    final element__type value,
+    final element___type value,
   ) {
     _elements.first = base__value__optional__present__compo(value);
   }
@@ -692,13 +692,13 @@ very efficient (both space, and time) ,than linked-list
     return (_elements__count - 1);
   }
 
-  element__type //
+  element___type //
   element__last() {
-    return (_elements[element__last__id()] as base__value__optional__present__compo<element__type>).value;
+    return (_elements[element__last__id()] as base__value__optional__present__compo<element___type>).value;
   }
 
   void element__last__assign(
-    final element__type value,
+    final element___type value,
   ) {
     _elements[element__last__id()] = base__value__optional__present__compo(value);
   }
@@ -706,7 +706,7 @@ very efficient (both space, and time) ,than linked-list
   void iterate(
     final BOOL Function(
       INT element__id,
-      element__type element,
+      element___type element,
     )
     element__handle, {
     INT? count /*
@@ -722,7 +722,7 @@ must not be more than `elements__count` */,
       (final i, final e) {
         final iterate___ok = element__handle(
           i,
-          (e as base__value__optional__present__compo<element__type>).value,
+          (e as base__value__optional__present__compo<element___type>).value,
         );
 
         return iterate___ok;
@@ -737,14 +737,14 @@ must not be more than `elements__count` */,
     }
   }
 
-  ARRAY<element__type> convert__array() {
+  ARRAY<element___type> convert__array() {
     if (empty___ok()) {
       return array__new__empty();
     }
 
     return array__new__generated(
       _elements__count,
-      (final i) => (_elements[i] as base__value__optional__present__compo<element__type>).value,
+      (final i) => (_elements[i] as base__value__optional__present__compo<element___type>).value,
     );
   }
 

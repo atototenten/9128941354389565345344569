@@ -1,8 +1,7 @@
 part of "_.dart";
 
 class base__storage__file__memory__meta //
-    implements
-        base__storage__file__meta__basic___protocol {
+    implements base__storage__file__meta__basic___protocol {
   base__storage__file__memory__meta(
     this.file___raw, {
     this.alignment = alignment__modern__normal,
@@ -12,8 +11,8 @@ class base__storage__file__memory__meta //
   final base__storage__file__alignment___compo alignment;
 
   @override
-  value__asyn<base__storage__file__reading__result___union> //
-      read__asyn({
+  ASYN<base__storage__file__reading__result___union> //
+  read__asyn({
     required final INT count,
     required final INT offset,
   }) {
@@ -22,16 +21,14 @@ class base__storage__file__memory__meta //
       offset: offset,
     );
 
-    return value__asyn.value(
-      base__storage__file__reading__result__success(
-        result,
-      ),
+    return ASYN.syncValue(
+      base__storage__file__reading__result__success(result),
     );
   }
 
   @override
-  value__asyn<base__storage__file__writing__error?> //
-      write__asyn(
+  ASYN<base__storage__file__writing__error?> //
+  write__asyn(
     final base__storage__file__blocks value, {
     required final INT offset,
   }) {
@@ -40,27 +37,22 @@ class base__storage__file__memory__meta //
       offset: offset,
     );
 
-    return value__asyn.value(
-      NIL,
-    );
+    return ASYN.syncValue(NIL);
   }
 
   @override
-  value__asyn<base__storage__file__closure__error?> //
-      dispose__asyn() {
+  ASYN<base__storage__file__closure__error?> //
+  dispose__asyn() {
     file___raw.dispose();
 
-    return value__asyn.value(
-      NIL,
-    );
+    return ASYN.syncValue(NIL);
   }
 }
 
 class storage__file__memory //
-    implements
-        base__dispose___protocol {
+    implements base__dispose___protocol {
   static const //
-      block__first__bytes__count__doubling__initial = 2;
+  block__first__bytes__count__doubling__initial = 2;
 
   storage__file__memory({
     this.block__meta = alignment__modern__normal,
@@ -72,22 +64,22 @@ class storage__file__memory //
   INT blocks__count___raw = 0;
 
   INT //
-      blocks__count() {
+  blocks__count() {
     return blocks__count___raw;
   }
 
   BOOL //
-      empty___ok() {
+  empty___ok() {
     return (blocks__count___raw == 0);
   }
 
   BOOL //
-      empty__not() {
+  empty__not() {
     return (blocks__count___raw != 0);
   }
 
   INT //
-      bytes__count() {
+  bytes__count() {
     return (blocks__count___raw * block__meta.size);
   }
 
@@ -145,7 +137,7 @@ class storage__file__memory //
   }
 
   INT /*offset*/ //
-      write__ending(
+  write__ending(
     final base__storage__file__blocks value,
   ) {
     final offset = blocks__count___raw;
@@ -206,7 +198,7 @@ class storage__file__memory //
   }
 
   base__storage__file__blocks //
-      read__full() {
+  read__full() {
     if (empty___ok()) {
       return array__new__empty();
     }
@@ -220,7 +212,7 @@ class storage__file__memory //
   }
 
   base__storage__file__blocks //
-      read({
+  read({
     required final INT count,
     required final INT offset,
   }) {
@@ -271,7 +263,8 @@ class storage__file__memory //
     required final void Function(
       INT block__id,
       base__storage__file__block block,
-    ) block__handle,
+    )
+    block__handle,
   }) {
     final blocks__iteration__meta = base__accumulation__conservative__iteration__meta(
       array__first__elements__count__doubling__initial: block__first__bytes__count__doubling__initial,
@@ -283,32 +276,34 @@ class storage__file__memory //
     blocks__iteration__meta.iterate__forward__auto(
       count: count,
       offset: offset,
-      array__handle: (
-        final accumulation__element__id,
-        final array__id,
-      ) {
-        blocks = block__accumulation___raw.element(
-          array__id,
-        );
+      array__handle:
+          (
+            final accumulation__element__id,
+            final array__id,
+          ) {
+            blocks = block__accumulation___raw.element(
+              array__id,
+            );
 
-        return TRUE;
-      },
-      element__handle: (
-        final accumulation__element__id,
-        final array__element__id,
-      ) {
-        block__handle(
-          accumulation__element__id,
-          base__storage__file__block(
-            blocks.view__partial(
-              (array__element__id * block__meta.size),
-              block__meta.size,
-            ),
-          ),
-        );
+            return TRUE;
+          },
+      element__handle:
+          (
+            final accumulation__element__id,
+            final array__element__id,
+          ) {
+            block__handle(
+              accumulation__element__id,
+              base__storage__file__block(
+                blocks.view__partial(
+                  (array__element__id * block__meta.size),
+                  block__meta.size,
+                ),
+              ),
+            );
 
-        return TRUE;
-      },
+            return TRUE;
+          },
     );
   }
 
@@ -320,7 +315,8 @@ class storage__file__memory //
 
       INT array__last__bytes__count;
       if /*F*/ (block__accumulation___raw.empty___ok()) {
-        array__last__bytes__count = (block__meta.size *
+        array__last__bytes__count =
+            (block__meta.size *
             base__accumulation__conservative__iteration__meta.array__first__elements__count__ideal(
               array__first__elements__count__doubling__initial: block__first__bytes__count__doubling__initial,
             ));

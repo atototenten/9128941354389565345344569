@@ -1,6 +1,6 @@
 part of "_.dart";
 
-/*value__asyn<BS1__array> inet__communicate__http(
+/*ASYN<BS1__array> inet__communicate__http(
   final string host,
   final INT port,
   final string path /* excluding the query */, {
@@ -70,7 +70,7 @@ part of "_.dart";
     return result;
 }
 
-value__asyn<BS1__array?> inet__communicate__http(
+ASYN<BS1__array?> inet__communicate__http(
   final string host,
   final INT port,
   final string path, {

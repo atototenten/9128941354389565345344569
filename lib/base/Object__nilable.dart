@@ -33,7 +33,7 @@ zero is special-case to disable truncation */ =
             elements__count = value.elements__count;
 
         buffer
-          /*..write(/*value.element__type.toString()*/"Object__nilable",)*/
+          /*..write(/*value.element___type.toString()*/"Object__nilable",)*/
           ..write("array[")
           ..write(elements__count)
           ..write("](");

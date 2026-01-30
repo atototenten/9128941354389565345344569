@@ -9,7 +9,7 @@ class base__storage__data__basic__meta //
     implements
         base__dispose__asyn___protocol //
         <base__storage__data__basic__meta__disposal__result> {
-  static value__asyn<base__storage__data__basic__meta> //
+  static ASYN<base__storage__data__basic__meta> //
   asyn({
     required final string file__path /*
 usually (storage__directory__permanent__path__absolute + base__storage__file__path__separation__char + file__name) */,
@@ -31,7 +31,7 @@ the data-base access ,must be exclusive */ async {
 
     await value.initialize();
 
-    return value__asyn.value(
+    return ASYN.syncValue(
       base__storage__data__basic__meta.raw(
         value,
       ),
@@ -42,7 +42,7 @@ the data-base access ,must be exclusive */ async {
     super.value___raw,
   );
 
-  value__asyn<BOOL?> //
+  ASYN<BOOL?> //
   init_ization__needed__ok__auto__asyn() async {
     final meta__asyn = accessing__meta__asyn();
 
@@ -61,7 +61,7 @@ the data-base access ,must be exclusive */ async {
     return result;
   }
 
-  value__asyn<BOOL> //
+  ASYN<BOOL> //
   init_ization__needed__ok__asyn(
     final base__storage__data__basic__accessing__meta meta,
   ) async {
@@ -70,7 +70,7 @@ the data-base access ,must be exclusive */ async {
   }
 
   @override
-  value__asyn<base__storage__data__basic__meta__disposal__result> //
+  ASYN<base__storage__data__basic__meta__disposal__result> //
   dispose__asyn() async {
     await value___raw.close();
 
@@ -102,7 +102,7 @@ requires `sqlite3_flutter_libs` pkg. */ {
   base__storage__data__basic__meta__base(
     this.value___raw,
   ) : accesses__count___raw = 0,
-      access__mutating__exclusion___raw = base__exclusion__mutual(),
+      access__mutating__exclusion___raw = base__exclusion__mutual___compo(),
       accesses__empty__channel___raw = base__event__channel__broadcast() {
     access__mutating__exclusion___raw //
         .free__channel()
@@ -121,21 +121,21 @@ requires `sqlite3_flutter_libs` pkg. */ {
 
   final sqlite_async.SqliteDatabase value___raw;
   final base__event__channel__broadcast accesses__empty__channel___raw;
-  final base__exclusion__mutual access__mutating__exclusion___raw;
+  final base__exclusion__mutual___compo access__mutating__exclusion___raw;
   INT accesses__count___raw /*
 excluding mutating-access
   available through `access__mutating__exclusion___raw.locked__ok` proc. */;
 
-  value__asyn<base__storage__data__basic__accessing__meta>? //
+  ASYN<base__storage__data__basic__accessing__meta>? //
   accessing__meta__asyn /*
 required for read op.ions */ () async {
     accesses__count___raw += 1;
 
-    final result = value__asyn__meta<base__storage__data__basic__accessing__meta>();
+    final result = ASYN__PROMISE<base__storage__data__basic__accessing__meta>();
 
     value___raw.readLock(
       (final value) {
-        final completion__asyn__meta = value__asyn__meta<void>();
+        final completion__asyn__meta = ASYN__PROMISE<void>();
 
         value
             .operate__asyn___raw(
@@ -185,16 +185,16 @@ required for read op.ions */ () async {
     return result.future;
   }
 
-  value__asyn<base__storage__data__basic__accessing__mutating__meta>? //
+  ASYN<base__storage__data__basic__accessing__mutating__meta>? //
   accessing__mutating__meta__asyn /*
 required for write op.ions */ () {
-    late final value__asyn__meta<base__storage__data__basic__accessing__mutating__meta> result;
+    late final ASYN__PROMISE<base__storage__data__basic__accessing__mutating__meta> result;
 
     final ok = access__mutating__exclusion___raw.lock(
       (final lock) {
         value___raw.writeLock(
           (final value) {
-            final completion__asyn__meta = value__asyn__meta<void>();
+            final completion__asyn__meta = ASYN__PROMISE<void>();
 
             value
                 .operate__asyn___raw(
@@ -231,7 +231,7 @@ required for write op.ions */ () {
       return NIL;
     }
 
-    result = value__asyn__meta<base__storage__data__basic__accessing__mutating__meta>();
+    result = ASYN__PROMISE<base__storage__data__basic__accessing__mutating__meta>();
 
     return result.future;
   }
@@ -239,7 +239,7 @@ required for write op.ions */ () {
 
 extension SqliteReadContext__operation__extension //
     on sqlite_async.SqliteReadContext {
-  value__asyn<ARRAY<ARRAY<Object?>>> //
+  ASYN<ARRAY<ARRAY<Object?>>> //
   operate__asyn___raw({
     required final string statement,
     final ARRAY<Object?>? statement__arguments,
@@ -283,7 +283,7 @@ class base__storage__data__basic__accessing__meta //
 
   final base__procedure__empty__complicated__meta completion__meta___raw;
 
-  value__asyn<void> complete__asyn() async {
+  ASYN<void> complete__asyn() async {
     final completed__already___ok = completion__meta___raw.invoked___ok();
 
     if (completed__already___ok) {
@@ -299,14 +299,14 @@ class base__storage__data__basic__accessing__meta //
 }
 
 abstract class base__storage__data__basic__accessing__meta__base //
-<value__type extends sqlite_async.SqliteReadContext> {
+<value___type extends sqlite_async.SqliteReadContext> {
   base__storage__data__basic__accessing__meta__base.raw(
     this.value___raw,
   );
 
-  final value__type value___raw;
+  final value___type value___raw;
 
-  value__asyn<
+  ASYN<
     ({
       INT occupied /*
 including `.wasted` */,
@@ -325,7 +325,7 @@ source : `web://powersync.com/blog/sqlite-optimizations-for-ultra-high-performan
     );
   }
 
-  /*value__asyn<void> build__re__asyn({
+  /*ASYN<void> build__re__asyn({
     required final string file__path,
     required final base__storage__data__basic__table__column__id? Function(
       ARRAY<base__storage__data__basic__table__cell__id> /*
@@ -347,7 +347,7 @@ after re-building
 TASK
   support */
 
-  value__asyn<INT> table__rows__count__asyn___raw({
+  ASYN<INT> table__rows__count__asyn___raw({
     required final string table__name,
     final string suffix = empty___string,
   }) async {
@@ -358,7 +358,7 @@ TASK
     return (result.first.first as INT);
   }
 
-  value__asyn<INT> table__rows__count__asyn({
+  ASYN<INT> table__rows__count__asyn({
     required final base__storage__data__basic__table__id table__id,
   }) {
     return table__rows__count__asyn___raw(
@@ -366,7 +366,7 @@ TASK
     );
   }
 
-  value__asyn<INT> tables__count__asyn() /*
+  ASYN<INT> tables__count__asyn() /*
 excluding, the mandatory, ad default, schema table
 refer to `web://sqlite.org/schematab.html` */ {
     return table__rows__count__asyn___raw(
@@ -405,7 +405,7 @@ refer to `web://sqlite.org/schematab.html` */ {
     );
   }
 
-  value__asyn<ARRAY<base__storage__data__basic__table__row>> /*
+  ASYN<ARRAY<base__storage__data__basic__table__row>> /*
 the first column of each row ,is the unique id ,of the row ,its type ,is un-signed integer ,and range 1..s64 */
   table__rows__asyn({
     required final base__storage__data__basic__table__id table__id,
@@ -496,7 +496,7 @@ example
     );
   }
 
-  value__asyn<ARRAY<base__storage__data__basic__table__row>> table__rows__all__asyn({
+  ASYN<ARRAY<base__storage__data__basic__table__row>> table__rows__all__asyn({
     required final base__storage__data__basic__table__id table__id,
     final ARRAY<base__storage__data__basic__table__column__meta>? result__columns__meta,
     final BOOL result__column__id___ok = FALSE,
@@ -510,7 +510,7 @@ example
     );
   }
 
-  value__asyn<base__storage__data__basic__table__row?> table__row__asyn({
+  ASYN<base__storage__data__basic__table__row?> table__row__asyn({
     required final base__storage__data__basic__table__id table__id,
     required final base__storage__data__basic__table__row__id table__row__id,
     required final ARRAY<base__storage__data__basic__table__column__meta>? result__columns__meta,
@@ -580,7 +580,7 @@ class base__storage__data__basic__accessing__mutating__meta //
   final base__exclusion__mutual__lock lock___raw;
   final base__procedure__empty__complicated__meta completion__meta___raw;
 
-  value__asyn<
+  ASYN<
     base__storage__data__basic__table__id /*/*
 table-id.'s assignment is fully-defined
   equal to row-id. */ */
@@ -635,7 +635,7 @@ avoid `AUTOINCREMENT`
     return table__id;
   }
 
-  /*value__asyn<void> table__remove__asyn({
+  /*ASYN<void> table__remove__asyn({
     required final base__storage__data__basic__table__id table__id,
     required final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
   }) async {
@@ -646,7 +646,7 @@ avoid `AUTOINCREMENT`
 tables cannot be removed ,after addition
   almost-completely similar to rows */
 
-  value__asyn<
+  ASYN<
     base__storage__data__basic__table__row__id /*
 row-id.'s assignment/sequence is well-defined ,as always increasing integer ,beginning from zero */
   > //
@@ -671,7 +671,7 @@ can add only-single row */ ({
     );
   }
 
-  value__asyn<
+  ASYN<
     base__storage__data__basic__table__row__id /*
 of `rows.first` */
   > //
@@ -741,7 +741,7 @@ can add multiple-rows ,as well as a single-row */ ({
     return result;
   }
 
-  value__asyn<void> table__row__cells__assign__asyn({
+  ASYN<void> table__row__cells__assign__asyn({
     required final base__storage__data__basic__table__id table__id,
     required final base__storage__data__basic__table__row__id table__row__id,
     required final ARRAY<base__storage__data__basic__table__column> columns,
@@ -790,7 +790,7 @@ can add multiple-rows ,as well as a single-row */ ({
     );
   }
 
-  /*value__asyn<void> table__row__remove__asyn({
+  /*ASYN<void> table__row__remove__asyn({
     required final base__storage__data__basic__table__id table__id,
     required final base__storage__data__basic__table__row__id table__row__id,
   }) async {
@@ -809,7 +809,7 @@ can add multiple-rows ,as well as a single-row */ ({
       statement__arguments: [table__row__id.value],
     );
   }
-  value__asyn<void> table__rows__all__remove__asyn({
+  ASYN<void> table__rows__all__remove__asyn({
     required final base__storage__data__basic__table__id table__id,
   }) async {
     await value___raw.operate__asyn___raw(
@@ -825,21 +825,21 @@ rows cannot be removed after addition
     removal of an inter-mediate row would require moving the subsequent rows
       which can become too heavy and expensive (in all relevant terms) */
 
-  value__asyn<void> complete__asyn /*
+  ASYN<void> complete__asyn /*
 finish the mutation process */ () async {
     await complete__asyn___raw(
       "COMMIT",
     );
   }
 
-  value__asyn<void> abort__asyn /*
+  ASYN<void> abort__asyn /*
 revert the changes/mutations */ () async {
     await complete__asyn___raw(
       "ROLLBACK",
     );
   }
 
-  value__asyn<void> complete__asyn___raw(
+  ASYN<void> complete__asyn___raw(
     final string statement,
   ) async {
     {
@@ -877,7 +877,7 @@ abstract class base__storage__data__basic__table__row__id__base {
 
 extension SqliteWriteContext__operation__extension //
     on sqlite_async.SqliteWriteContext {
-  value__asyn<void> operate__compound__asyn___raw({
+  ASYN<void> operate__compound__asyn___raw({
     required final string statement,
     required final ARRAY<ARRAY<Object?>> statement__arguments,
   }) {
@@ -899,7 +899,8 @@ enum base__storage__data__basic__table__column__data__type {
   number__exponential("REAL") /*APPROX*/,
   bytes("BLOB") /*byte__array*/,
   text("TEXT") /*string*/ /*
-prefer `.byte__array`, unless searching is required */;
+prefer `.byte__array`, unless searching is required */
+  ;
 
   const base__storage__data__basic__table__column__data__type(this.name);
 
@@ -968,7 +969,7 @@ class base__storage__data__basic__table__column {
   return result;
 }*/
 
-value__asyn<void> base__storage__data__basic__meta__test(
+ASYN<void> base__storage__data__basic__meta__test(
   final string file__path,
 ) async {
   {
@@ -1005,7 +1006,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
     );
   }
 
-  value__asyn<void> storage__print(
+  ASYN<void> storage__print(
     final base__storage__data__basic__accessing__meta__base meta,
   ) async {
     "printing storage".print();
@@ -1038,7 +1039,7 @@ value__asyn<void> base__storage__data__basic__meta__test(
     file__path: file__path,
   );
 
-  value__asyn<void> storage__print__auto__asyn() async {
+  ASYN<void> storage__print__auto__asyn() async {
     "auto-printing storage".print();
 
     final meta = await storage.accessing__meta__asyn();

@@ -13,7 +13,7 @@ final //
 class base__storage__data__basic__simple__meta //
     <table__cell__meta__type extends base__storage__data__basic__simple__cell___protocol> //
     extends base__storage__data__basic__simple__meta__base<base__storage__data__basic__accessing__meta, table__cell__meta__type> {
-  static value__asyn<base__storage__data__basic__simple__meta<table__cell__meta__type>?> //
+  static ASYN<base__storage__data__basic__simple__meta<table__cell__meta__type>?> //
       asyn<table__cell__meta__type extends base__storage__data__basic__simple__cell___protocol>({
     required final base__storage__data__basic__meta storage,
     required final base__storage__data__basic__table__id storage__table__id,
@@ -55,7 +55,7 @@ based on `base__storage__data__basic__meta` */
   final storage__accessing__meta__type storage__accessing__meta___raw;
   final base__storage__data__basic__table__id storage__table__id___raw;
 
-  value__asyn<byte__array> cell___raw(
+  ASYN<byte__array> cell___raw(
     final table__cell__meta__type cell__meta,
   ) async {
     final row = await storage__accessing__meta___raw.table__row__asyn(
@@ -67,7 +67,7 @@ based on `base__storage__data__basic__meta` */
     return (row!.first as byte__array);
   }
 
-  value__asyn<byte__array?> cell(
+  ASYN<byte__array?> cell(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell___raw(
@@ -81,7 +81,7 @@ based on `base__storage__data__basic__meta` */
     return result;
   }
 
-  value__asyn<byte__array?> cell__byte__array(
+  ASYN<byte__array?> cell__byte__array(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell(
@@ -91,7 +91,7 @@ based on `base__storage__data__basic__meta` */
     return result;
   }
 
-  value__asyn<INT?> cell__INT(
+  ASYN<INT?> cell__INT(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell(
@@ -107,7 +107,7 @@ based on `base__storage__data__basic__meta` */
     );
   }
 
-  value__asyn<BOOL?> cell__BOOL(
+  ASYN<BOOL?> cell__BOOL(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell__INT(
@@ -121,7 +121,7 @@ based on `base__storage__data__basic__meta` */
     );
   }
 
-  value__asyn<INT__NEG?> cell__INT__NEG(
+  ASYN<INT__NEG?> cell__INT__NEG(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell(
@@ -143,7 +143,7 @@ based on `base__storage__data__basic__meta` */
     );
   }
 
-  value__asyn<string?> cell__text(
+  ASYN<string?> cell__text(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell(
@@ -155,7 +155,7 @@ based on `base__storage__data__basic__meta` */
     );
   }
 
-  value__asyn<APPROX?> cell__APPROX(
+  ASYN<APPROX?> cell__APPROX(
     final table__cell__meta__type cell__meta,
   ) async {
     final result = await cell__text(
@@ -172,7 +172,7 @@ class base__storage__data__basic__simple__mutating__meta /*
 empty {`byte__array` and `text`} are equal to nil/absence */ //
     <table__cell__meta__type extends base__storage__data__basic__simple__cell___protocol> //
     extends base__storage__data__basic__simple__meta__base<base__storage__data__basic__accessing__mutating__meta, table__cell__meta__type> {
-  static value__asyn<base__storage__data__basic__simple__mutating__meta<table__cell__meta__type>?> //
+  static ASYN<base__storage__data__basic__simple__mutating__meta<table__cell__meta__type>?> //
       asyn<table__cell__meta__type extends base__storage__data__basic__simple__cell___protocol>({
     required final base__storage__data__basic__meta storage,
     required final base__storage__data__basic__table__id storage__table__id,
@@ -191,7 +191,7 @@ empty {`byte__array` and `text`} are equal to nil/absence */ //
     );
   }
 
-  static value__asyn<void> cells__count__update({
+  static ASYN<void> cells__count__update({
     required final base__storage__data__basic__accessing__mutating__meta storage__accessing__meta,
     required final base__storage__data__basic__table__id storage__table__id,
     required final INT cells__count /*
@@ -230,7 +230,7 @@ can be increased ,freely
           storage__table__id___raw: storage__table__id___raw,
         );
 
-  value__asyn<void> cell__assign(
+  ASYN<void> cell__assign(
     final table__cell__meta__type cell__meta,
     final byte__array value,
   ) async {
@@ -246,7 +246,7 @@ can be increased ,freely
     );
   }
 
-  value__asyn<void> cell__assign__nil(
+  ASYN<void> cell__assign__nil(
     final table__cell__meta__type cell__meta,
   ) async {
     await cell__assign(
@@ -255,7 +255,7 @@ can be increased ,freely
     );
   }
 
-  value__asyn<void> cell__assign__BOOL(
+  ASYN<void> cell__assign__BOOL(
     final table__cell__meta__type cell__meta,
     final BOOL value,
   ) async {
@@ -265,7 +265,7 @@ can be increased ,freely
     );
   }
 
-  value__asyn<void> cell__assign__INT(
+  ASYN<void> cell__assign__INT(
     final table__cell__meta__type cell__meta,
     final INT value,
   ) async {
@@ -275,7 +275,7 @@ can be increased ,freely
     );
   }
 
-  value__asyn<void> cell__assign__INT__NEG(
+  ASYN<void> cell__assign__INT__NEG(
     final table__cell__meta__type cell__meta,
     final INT__NEG value,
   ) async {
@@ -303,7 +303,7 @@ can be increased ,freely
     );
   }
 
-  value__asyn<void> cell__assign__APPROX(
+  ASYN<void> cell__assign__APPROX(
     final table__cell__meta__type cell__meta,
     final APPROX value,
   ) async {
@@ -313,7 +313,7 @@ can be increased ,freely
     );
   }
 
-  value__asyn<void> cell__assign__byte__array(
+  ASYN<void> cell__assign__byte__array(
     final table__cell__meta__type cell__meta,
     final byte__array value,
   ) async {
@@ -323,7 +323,7 @@ can be increased ,freely
     );
   }
 
-  value__asyn<void> cell__assign__text(
+  ASYN<void> cell__assign__text(
     final table__cell__meta__type cell__meta,
     final string value,
   ) async {
@@ -341,7 +341,7 @@ can be increased ,freely
     }
   }
 
-  value__asyn<void> cells__assign__default /*
+  ASYN<void> cells__assign__default /*
 should be avoided ,unless necessary
   due to being a simple in-efficient iterating impl. */
       ({
@@ -458,7 +458,7 @@ abstract class base__storage__data__basic__simple__cell___protocol {
 enum base__storage__data__basic__simple__cell__type //
 { BOOL, INT, INT__NEG, APPROX, byte__array, text }
 
-value__asyn<void> base__storage__data__basic__simple__test({
+ASYN<void> base__storage__data__basic__simple__test({
   required final base__storage__data__basic__simple__mutating__meta storage,
 }) async {
   final cases = [

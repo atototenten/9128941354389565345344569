@@ -1,13 +1,14 @@
 part of "_.dart";
 
+typedef STREAM<element___type> = Stream<element___type>;
+
 extension Stream__byte__array__extension //
-    on Stream<byte__array> {
-  value__asyn<byte__array> convert__byte__array__asyn() /*
-forked from core APIs, hence the correct approach, as of "March, 2023" */
-  {
+    on STREAM<byte__array> {
+  ASYN<byte__array> convert__byte__array__asyn() /*
+forked from core APIs, hence the correct approach, as of "March, 2023" */ {
     final //
-        accumulation = base__byte__array__accumulation(),
-        promise = value__asyn__meta<BS1__array>();
+    accumulation = base__byte__array__accumulation(),
+        promise = ASYN__PROMISE<BS1__array>();
 
     listen(
       (final BS1__array data) => accumulation.add(data /*..count.representation__text().print("byteStream.listen.onData.data.count")*/),
@@ -28,12 +29,18 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
     final accumulation = base__byte__array__accumulation();
 
     INT //
-        count /* `left`, or remaining count */ = 0,
+    count /* `left`, or remaining count */ = 0,
         data__count;
 
     listen(
       (BS1__array data) {
-        data__count = (data..representation__text().print("\n" "stream__BS1__array.listen.onData.data")).bytes__count;
+        data__count =
+            (data
+                  ..representation__text().print(
+                    "\n"
+                    "stream__BS1__array.listen.onData.data",
+                  ))
+                .bytes__count;
 
         while (true) {
           count.representation__text().print("count");
@@ -87,8 +94,8 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
               data__count -= count;
 
               count = accumulation.convert__byte__array().convert__INT__endian__little(
-                    message__size__size,
-                  );
+                message__size__size,
+              );
               accumulation.flush();
             }
 
@@ -107,12 +114,12 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */
 }
 
 extension Stream__array__extension<data__type> //
-    on Stream<data__type> {
-  value__asyn<ARRAY<data__type>> //
-      convert__array__asyn() {
+    on STREAM<data__type> {
+  ASYN<ARRAY<data__type>> //
+  convert__array__asyn() {
     final //
-        accumulation = base__accumulation__linear__basic<data__type>(),
-        promise = value__asyn__meta<ARRAY<data__type>>();
+    accumulation = base__accumulation__linear__basic<data__type>(),
+        promise = ASYN__PROMISE<ARRAY<data__type>>();
 
     listen(
       (final data) => accumulation.add__ending(data),

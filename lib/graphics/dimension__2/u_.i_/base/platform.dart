@@ -10,7 +10,7 @@ void base__platform__web__support__not__throw() {
   }
 }
 
-value__asyn<void> base__platform__init_() async {
+ASYN<void> base__platform__init_() async {
   if (base__printing___ok) {
     base__program__compilation__platform.representation__text().print("base__program__compilation__platform");
   }

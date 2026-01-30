@@ -2,11 +2,8 @@ part of "_.dart";
 
 class base__exclusion__mutual___compo //
     implements base__dispose___protocol {
-  static const //
-  locking__requests__count__limit__default = 32;
-
   base__exclusion__mutual___compo({
-    this.locking__requests__count__limit = locking__requests__count__limit__default,
+    required this.locking__requests__count__limit,
   }) : _locked___ok = FALSE,
        _lock__requests = base__queue___compo(),
        _free___channel = base__event__channel__broadcast();
@@ -53,9 +50,9 @@ user must not dispose */ //
     }
   }
 
-  value__asyn<base__exclusion__mutual__lock> //
+  ASYN<base__exclusion__mutual__lock> //
   lock___async() {
-    final meta = value__asyn__meta<base__exclusion__mutual__lock>();
+    final meta = ASYN__PROMISE<base__exclusion__mutual__lock>();
 
     try {
       lock(meta.complete);
@@ -158,7 +155,7 @@ an extra ,because the first lock ,is resolved directly ,and not added to the req
           (final lock) {
             "handling lock".print(label);
 
-            value__asyn__basic.delayed(
+            ASYN__BASIC.delayed(
               Duration(
                 seconds: waiting__duration,
               ),
@@ -178,7 +175,7 @@ an extra ,because the first lock ,is resolved directly ,and not added to the req
     },
   );
 
-  value__asyn__basic.delayed(
+  ASYN__BASIC.delayed(
     Duration(
       seconds: ((iteration__count ~/ 2) * waiting__duration),
     ),
@@ -187,7 +184,7 @@ an extra ,because the first lock ,is resolved directly ,and not added to the req
     },
   );
 
-  value__asyn__basic.delayed(
+  ASYN__BASIC.delayed(
     Duration(
       seconds: (iteration__count * waiting__duration),
     ),

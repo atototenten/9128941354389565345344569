@@ -4,10 +4,10 @@ part of "../_.dart";
 result :
   run-time efficiency :
     - sync./`value` proc.s :~3 ticks
-    - async./`value__asyn<value>` proc.s :~30 ticks (sync. x10)
+    - async./`ASYN<value>` proc.s :~30 ticks (sync. x10)
     - possibly-async./`FutureOr<value>` proc.s :~40 ticks (sync. x13)
   `FutureOr` is possibly conditional ,based on ,sync. vs. async. */
-value__asyn<void> _test__call__overhead() async {
+ASYN<void> _test__call__overhead() async {
   const count = (1 + 1000);
 
   final watch = Stopwatch();
@@ -55,7 +55,7 @@ FutureOr<bool> _asyn__or__asyn(
 }
 
 @pragma(_inline__never)
-value__asyn<bool> _asyn(
+ASYN<bool> _asyn(
   final int i,
 ) async {
   return _base(i);

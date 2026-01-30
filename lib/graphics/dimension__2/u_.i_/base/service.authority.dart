@@ -3,7 +3,7 @@ part of "_.dart";
 abstract class service__authority__base {
   const service__authority__base();
 
-  value__asyn<void> handle();
+  ASYN<void> handle();
 }
 
 class service__authority //
@@ -17,10 +17,10 @@ class service__authority //
 resolving is
   ,from begin to end ,but stops if any source denies
     ,simply logical-OR towards denial */;
-  final value__asyn<gui__base__widget?> Function(base__value__optional___union<java_script__type>) data__handle;
+  final ASYN<gui__base__widget?> Function(base__value__optional___union<java_script__type>) data__handle;
 
   @override
-  value__asyn<void> handle() async {
+  ASYN<void> handle() async {
     final requests = sources.convert((e) => e.resolve());
 
     for (final request in requests) {
@@ -46,6 +46,6 @@ class service__authority__local //
   const service__authority__local();
 
   @override
-  value__asyn<void> handle() //
-  => empty__value__asyn__void;
+  ASYN<void> handle() //
+  => ASYN.syncValue(NIL);
 }

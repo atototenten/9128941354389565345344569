@@ -1,8 +1,8 @@
 part of "_.dart";
 
 typedef base__block__fetch__asyn__procedure__format //
-    <element__type extends base__dispose__asyn__basic___protocol>
-    = value__asyn<ARRAY<element__type>> Function(
+    <element___type extends base__dispose__asyn__basic___protocol>
+    = ASYN<ARRAY<element___type>> Function(
   INT block__id,
 );
 
@@ -25,7 +25,7 @@ TASK
       but keep the existing block
         to eliminate the cost/wastage ,in case of wrong prediction
   support `error__try__count__max` */ //
-    <element__type extends base__dispose__asyn__basic___protocol> //
+    <element___type extends base__dispose__asyn__basic___protocol> //
     implements
         base__dispose__asyn__basic___protocol {
   static const //
@@ -35,7 +35,7 @@ TASK
       block__elements__count__width__default__small = 4;
 
   factory base__fetching__caching({
-    required final base__block__fetch__asyn__procedure__format<element__type> block__fetch__asyn,
+    required final base__block__fetch__asyn__procedure__format<element___type> block__fetch__asyn,
     required final INT elements__count,
     final INT block__elements__count__width = block__elements__count__width__default,
     final INT blocks__count__width = blocks__count__width__default,
@@ -50,7 +50,7 @@ TASK
       ),
       blocks__count__max: (blocks__count - 1),
       block__fetch__asyn: block__fetch__asyn,
-      blocks___raw: array__new__filled<base__fetching__caching__block<element__type>?>(
+      blocks___raw: array__new__filled<base__fetching__caching__block<element___type>?>(
         blocks__count,
         NIL,
       ),
@@ -75,9 +75,9 @@ fixed because re-loading the affected block (of which ,the elements-count has be
       block__elements__count__width,
       block__elements__count__max;
 
-  final base__block__fetch__asyn__procedure__format<element__type> block__fetch__asyn;
+  final base__block__fetch__asyn__procedure__format<element___type> block__fetch__asyn;
 
-  final ARRAY<base__fetching__caching__block<element__type>?> blocks___raw;
+  final ARRAY<base__fetching__caching__block<element___type>?> blocks___raw;
 
   ({
     INT elements__offset /* not in block */,
@@ -98,7 +98,7 @@ fixed because re-loading the affected block (of which ,the elements-count has be
     );
   }
 
-  value__asyn<element__type> //
+  ASYN<element___type> //
       element__asyn(
     final INT element__id,
   ) async {
@@ -123,7 +123,7 @@ fixed because re-loading the affected block (of which ,the elements-count has be
         final block__elements__existing = block__existing.elements;
 
         switch (block__elements__existing) {
-          case base__fetching__caching__block__elements__waiting<element__type>():
+          case base__fetching__caching__block__elements__waiting<element___type>():
             {
               final block__elements__existing__value = await block__elements__existing.value__asyn_1;
 
@@ -133,7 +133,7 @@ fixed because re-loading the affected block (of which ,the elements-count has be
 
               break;
             }
-          case base__fetching__caching__block__elements__present<element__type>():
+          case base__fetching__caching__block__elements__present<element___type>():
             {
               await base__fetching__caching__block__elements___union.elements__dispose(
                 block__elements__existing.value,
@@ -159,13 +159,13 @@ fixed because re-loading the affected block (of which ,the elements-count has be
     final block__elements__existing = block__existing.elements;
 
     switch (block__elements__existing) {
-      case base__fetching__caching__block__elements__waiting<element__type>():
+      case base__fetching__caching__block__elements__waiting<element___type>():
         {
           final block__elements__existing__value = await block__elements__existing.value__asyn_1;
 
           return block__elements__existing__value[block__offset];
         }
-      case base__fetching__caching__block__elements__present<element__type>():
+      case base__fetching__caching__block__elements__present<element___type>():
         {
           return block__elements__existing.value[block__offset];
         }
@@ -173,7 +173,7 @@ fixed because re-loading the affected block (of which ,the elements-count has be
   }
 
   @override
-  value__asyn<void> dispose__asyn() async {
+  ASYN<void> dispose__asyn() async {
     return base__iterate__reverse__basic__asyn(
       blocks___raw.elements__count,
       (final i) async {
@@ -190,7 +190,7 @@ fixed because re-loading the affected block (of which ,the elements-count has be
 }
 
 class base__fetching__caching__block //
-    <element__type extends base__dispose__asyn__basic___protocol> //
+    <element___type extends base__dispose__asyn__basic___protocol> //
     implements
         base__dispose__asyn__basic___protocol {
   const base__fetching__caching__block({
@@ -199,26 +199,26 @@ class base__fetching__caching__block //
   });
 
   final INT id;
-  final base__fetching__caching__block__elements___union<element__type> elements;
+  final base__fetching__caching__block__elements___union<element___type> elements;
 
   @override
-  value__asyn<void> dispose__asyn() async {
+  ASYN<void> dispose__asyn() async {
     await elements.dispose__asyn();
   }
 }
 
 class base__fetching__caching__block__elements__waiting //
-    <element__type extends base__dispose__asyn__basic___protocol> //
+    <element___type extends base__dispose__asyn__basic___protocol> //
     implements
-        base__fetching__caching__block__elements___union<element__type> {
+        base__fetching__caching__block__elements___union<element___type> {
   const base__fetching__caching__block__elements__waiting(
     this.value__asyn_1,
   );
 
-  final value__asyn<ARRAY<element__type>> value__asyn_1;
+  final ASYN<ARRAY<element___type>> value__asyn_1;
 
   @override
-  value__asyn<void> dispose__asyn() async {
+  ASYN<void> dispose__asyn() async {
     final value = await value__asyn_1;
 
     await base__fetching__caching__block__elements___union.elements__dispose(
@@ -228,17 +228,17 @@ class base__fetching__caching__block__elements__waiting //
 }
 
 class base__fetching__caching__block__elements__present //
-    <element__type extends base__dispose__asyn__basic___protocol> //
+    <element___type extends base__dispose__asyn__basic___protocol> //
     implements
-        base__fetching__caching__block__elements___union<element__type> {
+        base__fetching__caching__block__elements___union<element___type> {
   const base__fetching__caching__block__elements__present(
     this.value,
   );
 
-  final ARRAY<element__type> value;
+  final ARRAY<element___type> value;
 
   @override
-  value__asyn<void> dispose__asyn() async {
+  ASYN<void> dispose__asyn() async {
     await base__fetching__caching__block__elements___union.elements__dispose(
       value,
     );
@@ -246,11 +246,11 @@ class base__fetching__caching__block__elements__present //
 }
 
 sealed class base__fetching__caching__block__elements___union //
-    <element__type extends base__dispose__asyn__basic___protocol> //
+    <element___type extends base__dispose__asyn__basic___protocol> //
     implements
         base__dispose__asyn__basic___protocol {
-  static value__asyn<void> elements__dispose<element__type extends base__dispose__asyn__basic___protocol>(
-    final ARRAY<element__type> elements,
+  static ASYN<void> elements__dispose<element___type extends base__dispose__asyn__basic___protocol>(
+    final ARRAY<element___type> elements,
   ) async {
     await base__iterate__reverse__basic__asyn(
       elements.elements__count,
@@ -271,10 +271,10 @@ class base__fetching__caching__testing__element //
   final INT value;
 
   @override
-  value__asyn<void> dispose__asyn() async {}
+  ASYN<void> dispose__asyn() async {}
 }
 
-value__asyn<void> base__fetching__caching__test() async {
+ASYN<void> base__fetching__caching__test() async {
   const //
       blocks__count__width = 1,
       block__elements__count__width = (1 + blocks__count__width),
@@ -305,7 +305,7 @@ value__asyn<void> base__fetching__caching__test() async {
         },
       );
 
-      /*await value__asyn__basic<void>.delayed(
+      /*await ASYN__BASIC<void>.delayed(
         Duration(
           seconds: 1,
         ),

@@ -4,7 +4,7 @@ extension gui__base__event__channel__broadcast__handling__extension //
     on base__event__channel__broadcast___protocol {
   gui__base__widget handling__widget__build /*
 like `ListenableBuilder`
-a separate `base__value__mutation__event__channel__broadcast__dispose___protocol<value__type, gui__base__widget__building__context__definitive>` handling-widget (like `ValueListenableBuilder`)
+a separate `base__value__mutation__event__channel__broadcast__dispose___protocol<value___type, gui__base__widget__building__context__definitive>` handling-widget (like `ValueListenableBuilder`)
   ,is un-necessary
     ,because it would simply be different in `.build` ,with an additional `channel.value()` param. ,which is already a method-call away
       ,and would introduce duplication ,and deviation ,in the a.p.i.

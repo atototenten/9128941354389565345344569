@@ -112,7 +112,7 @@ enum navigation__type {
 
 const _page_route = /*CupertinoPageRoute<void>.new*/ MaterialPageRoute<void>.new;
 
-value__asyn<void> navigate__forward__overlay(
+ASYN<void> navigate__forward__overlay(
   final base__widget__building__context context, {
   required final procedure? dismiss__handle,
   required final base__widget__build__function__format overlay__build,
@@ -139,7 +139,7 @@ value__asyn<void> navigate__forward__overlay(
   );
 }
 
-value__asyn<void> navigate__forward__overlay__bottom(
+ASYN<void> navigate__forward__overlay__bottom(
   final base__widget__building__context context, {
   required final procedure? dismiss__handle,
   required final base__widget__build__function__format overlay__build,
@@ -179,7 +179,7 @@ value__asyn<void> navigate__forward__overlay__bottom(
   );
 }
 
-value__asyn<void> navigate__forward__page(
+ASYN<void> navigate__forward__page(
   final base__widget__building__context context, {
   required final procedure? depart_ure__handle,
   required final base__widget__build__function__format page__build,
@@ -205,7 +205,7 @@ value__asyn<void> navigate__forward__page(
   );
 }
 
-value__asyn<void> navigate__forward__replace__page /*
+ASYN<void> navigate__forward__replace__page /*
 efficient, than the, first calling `de_navigate`, then calling `navigate` */
     (
   final base__widget__building__context context, {
@@ -234,7 +234,7 @@ efficient, than the, first calling `de_navigate`, then calling `navigate` */
   );
 }
 
-value__asyn<void> navigate__forward__permanent__page(
+ASYN<void> navigate__forward__permanent__page(
   final base__widget__building__context context, {
   final uu? pages__count /*
 no issue ,if more than "pages:count" of navigator
@@ -344,7 +344,7 @@ void navigate__backward(
   }
 }
 
-value__asyn<void> /*
+ASYN<void> /*
 completes ,when the `route` is de-navigat-ed */
     _navigate__forward(
   final base__widget__building__context context,

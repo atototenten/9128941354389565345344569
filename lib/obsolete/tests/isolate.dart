@@ -1,6 +1,6 @@
 part of "../_.dart";
 
-value__asyn<void> process(
+ASYN<void> process(
   final SendPort port__send,
 ) async {
   Isolate.current.hashCode.representation__text().print("Isolate.current.hashCode");
@@ -40,7 +40,7 @@ value__asyn<void> process(
   port__send.send(port__receive.sendPort);
 }
 
-value__asyn<void> main /*isolate__test*/ () async {
+ASYN<void> main /*isolate__test*/ () async {
   Isolate.current.hashCode.representation__text().print("Isolate.current.hashCode");
 
   final byte__array__kampo data = byte__array__alloc(17) //

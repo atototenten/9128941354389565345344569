@@ -12,11 +12,11 @@ const INT Function(
 gui__base__listing__reverse__item__id = //
     array__reverse__element__id;
 
-extension base__array__convert__widget__array__extension<value__type extends Object?> //
-    on ARRAY<value__type> {
+extension base__array__convert__widget__array__extension<value___type extends Object?> //
+    on ARRAY<value___type> {
   ARRAY<gui__base__widget> convert__widget__array(
     final gui__base__widget separation,
-    final gui__base__widget Function(INT, value__type) element__convert,
+    final gui__base__widget Function(INT, value___type) element__convert,
   ) {
     return base__elements__generate(
       elements__count,
@@ -33,12 +33,12 @@ typedef gui__base__listing__grow_able__listing__widget__function__format =
       gui__base__listing__item__build__function__format item__widget,
     );
 
-class gui__base__listing__grow_able<element__new__type> //
+class gui__base__listing__grow_able<element__new___type> //
     implements base__dispose___protocol {
   gui__base__listing__grow_able({
     required this.items__existing__count,
     required this.items__new__count__limit,
-  }) : _elements__new = base__accumulation__linear__basic<element__new__type>(),
+  }) : _elements__new = base__accumulation__linear__basic<element__new___type>(),
        _channel = base__event__channel__broadcast();
 
   final INT items__existing__count;
@@ -46,7 +46,7 @@ class gui__base__listing__grow_able<element__new__type> //
 
   final base__event__channel__broadcast _channel;
 
-  final base__accumulation__linear__basic<element__new__type> _elements__new;
+  final base__accumulation__linear__basic<element__new___type> _elements__new;
 
   @override
   void dispose() {
@@ -60,7 +60,7 @@ class gui__base__listing__grow_able<element__new__type> //
       _channel;
 
   void add(
-    final element__new__type element__new,
+    final element__new___type element__new,
   ) {
     _elements__new.add__ending(
       element__new,
@@ -71,7 +71,7 @@ class gui__base__listing__grow_able<element__new__type> //
 
   /*void remove__element(final INT element__id,) {}*/
 
-  element__new__type element__new(
+  element__new___type element__new(
     final INT id,
   ) => _elements__new.element(
     id,
@@ -83,7 +83,7 @@ class gui__base__listing__grow_able<element__new__type> //
   INT _elements__new__count__definitive() => //
       elements__new__count();
 
-  ARRAY<element__new__type> elements__new__convert__array() => //
+  ARRAY<element__new___type> elements__new__convert__array() => //
       _elements__new.convert__array();
 
   gui__base__widget widget__build(
@@ -170,18 +170,18 @@ example :
 }
 
 /*class gui__base__listing__grow_able__sav_able //
-    <element__new__type, element__new__sav_ed__type> /*
+    <element__new___type, element__new__saved___type> /*
 `element__new` is `element__new__un_sav_ed` */ //
-    extends gui__base__listing__grow_able<element__new__type> {
+    extends gui__base__listing__grow_able<element__new___type> {
   gui__base__listing__grow_able__sav_able() //
-      : _elements__new__sav_ed = base__accumulation__linear__basic<element__new__sav_ed__type>();
+      : _elements__new__sav_ed = base__accumulation__linear__basic<element__new__saved___type>();
 
-  final base__accumulation__linear__basic<element__new__sav_ed__type> _elements__new__sav_ed;
+  final base__accumulation__linear__basic<element__new__saved___type> _elements__new__sav_ed;
 
   BOOL? _save__allow___ok;
 
   void save__elements(
-    final ARRAY<element__new__sav_ed__type> elements__new__sav_ed__array /*
+    final ARRAY<element__new__saved___type> elements__new__sav_ed__array /*
 must have same elements:count as input/param. */
     ,
   ) /*
@@ -191,9 +191,9 @@ must have same elements:count as input/param. */
     _elements__new.flush();
 
     elements__new__sav_ed__array.iterate__basic(
-      (_, final element__new__sav_ed) {
+      (_, final element__new__saved) {
         _elements__new__sav_ed.add(
-          element__new__sav_ed,
+          element__new__saved,
         );
       },
     );
@@ -208,14 +208,14 @@ must have same elements:count as input/param. */
   INT _elements__new__count__definitive() => //
       (elements__new__sav_ed__count() + super._elements__new__count__definitive());
 
-  element__new__sav_ed__type element__new__sav_ed(
+  element__new__saved___type element__new__saved(
     final INT id,
   ) =>
       _elements__new__sav_ed.element(
         id,
       );
 
-  ARRAY<element__new__sav_ed__type> elements__new__sav_ed__convert__array() => //
+  ARRAY<element__new__saved___type> elements__new__sav_ed__convert__array() => //
       _elements__new__sav_ed.convert__array();
 
   BOOL? save__allow___ok() {
@@ -248,11 +248,11 @@ must have same elements:count as input/param. */
 }
 
 extension gui__base__listing__grow_able__sav_able__widget //
-    <element__new__type, element__new__sav_ed__type> //
+    <element__new___type, element__new__saved___type> //
     on gui__base__listing__grow_able__sav_able //
-    <element__new__type, element__new__sav_ed__type> {
+    <element__new___type, element__new__saved___type> {
   gui__base__widget widget //
-      <element__new__type, element__new__sav_ed__type>({
+      <element__new___type, element__new__saved___type>({
     required final gui__base__listing__grow_able__listing__widget__function__format listing,
     required final INT items__existing__count,
     required final INT items__new__count__limit,
@@ -265,7 +265,7 @@ extension gui__base__listing__grow_able__sav_able__widget //
 not visible ,if no elements ,are un-sav-ed */
     ,
   }) {
-    return (this as gui__base__listing__grow_able<element__new__type>).widget(
+    return (this as gui__base__listing__grow_able<element__new___type>).widget(
       listing: listing,
       items__existing__count: items__existing__count,
       items__new__count__limit: items__new__count__limit,

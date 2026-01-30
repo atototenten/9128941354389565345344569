@@ -7,7 +7,7 @@ completely raw and un-cached
   to match the reality (of hardware) */ //
     implements
         base__dispose__asyn___protocol<base__storage__file__closure__error> {
-  value__asyn<base__storage__file__reading__result___union> //
+  ASYN<base__storage__file__reading__result___union> //
       read__asyn /*
 fetch data */
       ({
@@ -15,7 +15,7 @@ fetch data */
     required final INT offset,
   });
 
-  value__asyn<base__storage__file__writing__error?> //
+  ASYN<base__storage__file__writing__error?> //
       write__asyn /*
 re-place data */
       (
@@ -24,7 +24,7 @@ re-place data */
   });
 
   @override
-  value__asyn<base__storage__file__closure__error?> //
+  ASYN<base__storage__file__closure__error?> //
       dispose__asyn();
 }
 

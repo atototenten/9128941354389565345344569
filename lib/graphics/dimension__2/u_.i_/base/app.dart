@@ -33,7 +33,7 @@ void _FlutterError__onError(
 void base__app__run //
 <entity__type extends gui__base__entity__page___protocol>({
   required final entity__type Function(
-    value__asyn<void> init_ion__asyn /*
+    ASYN<void> init_ion__asyn /*
 indicates the fully init.ion ,of the meta-framework ,and the flutter-framework */,
   )
   init,
@@ -51,7 +51,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
 
   WidgetsFlutterBinding.ensureInitialized();
 
-  final init_ion__promise = value__asyn__meta<void>();
+  final init_ion__promise = ASYN__PROMISE<void>();
   {
     var count___raw = 2;
     void _success__handle() {
@@ -109,7 +109,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
     }); /*
   forked
     from `flutter/src/services/binding.dart`::`mixin ServicesBinding`
-      ::`value__asyn<String?> _handleLifecycleMessage(String?)`
+      ::`ASYN<String?> _handleLifecycleMessage(String?)`
       ::`void initInstances()` */*/
 
     /*SystemChannels.keyEvent.setMessageHandler((final message) async {
@@ -208,7 +208,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
     }); /*
   forked
     from `flutter/src/widgets/binding.dart`::`mixin WidgetsBinding`
-      ::`value__asyn<dynamic> _handleNavigationInvocation(MethodCall)`
+      ::`ASYN<dynamic> _handleNavigationInvocation(MethodCall)`
       ::`void initInstances()` */*/
 
     /*PlatformDispatcher.instance
@@ -316,7 +316,7 @@ tasks.long:
 <entity__type extends gui__base__entity__page___protocol>({
   required final string app__title,
   required final service__authority__base service__authority,
-  required final value__asyn<entity__type> Function() entity /*
+  required final ASYN<entity__type> Function() entity /*
 `debug`* global properties ,like `debugPaintSizeEnabled` ,`debugPaintPointersEnabled` ,`debugRepaintRainbowEnabled` ,`debugRepaintTextRainbowEnabled` ,`debugPaintLayerBordersEnabled` ,`debugDisableClipLayers` ,`debugPrintRebuildDirtyWidgets` ,`debugPrintMouseHoverEvents` ,`debugPrintHitTestResults` ,`debugPrintKeyboardEvents` ,can be set inside
 `theme__colors__set` proc. should be called in the proc.
 wrap every page/overlay ,to handle `base__app__theme__change__channel`
@@ -325,7 +325,7 @@ wrap every page/overlay ,to handle `base__app__theme__change__channel`
   ,because handling above(in tree-node's position or hierarchy) `MaterialApp` ,would re-set the whole app (including navigation[-stack] ,and current page/overlay)
     ,while handling below(as its child) ,would be overridden with page/overlay navigation
 `storage` is available at this point
-to return non-future value ,prefer using `value__asyn.value` */,
+to return non-future value ,prefer using `ASYN.value` */,
   required final gui__base__widget__build__function__format splash__build /*
 must not depend on the meta-framework */,
 }) {
@@ -352,11 +352,11 @@ class gui__base__app__running__simple //
     implements gui__base__entity__page___protocol {
   gui__base__app__running__simple({
     required this.app__title,
-    required final value__asyn<void> init_ion__status__asyn,
-    required final value__asyn<entity__type> Function() entity,
+    required final ASYN<void> init_ion__status__asyn,
+    required final ASYN<entity__type> Function() entity,
     required this.splash__build,
   }) {
-    final entity__promise = value__asyn__meta<entity__type>();
+    final entity__promise = ASYN__PROMISE<entity__type>();
 
     void _failure__handle(
       final Object error,
@@ -384,12 +384,12 @@ class gui__base__app__running__simple //
       _failure__handle,
     );
 
-    _init_ion__asyn = /*base__value__asyn__definitive<entity__type>(*/ entity__promise.future /*,)*/;
+    _init_ion__asyn = /*ASYN__DEFINITIVE<entity__type>(*/ entity__promise.future /*,)*/;
   }
 
   final string app__title;
-  late final value__asyn<entity__type> /*
-    TASK : move to "base__value__asyn__definitive"
+  late final ASYN<entity__type> /*
+    TASK : move to "ASYN__DEFINITIVE"
       once re-starting works
         in arethos-tracking app. */
   _init_ion__asyn;

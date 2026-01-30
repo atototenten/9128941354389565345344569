@@ -1,9 +1,9 @@
 part of "_.dart";
 
-typedef ARRAY<element__type> = List<element__type>;
+typedef ARRAY<element___type> = List<element___type>;
 
-ARRAY<element__type> array__new__copy<element__type>(
-  final ARRAY<element__type> arr_, {
+ARRAY<element___type> array__new__copy<element___type>(
+  final ARRAY<element___type> arr_, {
   final INT offset = 0,
   final INT? count,
 }) => arr_.sublist(
@@ -11,41 +11,41 @@ ARRAY<element__type> array__new__copy<element__type>(
   ((count ?? arr_.elements__count) + offset),
 );
 
-ARRAY<element__type> array__new__filled<element__type>(
+ARRAY<element___type> array__new__filled<element___type>(
   final INT count,
-  final element__type value,
-) => ARRAY<element__type>.filled(
+  final element___type value,
+) => ARRAY<element___type>.filled(
   count,
   value,
   growable: FALSE,
 );
 
-ARRAY<element__type> array__new__generated<element__type>(
+ARRAY<element___type> array__new__generated<element___type>(
   final INT count,
-  final element__type Function(INT i) generate,
-) => ARRAY<element__type>.generate(
+  final element___type Function(INT i) generate,
+) => ARRAY<element___type>.generate(
   count,
   generate,
   growable: FALSE,
 );
 
-ARRAY<element__type> //
-array__new__empty<element__type>() => //
-array__new__generated<element__type>(
+ARRAY<element___type> //
+array__new__empty<element___type>() => //
+array__new__generated<element___type>(
   0,
   (_) => throw Exception(),
 );
 
-ARRAY<element__type> array__new__element__single<element__type>(
-  final element__type value,
-) => array__new__filled<element__type>(
+ARRAY<element___type> array__new__element__single<element___type>(
+  final element___type value,
+) => array__new__filled<element___type>(
   1,
   value,
 );
 
-extension array__array__merge_ing<element__type> //
-    on ARRAY<ARRAY<element__type>> {
-  ARRAY<element__type> merge() {
+extension array__array__merge_ing<element___type> //
+    on ARRAY<ARRAY<element___type>> {
+  ARRAY<element___type> merge() {
     var elements__count = 0;
 
     iterate__reverse__basic(
@@ -513,8 +513,8 @@ join */ <element__other__type>(
   }
 }
 
-extension element__type__array__report__definitive__extension<element__type> //
-    on ARRAY<element__type> {
+extension element___type__array__report__definitive__extension<element___type> //
+    on ARRAY<element___type> {
   string //
   convert__text__concise__definitive(
     final INT elements__count,

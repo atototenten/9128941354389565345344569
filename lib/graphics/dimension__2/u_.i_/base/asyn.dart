@@ -1,7 +1,7 @@
 part of "_.dart";
 
-extension gui__base__value__asyn__definitive__handling___extension<value__type> //
-    on base__value__asyn__definitive<value__type> {
+extension gui__asyn__definitive__handling___extension<value___type> //
+    on ASYN__DEFINITIVE<value___type> {
   gui__base__widget handling__widget__build /*
 compared to `FutureBuilder<T>`(of `flutter/widgets/async.dart`)
   `value__type` can be nil-able
@@ -12,13 +12,13 @@ compared to `FutureBuilder<T>`(of `flutter/widgets/async.dart`)
             which is implicitly `extends Object?` in dart-lang.
               breaking the promise of void-safety
   value is available in the very-first frame ,if completed already
-    due to the value being accessible syn.ly ,from "base__value__asyn__definitive"
+    due to the value being accessible syn.ly ,from "ASYN__DEFINITIVE"
   child-build are separate ,for each state
     reducing duplication ,and maintaining separation-of-concern */ (
     final gui__base__widget__building__context context, {
     required final gui__base__widget__build__function__format child__state__waiting__build,
     required final gui__base__widget__state__failure__build__function__format child__state__completion__failure__build /*=gui__base__widget__error__default__build*/,
-    required final gui__base__widget__state__success__build__function__format<value__type> child__state__completion__success__build,
+    required final gui__base__widget__state__success__build__function__format<value___type> child__state__completion__success__build,
   }) {
     return state__channel().handling__widget__build(
       context,
@@ -26,18 +26,18 @@ compared to `FutureBuilder<T>`(of `flutter/widgets/async.dart`)
         final state_1 = state();
 
         return switch (state_1) {
-          base__value__asyn__definitive__state__waiting<value__type>() => //
+          asyn__definitive__state__waiting<value___type>() => //
           child__state__waiting__build(
             context,
           ),
-          base__value__asyn__definitive__state__completion___union<value__type>() => //
+          asyn__definitive__state__completion___union<value___type>() => //
           switch (state_1) {
-            base__value__asyn__definitive__state__completion__success<value__type>() => //
+            asyn__definitive__state__completion__success<value___type>() => //
             child__state__completion__success__build(
               context,
               state_1.value,
             ),
-            base__value__asyn__definitive__state__completion__failure<value__type>() => //
+            asyn__definitive__state__completion__failure<value___type>() => //
             child__state__completion__failure__build(
               context,
               state_1.error,
@@ -50,10 +50,10 @@ compared to `FutureBuilder<T>`(of `flutter/widgets/async.dart`)
   }
 }
 
-typedef gui__base__widget__state__success__build__function__format<value__type> = //
+typedef gui__base__widget__state__success__build__function__format<value___type> = //
     gui__base__widget Function(
       gui__base__widget__building__context context,
-      value__type value,
+      value___type value,
     );
 
 typedef gui__base__widget__state__failure__build__function__format = //
@@ -73,8 +73,8 @@ gui__base__widget gui__base__widget__error__default__build(
   );
 }
 
-extension value__asyn__handling___extension<value__type> //
-    on value__asyn<value__type> {
+extension value__asyn__handling___extension<value___type> //
+    on ASYN<value___type> {
   gui__base__widget handling__widget__build /*
 compared to "FutureBuilder<T>"(of "flutter/widgets/async.dart")
   "value__type" can be nil-able
@@ -85,10 +85,10 @@ compared to "FutureBuilder<T>"(of "flutter/widgets/async.dart")
             breaking the promise of void-safety */ (
     final gui__base__widget__building__context context, {
     required final gui__base__widget__build__function__format child__state__waiting__build,
-    required final gui__base__widget__state__success__build__function__format<value__type> child__state__completion__success__build,
+    required final gui__base__widget__state__success__build__function__format<value___type> child__state__completion__success__build,
     required final gui__base__widget__state__failure__build__function__format child__state__completion__failure__build,
   }) {
-    return FutureBuilder<value__type>(
+    return FutureBuilder<value___type>(
       future: this,
       builder: (final context, final snap_shot) {
         if (snap_shot.connectionState == ConnectionState.waiting) {
@@ -104,7 +104,7 @@ compared to "FutureBuilder<T>"(of "flutter/widgets/async.dart")
 
         return child__state__completion__success__build(
           context,
-          (snap_shot.data as value__type) /*
+          (snap_shot.data as value___type) /*
 "snap_shot.data!" is in-correct if "value__type" is nil */,
         );
       },

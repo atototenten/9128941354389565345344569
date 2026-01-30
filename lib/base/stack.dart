@@ -1,13 +1,13 @@
 part of "_.dart";
 
 class base__stack //
-    <element__type extends Object?> //
+    <element___type extends Object?> //
     implements
         base__dispose___protocol {
   base__stack() //
       : accumulation___raw = base__accumulation__chained();
 
-  final base__accumulation__chained<element__type> accumulation___raw;
+  final base__accumulation__chained<element___type> accumulation___raw;
 
   INT elements__count() {
     return accumulation___raw.elements__count();
@@ -21,12 +21,12 @@ class base__stack //
     return accumulation___raw.empty__not();
   }
 
-  base__accumulation__chained__element<element__type>? element() {
+  base__accumulation__chained__element<element___type>? element() {
     return accumulation___raw.element__last();
   }
 
   void add(
-    final element__type value,
+    final element___type value,
   ) {
     accumulation___raw.add__ending(
       value,
@@ -38,7 +38,7 @@ class base__stack //
   }
 
   void iterate(
-    final BOOL Function(base__accumulation__chained__element<element__type> element) element__handle,
+    final BOOL Function(base__accumulation__chained__element<element___type> element) element__handle,
   ) {
     accumulation___raw.iterate(
       element__handle,
@@ -46,8 +46,8 @@ class base__stack //
   }
 
   BOOL present___ok(
-    final element__type element,
-    final base__value__equality__function__format<element__type,element__type> equal___ok,
+    final element___type element,
+    final base__value__equality__function__format<element___type, element___type> equal___ok,
   ) {
     return accumulation___raw.present___ok(
       element,
@@ -55,7 +55,7 @@ class base__stack //
     );
   }
 
-  ARRAY<element__type> convert__array() {
+  ARRAY<element___type> convert__array() {
     return accumulation___raw.convert__array();
   }
 

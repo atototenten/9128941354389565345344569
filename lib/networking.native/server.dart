@@ -1,6 +1,6 @@
 part of "_.dart";
 
-value__asyn<void> base__net__reliable__server__socket__close__safe(
+ASYN<void> base__net__reliable__server__socket__close__safe(
   final net.Socket socket,
 ) async {
   await socket.flush();
@@ -9,11 +9,11 @@ value__asyn<void> base__net__reliable__server__socket__close__safe(
   socket.destroy();
 }
 
-value__asyn<void> base__net__reliable__server__simple({
+ASYN<void> base__net__reliable__server__simple({
   required final net.InternetAddress
       address /*io.InternetAddress.fromRawAddress(ip__v4,type:io.InternetAddressType.IPv4)*/,
   required final INT port,
-  required final value__asyn<void> Function(
+  required final ASYN<void> Function(
           net.Socket client__socket /* must not be close-ed ,nor dispose-ed */)
       request__handle,
   final base__error__handle__proc_? request__listen__error__handle,
@@ -77,7 +77,7 @@ value__asyn<void> base__net__reliable__server__simple({
   ).representation__text().print("server.socket.address");
 }
 
-value__asyn<void>
+ASYN<void>
     base__net__reliable__server__simple__file /*
 request responses :`base__results__basic` */
     ({

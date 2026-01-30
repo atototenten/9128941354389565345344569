@@ -94,10 +94,10 @@ extension VENDING___extension<element___type> //
     } while (session.moveNext());
   }
 
-  VENDING<element__new__type> //
-  convert<element__new__type> //
-  (final element__new__type Function(element___type) operate) {
-    return map<element__new__type>(operate);
+  VENDING<element__new___type> //
+  convert<element__new___type> //
+  (final element__new___type Function(element___type) operate) {
+    return map<element__new___type>(operate);
   }
 
   ARRAY<element___type> //

@@ -11,9 +11,9 @@ void base__iterate(
 }
 
 @deprecated
-value__asyn<void> base__iterate__asyn(
+ASYN<void> base__iterate__asyn(
   INT count,
-  final value__asyn<BOOL> Function(INT i) operate, {
+  final ASYN<BOOL> Function(INT i) operate, {
   INT offset = 0,
 }) async {
   count += offset;
@@ -35,9 +35,9 @@ void base__iterate__basic(
 );
 
 @deprecated
-value__asyn<void> base__iterate__basic__asyn(
+ASYN<void> base__iterate__basic__asyn(
   final INT count,
-  final value__asyn<void> Function(INT i) operate, {
+  final ASYN<void> Function(INT i) operate, {
   final INT offset = 0,
 }) => base__iterate__asyn(
   count,
@@ -62,9 +62,9 @@ void base__iterate__reverse /* __high_perf__low_mem */ (
 }
 
 @deprecated
-value__asyn<void> base__iterate__reverse__asyn(
+ASYN<void> base__iterate__reverse__asyn(
   INT count,
-  final value__asyn<BOOL> Function(INT i) operate,
+  final ASYN<BOOL> Function(INT i) operate,
 ) async {
   if /*F*/ (count == 0) {
     return;
@@ -87,9 +87,9 @@ void base__iterate__reverse__basic(
 );
 
 @deprecated
-value__asyn<void> base__iterate__reverse__basic__asyn(
+ASYN<void> base__iterate__reverse__basic__asyn(
   final INT count,
-  final value__asyn<void> Function(INT i) operate,
+  final ASYN<void> Function(INT i) operate,
 ) => base__iterate__reverse__asyn(
   count,
   (final i) async {

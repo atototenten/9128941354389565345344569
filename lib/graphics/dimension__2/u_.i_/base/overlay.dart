@@ -37,32 +37,51 @@ values :
   ),
   required final gui__base__widget__build__function__format notice__build,
 }) {
+  gui__base__widget child__build(final gui__base__widget__building__context context) {
+    return Align(
+      alignment: notice__position,
+      child: notice__build(context),
+    );
+  }
+
   return gui__base__entity__overlay___compo(
     dispose__handle: NIL,
     widget__build: (final context) {
-      if (notice__duration != null) {
-        delaying__asyn(
-          notice__duration,
-          () {
-            if (context.valid___ok().NOT) {
-              return;
-            }
-
-            context.navigation().backward();
-          },
-        );
+      if (notice__duration == null) {
+        return child__build(context);
       }
 
-      return Align(
-        alignment: notice__position,
-        child: notice__build(context),
+      return gui__base__widget__definitive__build(
+        context,
+        attach__handle: (final context) {
+          return DELAYING(
+            notice__duration,
+            () {
+              if (context.valid___ok().NOT) {
+                return;
+              }
+
+              context.navigation().backward();
+            },
+          );
+        },
+        detach__handle: (final delaying) {
+          if (delaying.isActive.NOT) {
+            return;
+          }
+
+          delaying.cancel();
+        },
+        child__build: (final context, _) {
+          return child__build(context);
+        },
       );
     },
   );
 }
 
 ({
-  value__asyn<value___type> value___asyn,
+  ASYN<value___type> value___asyn,
   gui__base__entity__overlay___compo overlay,
 }) //
 gui__base__overlay__waiting /*
@@ -88,68 +107,47 @@ final result = await result___asyn;
 " */ //
 <value___type>(
   final gui__base__widget__building__context context,
-  final value__asyn<value___type> value /*
-"value__asyn.sync" can be used for sync. actions
-handles {"value__asyn.value" ,and "value__asyn.delayed"} too */, {
+  final ASYN<value___type> value___asyn /*
+"ASYN.sync" can be used for sync. actions
+handles {"ASYN.value" ,and "ASYN.delayed"} too */, {
   required final gui__base__widget__build__function__format waiting__build,
 }) {
-  final promise = value__asyn__meta<value___type>();
-
-  var context__latest = context;
-
-  void backward() {
-    if (context__latest.valid___ok().NOT) {
-      return;
-    }
-
-    context__latest.navigation().backward();
-  }
-
-  var resolved___ok /*
-needed to handle already-resolved asyn.-values */ =
-      FALSE;
-
-  value.handle(
-    (final value) {
-      resolved___ok = TRUE;
-
-      backward();
-
-      promise.complete(value);
-    },
-    (final e, final t) {
-      resolved___ok = TRUE;
-
-      backward();
-
-      promise.completeError(e, t);
-    },
-  );
-
-  var navigation__back__scheduled___ok = FALSE;
+  final promise = ASYN__PROMISE<value___type>();
 
   final overlay = gui__base__entity__overlay___compo(
     dispose__handle: NIL,
-    widget__build: (final context_1) {
-      if (navigation__back__scheduled___ok) {
-        return gui__base__empty__widget;
-      }
+    widget__build: (final context) {
+      return gui__base__widget__definitive__build(
+        context,
+        attach__handle: (final context) {
+          void backward() {
+            if (context.valid___ok().NOT) {
+              return;
+            }
 
-      if (resolved___ok) {
-        navigation__back__scheduled___ok = TRUE;
+            context.navigation().backward();
+          }
 
-        task__urgent__schedule(() {
-          context_1.navigation().backward();
-        });
+          value___asyn.handle(
+            (final v) {
+              backward();
 
-        return gui__base__empty__widget;
-      }
+              promise.complete(v);
+            },
+            (final e, final t) {
+              backward();
 
-      context__latest = context_1;
-
-      return PopScope(
-        canPop: FALSE,
-        child: waiting__build(context_1),
+              promise.completeError(e, t);
+            },
+          );
+        },
+        detach__handle: (_) {},
+        child__build: (final context, _) {
+          return PopScope(
+            canPop: FALSE,
+            child: waiting__build(context),
+          );
+        },
       );
     },
   );
@@ -229,7 +227,7 @@ widget suggestions
     overlay,
   );
 
-  delaying__asyn(
+  DELAYING(
     dismiss__duration,
     () {
       if (overlay.disabled___ok()) {

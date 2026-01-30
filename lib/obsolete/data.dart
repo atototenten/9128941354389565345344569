@@ -12,16 +12,19 @@ import "../print.dart";
         because both are `u4__`, so both worked, which closed the incentive */
 
 const
-//
-    data__fetch_ing__data__group__level__1__element__array__count__width = u4__width,
+        //
+        data__fetch_ing__data__group__level__1__element__array__count__width =
+        u4__width,
     data__fetch_ing__data__group__level__1__element__array__count = u4__limit,
     data__fetch_ing__data__group__level__1__element__array__count__max = u4__max,
-//
-    data__fetch_ing__data__group__level__2__element__array__count__width = u4__width,
+        //
+        data__fetch_ing__data__group__level__2__element__array__count__width =
+        u4__width,
     data__fetch_ing__data__group__level__2__element__array__count = u4__limit,
     data__fetch_ing__data__group__level__2__element__array__count__max = u4__max,
-//
-    data__fetch_ing__data__groups__element__array__count__width = u8__width,
+        //
+        data__fetch_ing__data__groups__element__array__count__width =
+        u8__width,
     data__fetch_ing__data__groups__element__array__count = /*(data__fetch_ing__data__group__level__2__element__array__count * data__fetch_ing__data__group__level__1__element__array__count)*/ u8__limit,
     data__fetch_ing__data__groups__element__array__count__max = u8__max; /*
 `data:group:level:1:element:arr:count`(`u4:limit`(16)) :`data:grp_:lvl_:0`(`data`)s per `data:grp_:lvl_:1`
@@ -54,24 +57,20 @@ TASK
         merely the last event, was it forward, or backward
         because change is less-likely */
 {
-  static value__asyn<data__fetch_ing<data__type>> init_<data__type>({
+  static ASYN<data__fetch_ing<data__type>> init_<data__type>({
     required final ARRAY<data__type> /*
-`elements:count`: `data:fetch_ing:group:level:3:element:arr:count` */
-        ?
-        data__element__array__init_ial /*
-should be compliant with `progress_ion__reverse__ok` */
-    ,
+`elements:count`: `data:fetch_ing:group:level:3:element:arr:count` */ ?
+    data__element__array__init_ial /*
+should be compliant with `progress_ion__reverse__ok` */,
     required final data__fetch_ing__data__group__level__1__element__array__fetch__function__format<data__type> /*
 `count` ,`offset` :`data:fetch_ing:data:group:level:1:element:id:convert:data:element:id:offset:count` */
-        data__element__array__fetch,
+    data__element__array__fetch,
     required final uu data__element__array__count /*
 must be `>= data:group:level:3:element:arr:count`
-  ,in which case ,`data:fetch_ing` is overkill ,anyways */
-    ,
-    //final bool progress_ion__reverse___ok /*{back|for}_ward*/ = FALSE,
+  ,in which case ,`data:fetch_ing` is overkill ,anyways */, //final bool progress_ion__reverse___ok /*{back|for}_ward*/ = FALSE,
   }) async {
     const //
-        data__element__array__offset = 0,
+    data__element__array__offset = 0,
         data__group__level__3__id = (data__element__array__offset >> data__fetch_ing__data__groups__element__array__count__width),
         group__level__2__element__array__count = data__fetch_ing__data__group__level__2__element__array__count;
 
@@ -104,7 +103,7 @@ must be `>= data:group:level:3:element:arr:count`
         group__level__2__element__array__count,
         (final data__group__level__1__element__id) {
           final //
-              data__element__id__offset__count = data__fetch_ing__data__group__level__1__element__id__convert__data__element__id__offset__count(
+          data__element__id__offset__count = data__fetch_ing__data__group__level__1__element__id__convert__data__element__id__offset__count(
                 data__group__level__1__element__id,
                 data__element__array__count,
               ),
@@ -139,30 +138,28 @@ must be `>= data:group:level:3:element:arr:count`
   `final ARRAY<data__type> data__element__array; uu data__element__array__count__current/* number of data, already fetch-ed */;`
     would have been sufficient, if the fetch ops were, increasing only
       instead of both, increase, or decrease
-      because `data__fetch_ing__data__groups__element__id` could be calculated, from `data__element__array__count__current` */
-      ;
+      because `data__fetch_ing__data__groups__element__id` could be calculated, from `data__element__array__count__current` */;
 
   final uu data__element__array__count;
 
   final data__fetch_ing__data__group__level__1__element__array__fetch__function__format<data__type> $_data__element__array__fetch;
 
-  value__asyn<data__type> data__element(
+  ASYN<data__type> data__element(
     final uu data__element__id,
   ) async /*
 the sophisticated engineer-ing, which gave birth to this function
   is mere observation, of patterns, and multiple, quite-random, but logical, trials
     which is actually the real power, powering the whole domain, of computer science
-    between different values, in: `print("$i\t${(i & 255) >> 4}\t${i & 255}\t${i >> 8}\t${i & 15}\t${i >> 4}");` */
-  {
+    between different values, in: `print("$i\t${(i & 255) >> 4}\t${i & 255}\t${i >> 8}\t${i & 15}\t${i >> 4}");` */ {
     final //
-        data__group__level__2__element__id = ((data__element__id >> data__fetch_ing__data__group__level__2__element__array__count__width) & data__fetch_ing__data__group__level__2__element__array__count__max) /*((data:element:id / data:fetch_ing:data:group:level:2:element:arr:count) % data:fetch_ing:data:group:level:2:element:arr:count)*/ ..representation__text().print("data__group__level__2__element__id"),
+    data__group__level__2__element__id = ((data__element__id >> data__fetch_ing__data__group__level__2__element__array__count__width) & data__fetch_ing__data__group__level__2__element__array__count__max) /*((data:element:id / data:fetch_ing:data:group:level:2:element:arr:count) % data:fetch_ing:data:group:level:2:element:arr:count)*/ ..representation__text().print("data__group__level__2__element__id"),
         data__group__level__1__element__array = $_data__group__level__2__element__array[data__group__level__2__element__id]..data__group__level__3__id.representation__text().print("data__group__level__1__element__array:exist_ing.data__group__level__3__id"),
-        data__group__level__3__id = (data__element__id >> data__fetch_ing__data__groups__element__array__count__width) /*(data:element:id / data:fetch_ing:data:groups:element:arr:count)*/ ..representation__text().print("data__group__level__3__id") /*
+        data__group__level__3__id = (data__element__id >> data__fetch_ing__data__groups__element__array__count__width) /*(data:element:id / data:fetch_ing:data:groups:element:arr:count)*/
+          ..representation__text().print("data__group__level__3__id") /*
 `data__group__level__3__id`, instead of `data__group__level__1__element__id`, because
   any data will always get the same location in the `data__group__level__2__element__arr`
     despite the sequence of fetch-ing
-  and, the former, requires, less-er memory-space */
-        ,
+  and, the former, requires, less-er memory-space */,
         data__group__level__1__element__id = (data__element__id & data__fetch_ing__data__group__level__1__element__array__count__max)..representation__text().print("block__data__element__id");
 
     if (data__group__level__1__element__array.data__group__level__3__id == data__group__level__3__id) {
@@ -180,8 +177,7 @@ the sophisticated engineer-ing, which gave birth to this function
       data__group__level__2__element__array: await $_data__element__array__fetch(
         $data__group__level__1__element__id,
       ),
-    ))
-        .data__group__level__2__element__array[data__group__level__1__element__id];
+    )).data__group__level__2__element__array[data__group__level__1__element__id];
   } /*
 FIX :doc. ,correct ,flow ,names ,etc. */
 }
@@ -197,30 +193,33 @@ class data__fetch_ing__data__group__level__1__kampo<data__type> {
   final ARRAY<data__type> data__group__level__2__element__array;
   ({
     uu data__group__level__3__id,
-    value__asyn<ARRAY<data__type>> $Future,
-  })? future__fetch__buffer; /*
+    ASYN<ARRAY<data__type>> $Future,
+  })?
+  future__fetch__buffer; /*
 FIX :use ,after improving the names ,and renam-ing */
 }
 
 typedef data__fetch_ing__data__group__level__1__element__array__fetch__function__format<data__type> = //
-    value__asyn<ARRAY<data__type>> Function(
-  uu data__group__level__1__element__id,
-);
+    ASYN<ARRAY<data__type>> Function(
+      uu data__group__level__1__element__id,
+    );
 
 ({
   uu offset,
   uu count,
-}) data__fetch__data__group__level__2__element__array__offset__count(
+})
+data__fetch__data__group__level__2__element__array__offset__count(
   final uu data__group__level__1__element__id,
   final uu data__element__array__count,
 ) {
   final //
-      offset = (data__group__level__1__element__id << data__fetch_ing__data__group__level__1__element__array__count__width),
+  offset = (data__group__level__1__element__id << data__fetch_ing__data__group__level__1__element__array__count__width),
       remain_ing__count = (data__element__array__count - offset);
 
   return (
     offset: offset,
-    count: ((remain_ing__count < data__fetch_ing__data__group__level__1__element__array__count) /*block:id:last__ok*/ //
+    count:
+        ((remain_ing__count < data__fetch_ing__data__group__level__1__element__array__count) /*block:id:last__ok*/ //
         ? remain_ing__count
         : data__fetch_ing__data__group__level__1__element__array__count),
   );
@@ -229,7 +228,8 @@ typedef data__fetch_ing__data__group__level__1__element__array__fetch__function_
 ({
   uu data__element__id__offset,
   uu data__element__array__count,
-}) data__fetch_ing__data__group__level__1__element__id__convert__data__element__id__offset__count(
+})
+data__fetch_ing__data__group__level__1__element__id__convert__data__element__id__offset__count(
   final uu data__group__level__1__element__id,
   final uu data__element__array__count,
 ) {
@@ -237,13 +237,14 @@ typedef data__fetch_ing__data__group__level__1__element__array__fetch__function_
 
   return (
     data__element__id__offset: data__element__id__offset,
-    data__element__array__count: (((data__fetch_ing__data__group__level__1__element__array__count + data__element__id__offset) < data__element__array__count) /*likely*/ //
+    data__element__array__count:
+        (((data__fetch_ing__data__group__level__1__element__array__count + data__element__id__offset) < data__element__array__count) /*likely*/ //
         ? data__fetch_ing__data__group__level__1__element__array__count
         : /* will happen, only once, at last/end, if even happens ever */ (data__element__array__count - data__element__id__offset)),
   );
 }
 
-value__asyn<void> main() async {
+ASYN<void> main() async {
   const data__element__array__count = /*256*/ 257;
 
   "save.begin".print();
@@ -260,7 +261,7 @@ value__asyn<void> main() async {
         "(${offset__count.data__element__array__count} > $data__element__array__count)".print();
       }
 
-      return value__asyn.value(
+      return ASYN.syncValue(
         array__new__generated(
           offset__count.data__element__array__count,
           (final i) => (i + offset__count.data__element__id__offset),
@@ -283,8 +284,7 @@ value__asyn<void> main() async {
       (final data__element__id) async {
         (await fetch_ing.data__element(
           data__element__id,
-        ))
-            .representation__text().print("fetch_ing.data__element");
+        )).representation__text().print("fetch_ing.data__element");
       },
     );
 
@@ -298,8 +298,7 @@ value__asyn<void> main() async {
       (final i) async {
         (await fetch_ing.data__element(
           (i + offset),
-        ))
-            .representation__text().print("fetch_ing.data__element");
+        )).representation__text().print("fetch_ing.data__element");
       },
     );
 

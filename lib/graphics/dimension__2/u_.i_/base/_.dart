@@ -186,7 +186,7 @@ void base__app__build__re()
   }
 } /*
 forked
-  from `flutter/src/widgets/binding.dart`::`mixin WidgetsBinding`::`value__asyn<void> _forceRebuild()` */
+  from `flutter/src/widgets/binding.dart`::`mixin WidgetsBinding`::`ASYN<void> _forceRebuild()` */
 
 Key gui__base__widget__key__unique() /*
 needed to prevent the flutter-framework ,from re-using the old widget ,from the tree
@@ -194,7 +194,7 @@ needed to prevent the flutter-framework ,from re-using the old widget ,from the 
 should be avoided ,in favor of a reliable (consistently reproducible) value (like `ValueKey("$category:$item")`) ,to not waste resources ,on un-necessary build calls ,and improve efficiency */ => //
     /*/* must not be `const` */ ValueKey(Object())*/ UniqueKey();
 
-value__asyn<string?> //
+ASYN<string?> //
 base__environment__clip_board__text() async {
   return ((await Clipboard.hasStrings()) //
       ? (await Clipboard.getData(
@@ -203,7 +203,7 @@ base__environment__clip_board__text() async {
       : NIL);
 }
 
-value__asyn<void> //
+ASYN<void> //
 base__environment__clip_board__set__text({
   required final string value,
 }) {
@@ -223,7 +223,7 @@ void base__environment__set__phone() {
   base__print__handle = debugPrint;
 }
 
-value__asyn<void> //
+ASYN<void> //
 base__orientation__set__portrait() {
   return SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

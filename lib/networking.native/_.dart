@@ -15,7 +15,7 @@ final base__net__ip__local__v4 = BS1__array.fromList(
   const [127, 0, 0, 1],
 );
 
-value__asyn<bool> inet__connect_ed___ok({
+ASYN<bool> inet__connect_ed___ok({
   final string host = "example.com",
 }) async {
   try {

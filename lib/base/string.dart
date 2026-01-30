@@ -91,10 +91,10 @@ source :`http://stackoverflow.com/questions/26070766/utf-8-how-does-only-0-127-s
   }
 }
 
-final value__asyn<string> Function(Stream<byte__array>) utf_8__Stream__byte__array__convert__text = //
+final ASYN<string> Function(STREAM<byte__array>) utf_8__Stream__byte__array__convert__text = //
     (const dart__convert.Utf8Codec()).decodeStream;
 
-final value__asyn<string> Function(Stream<ARRAY<INT>>) utf_8__byte__array__Stream__convert__text = //
+final ASYN<string> Function(STREAM<ARRAY<INT>>) utf_8__byte__array__Stream__convert__text = //
     (const dart__convert.Utf8Codec()).decodeStream;
 
 extension text__extension on string {

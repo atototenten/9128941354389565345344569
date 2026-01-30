@@ -320,7 +320,7 @@ class base__event__channel__broadcast__periodic //
 invoked after the saturation of "time__unit__count"
   ,like on 4th ,for 3 as "time__unit__count" */,
   }) : _time__unit__count__current = time__unit__count {
-    _delaying = delaying__asyn.periodic(
+    _delaying = DELAYING.periodic(
       Duration(
         milliseconds: time__interval,
       ),
@@ -341,7 +341,7 @@ invoked after the saturation of "time__unit__count"
 
   final INT time__unit__count;
 
-  late final delaying__asyn _delaying;
+  late final DELAYING _delaying;
 
   INT _time__unit__count__current;
 

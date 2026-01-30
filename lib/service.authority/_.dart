@@ -24,7 +24,7 @@ class service__authority__result__deny //
 abstract class service__authority__source {
   const service__authority__source();
 
-  value__asyn</*service__authority__result*/base__value__optional___union<java_script__type>/* {deny|handle} ?? allow */> //
+  ASYN</*service__authority__result*/ base__value__optional___union<java_script__type> /* {deny|handle} ?? allow */> //
   resolve() /*
 should be conservative ,towards allow-ing
   ,like on error ,otherwise losing the `service__authority__source` will break the service */;
@@ -39,9 +39,9 @@ class service__authority__source__dummy //
   final base__value__optional___union<java_script__type> Function() data__fetch;
 
   @override
-  value__asyn<base__value__optional___union<java_script__type>> //
+  ASYN<base__value__optional___union<java_script__type>> //
   resolve() {
-    return value__asyn.value(
+    return ASYN.syncValue(
       data__fetch(),
     );
   }
@@ -55,7 +55,7 @@ class service__authority__source__inet__file //
 
   final string world_wide_web__path;
 
-  value__asyn<base__value__optional___union<java_script__type>> //
+  ASYN<base__value__optional___union<java_script__type>> //
   fetch() async {
     final base__value__optional___union<java_script__type> response;
     {
@@ -74,7 +74,7 @@ class service__authority__source__inet__file //
   }
 
   @override
-  value__asyn<base__value__optional___union<java_script__type>> //
+  ASYN<base__value__optional___union<java_script__type>> //
   resolve() async {
     return fetch();
   }

@@ -11,7 +11,7 @@ void _app__example() {
     app__title: "example-app",
     service__authority: service__authority__local(),
     entity: () => //
-        value__asyn.delayed(
+        ASYN.delayed(
       Duration(
         seconds: 3,
       ),

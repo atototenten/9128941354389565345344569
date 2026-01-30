@@ -2,10 +2,10 @@ part of "../_.dart";
 
 BOOL //
 num__range__contains //
-<value__type extends num>(
-  final value__type value,
-  final value__type beginning,
-  final value__type ending,
+<value___type extends num>(
+  final value___type value,
+  final value___type beginning,
+  final value___type ending,
 ) {
   return ((value < beginning) || //
           (value > ending))
