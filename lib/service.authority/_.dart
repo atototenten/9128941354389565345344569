@@ -41,7 +41,7 @@ class service__authority__source__dummy //
   @override
   ASYN<base__value__optional___union<java_script__type>> //
   resolve() {
-    return ASYN.syncValue(
+    return ASYN.value(
       data__fetch(),
     );
   }

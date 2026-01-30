@@ -47,5 +47,5 @@ class service__authority__local //
 
   @override
   ASYN<void> handle() //
-  => ASYN.syncValue(NIL);
+  => ASYN.value(NIL);
 }

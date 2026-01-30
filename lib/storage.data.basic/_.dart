@@ -31,7 +31,7 @@ the data-base access ,must be exclusive */ async {
 
     await value.initialize();
 
-    return ASYN.syncValue(
+    return ASYN.value(
       base__storage__data__basic__meta.raw(
         value,
       ),

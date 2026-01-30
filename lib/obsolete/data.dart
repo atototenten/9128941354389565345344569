@@ -261,7 +261,7 @@ ASYN<void> main() async {
         "(${offset__count.data__element__array__count} > $data__element__array__count)".print();
       }
 
-      return ASYN.syncValue(
+      return ASYN.value(
         array__new__generated(
           offset__count.data__element__array__count,
           (final i) => (i + offset__count.data__element__id__offset),
