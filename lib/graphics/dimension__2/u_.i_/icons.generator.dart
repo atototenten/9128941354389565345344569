@@ -1,5 +1,5 @@
-import "package:base/base/_.dart";
-import "package:base/graphics/dimension__2/u_.i_/flutter/_.dart";
+import "package:foundation/core/_.dart";
+import "package:foundation/graphics/dimension__2/u_.i_/flutter/_.dart";
 
 const //
     _html_css__keyboard_key /* can try at `http://codepen.io/pen` */ = """

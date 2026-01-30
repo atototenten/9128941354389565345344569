@@ -30,7 +30,7 @@ ASYN__BASIC<void> base__delay___asyn({
   final Duration? duration,
 }) {
   if (duration == Duration.zero) {
-    return ASYN__BASIC.value(NIL);
+    return ASYN__BASIC.syncValue(NIL);
   }
 
   return ASYN__BASIC.delayed(

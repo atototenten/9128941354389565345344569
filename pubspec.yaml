@@ -1,15 +1,15 @@
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
-name: base
+name: foundation
 
 version: 0.0.1
 
 publish_to: "none"
 
 environment:
-  sdk: ^3.8.0
-  flutter: ^3.38.0
+  sdk: ^3.10.0
+  flutter: ^3.40.0
 
 dependencies:
   collection: ^1.19.1

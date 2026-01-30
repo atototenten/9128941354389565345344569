@@ -1,10 +1,10 @@
-import "package:base/base/_.dart";
-import "package:base/service.authority/_.dart";
+import "package:foundation/core/_.dart";
+import "package:foundation/service.authority/_.dart";
 
-import "package:base/graphics/dimension__2/u_.i_/flutter/_.dart";
-import "package:base/graphics/dimension__2/u_.i_/apple.cupertino/_.dart" //
+import "package:foundation/graphics/dimension__2/u_.i_/flutter/_.dart";
+import "package:foundation/graphics/dimension__2/u_.i_/apple.cupertino/_.dart" //
     show DefaultCupertinoLocalizations;
-import "package:base/graphics/dimension__2/u_.i_/google.material/_.dart" //
+import "package:foundation/graphics/dimension__2/u_.i_/google.material/_.dart" //
     show
         DefaultMaterialLocalizations,
         DialogRoute,

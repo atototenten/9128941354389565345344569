@@ -1,7 +1,7 @@
 import "dart:math" as math;
 
-import "package:base/base/_.dart";
-import "package:base/graphics/dimension__2/u_.i_/flutter/_.dart";
+import "package:foundation/core/_.dart";
+import "package:foundation/graphics/dimension__2/u_.i_/flutter/_.dart";
 
 /*void main() {
   runApp(

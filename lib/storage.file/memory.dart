@@ -21,7 +21,7 @@ class base__storage__file__memory__meta //
       offset: offset,
     );
 
-    return ASYN.value(
+    return ASYN.syncValue(
       base__storage__file__reading__result__success(result),
     );
   }
@@ -37,7 +37,7 @@ class base__storage__file__memory__meta //
       offset: offset,
     );
 
-    return ASYN.value(NIL);
+    return ASYN.syncValue(NIL);
   }
 
   @override
@@ -45,7 +45,7 @@ class base__storage__file__memory__meta //
   dispose__asyn() {
     file___raw.dispose();
 
-    return ASYN.value(NIL);
+    return ASYN.syncValue(NIL);
   }
 }
 

@@ -1,5 +1,5 @@
-import "package:base/base/_.dart";
-import "package:base/storage.data.basic/_.dart";
+import "package:foundation/core/_.dart";
+import "package:foundation/storage.data.basic/_.dart";
 
 final //
     base__storage__data__basic__simple__column__meta___raw = base__storage__data__basic__table__column__meta(

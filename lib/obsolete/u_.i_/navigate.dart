@@ -1,7 +1,7 @@
-import "package:base/base/_.dart";
-import "package:base/event.dart";
-import "package:base/print.dart";
-import "package:base/stack.dart";
+import "package:foundation/core/_.dart";
+import "package:foundation/event.dart";
+import "package:foundation/print.dart";
+import "package:foundation/stack.dart";
 
 import "app.dart";
 import "basic.dart";

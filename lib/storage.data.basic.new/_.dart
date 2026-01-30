@@ -1,4 +1,4 @@
-import "package:base/base/_.dart";
+import "package:foundation/core/_.dart";
 
 import "package:dart_lmdb2/dart_lmdb2.dart" as lib;
 

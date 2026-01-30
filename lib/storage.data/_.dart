@@ -1,5 +1,5 @@
-import "package:base/base/_.dart";
-import "package:base/storage.file/_.dart" show base__storage__file__block__size;
+import "package:foundation/core/_.dart";
+import "package:foundation/storage.file/_.dart" show base__storage__file__block__size;
 
 part "conversion.dart";
 part "manager.dart";

@@ -1,6 +1,6 @@
 import "dart:ffi" as ffi_;
 
-import "package:base/base/_.dart";
+import "package:foundation/core/_.dart";
 
 //import "dart:io" as io_;
 //import "dart:io" as net_;

@@ -1,5 +1,5 @@
-import "package:base/base/_.dart";
-import "package:base/storage.file/_.dart";
+import "package:foundation/core/_.dart";
+import "package:foundation/storage.file/_.dart";
 
 import "dart:io" as io;
 import "dart:io" as net;

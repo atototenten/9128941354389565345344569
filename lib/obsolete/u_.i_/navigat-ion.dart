@@ -1,7 +1,7 @@
-import "package:base/base/_.dart";
-import "package:base/broadcast.dart";
-import "package:base/reporting.dart";
-import "package:base/stack.dart";
+import "package:foundation/core/_.dart";
+import "package:foundation/broadcast.dart";
+import "package:foundation/reporting.dart";
+import "package:foundation/stack.dart";
 
 import "basic.dart";
 import "components/foundations/build.dart";

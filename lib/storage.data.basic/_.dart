@@ -1,4 +1,4 @@
-import "package:base/base/_.dart";
+import "package:foundation/core/_.dart";
 
 import "package:sqlite_async/sqlite_async.dart" as sqlite_async;
 import "package:sqlite_async/sqlite3.dart" as sqlite_sync;
@@ -31,7 +31,7 @@ the data-base access ,must be exclusive */ async {
 
     await value.initialize();
 
-    return ASYN.value(
+    return ASYN.syncValue(
       base__storage__data__basic__meta.raw(
         value,
       ),

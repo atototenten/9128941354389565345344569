@@ -1,10 +1,10 @@
 import "dart:ui" as ui;
 
-import "package:base/base/_.dart";
-import "package:base/graphics/dimension__2/u_.i_/base/_.dart";
-import "package:base/graphics/dimension__2/u_.i_/flutter/_.dart";
+import "package:foundation/core/_.dart";
+import "package:foundation/graphics/dimension__2/u_.i_/base/_.dart";
+import "package:foundation/graphics/dimension__2/u_.i_/flutter/_.dart";
 
-import "package:base/graphics/dimension__2/u_.i_/google.material/_.dart" //
+import "package:foundation/graphics/dimension__2/u_.i_/google.material/_.dart" //
     show
         Material,
 //
@@ -14,7 +14,7 @@ import "package:base/graphics/dimension__2/u_.i_/google.material/_.dart" //
         InputDecoration,
         OutlineInputBorder;
 
-import "package:base/graphics/dimension__2/u_.i_/apple.cupertino/_.dart" //
+import "package:foundation/graphics/dimension__2/u_.i_/apple.cupertino/_.dart" //
     show
         CupertinoActivityIndicator;
 

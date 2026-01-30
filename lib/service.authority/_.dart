@@ -1,5 +1,5 @@
-import "package:base/base/_.dart";
-import "package:base/networking.web/_.dart";
+import "package:foundation/core/_.dart";
+import "package:foundation/networking.web/_.dart";
 
 /*abstract class service__authority__result {
   const service__authority__result();
@@ -41,7 +41,7 @@ class service__authority__source__dummy //
   @override
   ASYN<base__value__optional___union<java_script__type>> //
   resolve() {
-    return ASYN.value(
+    return ASYN.syncValue(
       data__fetch(),
     );
   }
