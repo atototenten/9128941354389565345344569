@@ -1,54 +1,56 @@
 part of "_.dart";
 
-abstract class base__event__channel___protocol {
+abstract class event__channel___protocol {
   void event__dispatch /* announce */ ();
 }
 
-/*abstract class base__event__handling___protocol {
+/*abstract class event__handling___protocol {
   void event__handle /* invoke */ ();
 }*/
 
 //
 
-abstract class base__event__channel__unicast___protocol /*
+typedef event__basic__handle___procedure__format = procedure__empty__format;
+
+abstract class event__channel__unicast___protocol /*
 `description` is needed
   ,because ,otherwise `procedure__empty__format` is the implicit and only `description`
     ,and the channel can invoke only it ,because it does not accept any arg.
   one-of-the-most prominent use-case of description is `widget:tree:node:::base:graphics:dimension:2:u_:i_::build:again` */ //
-    extends base__event__channel___protocol {
+    extends event__channel___protocol {
   BOOL description__assign(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   );
 
   void description__assign___raw(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   );
 
   BOOL description__equal___ok(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   );
 
   BOOL description__remove(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   );
 
   void description__remove___raw();
 }
 
-abstract class base__event__channel__unicast__dispose___protocol //
+abstract class event__channel__unicast__dispose___protocol //
     extends
-        base__event__channel__unicast___protocol //
-    implements base__dispose___protocol {}
+        event__channel__unicast___protocol //
+    implements dispose___protocol {}
 
 //
 
-class base__event__channel__unicast //
-    implements base__event__channel__unicast__dispose___protocol {
-  event__handle__procedure__format? description___raw;
+class event__channel__unicast //
+    implements event__channel__unicast__dispose___protocol {
+  event__basic__handle___procedure__format? description___raw;
 
   @override
   BOOL description__assign(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   ) {
     if (description___raw != NIL) {
       return FALSE;
@@ -63,7 +65,7 @@ class base__event__channel__unicast //
 
   @override
   void description__assign___raw(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   ) {
     description___raw = description;
   }
@@ -75,14 +77,14 @@ class base__event__channel__unicast //
 
   @override
   BOOL description__equal___ok(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   ) {
     return (description == description___raw);
   }
 
   @override
   BOOL description__remove(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   ) {
     if (description__equal___ok(
       description,
@@ -108,43 +110,43 @@ class base__event__channel__unicast //
 
 //
 
-abstract class base__event__channel__broadcast___protocol /*
+abstract class event__channel__broadcast___protocol /*
 `description` is needed
   ,because ,otherwise `procedure__empty__format` is the implicit and only `description`
     ,and the channel can invoke only it ,because it does not accept any arg.
   one-of-the-most prominent use-case of description is `widget:tree:node:::base:graphics:dimension:2:u_:i_::build:again` */ //
-    extends base__event__channel___protocol {
+    extends event__channel___protocol {
   BOOL descriptions__present___ok(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   );
 
-  void descriptions__add(final event__handle__procedure__format description);
+  void descriptions__add(final event__basic__handle___procedure__format description);
 
-  void descriptions__remove(final event__handle__procedure__format description);
+  void descriptions__remove(final event__basic__handle___procedure__format description);
 
   void descriptions__flush();
 }
 
-abstract class base__event__channel__broadcast__dispose___protocol //
+abstract class event__channel__broadcast__dispose___protocol //
     extends
-        base__event__channel__broadcast___protocol //
-    implements base__dispose___protocol {}
+        event__channel__broadcast___protocol //
+    implements dispose___protocol {}
 
 //
 
-class base__event__channel__broadcast //
-    implements base__event__channel__broadcast__dispose___protocol {
-  base__event__channel__broadcast({
+class event__channel__broadcast //
+    implements event__channel__broadcast__dispose___protocol {
+  event__channel__broadcast({
     this.debug__name,
-  }) : descriptions___raw = base__accumulation__linear__definitive();
+  }) : descriptions___raw = accumulation__linear__definitive___compo();
 
-  final base__accumulation__linear__definitive<event__handle__procedure__format> descriptions___raw;
+  final accumulation__linear__definitive___compo<event__basic__handle___procedure__format> descriptions___raw;
 
   final string? debug__name;
 
   @override
   void descriptions__add(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   ) {
     descriptions___raw.add__ending(
       description,
@@ -153,7 +155,7 @@ class base__event__channel__broadcast //
 
   @override
   BOOL descriptions__present___ok(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   ) {
     var result = FALSE;
 
@@ -178,7 +180,7 @@ class base__event__channel__broadcast //
 
   @override
   void descriptions__remove(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   ) {
     descriptions___raw.iterate(
       (final id, final e) {
@@ -219,29 +221,35 @@ class base__event__channel__broadcast //
 
 //
 
-class base__event__channels__broadcast //
-    implements base__event__channel__broadcast__dispose___protocol {
-  base__event__channels__broadcast(
-    final ARRAY<base__event__channel__broadcast__dispose___protocol> channels,
+class event__channels__broadcast //
+    implements event__channel__broadcast__dispose___protocol {
+  event__channels__broadcast(
+    final ARRAY<event__channel__broadcast__dispose___protocol> channels,
   ) : _channels = channels;
 
-  final ARRAY<base__event__channel__broadcast__dispose___protocol> _channels;
+  final ARRAY<event__channel__broadcast__dispose___protocol> _channels;
 
   @override
   void dispose() {}
 
   void channels__iterate___raw(
     final void Function(
-      base__event__channel__broadcast__dispose___protocol channel,
+      event__channel__broadcast__dispose___protocol channel,
     )
     operate,
   ) {
-    _channels.iterate__reverse__basic((final i, final e) => operate(e));
+    _channels.iterate__reverse(
+      (final i, final e) {
+        operate(e);
+
+        return TRUE;
+      },
+    );
   }
 
   @override
   void descriptions__add(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   ) {
     channels__iterate___raw(
       (final channel) => channel.descriptions__add(
@@ -252,7 +260,7 @@ class base__event__channels__broadcast //
 
   @override
   BOOL descriptions__present___ok(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   ) {
     var result = FALSE;
 
@@ -271,7 +279,7 @@ class base__event__channels__broadcast //
 
   @override
   void descriptions__remove(
-    final event__handle__procedure__format description,
+    final event__basic__handle___procedure__format description,
   ) {
     channels__iterate___raw(
       (final channel) => channel.descriptions__remove(description),
@@ -293,9 +301,9 @@ class base__event__channels__broadcast //
   }
 }
 
-class base__event__channels__owned__broadcast //
-    extends base__event__channels__broadcast {
-  base__event__channels__owned__broadcast(
+class event__channels__owned__broadcast //
+    extends event__channels__broadcast {
+  event__channels__owned__broadcast(
     super.channels,
   );
 
@@ -311,9 +319,9 @@ class base__event__channels__owned__broadcast //
 
 //
 
-class base__event__channel__broadcast__periodic //
-    extends base__event__channel__broadcast {
-  base__event__channel__broadcast__periodic({
+class event__channel__broadcast__periodic //
+    extends event__channel__broadcast {
+  event__channel__broadcast__periodic({
     required this.time__unit__count,
     final INT time__interval /* in milli-seconds */ = date_time.duration__second__seconds__milli,
     required final procedure__empty__format completion__handle /*

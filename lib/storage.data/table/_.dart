@@ -1,21 +1,21 @@
 part of "../_.dart";
 
-typedef base__storage__data__table__row___compo = ({
+typedef storage__data__table__row___compo = ({
   BS1__array bytes,
   INT bytes__base__storage__data__offset,
 });
 
-typedef base__storage__data__table__row__column___compo = //
-    base__storage__data__table__row__compo;
+typedef storage__data__table__row__column___compo = //
+    storage__data__table__row__compo;
 
-abstract class base__storage__data__table__meta___protocol /*
+abstract class storage__data__table__meta___protocol /*
   FACT
     `(table == row__array == struct__array)`
     `(row == struct)`
     `(row__column == struct__member)`
     `(table__arr` == `row__array__array)` */
 {
-  base__storage__data__table__meta___protocol({
+  storage__data__table__meta___protocol({
     required this.rows__count,
     required this.rows__count__size__id,
     required this.row__size,
@@ -30,7 +30,7 @@ abstract class base__storage__data__table__meta___protocol /*
   final INT //
       row__size /* row__bytes__count */;
 
-  base__compo__member__dictionary //
+  members___dictionary //
       convert__member__dictionary() {
     return {
       "rows__count": rows__count.representation__text(),

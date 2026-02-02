@@ -24,7 +24,7 @@ class service__authority__result__deny //
 abstract class service__authority__source {
   const service__authority__source();
 
-  ASYN</*service__authority__result*/ base__value__optional___union<java_script__type> /* {deny|handle} ?? allow */> //
+  ASYN</*service__authority__result*/ value__optional___union<java_script__type> /* {deny|handle} ?? allow */> //
   resolve() /*
 should be conservative ,towards allow-ing
   ,like on error ,otherwise losing the `service__authority__source` will break the service */;
@@ -36,10 +36,10 @@ class service__authority__source__dummy //
     this.data__fetch,
   );
 
-  final base__value__optional___union<java_script__type> Function() data__fetch;
+  final value__optional___union<java_script__type> Function() data__fetch;
 
   @override
-  ASYN<base__value__optional___union<java_script__type>> //
+  ASYN<value__optional___union<java_script__type>> //
   resolve() {
     return ASYN.syncValue(
       data__fetch(),
@@ -55,11 +55,11 @@ class service__authority__source__inet__file //
 
   final string world_wide_web__path;
 
-  ASYN<base__value__optional___union<java_script__type>> //
+  ASYN<value__optional___union<java_script__type>> //
   fetch() async {
-    final base__value__optional___union<java_script__type> response;
+    final value__optional___union<java_script__type> response;
     {
-      final client = base__net__reliable__web__client();
+      final client = net__reliable__web__client();
       try {
         response = await client.communicate__basic(
           path: world_wide_web__path,
@@ -74,7 +74,7 @@ class service__authority__source__inet__file //
   }
 
   @override
-  ASYN<base__value__optional___union<java_script__type>> //
+  ASYN<value__optional___union<java_script__type>> //
   resolve() async {
     return fetch();
   }
@@ -87,6 +87,6 @@ class service__authority__source__inet__file__git_hub //
     final string repository__name,
     final string file__path,
   ) : super(
-        "$base__net__web__scheme__fix__pre://raw.githubusercontent.com/$user__name/$repository__name/main/$file__path",
+        "$net__web__scheme__fix__pre://raw.githubusercontent.com/$user__name/$repository__name/main/$file__path",
       );
 }

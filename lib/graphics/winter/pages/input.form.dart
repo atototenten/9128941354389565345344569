@@ -1,0 +1,363 @@
+part of "../_.dart";
+
+/*class Form extends StatefulWidget {
+  static const INT //
+      TYPE_CHOICE_SINGLE = 0,
+      TYPE_CHOICE_MULTIPLE = (TYPE_CHOICE_SINGLE + 1),
+      TYPE_TEXT = (TYPE_CHOICE_MULTIPLE + 1),
+//
+      INPUT__TYPE__NUMBER = 0,
+      INPUT__TYPE__NUMBER_MATH = (INPUT__TYPE__NUMBER + 1),
+      INPUT__TYPE__NUMBER_PHONE = (INPUT__TYPE__NUMBER_MATH + 1),
+      INPUT__TYPE__TEXT_WORD_SINGLE = (INPUT__TYPE__NUMBER_PHONE + 1),
+      INPUT__TYPE__TEXT_LINE_SINGLE_RESTRICTED = (INPUT__TYPE__TEXT_WORD_SINGLE + 1),
+      INPUT__TYPE__TEXT_LINE_SINGLE_UN__RESTRICTED = (INPUT__TYPE__TEXT_LINE_SINGLE_RESTRICTED + 1),
+      INPUT__TYPE__TEXT_LINE_MULTI_ASCII = (INPUT__TYPE__TEXT_LINE_SINGLE_UN__RESTRICTED + 1),
+      INPUT__TYPE__TEXT_LINE_MULTI_UNICODE = (INPUT__TYPE__TEXT_LINE_MULTI_ASCII + 1);
+
+  const Form({
+    required this.bytes,
+  });
+
+  final Uint8List bytes;
+
+  @override
+  State<Form> createState() {
+    return _FormState();
+  }
+}
+
+class _FormState extends State<Form> {
+  late List<bool> requiredFields;
+  late widget___protocol pageTitle;
+  late List<widget___protocol> children;
+
+  @override
+  void initState() {
+    super.initState();
+
+    final Uint8List bytes = widget.bytes;
+
+    int //
+        byteCounter,
+        itemCounter = 0,
+        firstByte;
+
+    pageTitle = page__title__aligned__center(
+      primary__text: "Form",
+      secondary__text: ascii__convert__str__ascii(widget.bytes.sublist(0, (byteCounter = widget.bytes.indexOf(0))),),
+    );
+
+    byteCounter += 1;
+
+    final int //
+        itemCount,
+        byteCount = bytes.length;
+
+    children = List<widget___protocol>.filled(itemCount = bytes[byteCounter++], empty__widget);
+
+    requiredFields = List<bool>.filled(itemCount, FALSE);
+
+    while (byteCounter < byteCount) {
+      requiredFields[itemCounter] = (((firstByte = bytes[byteCounter++]) & 1) == 1);
+
+      switch (firstByte >> 4) /* TASK: first 4 bits are free */ {
+        case (Form.TYPE_CHOICE_SINGLE):
+          {
+            firstByte = bytes[byteCounter++]; // TASK: first 2 bits are free
+
+            children[itemCounter++] = ChoiceInputFormItem(
+              isMultiChoice: FALSE,
+              title: ascii__convert__str__ascii(bytes.sublist(byteCounter, (byteCounter = bytes.indexOf(0, byteCounter)))),
+              infoText: ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter)))),
+              items: List<string>.generate(
+                (firstByte >> 2),
+                (final int i) {
+                  return ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter))));
+                },
+                growable: FALSE,
+              ),
+              result: Pointer<int?>(null),
+            );
+
+            byteCounter += 1;
+          }
+          break;
+        case (Form.TYPE_CHOICE_MULTIPLE):
+          {
+            firstByte = bytes[byteCounter++]; // TASK: first 2 bits are free
+
+            children[itemCounter++] = ChoiceInputFormItem(
+              isMultiChoice: TRUE,
+              title: ascii__convert__str__ascii(bytes.sublist(byteCounter, (byteCounter = bytes.indexOf(0, byteCounter)))),
+              infoText: ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter)))),
+              items: List<string>.generate(
+                (firstByte >> 2),
+                (final int i) {
+                  return ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter))));
+                },
+                growable: FALSE,
+              ),
+              result: Pointer<List<int>>(<int>[]),
+            );
+
+            byteCounter += 1;
+          }
+          break;
+        case (Form.TYPE_TEXT):
+          {
+            final TextInputType inputType;
+            final TextCapitalization textCapitalization;
+
+            final int maxLength;
+
+            final TextInputFormatter inputFormatter;
+
+            switch ((firstByte = bytes[byteCounter++]) >> 5) {
+              case (TextInputFormItem.TYPE_TEXT_LINE_SINGLE_RESTRICTED):
+                {
+                  inputType = TextInputType.text;
+                  textCapitalization = TextCapitalization.words;
+
+                  maxLength = 100;
+
+                  inputFormatter = TextInputFormItem.selectAsciiChars;
+
+                  break;
+                }
+              case (TextInputFormItem.TYPE_TEXT_WORD_SINGLE):
+                {
+                  inputType = TextInputType.text;
+                  textCapitalization = TextCapitalization.words;
+
+                  maxLength = 50;
+
+                  inputFormatter = TextInputFormItem.singleWordAsciiChars;
+
+                  break;
+                }
+              case (TextInputFormItem.TYPE_TEXT_LINE_SINGLE_UN__RESTRICTED):
+                {
+                  inputType = TextInputType.text; // TASK: add automation for e-mail, if title.lowerCase().contains("mail")
+                  textCapitalization = TextCapitalization.words;
+
+                  maxLength = 250;
+
+                  inputFormatter = TextInputFormItem.printableAsciiChars;
+
+                  break;
+                }
+              case (TextInputFormItem.TYPE_NUMBER):
+                {
+                  inputType = TextInputType.number;
+                  textCapitalization = TextCapitalization.none;
+
+                  maxLength = 50;
+
+                  inputFormatter = TextInputFormItem.asciiNumbersOnly;
+
+                  break;
+                }
+              case (TextInputFormItem.TYPE_TEXT_LINE_MULTI_ASCII):
+                {
+                  inputType = TextInputType.multiline;
+                  textCapitalization = TextCapitalization.sentences;
+
+                  maxLength = 4000;
+
+                  inputFormatter = TextInputFormItem.printableAsciiChars;
+
+                  break;
+                }
+              case (TextInputFormItem.TYPE_NUMBER_MATH):
+                {
+                  inputType = const TextInputType.numberWithOptions(
+                    signed: TRUE,
+                    decimal: TRUE,
+                  );
+
+                  textCapitalization = TextCapitalization.none;
+
+                  maxLength = 50;
+
+                  inputFormatter = TextInputFormItem.asciiNumbersWithFloatingPointAndSign;
+
+                  break;
+                }
+              case (TextInputFormItem.TYPE_TEXT_LINE_MULTI_UNICODE):
+                {
+                  inputType = TextInputType.multiline;
+                  textCapitalization = TextCapitalization.sentences;
+
+                  maxLength = 8000;
+
+                  inputFormatter = TextInputFormItem.nonControlUnicodeChars;
+
+                  break;
+                }
+              case (TextInputFormItem.TYPE_NUMBER_PHONE):
+                {
+                  inputType = TextInputType.phone;
+
+                  textCapitalization = TextCapitalization.none;
+
+                  maxLength = 15;
+
+                  inputFormatter = TextInputFormItem.asciiNumbersOnly; // TASK: allow star and hash
+
+                  break;
+                }
+              default:
+                {
+                  return; // TASK: handle error
+                }
+            }
+
+            children[itemCounter++] = TextInputFormItem(
+              title: ascii__convert__str__ascii(bytes.sublist(byteCounter, (byteCounter = bytes.indexOf(0, byteCounter)))),
+              focusNode: FocusNode(),
+              infoText: ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter)))),
+              hintText: ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter)))),
+              textController: TextEditingController(
+                text: (((firstByte & 16) != 0) //
+                    ? ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter))))
+                    :  null),
+              ),
+              helpText: (((firstByte & 8) != 0) //
+                  ? ascii__convert__str__ascii(bytes.sublist((byteCounter += 1), (byteCounter = bytes.indexOf(0, byteCounter))))
+                  :  null),
+              inputType: inputType,
+              textCapitalization: textCapitalization,
+              maxLength: maxLength,
+              inputFormatter: inputFormatter,
+            );
+
+            // TASK: first 3 bits are free
+
+            byteCounter += 1;
+          }
+          break;
+        default:
+          {
+            return; // TASK: handle error
+          }
+      }
+    }
+  }
+
+  @override
+  widget___protocol build(final widget__building__context___compo context) {
+    return page__background(
+      list_ing__generat_ed(
+        context: context,
+        pageTitle: pageTitle,
+        itemCount: children.length,
+        itemBuilder: (_, final int childCounter) => children[childCounter],
+        floatingwidget__compo: button(
+          title: "Submit",
+          onSinglePress: () {},
+        ),
+      ),
+    );
+  }
+}
+
+class ChoiceInputFormItem extends StatefulWidget {
+  const ChoiceInputFormItem({
+    required this.isMultiChoice,
+    required this.title,
+    required this.infoText,
+    required this.items,
+    required this.result,
+  });
+
+  final BOOL isMultiChoice;
+
+  final string title, infoText;
+  final List<string> items;
+
+  final Pointer<Object?> result;
+
+  @override
+  State<ChoiceInputFormItem> createState() {
+    return _ChoiceInputFormItemState();
+  }
+}
+
+class _ChoiceInputFormItemState extends State<ChoiceInputFormItem> {
+  late widget___protocol _widget, widgetWithoutResult;
+
+  void onSinglePress() {
+    setState(() {
+      _widget = widgetWithoutResult;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _widget = widgetWithoutResult = GestureDetector(
+      child: listing__item(
+        body: box__text__primary__secondary(
+          primary__text: widget.title,
+          secondary__text: widget.infoText,
+        ),
+        trailing: icon(icon__navigation__next),
+      ),
+      onTap: () async {
+        widget.result.value = await Navigator.of(context).push<Object>(MaterialPageRoute<Object>(
+          builder: (final widget__building__context___compo context) {
+            return (widget.isMultiChoice
+                ? SelectionPage(
+                    title: widget.title,
+                    items: widget.items,
+                  )
+                : ChoicePage(
+                    title: widget.title,
+                    items: widget.items,
+                  ));
+          },
+        ));
+
+        if (widget.result.value !=  null) {
+          setState(() {
+            if (widget.isMultiChoice) {
+              final List<int> selections = (widget.result.value! as List<int>);
+
+              _widget = GestureDetector(
+                child: listing__item(
+                  body: box__text__primary__secondary(
+                    primary__text: List<string>.generate(selections.length, (final int i) {
+                      return widget.items[selections[i]];
+                    }, growable: FALSE)
+                        .join('\n'),
+                    secondary__text: widget.title,
+                  ),
+                  trailing: icon(icon__navigation__next),
+                ),
+                onTap: onSinglePress,
+              );
+            } else {
+              _widget = GestureDetector(
+                child: listing__item(
+                  body: box__text__primary__secondary(
+                    primary__text: widget.items[widget.result.value! as int],
+                    secondary__text: widget.title,
+                  ),
+                  trailing: icon(icon__navigation__next),
+                ),
+                onTap: onSinglePress,
+              );
+            }
+          });
+        }
+      },
+    );
+  }
+
+  @override
+  widget___protocol build(final widget__building__context___compo context) => _widget;
+}
+
+typedef TextInputFormItem = TextInputField;*/

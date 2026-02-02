@@ -125,8 +125,8 @@ byte__array str__wide__rich__convert__bytes(
     support latex and ascii-math, using the `\formula\` keyword */
   ,
 ) {
-  if (base__printing___ok) {
-    base__function__call__print(
+  if (printing___ok) {
+    function__call__print(
       "str__wide__rich__convert__bytes",
     );
 
@@ -135,12 +135,12 @@ byte__array str__wide__rich__convert__bytes(
     wstr__convert__string(str__wide__rich).representation__text().print("str__wide__rich");
   }
 
-  base__printing__indentation__increase();
+  printing__indentation__increase();
 
   final //
       chars__count = str__wide__rich.elements__count,
-      sink = base__byte__array__accumulation__size__dynamic(),
-      text__segment__accumulation__accumulation /* `(offset == count == 0)` indicates '\' */ = base__accumulation__linear__basic<accumulation<str__wide__rich__text__segment__kampo>>();
+      sink = byte__array__accumulation__size__dynamic(),
+      text__segment__accumulation__accumulation /* `(offset == count == 0)` indicates '\' */ = accumulation__linear__basic___compo<accumulation<str__wide__rich__text__segment__kampo>>();
 
   uu str__search(
     final ch c,
@@ -201,7 +201,7 @@ byte__array str__wide__rich__convert__bytes(
     buffer__str__offset = str__iter;
   }
 
-  var text__segment__list = base__accumulation__linear__basic<str__wide__rich__text__segment__kampo>();
+  var text__segment__list = accumulation__linear__basic___compo<str__wide__rich__text__segment__kampo>();
   list__add(
     text__segment__list__list,
     text__segment__list,
@@ -439,10 +439,10 @@ byte__array str__wide__rich__convert__bytes(
                           row__array__count,
                         );
 
-                        base__iterate__basic(
+                        iterate__basic(
                             row__array__count,
                             (_) => //
-                                base__iterate__basic(
+                                iterate__basic(
                                     column__array__count,
                                     (_) => //
                                         sink.add__uu(str__text__count(
@@ -489,13 +489,13 @@ byte__array str__wide__rich__convert__bytes(
 
   final //
       sink__size = sink.bytes__count,
-      text__section = base__array__accumulation<wch>();
+      text__section = array__accumulation<wch>();
 
   list__iterate__basic(text__segment__list__list, (_, final string __segment__list) {
     list__iterate__basic(
         text__segment__list,
         (_, final string __segment) => //
-            base__array__accumulation__add__array(
+            array__accumulation__add__array(
               text__section,
               str__wide__rich.view__partial(
                 text__segment.offset,
@@ -513,11 +513,11 @@ byte__array str__wide__rich__convert__bytes(
     sink.convert__byte__array(),
     if (text__section.elements__count != 0) //
       wstr__convert__bytes(
-        base__array__accumulation__convert__array(text__section),
+        array__accumulation__convert__array(text__section),
       ),
   ]);
 
-  base__printing__indentation__decrease();
+  printing__indentation__decrease();
 
   return result;
 }
@@ -525,8 +525,8 @@ byte__array str__wide__rich__convert__bytes(
 void str__wide__rich__bytes__convert__report(
   final byte__array bytes,
 ) {
-  if (base__printing___ok) //
-    base__function__call__print(
+  if (printing___ok) //
+    function__call__print(
       "str__wide__rich__bytes__convert",
       () {
         report__compo__member__type__value(
@@ -537,7 +537,7 @@ void str__wide__rich__bytes__convert__report(
       },
     );
 
-  base__printing__indentation__increase();
+  printing__indentation__increase();
 
   final //
       section__control__count = uu__bytes__convert(
@@ -643,10 +643,10 @@ void str__wide__rich__bytes__convert__report(
           "row__array__count",
         );
 
-        base__iterate__basic(row__array__count, (final row__id) {
-          base__printing__indentation__increase();
+        iterate__basic(row__array__count, (final row__id) {
+          printing__indentation__increase();
           report__info("row__array[$row__id]");
-          base__iterate__basic(
+          iterate__basic(
             column__array__count,
             (final column__id) => //
                 report__wstr(
@@ -654,10 +654,10 @@ void str__wide__rich__bytes__convert__report(
               "column__array[$column__id]",
             ),
           );
-          base__printing__indentation__decrease();
+          printing__indentation__decrease();
         });
         break;
     }
 
-  base__printing__indentation__decrease();
+  printing__indentation__decrease();
 }

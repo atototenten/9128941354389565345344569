@@ -21,12 +21,12 @@ typedef DELAYING //
 = dart__async.Timer;
 
 const //
-base__delay__duration__none = Duration.zero,
-    base__delay__duration__realistic = Duration(
+delay__duration__none = Duration.zero,
+    delay__duration__realistic = Duration(
       milliseconds: (1 ~/ 3),
     );
 
-ASYN__BASIC<void> base__delay___asyn({
+ASYN__BASIC<void> delay___asyn({
   final Duration? duration,
 }) {
   if (duration == Duration.zero) {
@@ -34,7 +34,7 @@ ASYN__BASIC<void> base__delay___asyn({
   }
 
   return ASYN__BASIC.delayed(
-    (duration ?? base__delay__duration__realistic),
+    (duration ?? delay__duration__realistic),
   );
 }
 
@@ -49,7 +49,7 @@ extension ASYN__BASIC__extension //
 <value___type> //
     on ASYN__BASIC<value___type> {
   void basic__handle(
-    final base__value__single__procedure__format<value___type> value__handle,
+    final value__single___procedure__format<value___type> value__handle,
   ) {
     then<void>(
       value__handle,
@@ -62,8 +62,8 @@ extension value__asyn__extension //
 <value___type> //
     on ASYN<value___type> {
   void handle(
-    final base__value__single__procedure__format<value___type> value__handle,
-    final base__error__handle__proc_? error__handle,
+    final value__single___procedure__format<value___type> value__handle,
+    final error__handle__proc_? error__handle,
   ) {
     then<void>(
       value__handle,
@@ -73,7 +73,7 @@ extension value__asyn__extension //
 }
 
 extension asyn__definitive__dispose___extension //
-<value___type extends base__dispose___protocol> //
+<value___type extends dispose___protocol> //
     on ASYN__DEFINITIVE<value___type> {
   void value__dispose() {
     handle___raw(
@@ -87,14 +87,14 @@ extension asyn__definitive__dispose___extension //
 
 class ASYN__DEFINITIVE /*
 "ASYN__DEFINITIVE<value___type?>.completion__success" is same as "ASYN__DEFINITIVE.blank"(un-init.ized state) */ <value___type> //
-    implements base__dispose___protocol {
+    implements dispose___protocol {
   factory ASYN__DEFINITIVE(
     final ASYN<value___type> value,
   ) = ASYN__DEFINITIVE.waiting;
 
   ASYN__DEFINITIVE.waiting(
     final ASYN<value___type> value,
-  ) : _state__channel = base__value__mutation__event__channel__broadcast(
+  ) : _state__channel = value__mutation__event__channel__broadcast(
         asyn__definitive__state__waiting<value___type>(
           value,
         ),
@@ -104,7 +104,7 @@ class ASYN__DEFINITIVE /*
 
   ASYN__DEFINITIVE.completion__success(
     final value___type value,
-  ) : _state__channel = base__value__mutation__event__channel__broadcast(
+  ) : _state__channel = value__mutation__event__channel__broadcast(
         asyn__definitive__state__completion__success<value___type>(
           value,
         ),
@@ -113,21 +113,21 @@ class ASYN__DEFINITIVE /*
   ASYN__DEFINITIVE.completion__failure(
     final Object error,
     final StackTrace trace,
-  ) : _state__channel = base__value__mutation__event__channel__broadcast(
+  ) : _state__channel = value__mutation__event__channel__broadcast(
         asyn__definitive__state__completion__failure<value___type>(
           error,
           trace,
         ),
       );
 
-  final base__value__mutation__event__channel__broadcast<asyn__definitive__state___union<value___type>> _state__channel;
+  final value__mutation__event__channel__broadcast<asyn__definitive__state___union<value___type>> _state__channel;
 
   @override
   void dispose() {
     _state__channel.dispose();
   }
 
-  base__event__channel__broadcast___protocol state__channel() {
+  event__channel__broadcast___protocol state__channel() {
     return _state__channel;
   }
 
@@ -197,8 +197,8 @@ ensures that the syn.ny has not replaced the state with another
 
   void handle___raw /*
 ignores the future state-channel events */ (
-    final base__value__single__procedure__format<value___type> value__handle,
-    final base__error__handle__proc_? error__handle,
+    final value__single___procedure__format<value___type> value__handle,
+    final error__handle__proc_? error__handle,
   ) {
     final state = _state__channel.value();
 

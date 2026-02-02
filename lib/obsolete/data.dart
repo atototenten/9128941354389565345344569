@@ -77,11 +77,11 @@ must be `>= data:group:level:3:element:arr:count`
     final ARRAY<data__fetch_ing__data__group__level__1__kampo<data__type>> result;
 
     if (data__element__array__init_ial == null) {
-      final $accumulation = base__accumulation__linear__basic<data__fetch_ing__data__group__level__1__kampo<data__type>>(
+      final $accumulation = accumulation__linear__basic___compo<data__fetch_ing__data__group__level__1__kampo<data__type>>(
         capacity__initial__multiplier: /*(data__fetch_ing__data__groups__element__array__count__width - accumulation__capacity__default__width)*/ 5,
       );
 
-      await base__iterate__basic__asyn(
+      await iterate__basic__asyn(
         group__level__2__element__array__count,
         (final data__group__level__1__element__id) async {
           $accumulation.add(
@@ -279,7 +279,7 @@ ASYN<void> main() async {
 
     "load.begin".print();
 
-    await base__iterate__basic__asyn(
+    await iterate__basic__asyn(
       count,
       (final data__element__id) async {
         (await fetch_ing.data__element(
@@ -293,7 +293,7 @@ ASYN<void> main() async {
     const offset = (data__element__array__count - count);
     offset.representation__text().print("offset");
 
-    await base__iterate__basic__asyn(
+    await iterate__basic__asyn(
       count,
       (final i) async {
         (await fetch_ing.data__element(

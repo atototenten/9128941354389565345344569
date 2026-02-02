@@ -84,7 +84,7 @@ stored as a single combined value ,instead of separate {28(`64-36`)-bits `minute
   }
 
   date_time__relative___union convert__relative({
-    date_time? other/* must be after "this" */,
+    date_time? other /* must be after "this" */,
   }) {
     if (other == null) {
       other = date_time.current(
@@ -378,7 +378,7 @@ void date_time__test() {
       ),
       global___ok: FALSE,
     ),
-  ].iterate__basic(
+  ].iterate(
     (final i, final e) {
       e.title.print();
 
@@ -413,7 +413,9 @@ void date_time__test() {
           .representation__text()
           .print("relative");
 
-      base__print__blank();
+      print__blank();
+
+      return TRUE;
     },
   );
 }

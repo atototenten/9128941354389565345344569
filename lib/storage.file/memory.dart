@@ -1,38 +1,38 @@
 part of "_.dart";
 
-class base__storage__file__memory__meta //
-    implements base__storage__file__meta__basic___protocol {
-  base__storage__file__memory__meta(
-    this.file___raw, {
+class storage__file__memory__meta //
+    implements storage__file__meta__basic___protocol {
+  storage__file__memory__meta(
+    this._file, {
     this.alignment = alignment__modern__normal,
   });
 
-  final storage__file__memory file___raw;
-  final base__storage__file__alignment___compo alignment;
+  final storage__file__memory _file;
+  final storage__file__alignment___compo alignment;
 
   @override
-  ASYN<base__storage__file__reading__result___union> //
+  ASYN<storage__file__reading__result___union> //
   read__asyn({
     required final INT count,
     required final INT offset,
   }) {
-    final result = file___raw.read(
+    final result = _file.read(
       count: count,
       offset: offset,
     );
 
     return ASYN.syncValue(
-      base__storage__file__reading__result__success(result),
+      storage__file__reading__result__success(result),
     );
   }
 
   @override
-  ASYN<base__storage__file__writing__error?> //
+  ASYN<storage__file__writing__error?> //
   write__asyn(
-    final base__storage__file__blocks value, {
+    final storage__file__blocks value, {
     required final INT offset,
   }) {
-    file___raw.write(
+    _file.write(
       value,
       offset: offset,
     );
@@ -41,25 +41,25 @@ class base__storage__file__memory__meta //
   }
 
   @override
-  ASYN<base__storage__file__closure__error?> //
+  ASYN<storage__file__closure__error?> //
   dispose__asyn() {
-    file___raw.dispose();
+    _file.dispose();
 
     return ASYN.syncValue(NIL);
   }
 }
 
 class storage__file__memory //
-    implements base__dispose___protocol {
+    implements dispose___protocol {
   static const //
   block__first__bytes__count__doubling__initial = 2;
 
   storage__file__memory({
     this.block__meta = alignment__modern__normal,
-  }) : block__accumulation___raw = base__accumulation__linear__basic();
+  }) : block__accumulation___raw = accumulation__linear__basic___compo();
 
-  final base__storage__file__alignment___compo block__meta;
-  final base__accumulation__linear__basic<byte__array> block__accumulation___raw;
+  final storage__file__alignment___compo block__meta;
+  final accumulation__linear__basic___compo<byte__array> block__accumulation___raw;
 
   INT blocks__count___raw = 0;
 
@@ -71,11 +71,6 @@ class storage__file__memory //
   BOOL //
   empty___ok() {
     return (blocks__count___raw == 0);
-  }
-
-  BOOL //
-  empty__not() {
-    return (blocks__count___raw != 0);
   }
 
   INT //
@@ -96,8 +91,8 @@ class storage__file__memory //
     required final INT count,
     required final INT offset,
   }) {
-    if (base__printing___ok) {
-      base__function__call__print(
+    if (printing___ok) {
+      function__call__print(
         "storage__file__memory.write__fill",
         debug__label,
       );
@@ -138,7 +133,7 @@ class storage__file__memory //
 
   INT /*offset*/ //
   write__ending(
-    final base__storage__file__blocks value,
+    final storage__file__blocks value,
   ) {
     final offset = blocks__count___raw;
 
@@ -155,11 +150,11 @@ class storage__file__memory //
   }
 
   void write(
-    final base__storage__file__blocks value, {
+    final storage__file__blocks value, {
     required final INT offset,
   }) {
-    if (base__printing___ok) {
-      base__function__call__print(
+    if (printing___ok) {
+      function__call__print(
         "storage__file__memory.write",
         debug__label,
       );
@@ -188,7 +183,7 @@ class storage__file__memory //
       count: value.elements__count,
       offset: offset,
       block__handle: (final block__id, final block) {
-        base__copy(
+        copy(
           block.value___raw,
           value[block__id].value___raw,
           count: block__meta.size,
@@ -197,7 +192,7 @@ class storage__file__memory //
     );
   }
 
-  base__storage__file__blocks //
+  storage__file__blocks //
   read__full() {
     if (empty___ok()) {
       return array__new__empty();
@@ -211,13 +206,13 @@ class storage__file__memory //
     return result;
   }
 
-  base__storage__file__blocks //
+  storage__file__blocks //
   read({
     required final INT count,
     required final INT offset,
   }) {
-    if (base__printing___ok) {
-      base__function__call__print(
+    if (printing___ok) {
+      function__call__print(
         "storage__file__memory.read",
         debug__label,
       );
@@ -236,7 +231,7 @@ class storage__file__memory //
       return array__new__empty();
     }
 
-    final block__accumulation = base__accumulation__linear__basic<base__storage__file__block>(
+    final block__accumulation = accumulation__linear__basic___compo<storage__file__block>(
       capacity__initial: count,
     );
 
@@ -262,11 +257,11 @@ class storage__file__memory //
     required final INT offset,
     required final void Function(
       INT block__id,
-      base__storage__file__block block,
+      storage__file__block block,
     )
     block__handle,
   }) {
-    final blocks__iteration__meta = base__accumulation__conservative__iteration__meta(
+    final blocks__iteration__meta = accumulation__conservative__iteration__meta(
       array__first__elements__count__doubling__initial: block__first__bytes__count__doubling__initial,
       elements__count: blocks__count___raw,
     );
@@ -294,7 +289,7 @@ class storage__file__memory //
           ) {
             block__handle(
               accumulation__element__id,
-              base__storage__file__block(
+              storage__file__block(
                 blocks.view__partial(
                   (array__element__id * block__meta.size),
                   block__meta.size,
@@ -317,7 +312,7 @@ class storage__file__memory //
       if /*F*/ (block__accumulation___raw.empty___ok()) {
         array__last__bytes__count =
             (block__meta.size *
-            base__accumulation__conservative__iteration__meta.array__first__elements__count__ideal(
+            accumulation__conservative__iteration__meta.array__first__elements__count__ideal(
               array__first__elements__count__doubling__initial: block__first__bytes__count__doubling__initial,
             ));
 
@@ -361,8 +356,8 @@ class storage__file__memory //
   }
 
   void flush() {
-    if (base__printing___ok) {
-      base__function__call__print(
+    if (printing___ok) {
+      function__call__print(
         "storage__file__memory.flush",
         debug__label,
       );
@@ -375,8 +370,8 @@ class storage__file__memory //
 
   @override
   void dispose() {
-    if (base__printing___ok) {
-      base__function__call__print(
+    if (printing___ok) {
+      function__call__print(
         "storage__file__memory.dispose",
         debug__label,
       );
@@ -404,7 +399,7 @@ void storage__file__memory__test() {
     ..write__ending(
       array__new__generated(
         5,
-        (final i) => base__storage__file__block(
+        (final i) => storage__file__block(
           byte__array__new__generated(
             file.block__meta.size,
             (_) => i,

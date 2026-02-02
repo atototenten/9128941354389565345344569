@@ -6,24 +6,22 @@ typedef function__format = Function;
 typedef procedure__empty__format = void Function();
 typedef procedure__empty__asyn__format = ASYN<void> Function();
 
-typedef event__handle__procedure__format = procedure__empty__format;
+typedef dispose___procedure__format = procedure__empty__format;
+typedef dispose__asyn___procedure__format = procedure__empty__asyn__format;
 
-typedef dispose__procedure__format = procedure__empty__format;
-typedef dispose__asyn__procedure__format = procedure__empty__asyn__format;
+void empty__procedure__empty() {}
 
-void base__empty__procedure__empty() {}
-
-void base__procedure__empty__invoke(
+void procedure__empty__invoke(
   final procedure__empty__format proc_,
 ) {
   proc_();
 }
 
-typedef base__value__single__procedure__format<value___type> //
+typedef value__single___procedure__format<value___type> //
     = void Function(value___type value);
 
-void base__procedure__value__single__invoke<value___type>(
-  final base__value__single__procedure__format<value___type> proc_,
+void procedure__value__single__invoke<value___type>(
+  final value__single___procedure__format<value___type> proc_,
   final value___type value,
 ) {
   proc_(
@@ -31,11 +29,11 @@ void base__procedure__value__single__invoke<value___type>(
   );
 }
 
-class base__procedure__empty__complicated__meta /*
+class procedure__empty__complicated__meta /*
 must be called ,just once ,at most ,if ever
 invokation possibly leads to side-effects */
 {
-  base__procedure__empty__complicated__meta(
+  procedure__empty__complicated__meta(
     final procedure__empty__format value,
   ) : value___raw = value;
 
@@ -60,13 +58,13 @@ invokation possibly leads to side-effects */
   }
 }
 
-class base__procedure__empty__meta__definitive /*
+class procedure__empty__meta__definitive /*
 `procedure__empty__container`
   ,with `._value`-management ,like [un-]safe remov-al/replac-ment
 app.s :widget(of graphical-user-interface)'s [de-]init ,etc. */ //
     implements
-        base__dispose___protocol {
-  base__procedure__empty__meta__definitive() //
+        dispose___protocol {
+  procedure__empty__meta__definitive() //
       : assignment__id___raw = 0;
 
   INT assignment__id___raw /*
@@ -173,7 +171,7 @@ calls the `procedure` ,if available */
   }
 }
 
-void base__procedure__empty__meta__definitive__test() /*
+void procedure__empty__meta__definitive__test() /*
 latest run's result :`
   (empty:procedure:empty == empty:procedure:empty) :YES\
   (empty:procedure:empty == empty:procedure:empty) :NO\
@@ -195,7 +193,7 @@ latest run's result :`
       "$title :${(condition ? "YES" : "NO")}".print();
 
   check(
-    (base__empty__procedure__empty == base__empty__procedure__empty),
+    (empty__procedure__empty == empty__procedure__empty),
     "(empty:procedure:empty == empty:procedure:empty)",
   );
   check(
@@ -204,8 +202,8 @@ latest run's result :`
   );
 
   final //
-      first = base__procedure__empty__meta__definitive(),
-      second = base__procedure__empty__meta__definitive();
+      first = procedure__empty__meta__definitive(),
+      second = procedure__empty__meta__definitive();
 
   check(
     (first == first),

@@ -1,11 +1,11 @@
 part of "../_.dart";
 
-extension base__byte__array__accumulation__linear__extension //
-    on base__accumulation__linear__base<byte__array> {
+extension byte__array__accumulation__linear__extension //
+    on accumulation__linear___compo__base<byte__array> {
   byte__array convert__byte__array() {
     var bytes__count = 0;
 
-    iterate(
+    this.iterate(
       (final id, final e) {
         bytes__count += e.bytes__count;
 
@@ -29,9 +29,9 @@ extension base__byte__array__accumulation__linear__extension //
   ) {
     var bytes__offset = 0;
 
-    iterate(
+    this.iterate(
       (final id, final e) {
-        bytes__offset = base__copy(
+        bytes__offset = copy(
           bytes,
           e,
           dest__offset: bytes__offset,
@@ -43,15 +43,15 @@ extension base__byte__array__accumulation__linear__extension //
   }
 }
 
-class base__byte__array__accumulation /*
+class byte__array__accumulation___compo /*
 [byte-]arrays can be added
   ,by first adding the elements-count
     ,then the elements */ //
     implements
-        base__dispose___protocol {
-  base__byte__array__accumulation();
+        dispose___protocol {
+  byte__array__accumulation___compo();
 
-  final accumulation___raw = base__accumulation__linear__basic<byte__array>();
+  final accumulation___raw = accumulation__linear__basic___compo<byte__array>();
 
   var bytes__count___raw = 0;
 

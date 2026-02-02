@@ -1,7 +1,9 @@
 part of "_.dart";
 
+const _iterate = iterate;
+
 @deprecated
-void base__iterate(
+void iterate(
   INT count,
   final BOOL Function(INT i) operate, {
   INT offset = 0,
@@ -11,7 +13,7 @@ void base__iterate(
 }
 
 @deprecated
-ASYN<void> base__iterate__asyn(
+ASYN<void> iterate__asyn(
   INT count,
   final ASYN<BOOL> Function(INT i) operate, {
   INT offset = 0,
@@ -20,36 +22,10 @@ ASYN<void> base__iterate__asyn(
   while ((offset < count) && (await operate(offset++))) ;
 }
 
-@deprecated
-void base__iterate__basic(
-  final INT count,
-  final void Function(INT i) operate, {
-  final INT offset = 0,
-}) => base__iterate(
-  count,
-  (final i) {
-    operate(i);
-    return TRUE;
-  },
-  offset: offset,
-);
+const _iterate__reverse = iterate__reverse;
 
 @deprecated
-ASYN<void> base__iterate__basic__asyn(
-  final INT count,
-  final ASYN<void> Function(INT i) operate, {
-  final INT offset = 0,
-}) => base__iterate__asyn(
-  count,
-  (final i) async {
-    await operate(i);
-    return TRUE;
-  },
-  offset: offset,
-);
-
-@deprecated
-void base__iterate__reverse /* __high_perf__low_mem */ (
+void iterate__reverse /* __high_perf__low_mem */ (
   INT count,
   final BOOL Function(INT i) operate,
 ) {
@@ -62,7 +38,7 @@ void base__iterate__reverse /* __high_perf__low_mem */ (
 }
 
 @deprecated
-ASYN<void> base__iterate__reverse__asyn(
+ASYN<void> iterate__reverse__asyn(
   INT count,
   final ASYN<BOOL> Function(INT i) operate,
 ) async {
@@ -73,27 +49,3 @@ ASYN<void> base__iterate__reverse__asyn(
   while ((await operate(count -= 1)) && //
       (count /*>*/ != 0)) {}
 }
-
-@deprecated
-void base__iterate__reverse__basic(
-  final INT count,
-  final void Function(INT i) operate,
-) => base__iterate__reverse(
-  count,
-  (final i) {
-    operate(i);
-    return TRUE;
-  },
-);
-
-@deprecated
-ASYN<void> base__iterate__reverse__basic__asyn(
-  final INT count,
-  final ASYN<void> Function(INT i) operate,
-) => base__iterate__reverse__asyn(
-  count,
-  (final i) async {
-    await operate(i);
-    return TRUE;
-  },
-);

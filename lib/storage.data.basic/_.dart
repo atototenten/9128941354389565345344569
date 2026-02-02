@@ -3,20 +3,20 @@ import "package:foundation/core/_.dart";
 import "package:sqlite_async/sqlite_async.dart" as sqlite_async;
 import "package:sqlite_async/sqlite3.dart" as sqlite_sync;
 
-class base__storage__data__basic__meta //
+class storage__data__basic__meta //
     extends
-        base__storage__data__basic__meta__base //
+        storage__data__basic__meta__base //
     implements
-        base__dispose__asyn___protocol //
-        <base__storage__data__basic__meta__disposal__result> {
-  static ASYN<base__storage__data__basic__meta> //
+        dispose__asyn___protocol //
+        <storage__data__basic__meta__disposal__result> {
+  static ASYN<storage__data__basic__meta> //
   asyn({
     required final string file__path /*
-usually (storage__directory__permanent__path__absolute + base__storage__file__path__separation__char + file__name) */,
+usually (storage__directory__permanent__path__absolute + storage__file__path__separation__char + file__name) */,
   }) /*
 the data-base access ,must be exclusive */ async {
-    if (base__printing___ok) {
-      base__storage__data__basic__meta__base.sqlite__info().representation__text().print("sqlite__info");
+    if (printing___ok) {
+      storage__data__basic__meta__base.sqlite__info().representation__text().print("sqlite__info");
     }
 
     final value = sqlite_async.SqliteDatabase(
@@ -32,13 +32,13 @@ the data-base access ,must be exclusive */ async {
     await value.initialize();
 
     return ASYN.syncValue(
-      base__storage__data__basic__meta.raw(
+      storage__data__basic__meta.raw(
         value,
       ),
     );
   }
 
-  base__storage__data__basic__meta.raw(
+  storage__data__basic__meta.raw(
     super.value___raw,
   );
 
@@ -63,26 +63,26 @@ the data-base access ,must be exclusive */ async {
 
   ASYN<BOOL> //
   init_ization__needed__ok__asyn(
-    final base__storage__data__basic__accessing__meta meta,
+    final storage__data__basic__accessing__meta meta,
   ) async {
     final tables__count = await meta.tables__count__asyn();
     return (tables__count == 0);
   }
 
   @override
-  ASYN<base__storage__data__basic__meta__disposal__result> //
+  ASYN<storage__data__basic__meta__disposal__result> //
   dispose__asyn() async {
     await value___raw.close();
 
-    return base__storage__data__basic__meta__disposal__result.success;
+    return storage__data__basic__meta__disposal__result.success;
   }
 }
 
-enum base__storage__data__basic__meta__disposal__result {
+enum storage__data__basic__meta__disposal__result {
   success,
 }
 
-abstract class base__storage__data__basic__meta__base /*
+abstract class storage__data__basic__meta__base /*
 based on sqlite-3
   sqlite is quite-ok(compared to alternatives) ,for {non-concurrent connections ,and storage__data__file__size less than the file-system's limits}
     ,otherwise postgresql ,but overall ,s.q.l.-to-software interface is a non-sensible approach
@@ -99,11 +99,11 @@ requires `sqlite3_flutter_libs` pkg. */ {
     sqlite_sync.sqlite3.tempDirectory = storage__directory__temporary__path__absolute;
   }
 
-  base__storage__data__basic__meta__base(
+  storage__data__basic__meta__base(
     this.value___raw,
   ) : accesses__count___raw = 0,
-      access__mutating__exclusion___raw = base__exclusion__mutual___compo(),
-      accesses__empty__channel___raw = base__event__channel__broadcast() {
+      access__mutating__exclusion___raw = exclusion__mutual___compo(),
+      accesses__empty__channel___raw = event__channel__broadcast() {
     access__mutating__exclusion___raw //
         .free__channel()
         .descriptions__add(
@@ -120,18 +120,18 @@ requires `sqlite3_flutter_libs` pkg. */ {
   }
 
   final sqlite_async.SqliteDatabase value___raw;
-  final base__event__channel__broadcast accesses__empty__channel___raw;
-  final base__exclusion__mutual___compo access__mutating__exclusion___raw;
+  final event__channel__broadcast accesses__empty__channel___raw;
+  final exclusion__mutual___compo access__mutating__exclusion___raw;
   INT accesses__count___raw /*
 excluding mutating-access
   available through `access__mutating__exclusion___raw.locked__ok` proc. */;
 
-  ASYN<base__storage__data__basic__accessing__meta>? //
+  ASYN<storage__data__basic__accessing__meta>? //
   accessing__meta__asyn /*
 required for read op.ions */ () async {
     accesses__count___raw += 1;
 
-    final result = ASYN__PROMISE<base__storage__data__basic__accessing__meta>();
+    final result = ASYN__PROMISE<storage__data__basic__accessing__meta>();
 
     value___raw.readLock(
       (final value) {
@@ -144,9 +144,9 @@ required for read op.ions */ () async {
             .handle(
               (_) {
                 result.complete(
-                  base__storage__data__basic__accessing__meta.raw(
+                  storage__data__basic__accessing__meta.raw(
                     value,
-                    completion__meta___raw: base__procedure__empty__complicated__meta(
+                    completion__meta___raw: procedure__empty__complicated__meta(
                       () {
                         {
                           accesses__count___raw -= 1;
@@ -185,10 +185,10 @@ required for read op.ions */ () async {
     return result.future;
   }
 
-  ASYN<base__storage__data__basic__accessing__mutating__meta>? //
+  ASYN<storage__data__basic__accessing__mutating__meta>? //
   accessing__mutating__meta__asyn /*
 required for write op.ions */ () {
-    late final ASYN__PROMISE<base__storage__data__basic__accessing__mutating__meta> result;
+    late final ASYN__PROMISE<storage__data__basic__accessing__mutating__meta> result;
 
     final ok = access__mutating__exclusion___raw.lock(
       (final lock) {
@@ -203,10 +203,10 @@ required for write op.ions */ () {
                 .handle(
                   (_) {
                     result.complete(
-                      base__storage__data__basic__accessing__mutating__meta.raw(
+                      storage__data__basic__accessing__mutating__meta.raw(
                         value,
                         lock___raw: lock,
-                        completion__meta___raw: base__procedure__empty__complicated__meta(
+                        completion__meta___raw: procedure__empty__complicated__meta(
                           () {
                             completion__asyn__meta.complete();
                           },
@@ -231,7 +231,7 @@ required for write op.ions */ () {
       return NIL;
     }
 
-    result = ASYN__PROMISE<base__storage__data__basic__accessing__mutating__meta>();
+    result = ASYN__PROMISE<storage__data__basic__accessing__mutating__meta>();
 
     return result.future;
   }
@@ -270,18 +270,18 @@ extension SqliteReadContext__operation__extension //
   }
 }
 
-class base__storage__data__basic__accessing__meta //
+class storage__data__basic__accessing__meta //
     extends
-        base__storage__data__basic__accessing__meta__base //
+        storage__data__basic__accessing__meta__base //
         <sqlite_async.SqliteReadContext> {
-  base__storage__data__basic__accessing__meta.raw(
+  storage__data__basic__accessing__meta.raw(
     final sqlite_async.SqliteReadContext value, {
     required this.completion__meta___raw,
   }) : super.raw(
          value,
        );
 
-  final base__procedure__empty__complicated__meta completion__meta___raw;
+  final procedure__empty__complicated__meta completion__meta___raw;
 
   ASYN<void> complete__asyn() async {
     final completed__already___ok = completion__meta___raw.invoked___ok();
@@ -298,9 +298,9 @@ class base__storage__data__basic__accessing__meta //
   }
 }
 
-abstract class base__storage__data__basic__accessing__meta__base //
+abstract class storage__data__basic__accessing__meta__base //
 <value___type extends sqlite_async.SqliteReadContext> {
-  base__storage__data__basic__accessing__meta__base.raw(
+  storage__data__basic__accessing__meta__base.raw(
     this.value___raw,
   );
 
@@ -327,8 +327,8 @@ source : `web://powersync.com/blog/sqlite-optimizations-for-ultra-high-performan
 
   /*ASYN<void> build__re__asyn({
     required final string file__path,
-    required final base__storage__data__basic__table__column__id? Function(
-      ARRAY<base__storage__data__basic__table__cell__id> /*
+    required final storage__data__basic__table__column__id? Function(
+      ARRAY<storage__data__basic__table__cell__id> /*
 empty for root-table */
           table__path,
     ) table__build__re__column /*
@@ -359,7 +359,7 @@ TASK
   }
 
   ASYN<INT> table__rows__count__asyn({
-    required final base__storage__data__basic__table__id table__id,
+    required final storage__data__basic__table__id table__id,
   }) {
     return table__rows__count__asyn___raw(
       table__name: table__id.convert__name___raw(),
@@ -377,17 +377,17 @@ refer to `web://sqlite.org/schematab.html` */ {
 
   void table__columns__id__join___raw(
     final StringBuffer buffer,
-    final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
+    final ARRAY<storage__data__basic__table__column__meta> columns__meta,
     final BOOL result__column__id___ok,
   ) {
     if (columns__meta.empty___ok() /* because sqlite mandates non-empty selection-columns */ ) {
-      buffer.write(base__storage__data__basic__meta__base.table__row__id__column__name);
+      buffer.write(storage__data__basic__meta__base.table__row__id__column__name);
       return;
     }
 
     if (result__column__id___ok) {
       buffer
-        ..write(base__storage__data__basic__meta__base.table__row__id__column__name)
+        ..write(storage__data__basic__meta__base.table__row__id__column__name)
         ..write(", ");
     }
 
@@ -405,11 +405,11 @@ refer to `web://sqlite.org/schematab.html` */ {
     );
   }
 
-  ASYN<ARRAY<base__storage__data__basic__table__row>> /*
+  ASYN<ARRAY<storage__data__basic__table__row>> /*
 the first column of each row ,is the unique id ,of the row ,its type ,is un-signed integer ,and range 1..s64 */
   table__rows__asyn({
-    required final base__storage__data__basic__table__id table__id,
-    required final ARRAY<base__storage__data__basic__table__column__meta>? result__columns__meta /*
+    required final storage__data__basic__table__id table__id,
+    required final ARRAY<storage__data__basic__table__column__meta>? result__columns__meta /*
 if NIL ,then all the columns ,but respecting the "conditions" argument
 if empty ,then the column-id column ,is implicit */,
     final BOOL result__column__id___ok /*
@@ -421,7 +421,7 @@ ignored if `result__columns__meta == NIL` */ =
     '?' indicates substitution, from "conditions__arguments" */,
     required final ARRAY<Object?>? result__conditions__arguments /*
   example: "Dr%", "%@mail.com" */,
-    final ARRAY<base__storage__data__basic__table__column__meta>? result__order__columns__meta /*
+    final ARRAY<storage__data__basic__table__column__meta>? result__order__columns__meta /*
 if NIL ,then resulting rows ,are un-order-ed ,or the order is un-defin-ed ,and "result__order__ascend_ing__ok" is ignored  */,
     final BOOL result__order__ascend_ing___ok /* otherwise descend-ing */ = TRUE,
     final INT? result__rows__count__limit,
@@ -496,9 +496,9 @@ example
     );
   }
 
-  ASYN<ARRAY<base__storage__data__basic__table__row>> table__rows__all__asyn({
-    required final base__storage__data__basic__table__id table__id,
-    final ARRAY<base__storage__data__basic__table__column__meta>? result__columns__meta,
+  ASYN<ARRAY<storage__data__basic__table__row>> table__rows__all__asyn({
+    required final storage__data__basic__table__id table__id,
+    final ARRAY<storage__data__basic__table__column__meta>? result__columns__meta,
     final BOOL result__column__id___ok = FALSE,
   }) {
     return table__rows__asyn(
@@ -510,15 +510,15 @@ example
     );
   }
 
-  ASYN<base__storage__data__basic__table__row?> table__row__asyn({
-    required final base__storage__data__basic__table__id table__id,
-    required final base__storage__data__basic__table__row__id table__row__id,
-    required final ARRAY<base__storage__data__basic__table__column__meta>? result__columns__meta,
+  ASYN<storage__data__basic__table__row?> table__row__asyn({
+    required final storage__data__basic__table__id table__id,
+    required final storage__data__basic__table__row__id table__row__id,
+    required final ARRAY<storage__data__basic__table__column__meta>? result__columns__meta,
   }) async {
     final rows = await table__rows__asyn(
       table__id: table__id,
       result__columns__meta: result__columns__meta,
-      result__conditions: (base__storage__data__basic__meta__base.table__row__id__column__name + " = ?"),
+      result__conditions: (storage__data__basic__meta__base.table__row__id__column__name + " = ?"),
       result__conditions__arguments: [table__row__id.value],
     );
 
@@ -534,29 +534,29 @@ example
   }
 }
 
-class base__storage__data__basic__table__cell__id {
-  const base__storage__data__basic__table__cell__id({
+class storage__data__basic__table__cell__id {
+  const storage__data__basic__table__cell__id({
     required this.row__id,
     required this.column__id,
   });
 
-  final base__storage__data__basic__table__row__id row__id;
-  final base__storage__data__basic__table__column__id column__id;
+  final storage__data__basic__table__row__id row__id;
+  final storage__data__basic__table__column__id column__id;
 }
 
-class base__storage__data__basic__table__column__id {
-  const base__storage__data__basic__table__column__id(
+class storage__data__basic__table__column__id {
+  const storage__data__basic__table__column__id(
     this.value,
   );
 
   final INT value;
 }
 
-typedef base__storage__data__basic__table__row = ARRAY<Object?>;
+typedef storage__data__basic__table__row = ARRAY<Object?>;
 
-class base__storage__data__basic__table__id //
-    extends base__storage__data__basic__table__row__id__base {
-  const base__storage__data__basic__table__id(
+class storage__data__basic__table__id //
+    extends storage__data__basic__table__row__id__base {
+  const storage__data__basic__table__id(
     super.value,
   );
 
@@ -565,11 +565,11 @@ class base__storage__data__basic__table__id //
   }
 }
 
-class base__storage__data__basic__accessing__mutating__meta //
+class storage__data__basic__accessing__mutating__meta //
     extends
-        base__storage__data__basic__accessing__meta__base //
+        storage__data__basic__accessing__meta__base //
         <sqlite_async.SqliteWriteContext> {
-  base__storage__data__basic__accessing__mutating__meta.raw(
+  storage__data__basic__accessing__mutating__meta.raw(
     final sqlite_async.SqliteWriteContext value, {
     required this.lock___raw,
     required this.completion__meta___raw,
@@ -577,28 +577,28 @@ class base__storage__data__basic__accessing__mutating__meta //
          value,
        );
 
-  final base__exclusion__mutual__lock lock___raw;
-  final base__procedure__empty__complicated__meta completion__meta___raw;
+  final exclusion__mutual__lock lock___raw;
+  final procedure__empty__complicated__meta completion__meta___raw;
 
   ASYN<
-    base__storage__data__basic__table__id /*/*
+    storage__data__basic__table__id /*/*
 table-id.'s assignment is fully-defined
   equal to row-id. */ */
   > //
   table__add__asyn({
-    required final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
+    required final ARRAY<storage__data__basic__table__column__meta> columns__meta,
   }) async {
     final //
     table__id__value = await tables__count__asyn(),
-        table__id = base__storage__data__basic__table__id(
+        table__id = storage__data__basic__table__id(
           table__id__value,
         ),
         statement__buffer = StringBuffer("CREATE TABLE ")
           ..write(table__id.convert__name___raw())
           ..write(" (")
-          ..write(base__storage__data__basic__meta__base.table__row__id__column__name)
+          ..write(storage__data__basic__meta__base.table__row__id__column__name)
           ..write(" ")
-          ..write(base__storage__data__basic__table__column__data__type.number__integer__auto.name)
+          ..write(storage__data__basic__table__column__data__type.number__integer__auto.name)
           ..write(" PRIMARY KEY") /*
 avoid `AUTOINCREMENT`
   `http://www.sqlite.org/autoinc.html` */;
@@ -618,7 +618,7 @@ avoid `AUTOINCREMENT`
             ..write(char__space)
             ..write("NOT ")
             ..write(
-              base__storage__data__basic__table__column__data__type.nil.name,
+              storage__data__basic__table__column__data__type.nil.name,
             );
         }
       },
@@ -636,8 +636,8 @@ avoid `AUTOINCREMENT`
   }
 
   /*ASYN<void> table__remove__asyn({
-    required final base__storage__data__basic__table__id table__id,
-    required final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
+    required final storage__data__basic__table__id table__id,
+    required final ARRAY<storage__data__basic__table__column__meta> columns__meta,
   }) async {
     await value___raw.operate__asyn___raw(
       statement: ("DROP TABLE " + table__id.convert__name___raw()),
@@ -647,14 +647,14 @@ tables cannot be removed ,after addition
   almost-completely similar to rows */
 
   ASYN<
-    base__storage__data__basic__table__row__id /*
+    storage__data__basic__table__row__id /*
 row-id.'s assignment/sequence is well-defined ,as always increasing integer ,beginning from zero */
   > //
   table__row__add__asyn /*
 can add only-single row */ ({
-    required final base__storage__data__basic__table__id table__id,
-    required final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
-    required final base__storage__data__basic__table__row row,
+    required final storage__data__basic__table__id table__id,
+    required final ARRAY<storage__data__basic__table__column__meta> columns__meta,
+    required final storage__data__basic__table__row row,
   }) async {
     final //
     statement = table__row__addition__statement___raw(
@@ -666,20 +666,20 @@ can add only-single row */ ({
           statement__arguments: row,
         );
 
-    return base__storage__data__basic__table__row__id(
+    return storage__data__basic__table__row__id(
       ((result.first.first as INT) - 1),
     );
   }
 
   ASYN<
-    base__storage__data__basic__table__row__id /*
+    storage__data__basic__table__row__id /*
 of `rows.first` */
   > //
   table__rows__add__asyn /*
 can add multiple-rows ,as well as a single-row */ ({
-    required final base__storage__data__basic__table__id table__id,
-    required final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
-    required final ARRAY<base__storage__data__basic__table__row> rows,
+    required final storage__data__basic__table__id table__id,
+    required final ARRAY<storage__data__basic__table__column__meta> columns__meta,
+    required final ARRAY<storage__data__basic__table__row> rows,
   }) async {
     final statement = table__row__addition__statement___raw(
       table__id: table__id,
@@ -698,15 +698,15 @@ can add multiple-rows ,as well as a single-row */ ({
       );
     }
 
-    return base__storage__data__basic__table__row__id(
+    return storage__data__basic__table__row__id(
       (result.first.first as INT),
     );
   }
 
   string //
   table__row__addition__statement___raw({
-    required final base__storage__data__basic__table__id table__id,
-    required final ARRAY<base__storage__data__basic__table__column__meta> columns__meta,
+    required final storage__data__basic__table__id table__id,
+    required final ARRAY<storage__data__basic__table__column__meta> columns__meta,
   }) {
     final //
     columns__count = columns__meta.elements__count,
@@ -717,7 +717,7 @@ can add multiple-rows ,as well as a single-row */ ({
     {
       statement__buffer.write(columns__meta.first.name());
 
-      base__iterate__basic(
+      iterate__basic(
         (columns__count - 1),
         (final column__id) {
           statement__buffer
@@ -733,7 +733,7 @@ can add multiple-rows ,as well as a single-row */ ({
       ..write(",?" * (columns__count - 1))
       ..write(char__bracket__round__close)
       ..write(" RETURNING ")
-      ..write(base__storage__data__basic__meta__base.table__row__id__column__name);
+      ..write(storage__data__basic__meta__base.table__row__id__column__name);
 
     final result = statement__buffer.toString();
     statement__buffer.clear();
@@ -742,15 +742,15 @@ can add multiple-rows ,as well as a single-row */ ({
   }
 
   ASYN<void> table__row__cells__assign__asyn({
-    required final base__storage__data__basic__table__id table__id,
-    required final base__storage__data__basic__table__row__id table__row__id,
-    required final ARRAY<base__storage__data__basic__table__column> columns,
+    required final storage__data__basic__table__id table__id,
+    required final storage__data__basic__table__row__id table__row__id,
+    required final ARRAY<storage__data__basic__table__column> columns,
   }) async {
     final //
     statement__buffer = StringBuffer("UPDATE ")
           ..write(table__id.convert__name___raw())
           ..write(" SET "),
-        statement__arguments__accumulation = base__accumulation__linear__basic<Object?>();
+        statement__arguments__accumulation = accumulation__linear__basic___compo<Object?>();
 
     columns.iterate__basic(
       (final column__id, final column) {
@@ -770,7 +770,7 @@ can add multiple-rows ,as well as a single-row */ ({
 
     statement__buffer
       ..write(" WHERE ")
-      ..write(base__storage__data__basic__meta__base.table__row__id__column__name)
+      ..write(storage__data__basic__meta__base.table__row__id__column__name)
       ..write(" = ?");
 
     statement__arguments__accumulation.add__ending(
@@ -791,13 +791,13 @@ can add multiple-rows ,as well as a single-row */ ({
   }
 
   /*ASYN<void> table__row__remove__asyn({
-    required final base__storage__data__basic__table__id table__id,
-    required final base__storage__data__basic__table__row__id table__row__id,
+    required final storage__data__basic__table__id table__id,
+    required final storage__data__basic__table__row__id table__row__id,
   }) async {
     final statement__buffer = StringBuffer("DELETE FROM ")
       ..write(table__id.convert__name___raw())
       ..write(" WHERE ")
-      ..write(base__storage__data__basic__meta__base.table__row__id__column__name)
+      ..write(storage__data__basic__meta__base.table__row__id__column__name)
       ..write(" = ?");
 
     final statement = statement__buffer.toString();
@@ -810,7 +810,7 @@ can add multiple-rows ,as well as a single-row */ ({
     );
   }
   ASYN<void> table__rows__all__remove__asyn({
-    required final base__storage__data__basic__table__id table__id,
+    required final storage__data__basic__table__id table__id,
   }) async {
     await value___raw.operate__asyn___raw(
       statement: ("DELETE FROM " + table__id.convert__name___raw()),
@@ -860,15 +860,15 @@ revert the changes/mutations */ () async {
   }
 }
 
-class base__storage__data__basic__table__row__id //
-    extends base__storage__data__basic__table__row__id__base {
-  const base__storage__data__basic__table__row__id(
+class storage__data__basic__table__row__id //
+    extends storage__data__basic__table__row__id__base {
+  const storage__data__basic__table__row__id(
     super.value,
   );
 }
 
-abstract class base__storage__data__basic__table__row__id__base {
-  const base__storage__data__basic__table__row__id__base(
+abstract class storage__data__basic__table__row__id__base {
+  const storage__data__basic__table__row__id__base(
     this.value,
   );
 
@@ -893,7 +893,7 @@ extension SqliteWriteContext__operation__extension //
   }
 }
 
-enum base__storage__data__basic__table__column__data__type {
+enum storage__data__basic__table__column__data__type {
   nil("NULL") /*Null*/,
   number__integer__auto("INTEGER") /*INT__NEG*/,
   number__exponential("REAL") /*APPROX*/,
@@ -902,22 +902,22 @@ enum base__storage__data__basic__table__column__data__type {
 prefer `.byte__array`, unless searching is required */
   ;
 
-  const base__storage__data__basic__table__column__data__type(this.name);
+  const storage__data__basic__table__column__data__type(this.name);
 
   final string name;
 }
 
-class base__storage__data__basic__table__column__meta /*
+class storage__data__basic__table__column__meta /*
 example : `
-typedef _column__meta = base__storage__data__table__column__meta;
-typedef _column__data__type = base__storage__data__table__column__data__type;
+typedef _column__meta = storage__data__table__column__meta;
+typedef _column__data__type = storage__data__table__column__data__type;
 final //
   _column__abc = _column__meta(NIL,_column__data__type.integer__un_signed),
   _column__jkl = _column__meta(_column__abc,_column__data__type.integer__auto),
   _column__xyz = _column__meta(_column__jkl,_column__data__type.bytes, nil_able___ok: TRUE),
   _columns__meta = [_column__abc, _column__jkl, _column__xyz];` */ {
-  base__storage__data__basic__table__column__meta(
-    final base__storage__data__basic__table__column__meta? column__previous__meta,
+  storage__data__basic__table__column__meta(
+    final storage__data__basic__table__column__meta? column__previous__meta,
     this.type, {
     this.nil_able___ok = FALSE,
   }) : id =
@@ -927,7 +927,7 @@ final //
 
   final INT id;
   /*final string name;*/
-  final base__storage__data__basic__table__column__data__type type;
+  final storage__data__basic__table__column__data__type type;
   final BOOL nil_able___ok;
 
   string name() {
@@ -935,13 +935,13 @@ final //
   }
 }
 
-class base__storage__data__basic__table__column {
-  const base__storage__data__basic__table__column(
+class storage__data__basic__table__column {
+  const storage__data__basic__table__column(
     this.meta,
     this.value,
   );
 
-  final base__storage__data__basic__table__column__meta meta;
+  final storage__data__basic__table__column__meta meta;
   final Object? value;
 }
 
@@ -969,7 +969,7 @@ class base__storage__data__basic__table__column {
   return result;
 }*/
 
-ASYN<void> base__storage__data__basic__meta__test(
+ASYN<void> storage__data__basic__meta__test(
   final string file__path,
 ) async {
   {
@@ -1007,7 +1007,7 @@ ASYN<void> base__storage__data__basic__meta__test(
   }
 
   ASYN<void> storage__print(
-    final base__storage__data__basic__accessing__meta__base meta,
+    final storage__data__basic__accessing__meta__base meta,
   ) async {
     "printing storage".print();
 
@@ -1015,11 +1015,11 @@ ASYN<void> base__storage__data__basic__meta__test(
 
     tables__count.representation__text().print("tables__count");
 
-    await base__iterate__basic__asyn(
+    await iterate__basic__asyn(
       tables__count,
       (final table__id) async {
         final rows = await meta.table__rows__all__asyn(
-          table__id: base__storage__data__basic__table__id(
+          table__id: storage__data__basic__table__id(
             table__id,
           ),
         );
@@ -1035,7 +1035,7 @@ ASYN<void> base__storage__data__basic__meta__test(
     "printed".print();
   }
 
-  final storage = await base__storage__data__basic__meta.asyn(
+  final storage = await storage__data__basic__meta.asyn(
     file__path: file__path,
   );
 
@@ -1067,7 +1067,7 @@ ASYN<void> base__storage__data__basic__meta__test(
   {
     var abort___ok = TRUE;
 
-    await base__iterate__forever__asyn(
+    await iterate__forever__asyn(
       (_) async {
         final meta = await storage.accessing__mutating__meta__asyn();
 
@@ -1077,17 +1077,17 @@ ASYN<void> base__storage__data__basic__meta__test(
           return FALSE;
         } else {
           final //
-          name = base__storage__data__basic__table__column__meta(
+          name = storage__data__basic__table__column__meta(
                 NIL,
-                base__storage__data__basic__table__column__data__type.text,
+                storage__data__basic__table__column__data__type.text,
               ),
-              age = base__storage__data__basic__table__column__meta(
+              age = storage__data__basic__table__column__meta(
                 name,
-                base__storage__data__basic__table__column__data__type.number__integer__auto,
+                storage__data__basic__table__column__data__type.number__integer__auto,
               ),
-              weight = base__storage__data__basic__table__column__meta(
+              weight = storage__data__basic__table__column__meta(
                 age,
-                base__storage__data__basic__table__column__data__type.number__exponential,
+                storage__data__basic__table__column__data__type.number__exponential,
               ),
               columns__meta = [name, age, weight];
 

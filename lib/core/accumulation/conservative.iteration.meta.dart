@@ -1,6 +1,6 @@
 part of "../_.dart";
 
-class base__accumulation__conservative__iteration__meta /*
+class accumulation__conservative__iteration__meta /*
 allows iterating an accumulation of arrays
   beginning from the first-array ,to last array ,but not further (which is non-existent ,hence in-valid state)
 persisted(in compo.) unit for iteration is array
@@ -37,7 +37,7 @@ element-access style
     );
   }
 
-  base__accumulation__conservative__iteration__meta({
+  accumulation__conservative__iteration__meta({
     required final INT elements__count /*
 can be zero */
     ,
@@ -455,7 +455,7 @@ declarative approach */
       ) {
         var iterate___ok = TRUE;
 
-        base__iterate(
+        iterate(
           array__elements__count,
           offset: array__elements__offset,
           (final element__id) {
@@ -473,10 +473,10 @@ declarative approach */
     );
   }
 
-  base__representation__text //
+  representation__text___compo //
       representation__text() {
-    return base__compo__representation__text(
-      name: "base__accumulation__conservative__iteration__meta",
+    return compo__representation__text(
+      name: "accumulation__conservative__iteration__meta",
       members: {
         "elements__count__remaining": elements__count__remaining___raw.representation__text(),
         "elements__offset": elements__offset___raw.representation__text(),
@@ -486,7 +486,7 @@ declarative approach */
   }
 }
 
-void base__accumulation__conservative__iteration__meta__test /*
+void accumulation__conservative__iteration__meta__test /*
 guide: `
 [0][1]
 [2][3][4][5]
@@ -512,11 +512,11 @@ guide: `
           array__current__id: 0,
         ),
       ),
-    ].iterate__basic(
+    ].iterate(
       (final i, final e) {
         "tests__$name[$i] : (elements__count :${e.elements__count})".print();
 
-        final iteration__meta = base__accumulation__conservative__iteration__meta(
+        final iteration__meta = accumulation__conservative__iteration__meta(
           elements__count: e.elements__count,
         );
 
@@ -525,11 +525,13 @@ guide: `
             (iteration__meta.array__current__id___raw != e.result.array__current__id)) {
           throw "tests__$name[$i] failed";
         }
+
+        return TRUE;
       },
     );
 
     "tests__$name OK".print();
-    base__print__blank();
+    print__blank();
   }
 
   {
@@ -544,11 +546,11 @@ guide: `
         doubling: 0,
         result: (array__first__elements__count__ideal: 1,),
       ),
-    ].iterate__basic(
+    ].iterate(
       (final i, final e) {
         "tests__$name[$i] : (doubling :${e.doubling})".print();
 
-        final iteration__meta = base__accumulation__conservative__iteration__meta(
+        final iteration__meta = accumulation__conservative__iteration__meta(
           array__first__elements__count__doubling__initial: e.doubling,
           elements__count: 0,
         );
@@ -556,11 +558,13 @@ guide: `
         if (iteration__meta.array__current__elements__count__ideal___raw() != e.result.array__first__elements__count__ideal) {
           throw "tests__$name[$i] failed";
         }
+
+        return TRUE;
       },
     );
 
     "tests__$name OK".print();
-    base__print__blank();
+    print__blank();
   }
 
   {
@@ -643,12 +647,12 @@ guide: `
         iteration__offset: 5,
         result: NIL,
       ),
-    ].iterate__basic(
+    ].iterate(
       (final i, final e) {
         "tests__$name[$i] : (elements__count :${e.elements__count} ,iteration__offset :${e.iteration__offset})".print();
 
         final //
-            iteration__meta = base__accumulation__conservative__iteration__meta(
+            iteration__meta = accumulation__conservative__iteration__meta(
               elements__count: e.elements__count,
             ),
             result = e.result;
@@ -676,11 +680,13 @@ guide: `
             (iteration__meta.array__current__id___raw != result.array__current__id)) {
           throw "tests__$name[$i] failed";
         }
+
+        return TRUE;
       },
     );
 
     "tests__$name OK".print();
-    base__print__blank();
+    print__blank();
   }
 
   {
@@ -739,11 +745,11 @@ guide: `
           array__current__id: 1,
         ),
       ),
-    ].iterate__basic(
+    ].iterate(
       (final i, final e) {
         "tests__$name[$i] : (elements__count :${e.elements__count} ,begin :${e.begin} ,end :${e.end})".print();
 
-        final iteration__meta = base__accumulation__conservative__iteration__meta(
+        final iteration__meta = accumulation__conservative__iteration__meta(
           elements__count: e.elements__count,
         );
 
@@ -762,11 +768,13 @@ guide: `
             (iteration__meta.array__current__id___raw != result.array__current__id)) {
           throw "tests__$name[$i] failed";
         }
+
+        return TRUE;
       },
     );
 
     "tests__$name OK".print();
-    base__print__blank();
+    print__blank();
   }
 
   {
@@ -822,13 +830,13 @@ guide: `
           offset: 2,
         ),
       ),
-    ].iterate__basic(
+    ].iterate(
       (final i, final e) {
         final range = e.iteration__range;
 
         "tests__$name[$i] : (elements__count :${e.elements__count} ,offset :${range.offset} ,count :${range.count})".print();
 
-        final iteration__meta = base__accumulation__conservative__iteration__meta(
+        final iteration__meta = accumulation__conservative__iteration__meta(
           elements__count: e.elements__count,
         );
 
@@ -847,10 +855,12 @@ guide: `
         if (count != 0) {
           throw "tests__$name[$i] failed";
         }
+
+        return TRUE;
       },
     );
 
     "tests__$name OK".print();
-    base__print__blank();
+    print__blank();
   }
 }

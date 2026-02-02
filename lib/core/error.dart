@@ -1,8 +1,8 @@
 part of "_.dart";
 
-base__error__handle__proc_ base__error__handle = base__error__print;
+error__handle__proc_ error__handle = error__print;
 
-typedef base__error__handle__proc_ = //
+typedef error__handle__proc_ = //
     void Function(
       Object /*
 generic-type `error__type extends Object` cannot be used
@@ -33,7 +33,7 @@ class error__reference__assertion__valid__in___error {
   const error__reference__assertion__valid__in___error();
 }
 
-BOOL base__error__fatal___ok //
+BOOL error__fatal___ok //
 /*exception|error:serious|panic*/ /* un-recoverable ,possible in-valid usage */ (
   final Object error,
 ) {
@@ -49,31 +49,31 @@ BOOL base__error__fatal___ok //
 }
 
 string //
-base__error__code(
+error__code(
   final BOOL error__fatal___ok,
 ) {
   return (error__fatal___ok //
-      ? base__chars__alphabet__case__upper__f___string /* Fatal */
-      : base__chars__alphabet__case__upper__e___string /* Error */ );
+      ? chars__alphabet__case__upper__f___string /* Fatal */
+      : chars__alphabet__case__upper__e___string /* Error */ );
 }
 
-void base__error__print(
+void error__print(
   final Object error,
   final StackTrace? trace, [
   final string? label,
 ]) {
-  base__print__blank(16);
+  print__blank(16);
 
-  base__error__print__concise(
+  error__print__concise(
     error,
     trace,
     label,
   );
 
-  base__print__blank(16);
+  print__blank(16);
 }
 
-void base__error__print__concise(
+void error__print__concise(
   final Object error,
   final StackTrace? trace, [
   final string? label,
@@ -81,8 +81,8 @@ void base__error__print__concise(
   error //
       .representation__text()
       .print(
-        base__error__code(
-          base__error__fatal___ok(error),
+        error__code(
+          error__fatal___ok(error),
         ),
         label,
       );

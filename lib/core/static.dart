@@ -9,109 +9,21 @@ char__bullet = string.fromCharCode(CHAR__UNICODE__bullet),
     char__currency__rupee = string.fromCharCode(CHAR__UNICODE__currency__rupee);
 
 const //
-    base__chars__line_feed___string = '\n',
-    //
-    base__chars__space___string = ' ',
-    base__chars__exclamation___string = '!',
-    base__chars__quote__double___string = '"',
-    base__chars__hash___string = '#',
-    base__chars__dollar___string = r'$',
-    base__chars__percent___string = '%',
-    base__chars__ampersand___string = '&',
-    base__chars__quote__single___string = '\'',
-    base__chars__bracket__round__open___string = '(',
-    base__chars__bracket__round__close___string = ')',
-    base__chars__asterisk___string = '*',
-    base__chars__plus___string = '+',
-    base__chars__comma___string = ',',
-    base__chars__dash___string = '-',
-    base__chars__dot___string = '.',
-    base__chars__slash__forward___string = '/',
-    //
-    base__chars__number__zero___string = '0',
-    base__chars__number__one___string = '1',
-    base__chars__number__two___string = '2',
-    base__chars__number__three___string = '3',
-    base__chars__number__four___string = '4',
-    base__chars__number__five___string = '5',
-    base__chars__number__six___string = '6',
-    base__chars__number__seven___string = '7',
-    base__chars__number__eight___string = '8',
-    base__chars__number__nine___string = '9',
-    //
-    base__chars__colon___string = ':',
-    base__chars__colon__semi___string = ';',
-    base__chars__less_than___string = '<',
-    base__chars__equal___string = '=',
-    base__chars__more_than___string = '>',
-    base__chars__question___string = '?',
-    base__chars__at___string = '@',
-    //
-    base__chars__alphabet__case__upper__a___string = 'A',
-    base__chars__alphabet__case__upper__b___string = 'B',
-    base__chars__alphabet__case__upper__c___string = 'C',
-    base__chars__alphabet__case__upper__d___string = 'D',
-    base__chars__alphabet__case__upper__e___string = 'E',
-    base__chars__alphabet__case__upper__f___string = 'F',
-    base__chars__alphabet__case__upper__g___string = 'G',
-    base__chars__alphabet__case__upper__h___string = 'H',
-    base__chars__alphabet__case__upper__i___string = 'I',
-    base__chars__alphabet__case__upper__j___string = 'J',
-    base__chars__alphabet__case__upper__k___string = 'K',
-    base__chars__alphabet__case__upper__l___string = 'L',
-    base__chars__alphabet__case__upper__m___string = 'M',
-    base__chars__alphabet__case__upper__n___string = 'N',
-    base__chars__alphabet__case__upper__o___string = 'O',
-    base__chars__alphabet__case__upper__p___string = 'P',
-    base__chars__alphabet__case__upper__q___string = 'Q',
-    base__chars__alphabet__case__upper__r___string = 'R',
-    base__chars__alphabet__case__upper__s___string = 'S',
-    base__chars__alphabet__case__upper__t___string = 'T',
-    base__chars__alphabet__case__upper__u___string = 'U',
-    base__chars__alphabet__case__upper__v___string = 'V',
-    base__chars__alphabet__case__upper__w___string = 'W',
-    base__chars__alphabet__case__upper__x___string = 'X',
-    base__chars__alphabet__case__upper__y___string = 'Y',
-    base__chars__alphabet__case__upper__z___string = 'Z',
-    //
-    base__chars__bracket__square__open___string = '[',
-    base__chars__slash__backward___string = r'\',
-    base__chars__bracket__square__close___string = ']',
-    base__chars__caret___string = '^',
-    base__chars__underscore___string = '_',
-    base__chars__quote__back___string = '`',
-    //
-    base__chars__alphabet__case__lower__a___string = 'a',
-    base__chars__alphabet__case__lower__b___string = 'b',
-    base__chars__alphabet__case__lower__c___string = 'c',
-    base__chars__alphabet__case__lower__d___string = 'd',
-    base__chars__alphabet__case__lower__e___string = 'e',
-    base__chars__alphabet__case__lower__f___string = 'f',
-    base__chars__alphabet__case__lower__g___string = 'g',
-    base__chars__alphabet__case__lower__h___string = 'h',
-    base__chars__alphabet__case__lower__i___string = 'i',
-    base__chars__alphabet__case__lower__j___string = 'j',
-    base__chars__alphabet__case__lower__k___string = 'k',
-    base__chars__alphabet__case__lower__l___string = 'l',
-    base__chars__alphabet__case__lower__m___string = 'm',
-    base__chars__alphabet__case__lower__n___string = 'n',
-    base__chars__alphabet__case__lower__o___string = 'o',
-    base__chars__alphabet__case__lower__p___string = 'p',
-    base__chars__alphabet__case__lower__q___string = 'q',
-    base__chars__alphabet__case__lower__r___string = 'r',
-    base__chars__alphabet__case__lower__s___string = 's',
-    base__chars__alphabet__case__lower__t___string = 't',
-    base__chars__alphabet__case__lower__u___string = 'u',
-    base__chars__alphabet__case__lower__v___string = 'v',
-    base__chars__alphabet__case__lower__w___string = 'w',
-    base__chars__alphabet__case__lower__x___string = 'x',
-    base__chars__alphabet__case__lower__y___string = 'y',
-    base__chars__alphabet__case__lower__z___string = 'z',
-    //
-    base__chars__bracket__curly__open___string = '{',
-    base__chars__pipe___string = '|',
-    base__chars__bracket__curly__close___string = '}',
-    base__chars__tilde___string = '~';
+chars__line_feed___string = '\n',
+//
+chars__space___string = ' ', chars__exclamation___string = '!', chars__quote__double___string = '"', chars__hash___string = '#', chars__dollar___string = r'$', chars__percent___string = '%', chars__ampersand___string = '&', chars__quote__single___string = '\'', chars__bracket__round__open___string = '(', chars__bracket__round__close___string = ')', chars__asterisk___string = '*', chars__plus___string = '+', chars__comma___string = ',', chars__dash___string = '-', chars__dot___string = '.', chars__slash__forward___string = '/',
+//
+chars__number__zero___string = '0', chars__number__one___string = '1', chars__number__two___string = '2', chars__number__three___string = '3', chars__number__four___string = '4', chars__number__five___string = '5', chars__number__six___string = '6', chars__number__seven___string = '7', chars__number__eight___string = '8', chars__number__nine___string = '9',
+//
+chars__colon___string = ':', chars__colon__semi___string = ';', chars__less_than___string = '<', chars__equal___string = '=', chars__more_than___string = '>', chars__question___string = '?', chars__at___string = '@',
+//
+chars__alphabet__case__upper__a___string = 'A', chars__alphabet__case__upper__b___string = 'B', chars__alphabet__case__upper__c___string = 'C', chars__alphabet__case__upper__d___string = 'D', chars__alphabet__case__upper__e___string = 'E', chars__alphabet__case__upper__f___string = 'F', chars__alphabet__case__upper__g___string = 'G', chars__alphabet__case__upper__h___string = 'H', chars__alphabet__case__upper__i___string = 'I', chars__alphabet__case__upper__j___string = 'J', chars__alphabet__case__upper__k___string = 'K', chars__alphabet__case__upper__l___string = 'L', chars__alphabet__case__upper__m___string = 'M', chars__alphabet__case__upper__n___string = 'N', chars__alphabet__case__upper__o___string = 'O', chars__alphabet__case__upper__p___string = 'P', chars__alphabet__case__upper__q___string = 'Q', chars__alphabet__case__upper__r___string = 'R', chars__alphabet__case__upper__s___string = 'S', chars__alphabet__case__upper__t___string = 'T', chars__alphabet__case__upper__u___string = 'U', chars__alphabet__case__upper__v___string = 'V', chars__alphabet__case__upper__w___string = 'W', chars__alphabet__case__upper__x___string = 'X', chars__alphabet__case__upper__y___string = 'Y', chars__alphabet__case__upper__z___string = 'Z',
+//
+chars__bracket__square__open___string = '[', chars__slash__backward___string = r'\', chars__bracket__square__close___string = ']', chars__caret___string = '^', chars__underscore___string = '_', chars__quote__back___string = '`',
+//
+chars__alphabet__case__lower__a___string = 'a', chars__alphabet__case__lower__b___string = 'b', chars__alphabet__case__lower__c___string = 'c', chars__alphabet__case__lower__d___string = 'd', chars__alphabet__case__lower__e___string = 'e', chars__alphabet__case__lower__f___string = 'f', chars__alphabet__case__lower__g___string = 'g', chars__alphabet__case__lower__h___string = 'h', chars__alphabet__case__lower__i___string = 'i', chars__alphabet__case__lower__j___string = 'j', chars__alphabet__case__lower__k___string = 'k', chars__alphabet__case__lower__l___string = 'l', chars__alphabet__case__lower__m___string = 'm', chars__alphabet__case__lower__n___string = 'n', chars__alphabet__case__lower__o___string = 'o', chars__alphabet__case__lower__p___string = 'p', chars__alphabet__case__lower__q___string = 'q', chars__alphabet__case__lower__r___string = 'r', chars__alphabet__case__lower__s___string = 's', chars__alphabet__case__lower__t___string = 't', chars__alphabet__case__lower__u___string = 'u', chars__alphabet__case__lower__v___string = 'v', chars__alphabet__case__lower__w___string = 'w', chars__alphabet__case__lower__x___string = 'x', chars__alphabet__case__lower__y___string = 'y', chars__alphabet__case__lower__z___string = 'z',
+//
+chars__bracket__curly__open___string = '{', chars__pipe___string = '|', chars__bracket__curly__close___string = '}', chars__tilde___string = '~';
 
 const //
 number__ordinal__static__sting__array = <string>[
@@ -179,8 +91,8 @@ number__ordinal__static__sting__array = <string>[
     file__type__static__text__graphic__image = "image",
     file__type__static__text__graphic__symbol = "symbol",
     file__type__static__text__array = <string>[
-      (file__type__static__text__graphic__image + base__chars__colon___string + "png"),
-      (file__type__static__text__graphic__symbol + base__chars__colon___string + "svg"),
+      (file__type__static__text__graphic__image + chars__colon___string + "png"),
+      (file__type__static__text__graphic__symbol + chars__colon___string + "svg"),
     ];
 
 final //
@@ -212,3 +124,31 @@ char__s = 's',
 
 string get static__text__add => static__text__array[0];
 string get static__text__all => static__text__array[1];
+
+const //
+language__hindi__numbers__count = 10,
+    language__latin__english__alphabets__count = 26;
+
+string text__count__convert__plural(
+  final StringBuffer buffer,
+  final INT count,
+  final string word, [
+  final BOOL suffix__s___ok /* {'s'|"es"} */ = TRUE,
+]) {
+  final buffer = StringBuffer();
+
+  buffer
+    ..write(count)
+    ..write(chars__space___string)
+    ..write(word);
+
+  if (count != 1) {
+    buffer.write(
+      suffix__s___ok //
+          ? "s"
+          : "es",
+    );
+  }
+
+  return buffer.toString();
+}

@@ -60,10 +60,10 @@ const //
     bytes__preserved__array__count__size__id = number__size.byte__string__8;
 
 preservation__journal___compo preservation__journal(
-  final base__storage__file__native__linux__meta___compo storage,
+  final storage__file__native__linux__meta___compo storage,
 ) =>
     preservation__journal___compo._(
-      base__stack<bytes__preserved__compo>(),
+      stack___compo<bytes__preserved__compo>(),
       storage,
       0,
     );
@@ -75,8 +75,8 @@ class preservation__journal___compo {
     this.bytes__count,
   );
 
-  final base__stack<bytes__preserved__compo> store;
-  final base__storage__file__native__linux__meta___compo storage;
+  final stack___compo<bytes__preserved__compo> store;
+  final storage__file__native__linux__meta___compo storage;
 
   INT bytes__count;
 }
@@ -101,12 +101,12 @@ report__info bytes__preserved__convert__report__info(
     record__convert__report__info({
       "offset.by__arr": bytes__preserved.offset
           .cast__byte__array(
-            base__storage__data__position__size__id,
+            storage__data__position__size__id,
           )
           .representation__text(),
       "count.by__arr": bytes__preserved.count
           .cast__byte__array(
-            base__storage__data__position__size__id,
+            storage__data__position__size__id,
           )
           .representation__text(),
       "by__arr": bytes__preserved.bytes.convert__report__info().value,
@@ -138,16 +138,16 @@ void preservation__journal__add(
 void preservation__journal__persist(
   final preservation__journal___compo preservation__journal,
 ) {
-  if (base__printing___ok) {
-    base__function__call__print(
+  if (printing___ok) {
+    function__call__print(
       "preservation__journal__persist",
       preservation__journal.debug__label,
     );
   }
 
-  base__printing__indentation__increase();
+  printing__indentation__increase();
 
-  if (base__printing___ok) {
+  if (printing___ok) {
     preservation__journal.bytes__count.representation__text().print(
           "bytes__count",
         );
@@ -155,33 +155,33 @@ void preservation__journal__persist(
 
   final //
       bytes__count_ = (preservation__journal.bytes__count + //
-          (preservation__journal.store.elements__count * (bytes__preserved__count__size__id.size + base__storage__data__position__size__id.size)) +
+          (preservation__journal.store.elements__count * (bytes__preserved__count__size__id.size + storage__data__position__size__id.size)) +
           bytes__preserved__array__count__size__id.size),
       buffer__block__count = (INT__aligned__alignment__count(
             bytes__count_,
-            base__storage__file__block__size.shift__count,
+            storage__file__block__size.shift__count,
           ) +
           (!base__INT__aligned___ok(
             bytes__count_,
-            base__storage__file__block__size.size,
+            storage__file__block__size.size,
           )
               ? 1
               : 0)),
-      buffer__count = (buffer__block__count * base__storage__file__block__size.size),
+      buffer__count = (buffer__block__count * storage__file__block__size.size),
       buffer = BS1__array__aligned__alloc(
-        base__storage__file__block__size.size,
+        storage__file__block__size.size,
         buffer__block__count,
       ),
       buffer__array = buffer.array;
 
-  if (base__printing___ok) {
+  if (printing___ok) {
     bytes__count_.representation__text().print("bytes__count_");
     buffer__count.representation__text().print("buffer__count");
     buffer__block__count.representation__text().print("buffer__block__count");
     preservation__journal.store.elements__count.representation__text().print("store.count");
   }
 
-  base__copy(
+  copy(
     buffer__array,
     preservation__journal.store.elements__count.cast__byte__array(
       bytes__preserved__array__count__size__id,
@@ -193,19 +193,19 @@ void preservation__journal__persist(
 
   preservation__journal.store.iterate__basic(
     (final bytes__preserved) {
-      if (base__printing___ok) {
+      if (printing___ok) {
         bytes__preserved__convert__report__info(bytes__preserved).report("bytes__preserved");
       }
 
-      bytes__offset = base__copy(
+      bytes__offset = copy(
         buffer__array,
         bytes__preserved.offset.cast__byte__array(
-          base__storage__data__position__size__id,
+          storage__data__position__size__id,
         ),
-        dest__offset: base__copy(
+        dest__offset: copy(
           buffer__array,
           bytes__preserved.bytes,
-          dest__offset: base__copy(
+          dest__offset: copy(
             buffer__array,
             bytes__preserved.count.cast__byte__array(
               bytes__preserved__count__size__id,
@@ -214,12 +214,12 @@ void preservation__journal__persist(
             count: bytes__preserved__count__size__id.size,
           ).dest__offset__new,
         ).dest__offset__new,
-        count: base__storage__data__position__size__id.size,
+        count: storage__data__position__size__id.size,
       ).dest__offset__new;
     },
   );
 
-  base__storage__file__native__linux__read_write(
+  storage__file__native__linux__read_write(
     preservation__journal.storage,
     buffer.ptr,
     buffer__count,
@@ -227,7 +227,7 @@ void preservation__journal__persist(
     b__write: TRUE,
   );
 
-  base__storage__file__native__linux__sync(
+  storage__file__native__linux__sync(
     preservation__journal.storage,
   );
 
@@ -240,39 +240,39 @@ void preservation__journal__persist(
   since `preservation__journal` has been persisted
     hence `flush`ing, the in-memory copy, which is no longer needed */
 
-  base__printing__indentation__decrease();
+  printing__indentation__decrease();
 }
 
 void preservation__journal__recover__if__needed({
-  required final base__storage__file__fast___compo base__storage__data__storage,
-  required final base__storage__file__native__linux__meta___compo bytes__preserved__storage,
+  required final storage__file__fast___compo storage__data__storage,
+  required final storage__file__native__linux__meta___compo bytes__preserved__storage,
 }) {
-  if (base__printing___ok) {
-    base__function__call__print(
+  if (printing___ok) {
+    function__call__print(
       "preservation__journal__recover__if__needed",
       bytes__preserved__storage.debug__label,
     );
   }
 
-  base__printing__indentation__increase();
+  printing__indentation__increase();
 
   var buffer = BS1__array__aligned__alloc(
-    base__storage__file__block__size.size,
+    storage__file__block__size.size,
     1,
   );
 
-  base__storage__file__native__linux__read_write(
+  storage__file__native__linux__read_write(
     bytes__preserved__storage,
     buffer.ptr,
-    base__storage__file__block__size.size,
+    storage__file__block__size.size,
     0,
   );
 
   final count = buffer.arr.cast__number__integer(
-    base__storage__data__position__size__id,
+    storage__data__position__size__id,
   );
 
-  if (base__printing___ok) {
+  if (printing___ok) {
     count.representation__text().print(
           "count",
           bytes__preserved__storage.debug__label,
@@ -290,7 +290,7 @@ void preservation__journal__recover__if__needed({
         0,
       );
 
-      if (base__printing___ok) {
+      if (printing___ok) {
         count__max.representation__text().print(
               "count__max",
               bytes__preserved__storage.debug__label,
@@ -298,11 +298,11 @@ void preservation__journal__recover__if__needed({
       }
 
       buffer = BS1__array__aligned__alloc(
-        base__storage__file__block__size.size,
+        storage__file__block__size.size,
         count__max,
       );
 
-      base__storage__file__native__linux__read_write(
+      storage__file__native__linux__read_write(
         bytes__preserved__storage,
         buffer.ptr,
         count__max,
@@ -315,7 +315,7 @@ void preservation__journal__recover__if__needed({
       bytes__preserved__array__count__size__id.size,
     );
 
-    base__iterate__reverse__basic(
+    iterate__reverse__basic(
       count,
       (_) {
         final //
@@ -326,14 +326,14 @@ void preservation__journal__recover__if__needed({
               count,
             ),
             offset = bytes.read__INT__fixed(
-              base__storage__data__position__size__id.size,
+              storage__data__position__size__id.size,
             );
 
         offset.representation__text().print("offset");
 
         offset
             .cast__byte__array(
-              base__storage__data__position__size__id,
+              storage__data__position__size__id,
             )
             .representation__text()
             .print("offset.bys");
@@ -342,15 +342,15 @@ void preservation__journal__recover__if__needed({
 
         count
             .cast__byte__array(
-              base__storage__data__position__size__id,
+              storage__data__position__size__id,
             )
             .representation__text()
             .print("count.bys");
 
         bytes_.representation__text().print("bytes");
 
-        base__storage__file__fast__read_write(
-          base__storage__data__storage,
+        storage__file__fast__read_write(
+          storage__data__storage,
           bytes: bytes_,
           count: count,
           offset: offset,
@@ -363,12 +363,12 @@ void preservation__journal__recover__if__needed({
       buffer,
     );
 
-    base__storage__file__fast__sync(
-      base__storage__data__storage,
+    storage__file__fast__sync(
+      storage__data__storage,
     );
   }
 
-  base__printing__indentation__decrease();
+  printing__indentation__decrease();
 }
 
 void main /*

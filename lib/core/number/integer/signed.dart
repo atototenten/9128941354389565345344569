@@ -9,7 +9,7 @@ const //
 //
     INT__NEG__size = INT__NEG__8__size;
 
-enum base__INT__NEG__text__digits__fixed__truncation {
+enum INT__NEG__text__digits__fixed__truncation {
   beginning,
   ending,
 }
@@ -19,8 +19,8 @@ typedef INT__NEG__bytes__convert__result___compo = ({
   INT count,
 });
 
-class base__INT__NEG__text__digits__fixed {
-  base__INT__NEG__text__digits__fixed(
+class INT__NEG__text__digits__fixed {
+  INT__NEG__text__digits__fixed(
     this.value___raw, {
     required this.negative___ok,
     required this.digits__count,
@@ -29,7 +29,7 @@ class base__INT__NEG__text__digits__fixed {
 
   final INT digits__count;
 
-  final base__INT__NEG__text__digits__fixed__truncation? truncation;
+  final INT__NEG__text__digits__fixed__truncation? truncation;
 
   INT value___raw;
 
@@ -60,7 +60,7 @@ class base__INT__NEG__text__digits__fixed {
 
     if (negative___ok) {
       buffer.write(
-        base__chars__dash___string,
+        chars__dash___string,
       );
     }
 
@@ -75,7 +75,7 @@ class base__INT__NEG__text__digits__fixed {
             buffer.write(value__text);
           }
           break;
-        case base__INT__NEG__text__digits__fixed__truncation.beginning:
+        case INT__NEG__text__digits__fixed__truncation.beginning:
           {
             buffer.write(
               value__text.substring(
@@ -85,7 +85,7 @@ class base__INT__NEG__text__digits__fixed {
             );
           }
           break;
-        case base__INT__NEG__text__digits__fixed__truncation.ending:
+        case INT__NEG__text__digits__fixed__truncation.ending:
           {
             buffer.write(
               value__text.substring(

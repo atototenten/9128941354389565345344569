@@ -48,9 +48,11 @@ extension array__array__merge_ing<element___type> //
   ARRAY<element___type> merge() {
     var elements__count = 0;
 
-    iterate__reverse__basic(
+    this.iterate__reverse(
       (_, final e) {
         elements__count += e.elements__count;
+
+        return TRUE;
       },
     );
 
@@ -102,8 +104,8 @@ INT array__reverse__element__id(
   final INT elements__count,
 ) => ((elements__count - 1) - element__id);
 
-class base__array__elements__separated__generation__meta___compo {
-  const base__array__elements__separated__generation__meta___compo({
+class array__elements__separated__generation__meta___compo {
+  const array__elements__separated__generation__meta___compo({
     required final INT elements__count,
   }) : elements__count__adjusted = ((elements__count * 2 /* for ".elements__separation"s */ ) - 1 /* to exclude the ".elements__separation" after the last-element */ );
 
@@ -123,11 +125,13 @@ class base__array__elements__separated__generation__meta___compo {
 BS1__array INT__array__convert__BS1__array(
   final ARRAY<INT> arr,
 ) {
-  arr.iterate__reverse__basic(
+  arr.iterate__reverse(
     (final i, final value) {
       if /*F*/ (value > INT__1__max) {
         throw "$value(`array[$i]`) exceeds the limits of `by`";
       }
+
+      return TRUE;
     },
   );
 
@@ -147,12 +151,6 @@ extension ARRAY___extension<element___type> //
   BOOL empty___ok() => //
       (this.elements__count == 0);
 
-  BOOL empty__not() => //
-      (this.elements__count != 0);
-
-  ARRAY<element___type>? empty__not__else__nil() => //
-      (empty__not() ? this : NIL);
-
   element___type element__last() => //
       this[this.elements__count - 1];
 
@@ -160,29 +158,20 @@ extension ARRAY___extension<element___type> //
     final BOOL Function(INT element__id, element___type element) operate, {
     final INT? count,
     final INT offset = 0,
-  }) => base__iterate(
-    (count ?? (this.elements__count - offset)),
-    offset: offset,
-    (final element__id) => //
-        operate(element__id, this[element__id]),
-  );
-
-  void iterate__basic(
-    final void Function(INT element__id, element___type element) operate, {
-    final INT? count,
-    final INT offset = 0,
-  }) => base__iterate__basic(
-    (count ?? (this.elements__count - offset)),
-    (final element__id) => //
-        operate(element__id, this[element__id]),
-    offset: offset,
-  );
+  }) {
+    _iterate(
+      (count ?? (this.elements__count - offset)),
+      offset: offset,
+      (final element__id) => //
+          operate(element__id, this[element__id]),
+    );
+  }
 
   void iterate__reverse(
     final BOOL Function(INT element__id, element___type element) operate, {
     final INT? count,
   }) {
-    base__iterate__reverse(
+    _iterate__reverse(
       (count ?? this.elements__count),
       (final element__id) {
         return operate(
@@ -192,15 +181,6 @@ extension ARRAY___extension<element___type> //
       },
     );
   }
-
-  void iterate__reverse__basic(
-    final void Function(INT element__id, element___type element) operate, {
-    final INT? count,
-  }) => base__iterate__reverse__basic(
-    (count ?? this.elements__count),
-    (final element__id) => //
-        operate(element__id, this[element__id]),
-  );
 
   element___type element(
     final INT element__id,
@@ -230,7 +210,7 @@ un-equal element's id, if any */
   }) {
     INT? result;
 
-    base__iterate(
+    _iterate(
       (count ?? this.elements__count),
       offset: offset,
       (final element__id) {
@@ -340,14 +320,18 @@ whole `segment` has been iterated ,and was not un-equal to `this[(i-segment__ele
       (input: [0, 1, 2, 3], segment: [1, 2], result: 1),
       (input: [0, 1, 2, 3], segment: [1, 2, 3], result: 1),
       (input: [0, 1, 2, 3], segment: [1, 3], result: NIL),
-    ].iterate__basic((_, final e) {
-      final result =
-          e.input.search__segment(e.segment) //
-            ..representation__text().print("${e.input}.search__segment(${e.segment})");
-      if (result != e.result) {
-        throw "un-expected result :($result ~= ${e.result})";
-      }
-    });
+    ].iterate(
+      (_, final e) {
+        final result =
+            e.input.search__segment(e.segment) //
+              ..representation__text().print("${e.input}.search__segment(${e.segment})");
+        if (result != e.result) {
+          throw "un-expected result :($result ~= ${e.result})";
+        }
+
+        return TRUE;
+      },
+    );
   }
 
   BOOL search__segment__begin(
@@ -385,24 +369,26 @@ more run-time efficient ,than `search__segment` */ {
       (input: [0, 1, 2, 3], segment: [1, 2], result: FALSE),
       (input: [0, 1, 2, 3], segment: [0, 1, 2, 3], result: FALSE),
       (input: [0, 1, 2], segment: [0, 1, 2, 3], result: FALSE),
-    ].iterate__basic((_, final e) {
+    ].iterate((_, final e) {
       final result =
           e.input.search__segment__begin(e.segment) //
             ..representation__text().print("${e.input}.search__segment__begin(${e.segment})");
       if (result != e.result) {
         throw "un-expected result :($result ~= ${e.result})";
       }
+
+      return TRUE;
     });
   }
 
   ARRAY<element___type> search__multiple /*
 join */ <element__other__type>(
     final ARRAY<element__other__type> other,
-    final base__value__equality__function__format<element___type, element__other__type> element__equal___ok,
+    final value__equality__function__format<element___type, element__other__type> element__equal___ok,
   ) {
-    final accumulation = base__accumulation__linear__basic<element___type>();
+    final accumulation = accumulation__linear__basic___compo<element___type>();
 
-    iterate__basic(
+    this.iterate(
       (_, final element) {
         var equal___ok = FALSE;
 
@@ -424,10 +410,10 @@ join */ <element__other__type>(
         );
 
         if (equal___ok) {
-          accumulation.add__ending(
-            element,
-          );
+          accumulation.add__ending(element);
         }
+
+        return TRUE;
       },
     );
 

@@ -9,9 +9,9 @@ import "dart:io" as net;
 part "server.dart";
 part "client.dart";
 
-const base__net__request__size__size = INT__4__size;
+const net__request__size__size = INT__4__size;
 
-final base__net__ip__local__v4 = BS1__array.fromList(
+final net__ip__local__v4 = BS1__array.fromList(
   const [127, 0, 0, 1],
 );
 
@@ -20,7 +20,7 @@ ASYN<bool> inet__connect_ed___ok({
 }) async {
   try {
     final result = await net.InternetAddress.lookup(host);
-    if (result.empty__not() && result.first.rawAddress.empty__not()) {
+    if (result.empty___ok().NOT && result.first.rawAddress.empty___ok().NOT) {
       return TRUE;
     }
   } catch (e) {
@@ -33,8 +33,8 @@ ASYN<bool> inet__connect_ed___ok({
   return FALSE;
 }
 
-string base__net__address__port__convert__text(
+string net__address__port__convert__text(
   final string address,
   final INT port,
 ) =>
-    (address + char__colon + port.toString());
+    (address + chars__colon___string + port.toString());

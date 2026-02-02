@@ -1,0 +1,338 @@
+part of "_.dart";
+
+typedef listing__item__build__function__format = //
+    widget___protocol Function(widget__building__context___compo context, INT);
+
+const listing__vertical__caching__extent__default = .5;
+
+const INT Function(
+  INT item__id,
+  INT items__count,
+)
+listing__reverse__item__id = //
+    array__reverse__element__id;
+
+extension array__convert__widget__array__extension<value___type extends Object?> //
+    on ARRAY<value___type> {
+  ARRAY<widget___protocol> convert__widget__array(
+    final widget___protocol separation,
+    final widget___protocol Function(INT, value___type) element__convert,
+  ) {
+    return elements__generate(
+      elements__count,
+      separation,
+      (final i) => element__convert(i, element(i)),
+    ).convert__array();
+  }
+}
+
+typedef listing__grow_able__listing__widget__function__format =
+    widget___protocol Function(
+      widget__building__context___compo context,
+      INT items__count,
+      listing__item__build__function__format item__widget,
+    );
+
+class listing__grow_able<element__new___type> //
+    implements dispose___protocol {
+  listing__grow_able({
+    required this.items__existing__count,
+    required this.items__new__count__limit,
+  }) : _elements__new = accumulation__linear__basic___compo<element__new___type>(),
+       _channel = event__channel__broadcast();
+
+  final INT items__existing__count;
+  final INT items__new__count__limit;
+
+  final event__channel__broadcast _channel;
+
+  final accumulation__linear__basic___compo<element__new___type> _elements__new;
+
+  @override
+  void dispose() {
+    _elements__new.dispose();
+
+    _channel.dispose();
+  }
+
+  event__channel__broadcast___protocol //
+  channel() => //
+      _channel;
+
+  void add(
+    final element__new___type element__new,
+  ) {
+    _elements__new.add__ending(
+      element__new,
+    );
+
+    _channel.event__dispatch();
+  }
+
+  /*void remove__element(final INT element__id,) {}*/
+
+  element__new___type element__new(
+    final INT id,
+  ) => _elements__new.element(
+    id,
+  );
+
+  INT elements__new__count() => //
+      _elements__new.elements__count();
+
+  INT _elements__new__count__definitive() => //
+      elements__new__count();
+
+  ARRAY<element__new___type> elements__new__convert__array() => //
+      _elements__new.convert__array();
+
+  widget___protocol widget__build(
+    final widget__building__context___compo context, {
+
+    required final listing__grow_able__listing__widget__function__format listing__build,
+    required final listing__item__build__function__format /* 2nd param. is `item__existing__id_` */ ? item__existing__build /*
+not called, if `items__existing__count` is 0 */,
+    required final listing__item__build__function__format /* 2nd param. is `item__new__id_` */ item__new__build /*
+not called, if `items__new__count` is 0
+call to this function, indicates, that the user is interested, in adding, an item, to the list
+  similar to press-ing, the "Add" floating button */,
+    required final listing__item__build__function__format /* 2nd param. is `item__new__id_` */ item__new__dummy__build /*
+invoke `store.control()?.add:item` to add-item
+not called, if `items__new__count` is 0
+example :
+  `GestureDetector(onTap: item__array__count__update, child: listing__item(body: box__text__primary("Add item ${item__id + 1}")))` */,
+  }) /*
+"element" is datum(singular form ,of data) ,while "item" is the gui form ,of "element"
+  naming is simply naming ,nothing much (sense) */ {
+    return _channel.handling__widget__build(
+      context,
+      child__build: (final context) {
+        final items__new__count = _elements__new__count__definitive();
+
+        var items__count = (items__new__count + items__existing__count);
+        if (items__new__count < items__new__count__limit) {
+          items__count += 1;
+        }
+
+        return listing__build(
+          context,
+          items__count,
+          (final context, var item__id) {
+            /*
+(items__new__first___ok /* order ,the new-ly add-ed items ,before exist-ing ones */
+    ? ((id < items__new__count) //
+        ? items__new__array[listing__reverse__item__id(
+            id,
+            items__new__count,
+          )]
+        : items__exist_ing__array[listing__reverse__item__id(
+            (id - items__new__count),
+            items__exist_ing__count,
+          )])
+    : ((id < items__exist_ing__count) //
+        ? items__exist_ing__array[listing__reverse__item__id(
+            id,
+            items__exist_ing__count,
+          )]
+        : items__new__array[listing__reverse__item__id(
+            (id - items__exist_ing__count),
+            items__new__count,
+          )])) */
+
+            if ((item__id = listing__reverse__item__id(
+                  item__id,
+                  items__count,
+                )) <
+                items__existing__count) {
+              return (item__existing__build?.call(
+                    context,
+                    item__id,
+                  ) ??
+                  empty__widget);
+            }
+
+            item__id -= items__existing__count;
+
+            return ((item__id /*<*/ != items__new__count) //
+                ? item__new__build(
+                    context,
+                    item__id,
+                  )
+                : item__new__dummy__build(
+                    context,
+                    item__id,
+                  ));
+          },
+        );
+      },
+    );
+  }
+}
+
+/*class listing__grow_able__sav_able //
+    <element__new___type, element__new__saved___type> /*
+`element__new` is `element__new__un_sav_ed` */ //
+    extends listing__grow_able<element__new___type> {
+  listing__grow_able__sav_able() //
+      : _elements__new__sav_ed = accumulation__linear__basic___compo<element__new__saved___type>();
+
+  final accumulation__linear__basic___compo<element__new__saved___type> _elements__new__sav_ed;
+
+  BOOL? _save__allow___ok;
+
+  void save__elements(
+    final ARRAY<element__new__saved___type> elements__new__sav_ed__array /*
+must have same elements:count as input/param. */
+    ,
+  ) /*
+`elements:new`[`:array`] should not be cached after this proc.
+  ,because its flush-ed */
+  {
+    _elements__new.flush();
+
+    elements__new__sav_ed__array.iterate__basic(
+      (_, final element__new__saved) {
+        _elements__new__sav_ed.add(
+          element__new__saved,
+        );
+      },
+    );
+
+    channel.event__announce();
+  }
+
+  INT elements__new__sav_ed__count() => //
+      _elements__new__sav_ed.elements__count();
+
+  @override
+  INT _elements__new__count__definitive() => //
+      (elements__new__sav_ed__count() + super._elements__new__count__definitive());
+
+  element__new__saved___type element__new__saved(
+    final INT id,
+  ) =>
+      _elements__new__sav_ed.element(
+        id,
+      );
+
+  ARRAY<element__new__saved___type> elements__new__sav_ed__convert__array() => //
+      _elements__new__sav_ed.convert__array();
+
+  BOOL? save__allow___ok() {
+    return _save__allow___ok;
+  }
+
+  void save__allow() {
+    if (_save__allow___ok == true) {
+      return;
+    }
+
+    _save__allow___ok = TRUE;
+    channel.event__announce();
+  }
+
+  void save__allow__auto_() {
+    if (_save__allow___ok == NIL) {
+      return;
+    }
+
+    _save__allow___ok = NIL;
+    channel.event__announce();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _elements__new__sav_ed.dispose();
+  }
+}
+
+extension listing__grow_able__sav_able__widget //
+    <element__new___type, element__new__saved___type> //
+    on listing__grow_able__sav_able //
+    <element__new___type, element__new__saved___type> {
+  widget___protocol widget //
+      <element__new___type, element__new__saved___type>({
+    required final listing__grow_able__listing__widget__function__format listing,
+    required final INT items__existing__count,
+    required final INT items__new__count__limit,
+    required final listing__item__build__function__format /* 2nd param. is `item__exist_ing__id` */ ? item__existing__build,
+    required final listing__item__build__function__format /* 2nd param. is `item__new__sav_ed__id` */ item__new__saved__build,
+    required final listing__item__build__function__format /* 2nd param. is `item__new__un_sav_ed__id` */
+        item__new__un_saved__build,
+    required final listing__item__build__function__format /* 2nd param. is `item__new__id` */ item__new__dummy__build,
+    final widget? save__button /*
+not visible ,if no elements ,are un-sav-ed */
+    ,
+  }) {
+    return (this as listing__grow_able<element__new___type>).widget(
+      listing: listing,
+      items__existing__count: items__existing__count,
+      items__new__count__limit: items__new__count__limit,
+      item__existing__build: item__existing__build,
+      item__new__build: (
+        final context,
+        final item__new__id,
+      ) {
+        final elements__new__saved__count_1 = elements__new__sav_ed__count();
+
+        if (item__new__id < elements__new__saved__count_1) {
+          return item__new__saved__build(
+            context,
+            item__new__id,
+          );
+        }
+
+        return item__new__un_saved__build(
+          context,
+          (item__new__id - elements__new__saved__count_1),
+        );
+      },
+      item__new__dummy__build: item__new__dummy__build,
+      /*floating__button: ((save__button != null)
+          ? (final context) {
+              if /*F*/ (_save__allow___ok == true) {
+                return save__button;
+              }
+
+              if /*F*/ (_save__allow___ok == false) {
+                return empty__widget;
+              }
+
+              if /*F*/ (elements__new__count() == 0) {
+                return empty__widget;
+              }
+
+              return save__button;
+            }
+          : /*(final context) => //
+            button__floating(
+              icon: flutter__material__icons.save,
+              title: "save",
+              press__handle: () {
+                if (store.elements__new__count() == 0) {
+                  context.navigation().forward__overlay__notice(
+                    notice__build: (final context) => //
+                        notice__basic(
+                      context: context,
+                      title: "nothing to save",
+                      body: "no items available ,to add",
+                    ),
+                  );
+                  return;
+                }
+
+                context.navigation().forward__overlay__waiting(
+                  data__base__table__rows__add(
+                    entity.elements__new__convert__array(),
+                  ),
+                  success__handle: entity.save__elements,
+                  waiting__build: NIL,
+                  $error__handle: NIL,
+                );
+              },
+            )*/
+          NIL),*/
+    );
+  }
+}*/

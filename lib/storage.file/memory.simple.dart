@@ -3,7 +3,7 @@ part of "_.dart";
 /*class storage__file__memory__simple /*
 based on byte-id. ,instead of block-id. */ //
     implements
-        base__dispose___protocol {
+        dispose___protocol {
   static const length__initial__default = INT__2__limit;
 
   storage__file__memory__simple({
@@ -35,7 +35,7 @@ based on byte-id. ,instead of block-id. */ //
   void capacity__extend__if__needed___raw(
     final INT capacity__required,
   ) {
-    base__printing__indentation__increase();
+    printing__indentation__increase();
 
     var capacity__current = capacity___raw();
 
@@ -44,7 +44,7 @@ based on byte-id. ,instead of block-id. */ //
     }
 
     if (capacity__current > capacity___raw()) {
-      if (base__printing___ok) {
+      if (printing___ok) {
         "storage__file__memory.capacity__extend___raw: extending `storage`'s capacity, from ${capacity___raw()}, to $capacity__current".print(
           debug__label,
         );
@@ -56,14 +56,14 @@ based on byte-id. ,instead of block-id. */ //
         capacity__current,
       );
 
-      base__copy(
+      copy(
         value___raw,
         value__old,
         count: length___raw,
       );
     }
 
-    base__printing__indentation__decrease();
+    printing__indentation__decrease();
   }
 
   INT write__append__blank({
@@ -130,8 +130,8 @@ based on byte-id. ,instead of block-id. */ //
     final byte__array value, {
     required final INT offset,
   }) {
-    if (base__printing___ok) {
-      base__function__call__print(
+    if (printing___ok) {
+      function__call__print(
         "storage__file__memory.write",
         debug__label,
       );
@@ -140,7 +140,7 @@ based on byte-id. ,instead of block-id. */ //
       offset.representation__text().print("offset");
     }
 
-    base__printing__indentation__increase();
+    printing__indentation__increase();
 
     final offset__new = (value.bytes__count + offset);
 
@@ -148,7 +148,7 @@ based on byte-id. ,instead of block-id. */ //
       offset__new,
     );
 
-    base__copy(
+    copy(
       value___raw,
       value,
       dest__offset: offset,
@@ -158,7 +158,7 @@ based on byte-id. ,instead of block-id. */ //
       offset__new,
     );
 
-    base__printing__indentation__decrease();
+    printing__indentation__decrease();
   }
 
   storage__file__memory__reading__full__result //
@@ -178,8 +178,8 @@ based on byte-id. ,instead of block-id. */ //
     required final INT length,
     required final INT offset,
   }) {
-    if (base__printing___ok) {
-      base__function__call__print(
+    if (printing___ok) {
+      function__call__print(
         "storage__file__memory.read",
         debug__label,
       );
@@ -188,7 +188,7 @@ based on byte-id. ,instead of block-id. */ //
       offset.representation__text().print("offset");
     }
 
-    base__printing__indentation__increase();
+    printing__indentation__increase();
 
     final offset__new = (length + offset);
 
@@ -213,7 +213,7 @@ FIX
           ;
     }
 
-    base__printing__indentation__decrease();
+    printing__indentation__decrease();
 
     return result;
   }
@@ -255,7 +255,7 @@ FIX
       length___raw,
     );
 
-    base__copy(
+    copy(
       result,
       value___raw,
       count: length___raw,
@@ -264,8 +264,8 @@ FIX
     return result;
   }
 
-  base__compo__member__dictionary //
-      members__dictionary() {
+  members___dictionary //
+      member__dictionary() {
     return {
       "length": length___raw.representation__text(),
     };
@@ -273,8 +273,8 @@ FIX
 
   @override
   void dispose() {
-    if (base__printing___ok) {
-      base__function__call__print(
+    if (printing___ok) {
+      function__call__print(
         "storage__file__memory.dispose",
         debug__label,
       );

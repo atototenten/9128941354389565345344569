@@ -12,11 +12,11 @@ extension INT__NEG__BIG__extension on INT__NEG__BIG {
     final INT digit__width = 1,
   }) {
     var //
-        source = this,
+    source = this,
         mask = ((INT__NEG__BIG.one << digit__width) - INT__NEG__BIG.one),
         destination = INT__NEG__BIG.zero;
 
-    base__iterate__reverse__basic(
+    iterate__reverse(
       digits__count,
       (_) {
         final source__1 = (source & mask);
@@ -27,6 +27,8 @@ extension INT__NEG__BIG__extension on INT__NEG__BIG {
         }
 
         source >>= digit__width;
+
+        return TRUE;
       },
     );
 

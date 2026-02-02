@@ -1,13 +1,13 @@
 part of "_.dart";
 
-abstract class base__storage__file__meta__basic___protocol /*
+abstract class storage__file__meta__basic___protocol /*
 completely raw and un-cached
   with direct syn.ation ,instead of distinct
 `offset`/`count` are based on block-id. (not byte-id.)
   to match the reality (of hardware) */ //
     implements
-        base__dispose__asyn___protocol<base__storage__file__closure__error> {
-  ASYN<base__storage__file__reading__result___union> //
+        dispose__asyn___protocol<storage__file__closure__error> {
+  ASYN<storage__file__reading__result___union> //
       read__asyn /*
 fetch data */
       ({
@@ -15,41 +15,41 @@ fetch data */
     required final INT offset,
   });
 
-  ASYN<base__storage__file__writing__error?> //
+  ASYN<storage__file__writing__error?> //
       write__asyn /*
 re-place data */
       (
-    final base__storage__file__blocks value, {
+    final storage__file__blocks value, {
     required final INT offset,
   });
 
   @override
-  ASYN<base__storage__file__closure__error?> //
+  ASYN<storage__file__closure__error?> //
       dispose__asyn();
 }
 
-class base__storage__file__reading__result__success //
+class storage__file__reading__result__success //
     implements
-        base__storage__file__reading__result___union {
-  const base__storage__file__reading__result__success(
+        storage__file__reading__result___union {
+  const storage__file__reading__result__success(
     this.value,
   );
 
-  final base__storage__file__blocks value;
+  final storage__file__blocks value;
 }
 
-class base__storage__file__reading__result__failure //
+class storage__file__reading__result__failure //
     implements
-        base__storage__file__reading__result___union {
-  const base__storage__file__reading__result__failure(
+        storage__file__reading__result___union {
+  const storage__file__reading__result__failure(
     this.value,
   );
 
-  final base__storage__file__reading__error value;
+  final storage__file__reading__error value;
 }
 
-enum base__storage__file__reading__error /*
-<- base__storage__file__accessing__error__base */
+enum storage__file__reading__error /*
+<- storage__file__accessing__error__base */
 {
   argument__valid__in /* derived */,
   memory__end /* derived */,
@@ -61,10 +61,10 @@ enum base__storage__file__reading__error /*
   other,
 }
 
-sealed class base__storage__file__reading__result___union {}
+sealed class storage__file__reading__result___union {}
 
-enum base__storage__file__writing__error /*
-<- base__storage__file__accessing__error__base */
+enum storage__file__writing__error /*
+<- storage__file__accessing__error__base */
 {
   argument__valid__in /* derived */,
   memory__end /* derived */,
@@ -76,8 +76,8 @@ enum base__storage__file__writing__error /*
   other,
 }
 
-enum base__storage__file__closure__error /*
-<- base__storage__file__operating__error__base */
+enum storage__file__closure__error /*
+<- storage__file__operating__error__base */
 {
   argument__valid__in /* derived */,
   memory__end /* derived */,
@@ -88,8 +88,8 @@ enum base__storage__file__closure__error /*
   other,
 }
 
-enum base__storage__file__accessing__error__base /*
-<- base__storage__file__operating__error__base */
+enum storage__file__accessing__error__base /*
+<- storage__file__operating__error__base */
 {
   argument__valid__in /* derived */,
   memory__end /* derived */,
@@ -102,7 +102,7 @@ storage full */
   ,
 }
 
-enum base__storage__file__operating__error__base {
+enum storage__file__operating__error__base {
   argument__valid__in /*
 at-least one arg.
   including the description itself */

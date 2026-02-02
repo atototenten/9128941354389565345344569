@@ -1,24 +1,24 @@
 part of "../_.dart";
 
-void base__storage__data__table__row__bytes__auto({
-  required final base__storage__data__meta___compo ds__meta,
-  required final base__storage__data__table__columns___compo table__columns,
+void storage__data__table__row__bytes__auto({
+  required final storage__data__meta___compo ds__meta,
+  required final storage__data__table__columns___compo table__columns,
   required final BS1__array row__bytes,
   required final ARRAY<Object?> /*
   `count` MUST NOT `< table__columns.count` */
       data__array,
 }) {
-  if (base__printing___ok) {
-    base__function__call__print(
-      "base__storage__data__table__row__bytes__auto",
+  if (printing___ok) {
+    function__call__print(
+      "storage__data__table__row__bytes__auto",
     );
   }
 
-  base__printing__indentation__increase();
+  printing__indentation__increase();
 
   table__columns.iterate__reverse__basic(
     (final column__id, final table__column) => //
-        base__storage__data__table__row__column__bytes__auto(
+        storage__data__table__row__column__bytes__auto(
       ds__meta: ds__meta,
       table__column: table__column,
       column__bytes: ((column__id != 0) //
@@ -31,12 +31,12 @@ void base__storage__data__table__row__bytes__auto({
     ),
   );
 
-  base__printing__indentation__decrease();
+  printing__indentation__decrease();
 }
 
-void base__storage__data__table__row__bytes__mod__auto({
-  required final base__storage__data__meta___compo ds__meta,
-  required final base__storage__data__table__columns___compo table__columns,
+void storage__data__table__row__bytes__mod__auto({
+  required final storage__data__meta___compo ds__meta,
+  required final storage__data__table__columns___compo table__columns,
   required final ARRAY<
           ({
             INT meta__id,
@@ -45,19 +45,19 @@ void base__storage__data__table__row__bytes__mod__auto({
       column__array,
   required final BS1__array row__bytes,
 }) {
-  if (base__printing___ok) {
-    base__function__call__print(
-      "base__storage__data__table__row__bytes__mod__auto",
+  if (printing___ok) {
+    function__call__print(
+      "storage__data__table__row__bytes__mod__auto",
     );
   }
 
-  base__printing__indentation__increase();
+  printing__indentation__increase();
 
   column__array.iterate__reverse__basic(
     (_, final column) {
       final table__column = table__columns[column.meta__id];
 
-      base__storage__data__table__row__column__bytes__auto(
+      storage__data__table__row__column__bytes__auto(
         ds__meta: ds__meta,
         table__column: table__column,
         column__bytes: row__bytes.view(
@@ -69,37 +69,37 @@ void base__storage__data__table__row__bytes__mod__auto({
     },
   );
 
-  base__printing__indentation__decrease();
+  printing__indentation__decrease();
 }
 
-ARRAY<Object?> base__storage__data__table__row__data__array__auto({
-  required final base__storage__data__meta___compo ds__meta,
-  required final base__storage__data__table__columns___compo table__columns,
+ARRAY<Object?> storage__data__table__row__data__array__auto({
+  required final storage__data__meta___compo ds__meta,
+  required final storage__data__table__columns___compo table__columns,
   required final ARRAY<INT> column__meta__id__array,
   required final BS1__array row__bytes,
   required final INT row__bytes__base__storage__data__offset,
 }) /* macro */ {
-  if (base__printing___ok) {
-    base__function__call__print("base__storage__data__table__row__data__array__auto");
+  if (printing___ok) {
+    function__call__print("storage__data__table__row__data__array__auto");
 
     row__bytes.representation__text().print("arguments__row__bytes");
   }
 
-  base__printing__indentation__increase();
+  printing__indentation__increase();
 
   final result = array__new__generated(
     column__meta__id__array.elements__count,
     (final column__id) {
       final table__column = table__columns[column__meta__id__array[column__id]];
 
-      /*if (base__printing___ok) {
+      /*if (printing___ok) {
         report__INT(
           table__column.meta.offset,
           "table.column.meta.offset",
         );
       }*/
 
-      return base__storage__data__table__row__column__data__auto(
+      return storage__data__table__row__column__data__auto(
         ds__meta: ds__meta,
         table__column: table__column,
         column__bytes: row__bytes.view(
@@ -110,7 +110,7 @@ ARRAY<Object?> base__storage__data__table__row__data__array__auto({
     },
   );
 
-  base__printing__indentation__decrease();
+  printing__indentation__decrease();
 
   return result;
 }

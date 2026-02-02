@@ -1,21 +1,20 @@
 part of "../_.dart";
 
-class base__accumulation__linked___compo /*
+class accumulation__linked___compo /*
 singly linked (forward ref.ing) list */ //
-    <element___type extends Object?> //
-    implements
-        base__dispose___protocol {
-  base__accumulation__linked___compo() //
-      : _element__first = NIL,
-        _element__last = NIL,
-        _elements__count = 0;
+<element___type extends Object?> //
+    implements dispose___protocol {
+  accumulation__linked___compo() //
+    : _element__first = NIL,
+      _element__last = NIL,
+      _elements__count = 0;
 
-  base__accumulation__linked__element<element___type>? //
-      _element__first,
+  accumulation__linked__element<element___type>? //
+  _element__first,
       _element__last;
 
   INT //
-      _elements__count;
+  _elements__count;
 
   INT elements__count() {
     return _elements__count;
@@ -25,11 +24,11 @@ singly linked (forward ref.ing) list */ //
     return (elements__count() == 0);
   }
 
-  base__accumulation__linked__element<element___type>? element__first() {
+  accumulation__linked__element<element___type>? element__first() {
     return _element__first;
   }
 
-  base__accumulation__linked__element<element___type>? element__last() {
+  accumulation__linked__element<element___type>? element__last() {
     return _element__last;
   }
 
@@ -38,7 +37,7 @@ singly linked (forward ref.ing) list */ //
   ) {
     final only___ok = empty___ok();
 
-    _element__first = base__accumulation__linked__element<element___type>(
+    _element__first = accumulation__linked__element<element___type>(
       value,
       next___raw: _element__first,
     );
@@ -53,14 +52,13 @@ singly linked (forward ref.ing) list */ //
   void add__ending /* add to rear (append) */ (
     final element___type value,
   ) {
-    final element = base__accumulation__linked__element<element___type>(
+    final element = accumulation__linked__element<element___type>(
       value,
       next___raw: NIL,
     );
 
     if /*F*/ (empty___ok()) /*
-`element` is first and only */
-    {
+`element` is first and only */ {
       _element__first = element;
     } else {
       _element__last!.next___raw = element;
@@ -87,10 +85,10 @@ singly linked (forward ref.ing) list */ //
 
   /*void remove__last();*/ /*
 not impl.ed ,due to being in-efficient for the data-struct.
-if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy default accumulation */
+if necessary ,prefer using `accumulation__chained` ,or the non-lazy default accumulation */
 
   void iterate(
-    final BOOL Function(base__accumulation__linked__element<element___type> element) element__handle,
+    final BOOL Function(accumulation__linked__element<element___type> element) element__handle,
   ) {
     var element = _element__first;
 
@@ -109,7 +107,7 @@ if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy defaul
 
   BOOL present___ok(
     final element___type element,
-    final base__value__equality__function__format<element___type, element___type> equal___ok,
+    final value__equality__function__format<element___type, element___type> equal___ok,
   ) {
     var present___ok = FALSE;
 
@@ -135,14 +133,13 @@ if necessary ,prefer using `base__accumulation__chained` ,or the non-lazy defaul
 
   ARRAY<element___type> convert__array /*
 TASK
-  eliminate intermediate conversion to `base__accumulation__linear__basic`
-    also in `base__accumulation__chained` */
-      () {
+  eliminate intermediate conversion to `accumulation__linear__basic___compo`
+    also in `accumulation__chained` */ () {
     if (empty___ok()) {
       return array__new__empty();
     }
 
-    final accumulation = base__accumulation__linear__basic<element___type>(
+    final accumulation = accumulation__linear__basic___compo<element___type>(
       capacity__initial: elements__count(),
     );
 
@@ -180,20 +177,20 @@ TASK
   }
 }
 
-class base__accumulation__linked__element //
-    <element___type extends Object?> {
-  base__accumulation__linked__element(
+class accumulation__linked__element //
+<element___type extends Object?> {
+  accumulation__linked__element(
     this.value, {
     required this.next___raw,
   });
 
   final element___type value;
 
-  base__accumulation__linked__element<element___type>? next___raw;
+  accumulation__linked__element<element___type>? next___raw;
 }
 
-void base__accumulation__linked__test() {
-  final accumulation = base__accumulation__linked___compo<INT>();
+void accumulation__linked__test() {
+  final accumulation = accumulation__linked___compo<INT>();
 
   void accumulation__print(
     final string title,
@@ -201,7 +198,7 @@ void base__accumulation__linked__test() {
     title.print();
     "accumulation".print();
 
-    base__printing__indent();
+    printing__indent();
 
     accumulation
       .._elements__count.representation__text().print("..elements__count")
@@ -209,35 +206,41 @@ void base__accumulation__linked__test() {
       .._element__first?.value.representation__text().print("..element__first")
       .._element__last?.value.representation__text().print("..element__last");
 
-    base__printing__indent__de();
+    printing__indent__de();
 
-    base__print__blank();
+    print__blank();
   }
 
   accumulation__print("begin");
 
-  base__iterate__reverse__basic(
+  iterate__reverse(
     4,
     (final i) {
       accumulation.add__beginning(i);
       accumulation__print("add__beginning : $i");
+
+      return TRUE;
     },
   );
 
-  base__iterate__basic(
+  iterate(
     4,
     (final i) {
       accumulation.add__ending(i);
       accumulation__print("add__ending : $i");
+
+      return TRUE;
     },
     offset: 4,
   );
 
-  base__iterate__reverse__basic(
+  iterate__reverse(
     accumulation.elements__count(),
     (final i) {
       accumulation.remove__first();
       accumulation__print("removal");
+
+      return TRUE;
     },
   );
 

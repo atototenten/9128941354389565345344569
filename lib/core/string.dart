@@ -104,14 +104,11 @@ extension text__extension on string {
   BOOL empty___ok() => //
       isEmpty;
 
-  BOOL empty__not() => //
-      isNotEmpty;
-
   void print___raw() /*
 should never be needed(only wanted)
   prefer `::print` */
   {
-    base__print__handle(
+    print__handle(
       this,
     );
   }
@@ -119,7 +116,7 @@ should never be needed(only wanted)
   void print([
     final string? label,
   ]) {
-    base__print__labeled(
+    print__labeled(
       this,
       NIL,
       label,
@@ -128,9 +125,9 @@ should never be needed(only wanted)
 }
 
 extension text__convert__representation__text__extension on string {
-  base__representation__text //
+  representation__text___compo //
       representation__text() {
-    return base__representation__text(
+    return representation__text___compo(
       "\"${toString()}\"",
     );
   }

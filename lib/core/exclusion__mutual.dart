@@ -1,16 +1,16 @@
 part of "_.dart";
 
-class base__exclusion__mutual___compo //
-    implements base__dispose___protocol {
-  base__exclusion__mutual___compo({
+class exclusion__mutual___compo //
+    implements dispose___protocol {
+  exclusion__mutual___compo({
     required this.locking__requests__count__limit,
   }) : _locked___ok = FALSE,
-       _lock__requests = base__queue___compo(),
-       _free___channel = base__event__channel__broadcast();
+       _lock__requests = queue___compo(),
+       _free___channel = event__channel__broadcast();
 
   final INT? locking__requests__count__limit;
-  final base__queue___compo<base__value__single__procedure__format<base__exclusion__mutual__lock>> _lock__requests;
-  final base__event__channel__broadcast _free___channel;
+  final queue___compo<value__single___procedure__format<exclusion__mutual__lock>> _lock__requests;
+  final event__channel__broadcast _free___channel;
 
   BOOL _locked___ok;
 
@@ -24,7 +24,7 @@ class base__exclusion__mutual___compo //
     return _locked___ok;
   }
 
-  base__event__channel___protocol /*
+  event__channel___protocol /*
 user must not dispose */ //
   free__channel() {
     return _free___channel;
@@ -42,7 +42,7 @@ user must not dispose */ //
 
       task__urgent__schedule(() {
         request.value(
-          base__exclusion__mutual__lock(
+          exclusion__mutual__lock(
             free__handle: _lock__free__handle,
           ),
         );
@@ -50,9 +50,9 @@ user must not dispose */ //
     }
   }
 
-  ASYN<base__exclusion__mutual__lock> //
+  ASYN<exclusion__mutual__lock> //
   lock___async() {
-    final meta = ASYN__PROMISE<base__exclusion__mutual__lock>();
+    final meta = ASYN__PROMISE<exclusion__mutual__lock>();
 
     try {
       lock(meta.complete);
@@ -63,7 +63,7 @@ user must not dispose */ //
     return meta.future;
   }
 
-  void lock(final base__value__single__procedure__format<base__exclusion__mutual__lock> lock__handle) {
+  void lock(final value__single___procedure__format<exclusion__mutual__lock> lock__handle) {
     if (_locked___ok) {
       final locking__requests__count__limit_1 = locking__requests__count__limit;
       if ((locking__requests__count__limit_1 != null) && //
@@ -81,7 +81,7 @@ user must not dispose */ //
 
       task__urgent__schedule(() {
         lock__handle(
-          base__exclusion__mutual__lock(
+          exclusion__mutual__lock(
             free__handle: _lock__free__handle,
           ),
         );
@@ -90,14 +90,14 @@ user must not dispose */ //
   }
 }
 
-class base__exclusion__mutual__lock {
-  base__exclusion__mutual__lock({
+class exclusion__mutual__lock {
+  exclusion__mutual__lock({
     required final procedure__empty__format free__handle,
-  }) : _value = base__procedure__empty__complicated__meta(
+  }) : _value = procedure__empty__complicated__meta(
          free__handle,
        );
 
-  final base__procedure__empty__complicated__meta _value;
+  final procedure__empty__complicated__meta _value;
 
   void free() {
     final invoked__ok_1 = _value.invoked___ok();
@@ -110,7 +110,7 @@ class base__exclusion__mutual__lock {
   }
 }
 
-void base__exclusion__mutual__test() {
+void exclusion__mutual__test() {
   const //
   locking__requests__count__limit = 2,
       iteration__count =
@@ -119,7 +119,7 @@ an extra ,because the first lock ,is resolved directly ,and not added to the req
           locking__requests__count__limit),
       waiting__duration = 3;
 
-  final exclusion__mutual = base__exclusion__mutual___compo(
+  final exclusion__mutual = exclusion__mutual___compo(
     locking__requests__count__limit: locking__requests__count__limit,
   );
 
@@ -130,20 +130,20 @@ an extra ,because the first lock ,is resolved directly ,and not added to the req
     title.print(label);
     "exclusion__mutual".print(label);
 
-    base__printing__indent();
+    printing__indent();
 
     exclusion__mutual
       .._lock__requests.elements__count().representation__text().print("..lock__requests__count", label)
       ..locked___ok().representation__text().print("..locked___ok", label);
 
-    base__printing__indent__de();
+    printing__indent__de();
 
-    base__print__blank();
+    print__blank();
   }
 
   exclusion__mutual__print("begin", NIL);
 
-  base__iterate__basic(
+  iterate(
     iteration__count,
     (final i) {
       final label = "iteration.$i";
@@ -172,6 +172,8 @@ an extra ,because the first lock ,is resolved directly ,and not added to the req
       }
 
       exclusion__mutual__print("locked", label);
+
+      return TRUE;
     },
   );
 

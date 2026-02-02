@@ -7,16 +7,16 @@ part "memory.simple.dart";
 part "basic.protocol.dart";
 
 const //
-    base__storage__file__path__separation__char /* must not change ,because ,is universal and heavily hard-coded */ = char__slash__forward;
+    storage__file__path__separation__char /* must not change ,because ,is universal and heavily hard-coded */ = char__slash__forward;
 
-typedef base__storage__file__blocks /*
+typedef storage__file__blocks /*
 each and every block' `.bytes__count` must be equal */
-    = ARRAY<base__storage__file__block>;
+    = ARRAY<storage__file__block>;
 
-class base__storage__file__block /*
+class storage__file__block /*
 required to allow single-copy and mandate alignment */
 {
-  const base__storage__file__block(
+  const storage__file__block(
     this.value___raw,
   );
 
@@ -31,7 +31,7 @@ im-mutable and partial view
 }
 
 extension file__segment__array__joining__extension //
-    on base__storage__file__blocks {
+    on storage__file__blocks {
   byte__array /*
 with ownership */
       convert__byte__array() {
@@ -49,7 +49,7 @@ with ownership */
 
     iterate__basic(
       (final i, final e) {
-        base__copy(
+        copy(
           result,
           e.value___raw,
           count: block__size,
@@ -69,12 +69,12 @@ string file__path__convert__name(
 ) {
   final char__id = text__search(
     file__path,
-    base__storage__file__path__separation__char,
+    storage__file__path__separation__char,
     reverse___ok: TRUE,
   );
 
   if (char__id == null) {
-    throw "'$base__storage__file__path__separation__char' is not present in \"$file__path\"(file:path)";
+    throw "'$storage__file__path__separation__char' is not present in \"$file__path\"(file:path)";
   }
 
   return file__path.substring(
@@ -87,7 +87,7 @@ string file__name__convert__extension(
 ) {
   final char__id = text__search(
     file__name,
-    base__chars__dot___string,
+    chars__dot___string,
     reverse___ok: TRUE,
   );
 
@@ -100,17 +100,17 @@ string file__name__convert__extension(
   );
 }
 
-typedef base__storage__file__alignment___compo = ({
+typedef storage__file__alignment___compo = ({
   INT shift__count,
   INT size,
 });
 
-const base__storage__file__alignment___compo //
+const storage__file__alignment___compo //
     alignment__mem = (shift__count: 3, size: INT__8__size),
     alignment__disk = (shift__count: 9, size: 512),
     alignment__flash = (shift__count: 12, size /* alignment */ : 4096),
     alignment__modern__normal /* 256 k. */ = (shift__count: 18, size: (256 * 1024)),
-    base__storage__file__block__size /*
+    storage__file__block__size /*
   `.size`
     SHOULD NOT change
     SHOULD be `>= (2 * data__base__position__size)`
@@ -126,9 +126,9 @@ typedef io__operation__read_write__function__format = void Function(
 ({
   INT offset__aligned,
   INT buffer__offset /* `__un_aligned` */,
-}) base__storage__file__offset__aligned(
+}) storage__file__offset__aligned(
   final INT offset,
-  final base__storage__file__alignment___compo block__meta,
+  final storage__file__alignment___compo block__meta,
 ) {
   final offset__aligned = INT__aligned(
     offset,
@@ -142,18 +142,18 @@ typedef io__operation__read_write__function__format = void Function(
   );
 }
 
-INT base__storage__file__count__max /*
+INT storage__file__count__max /*
   equivalent of `storage__offset__aligned`, despite the in-appropriate name
   not `__aligned` because `count` is not aligned, but `(count +1)`, to get upper-limit, which is max, actually necessary */
     (
   final INT count,
   final INT buffer__offset, [
-  final base__storage__file__alignment___compo block__size = base__storage__file__block__size,
+  final storage__file__alignment___compo block__size = storage__file__block__size,
 ]) {
   if (count == 0) //
     return 0;
 
-  if (base__INT__aligned___ok(
+  if (INT__aligned___ok(
     count,
     block__size.size,
   )) {
@@ -171,13 +171,13 @@ INT base__storage__file__count__max /*
         hence `uu offset__aligned = (3 * bk_sz), count__max = (2 * bk_sz), offset__new = (5 * bk_sz)/* (count__max + offset__aligned) */;`
           which is in-correct; because `offset__new` should be `21000`, instead of `20480`(5 * bk_sz) */
 
-void base__storage__file__io__check__aligned(
+void storage__file__io__check__aligned(
   final INT count,
   final INT offset,
-  final base__storage__file__alignment___compo alignment,
+  final storage__file__alignment___compo alignment,
 ) {
-  if (base__printing___ok) {
-    base__function__call__print(
+  if (printing___ok) {
+    function__call__print(
       "storage__io__check__aligned",
     );
 
@@ -186,11 +186,11 @@ void base__storage__file__io__check__aligned(
     alignment.size.representation__text().print("alignment__size");
   }
 
-  if (base__INT__aligned___ok(count, alignment.size).NOT) {
+  if (INT__aligned___ok(count, alignment.size).NOT) {
     throw "`count` is NOT aligned";
   }
 
-  if (base__INT__aligned___ok(offset, alignment.size).NOT) {
+  if (INT__aligned___ok(offset, alignment.size).NOT) {
     throw "`offset` is NOT aligned";
   }
 }

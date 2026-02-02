@@ -1,37 +1,37 @@
 part of "_.dart";
 
-extension base__value__disposal__extension //
+extension value__disposal__extension //
 <value___type extends Object> //
     on value___type {
   void dispose() {
     final value = this;
-    if (value is base__dispose___protocol) {
+    if (value is dispose___protocol) {
       value.dispose();
     }
   }
 }
 
-class base__value__lazy___compo<value___type> {
-  base__value__lazy___compo({
+class value__lazy___compo<value___type> {
+  value__lazy___compo({
     required this.value__fetch,
-  }) : _value = base__value__optional__absent__compo<value___type>();
+  }) : _value = value__optional__absent__compo<value___type>();
 
   final value___type Function() value__fetch;
 
-  base__value__optional___union<value___type> _value;
+  value__optional___union<value___type> _value;
 
   value___type value() {
     final value = _value;
 
     switch (value) {
-      case base__value__optional__present__compo<value___type>():
+      case value__optional__present__compo<value___type>():
         return value.value;
 
-      case base__value__optional__absent__compo<value___type>():
+      case value__optional__absent__compo<value___type>():
         {
           final value = value__fetch();
 
-          _value = base__value__optional__present__compo(value);
+          _value = value__optional__present__compo(value);
 
           return value;
         }
@@ -39,12 +39,12 @@ class base__value__lazy___compo<value___type> {
   }
 
   void flush() {
-    _value = base__value__optional__absent__compo<value___type>();
+    _value = value__optional__absent__compo<value___type>();
   }
 }
 
-class base__value__lazy__compact___compo<value___type> {
-  base__value__lazy__compact___compo({
+class value__lazy__compact___compo<value___type> {
+  value__lazy__compact___compo({
     required final value___type Function() value__fetch,
   }) : _value__fetch = value__fetch;
 
@@ -68,28 +68,28 @@ class base__value__lazy__compact___compo<value___type> {
 
 //
 
-class base__value__optional__present__compo<value___type> //
-    implements base__value__optional___union<value___type> {
-  const base__value__optional__present__compo(
+class value__optional__present__compo<value___type> //
+    implements value__optional___union<value___type> {
+  const value__optional__present__compo(
     this.value,
   );
 
   final value___type value;
 }
 
-class base__value__optional__absent__compo<value___type> //
-    implements base__value__optional___union<value___type> {
-  const base__value__optional__absent__compo();
+class value__optional__absent__compo<value___type> //
+    implements value__optional___union<value___type> {
+  const value__optional__absent__compo();
 }
 
-sealed class base__value__optional___union<value___type> {}
+sealed class value__optional___union<value___type> {}
 
 //
 
-abstract class base__value__equality__check___protocol {
+abstract class value__equality__check___protocol {
   BOOL equal___ok /*
 prefer `value__nilable__equal__ok` for nil-able values */ (
-    final base__value__equality__check___protocol /*
+    final value__equality__check___protocol /*
 not generic-type (`value__type`)
   ,just because of the dart-lang.'s deficiency
     ,of not allowing accessing the current-type's introspection
@@ -98,8 +98,8 @@ must be same as the impl.ion itself */
   );
 }
 
-extension base__value__equality__check__extension //
-<value___type extends base__value__equality__check___protocol> //
+extension value__equality__check__extension //
+<value___type extends value__equality__check___protocol> //
     on value___type? {
   BOOL value__nilable__equal___ok(final value___type? other) {
     final value = this;
@@ -127,25 +127,25 @@ extension base__value__equality__check__extension //
   }
 }
 
-class base__value__proxy /*
+class value__proxy /*
 like c[++]'s pointer */ //
 <value___type extends Object?> {
-  base__value__proxy(this.value);
+  value__proxy(this.value);
 
   value___type value;
 }
 
-typedef base__value__equality__function__closure__format<value___type> = //
+typedef value__equality__function__closure__format<value___type> = //
     BOOL Function(value___type);
 
-typedef base__value__equality__function__format //
+typedef value__equality__function__format //
 <value___type, value__other__type> =
     BOOL Function(
       value___type value,
       value__other__type other,
     );
 
-BOOL base__value__same___ok //
+BOOL value__same___ok //
 <value___type>(
   final value___type value,
   final value___type other,
@@ -153,14 +153,14 @@ BOOL base__value__same___ok //
   return identical(value, other);
 }
 
-BOOL base__value__equal__deep___ok(
+BOOL value__equal__deep___ok(
   final Object__nilable value,
   final Object__nilable other,
 ) {
   return DeepCollectionEquality().equals(value, other);
 }
 
-BOOL base__value__equal___ok //
+BOOL value__equal___ok //
 <value___type extends Object>(
   final value___type value,
   final value___type other,
@@ -168,11 +168,11 @@ BOOL base__value__equal___ok //
   return (value == other);
 }
 
-BOOL base__value__nilable__equal___ok //
+BOOL value__nilable__equal___ok //
 <value___type extends Object>(
   final value___type? value,
   final value___type? other, {
-  final base__value__equality__function__format<value___type, value___type>? value__equal___ok,
+  final value__equality__function__format<value___type, value___type>? value__equal___ok,
 }) {
   if ((value == null) && //
       (other == null)) {
@@ -192,16 +192,16 @@ BOOL base__value__nilable__equal___ok //
   return value__equal___ok(value, other);
 }
 
-base__representation__text //
-base__value__convert__representation__text //
+representation__text___compo //
+value__convert__representation__text___compo //
 <value___type extends Object>(
   final value___type value,
 ) {
   return value.representation__text();
 }
 
-base__representation__text //
-base__value__nilable__convert__representation__text //
+representation__text___compo //
+value__nilable__convert__representation__text___compo //
 <value___type extends Object?>(
   final value___type value,
 ) {
@@ -210,9 +210,9 @@ base__value__nilable__convert__representation__text //
 
 //
 
-abstract class base__value__mutation__event__channel___protocol //
+abstract class value__mutation__event__channel___protocol //
 <value___type> //
-    implements base__event__channel___protocol {
+    implements event__channel___protocol {
   value___type value();
 
   void value__mutate(
@@ -226,17 +226,17 @@ abstract class base__value__mutation__event__channel___protocol //
 
 //
 
-abstract class base__value__mutation__event__channel__unicast__dispose___protocol //
+abstract class value__mutation__event__channel__unicast__dispose___protocol //
 <value___type> //
-    implements base__value__mutation__event__channel___protocol<value___type>, base__event__channel__unicast__dispose___protocol {}
+    implements value__mutation__event__channel___protocol<value___type>, event__channel__unicast__dispose___protocol {}
 
-class base__value__mutation__event__channel__unicast //
+class value__mutation__event__channel__unicast //
 <value___type> /*
 `observer` management is all direct */ //
     extends
-        base__event__channel__unicast //
-    implements base__value__mutation__event__channel__unicast__dispose___protocol<value___type> {
-  base__value__mutation__event__channel__unicast(
+        event__channel__unicast //
+    implements value__mutation__event__channel__unicast__dispose___protocol<value___type> {
+  value__mutation__event__channel__unicast(
     this.value___raw,
     /*{ super.debug__name, }*/
   );
@@ -269,17 +269,17 @@ class base__value__mutation__event__channel__unicast //
 
 //
 
-abstract class base__value__mutation__event__channel__broadcast__dispose___protocol //
+abstract class value__mutation__event__channel__broadcast__dispose___protocol //
 <value___type> //
-    implements base__value__mutation__event__channel___protocol<value___type>, base__event__channel__broadcast__dispose___protocol {}
+    implements value__mutation__event__channel___protocol<value___type>, event__channel__broadcast__dispose___protocol {}
 
-class base__value__mutation__event__channel__broadcast //
+class value__mutation__event__channel__broadcast //
 <value___type> /*
 like `dart:flutter:ValueNotifier` */ //
     extends
-        base__event__channel__broadcast //
-    implements base__value__mutation__event__channel__broadcast__dispose___protocol<value___type> {
-  base__value__mutation__event__channel__broadcast(
+        event__channel__broadcast //
+    implements value__mutation__event__channel__broadcast__dispose___protocol<value___type> {
+  value__mutation__event__channel__broadcast(
     this.value___raw, {
     super.debug__name,
   });
@@ -310,23 +310,23 @@ like `dart:flutter:ValueNotifier` */ //
   }
 }
 
-typedef base__value__channel__broadcast__handling__format<value___type> = //
-    base__value__single__procedure__format<value___type>;
+typedef value__channel__broadcast__handling__format<value___type> = //
+    value__single___procedure__format<value___type>;
 
-abstract class base__value__channel__broadcast___protocol<value___type> {
-  void value__handle(final base__value__channel__broadcast__handling__format<value___type> handle);
+abstract class value__channel__broadcast___protocol<value___type> {
+  void value__handle(final value__channel__broadcast__handling__format<value___type> handle);
 
-  void value__handling__cancel(final base__value__channel__broadcast__handling__format<value___type> handle);
+  void value__handling__cancel(final value__channel__broadcast__handling__format<value___type> handle);
 }
 
-class base__value__channel__broadcast<value___type> //
+class value__channel__broadcast<value___type> //
     implements
-        base__value__channel__broadcast___protocol<value___type>, //
-        base__dispose___protocol {
-  base__value__channel__broadcast() //
-    : _handlings = base__accumulation__linear__definitive();
+        value__channel__broadcast___protocol<value___type>, //
+        dispose___protocol {
+  value__channel__broadcast() //
+    : _handlings = accumulation__linear__definitive___compo();
 
-  final base__accumulation__linear__definitive<base__value__channel__broadcast__handling__format<value___type>> _handlings;
+  final accumulation__linear__definitive___compo<value__channel__broadcast__handling__format<value___type>> _handlings;
 
   @override
   void dispose() {
@@ -334,13 +334,13 @@ class base__value__channel__broadcast<value___type> //
   }
 
   @override
-  void value__handle(final base__value__channel__broadcast__handling__format<value___type> handle) {
+  void value__handle(final value__channel__broadcast__handling__format<value___type> handle) {
     _handlings.add__ending(handle);
   }
 
   @override
-  void value__handling__cancel(final base__value__channel__broadcast__handling__format<value___type> handle) {
-    final element__id = _handlings.search(handle, base__value__equal___ok);
+  void value__handling__cancel(final value__channel__broadcast__handling__format<value___type> handle) {
+    final element__id = _handlings.search(handle, value__equal___ok);
 
     if (element__id == null) {
       throw Exception();
@@ -364,8 +364,8 @@ class base__value__channel__broadcast<value___type> //
 
 //
 
-/* extension base__value__mutation__event__channel__broadcast__extension //
-    on base__value__mutation__event__channel__broadcast<string, NIMR> {
+/* extension value__mutation__event__channel__broadcast__extension //
+    on value__mutation__event__channel__broadcast<string, NIMR> {
   void test() {
     void announce(
       final string value,

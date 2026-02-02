@@ -88,16 +88,16 @@ INT INT__base__2__digits__count__convert__size(
 
 INT INT__base__binary__multiple__digits__count__convert__size(
   final INT digits__count,
-  final INT base__binary__multiple__digits__count,
+  final INT binary__multiple__digits__count,
 ) /*{
-  return (digits__count.toDouble() / base__binary__multiple__digits__count).ceil();
+  return (digits__count.toDouble() / binary__multiple__digits__count).ceil();
 }*/
 {
   if (digits__count == 0) {
     throw "in-valid digits:count ,cannot be zero";
   }
 
-  return (1 + ((digits__count - 1) ~/ base__binary__multiple__digits__count));
+  return (1 + ((digits__count - 1) ~/ binary__multiple__digits__count));
 }
 
 INT INT__max(
@@ -114,7 +114,7 @@ INT INT__max__basic({
   return ((1 << width) - 1);
 }
 
-BOOL base__INT__aligned___ok(final INT value, final INT size) => //
+BOOL INT__aligned___ok(final INT value, final INT size) => //
     ((value & (size - 1)) == 0);
 
 INT INT__aligned__alignment__count(final INT value, final INT shift__count) => //
@@ -152,7 +152,7 @@ INT INT__aligned__basic(final INT value, final INT shift__count) => //
     ); /* informative, but not intended */
   }*/
 
-  if (base__INT__aligned___ok(value, alignment__size)) //
+  if (INT__aligned___ok(value, alignment__size)) //
     return (
       value__aligned: value,
       remainder__un_aligned: 0,

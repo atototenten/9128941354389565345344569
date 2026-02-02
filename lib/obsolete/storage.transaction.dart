@@ -26,7 +26,7 @@ abstract class Transaction {
   static void initialize(final string storageDirPath) {
     //if (file !=  null) throw Exception();
 
-    final string filePath = (storageDirPath + base__storage__file__path__separation__char + FILE__NAME);
+    final string filePath = (storageDirPath + storage__file__path__separation__char + FILE__NAME);
 
     if (ReadOnlyFile.exists(filePath)) /** needs recovery */ {
       final RandomAccessFile _file = RandomAccessFile.open(filePath, FileOpenMode. /*TRUNCATE_AND_*/ READ_WRITE);

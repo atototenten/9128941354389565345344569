@@ -2,12 +2,14 @@ part of "_.dart";
 
 typedef STREAM<element___type> = Stream<element___type>;
 
-extension Stream__byte__array__extension //
+typedef stream__element__handle___procedure__format<element___type> = value__single___procedure__format<element___type>;
+
+extension stream__byte__array___extension //
     on STREAM<byte__array> {
   ASYN<byte__array> convert__byte__array__asyn() /*
 forked from core APIs, hence the correct approach, as of "March, 2023" */ {
     final //
-    accumulation = base__byte__array__accumulation(),
+    accumulation = byte__array__accumulation___compo(),
         promise = ASYN__PROMISE<BS1__array>();
 
     listen(
@@ -22,11 +24,11 @@ forked from core APIs, hence the correct approach, as of "March, 2023" */ {
 
   void convert__messages({
     final INT message__size__size = INT__4__size,
-    required final base__message__handle__procedure<BS1__array> message__handle,
-    required final dispose__procedure__format channel__close__handle,
-    required final base__error__handle__proc_ channel__error__handle,
+    required final stream__element__handle___procedure__format<BS1__array> message__handle,
+    required final dispose___procedure__format channel__close__handle,
+    required final error__handle__proc_ channel__error__handle,
   }) {
-    final accumulation = base__byte__array__accumulation();
+    final accumulation = byte__array__accumulation___compo();
 
     INT //
     count /* `left`, or remaining count */ = 0,
@@ -118,7 +120,7 @@ extension Stream__array__extension<data__type> //
   ASYN<ARRAY<data__type>> //
   convert__array__asyn() {
     final //
-    accumulation = base__accumulation__linear__basic<data__type>(),
+    accumulation = accumulation__linear__basic___compo<data__type>(),
         promise = ASYN__PROMISE<ARRAY<data__type>>();
 
     listen(

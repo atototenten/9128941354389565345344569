@@ -12,7 +12,7 @@ import "components/foundations/build.dart";
 late final navigation__kampo app__navigation__kampo;
 
 void navigate__init({
-  required final base__widget__build__function__format page__initial__build,
+  required final widget__build__function__format page__initial__build,
   required final procedure? page__initial__depart_ure__handle,
   final procedure? exit__handle /*
 app:exit is non-{determin-istic|definit-ive} */
@@ -31,12 +31,12 @@ class navigation__kampo /*
       if further `navigation__forward` is needed, prefer `navigate__forward__replace` */
 {
   navigation__kampo._({
-    required final base__widget__build__function__format page__initial__build,
+    required final widget__build__function__format page__initial__build,
     required final procedure? page__initial__depart_ure__handle,
     required this.exit__handle,
-  })  : history = base__stack<_navigate__element>(),
+  })  : history = stack___compo<_navigate__element>(),
         channel = message__channel__broadcast<navigation__type>() {
-    if (base__printing___ok) {
+    if (printing___ok) {
       "navigate:record:init".print();
 
       message__channel__broadcast__listeners__add(
@@ -64,7 +64,7 @@ class navigation__kampo /*
     });
   }
 
-  final base__stack<_navigate__element> history;
+  final stack___compo<_navigate__element> history;
   final message__channel__broadcast<navigation__type> channel /*
 all the events ,`init` ,`forward`-type ,`backward` ,and `exit` ,arrive ,before ,the navigat-ion */
       ;
@@ -89,7 +89,7 @@ class _navigate__element {
     /*this.transition__instant___ok,*/
   );
 
-  /*final base__widget__build__function__format widget__build;*/
+  /*final widget__build__function__format widget__build;*/
   final procedure? de_init_ /*
 use `procedure__schedule`, to executure, after the build */
       ;
@@ -113,9 +113,9 @@ enum navigation__type {
 const _page_route = /*CupertinoPageRoute<void>.new*/ MaterialPageRoute<void>.new;
 
 ASYN<void> navigate__forward__overlay(
-  final base__widget__building__context context, {
+  final widget__building__context___compo context, {
   required final procedure? dismiss__handle,
-  required final base__widget__build__function__format overlay__build,
+  required final widget__build__function__format overlay__build,
 }) {
   app__navigation__kampo.history.add(
     _navigate__element(
@@ -140,9 +140,9 @@ ASYN<void> navigate__forward__overlay(
 }
 
 ASYN<void> navigate__forward__overlay__bottom(
-  final base__widget__building__context context, {
+  final widget__building__context___compo context, {
   required final procedure? dismiss__handle,
-  required final base__widget__build__function__format overlay__build,
+  required final widget__build__function__format overlay__build,
 }) {
   app__navigation__kampo.history.add(
     _navigate__element(
@@ -180,9 +180,9 @@ ASYN<void> navigate__forward__overlay__bottom(
 }
 
 ASYN<void> navigate__forward__page(
-  final base__widget__building__context context, {
+  final widget__building__context___compo context, {
   required final procedure? depart_ure__handle,
-  required final base__widget__build__function__format page__build,
+  required final widget__build__function__format page__build,
 }) {
   app__navigation__kampo.history.add(
     _navigate__element(
@@ -208,9 +208,9 @@ ASYN<void> navigate__forward__page(
 ASYN<void> navigate__forward__replace__page /*
 efficient, than the, first calling `de_navigate`, then calling `navigate` */
     (
-  final base__widget__building__context context, {
+  final widget__building__context___compo context, {
   required final procedure? depart_ure__handle,
-  required final base__widget__build__function__format page__build,
+  required final widget__build__function__format page__build,
 }) {
   app__navigation__kampo
     ..history__remove()
@@ -235,13 +235,13 @@ efficient, than the, first calling `de_navigate`, then calling `navigate` */
 }
 
 ASYN<void> navigate__forward__permanent__page(
-  final base__widget__building__context context, {
+  final widget__building__context___compo context, {
   final uu? pages__count /*
 no issue ,if more than "pages:count" of navigator
 appbar's back navigation button is not shown */
   ,
   required final procedure? depart_ure__handle,
-  required final base__widget__build__function__format page__build,
+  required final widget__build__function__format page__build,
 }) {
   if (pages__count == null) {
     app__navigation__kampo.history
@@ -272,7 +272,7 @@ appbar's back navigation button is not shown */
       (_) => NO,
     );
   } else {
-    base__iterate__basic(
+    iterate__basic(
       pages__count,
       (_) {
         app__navigation__kampo.history__remove();
@@ -315,13 +315,13 @@ bool _backward___ok() => //
     (app__navigation__kampo.history.elements__count > 1);
 
 bool navigate__backward___ok(
-  final base__widget__building__context context,
+  final widget__building__context___compo context,
 ) {
   return /*_backward___ok()*/ _navigator_state(context).canPop();
 }
 
 void navigate__backward(
-  final base__widget__building__context context,
+  final widget__building__context___compo context,
 ) {
   if /*F*/ (NOT(_backward___ok()) /*exit__ok*/) {
     app__navigation__kampo.exit__handle?.call();
@@ -347,7 +347,7 @@ void navigate__backward(
 ASYN<void> /*
 completes ,when the `route` is de-navigat-ed */
     _navigate__forward(
-  final base__widget__building__context context,
+  final widget__building__context___compo context,
   final Route<void> route,
 ) {
   return _navigator_state(
@@ -358,7 +358,7 @@ completes ,when the `route` is de-navigat-ed */
 }
 
 NavigatorState _navigator_state(
-  final base__widget__building__context context,
+  final widget__building__context___compo context,
 ) {
   return Navigator.of(
     context,

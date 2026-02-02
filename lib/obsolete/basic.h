@@ -67,9 +67,9 @@
 
 /** server's block */
 #include <arpa/inet.h>
-#include <base__netdb.h>
-#include <base__netinet/in.h>
-#include <base__netinet/tcp.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
 #include <sys/socket.h>
 
 //#include <sys/syscall.h>

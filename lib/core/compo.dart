@@ -1,33 +1,24 @@
 part of "_.dart";
 
-typedef base__compo__member__dictionary = dictionary</*member.name*/ string, /*member.value*/ base__representation__text>;
+typedef members___dictionary = //
+    dictionary</*member.name*/ string, /*member.value*/ representation__text___compo>;
 
-abstract class base__compo__members__dictionary___protocol {
-  base__compo__member__dictionary //
-  members__dictionary();
+abstract class compo__members__dictionary___protocol {
+  members___dictionary //
+  member__dictionary();
 }
 
-abstract class base__compo__convert__representation__text__auto___protocol //
-    implements base__compo__members__dictionary___protocol, base__convert__representation__text___protocol {
-  @override
-  base__representation__text //
-  representation__text() {
-    return compo__representation__text(
-      members__dictionary(),
-    );
-  }
-}
-
-base__representation__text //
-base__compo__representation__text({
+representation__text___compo //
+compo__representation__text({
   required final string name,
-  required final base__compo__member__dictionary members,
+  required final members___dictionary members /*
+for proxy/wrapping compo.s ,prefer "empty___string" as key for ".value" member */,
 }) {
   final buffer = StringBuffer()
     ..write(name)
     ..write("(");
 
-  if (members.empty__not()) {
+  if (members.empty___ok().NOT) {
     var first___ok = TRUE;
 
     members.forEach(
@@ -56,7 +47,5 @@ base__compo__representation__text({
 
   buffer.clear();
 
-  return base__representation__text(
-    result,
-  );
+  return representation__text___compo(result);
 }

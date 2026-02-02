@@ -6,8 +6,8 @@ const //
 APPROX__8__significand__max = ((1 << 52) /*-1*/ /* because ,the sign bit ,is stored separat-ly */ ),
     APPROX__8__exponent__max = ((1 << 10) - 1 /* because ,exponent can also be ,negative */ );
 
-class base__APPROX__input__digits__fixed {
-  base__APPROX__input__digits__fixed({
+class APPROX__input__digits__fixed {
+  APPROX__input__digits__fixed({
     final INT significand = 0,
     final BOOL significand__negative___ok = FALSE,
     final INT significand__digits__count = 3,
@@ -16,26 +16,26 @@ class base__APPROX__input__digits__fixed {
     final BOOL exponent__negative___ok = FALSE,
     final INT exponent__digits__count = 2,
     final BOOL exponent__truncate___ok = TRUE,
-  }) : significand = base__INT__NEG__text__digits__fixed(
+  }) : significand = INT__NEG__text__digits__fixed(
          significand,
          negative___ok: significand__negative___ok,
          digits__count: significand__digits__count,
          truncation:
              (significand__truncate___ok //
-             ? base__INT__NEG__text__digits__fixed__truncation.ending
+             ? INT__NEG__text__digits__fixed__truncation.ending
              : NIL),
        ),
-       exponent = base__INT__NEG__text__digits__fixed(
+       exponent = INT__NEG__text__digits__fixed(
          exponent,
          negative___ok: exponent__negative___ok,
          digits__count: exponent__digits__count,
          truncation:
              (exponent__truncate___ok //
-             ? base__INT__NEG__text__digits__fixed__truncation.beginning
+             ? INT__NEG__text__digits__fixed__truncation.beginning
              : NIL),
        );
 
-  final base__INT__NEG__text__digits__fixed //
+  final INT__NEG__text__digits__fixed //
   significand,
       exponent;
 
@@ -46,7 +46,7 @@ negative-zero is treated as non-negative */ (
     final string value__new,
   ) {
     final values = value__new.split(
-      base__chars__dot___string,
+      chars__dot___string,
     );
 
     if (values.elements__count > 2) {
@@ -56,7 +56,7 @@ negative-zero is treated as non-negative */ (
     {
       final value = values.first;
 
-      if (value.empty__not()) {
+      if (value.empty___ok().NOT) {
         final significand_1 = INT__NEG.tryParse(
           value,
         );
@@ -92,12 +92,12 @@ negative-zero is treated as non-negative */ (
 
   string //
   value__convert__text() {
-    return (significand.value__convert__text() + base__chars__dot___string + exponent.value__convert__text());
+    return (significand.value__convert__text() + chars__dot___string + exponent.value__convert__text());
   }
 }
 
-extension base__APPROX__input__digits__fixed__test //
-    on base__APPROX__input__digits__fixed {
+extension APPROX__input__digits__fixed__test //
+    on APPROX__input__digits__fixed {
   void test() {
     [
       "0",
@@ -115,14 +115,16 @@ extension base__APPROX__input__digits__fixed__test //
       "-1234.-1234",
       "1234",
       ".1234",
-    ].iterate__basic(
+    ].iterate(
       (_, final string v) {
-        base__APPROX__input__digits__fixed(
+        APPROX__input__digits__fixed(
             significand__truncate___ok: TRUE,
           )
           ..value__set__parse(v)
           ..value__convert__text().print();
-        base__print__blank();
+        print__blank();
+
+        return TRUE;
       },
     );
   }

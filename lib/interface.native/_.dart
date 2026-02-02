@@ -76,7 +76,7 @@ byte__array___compo ffi__text__convert(
       bytes__count = bytes.bytes__count,
       result = BS1__array__alloc(bytes__count + 1);
 
-  base__copy(
+  copy(
     (result.arr //
       ..[bytes__count] = 0),
     bytes,

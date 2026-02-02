@@ -398,10 +398,10 @@ void serveTCP(const char *ipv4,
       }
       else
       {
-        u32 base__networkIP = (*(struct sockaddr_in *)&clntSockAddr).sin_addr.s_addr;
+        u32 networkIP = (*(struct sockaddr_in *)&clntSockAddr).sin_addr.s_addr;
 
         putchar('\n');
-        printf("%u\t", base__networkIP);
+        printf("%u\t", networkIP);
         for (u64 i = 0; i < u32__size /** IPv4.size: 1 * 4 bytes */; i += 1)
         {
           printf("%u:", (255 & (networkIP >>= SIZE_BYTE)));

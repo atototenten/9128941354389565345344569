@@ -98,7 +98,7 @@ void data__fetch__manager__test() {
       },
     );
 
-    base__iterate__basic(
+    iterate__basic(
       data__array__count,
       (final data__id) {
         final data = fetch_man.data(
@@ -226,28 +226,28 @@ void str__wide__rich__test() {
       ),
     );
 
-    base__print__blank(3);
+    print__blank(3);
   });
 }
 
-void base__storage__file__native__linux__test() {
-  final s = base__storage__file__native__linux__open("/tmp/m.c");
+void storage__file__native__linux__test() {
+  final s = storage__file__native__linux__open("/tmp/m.c");
 
-  base__storage__file__native__linux__block__size__check(s);
-  base__storage__file__native__linux__size(s);
+  storage__file__native__linux__block__size__check(s);
+  storage__file__native__linux__size(s);
 
-  /*base__storage__file__native__linux__block__size__block_device(s);
-  base__storage__file__native__linux__size__block_device(s);*/
+  /*storage__file__native__linux__block__size__block_device(s);
+  storage__file__native__linux__size__block_device(s);*/
 
-  final buf = byte__array__alloc(base__storage__file__block__size.size);
+  final buf = byte__array__alloc(storage__file__block__size.size);
 
   /*byte__array__fill(
     buf.arr,
-    count: base__storage__file__block__size.size,
+    count: storage__file__block__size.size,
     value: ascii__ch__in_visible__line_feed,
   );
 
-  base__copy(
+  copy(
     buf.arr,
     string__ascii__convert__str("#define ABC 123").bytes,
     dest__offset: 2,
@@ -257,11 +257,11 @@ void base__storage__file__native__linux__test() {
 
   report__str(str(buf.arr), "buf.string");*/
 
-  base__storage__file__native__linux__operate(
+  storage__file__native__linux__operate(
     s,
     buf.ptr,
-    base__storage__file__block__size.size,
-    base__storage__file__block__size.size,
+    storage__file__block__size.size,
+    storage__file__block__size.size,
     NO,
   );
 
@@ -271,8 +271,8 @@ void base__storage__file__native__linux__test() {
 
   byte__array__free(buf);
 
-  base__storage__file__native__linux__sync(s);
-  base__storage__file__native__linux__close(s);
+  storage__file__native__linux__sync(s);
+  storage__file__native__linux__close(s);
 }
 
 void wstr__test() {
@@ -394,13 +394,13 @@ void report__test() {
   );
 
   {
-    base__function__call__print(
+    function__call__print(
       "none",
        null,
       "label__",
     );
 
-    base__function__call__print(
+    function__call__print(
       "none",
       () {
         report__compo__member__type__value(
@@ -419,7 +419,7 @@ void report__test() {
     );
   }
 
-  base__print__blank();
+  print__blank();
 }
 
 void str__search__de_limiter__array(
@@ -475,7 +475,7 @@ void bytes__test() {
         growable: FALSE,
       ))
         ..representation__text().print("bys"),
-      offset__ptr = base__value__proxy__kampo<uu>(0);
+      offset__ptr = value__proxy__kampo<uu>(0);
 
   bytes__read__view__till(bys, offset__ptr, 95).representation__text().print("bys.new");
   offset__ptr.value.representation__text().print("offset");
@@ -500,7 +500,7 @@ void list__test() {
   ls.add(2);
   print_("add.second");
 
-  base__iterate__basic(5, ls.add, 3);
+  iterate__basic(5, ls.add, 3);
 
   print_("add.all");
 
@@ -522,7 +522,7 @@ void list__test() {
 }
 
 void stack__test() {
-  final stack = base__stack<uu>();
+  final stack = stack___compo<uu>();
 
   void print_() => //
       stack
@@ -537,14 +537,14 @@ void stack__test() {
 
   print_();
 
-  base__iterate(count, (final iter) {
+  iterate(count, (final iter) {
     stack.add(iter);
     print_();
 
     return TRUE;
   });
 
-  base__iterate(count, (_) {
+  iterate(count, (_) {
     stack.remove();
     print_();
 
@@ -584,18 +584,18 @@ void storage__test() {
   });
 }
 
-void base__storage__file__fast__test() {
-  if (base__storage__file__block__size.size != alignment__flash.size) {
-    print__info("${base__storage__file__block__size.size}(base__storage__file__block__size.size) MUST equal ${alignment__flash.size}");
+void storage__file__fast__test() {
+  if (storage__file__block__size.size != alignment__flash.size) {
+    print__info("${storage__file__block__size.size}(storage__file__block__size.size) MUST equal ${alignment__flash.size}");
   }
 
   final //
-      storage__size = (16 * base__storage__file__block__size.size),
+      storage__size = (16 * storage__file__block__size.size),
       bys = byte__array(storage__size),
       storage = storage__memory__kampo.init() //
         ..write(byte__array(storage__size), storage__size, 0),
       storage__buffer = storage.storage.arr,
-      pool = base__storage__file__fast__kampo.init(storage);
+      pool = storage__file__fast__kampo.init(storage);
 
   uu _check__value = 0;
   void check(
@@ -626,7 +626,7 @@ void base__storage__file__fast__test() {
         offset_ = storage__buffer.indexOf(value),
         count_ = ((storage__buffer.lastIndexOf(value) + 1) - offset_);
 
-    if (base__printing___ok) {
+    if (printing___ok) {
       offset_.representation__text().print("offset_");
       count_.representation__text().print("count_");
     }
@@ -641,7 +641,7 @@ void base__storage__file__fast__test() {
       }
     }
 
-    if (base__printing___ok) {
+    if (printing___ok) {
       final //
           b__offset__not__min = (offset > 0),
           b__count__not__max = (count < storage__size);
@@ -669,33 +669,33 @@ void base__storage__file__fast__test() {
               (count: (512 + 256), offset: 32),
             ] +
             /* spanning multiple blocks */ [
-              (count: 1024, offset: (base__storage__file__block__size.size - 256)),
-              (count: ((3 * base__storage__file__block__size.size) + 1), offset: (base__storage__file__block__size.size - 512 - 256)),
-              (count: ((4 * base__storage__file__block__size.size) + 1), offset: (3 * (base__storage__file__block__size.size - 250))),
+              (count: 1024, offset: (storage__file__block__size.size - 256)),
+              (count: ((3 * storage__file__block__size.size) + 1), offset: (storage__file__block__size.size - 512 - 256)),
+              (count: ((4 * storage__file__block__size.size) + 1), offset: (3 * (storage__file__block__size.size - 250))),
             ] +
             /* aligned count */ [
-              (count: base__storage__file__block__size.size, offset: 64),
-              (count: (3 * base__storage__file__block__size.size), offset: 128),
+              (count: storage__file__block__size.size, offset: 64),
+              (count: (3 * storage__file__block__size.size), offset: 128),
             ] +
             /* aligned offset */ [
-              (count: (base__storage__file__block__size.size + 1), offset: (2 * base__storage__file__block__size.size)),
-              (count: 2000, offset: (5 * base__storage__file__block__size.size)),
+              (count: (storage__file__block__size.size + 1), offset: (2 * storage__file__block__size.size)),
+              (count: 2000, offset: (5 * storage__file__block__size.size)),
             ] +
             /* aligned count, and offset */ [
-              (count: base__storage__file__block__size.size, offset: 0),
-              (count: (3 * base__storage__file__block__size.size), offset: 0),
-              (count: (3 * base__storage__file__block__size.size), offset: (2 * base__storage__file__block__size.size)),
+              (count: storage__file__block__size.size, offset: 0),
+              (count: (3 * storage__file__block__size.size), offset: 0),
+              (count: (3 * storage__file__block__size.size), offset: (2 * storage__file__block__size.size)),
             ] +
             /* previous, with equality */ [
-              (count: base__storage__file__block__size.size, offset: base__storage__file__block__size.size),
-              (count: (2 * base__storage__file__block__size.size), offset: (2 * base__storage__file__block__size.size)),
+              (count: storage__file__block__size.size, offset: storage__file__block__size.size),
+              (count: (2 * storage__file__block__size.size), offset: (2 * storage__file__block__size.size)),
             ] +
             [
-              (count: base__storage__file__block__size.size, offset: 1),
-              (count: base__storage__file__block__size.size, offset: 90),
-              (count: (base__storage__file__block__size.size + 255), offset: 8),
-              (count: (3 * base__storage__file__block__size.size), offset: 120),
-              (count: ((2 * base__storage__file__block__size.size) + 1), offset: 8000),
+              (count: storage__file__block__size.size, offset: 1),
+              (count: storage__file__block__size.size, offset: 90),
+              (count: (storage__file__block__size.size + 255), offset: 8),
+              (count: (3 * storage__file__block__size.size), offset: 120),
+              (count: ((2 * storage__file__block__size.size) + 1), offset: 8000),
             ]);
 
     if (cases.length > u8__max) {
@@ -708,7 +708,7 @@ void base__storage__file__fast__test() {
 
   {
     void pool__print() {
-      if (base__printing___ok) //
+      if (printing___ok) //
         pool
               ..store.iterate__basic((final element) => //
                   element.offset.representation__text().print("store.block.offset"))

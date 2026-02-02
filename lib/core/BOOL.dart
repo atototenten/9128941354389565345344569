@@ -13,9 +13,9 @@ extension BOOL___extension on BOOL {
   BOOL get NOT => //
       !this;
 
-  base__representation__text //
+  representation__text___compo //
   representation__text() {
-    return base__representation__text(
+    return representation__text___compo(
       (this ? "TRUE" : "FALSE"),
     );
   }

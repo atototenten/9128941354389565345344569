@@ -54,7 +54,7 @@ class navigation__kampo {
     this.b__transition__instant,
   );
 
-  final base__widget widget;
+  final widget___protocol widget;
   final procedure? de_init_ /*
   use `procedure__schedule`, to executure, after the build */
       ;
@@ -62,14 +62,14 @@ class navigation__kampo {
 }
 
 navigation__kampo navigation(
-  final base__widget__build__function__format widget__build,
+  final widget__build__function__format widget__build,
   final procedure? de_init_, [
   final bool b__transition__instant = FALSE,
 ]) =>
     navigation__kampo(
-      base__widget__building(
+      widget__building(
         widget__build,
-        key: base__widget__key__unique,
+        key: widget__key__unique,
       ),
       de_init_,
       b__transition__instant,
@@ -87,22 +87,22 @@ class navigation__manager__kampo /*
     this.exit__handle,
   );
 
-  final base__stack<navigation__kampo> history;
+  final stack___compo<navigation__kampo> history;
   final broadcast__kampo<u8> broadcast /*
   except `exit`, all the `navigation.type`s arrive after the navigation
     because all non-internal listeners are added after the actual manager */
       ;
-  final base__widget__build__definitive app;
+  final widget__build__definitive app;
   final procedure? exit__handle;
 }
 
 navigation__manager__kampo navigation__manager({
-  required final base__widget__build__function__format page__initial__build,
+  required final widget__build__function__format page__initial__build,
   required final procedure? page__initial__departure__handle,
   required final procedure? exit__handle,
 }) {
   final //
-      history = base__stack<navigation__kampo>(),
+      history = stack___compo<navigation__kampo>(),
       broadcast_ = broadcast<u8>(error__handle);
 
   u8 navigation__last__type = navigation__type__init;
@@ -110,11 +110,11 @@ navigation__manager__kampo navigation__manager({
   return navigation__manager__kampo(
     history,
     broadcast_,
-    base__widget__build__definitive(
+    widget__build__definitive(
       init: (final state) {
         broadcast_.listener__add(
           (final navigation__type) {
-            if (base__printing___ok) {
+            if (printing___ok) {
               report__info(navigation__type__convert__string(navigation__type));
               report__uu(history.count, "navigation.history.count");
               report__bool(state.valid___ok(), "navigation.app.b__mounted");
@@ -136,13 +136,13 @@ navigation__manager__kampo navigation__manager({
       },
       de_init_: broadcast_.flush,
       build: (_) {
-        if (base__printing___ok) //
-          base__function__call__print__arguments__void(
+        if (printing___ok) //
+          function__call__print__arguments__void(
             "navigation.build",
           );
 
         if /*un-likely*/ (navigation__last__type == navigation__type__exit) //
-          return gui__base__empty__widget;
+          return empty__widget;
 
         final last = history.last!;
         /*if (last ==  null) //
@@ -156,8 +156,8 @@ navigation__manager__kampo navigation__manager({
         /*if (last_ ==  null) //
             throw "(navigation__history.last.previous ==  null)";*/
 
-        return gui__base__stack___widget(
-          children: <base__widget>[
+        return stack___widget(
+          children: <widget___protocol>[
             IgnorePointer(
               child: last_.value.widget,
             ),
@@ -174,7 +174,7 @@ void navigate__forward__page(
   final navigation__manager__kampo navigation__manager, {
   final bool b__transition__instant = FALSE,
   required final procedure? departure__handle,
-  required final base__widget__build__function__format page__build,
+  required final widget__build__function__format page__build,
 }) {
   navigation__manager
     ..history.add(
@@ -193,7 +193,7 @@ void navigate__forward__overlay(
   final navigation__manager__kampo navigation__manager, {
   final bool b__transition__instant = FALSE,
   required final procedure? close__handle,
-  required final base__widget__build__function__format overlay__build,
+  required final widget__build__function__format overlay__build,
 }) {
   navigation__manager
     ..history.add(
@@ -212,7 +212,7 @@ void navigate__forward__overlay__bottom(
   final navigation__manager__kampo navigation__manager, {
   final bool b__transition__instant = FALSE,
   required final procedure? dismiss__handle,
-  required final base__widget__build__function__format overlay__build,
+  required final widget__build__function__format overlay__build,
 }) {
   navigation__manager
     ..history.add(
@@ -239,7 +239,7 @@ void navigate__forward__replace__page(
   final navigation__manager__kampo navigation__manager, {
   final bool b__transition__instant = FALSE,
   required final procedure? departure__handle,
-  required final base__widget__build__function__format page__build,
+  required final widget__build__function__format page__build,
 }) /*
   equal to, calling `de_navigate`, then calling `navigate`
     without `build`ing the `widget`, `de_navigate`ed to
@@ -261,7 +261,7 @@ void navigate__forward__replace__overlay(
   final navigation__manager__kampo navigation__manager, {
   final bool b__transition__instant = FALSE,
   required final procedure? close__handle,
-  required final base__widget__build__function__format overlay__build,
+  required final widget__build__function__format overlay__build,
 }) {
   history__remove(
     navigation__manager,
@@ -279,7 +279,7 @@ void navigate__forward__replace__overlay__bottom(
   final navigation__manager__kampo navigation__manager, {
   final bool b__transition__instant = FALSE,
   required final procedure? dismiss__handle,
-  required final base__widget__build__function__format overlay__build,
+  required final widget__build__function__format overlay__build,
 }) {
   history__remove(
     navigation__manager,
@@ -352,7 +352,7 @@ void navigate__re_set(
   final navigation__manager__kampo navigation__manager, {
   final bool b__transition__instant = FALSE,
   required final procedure? departure__handle,
-  required final base__widget__build__function__format page__build,
+  required final widget__build__function__format page__build,
 }) {
   history__flush(
     navigation__manager,

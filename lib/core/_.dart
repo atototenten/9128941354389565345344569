@@ -20,8 +20,8 @@ part "ARRAY.dart";
 part "ASYN.dart";
 part "math.dart";
 part "BOOL.dart";
-part "byte.string.dart";
-part "byte.array.dart";
+part "byte__string.dart";
+part "byte__array.dart";
 part "CHAR.ASCII.dart";
 part "CHAR.dart";
 part "compo.dart";
@@ -41,14 +41,9 @@ part "number/integer/signed.dart";
 part "number/integer/signed.big.dart";
 part "number/floating-point.dart";
 part "number/fixed-point.dart";
-part "image.dart";
-part "input.text.buffering.dart";
-part "isolating.dart";
+part "CAPSULE.dart";
 part "VENDING.dart";
-part "Iterate.dart";
-part "language.english.dart";
-part "list.dart";
-part "message.dart";
+part "iterate.dart";
 part "printing.dart";
 part "procedure.dart";
 part "queue.dart";
@@ -56,7 +51,7 @@ part "stack.dart";
 part "static.dart";
 part "STREAM.dart";
 part "string.dart";
-part "representation.text.dart";
+part "representation__text.dart";
 part "union.dart";
 part "unit.dart";
 part "value.dart";
@@ -69,7 +64,7 @@ part "UNICODE.dart";
     any function, marked `async`, or using `await` in body, MUST return `Future`, NOT `FutureOr` */
 
 const //
-base__printing___ok = TRUE,
+printing___ok = TRUE,
         //
         environment__phone__android___ok =
         TRUE,
@@ -97,19 +92,19 @@ bytes__count__decimal__shift__count = 10,
 const INT //
 io__buffer__size__default = (bytes__count__kibi << 2);
 
-enum base__results__basic {
+enum results__basic {
   success,
   failure /* client-side issue */,
   failure__internal /* non-{client-side} issue ,like communicat-ion ,internal|server-side */,
 }
 
-extension base__results__basic__ensurance__extension //
-    on base__results__basic {
+extension results__basic__ensurance__extension //
+    on results__basic {
   void ensure__success /*
-`throw`s `base__results__basic.`{`failure`|`error`} */ () {
+`throw`s `results__basic.`{`failure`|`error`} */ () {
     final value = this;
 
-    if (value == base__results__basic.success) {
+    if (value == results__basic.success) {
       return;
     }
 
@@ -155,25 +150,25 @@ extension nil__conversion__extension<type extends Object> on type? {
   }
 }
 
-late final base__random__safe = dart__math.Random.secure();
+late final random__safe = dart__math.Random.secure();
 
-BOOL base__check__endian__host__little() {
+BOOL check__endian__host__little() {
   return ((BS2__array(1)..[0] = 256 /* because we want to check the index 0, not 1 */ ).buffer.asUint8List()[0] == 0);
 }
 
-void base__check__features() {
-  if (base__check__endian__host__little().NOT) {
+void check__features() {
+  if (check__endian__host__little().NOT) {
     throw "host, byte-order, in-compatible: refer `b__endian__host__little`";
   }
 }
 
-typedef base__copy__result___compo = ({
+typedef copy__result___compo = ({
   INT dest__offset__new,
   INT src__offset__new,
 });
 
 //@attribute__function__inline
-base__copy__result___compo base__copy<element___type>(
+copy__result___compo copy<element___type>(
   final ARRAY<element___type> dest,
   final ARRAY<element___type> src, {
   final INT? /*src__*/ count,
@@ -204,17 +199,17 @@ base__copy__result___compo base__copy<element___type>(
   );
 }
 
-abstract class base__dispose___protocol {
+abstract class dispose___protocol {
   void dispose();
 }
 
-abstract class base__dispose__asyn___protocol //
+abstract class dispose__asyn___protocol //
 <error__type extends Enum> {
   ASYN<error__type?> //
   dispose__asyn();
 }
 
-abstract class base__dispose__asyn__basic___protocol {
+abstract class dispose__asyn__basic___protocol {
   ASYN__BASIC<void> //
   dispose__asyn();
 }
@@ -257,7 +252,7 @@ extension INT__array__bits__extension //
   }) {
     final buffer = StringBuffer("[");
 
-    iterate__basic(
+    this.iterate(
       (final i, final e) {
         buffer
           ..write(" ")
@@ -270,6 +265,8 @@ extension INT__array__bits__extension //
                 ),
           )
           ..write(",");
+
+        return TRUE;
       },
     );
 
@@ -286,7 +283,7 @@ extension INT__array__bits__extension //
 extension text__separation__extension //
     on string {
   string separate({
-    final string separation = base__chars__space___string,
+    final string separation = chars__space___string,
     final INT interval = 3,
     final string? prefix,
   }) {
@@ -314,7 +311,7 @@ extension text__separation__extension //
       ),
     );
 
-    base__iterate__reverse__basic(
+    iterate__reverse(
       ((length_1 - offset) ~/ interval),
       (_) {
         buffer
@@ -325,6 +322,8 @@ extension text__separation__extension //
               (offset += interval),
             ),
           );
+
+        return TRUE;
       },
     );
 
@@ -350,13 +349,15 @@ extension text__separation__extension //
             offset,
           );
 
-    base__iterate__reverse__basic(
+    iterate__reverse(
       (elements__count - 1),
       (final i) {
         result[i] = substring(
           offset,
           (offset += interval),
         );
+
+        return TRUE;
       },
     );
 

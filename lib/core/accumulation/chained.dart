@@ -1,15 +1,15 @@
 part of "../_.dart";
 
-class base__accumulation__chained /*
+class accumulation__chained /*
 singly chained (backward ref.ing) list */ //
     <element___type extends Object?> //
     implements
-        base__dispose___protocol {
-  base__accumulation__chained() //
+        dispose___protocol {
+  accumulation__chained() //
       : element__last___raw = NIL,
         elements__count___raw = 0;
 
-  base__accumulation__chained__element<element___type>? //
+  accumulation__chained__element<element___type>? //
       element__last___raw;
 
   INT //
@@ -23,18 +23,14 @@ singly chained (backward ref.ing) list */ //
     return (elements__count() == 0);
   }
 
-  BOOL empty__not() {
-    return (elements__count() != 0);
-  }
-
-  base__accumulation__chained__element<element___type>? element__last() {
+  accumulation__chained__element<element___type>? element__last() {
     return element__last___raw;
   }
 
   void add__ending(
     final element___type value,
   ) {
-    element__last___raw = base__accumulation__chained__element(
+    element__last___raw = accumulation__chained__element(
       value,
       previous___raw: element__last___raw,
     );
@@ -55,7 +51,7 @@ singly chained (backward ref.ing) list */ //
   }
 
   void iterate(
-    final BOOL Function(base__accumulation__chained__element<element___type> element) element__handle,
+    final BOOL Function(accumulation__chained__element<element___type> element) element__handle,
   ) {
     var element = element__last___raw;
 
@@ -74,7 +70,7 @@ singly chained (backward ref.ing) list */ //
 
   BOOL present___ok(
     final element___type element,
-    final base__value__equality__function__format<element___type, element___type> equal___ok,
+    final value__equality__function__format<element___type, element___type> equal___ok,
   ) {
     var present___ok = FALSE;
 
@@ -100,14 +96,14 @@ singly chained (backward ref.ing) list */ //
 
   ARRAY<element___type> convert__array /*
 TASK
-  eliminate intermediate conversion to `base__accumulation__linear__basic`
-    also in `base__accumulation__linked` */
+  eliminate intermediate conversion to `accumulation__linear__basic___compo`
+    also in `accumulation__linked` */
       () {
     if (empty___ok()) {
       return array__new__empty();
     }
 
-    final accumulation = base__accumulation__linear__basic<element___type>(
+    final accumulation = accumulation__linear__basic___compo<element___type>(
       capacity__initial: elements__count(),
     );
 
@@ -143,14 +139,14 @@ TASK
   }
 }
 
-class base__accumulation__chained__element //
+class accumulation__chained__element //
     <element___type extends Object?> {
-  base__accumulation__chained__element(
+  accumulation__chained__element(
     this.value, {
     required this.previous___raw,
   });
 
   final element___type value;
 
-  base__accumulation__chained__element<element___type>? previous___raw;
+  accumulation__chained__element<element___type>? previous___raw;
 }

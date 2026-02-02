@@ -66,13 +66,14 @@ INT CHAR__UNICODE__bytes__count(final CHAR__UNICODE wc) => //
 byte__array wstr__convert__bytes(
   final ARRAY<CHAR__UNICODE> ws,
 ) {
-  final sink = base__byte__array__accumulation();
+  final sink = byte__array__accumulation___compo();
 
-  ws.iterate__basic(
-    (_, final wc) => //
-    sink.add__INT(
-      wc,
-    ),
+  ws.iterate(
+    (_, final e) {
+      sink.add__INT(e);
+
+      return TRUE;
+    },
   );
 
   final result = sink.convert__byte__array();
@@ -95,7 +96,7 @@ byte__array wstr__convert__bytes(
     hence needs encryption */
       = TRUE;
 
-  base__iterate__basic(
+  iterate__basic(
     bytes__count,
     (final i) {
       final wc = bytes[iter];
@@ -123,7 +124,7 @@ STRING__UNICODE wstr__bytes__convert(
   bytes_ = bytes___compo(
         bytes,
       ),
-      sink = base__accumulation__linear__basic<CHAR__UNICODE>();
+      sink = accumulation__linear__basic___compo<CHAR__UNICODE>();
 
   while (bytes_.iterate___ok) {
     sink.add__ending(

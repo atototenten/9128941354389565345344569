@@ -48,7 +48,7 @@ extension VENDING___extension<element___type> //
   (
     final element__new___type Function(
       element___type current,
-      base__value__optional___union<element___type> previous /*
+      value__optional___union<element___type> previous /*
       absent only for the first invocation/iteration
         otherwise always present */,
     )
@@ -60,14 +60,14 @@ extension VENDING___extension<element___type> //
       return;
     }
 
-    base__value__optional___union<element___type> previous = base__value__optional__absent__compo<element___type>();
+    value__optional___union<element___type> previous = value__optional__absent__compo<element___type>();
 
     do {
       final e = session.current;
 
       yield operate(e, previous);
 
-      previous = base__value__optional__present__compo<element___type>(e);
+      previous = value__optional__present__compo<element___type>(e);
     } while (session.moveNext());
   }
 
@@ -116,7 +116,7 @@ extension VENDING___extension<element___type> //
   }
 }
 
-VENDING<element___type> base__elements__generate<element___type>(
+VENDING<element___type> elements__generate<element___type>(
   final INT elements__count /*
 excluding "separation"s */,
   final element___type separation,
@@ -130,7 +130,7 @@ excluding "separation"s */,
     return;
   }
 
-  final elements__separated__generation = base__array__elements__separated__generation__meta___compo(
+  final elements__separated__generation = array__elements__separated__generation__meta___compo(
     elements__count: elements__count,
   );
 
@@ -152,7 +152,7 @@ excluding "separation"s */,
   }
 }
 
-VENDING<element___type> base__elements__generate__definitive /*
+VENDING<element___type> elements__generate__definitive /*
 - usage : {
     const //
         radius__outer = 16.0,
@@ -197,13 +197,13 @@ VENDING<element___type> base__elements__generate__definitive /*
       );
     }
 
-    print(base__elements__generate__definitive(elements__count: 5, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
-    print(base__elements__generate__definitive(elements__count: 4, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
-    print(base__elements__generate__definitive(elements__count: 3, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
-    print(base__elements__generate__definitive(elements__count: 2, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
-    print(base__elements__generate__definitive(elements__count: 1, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
-    print(base__elements__generate__definitive(elements__count: 0, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
-    print(base__elements__generate__definitive(elements__count: -1, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
+    print(elements__generate__definitive(elements__count: 5, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
+    print(elements__generate__definitive(elements__count: 4, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
+    print(elements__generate__definitive(elements__count: 3, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
+    print(elements__generate__definitive(elements__count: 2, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
+    print(elements__generate__definitive(elements__count: 1, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
+    print(elements__generate__definitive(elements__count: 0, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
+    print(elements__generate__definitive(elements__count: -1, separation__leading__and__elements: separation__leading__and__elements, separation__elements: separation__elements, leading: leading, element: element).convert__array());
   } -> {
     [123, 111, (0, FIRST, -), 11111, (1, -, -), 11111, (2, -, -), 11111, (3, -, -), 11111, (4, -, LAST)]
     [123, 111, (0, FIRST, -), 11111, (1, -, -), 11111, (2, -, -), 11111, (3, -, LAST)]
