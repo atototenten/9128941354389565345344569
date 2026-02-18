@@ -3,31 +3,31 @@ part of "_.dart";
 extension event__channel__broadcast__handling__extension //
     on event__channel__broadcast___protocol {
   widget___protocol handling__widget__build /*
-like `ListenableBuilder`
-a separate `value__mutation__event__channel__broadcast__dispose___protocol<value___type, widget__building__context__definitive>` handling-widget (like `ValueListenableBuilder`)
-  ,is un-necessary
-    ,because it would simply be different in `.build` ,with an additional `channel.value()` param. ,which is already a method-call away
-      ,and would introduce duplication ,and deviation ,in the a.p.i.
-unicast-channels("event__channel__unicast___protocol") should be avoided
-  due to the flutter's behavior of detaching the old widget
-    after attaching the new widget
-    and the general un-reliability of the invocation-sequence */ (
+- inspired by `ListenableBuilder`
+- a separate `value__mutation__event__channel__broadcast__dispose___protocol<value___type, widget__building__context__definitive>` handling-widget (like `ValueListenableBuilder`)
+    is un-necessary
+      because it would simply be different in `.build` ,with an additional `channel.value()` param. ,which is already a method-call away
+        and would introduce duplication ,and deviation ,in the a.p.i.
+- unicast-channels("event__channel__unicast___protocol") should be avoided
+    due to the flutter's behavior of detaching the old widget
+      after attaching the new widget
+      and the general un-reliability of the invocation-sequence */ (
     final widget__building__context___compo context, {
-    required final widget__build__function__format child__build,
+    required final widget__build___procedure__format child__build,
   }) {
-    return widget__definitive__build(
+    return widget__advanced__build(
       context,
       attach__handle: (final context) {
-        void build__re() {
-          context.build__re___raw();
+        void re_build() {
+          context.re_build();
         }
 
-        descriptions__add(build__re);
+        descriptions__add(re_build);
 
-        return (build__re: build__re);
+        return (re_build: re_build);
       },
       detach__handle: (final storage) {
-        descriptions__remove(storage.build__re);
+        descriptions__remove(storage.re_build);
       },
       child__build: (final context, _) {
         return child__build(context);
@@ -61,12 +61,12 @@ class event__channel__handling__widget__state //
   void initState() {
     super.initState();
 
-    widget.channel.descriptions__add(build__re);
+    widget.channel.descriptions__add(re_build);
   }
 
   @override
   void dispose() {
-    widget.channel.descriptions__remove(build__re);
+    widget.channel.descriptions__remove(re_build);
 
     super.dispose();
   }
@@ -75,12 +75,12 @@ class event__channel__handling__widget__state //
   void didUpdateWidget(final event__channel__handling__widget widget__old) {
     super.didUpdateWidget(widget__old);
 
-    widget__old.channel.descriptions__remove(build__re);
-    widget.channel.descriptions__add(build__re);
+    widget__old.channel.descriptions__remove(re_build);
+    widget.channel.descriptions__add(re_build);
   }
 
-  void build__re() {
-    context.build__re___raw();
+  void re_build() {
+    context.re_build___raw();
   }
 
   @override

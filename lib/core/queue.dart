@@ -56,7 +56,7 @@ dart's `ListQueue` should be preferred
 
   BOOL present___ok(
     final element___type element,
-    final value__equality__function__format<element___type, element___type> equal___ok,
+    final value__equality___procedure__format<element___type, element___type> equal___ok,
   ) {
     return _accumulation.present___ok(
       element,

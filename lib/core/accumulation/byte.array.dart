@@ -51,58 +51,58 @@ class byte__array__accumulation___compo /*
         dispose___protocol {
   byte__array__accumulation___compo();
 
-  final accumulation___raw = accumulation__linear__basic___compo<byte__array>();
+  final _accumulation = accumulation__linear__basic___compo<byte__array>();
 
-  var bytes__count___raw = 0;
+  var _bytes__count = 0;
 
   INT bytes__count() {
-    return bytes__count___raw;
+    return _bytes__count;
   }
 
   INT byte__next__offset() {
-    return bytes__count___raw;
+    return _bytes__count;
   }
 
   void flush() {
-    accumulation___raw.flush();
-    bytes__count___raw = 0;
+    _accumulation.flush();
+    _bytes__count = 0;
   }
 
   void shrink() {
-    accumulation___raw.shrink();
+    _accumulation.shrink();
   }
 
   void add(
     final byte__array bytes,
   ) {
-    accumulation___raw.add__ending(
+    _accumulation.add__ending(
       bytes,
     );
 
-    bytes__count___raw += bytes.bytes__count;
+    _bytes__count += bytes.bytes__count;
   }
 
   void add__byte(
     final BS1 b,
   ) {
-    accumulation___raw.add__ending(
+    _accumulation.add__ending(
       b.INT__1__convert__byte__array(),
     );
 
-    bytes__count___raw += 1;
+    _bytes__count += 1;
   }
 
   void add__INT__fixed(
     final INT value,
     final INT value__size,
   ) {
-    accumulation___raw.add__ending(
+    _accumulation.add__ending(
       value.convert__byte__array__endian__little(
         value__size,
       ),
     );
 
-    bytes__count___raw += value__size;
+    _bytes__count += value__size;
   }
 
   void add__INT(
@@ -152,10 +152,10 @@ class byte__array__accumulation___compo /*
     byte__array? bytes,
   }) {
     bytes ??= byte__array(
-      bytes__count___raw,
+      _bytes__count,
     );
 
-    accumulation___raw.copy__byte__array(
+    _accumulation.copy__byte__array(
       bytes,
     );
 
@@ -196,6 +196,6 @@ class byte__array__accumulation___compo /*
 
   @override
   void dispose() {
-    accumulation___raw.dispose();
+    _accumulation.dispose();
   }
 }

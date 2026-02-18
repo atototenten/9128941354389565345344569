@@ -100,11 +100,11 @@ APPROX wall__width() {
 final app__size__alter__channel = event__channel__broadcast();
 
 BOOL /*
-app:build__re:ok */
+app:re_build:ok */
     app__size__set({
-  required ui.FlutterView? view,
+  required dart__ui.FlutterView? view,
 }) {
-  view ??= ui.PlatformDispatcher.instance.implicitView!;
+  view ??= dart__ui.PlatformDispatcher.instance.implicitView!;
 
   {
     var result = FALSE;
@@ -193,7 +193,7 @@ app:build__re:ok */
           : screen__size__categories.huge));
 
   _size__pixel = (0.0025 *
-          math.min(
+          dart__math.min(
             _screen__size.width,
             _screen__size.height,
           ) /*

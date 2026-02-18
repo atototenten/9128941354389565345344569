@@ -185,7 +185,7 @@ INT__bytes__convert__result___compo INT__bytes__convert(
           so the `bytes` can be broken into multiple pars and de-cod-ed independently, then joined, to form complete result
     if only a few value(s), need to be de-cod-ed, then there is not-much benefit, of leaving the simplicity of `INT__bytes__convert`
   TASK
-    consider moving to `bool iterate(TCW)` accepting,
+    consider moving to `BOOL iterate(TCW)` accepting,
       instead of `return`ing `INT__bytes__convert__result__compo` */
 {
   var //
@@ -356,18 +356,18 @@ class number__integer__nilable {
   }
 
   number__integer__nilable.nil() //
-      : value___raw = 0;
+      : _value = 0;
 
   number__integer__nilable(
     final INT value,
-  ) : value___raw = value__convert__nilable___raw(
+  ) : _value = value__convert__nilable___raw(
           value,
         );
 
-  INT value___raw;
+  INT _value;
 
   BOOL nil___ok() {
-    return (value___raw == 0);
+    return (_value == 0);
   }
 
   INT value() {
@@ -376,18 +376,18 @@ class number__integer__nilable {
     }
 
     return value__nilable__convert___raw(
-      value___raw,
+      _value,
     );
   }
 
   void assign__nil() {
-    value___raw = 0;
+    _value = 0;
   }
 
   void assign(
     final INT value,
   ) {
-    value___raw = value__convert__nilable___raw(
+    _value = value__convert__nilable___raw(
       value,
     );
   }

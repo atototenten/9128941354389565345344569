@@ -45,12 +45,14 @@ extension Color___extension //
   }
 }
 
-ui.ImageFilter image__filter__blur(
+dart__ui.ImageFilter image__filter__blur(
   final APPROX value,
-) => ui.ImageFilter.blur(
-  sigmaX: value,
-  sigmaY: value,
-);
+) {
+  return dart__ui.ImageFilter.blur(
+    sigmaX: value,
+    sigmaY: value,
+  );
+}
 
 Color color__generate({
   required final INT intensity /*
@@ -113,7 +115,7 @@ extension Color$whiten on Color {
       color__whiten(this, intensity);
 }
 
-late final _random = math.Random.secure();
+late final _random = dart__math.Random.secure();
 
 INT get _color__random => //
     _random.nextInt(INT__1__limit);
@@ -121,12 +123,14 @@ INT get _color__random => //
 /** copied from `https://stackoverflow.com/a/43235` */
 Color color__random(
   final Color color,
-) => Color.fromARGB(
-  INT__1__max,
-  ((_color__random + color.red) ~/ 2),
-  ((_color__random + color.green) ~/ 2),
-  ((_color__random + color.blue) ~/ 2),
-);
+) {
+  return Color.fromARGB(
+    INT__1__max,
+    ((_color__random + color.red) ~/ 2),
+    ((_color__random + color.green) ~/ 2),
+    ((_color__random + color.blue) ~/ 2),
+  );
+}
 
 /*
 forked

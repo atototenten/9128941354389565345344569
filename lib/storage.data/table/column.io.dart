@@ -29,9 +29,9 @@ string storage__data__table__column__meta__convert__text(
     final Object value,
   ) {
     buffer
-      ..write(char__line_feed)
+      ..write(chars__line_feed___string)
       ..write(value)
-      ..write(char__space)
+      ..write(chars__space___string)
       ..write(char__bracket__round__open)
       ..write(name)
       ..write(char__bracket__round__close);
@@ -168,7 +168,7 @@ void report__base__storage__data__table__columns__meta__recursive__fancy(
       if (columns__meta !=  null) {
         report__history__write__short(char__bracket__round__open);
         report__history__write__short(columns__meta.column__meta__array.count);
-        report__history__write__short(char__colon);
+        report__history__write__short(chars__colon___string);
         report__history__write__short(columns__meta.size);
         report__history__write__short(char__bracket__round__close);
       }
@@ -176,7 +176,7 @@ void report__base__storage__data__table__columns__meta__recursive__fancy(
       report__history__write__short(printing__indentation__increaseation__text);
       report__history__write__short(column__meta.offset);
 
-      report__history__write__short(char__colon);
+      report__history__write__short(chars__colon___string);
       report__history__write__short(column__meta.size);
 
       report__line_feed();

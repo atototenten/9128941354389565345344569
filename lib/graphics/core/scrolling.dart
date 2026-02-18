@@ -194,12 +194,12 @@ class _scrolling__behavior___compo extends ScrollBehavior {
   const _scrolling__behavior___compo();
 
   @override
-  Set<ui.PointerDeviceKind> get dragDevices => //
-  <ui.PointerDeviceKind>{
-    ui.PointerDeviceKind.touch,
-    ui.PointerDeviceKind.stylus,
-    ui.PointerDeviceKind.trackpad,
-    ui.PointerDeviceKind.mouse,
+  Set<dart__ui.PointerDeviceKind> get dragDevices => //
+  <dart__ui.PointerDeviceKind>{
+    dart__ui.PointerDeviceKind.touch,
+    dart__ui.PointerDeviceKind.stylus,
+    dart__ui.PointerDeviceKind.trackpad,
+    dart__ui.PointerDeviceKind.mouse,
   };
 
   @override
@@ -208,7 +208,7 @@ class _scrolling__behavior___compo extends ScrollBehavior {
     final widget___protocol child,
     final ScrollableDetails details,
   ) => //
-  (/*program__compilation__debug___ok //
+  ( /*program__compilation__debug___ok //
       ? RawScrollbar(
           controller: details.controller,
           child: child,

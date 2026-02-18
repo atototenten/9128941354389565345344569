@@ -1,6 +1,6 @@
 part of "_.dart";
 
-typedef listing__item__build__function__format = //
+typedef listing__item__build___procedure__format = //
     widget___protocol Function(widget__building__context___compo context, INT);
 
 const listing__vertical__caching__extent__default = .5;
@@ -26,11 +26,11 @@ extension array__convert__widget__array__extension<value___type extends Object?>
   }
 }
 
-typedef listing__grow_able__listing__widget__function__format =
+typedef listing__grow_able__listing__widget___procedure__format =
     widget___protocol Function(
       widget__building__context___compo context,
       INT items__count,
-      listing__item__build__function__format item__widget,
+      listing__item__build___procedure__format item__widget,
     );
 
 class listing__grow_able<element__new___type> //
@@ -89,14 +89,14 @@ class listing__grow_able<element__new___type> //
   widget___protocol widget__build(
     final widget__building__context___compo context, {
 
-    required final listing__grow_able__listing__widget__function__format listing__build,
-    required final listing__item__build__function__format /* 2nd param. is `item__existing__id_` */ ? item__existing__build /*
+    required final listing__grow_able__listing__widget___procedure__format listing__build,
+    required final listing__item__build___procedure__format /* 2nd param. is `item__existing__id_` */ ? item__existing__build /*
 not called, if `items__existing__count` is 0 */,
-    required final listing__item__build__function__format /* 2nd param. is `item__new__id_` */ item__new__build /*
+    required final listing__item__build___procedure__format /* 2nd param. is `item__new__id_` */ item__new__build /*
 not called, if `items__new__count` is 0
 call to this function, indicates, that the user is interested, in adding, an item, to the list
   similar to press-ing, the "Add" floating button */,
-    required final listing__item__build__function__format /* 2nd param. is `item__new__id_` */ item__new__dummy__build /*
+    required final listing__item__build___procedure__format /* 2nd param. is `item__new__id_` */ item__new__dummy__build /*
 invoke `store.control()?.add:item` to add-item
 not called, if `items__new__count` is 0
 example :
@@ -148,7 +148,7 @@ example :
                     context,
                     item__id,
                   ) ??
-                  empty__widget);
+                  empty___widget);
             }
 
             item__id -= items__existing__count;
@@ -253,14 +253,14 @@ extension listing__grow_able__sav_able__widget //
     <element__new___type, element__new__saved___type> {
   widget___protocol widget //
       <element__new___type, element__new__saved___type>({
-    required final listing__grow_able__listing__widget__function__format listing,
+    required final listing__grow_able__listing__widget___procedure__format listing,
     required final INT items__existing__count,
     required final INT items__new__count__limit,
-    required final listing__item__build__function__format /* 2nd param. is `item__exist_ing__id` */ ? item__existing__build,
-    required final listing__item__build__function__format /* 2nd param. is `item__new__sav_ed__id` */ item__new__saved__build,
-    required final listing__item__build__function__format /* 2nd param. is `item__new__un_sav_ed__id` */
+    required final listing__item__build___procedure__format /* 2nd param. is `item__exist_ing__id` */ ? item__existing__build,
+    required final listing__item__build___procedure__format /* 2nd param. is `item__new__sav_ed__id` */ item__new__saved__build,
+    required final listing__item__build___procedure__format /* 2nd param. is `item__new__un_sav_ed__id` */
         item__new__un_saved__build,
-    required final listing__item__build__function__format /* 2nd param. is `item__new__id` */ item__new__dummy__build,
+    required final listing__item__build___procedure__format /* 2nd param. is `item__new__id` */ item__new__dummy__build,
     final widget? save__button /*
 not visible ,if no elements ,are un-sav-ed */
     ,
@@ -296,11 +296,11 @@ not visible ,if no elements ,are un-sav-ed */
               }
 
               if /*F*/ (_save__allow___ok == false) {
-                return empty__widget;
+                return empty___widget;
               }
 
               if /*F*/ (elements__new__count() == 0) {
-                return empty__widget;
+                return empty___widget;
               }
 
               return save__button;

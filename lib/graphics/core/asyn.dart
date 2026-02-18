@@ -1,7 +1,7 @@
 part of "_.dart";
 
-extension asyn__definitive__handling___extension<value___type> //
-    on ASYN__DEFINITIVE<value___type> {
+extension asyn__advanced__handling___extension<value___type> //
+    on ASYN__ADVANCED<value___type> {
   widget___protocol handling__widget__build /*
 compared to `FutureBuilder<T>`(of `flutter/widgets/async.dart`)
   `value__type` can be nil-able
@@ -16,9 +16,9 @@ compared to `FutureBuilder<T>`(of `flutter/widgets/async.dart`)
   child-build are separate ,for each state
     reducing duplication ,and maintaining separation-of-concern */ (
     final widget__building__context___compo context, {
-    required final widget__build__function__format child__state__waiting__build,
-    required final widget__state__failure__build__function__format child__state__completion__failure__build /*=widget__error__default__build*/,
-    required final widget__state__success__build__function__format<value___type> child__state__completion__success__build,
+    required final widget__build___procedure__format child__state__waiting__build,
+    required final widget__state__failure__build___procedure__format child__state__completion__failure__build /*=widget__error__default__build*/,
+    required final widget__state__success__build___procedure__format<value___type> child__state__completion__success__build,
   }) {
     return state__channel().handling__widget__build(
       context,
@@ -26,18 +26,18 @@ compared to `FutureBuilder<T>`(of `flutter/widgets/async.dart`)
         final state_1 = state();
 
         return switch (state_1) {
-          asyn__definitive__state__waiting<value___type>() => //
+          asyn__advanced__state__waiting<value___type>() => //
           child__state__waiting__build(
             context,
           ),
-          asyn__definitive__state__completion___union<value___type>() => //
+          asyn__advanced__state__completion___union<value___type>() => //
           switch (state_1) {
-            asyn__definitive__state__completion__success<value___type>() => //
+            asyn__advanced__state__completion__success<value___type>() => //
             child__state__completion__success__build(
               context,
               state_1.value,
             ),
-            asyn__definitive__state__completion__failure<value___type>() => //
+            asyn__advanced__state__completion__failure<value___type>() => //
             child__state__completion__failure__build(
               context,
               state_1.error,
@@ -50,13 +50,13 @@ compared to `FutureBuilder<T>`(of `flutter/widgets/async.dart`)
   }
 }
 
-typedef widget__state__success__build__function__format<value___type> = //
+typedef widget__state__success__build___procedure__format<value___type> = //
     widget___protocol Function(
       widget__building__context___compo context,
       value___type value,
     );
 
-typedef widget__state__failure__build__function__format = //
+typedef widget__state__failure__build___procedure__format = //
     widget___protocol Function(
       widget__building__context___compo context,
       Object error,
@@ -84,9 +84,9 @@ compared to "FutureBuilder<T>"(of "flutter/widgets/async.dart")
           despite its type-decl.ion being un-constrained
             breaking the promise of void-safety */ (
     final widget__building__context___compo context, {
-    required final widget__build__function__format child__state__waiting__build,
-    required final widget__state__success__build__function__format<value___type> child__state__completion__success__build,
-    required final widget__state__failure__build__function__format child__state__completion__failure__build,
+    required final widget__build___procedure__format child__state__waiting__build,
+    required final widget__state__success__build___procedure__format<value___type> child__state__completion__success__build,
+    required final widget__state__failure__build___procedure__format child__state__completion__failure__build,
   }) {
     return FutureBuilder<value___type>(
       future: this,

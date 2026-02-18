@@ -24,12 +24,12 @@ run-time expensive op. */ =
   }
 }
 
-class _empty__widget extends StatelessWidget {
-  const _empty__widget() : super(key: NIL);
+class _empty___widget extends StatelessWidget {
+  const _empty___widget() : super(key: NIL);
 
   @override
   widget___protocol build(final widget__building__context___compo context) {
-    return empty__widget;
+    return empty___widget;
   }
 }
 
@@ -37,8 +37,7 @@ extension navigation___extension
     on //
         navigation___compo /*
 {`dismiss`|`depart_ure`|`de_init_`|`dispose`}`:handle` can be achieved by ,`::handle`-ing the `navigate:forward:`* `return`-ed `async_:value` ,then calling the proc. */ {
-  ASYN<void> //
-  forward__overlay //
+  ASYN<void> forward__overlay //
   <entity__type extends entity__overlay___compo>({
     final Color background__color = navigation__overlay__background__color,
     final BOOL gesture__press__background__dismiss___ok = TRUE,
@@ -58,8 +57,7 @@ extension navigation___extension
     );
   }
 
-  ASYN<void> //
-  forward__replace__overlay //
+  ASYN<void> forward__replace__overlay //
   <entity__type extends entity__overlay___compo>({
     final Color background__color = navigation__overlay__background__color,
     final BOOL gesture__press__background__dismiss___ok = TRUE,
@@ -108,7 +106,7 @@ extension navigation___extension
     }
 
     return DialogRoute<void>(
-      context: StatelessElement(_empty__widget()),
+      context: StatelessElement(_empty___widget()),
       builder: entity.widget__build,
       barrierColor: background__color,
       barrierDismissible: gesture__press__background__dismiss___ok,
@@ -122,8 +120,7 @@ extension navigation___extension
     );
   }
 
-  ASYN<void> //
-  forward__overlay__bottom //
+  ASYN<void> forward__overlay__bottom //
   <entity__type extends entity__overlay___compo>({
     final Color background__color = navigation__overlay__background__color,
     final BOOL gesture__press__background__dismiss___ok = TRUE,
@@ -144,8 +141,7 @@ extension navigation___extension
     );
   }
 
-  /*ASYN<void> //
-  forward__overlay__bottom__transition__instant //
+  /*ASYN<void> forward__overlay__bottom__transition__instant //
   <entity__type extends entity__overlay___compo>({
     final Color background__color = navigation__overlay__background__color,
     final BOOL gesture__press__background__dismiss___ok = TRUE,
@@ -172,8 +168,7 @@ extension navigation___extension
     );
   }*/
 
-  ASYN<void> //
-  forward__replace__overlay__bottom //
+  ASYN<void> forward__replace__overlay__bottom //
   <entity__type extends entity__overlay___compo>({
     final Color background__color = navigation__overlay__background__color,
     final BOOL gesture__press__background__dismiss___ok = TRUE,
@@ -194,8 +189,7 @@ extension navigation___extension
     );
   }
 
-  /*ASYN<void> //
-  forward__replace__overlay__bottom__transition__instant //
+  /*ASYN<void> forward__replace__overlay__bottom__transition__instant //
   <entity__type extends entity__overlay___compo>({
     final Color background__color = navigation__overlay__background__color,
     final BOOL gesture__press__background__dismiss___ok = TRUE,
@@ -258,8 +252,7 @@ extension navigation___extension
     );
   }
 
-  /*ASYN<void> //
-  _instant(
+  /*ASYN<void> _instant(
     final TickerProvider vsync,
     final ASYN<void> Function(
       AnimationController transition__control,
@@ -279,8 +272,7 @@ extension navigation___extension
     transition__control.dispose();
   }*/
 
-  ASYN<void> //
-  _entity__overlay__handle //
+  ASYN<void> _entity__overlay__handle //
   <entity__type extends entity__overlay___compo>(
     final entity__type entity,
     final ASYN<void> future,
@@ -290,8 +282,7 @@ extension navigation___extension
     entity.dispose();
   }
 
-  ASYN<void> //
-  forward__page /*
+  ASYN<void> forward__page /*
 push ,next */ //
   <entity__type extends entity__page___protocol>({
     final Duration animation__duration = navigation__animation__duration__default,
@@ -318,8 +309,7 @@ completes ,when the "route" is de-navigated */
     );
   }
 
-  ASYN<void> //
-  forward__replace__page /*
+  ASYN<void> forward__replace__page /*
 efficient, than the, first calling `de_navigate`, then calling `navigate` */ //
   <entity__type extends entity__page___protocol>({
     final Duration animation__duration = navigation__animation__duration__default,
@@ -336,8 +326,7 @@ efficient, than the, first calling `de_navigate`, then calling `navigate` */ //
     );
   }
 
-  ASYN<void> //
-  _forward__replace(
+  ASYN<void> _forward__replace(
     final Route<void> route,
   ) {
     return pushReplacement<void, void>(
@@ -345,8 +334,7 @@ efficient, than the, first calling `de_navigate`, then calling `navigate` */ //
     );
   }
 
-  ASYN<void> //
-  forward__replace__full__page /*
+  ASYN<void> forward__replace__full__page /*
 {pop_until_and_push|{pop_all_and_push|re_set}} */ //
   <entity__type extends entity__page___protocol>({
     final INT? pages__count,
@@ -367,8 +355,7 @@ efficient, than the, first calling `de_navigate`, then calling `navigate` */ //
     );
   }
 
-  ASYN<void> //
-  _entity__page__handle //
+  ASYN<void> _entity__page__handle //
   <entity__type extends entity__page___protocol>(
     final entity__type entity,
     final ASYN<void> future,
@@ -432,7 +419,7 @@ cases :
 
   static Route<void> _page__route(
     final Duration animation__duration,
-    final widget__build__function__format page__build,
+    final widget__build___procedure__format page__build,
   ) {
     if (animation__duration == Duration.zero) {
       return PageRouteBuilder<void>(

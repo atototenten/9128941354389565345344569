@@ -12,7 +12,7 @@ widget___protocol overlay__base(
   final widget__building__context___compo context, {
   final APPROX width__multiple = overlay__width__multiple__default__phone,
   final APPROX height__multiple = overlay__height__multiple__default__phone,
-  required final widget__build__function__format child__build,
+  required final widget__build___procedure__format child__build,
 }) {
   final size__default = wall__size__default();
 
@@ -35,7 +35,7 @@ values :
   other :temporary */ = const Duration(
     seconds: 3,
   ),
-  required final widget__build__function__format notice__build,
+  required final widget__build___procedure__format notice__build,
 }) {
   widget___protocol child__build(final widget__building__context___compo context) {
     return Align(
@@ -51,7 +51,7 @@ values :
         return child__build(context);
       }
 
-      return widget__definitive__build(
+      return widget__advanced__build(
         context,
         attach__handle: (final context) {
           return DELAYING(
@@ -110,14 +110,14 @@ final result = await result___asyn;
   final ASYN<value___type> value___asyn /*
 "ASYN.sync" can be used for sync. actions
 handles {"ASYN.syncValue" ,and "ASYN.delayed"} too */, {
-  required final widget__build__function__format waiting__build,
+  required final widget__build___procedure__format waiting__build,
 }) {
   final promise = ASYN__PROMISE<value___type>();
 
   final overlay = entity__overlay___compo(
     dispose__handle: NIL,
     widget__build: (final context) {
-      return widget__definitive__build(
+      return widget__advanced__build(
         context,
         attach__handle: (final context) {
           void backward() {
@@ -196,7 +196,7 @@ widget suggestions
 
   widget___protocol widget__build(
     final widget__building__context___compo context, {
-    required final widget__build__function__format child__build,
+    required final widget__build___procedure__format child__build,
   }) {
     return _channel.handling__widget__build(
       context,

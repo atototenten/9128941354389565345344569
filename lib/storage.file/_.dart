@@ -7,7 +7,7 @@ part "memory.simple.dart";
 part "basic.protocol.dart";
 
 const //
-    storage__file__path__separation__char /* must not change ,because ,is universal and heavily hard-coded */ = char__slash__forward;
+    storage__file__path__separation__char /* must not change ,because ,is universal and heavily hard-coded */ = chars__slash__forward___string;
 
 typedef storage__file__blocks /*
 each and every block' `.bytes__count` must be equal */
@@ -17,16 +17,16 @@ class storage__file__block /*
 required to allow single-copy and mandate alignment */
 {
   const storage__file__block(
-    this.value___raw,
+    this._value,
   );
 
-  final byte__array value___raw;
+  final byte__array _value;
 
   byte__array /*
 im-mutable and partial view
   of the storage block */
       value() {
-    return value___raw.asUnmodifiableView();
+    return _value.asUnmodifiableView();
   }
 }
 
@@ -40,7 +40,7 @@ with ownership */
     }
 
     final //
-        block__size = first.value___raw.bytes__count,
+        block__size = first._value.bytes__count,
         result = byte__array(
           (elements__count * block__size),
         );
@@ -51,7 +51,7 @@ with ownership */
       (final i, final e) {
         copy(
           result,
-          e.value___raw,
+          e._value,
           count: block__size,
           dest__offset: result__offset,
         );
@@ -117,7 +117,7 @@ const storage__file__alignment___compo //
     MUST be `>= data__base__position__size` */
     = alignment__flash;
 
-typedef io__operation__read_write__function__format = void Function(
+typedef io__operation__read_write___procedure__format = void Function(
   BS1__array buffer,
   INT count,
   INT offset,

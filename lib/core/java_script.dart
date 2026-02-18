@@ -1,6 +1,6 @@
 part of "_.dart";
 
-typedef java_script__type = /*Null|BOOL|APPROX|string|ARRAY<java_script__type>|java_script__object*/ Object__nilable;
+typedef java_script__type = /*Null|BOOL|num|string|ARRAY<java_script__type>|java_script__object*/ Object__nilable;
 
 typedef java_script__object = dictionary<string, java_script__type>;
 

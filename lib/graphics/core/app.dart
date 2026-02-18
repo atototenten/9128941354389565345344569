@@ -1,7 +1,10 @@
 part of "_.dart";
 
 BOOL environment__theme__colors__ground__back__contrast__dark___ok() {
-  return (ui.PlatformDispatcher.instance.platformBrightness == Brightness.dark);
+  return switch (dart__ui.PlatformDispatcher.instance.platformBrightness) {
+    Brightness.dark => TRUE,
+    Brightness.light => FALSE,
+  };
 }
 
 final app__life_cycle__state__channel = //
@@ -37,14 +40,14 @@ void app__run //
 indicates the fully init.ion ,of the meta-framework ,and the flutter-framework */,
   )
   init,
-  //required final widget__major__build__function__format< entity__type> page__first__build,
+  //required final widget__major__build___procedure__format< entity__type> page__first__build,
 })
 /*
 abstracts `runApp`
 inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
 {
   {
-    ui.PlatformDispatcher.instance.onError = _PlatformDispatcher__onError;
+    dart__ui.PlatformDispatcher.instance.onError = _PlatformDispatcher__onError;
 
     FlutterError.onError = _FlutterError__onError;
   }
@@ -53,10 +56,10 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
 
   final init_ion__promise = ASYN__PROMISE<void>();
   {
-    var count___raw = 2;
+    var _count = 2;
     void _success__handle() {
-      count___raw -= 1;
-      if (count___raw == 0) {
+      _count -= 1;
+      if (_count == 0) {
         init_ion__promise.complete();
       }
     }
@@ -113,19 +116,19 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
       ::`void initInstances()` */*/
 
     /*SystemChannels.keyEvent.setMessageHandler((final message) async {
-      final key___raw = RawKeyEvent.fromMessage(message as Map<string, Object?>);
+      final key = RawKeyEvent.fromMessage(message as Map<string, Object?>);
 
       if (printing___ok) {
-        report__Object(key___raw, "app__key.key__raw");
+        report__Object(key, "app__key.key__raw");
 
         reporting__indent();
 
-        report__text__null_able(key___raw.character, "..character");
-        report__Object__null_able(key___raw.character?.codeUnits, "..character.codeUnits");
-        report__bool((key___raw is RawKeyDownEvent), "..isRawKeyDownEvent");
-        report__bool((key___raw is RawKeyUpEvent), "..isRawKeyUpEvent");
+        report__text__null_able(key.character, "..character");
+        report__Object__null_able(key.character?.codeUnits, "..character.codeUnits");
+        report__bool((key is RawKeyDownEvent), "..isRawKeyDownEvent");
+        report__bool((key is RawKeyUpEvent), "..isRawKeyUpEvent");
 
-        final data = key___raw.data;
+        final data = key.data;
 
         report__text(data.keyLabel, "..keyLabel");
 
@@ -140,17 +143,17 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
         reporting__de_indent();
       }
 
-      if /* un-likely */ ((key___raw is RawKeyDownEvent) && //
-          (key___raw.data.logicalKey == LogicalKeyboardKey.goBack)) //
+      if /* un-likely */ ((key is RawKeyDownEvent) && //
+          (key.data.logicalKey == LogicalKeyboardKey.goBack)) //
         navigate__back(
           app__navigation__manager,
         );
       else //
         app__key__broadcast.message__announce(
-          key___raw,
+          key,
         );
 
-      return <string, bool>{"handled" /*b__handled*/ : TRUE};
+      return <string, BOOL>{"handled" /*b__handled*/ : TRUE};
     }); /*
   forked
     from `flutter/src/services/binding.dart`::`mixin ServicesBinding`
@@ -261,7 +264,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
 
         app__size__set();
 
-        app__build__re();
+        app__re_build();
       }
       ..onPlatformBrightnessChanged = () {
         if (printing___ok) //
@@ -279,7 +282,7 @@ inspired by `flutter/lib/src/material/app.dart`::`MaterialApp` */
 
         app__color__set();
         app__color__broadcast.message__announce(null);
-        app__build__re();
+        app__re_build();
       };*/
   }
 
@@ -321,12 +324,12 @@ tasks.long:
 `theme__colors__set` proc. should be called in the proc.
 wrap every page/overlay ,to handle `app__theme__change__channel`
   ,and preferably the child with `ValueKey(app__theme__id)`(or simply `ValueKey(app__theme__colors__ground__back__contrast__dark___ok)` if merely a day/night theme is needed) as `key` (to not re-use ,the tree's existing widgets)
-    ,because the framework's `app__build__re` is not definitive
+    ,because the framework's `app__re_build` is not definitive
   ,because handling above(in tree-node's position or hierarchy) `MaterialApp` ,would re-set the whole app (including navigation[-stack] ,and current page/overlay)
     ,while handling below(as its child) ,would be overridden with page/overlay navigation
 `storage` is available at this point
 to return non-future value ,prefer using `ASYN.syncValue` */,
-  required final widget__build__function__format splash__build /*
+  required final widget__build___procedure__format splash__build /*
 must not depend on the meta-framework */,
 }) {
   service__authority
@@ -351,6 +354,7 @@ class app__running__simple //
 <entity__type extends entity__page___protocol> //
     implements entity__page___protocol {
   app__running__simple({
+    this.performance__overlay___ok = FALSE,
     required this.app__title,
     required final ASYN<void> init_ion__status__asyn,
     required final ASYN<entity__type> Function() entity,
@@ -387,13 +391,15 @@ class app__running__simple //
     _init_ion__asyn = /*ASYN__DEFINITIVE<entity__type>(*/ entity__promise.future /*,)*/;
   }
 
+  final BOOL performance__overlay___ok;
   final string app__title;
+
   late final ASYN<entity__type> /*
     TASK : move to "ASYN__DEFINITIVE"
       once re-starting works
         in arethos-tracking app. */
   _init_ion__asyn;
-  final widget__build__function__format splash__build;
+  final widget__build___procedure__format splash__build;
 
   @override
   void dispose() {
@@ -408,20 +414,20 @@ class app__running__simple //
       child__state__completion__failure__build: widget__error__default__build,
       child__state__completion__success__build: (final context, final entity_1) {
         return MaterialApp(
-          showPerformanceOverlay: FALSE,
+          showPerformanceOverlay: performance__overlay___ok,
           debugShowCheckedModeBanner: FALSE,
           /*checkerboardRasterCacheImages: TRUE,
           checkerboardOffscreenLayers: TRUE,*/
-          home: _widget__build(
+          home: widget__basic__build(
             child__build: (final context) {
               return entity_1.widget__build(context);
             },
           ),
           title: app__title,
-          color: const Color.fromARGB(INT__1__max, 191, 191, 191),
+          color: Color.fromARGB(INT__1__max, 191, 191, 191),
           locale: app__locale,
           localizationsDelegates: app__localizations__delegates,
-          supportedLocales: const <Locale>[app__locale],
+          supportedLocales: <Locale>[app__locale],
           scrollBehavior: scrolling___compo.scrolling__behavior,
           themeAnimationStyle: AnimationStyle.noAnimation,
         );
@@ -439,7 +445,7 @@ class app__widget extends StatefulWidget {
     required this.child__build,
   });
 
-  final widget__build__function__format child__build;
+  final widget__build___procedure__format child__build;
 
   @override
   _app__widget__state createState() {
@@ -473,7 +479,7 @@ class _app__widget__state //
   void didChangeMetrics() {
     if (printing___ok) {
       printing__indentation__increase();
-      for (final view in ui.PlatformDispatcher.instance.views) {
+      for (final view in dart__ui.PlatformDispatcher.instance.views) {
         view.representation__text().print("view");
 
         printing__indentation__increase();
@@ -491,7 +497,7 @@ class _app__widget__state //
         "app:size:set:re_fresh:ok".print();
       }
 
-      context.build__re();
+      context.re_build();
     }
   }
 
@@ -513,7 +519,7 @@ class _app__widget__state //
       "app:colors:set:re_fresh:ok".print();
     }
 
-    context.build__re();
+    context.re_build();
   }
 
   @override

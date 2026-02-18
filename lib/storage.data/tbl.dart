@@ -10,7 +10,7 @@ void storage__data__tbl__create(
   if (printing___ok) {
     function__call__print(
       "storage__data__tbl__create",
-      ds__meta.debug__label,
+      ds__meta.label___debug,
     );
   }
 
@@ -71,7 +71,7 @@ INT /*row__id_*/ storage__data__tbl__row__add(
   if (printing___ok) {
     function__call__print(
       "storage__data__tbl__row__add",
-      tbl__meta.debug__label,
+      tbl__meta.label___debug,
     );
 
     bytes.representation__text().print(
@@ -129,7 +129,7 @@ storage__data__table__row___compo storage__data__tbl__row(
   if (printing___ok) {
     function__call__print(
       "storage__data__tbl__row",
-      tbl__meta.debug__label,
+      tbl__meta.label___debug,
     );
 
     row__id.representation__text().print("row__id");

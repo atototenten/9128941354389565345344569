@@ -2,19 +2,19 @@ import "package:foundation/core/_.dart";
 import "package:foundation/storage.data.basic/_.dart";
 
 final //
-    storage__data__basic__simple__column__meta___raw = storage__data__basic__table__column__meta(
+_storage__data__basic__simple__column__meta = storage__data__basic__table__column__meta(
       NIL,
       storage__data__basic__table__column__data__type.bytes,
     ),
-    storage__data__basic__simple__columns__meta___raw = array__new__element__single(
-      storage__data__basic__simple__column__meta___raw,
+    _storage__data__basic__simple__columns__meta = ARRAY__element__single(
+      _storage__data__basic__simple__column__meta,
     );
 
 class storage__data__basic__simple__meta //
-    <table__cell__meta__type extends storage__data__basic__simple__cell___protocol> //
+<table__cell__meta__type extends storage__data__basic__simple__cell___protocol> //
     extends storage__data__basic__simple__meta__base<storage__data__basic__accessing__meta, table__cell__meta__type> {
   static ASYN<storage__data__basic__simple__meta<table__cell__meta__type>?> //
-      asyn<table__cell__meta__type extends storage__data__basic__simple__cell___protocol>({
+  asyn<table__cell__meta__type extends storage__data__basic__simple__cell___protocol>({
     required final storage__data__basic__meta storage,
     required final storage__data__basic__table__id storage__table__id,
   }) async {
@@ -26,51 +26,40 @@ class storage__data__basic__simple__meta //
 
     final storage__accessing__meta = await storage__accessing__meta__asyn;
 
-    return storage__data__basic__simple__meta<table__cell__meta__type>.raw(
-      storage__accessing__meta___raw: storage__accessing__meta,
-      storage__table__id___raw: storage__table__id,
+    return storage__data__basic__simple__meta<table__cell__meta__type>._(
+      storage__accessing__meta: storage__accessing__meta,
+      storage__table__id: storage__table__id,
     );
   }
 
-  const storage__data__basic__simple__meta.raw({
-    required final storage__data__basic__accessing__meta storage__accessing__meta___raw,
-    required final storage__data__basic__table__id storage__table__id___raw,
-  }) : super.raw(
-          storage__accessing__meta___raw: storage__accessing__meta___raw,
-          storage__table__id___raw: storage__table__id___raw,
-        );
+  const storage__data__basic__simple__meta._({
+    required final storage__data__basic__accessing__meta storage__accessing__meta,
+    required final storage__data__basic__table__id storage__table__id,
+  }) : super._(
+         storage__accessing__meta: storage__accessing__meta,
+         storage__table__id: storage__table__id,
+       );
 }
 
 abstract class storage__data__basic__simple__meta__base //
-    <
-        storage__accessing__meta__type extends storage__data__basic__accessing__meta__base, //
-        table__cell__meta__type extends storage__data__basic__simple__cell___protocol> /*
-based on `storage__data__basic__meta` */
-{
-  const storage__data__basic__simple__meta__base.raw({
-    required this.storage__accessing__meta___raw,
-    required this.storage__table__id___raw,
-  });
+<
+  storage__accessing__meta__type extends storage__data__basic__accessing__meta__base, //
+  table__cell__meta__type extends storage__data__basic__simple__cell___protocol
+> /*
+based on `storage__data__basic__meta` */ {
+  const storage__data__basic__simple__meta__base._({
+    required final storage__accessing__meta__type storage__accessing__meta,
+    required final storage__data__basic__table__id storage__table__id,
+  }) : _storage__accessing__meta = storage__accessing__meta,
+       _storage__table__id = storage__table__id;
 
-  final storage__accessing__meta__type storage__accessing__meta___raw;
-  final storage__data__basic__table__id storage__table__id___raw;
-
-  ASYN<byte__array> cell___raw(
-    final table__cell__meta__type cell__meta,
-  ) async {
-    final row = await storage__accessing__meta___raw.table__row__asyn(
-      table__id: storage__table__id___raw,
-      table__row__id: cell__meta.row__id(),
-      result__columns__meta: storage__data__basic__simple__columns__meta___raw,
-    );
-
-    return (row!.first as byte__array);
-  }
+  final storage__accessing__meta__type _storage__accessing__meta;
+  final storage__data__basic__table__id _storage__table__id;
 
   ASYN<byte__array?> cell(
     final table__cell__meta__type cell__meta,
   ) async {
-    final result = await cell___raw(
+    final result = await _cell(
       cell__meta,
     );
 
@@ -79,6 +68,18 @@ based on `storage__data__basic__meta` */
     }
 
     return result;
+  }
+
+  ASYN<byte__array> _cell(
+    final table__cell__meta__type cell__meta,
+  ) async {
+    final row = await _storage__accessing__meta.table__row__asyn(
+      table__id: _storage__table__id,
+      table__row__id: cell__meta.row__id(),
+      result__columns__meta: _storage__data__basic__simple__columns__meta,
+    );
+
+    return (row!.first as byte__array);
   }
 
   ASYN<byte__array?> cell__byte__array(
@@ -170,10 +171,10 @@ based on `storage__data__basic__meta` */
 
 class storage__data__basic__simple__mutating__meta /*
 empty {`byte__array` and `text`} are equal to nil/absence */ //
-    <table__cell__meta__type extends storage__data__basic__simple__cell___protocol> //
+<table__cell__meta__type extends storage__data__basic__simple__cell___protocol> //
     extends storage__data__basic__simple__meta__base<storage__data__basic__accessing__mutating__meta, table__cell__meta__type> {
   static ASYN<storage__data__basic__simple__mutating__meta<table__cell__meta__type>?> //
-      asyn<table__cell__meta__type extends storage__data__basic__simple__cell___protocol>({
+  asyn<table__cell__meta__type extends storage__data__basic__simple__cell___protocol>({
     required final storage__data__basic__meta storage,
     required final storage__data__basic__table__id storage__table__id,
   }) async {
@@ -185,9 +186,9 @@ empty {`byte__array` and `text`} are equal to nil/absence */ //
 
     final storage__accessing__meta = await storage__accessing__meta__asyn;
 
-    return storage__data__basic__simple__mutating__meta<table__cell__meta__type>.raw(
-      storage__accessing__meta___raw: storage__accessing__meta,
-      storage__table__id___raw: storage__table__id,
+    return storage__data__basic__simple__mutating__meta<table__cell__meta__type>._(
+      storage__accessing__meta: storage__accessing__meta,
+      storage__table__id: storage__table__id,
     );
   }
 
@@ -197,8 +198,7 @@ empty {`byte__array` and `text`} are equal to nil/absence */ //
     required final INT cells__count /*
 can be increased ,freely
   except during online (any connection open to storage)
-  but decreasing leads to space wastage/leakage */
-    ,
+  but decreasing leads to space wastage/leakage */,
   }) async {
     final rows__count = await storage__accessing__meta.table__rows__count__asyn(
       table__id: storage__table__id,
@@ -210,10 +210,10 @@ can be increased ,freely
 
     await storage__accessing__meta.table__rows__add__asyn(
       table__id: storage__table__id,
-      columns__meta: storage__data__basic__simple__columns__meta___raw,
-      rows: array__new__filled(
+      columns__meta: _storage__data__basic__simple__columns__meta,
+      rows: ARRAY__filled(
         (cells__count - rows__count),
-        array__new__element__single(
+        ARRAY__element__single(
           empty__byte__array,
         ),
       ),
@@ -222,24 +222,24 @@ can be increased ,freely
     await storage__accessing__meta.complete__asyn();
   }
 
-  storage__data__basic__simple__mutating__meta.raw({
-    required final storage__data__basic__accessing__mutating__meta storage__accessing__meta___raw,
-    required final storage__data__basic__table__id storage__table__id___raw,
-  }) : super.raw(
-          storage__accessing__meta___raw: storage__accessing__meta___raw,
-          storage__table__id___raw: storage__table__id___raw,
-        );
+  storage__data__basic__simple__mutating__meta._({
+    required final storage__data__basic__accessing__mutating__meta storage__accessing__meta,
+    required final storage__data__basic__table__id storage__table__id,
+  }) : super._(
+         storage__accessing__meta: storage__accessing__meta,
+         storage__table__id: storage__table__id,
+       );
 
   ASYN<void> cell__assign(
     final table__cell__meta__type cell__meta,
     final byte__array value,
   ) async {
-    await storage__accessing__meta___raw.table__row__cells__assign__asyn(
-      table__id: storage__table__id___raw,
+    await _storage__accessing__meta.table__row__cells__assign__asyn(
+      table__id: _storage__table__id,
       table__row__id: cell__meta.row__id(),
-      columns: array__new__element__single(
+      columns: ARRAY__element__single(
         storage__data__basic__table__column(
-          storage__data__basic__simple__column__meta___raw,
+          _storage__data__basic__simple__column__meta,
           value,
         ),
       ),
@@ -280,11 +280,12 @@ can be increased ,freely
     final INT__NEG value,
   ) async {
     final //
-        negative___ok = value.isNegative,
-        bytes = (negative___ok //
-                ? -value
-                : value)
-            .convert__bytes(),
+    negative___ok = value.isNegative,
+        bytes =
+            (negative___ok //
+                    ? -value
+                    : value)
+                .convert__bytes(),
         data = byte__array(
           (1 + bytes.bytes__count),
         );
@@ -343,8 +344,7 @@ can be increased ,freely
 
   ASYN<void> cells__assign__default /*
 should be avoided ,unless necessary
-  due to being a simple in-efficient iterating impl. */
-      ({
+  due to being a simple in-efficient iterating impl. */ ({
     required final ARRAY<table__cell__meta__type> cells__meta,
     required final BOOL? value__BOOL,
     required final INT? value__INT,
@@ -456,7 +456,14 @@ abstract class storage__data__basic__simple__cell___protocol {
 }
 
 enum storage__data__basic__simple__cell__type //
-{ BOOL, INT, INT__NEG, APPROX, byte__array, text }
+{
+  BOOL,
+  INT,
+  INT__NEG,
+  APPROX,
+  byte__array,
+  text,
+}
 
 ASYN<void> storage__data__basic__simple__test({
   required final storage__data__basic__simple__mutating__meta storage,
@@ -471,7 +478,7 @@ ASYN<void> storage__data__basic__simple__test({
       abc: 999,
       jkl: -999,
       xyz: 999.99,
-    )
+    ),
   ];
 
   iterate__basic__asyn(
@@ -480,7 +487,7 @@ ASYN<void> storage__data__basic__simple__test({
       final values = cases[i];
 
       final //
-          abc = storage__data__basic__simple__testing__cell__abc(),
+      abc = storage__data__basic__simple__testing__cell__abc(),
           jkl = storage__data__basic__simple__testing__cell__jkl(),
           xyz = storage__data__basic__simple__testing__cell__xyz();
 
@@ -534,8 +541,7 @@ enum storage__data__basic__simple__testing__cells {
 }
 
 class storage__data__basic__simple__testing__cell__abc //
-    implements
-        storage__data__basic__simple__cell___protocol {
+    implements storage__data__basic__simple__cell___protocol {
   @override
   storage__data__basic__table__row__id row__id() {
     return storage__data__basic__table__row__id(
@@ -550,8 +556,7 @@ class storage__data__basic__simple__testing__cell__abc //
 }
 
 class storage__data__basic__simple__testing__cell__jkl //
-    implements
-        storage__data__basic__simple__cell___protocol {
+    implements storage__data__basic__simple__cell___protocol {
   @override
   storage__data__basic__table__row__id row__id() {
     return storage__data__basic__table__row__id(
@@ -566,8 +571,7 @@ class storage__data__basic__simple__testing__cell__jkl //
 }
 
 class storage__data__basic__simple__testing__cell__xyz //
-    implements
-        storage__data__basic__simple__cell___protocol {
+    implements storage__data__basic__simple__cell___protocol {
   @override
   storage__data__basic__table__row__id row__id() {
     return storage__data__basic__table__row__id(

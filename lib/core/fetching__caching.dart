@@ -41,7 +41,7 @@ TASK
   }) {
     final blocks__count = (1 << blocks__count__width);
 
-    return fetching__caching.raw(
+    return fetching__caching._(
       elements__count: elements__count,
       block__elements__count__width: block__elements__count__width,
       block__elements__count__max: INT__max__basic(
@@ -49,21 +49,21 @@ TASK
       ),
       blocks__count__max: (blocks__count - 1),
       block__fetch__asyn: block__fetch__asyn,
-      blocks___raw: array__new__filled<fetching__caching__block<element___type>?>(
+      blocks: ARRAY__filled<fetching__caching__block<element___type>?>(
         blocks__count,
         NIL,
       ),
     );
   }
 
-  fetching__caching.raw({
+  fetching__caching._({
     required this.elements__count,
     required this.block__elements__count__width,
     required this.block__elements__count__max,
     required this.blocks__count__max,
     required this.block__fetch__asyn,
-    required this.blocks___raw,
-  });
+    required final ARRAY<fetching__caching__block<element___type>?> blocks,
+  }) : _blocks = blocks;
 
   final INT //
   elements__count /*
@@ -75,7 +75,7 @@ fixed because re-loading the affected block (of which ,the elements-count has be
 
   final block__fetch__asyn___procedure__format<element___type> block__fetch__asyn;
 
-  final ARRAY<fetching__caching__block<element___type>?> blocks___raw;
+  final ARRAY<fetching__caching__block<element___type>?> _blocks;
 
   ({
     INT elements__offset /* not in block */,
@@ -111,7 +111,7 @@ fixed because re-loading the affected block (of which ,the elements-count has be
         block__offset /* requested element's offset in block */ = (element__id & block__elements__count__max),
         blocks__offset /* requested element's block's offset in blocks */ = (block__id & blocks__count__max);
 
-    final block__existing = blocks___raw[blocks__offset];
+    final block__existing = _blocks[blocks__offset];
 
     if ((block__existing == null) || //
         (block__existing.id != block__id)) {
@@ -144,7 +144,7 @@ fixed because re-loading the affected block (of which ,the elements-count has be
         }
       }
 
-      blocks___raw[blocks__offset] = fetching__caching__block(
+      _blocks[blocks__offset] = fetching__caching__block(
         id: block__id,
         elements: fetching__caching__block__elements__waiting(
           block__elements__asyn,
@@ -174,10 +174,10 @@ fixed because re-loading the affected block (of which ,the elements-count has be
 
   @override
   ASYN<void> dispose__asyn() async {
-    return iterate__reverse__asyn(
-      blocks___raw.elements__count,
+    return ITERATE__backwards___asyn(
+      _blocks.elements__count,
       (final i) async {
-        final block = blocks___raw[i];
+        final block = _blocks[i];
 
         if (block == null) {
           return TRUE;
@@ -250,7 +250,7 @@ sealed class fetching__caching__block__elements___union //
   static ASYN<void> elements__dispose<element___type extends dispose__asyn__basic___protocol>(
     final ARRAY<element___type> elements,
   ) async {
-    await iterate__reverse__asyn(
+    await ITERATE__backwards___asyn(
       elements.elements__count,
       (final i) async {
         await elements[i].dispose__asyn();
@@ -295,7 +295,7 @@ ASYN<void> fetching__caching__test() async {
           .representation__text()
           .print("elements__offset__count (block__id : $block__id)");
 
-      final result = array__new__generated(
+      final result = ARRAY__generated(
         elements__offset__count.block__elements__count,
         (final i) {
           return fetching__caching__testing__element(
@@ -316,7 +316,7 @@ ASYN<void> fetching__caching__test() async {
     block__elements__count__width: block__elements__count__width,
   );
 
-  await iterate__asyn(
+  await ITERATE__forwards___asyn(
     (1 + elements__count),
     (final element__id) async {
       final element = await fetching.element__asyn(

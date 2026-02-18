@@ -1,6 +1,6 @@
 part of "_.dart";
 
-typedef dictionary /*
+typedef /*dict*/ dictionary /*
 terminology
   dictionary is preferred over map
     ,because
@@ -26,7 +26,7 @@ dictionary__generate //
 ) {
   final result = <key___type, value___type>{};
 
-  iterate(
+  ITERATE__forwards(
     count,
     (final i) {
       final kv = generate(i);

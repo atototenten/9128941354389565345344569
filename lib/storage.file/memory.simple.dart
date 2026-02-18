@@ -8,27 +8,27 @@ based on byte-id. ,instead of block-id. */ //
 
   storage__file__memory__simple({
     final INT length__initial = length__initial__default,
-  }) : value___raw = byte__array(
+  }) : _value = byte__array(
           length__initial,
         );
 
-  byte__array value___raw;
+  byte__array _value;
 
-  INT length___raw = 0;
+  INT _length = 0;
 
   INT capacity___raw() {
-    return value___raw.bytes__count;
+    return _value.bytes__count;
   }
 
   INT length() {
-    return length___raw;
+    return _length;
   }
 
   void length__update__if__needed___raw(
     final INT offset__new /* end ,`file__length__new` */,
   ) {
-    if (offset__new > length___raw) {
-      length___raw = offset__new;
+    if (offset__new > _length) {
+      _length = offset__new;
     }
   }
 
@@ -46,20 +46,20 @@ based on byte-id. ,instead of block-id. */ //
     if (capacity__current > capacity___raw()) {
       if (printing___ok) {
         "storage__file__memory.capacity__extend___raw: extending `storage`'s capacity, from ${capacity___raw()}, to $capacity__current".print(
-          debug__label,
+          label___debug,
         );
       }
 
-      final value__old = value___raw;
+      final value__old = _value;
 
-      value___raw = byte__array(
+      _value = byte__array(
         capacity__current,
       );
 
       copy(
-        value___raw,
+        _value,
         value__old,
-        count: length___raw,
+        count: _length,
       );
     }
 
@@ -78,7 +78,7 @@ based on byte-id. ,instead of block-id. */ //
     final INT count, {
     final byte value = 0,
   }) {
-    final offset = length___raw;
+    final offset = _length;
 
     write__fill(
       count,
@@ -92,7 +92,7 @@ based on byte-id. ,instead of block-id. */ //
   INT write__append(
     final byte__array value,
   ) {
-    final offset = length___raw;
+    final offset = _length;
 
     write(
       value,
@@ -114,7 +114,7 @@ based on byte-id. ,instead of block-id. */ //
     );
 
     byte__array__fill(
-      value___raw.view(
+      _value.view(
         offset,
       ),
       count: count,
@@ -133,7 +133,7 @@ based on byte-id. ,instead of block-id. */ //
     if (printing___ok) {
       function__call__print(
         "storage__file__memory.write",
-        debug__label,
+        label___debug,
       );
 
       value.bytes__count.representation__text().print("bytes__count");
@@ -149,7 +149,7 @@ based on byte-id. ,instead of block-id. */ //
     );
 
     copy(
-      value___raw,
+      _value,
       value,
       dest__offset: offset,
     );
@@ -164,7 +164,7 @@ based on byte-id. ,instead of block-id. */ //
   storage__file__memory__reading__full__result //
       read__full() {
     final result = read(
-      length: length___raw,
+      length: _length,
       offset: 0,
     );
 
@@ -181,7 +181,7 @@ based on byte-id. ,instead of block-id. */ //
     if (printing___ok) {
       function__call__print(
         "storage__file__memory.read",
-        debug__label,
+        label___debug,
       );
 
       length.representation__text().print("length");
@@ -194,13 +194,13 @@ based on byte-id. ,instead of block-id. */ //
 
     final storage__file__memory__reading__result___union result;
 
-    if (offset__new > length___raw) {
+    if (offset__new > _length) {
       result = storage__file__memory__reading__result__failure();
     } else {
       result = storage__file__memory__reading__result__success(
-        array__new__element__single(
+        ARRAY__element__single(
           file__segment(
-            value___raw.view__partial(
+            _value.view__partial(
               offset,
               length,
             ),
@@ -222,14 +222,14 @@ FIX
     required final INT length,
   }) {
     final //
-        offset = length___raw,
+        offset = _length,
         offset__new = (length + offset);
 
     capacity__extend__if__needed___raw(
       offset__new,
     );
 
-    length___raw = length;
+    _length = length;
 
     return offset;
   }
@@ -241,24 +241,24 @@ FIX
       length,
     );
 
-    length___raw = length;
+    _length = length;
   }
 
   void length__decrease({
     final INT length = 0,
   }) {
-    length___raw = length;
+    _length = length;
   }
 
   byte__array convert__byte__array() {
     final result = byte__array(
-      length___raw,
+      _length,
     );
 
     copy(
       result,
-      value___raw,
-      count: length___raw,
+      _value,
+      count: _length,
     );
 
     return result;
@@ -267,7 +267,7 @@ FIX
   members___dictionary //
       member__dictionary() {
     return {
-      "length": length___raw.representation__text(),
+      "length": _length.representation__text(),
     };
   }
 
@@ -276,11 +276,11 @@ FIX
     if (printing___ok) {
       function__call__print(
         "storage__file__memory.dispose",
-        debug__label,
+        label___debug,
       );
     }
 
-    value___raw = empty__byte__array;
-    length___raw = 0;
+    _value = empty__byte__array;
+    _length = 0;
   }
 }*/

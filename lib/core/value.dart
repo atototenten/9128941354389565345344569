@@ -138,7 +138,7 @@ like c[++]'s pointer */ //
 typedef value__equality__function__closure__format<value___type> = //
     BOOL Function(value___type);
 
-typedef value__equality__function__format //
+typedef value__equality___procedure__format //
 <value___type, value__other__type> =
     BOOL Function(
       value___type value,
@@ -157,7 +157,7 @@ BOOL value__equal__deep___ok(
   final Object__nilable value,
   final Object__nilable other,
 ) {
-  return DeepCollectionEquality().equals(value, other);
+  return package__collection.DeepCollectionEquality().equals(value, other);
 }
 
 BOOL value__equal___ok //
@@ -172,7 +172,7 @@ BOOL value__nilable__equal___ok //
 <value___type extends Object>(
   final value___type? value,
   final value___type? other, {
-  final value__equality__function__format<value___type, value___type>? value__equal___ok,
+  final value__equality___procedure__format<value___type, value___type>? value__equal___ok,
 }) {
   if ((value == null) && //
       (other == null)) {
@@ -237,22 +237,22 @@ class value__mutation__event__channel__unicast //
         event__channel__unicast //
     implements value__mutation__event__channel__unicast__dispose___protocol<value___type> {
   value__mutation__event__channel__unicast(
-    this.value___raw,
-    /*{ super.debug__name, }*/
+    this._value,
+    /*{ super.name___debug, }*/
   );
 
-  value___type value___raw;
+  value___type _value;
 
   @override
   value___type value() {
-    return value___raw;
+    return _value;
   }
 
   @override
   void value__mutate(
     final value___type value__new,
   ) {
-    value___raw = value__new;
+    _value = value__new;
   }
 
   @override
@@ -273,29 +273,27 @@ abstract class value__mutation__event__channel__broadcast__dispose___protocol //
 <value___type> //
     implements value__mutation__event__channel___protocol<value___type>, event__channel__broadcast__dispose___protocol {}
 
-class value__mutation__event__channel__broadcast //
-<value___type> /*
-like `dart:flutter:ValueNotifier` */ //
+abstract class value__mutation__event__channel__broadcast___compo__base<value___type> //
     extends
         event__channel__broadcast //
     implements value__mutation__event__channel__broadcast__dispose___protocol<value___type> {
-  value__mutation__event__channel__broadcast(
-    this.value___raw, {
-    super.debug__name,
+  value__mutation__event__channel__broadcast___compo__base(
+    this._value, {
+    super.name___debug,
   });
 
-  value___type value___raw;
+  value___type _value;
 
   @override
   value___type value() {
-    return value___raw;
+    return _value;
   }
 
   @override
   void value__mutate(
     final value___type value__new,
   ) {
-    value___raw = value__new;
+    _value = value__new;
   }
 
   @override
@@ -308,6 +306,16 @@ like `dart:flutter:ValueNotifier` */ //
 
     event__dispatch();
   }
+}
+
+class value__mutation__event__channel__broadcast //
+<value___type> /*
+like `dart:flutter:ValueNotifier` */ //
+    extends value__mutation__event__channel__broadcast___compo__base<value___type> {
+  value__mutation__event__channel__broadcast(
+    super._value, {
+    super.name___debug,
+  });
 }
 
 typedef value__channel__broadcast__handling__format<value___type> = //
@@ -324,9 +332,9 @@ class value__channel__broadcast<value___type> //
         value__channel__broadcast___protocol<value___type>, //
         dispose___protocol {
   value__channel__broadcast() //
-    : _handlings = accumulation__linear__definitive___compo();
+    : _handlings = accumulation__linear__advanced___compo();
 
-  final accumulation__linear__definitive___compo<value__channel__broadcast__handling__format<value___type>> _handlings;
+  final accumulation__linear__advanced___compo<value__channel__broadcast__handling__format<value___type>> _handlings;
 
   @override
   void dispose() {
@@ -374,7 +382,7 @@ class value__channel__broadcast<value___type> //
       "announc-ed $value".print();
     }
 
-    procedure__empty__format proc_(
+    void___procedure__format proc_(
       final string title,
       final INT id,
     ) =>

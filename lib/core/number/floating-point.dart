@@ -115,12 +115,12 @@ extension APPROX__input__digits__fixed__test //
       "-1234.-1234",
       "1234",
       ".1234",
-    ].iterate(
-      (_, final string v) {
+    ].iterate__forwards(
+      (final e, _) {
         APPROX__input__digits__fixed(
             significand__truncate___ok: TRUE,
           )
-          ..value__set__parse(v)
+          ..value__set__parse(e)
           ..value__convert__text().print();
         print__blank();
 

@@ -1,11 +1,11 @@
 part of "_.dart";
 
-const widget___protocol empty__widget = SizedBox.shrink();
+const widget___protocol empty___widget = SizedBox.shrink();
 
 widget___protocol widget__empty__build(
   final widget__building__context___compo context,
 ) {
-  return empty__widget;
+  return empty___widget;
 }
 
 widget___protocol widget__building__boundary__build(
@@ -86,10 +86,10 @@ widget___protocol widget__stack___widget(
 
 widget___protocol gesture__detection__widget({
   final HitTestBehavior? behavior,
-  required final procedure__empty__format press__handle,
+  required final void___procedure__format press__handle,
   final void Function(TapDownDetails details)? press__down__handle,
   final void Function(TapUpDetails details)? press__up__handle,
-  final procedure__empty__format? press__cancel__handle,
+  final void___procedure__format? press__cancel__handle,
   required final widget___protocol child,
 }) {
   return GestureDetector(

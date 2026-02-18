@@ -192,7 +192,7 @@ class storage__file__accessing__aligned__none__meta //
   }
 
   @override
-  bool operator ==(final Object other) {
+  BOOL operator ==(final Object other) {
     return ((other is storage__file__accessing__aligned__meta___union) && //
         equal___ok(other));
   }
@@ -221,7 +221,7 @@ class storage__file__accessing__aligned__simple__meta //
   }
 
   @override
-  bool operator ==(final Object other) {
+  BOOL operator ==(final Object other) {
     return ((other is storage__file__accessing__aligned__meta___union) && //
         equal___ok(other));
   }
@@ -268,7 +268,7 @@ class storage__file__accessing__aligned__complex__meta //
   }
 
   @override
-  bool operator ==(final Object other) {
+  BOOL operator ==(final Object other) {
     return ((other is storage__file__accessing__aligned__meta___union) && //
         equal___ok(other));
   }
@@ -285,7 +285,7 @@ abstract class storage__file__accessing__aligned__meta__base {
 sealed class storage__file__accessing__aligned__meta___union {
   INT blocks__count();
 
-  BOOL equal___ok(storage__file__accessing__aligned__meta___union other);
+  BOOL equal___ok(final storage__file__accessing__aligned__meta___union other);
 }
 
 //
@@ -305,7 +305,7 @@ class storage__file__block__multiple__full__meta //
   }
 
   @override
-  bool operator ==(final Object other) {
+  BOOL operator ==(final Object other) {
     return ((other is storage__file__block__meta___union) && //
         equal___ok(other));
   }
@@ -330,7 +330,7 @@ class storage__file__block__single__partial__meta //
   }
 
   @override
-  bool operator ==(final Object other) {
+  BOOL operator ==(final Object other) {
     return ((other is storage__file__block__meta___union) && //
         equal___ok(other));
   }
@@ -357,7 +357,7 @@ class storage__file__block__single__partial__beginning__meta //
   }
 
   @override
-  bool operator ==(final Object other) {
+  BOOL operator ==(final Object other) {
     return ((other is storage__file__block__meta___union) && //
         equal___ok(other));
   }
@@ -382,7 +382,7 @@ class storage__file__block__single__partial__ending__meta //
   }
 
   @override
-  bool operator ==(final Object other) {
+  BOOL operator ==(final Object other) {
     return ((other is storage__file__block__meta___union) && //
         equal___ok(other));
   }
@@ -1679,10 +1679,10 @@ formatted after generation */ = <ARRAY<storage__file__accessing__aligned__meta__
     "const _expectations = <ARRAY<storage__file__accessing__aligned__meta___union>>[".print___raw();
   }
 
-  array__new__generated(
+  ARRAY__generated(
     cases.elements__count,
     (final offset__id) {
-      return array__new__generated(
+      return ARRAY__generated(
         cases.elements__count,
         (final length__id) {
           return (

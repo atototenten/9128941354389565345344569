@@ -16,8 +16,8 @@ import "package:foundation/graphics/google.material/_.dart" //
         Material,
         TextField;
 
-import "dart:math" as math;
-import "dart:ui" as ui;
+import "dart:math" as dart__math;
+import "dart:ui" as dart__ui;
 
 import "package:flutter/foundation.dart" //
     show kDebugMode, kIsWasm, kIsWeb, defaultTargetPlatform, TargetPlatform;
@@ -86,7 +86,6 @@ part "1.dart";
 part "app.dart";
 part "asyn.dart";
 part "widget.building.dart";
-part "button.dart";
 part "color.dart";
 part "colors.dart";
 part "entity.dart";
@@ -159,10 +158,10 @@ typedef widget__building__context___compo = BuildContext;
 
 /*late widget__building__context___compo _app__context;*/
 
-typedef widget__build__function__format = //
+typedef widget__build___procedure__format = //
     widget___protocol Function(widget__building__context___compo context);
 
-typedef widget__definitive__build___procedure__format<storage___type> = //
+typedef widget__advanced__build___procedure__format<storage___type> = //
     widget___protocol Function(widget__building__context___compo context, storage___type storage);
 
 typedef widget__detach___procedure__format<storage___type> = //
@@ -174,8 +173,8 @@ typedef widget__attach___procedure__format<storage___type> = //
 typedef event__handle___procedure__format = //
     void Function(widget__building__context___compo);
 
-void app__build__re()
-/*{ _app__context.build__re__recursive(); }*/
+void app__re_build()
+/*{ _app__context.re_build__recursive(); }*/
 {
   final //
   binding = WidgetsBinding.instance,
@@ -203,8 +202,7 @@ environment__clip_board__text___asyn() async {
       : NIL);
 }
 
-ASYN<void> //
-environment__clip_board__text__assign___asyn({
+ASYN<void> environment__clip_board__text__assign___asyn({
   required final string value,
 }) {
   return Clipboard.setData(
@@ -218,17 +216,17 @@ void environment__assign__phone() {
   print__handle = debugPrint;
 }
 
-void _element__build__re(
+void _element__re_build(
   final Element element,
 ) {
-  element.build__re();
+  element.re_build();
 }
 
 extension on Element {
-  void build__re() {
+  void re_build() {
     markNeedsBuild();
     visitChildren(
-      _element__build__re,
+      _element__re_build,
     );
   }
 }
@@ -239,19 +237,19 @@ extension widget__building__context__extension //
     return (this as Element);
   }
 
-  void build__re__recursive() {
+  void re_build__recursive() {
     element___raw().visitChildren(
-      _element__build__re,
+      _element__re_build,
     );
   }
 
-  void build__re() {
+  void re_build() {
     if (valid___ok()) {
-      build__re___raw();
+      re_build___raw();
     }
   }
 
-  void build__re___raw /*
+  void re_build___raw /*
 should not be called ,after asyn.-gap */ () {
     element___raw().markNeedsBuild();
   }

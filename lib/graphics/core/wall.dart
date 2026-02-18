@@ -10,7 +10,7 @@ Size wall__size__default() {
 widget___protocol wall__base(
   final widget__building__context___compo context, {
   required final Size size,
-  required final widget__build__function__format child__build,
+  required final widget__build___procedure__format child__build,
 }) {
   return Center(
     child: app__size__alter__channel.handling__widget__build(

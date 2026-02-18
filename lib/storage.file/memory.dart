@@ -56,32 +56,32 @@ class storage__file__memory //
 
   storage__file__memory({
     this.block__meta = alignment__modern__normal,
-  }) : block__accumulation___raw = accumulation__linear__basic___compo();
+  }) : _block__accumulation = accumulation__linear__basic___compo();
 
   final storage__file__alignment___compo block__meta;
-  final accumulation__linear__basic___compo<byte__array> block__accumulation___raw;
+  final accumulation__linear__basic___compo<byte__array> _block__accumulation;
 
-  INT blocks__count___raw = 0;
+  INT _blocks__count = 0;
 
   INT //
   blocks__count() {
-    return blocks__count___raw;
+    return _blocks__count;
   }
 
   BOOL //
   empty___ok() {
-    return (blocks__count___raw == 0);
+    return (_blocks__count == 0);
   }
 
   INT //
   bytes__count() {
-    return (blocks__count___raw * block__meta.size);
+    return (_blocks__count * block__meta.size);
   }
 
   void block__ensure__valid___raw(
     final INT block__id,
   ) {
-    if (block__id > blocks__count___raw) {
+    if (block__id > _blocks__count) {
       throw "$block__id\\block__id\\ is not existent in the file";
     }
   }
@@ -94,7 +94,7 @@ class storage__file__memory //
     if (printing___ok) {
       function__call__print(
         "storage__file__memory.write__fill",
-        debug__label,
+        label___debug,
       );
 
       value.representation__text().print("value");
@@ -123,7 +123,7 @@ class storage__file__memory //
       offset: offset,
       block__handle: (_, final block) {
         byte__array__fill(
-          block.value___raw,
+          block._value,
           count: block__meta.size,
           value: value,
         );
@@ -135,7 +135,7 @@ class storage__file__memory //
   write__ending(
     final storage__file__blocks value,
   ) {
-    final offset = blocks__count___raw;
+    final offset = _blocks__count;
 
     increase(
       count: value.elements__count,
@@ -156,7 +156,7 @@ class storage__file__memory //
     if (printing___ok) {
       function__call__print(
         "storage__file__memory.write",
-        debug__label,
+        label___debug,
       );
 
       value.elements__count.representation__text().print("blocks__count");
@@ -184,8 +184,8 @@ class storage__file__memory //
       offset: offset,
       block__handle: (final block__id, final block) {
         copy(
-          block.value___raw,
-          value[block__id].value___raw,
+          block._value,
+          value[block__id]._value,
           count: block__meta.size,
         );
       },
@@ -195,11 +195,11 @@ class storage__file__memory //
   storage__file__blocks //
   read__full() {
     if (empty___ok()) {
-      return array__new__empty();
+      return ARRAY__empty();
     }
 
     final result = read(
-      count: blocks__count___raw,
+      count: _blocks__count,
       offset: 0,
     );
 
@@ -214,7 +214,7 @@ class storage__file__memory //
     if (printing___ok) {
       function__call__print(
         "storage__file__memory.read",
-        debug__label,
+        label___debug,
       );
 
       count.representation__text().print("count");
@@ -228,7 +228,7 @@ class storage__file__memory //
     );
 
     if (count == 0) {
-      return array__new__empty();
+      return ARRAY__empty();
     }
 
     final block__accumulation = accumulation__linear__basic___compo<storage__file__block>(
@@ -263,7 +263,7 @@ class storage__file__memory //
   }) {
     final blocks__iteration__meta = accumulation__conservative__iteration__meta(
       array__first__elements__count__doubling__initial: block__first__bytes__count__doubling__initial,
-      elements__count: blocks__count___raw,
+      elements__count: _blocks__count,
     );
 
     late byte__array blocks;
@@ -276,7 +276,7 @@ class storage__file__memory //
             final accumulation__element__id,
             final array__id,
           ) {
-            blocks = block__accumulation___raw.element(
+            blocks = _block__accumulation.element(
               array__id,
             );
 
@@ -309,27 +309,27 @@ class storage__file__memory //
       final bytes__count = (count * block__meta.size);
 
       INT array__last__bytes__count;
-      if /*F*/ (block__accumulation___raw.empty___ok()) {
+      if /*F*/ (_block__accumulation.empty___ok()) {
         array__last__bytes__count =
             (block__meta.size *
             accumulation__conservative__iteration__meta.array__first__elements__count__ideal(
               array__first__elements__count__doubling__initial: block__first__bytes__count__doubling__initial,
             ));
 
-        block__accumulation___raw.add__ending(
+        _block__accumulation.add__ending(
           byte__array(
             array__last__bytes__count,
           ),
         );
       } else {
-        array__last__bytes__count = block__accumulation___raw.element__last().bytes__count;
+        array__last__bytes__count = _block__accumulation.element__last().bytes__count;
       }
 
       while (true) {
         {
           array__last__bytes__count *= 2;
 
-          block__accumulation___raw.add__ending(
+          _block__accumulation.add__ending(
             byte__array(
               array__last__bytes__count,
             ),
@@ -344,7 +344,7 @@ class storage__file__memory //
       }
     }
 
-    blocks__count___raw += count;
+    _blocks__count += count;
   }
 
   /*void decrease({
@@ -359,13 +359,13 @@ class storage__file__memory //
     if (printing___ok) {
       function__call__print(
         "storage__file__memory.flush",
-        debug__label,
+        label___debug,
       );
     }
 
-    block__accumulation___raw.flush();
+    _block__accumulation.flush();
 
-    blocks__count___raw = 0;
+    _blocks__count = 0;
   }
 
   @override
@@ -373,13 +373,13 @@ class storage__file__memory //
     if (printing___ok) {
       function__call__print(
         "storage__file__memory.dispose",
-        debug__label,
+        label___debug,
       );
     }
 
     flush();
 
-    block__accumulation___raw.dispose();
+    _block__accumulation.dispose();
   }
 }
 
@@ -397,7 +397,7 @@ void storage__file__memory__test() {
     ..read__full().convert__byte__array().representation__text().print("file.read.full")
     //..read(count: 1, offset: 0).convert__byte__array().representation__text().print("file.read(1,0)")
     ..write__ending(
-      array__new__generated(
+      ARRAY__generated(
         5,
         (final i) => storage__file__block(
           byte__array__new__generated(
@@ -413,7 +413,7 @@ void storage__file__memory__test() {
           elements__truncate___ok: FALSE,
         )
         .print("file.read.full.1")
-    ..block__accumulation__raw
+    .._block__accumulation
         .convert__array()
         .convert(
           (final e) => (e.bytes__count ~/ block__meta.size),

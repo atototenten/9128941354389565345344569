@@ -36,7 +36,7 @@ not nil-able due to dart-lang.'s deficiency
   }
 
   ARRAY<element___type> convert__array() {
-    final result = array__new__filled<element___type?>(
+    final result = ARRAY__filled<element___type?>(
       _elements__count,
       NIL,
     );
@@ -57,7 +57,7 @@ not nil-able due to dart-lang.'s deficiency
       );
     }
 
-    return array__new__generated(
+    return ARRAY__generated(
       _elements__count,
       (final i) => result[i]!,
     );
@@ -77,7 +77,7 @@ not nil-able due to dart-lang.'s deficiency
         dispose___protocol {
   accumulation__linear__basic__fast___compo({
     final INT capacity__initial__multiplier = 0,
-  })  : _elements = array__new__filled(
+  })  : _elements = ARRAY__filled(
           ((capacity__initial__multiplier != 0) //
               ? (accumulation__capacity__default << capacity__initial__multiplier)
               : accumulation__capacity__default),
@@ -96,7 +96,7 @@ for quick `add:element` */
 
   void shrink() {
     if (empty___ok()) {
-      _elements /*.clear()*/ = array__new__filled(
+      _elements /*.clear()*/ = ARRAY__filled(
         accumulation__capacity__default,
         null,
       );
@@ -106,7 +106,7 @@ for quick `add:element` */
     } else {
       final iteration = accumulation__linear__basic__fast__iteration___compo(this);
 
-      _elements = array__new__generated(
+      _elements = ARRAY__generated(
         _elements__count,
         (_) => iteration.element()! /*
 will be non-NIL ,because `list_.elements__count` is expected to be correct */
@@ -142,7 +142,7 @@ will be non-NIL ,because `list_.elements__count` is expected to be correct */
 memory-usage is not reduced */
       (
     final element___type element,
-    final value__equality__function__format<element___type, element___type> element__equal___ok,
+    final value__equality___procedure__format<element___type, element___type> element__equal___ok,
   ) {
     final //
         elements = _elements,
@@ -180,7 +180,7 @@ must not be more than `list_.elements__count` */
   ARRAY<element___type> convert__array() {
     var offset = 0;
 
-    return array__new__generated(
+    return ARRAY__generated(
       _elements__count,
       (final i) {
         var result = _elements[i + offset];
@@ -353,8 +353,8 @@ extension accumulation__linear__basic__fast___compo__test__extension //
   }
 }*/
 
-void accumulation__linear__definitive___compo__test() {
-  final accum = accumulation__linear__definitive___compo<string>();
+void accumulation__linear__advanced___compo__test() {
+  final accum = accumulation__linear__advanced___compo<string>();
 
   INT accum__element__first__id() {
     return 0;
@@ -431,20 +431,18 @@ void accumulation__linear__definitive___compo__test() {
   report();*/
 }
 
-extension array__convert__accumulation__linear__definitive___compo__extension //
+extension array__convert__accumulation__linear__advanced___compo__extension //
 <element___type extends Object?> //
     on ARRAY<element___type> {
-  accumulation__linear__definitive___compo<element___type> //
+  accumulation__linear__advanced___compo<element___type> //
   convert__accumulation__linear() {
-    final result = accumulation__linear__definitive___compo<element___type>(
+    final result = accumulation__linear__advanced___compo<element___type>(
       capacity__initial: elements__count,
     );
 
-    this.iterate(
-      (_, final element) {
-        result.add__ending(
-          element,
-        );
+    this.iterate__forwards(
+      (final e, _) {
+        result.add__ending(e);
 
         return TRUE;
       },
@@ -454,13 +452,13 @@ extension array__convert__accumulation__linear__definitive___compo__extension //
   }
 }
 
-class accumulation__linear__definitive___compo /*
+class accumulation__linear__advanced___compo /*
 required because element-removal can in-validate element-ids
   and generation-id would rarely be useful
     due to generation-change being the whole point ,of an accum. */ //
 <element___type extends Object?> //
     extends accumulation__linear___compo__base<element___type> {
-  accumulation__linear__definitive___compo({
+  accumulation__linear__advanced___compo({
     super.capacity__initial,
   });
 
@@ -502,11 +500,9 @@ extension array__convert__accumulation__linear__basic___compo__extension //
       capacity__initial: elements__count,
     );
 
-    this.iterate(
-      (_, final element) {
-        result.add__ending(
-          element,
-        );
+    this.iterate__forwards(
+      (final e, _) {
+        result.add__ending(e);
 
         return TRUE;
       },
@@ -551,7 +547,7 @@ very efficient (both space, and time) ,than linked-list
 
   accumulation__linear___compo__base({
     final INT capacity__initial = capacity__initial__default,
-  }) : _elements = array__new__filled(
+  }) : _elements = ARRAY__filled(
          capacity__initial,
          value__optional__absent__compo(),
        ),
@@ -571,7 +567,7 @@ very efficient (both space, and time) ,than linked-list
 
   BOOL present___ok(
     final element___type element,
-    final value__equality__function__format<element___type, element___type> element__equal___ok,
+    final value__equality___procedure__format<element___type, element___type> element__equal___ok,
   ) {
     final v = search(
       element,
@@ -583,7 +579,7 @@ very efficient (both space, and time) ,than linked-list
 
   INT /*element__id*/ ? search(
     final element___type element,
-    final value__equality__function__format<element___type, element___type> element__equal___ok,
+    final value__equality___procedure__format<element___type, element___type> element__equal___ok,
   ) {
     INT? result = NIL;
 
@@ -634,14 +630,14 @@ very efficient (both space, and time) ,than linked-list
   ) {
     if /*F*/ (_elements__count == _elements.elements__count) {
       if (_elements__count == 0) {
-        _elements = array__new__filled(
+        _elements = ARRAY__filled(
           capacity__initial__default,
           value__optional__absent__compo(),
         );
       } else {
         final elements__old = _elements;
 
-        _elements = array__new__filled(
+        _elements = ARRAY__filled(
           (2 * _elements__count /*capacity*/ ),
           value__optional__absent__compo(),
         );
@@ -718,8 +714,9 @@ must not be more than `elements__count` */,
       count = _elements__count;
     }
 
-    _elements.iterate(
-      (final i, final e) {
+    _elements.iterate__forwards(
+      iteration__count: count,
+      (final e, final i) {
         final iterate___ok = element__handle(
           i,
           (e as value__optional__present__compo<element___type>).value,
@@ -727,7 +724,6 @@ must not be more than `elements__count` */,
 
         return iterate___ok;
       },
-      count: count,
     );
   }
 
@@ -739,10 +735,10 @@ must not be more than `elements__count` */,
 
   ARRAY<element___type> convert__array() {
     if (empty___ok()) {
-      return array__new__empty();
+      return ARRAY__empty();
     }
 
-    return array__new__generated(
+    return ARRAY__generated(
       _elements__count,
       (final i) => (_elements[i] as value__optional__present__compo<element___type>).value,
     );
@@ -763,11 +759,11 @@ size reduction, is not exponent-ional
   hence disturbs the growth formula
     so use, only if required */ {
     if (empty___ok()) {
-      _elements = array__new__empty();
+      _elements = ARRAY__empty();
 
       _elements__count = 0;
     } else {
-      _elements = array__new__generated(
+      _elements = ARRAY__generated(
         _elements__count,
         (final i) => _elements[i],
       );

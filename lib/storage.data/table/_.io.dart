@@ -70,7 +70,7 @@ void storage__data__table__rows__count__update(
   if (printing___ok) {
     function__call__print(
       "storage__data__table__rows__count__update",
-      table__meta.debug__label,
+      table__meta.label___debug,
     );
   }
 

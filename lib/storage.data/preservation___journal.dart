@@ -22,7 +22,7 @@ mut.ion is syn.ized ,in cache
         scheduling__meta = ASYN__PROMISE<ASYN<void>>(),
         syn_izing__meta = ASYN__PROMISE<void>();
 
-    task__urgent__schedule(
+    task__priority__schedule(
       () {
         scheduling__meta.complete(
           syn_izing__meta.future,
@@ -43,7 +43,7 @@ mut.ion has been syn.ized (cache has been updated) ,and live(globally visible) *
         scheduling__meta = ASYN__PROMISE<ASYN<void>>(),
         syn_izing__meta = ASYN__PROMISE<void>();
 
-    task__urgent__schedule(
+    task__priority__schedule(
       () {
         scheduling__meta.complete(
           syn_izing__meta.future,
@@ -141,7 +141,7 @@ void preservation__journal__persist(
   if (printing___ok) {
     function__call__print(
       "preservation__journal__persist",
-      preservation__journal.debug__label,
+      preservation__journal.label___debug,
     );
   }
 
@@ -250,7 +250,7 @@ void preservation__journal__recover__if__needed({
   if (printing___ok) {
     function__call__print(
       "preservation__journal__recover__if__needed",
-      bytes__preserved__storage.debug__label,
+      bytes__preserved__storage.label___debug,
     );
   }
 
@@ -275,7 +275,7 @@ void preservation__journal__recover__if__needed({
   if (printing___ok) {
     count.representation__text().print(
           "count",
-          bytes__preserved__storage.debug__label,
+          bytes__preserved__storage.label___debug,
         );
   }
 
@@ -293,7 +293,7 @@ void preservation__journal__recover__if__needed({
       if (printing___ok) {
         count__max.representation__text().print(
               "count__max",
-              bytes__preserved__storage.debug__label,
+              bytes__preserved__storage.label___debug,
             );
       }
 
@@ -400,7 +400,7 @@ find overlapping mutations
       );
     }
 
-    bool contained(
+    BOOL contained(
       final int value,
     ) {
       return (((value > _change.off) || (value == _change.off)) && //

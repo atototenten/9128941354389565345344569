@@ -72,7 +72,7 @@ the data-base access ,must be exclusive */ async {
   @override
   ASYN<storage__data__basic__meta__disposal__result> //
   dispose__asyn() async {
-    await value___raw.close();
+    await _value.close();
 
     return storage__data__basic__meta__disposal__result.success;
   }
@@ -88,7 +88,7 @@ based on sqlite-3
     ,otherwise postgresql ,but overall ,s.q.l.-to-software interface is a non-sensible approach
 requires `sqlite3_flutter_libs` pkg. */ {
   static const //
-  table__row__id__column__name = char__underscore;
+  table__row__id__column__name = chars__underscore___string;
 
   static sqlite_sync.Version sqlite__info() => //
       sqlite_sync.sqlite3.version;
@@ -100,40 +100,42 @@ requires `sqlite3_flutter_libs` pkg. */ {
   }
 
   storage__data__basic__meta__base(
-    this.value___raw,
-  ) : accesses__count___raw = 0,
-      access__mutating__exclusion___raw = exclusion__mutual___compo(),
-      accesses__empty__channel___raw = event__channel__broadcast() {
-    access__mutating__exclusion___raw //
+    this._value,
+  ) : _accesses__count = 0,
+      _access__mutating__exclusion = exclusion__mutual___compo(
+        locking__requests__count__limit: NIL,
+      ),
+      _accesses__empty__channel = event__channel__broadcast() {
+    _access__mutating__exclusion //
         .free__channel()
         .descriptions__add(
           procedure__empty__meta(
             () {
-              if (accesses__count___raw != 0) {
+              if (_accesses__count != 0) {
                 return;
               }
 
-              accesses__empty__channel___raw.event__dispatch();
+              _accesses__empty__channel.event__dispatch();
             },
           ),
         );
   }
 
-  final sqlite_async.SqliteDatabase value___raw;
-  final event__channel__broadcast accesses__empty__channel___raw;
-  final exclusion__mutual___compo access__mutating__exclusion___raw;
-  INT accesses__count___raw /*
+  final sqlite_async.SqliteDatabase _value;
+  final event__channel__broadcast _accesses__empty__channel;
+  final exclusion__mutual___compo _access__mutating__exclusion;
+  INT _accesses__count /*
 excluding mutating-access
   available through `access__mutating__exclusion___raw.locked__ok` proc. */;
 
   ASYN<storage__data__basic__accessing__meta>? //
   accessing__meta__asyn /*
 required for read op.ions */ () async {
-    accesses__count___raw += 1;
+    _accesses__count += 1;
 
     final result = ASYN__PROMISE<storage__data__basic__accessing__meta>();
 
-    value___raw.readLock(
+    _value.readLock(
       (final value) {
         final completion__asyn__meta = ASYN__PROMISE<void>();
 
@@ -144,26 +146,26 @@ required for read op.ions */ () async {
             .handle(
               (_) {
                 result.complete(
-                  storage__data__basic__accessing__meta.raw(
+                  storage__data__basic__accessing__meta._(
                     value,
-                    completion__meta___raw: procedure__empty__complicated__meta(
+                    completion__meta: procedure__empty__complicated__meta(
                       () {
                         {
-                          accesses__count___raw -= 1;
+                          _accesses__count -= 1;
 
-                          if (accesses__count___raw != 0) {
+                          if (_accesses__count != 0) {
                             return;
                           }
                         }
 
                         {
-                          final access__mutating__exclusion__locked___ok = access__mutating__exclusion___raw.locked___ok();
+                          final access__mutating__exclusion__locked___ok = _access__mutating__exclusion.locked___ok();
                           if (access__mutating__exclusion__locked___ok) {
                             return;
                           }
                         }
 
-                        accesses__empty__channel___raw.event__dispatch();
+                        _accesses__empty__channel.event__dispatch();
 
                         completion__asyn__meta.complete();
                       },
@@ -190,9 +192,9 @@ required for read op.ions */ () async {
 required for write op.ions */ () {
     late final ASYN__PROMISE<storage__data__basic__accessing__mutating__meta> result;
 
-    final ok = access__mutating__exclusion___raw.lock(
+    final ok = _access__mutating__exclusion.lock(
       (final lock) {
-        value___raw.writeLock(
+        _value.writeLock(
           (final value) {
             final completion__asyn__meta = ASYN__PROMISE<void>();
 
@@ -274,37 +276,38 @@ class storage__data__basic__accessing__meta //
     extends
         storage__data__basic__accessing__meta__base //
         <sqlite_async.SqliteReadContext> {
-  storage__data__basic__accessing__meta.raw(
+  storage__data__basic__accessing__meta._(
     final sqlite_async.SqliteReadContext value, {
-    required this.completion__meta___raw,
-  }) : super.raw(
+    required final procedure__empty__complicated__meta completion__meta,
+  }) : _completion__meta = completion__meta,
+       super.raw(
          value,
        );
 
-  final procedure__empty__complicated__meta completion__meta___raw;
+  final procedure__empty__complicated__meta _completion__meta;
 
   ASYN<void> complete__asyn() async {
-    final completed__already___ok = completion__meta___raw.invoked___ok();
+    final completed__already___ok = _completion__meta.invoked___ok();
 
     if (completed__already___ok) {
       throw "completed already";
     }
 
-    await value___raw.operate__asyn___raw(
+    await _value.operate__asyn___raw(
       statement: "END TRANSACTION",
     );
 
-    completion__meta___raw.invoke();
+    _completion__meta.invoke();
   }
 }
 
 abstract class storage__data__basic__accessing__meta__base //
 <value___type extends sqlite_async.SqliteReadContext> {
   storage__data__basic__accessing__meta__base.raw(
-    this.value___raw,
+    this._value,
   );
 
-  final value___type value___raw;
+  final value___type _value;
 
   ASYN<
     ({
@@ -314,7 +317,7 @@ including `.wasted` */,
     })
   >
   space__usage__summary() async {
-    final result = await value___raw.operate__asyn___raw(
+    final result = await _value.operate__asyn___raw(
       statement: "SELECT page_count * page_size as total_size, freelist_count * page_size as freelist_size FROM pragma_freelist_count(), pragma_page_size();" /*
 source : `web://powersync.com/blog/sqlite-optimizations-for-ultra-high-performance#strongstrong10-free-up-space-when-appropriate` */,
     );
@@ -325,13 +328,13 @@ source : `web://powersync.com/blog/sqlite-optimizations-for-ultra-high-performan
     );
   }
 
-  /*ASYN<void> build__re__asyn({
+  /*ASYN<void> re_build__asyn({
     required final string file__path,
     required final storage__data__basic__table__column__id? Function(
       ARRAY<storage__data__basic__table__cell__id> /*
 empty for root-table */
           table__path,
-    ) table__build__re__column /*
+    ) table__re_build__column /*
 column is asumed to be boolean-type
   and true if not zero
 after re-building
@@ -351,7 +354,7 @@ TASK
     required final string table__name,
     final string suffix = empty___string,
   }) async {
-    final result = await value___raw.operate__asyn___raw(
+    final result = await _value.operate__asyn___raw(
       statement: ("SELECT COUNT(*) FROM " + table__name + suffix),
     );
 
@@ -444,7 +447,7 @@ example
         result__column__id___ok,
       );
     } else {
-      statement__buffer.write(char__asterisk);
+      statement__buffer.write(chars__asterisk___string);
     }
 
     statement__buffer
@@ -467,7 +470,7 @@ example
       );
 
       statement__buffer
-        ..write(char__space)
+        ..write(chars__space___string)
         ..write(
           (result__order__ascend_ing___ok //
               ? "ASC"
@@ -490,7 +493,7 @@ example
     final statement = statement__buffer.toString();
     statement__buffer.clear();
 
-    return await value___raw.operate__asyn___raw(
+    return await _value.operate__asyn___raw(
       statement: statement,
       statement__arguments: result__conditions__arguments,
     );
@@ -561,7 +564,7 @@ class storage__data__basic__table__id //
   );
 
   string convert__name___raw() {
-    return (char__underscore + value.toString());
+    return (chars__underscore___string + value.toString());
   }
 }
 
@@ -571,14 +574,16 @@ class storage__data__basic__accessing__mutating__meta //
         <sqlite_async.SqliteWriteContext> {
   storage__data__basic__accessing__mutating__meta.raw(
     final sqlite_async.SqliteWriteContext value, {
-    required this.lock___raw,
-    required this.completion__meta___raw,
-  }) : super.raw(
+    required final exclusion__mutual__lock lock,
+    required final procedure__empty__complicated__meta completion__meta,
+  }) : _lock = lock,
+       _completion__meta = completion__meta,
+       super.raw(
          value,
        );
 
-  final exclusion__mutual__lock lock___raw;
-  final procedure__empty__complicated__meta completion__meta___raw;
+  final exclusion__mutual__lock _lock;
+  final procedure__empty__complicated__meta _completion__meta;
 
   ASYN<
     storage__data__basic__table__id /*/*
@@ -608,14 +613,14 @@ avoid `AUTOINCREMENT`
         statement__buffer
           ..write(", _")
           ..write(column__id)
-          ..write(char__space)
+          ..write(chars__space___string)
           ..write(
             column__meta.type.name,
           );
 
         if (column__meta.nil_able___ok.NOT) {
           statement__buffer
-            ..write(char__space)
+            ..write(chars__space___string)
             ..write("NOT ")
             ..write(
               storage__data__basic__table__column__data__type.nil.name,
@@ -626,7 +631,7 @@ avoid `AUTOINCREMENT`
 
     statement__buffer.write(");");
 
-    await value___raw.operate__asyn___raw(
+    await _value.operate__asyn___raw(
       statement: statement__buffer.toString(),
     );
 
@@ -661,7 +666,7 @@ can add only-single row */ ({
           table__id: table__id,
           columns__meta: columns__meta,
         ),
-        result = await value___raw.operate__asyn___raw(
+        result = await _value.operate__asyn___raw(
           statement: statement,
           statement__arguments: row,
         );
@@ -686,13 +691,13 @@ can add multiple-rows ,as well as a single-row */ ({
       columns__meta: columns__meta,
     );
 
-    final result = await value___raw.operate__asyn___raw(
+    final result = await _value.operate__asyn___raw(
       statement: statement,
       statement__arguments: rows.first,
     );
 
     if (rows.elements__count > 1) {
-      await value___raw.operate__compound__asyn___raw(
+      await _value.operate__compound__asyn___raw(
         statement: statement,
         statement__arguments: rows.sublist(1),
       );
@@ -731,7 +736,7 @@ can add multiple-rows ,as well as a single-row */ ({
     statement__buffer
       ..write(") VALUES (?")
       ..write(",?" * (columns__count - 1))
-      ..write(char__bracket__round__close)
+      ..write(chars__bracket__round__close___string)
       ..write(" RETURNING ")
       ..write(storage__data__basic__meta__base.table__row__id__column__name);
 
@@ -784,7 +789,7 @@ can add multiple-rows ,as well as a single-row */ ({
     statement__buffer.clear();
     statement__arguments__accumulation.dispose();
 
-    await value___raw.operate__asyn___raw(
+    await _value.operate__asyn___raw(
       statement: statement,
       statement__arguments: statement__arguments,
     );
@@ -843,20 +848,20 @@ revert the changes/mutations */ () async {
     final string statement,
   ) async {
     {
-      final completed__already___ok = completion__meta___raw.invoked___ok();
+      final completed__already___ok = _completion__meta.invoked___ok();
 
       if (completed__already___ok) {
         throw "completed already";
       }
 
-      await value___raw.operate__asyn___raw(
+      await _value.operate__asyn___raw(
         statement: statement,
       );
 
-      completion__meta___raw.invoke();
+      _completion__meta.invoke();
     }
 
-    lock___raw.free();
+    _lock.free();
   }
 }
 
@@ -931,7 +936,7 @@ final //
   final BOOL nil_able___ok;
 
   string name() {
-    return (char__underscore + id.toString());
+    return (chars__underscore___string + id.toString());
   }
 }
 
@@ -959,7 +964,7 @@ class storage__data__basic__table__column {
   );
 
   buffer.write(
-    char__quote__single,
+    chars__quote__single___string,
   );
 
   final result = buffer.toString();

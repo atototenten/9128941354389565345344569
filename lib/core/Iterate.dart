@@ -1,51 +1,69 @@
 part of "_.dart";
 
-const _iterate = iterate;
-
-@deprecated
-void iterate(
-  INT count,
-  final BOOL Function(INT i) operate, {
-  INT offset = 0,
+void ITERATE__forwards(
+  final INT count,
+  final BOOL /*continue___ok*/ Function(INT) operate, {
+  final INT offset = 0,
 }) {
-  count += offset;
-  while ((offset < count) && operate(offset++)) ;
+  final vending = INT__VENDING__generate(
+    count,
+    offset: offset,
+  );
+
+  for (final i in vending) {
+    final continue___ok = operate(i);
+
+    if (continue___ok.NOT) {
+      break;
+    }
+  }
 }
 
-@deprecated
-ASYN<void> iterate__asyn(
-  INT count,
-  final ASYN<BOOL> Function(INT i) operate, {
-  INT offset = 0,
-}) async {
-  count += offset;
-  while ((offset < count) && (await operate(offset++))) ;
-}
-
-const _iterate__reverse = iterate__reverse;
-
-@deprecated
-void iterate__reverse /* __high_perf__low_mem */ (
-  INT count,
-  final BOOL Function(INT i) operate,
+void ITERATE__backwards(
+  final INT count,
+  final BOOL /*continue___ok*/ Function(INT) operate,
 ) {
-  if /*F*/ (count == 0) {
-    return;
-  }
+  final vending = INT__VENDING__generate__reverse(count);
 
-  while (operate(count -= 1) && //
-      (count /*>*/ != 0)) {}
+  for (final i in vending) {
+    final continue___ok = operate(i);
+
+    if (continue___ok.NOT) {
+      break;
+    }
+  }
 }
 
-@deprecated
-ASYN<void> iterate__reverse__asyn(
-  INT count,
-  final ASYN<BOOL> Function(INT i) operate,
-) async {
-  if /*F*/ (count == 0) {
-    return;
-  }
+ASYN<void> ITERATE__forwards___asyn(
+  final INT count,
+  final ASYN<BOOL /*continue___ok*/> Function(INT) operate, {
+  final INT offset = 0,
+}) async {
+  final vending = INT__VENDING__generate(
+    count,
+    offset: offset,
+  );
 
-  while ((await operate(count -= 1)) && //
-      (count /*>*/ != 0)) {}
+  for (final i in vending) {
+    final continue___ok = await operate(i);
+
+    if (continue___ok.NOT) {
+      break;
+    }
+  }
+}
+
+ASYN<void> ITERATE__backwards___asyn(
+  final INT count,
+  final ASYN<BOOL /*continue___ok*/> Function(INT) operate,
+) async {
+  final vending = INT__VENDING__generate__reverse(count);
+
+  for (final i in vending) {
+    final continue___ok = await operate(i);
+
+    if (continue___ok.NOT) {
+      break;
+    }
+  }
 }

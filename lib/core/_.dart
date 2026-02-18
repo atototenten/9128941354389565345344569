@@ -6,7 +6,7 @@ import "dart:async" as dart__async;
 import "dart:convert" as dart__convert;
 import "dart:math" as dart__math;
 
-import "package:collection/collection.dart" show DeepCollectionEquality;
+import "package:collection/collection.dart" as package__collection;
 
 //
 
@@ -43,7 +43,7 @@ part "number/floating-point.dart";
 part "number/fixed-point.dart";
 part "CAPSULE.dart";
 part "VENDING.dart";
-part "iterate.dart";
+part "ITERATE.dart";
 part "printing.dart";
 part "procedure.dart";
 part "queue.dart";
@@ -252,8 +252,8 @@ extension INT__array__bits__extension //
   }) {
     final buffer = StringBuffer("[");
 
-    this.iterate(
-      (final i, final e) {
+    this.iterate__forwards(
+      (final e, final i) {
         buffer
           ..write(" ")
           ..write(
@@ -311,7 +311,7 @@ extension text__separation__extension //
       ),
     );
 
-    iterate__reverse(
+    ITERATE__backwards(
       ((length_1 - offset) ~/ interval),
       (_) {
         buffer
@@ -339,17 +339,17 @@ extension text__separation__extension //
 
     final elements__count = ((length_1 - offset) ~/ interval);
 
-    final result =
-        array__new__filled<string>(
-            elements__count,
-            empty___string,
-          )
-          ..first = substring(
-            0,
-            offset,
-          );
+    final result = ARRAY__filled<string>(
+      elements__count,
+      empty___string,
+    );
 
-    iterate__reverse(
+    result.first = substring(
+      0,
+      offset,
+    );
+
+    ITERATE__backwards(
       (elements__count - 1),
       (final i) {
         result[i] = substring(

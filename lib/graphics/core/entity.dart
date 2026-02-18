@@ -9,7 +9,7 @@ class entity__overlay___compo //
   });
 
   final dispose___procedure__format? dispose__handle;
-  final widget__build__function__format widget__build;
+  final widget__build___procedure__format widget__build;
 
   @override
   void dispose() {

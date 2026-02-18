@@ -33,7 +33,7 @@ widget___protocol rich_text__image({
   required final APPROX width,
   required final APPROX height,
 }) {
-  procedure__empty__format? build__re;
+  void___procedure__format? re_build;
 
   BS1__array? image;
 
@@ -42,7 +42,7 @@ widget___protocol rich_text__image({
     future: image__future,
     success__handle: (final image_) {
       image = image_;
-      build__re?.call();
+      re_build?.call();
     },
     error__indicate: (_) => //
         SizedBox(
@@ -65,12 +65,12 @@ widget___protocol rich_text__image({
     child: Center(
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(8.px())),
-        child: widget__build__definitive(
+        child: widget__advanced__build(
           init: (final state) {
-            build__re = state.build__re;
+            re_build = state.re_build;
           },
           de_init_: () {
-            build__re =  null;
+            re_build =  null;
           },
           build: (final state) {
             final image_ = image;

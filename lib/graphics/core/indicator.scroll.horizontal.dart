@@ -27,7 +27,7 @@ widget___protocol indicator__scroll__horizontal({
       colors__right = _pictures__present__colors,
       observer = empty__procedure__empty;
 
-  final overlay = widget__build__definitive(
+  final overlay = widget__advanced__build(
     init_: (final state) {
       void observer_() {
         final position = controller.position
@@ -39,7 +39,7 @@ widget___protocol indicator__scroll__horizontal({
 /* TASK:
   animate the following `setState`s */
 
-        BOOL b__build__re = FALSE;
+        BOOL b__re_build = FALSE;
 
         if ((position.pixels == position.minScrollExtent) && //
             (colors__left == _pictures__present__colors)) {
@@ -47,22 +47,22 @@ widget___protocol indicator__scroll__horizontal({
 
           //print__info("atMin");
 
-          b__build__re = TRUE;
+          b__re_build = TRUE;
         } else if ((position.pixels == position.maxScrollExtent) && //
             (colors__right == _pictures__present__colors)) {
           colors__right = _pictures__present__colors__empty;
 
           //print__info("atMax");
 
-          b__build__re = TRUE;
+          b__re_build = TRUE;
         }
 
         if ((position.pixels > position.minScrollExtent) && //
             (colors__left != _pictures__present__colors)) {
           colors__left = _pictures__present__colors;
 
-          if (!b__build__re) {
-            b__build__re = TRUE;
+          if (!b__re_build) {
+            b__re_build = TRUE;
           }
         }
 
@@ -70,13 +70,13 @@ widget___protocol indicator__scroll__horizontal({
             (colors__right != _pictures__present__colors)) {
           colors__right = _pictures__present__colors;
 
-          if (!b__build__re) {
-            b__build__re = TRUE;
+          if (!b__re_build) {
+            b__re_build = TRUE;
           }
         }
 
-        if (b__build__re) {
-          state.build__re();
+        if (b__re_build) {
+          state.re_build();
         }
       }
 

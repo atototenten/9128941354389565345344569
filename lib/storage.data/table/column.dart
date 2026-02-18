@@ -330,7 +330,7 @@ class storage__data__table__column__type__wst__meta___compo /*
   );
 }
 
-typedef storage__data__table__row__convert__text__summary__function__format = //
+typedef storage__data__table__row__convert__text__summary___procedure__format = //
     ({
   string title,
   string sub_title,
@@ -339,7 +339,7 @@ typedef storage__data__table__row__convert__text__summary__function__format = //
   ARRAY<Object?> data__array,
 );
 
-typedef storage__data__table__row__convert__text__function__format = //
+typedef storage__data__table__row__convert__text___procedure__format = //
     string Function(
   ARRAY<Object?> data__array,
 );
@@ -360,9 +360,9 @@ abstract class storage__data__table__column__type__array__meta___protocol //
 
   final INT row__size;
 
-  final storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary;
+  final storage__data__table__row__convert__text__summary___procedure__format? row__convert__text__summary;
 
-  final storage__data__table__row__convert__text__function__format row__convert__text /*__full*/;
+  final storage__data__table__row__convert__text___procedure__format row__convert__text /*__full*/;
 
   /*uu columns__meta__id() => //
       ((columns__meta__previous !=  null) //
@@ -376,8 +376,8 @@ storage__data__table__column___compo //
   required final storage__data__table__column__compo? table__column__previous,
   required final number__size elements__count__size__id,
   required final storage__data__table__column___compo columns__last,
-  final storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary,
-  required final storage__data__table__row__convert__text__function__format row__convert__text,
+  final storage__data__table__row__convert__text__summary___procedure__format? row__convert__text__summary,
+  required final storage__data__table__row__convert__text___procedure__format row__convert__text,
   final BOOL b__nilable = FALSE,
 }) {
   return (
@@ -440,8 +440,8 @@ storage__data__table__column___compo //
   required final number__size rows__count__size__id,
   required final INT rows__count__max,
   required final storage__data__table__column___compo columns__last,
-  final storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary,
-  required final storage__data__table__row__convert__text__function__format row__convert__text,
+  final storage__data__table__row__convert__text__summary___procedure__format? row__convert__text__summary,
+  required final storage__data__table__row__convert__text___procedure__format row__convert__text,
   final BOOL b__nilable = FALSE,
 }) {
   return (
@@ -485,8 +485,8 @@ storage__data__table__column___compo //
   required final number__size rows__count__size__id,
   final INT rows__count__multiplier__initial = 0,
   required final storage__data__table__column___compo columns__last,
-  final storage__data__table__row__convert__text__summary__function__format? row__convert__text__summary,
-  required final storage__data__table__row__convert__text__function__format row__convert__text,
+  final storage__data__table__row__convert__text__summary___procedure__format? row__convert__text__summary,
+  required final storage__data__table__row__convert__text___procedure__format row__convert__text,
   final BOOL b__nilable = FALSE,
 }) {
   return (

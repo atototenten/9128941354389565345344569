@@ -1,11 +1,10 @@
 part of "_.dart";
 
 class stack___compo //
-    <element___type extends Object?> //
-    implements
-        dispose___protocol {
+<element___type extends Object?> //
+    implements dispose___protocol {
   stack___compo() //
-      : _accumulation = accumulation__chained();
+    : _accumulation = accumulation__chained();
 
   final accumulation__chained<element___type> _accumulation;
 
@@ -21,12 +20,8 @@ class stack___compo //
     return _accumulation.element__last();
   }
 
-  void add(
-    final element___type value,
-  ) {
-    _accumulation.add__ending(
-      value,
-    );
+  void add(final element___type value) {
+    _accumulation.add__ending(value);
   }
 
   void remove() {
@@ -43,7 +38,7 @@ class stack___compo //
 
   BOOL present___ok(
     final element___type element,
-    final value__equality__function__format<element___type, element___type> equal___ok,
+    final value__equality___procedure__format<element___type, element___type> equal___ok,
   ) {
     return _accumulation.present___ok(
       element,

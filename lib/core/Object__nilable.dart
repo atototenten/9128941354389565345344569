@@ -42,8 +42,9 @@ zero is special-case to disable truncation */ =
           if (elements__count > elements__truncation__count__threshold) {
             final elements__truncation__count__threshold__half = (elements__truncation__count__threshold >> 1);
 
-            value.iterate(
-              (_, final value) {
+            value.iterate__forwards(
+              iteration__count: elements__truncation__count__threshold__half,
+              (final value, _) {
                 buffer
                   ..write(
                     value.representation__text(),
@@ -52,13 +53,14 @@ zero is special-case to disable truncation */ =
 
                 return TRUE;
               },
-              count: elements__truncation__count__threshold__half,
             );
 
             buffer.write(static__indicate__short_en_ing);
 
-            value.iterate(
-              (_, final value) {
+            value.iterate__forwards(
+              iteration__count: elements__truncation__count__threshold__half,
+              offset: (elements__count - elements__truncation__count__threshold__half),
+              (final value, _) {
                 buffer
                   ..write(elements__separation)
                   ..write(
@@ -67,16 +69,14 @@ zero is special-case to disable truncation */ =
 
                 return TRUE;
               },
-              count: elements__truncation__count__threshold__half,
-              offset: (elements__count - elements__truncation__count__threshold__half),
             );
           } else {
             buffer.write(
               value.first.representation__text(),
             );
 
-            value.iterate(
-              (_, final value) {
+            value.iterate__forwards(
+              (final value, _) {
                 buffer
                   ..write(elements__separation)
                   ..write(

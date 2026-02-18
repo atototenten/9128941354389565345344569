@@ -5,7 +5,7 @@ TASK
   must support direct-access to the cached file
     through raw proc.s */
 
-/*bool storage__file__fast__block__equal___ok(
+/*BOOL storage__file__fast__block__equal___ok(
   final storage__file__fast__block block,
   final storage__file__fast__block other,
 ) =>
@@ -59,7 +59,7 @@ storage__file__fast__block _base__storage__file__fast__block__cache__if__needed(
   if (printing___ok) {
     function__call__print(
       "_base__storage__file__fast__block__cache__if__needed",
-      storage.debug__label,
+      storage.label___debug,
     );
 
     offset.representation__text().print(
@@ -114,7 +114,7 @@ void _base__storage__file__fast__block__mod__if__needed(
   if (printing___ok) {
     function__call__print(
       "_base__storage__file__fast__block__mod__if__needed",
-      storage.debug__label,
+      storage.label___debug,
     );
 
     block.offset.representation__text().print(
@@ -166,7 +166,7 @@ void storage__file__fast__read_write /* __caching */ (
   if (printing___ok) {
     function__call__print(
       ("storage." + (b__write ? "write" : "read")),
-      storage.debug__label,
+      storage.label___debug,
     );
 
     count.representation__text().print("count");
@@ -186,7 +186,7 @@ void storage__file__fast__read_write /* __caching */ (
   if (printing___ok) {
     offset__aligned.representation__text().print(
           "offset__aligned",
-          storage.debug__label,
+          storage.label___debug,
         );
   }
 
@@ -194,7 +194,7 @@ void storage__file__fast__read_write /* __caching */ (
 
   if /* likely */ (!(count > storage__file__block__size.size)) /* fast-path */ {
     if (printing___ok) {
-      "Fast-path".print(storage.debug__label);
+      "Fast-path".print(storage.label___debug);
     }
 
     final //
@@ -233,7 +233,7 @@ void storage__file__fast__read_write /* __caching */ (
 
     if /* un-likely */ ((count -= count_) != 0) /* multi block op */ {
       if (printing___ok) {
-        "Multi block op".print(storage.debug__label);
+        "Multi block op".print(storage.label___debug);
       }
 
       final block = _base__storage__file__fast__block__cache__if__needed(
@@ -269,7 +269,7 @@ void storage__file__fast__read_write /* __caching */ (
   } else {
     if (printing___ok) {
       "Normal-path".print(
-        storage.debug__label,
+        storage.label___debug,
       );
     }
 
@@ -282,7 +282,7 @@ void storage__file__fast__read_write /* __caching */ (
     if /* likely */ (offset__aligned.buffer__offset != 0) {
       if (printing___ok) {
         "First step (un-aligned bys Before)".print(
-          storage.debug__label,
+          storage.label___debug,
         );
       }
 
@@ -348,7 +348,7 @@ void storage__file__fast__read_write /* __caching */ (
     if (printing___ok) {
       count__aligned.representation__text().print(
             "count__aligned",
-            storage.debug__label,
+            storage.label___debug,
           );
     }
 
@@ -359,7 +359,7 @@ void storage__file__fast__read_write /* __caching */ (
     while (count != 0) {
       if (printing___ok) {
         "while ($count != 0)".print(
-          storage.debug__label,
+          storage.label___debug,
         );
       }
 
@@ -400,7 +400,7 @@ void storage__file__fast__read_write /* __caching */ (
     if (count__aligned.remainder__un_aligned != 0) {
       if (printing___ok) {
         "Last step (un-aligned bys After)".print(
-          storage.debug__label,
+          storage.label___debug,
         );
       }
 
@@ -509,7 +509,7 @@ void storage__file__fast__sync(
   if (printing___ok) //
     function__call__print(
       "storage__file__fast__sync",
-      storage.debug__label,
+      storage.label___debug,
     );
 
   printing__indentation__increase();
@@ -520,7 +520,7 @@ void storage__file__fast__sync(
         if (printing___ok) {
           element.offset.representation__text().print(
                 "block__moded__list__block__offset",
-                storage.debug__label,
+                storage.label___debug,
               );
         }
 
@@ -553,7 +553,7 @@ void storage__file__fast__flush(
   if (printing___ok) //
     function__call__print(
       "storage__file__fast__flush",
-      storage.debug__label,
+      storage.label___debug,
     );
 
   printing__indentation__increase();

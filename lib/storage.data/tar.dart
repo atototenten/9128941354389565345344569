@@ -8,7 +8,7 @@ void storage__data__tar__create(
   if (printing___ok) {
     function__call__print(
       "storage__data__tar__create",
-      ds__meta.debug__label,
+      ds__meta.label___debug,
     );
   }
 
@@ -185,7 +185,7 @@ INT storage__data__tar__row__add(
   if (printing___ok) {
     function__call__print(
       "storage__data__tar__row__add",
-      tar__meta.debug__label,
+      tar__meta.label___debug,
     );
 
     bytes.representation__text().print("bytes");
@@ -198,7 +198,7 @@ INT storage__data__tar__row__add(
   if (printing___ok) {
     row__id.representation__text().print(
           "row__id",
-          tar__meta.debug__label,
+          tar__meta.label___debug,
         );
   }
 
@@ -236,7 +236,7 @@ INT storage__data__tar__row__add(
                   " allocating a new `table`;"
                   " also extend-ing the current `table__arr`'s capacity;")
               : "allocating, and populating; the `table`, and `table__arr`")
-          .print(tar__meta.debug__label);
+          .print(tar__meta.label___debug);
     }
 
     final //
@@ -255,12 +255,12 @@ INT storage__data__tar__row__add(
           .representation__text()
           .print(
             "table__new__size",
-            tar__meta.debug__label,
+            tar__meta.label___debug,
           );
 
       storage__data__offset__to__table.representation__text().print(
             "storage__data__offset__to__table__new",
-            tar__meta.debug__label,
+            tar__meta.label___debug,
           );
     }
 
@@ -302,7 +302,7 @@ INT storage__data__tar__row__add(
     if (printing___ok) {
       storage__data__position(ds__meta).representation__text().print(
             "table__array__new__base__storage__data__offset",
-            tar__meta.debug__label,
+            tar__meta.label___debug,
           );
     }
 
@@ -346,7 +346,7 @@ storage__data__table__row___compo storage__data__tar__row(
   if (printing___ok) {
     function__call__print(
       "storage__data__tar__row",
-      tar__meta.debug__label,
+      tar__meta.label___debug,
     );
 
     row__id.representation__text().print("row__id");
@@ -436,7 +436,7 @@ BS1__array storage__data__tar__row__group__bytes(
   if (printing___ok) {
     function__call__print(
       "storage__data__tar__row__group__bytes",
-      tar__meta.debug__label,
+      tar__meta.label___debug,
     );
   }
 
@@ -533,7 +533,7 @@ void storage__data__tar__rows__all__iterate(
   if (printing___ok) {
     function__call__print(
       "storage__data__tar__rows__all",
-      tar__meta.debug__label,
+      tar__meta.label___debug,
     );
   }
 

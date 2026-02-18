@@ -15,7 +15,7 @@ void storage__data__table__main__array__write(
   if (printing___ok) {
     function__call__print(
       "storage__data__tbl__main__write",
-      ds__meta.debug__label,
+      ds__meta.label___debug,
     );
   }
 
@@ -88,7 +88,7 @@ storage__data__table__meta___protocol storage__data__table__main__open(
   if (printing___ok) {
     function__call__print(
       "storage__data__tbl__main__table",
-      ds__meta.debug__label,
+      ds__meta.label___debug,
     );
 
     table__main__id.representation__text().print("table__main__id");

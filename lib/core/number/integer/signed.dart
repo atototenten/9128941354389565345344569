@@ -21,7 +21,7 @@ typedef INT__NEG__bytes__convert__result___compo = ({
 
 class INT__NEG__text__digits__fixed {
   INT__NEG__text__digits__fixed(
-    this.value___raw, {
+    this._value, {
     required this.negative___ok,
     required this.digits__count,
     required this.truncation,
@@ -31,7 +31,7 @@ class INT__NEG__text__digits__fixed {
 
   final INT__NEG__text__digits__fixed__truncation? truncation;
 
-  INT value___raw;
+  INT _value;
 
   BOOL negative___ok;
 
@@ -46,15 +46,15 @@ class INT__NEG__text__digits__fixed {
       value__new = -value__new;
     }
 
-    if (value___raw != value__new) {
-      value___raw = value__new;
+    if (_value != value__new) {
+      _value = value__new;
     }
   }
 
   string //
       value__convert__text() {
     final //
-        value__text = value___raw.toString(),
+        value__text = _value.toString(),
         value__text__chars__count = value__text.chars__count,
         buffer = StringBuffer();
 

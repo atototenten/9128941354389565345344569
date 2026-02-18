@@ -43,7 +43,7 @@ class storage__data__manager___compo {
   final ARRAY<storage__data__column__tree__element__super__compo> column__tree;
 
   ARRAY<string> table__main__name__array() {
-    return array__new__generated(
+    return ARRAY__generated(
       column__tree.elements__count,
       (final i) => column__tree[i].column.meta.name,
     );
@@ -54,7 +54,7 @@ class storage__data__manager___compo {
   ) {
     return storage__data__table__main__open(
       ds__meta,
-      table__main__array: array__new__generated(
+      table__main__array: ARRAY__generated(
         column__tree.elements__count,
         (final i) => column__tree[i].column,
       ),

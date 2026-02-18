@@ -29,7 +29,7 @@ byte__array byte__array__new__generated(
 ) {
   final result = byte__array(count);
 
-  iterate(
+  ITERATE__forwards(
     count,
     (final i) {
       result[i] = generate(i);
@@ -55,8 +55,9 @@ BOOL byte__array__blank___ok(
 ``` */ {
   var blank___ok = TRUE;
 
-  bys.iterate(
-    (_, final element) {
+  bys.iterate__forwards(
+    iteration__count: (count ?? bys.bytes__count),
+    (final element, _) {
       if (element == 0) {
         return TRUE;
       }
@@ -64,7 +65,6 @@ BOOL byte__array__blank___ok(
       blank___ok = FALSE;
       return FALSE;
     },
-    count: (count ?? bys.bytes__count),
   );
 
   return blank___ok;

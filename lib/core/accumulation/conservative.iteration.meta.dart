@@ -14,13 +14,12 @@ growth style
   added array's length is doubled from the previous/last
   the first array's elements-count is 1 doubled ,`array__first__elements__count__doubling__initial` times
 element-access style
-  element-position calc.ion is partially(just the accum. ,not the arrays) iterative(with a single branch) */
-{
+  element-position calc.ion is partially(just the accum. ,not the arrays) iterative(with a single branch) */ {
   static const //
-      array__first__elements__count__doubling__initial__default = 2;
+  array__first__elements__count__doubling__initial__default = 2;
 
   static INT //
-      array__elements__count__ideal___raw({
+  array__elements__count__ideal___raw({
     required final INT array__id,
     required final INT array__first__elements__count__doubling__initial,
   }) {
@@ -28,7 +27,7 @@ element-access style
   }
 
   static INT //
-      array__first__elements__count__ideal({
+  array__first__elements__count__ideal({
     required final INT array__first__elements__count__doubling__initial,
   }) {
     return array__elements__count__ideal___raw(
@@ -39,44 +38,41 @@ element-access style
 
   accumulation__conservative__iteration__meta({
     required final INT elements__count /*
-can be zero */
-    ,
+can be zero */,
     this.array__first__elements__count__doubling__initial = array__first__elements__count__doubling__initial__default,
-  })  : array__current__id___raw = 0,
-        elements__offset___raw = 0,
-        elements__count__remaining___raw = elements__count;
+  }) : _array__current__id = 0,
+       _elements__offset = 0,
+       _elements__count__remaining = elements__count;
 
   final INT //
-      array__first__elements__count__doubling__initial;
+  array__first__elements__count__doubling__initial;
 
   INT //
-      elements__count__remaining___raw /*
+  _elements__count__remaining /*
 from `.elements__offset`
-  hence including the current array's elements */
-      ,
-      elements__offset___raw,
-      array__current__id___raw;
+  hence including the current array's elements */,
+      _elements__offset,
+      _array__current__id;
 
   BOOL //
-      elements__remaining__ok___raw({
+  elements__remaining__ok___raw({
     required final INT array__current__elements__count__ideal,
   }) {
-    return (elements__count__remaining___raw >= array__current__elements__count__ideal);
+    return (_elements__count__remaining >= array__current__elements__count__ideal);
   }
 
   BOOL //
-      elements__remaining___ok() {
+  elements__remaining___ok() {
     return elements__remaining__ok___raw(
       array__current__elements__count__ideal: array__current__elements__count__ideal___raw(),
     );
   }
 
   INT //
-      elements__remaining__count /*
-excluding the current-array's elements */
-      () {
+  elements__remaining__count /*
+excluding the current-array's elements */ () {
     final //
-        array__current__elements__count__ideal = array__current__elements__count__ideal___raw(),
+    array__current__elements__count__ideal = array__current__elements__count__ideal___raw(),
         iteration__current__last___ok = iteration__current__last__ok___raw(
           array__current__elements__count__ideal: array__current__elements__count__ideal,
         );
@@ -85,44 +81,43 @@ excluding the current-array's elements */
       return 0;
     }
 
-    return (elements__count__remaining___raw - array__current__elements__count__ideal);
+    return (_elements__count__remaining - array__current__elements__count__ideal);
   }
 
   INT //
-      array__current__elements__count___raw /*
+  _array__current__elements__count /*
 needed only for the last iteration
   other(non-last) iterations {can and should} use {ideal elements-count}
     which has {one less branch} and {less calc.ions}
-      hence more efficient */
-      () {
+      hence more efficient */ () {
     final //
-        array__current__elements__count__ideal = array__current__elements__count__ideal___raw(),
+    array__current__elements__count__ideal = array__current__elements__count__ideal___raw(),
         iteration__current__last___ok = iteration__current__last__ok___raw(
           array__current__elements__count__ideal: array__current__elements__count__ideal,
         );
 
     if /*F*/ (iteration__current__last___ok) {
-      return elements__count__remaining___raw;
+      return _elements__count__remaining;
     }
 
     return array__current__elements__count__ideal;
   }
 
   INT //
-      array__current__elements__count__ideal___raw() {
+  array__current__elements__count__ideal___raw() {
     return array__elements__count__ideal___raw(
-      array__id: array__current__id___raw,
+      array__id: _array__current__id,
       array__first__elements__count__doubling__initial: array__first__elements__count__doubling__initial,
     );
   }
 
   INT //
-      array__previous__elements__count__ideal___raw() {
+  array__previous__elements__count__ideal___raw() {
     if (iteration__current__first___ok()) {
       throw "in-valid call : `iteration__current__first__ok`";
     }
 
-    final array__previous__id = (array__current__id___raw - 1);
+    final array__previous__id = (_array__current__id - 1);
 
     return array__elements__count__ideal___raw(
       array__id: array__previous__id,
@@ -131,17 +126,17 @@ needed only for the last iteration
   }
 
   BOOL //
-      iteration__current__last__ok___raw({
+  iteration__current__last__ok___raw({
     required final INT array__current__elements__count__ideal,
   }) {
-    return (elements__count__remaining___raw < array__current__elements__count__ideal);
+    return (_elements__count__remaining < array__current__elements__count__ideal);
   }
 
   BOOL //
-      iteration__current__first___ok() {
-    if (elements__offset___raw == 0) {
-      if (array__current__id___raw != 0) {
-        throw "exception : `(array__current__id___raw != 0)`($array__current__id___raw != 0)";
+  iteration__current__first___ok() {
+    if (_elements__offset == 0) {
+      if (_array__current__id != 0) {
+        throw "exception : `(array__current__id != 0)`($_array__current__id != 0)";
       }
 
       return TRUE;
@@ -155,14 +150,15 @@ needed only for the last iteration
     ({
       INT id,
       INT elements__count,
-    }) array,
+    })
+    array,
   }) //
-      iteration__current__meta() {
+  iteration__current__meta() {
     return (
-      elements__offset: elements__offset___raw,
+      elements__offset: _elements__offset,
       array: (
-        id: array__current__id___raw,
-        elements__count: array__current__elements__count___raw(),
+        id: _array__current__id,
+        elements__count: _array__current__elements__count(),
       ),
     );
   }
@@ -180,15 +176,14 @@ needed only for the last iteration
       }
     }
 
-    elements__offset___raw += array__current__elements__count__ideal;
-    elements__count__remaining___raw -= array__current__elements__count__ideal;
+    _elements__offset += array__current__elements__count__ideal;
+    _elements__count__remaining -= array__current__elements__count__ideal;
 
-    array__current__id___raw += 1;
+    _array__current__id += 1;
   }
 
   void iterate__forward /*
-to next-array in the accum. */
-      () {
+to next-array in the accum. */ () {
     iterate__forward___raw(
       array__current__elements__count__ideal: array__current__elements__count__ideal___raw(),
     );
@@ -203,39 +198,36 @@ to next-array in the accum. */
       }
     }
 
-    array__current__id___raw -= 1;
+    _array__current__id -= 1;
 
     final array__current__elements__count__ideal = array__current__elements__count__ideal___raw() /*
 the {current array's id.} is previous
   to the one at proc.-call beginning
   hence can never be last
-    so {ideal elements-count} is usable */
-        ;
+    so {ideal elements-count} is usable */;
 
-    elements__offset___raw -= array__current__elements__count__ideal;
-    elements__count__remaining___raw += array__current__elements__count__ideal;
+    _elements__offset -= array__current__elements__count__ideal;
+    _elements__count__remaining += array__current__elements__count__ideal;
 
     return array__current__elements__count__ideal;
   }
 
   void iterate__backward /*
-to previous-array in the accum. */
-      () {
+to previous-array in the accum. */ () {
     iterate__backward___raw();
   }
 
   void iteration__set__initial /*
-re-set */
-      () {
+re-set */ () {
     if (iteration__current__first___ok()) {
       throw "in-valid call : `iteration__current__first__ok`";
     }
 
-    elements__count__remaining___raw += elements__offset___raw;
+    _elements__count__remaining += _elements__offset;
 
-    elements__offset___raw = 0;
+    _elements__offset = 0;
 
-    array__current__id___raw = 0;
+    _array__current__id = 0;
   }
 
   void elements__remaining__ensure___raw() {
@@ -247,24 +239,22 @@ re-set */
   }
 
   INT /*array__elements__offset*/ //
-      iterate__forward__until /*
-forward-iterate until the element is present in the current-array */
-      (
+  iterate__forward__until /*
+forward-iterate until the element is present in the current-array */ (
     INT element__id,
   ) {
-    element__id -= elements__offset___raw;
+    element__id -= _elements__offset;
 
-    if (element__id >= elements__count__remaining___raw) {
-      throw "in-valid call : `(element__id >= (elements__count__remaining___raw + elements__offset___raw))`(${element__id + elements__offset___raw} >= ($elements__count__remaining___raw + $elements__offset___raw))";
+    if (element__id >= _elements__count__remaining) {
+      throw "in-valid call : `(element__id >= (elements__count__remaining + elements__offset))`(${element__id + _elements__offset} >= ($_elements__count__remaining + $_elements__offset))";
     }
 
     {
-      final array__current__elements__count = array__current__elements__count___raw();
+      final array__current__elements__count = _array__current__elements__count();
 
       if (element__id < array__current__elements__count) /*
-last-array ,hence no-where to forward */
-      {
-        throw "in-valid call : `(element__id < array__current__elements__count)`(${element__id + elements__offset___raw} < $array__current__elements__count)";
+last-array ,hence no-where to forward */ {
+        throw "in-valid call : `(element__id < array__current__elements__count)`(${element__id + _elements__offset} < $array__current__elements__count)";
       }
     }
 
@@ -272,8 +262,7 @@ last-array ,hence no-where to forward */
       final array__current__elements__count__ideal = array__current__elements__count__ideal___raw();
 
       if (element__id < array__current__elements__count__ideal) /*
-current array is either last ,or the needed one */
-      {
+current array is either last ,or the needed one */ {
         break;
       }
 
@@ -290,14 +279,13 @@ current array is either last ,or the needed one */
   }
 
   INT /*array__elements__offset*/ //
-      iterate__backward__until /*
+  iterate__backward__until /*
 backward-iterating equivalent of `.iterate__forward__until`
-  although control-flow is asymmetric ,due to being based on beginning/offset */
-      (
+  although control-flow is asymmetric ,due to being based on beginning/offset */ (
     INT element__id,
   ) {
-    if (element__id >= elements__offset___raw) {
-      throw "in-valid call : `(element__id >= .elements__offset)`($element__id >= $elements__offset___raw)";
+    if (element__id >= _elements__offset) {
+      throw "in-valid call : `(element__id >= .elements__offset)`($element__id >= $_elements__offset)";
     }
 
     while (true) {
@@ -305,10 +293,9 @@ backward-iterating equivalent of `.iterate__forward__until`
 
       element__id -= array__current__elements__count__ideal /*
 for reason to not use `array__current__elements__count__raw`
-  refer to the comment ,after the usage of `array__current__elements__count__ideal__raw` in `iterate__backward` */
-          ;
+  refer to the comment ,after the usage of `array__current__elements__count__ideal__raw` in `iterate__backward` */;
 
-      if (element__id < elements__offset___raw) {
+      if (element__id < _elements__offset) {
         break;
       }
     }
@@ -318,8 +305,7 @@ for reason to not use `array__current__elements__count__raw`
 
   void iterate__auto /*
 iterate for `count` number of elements ,beginning with `offset`
-declarative approach */
-      ({
+declarative approach */ ({
     required final INT? count,
     final INT offset = 0,
     required final BOOL /*iterate___ok*/ Function(
@@ -327,49 +313,50 @@ declarative approach */
       INT array__id,
       INT array__elements__count,
       INT array__elements__offset,
-    ) array__handle,
+    )
+    array__handle,
   }) {
     if (((count != null) //
             ? (count + offset)
             : offset) /*end*/ >
-        (elements__count__remaining___raw + elements__offset___raw)) {
-      throw "in-valid call : `((count + offset) > (.elements__count__remaining + .elements__offset))`((${count ?? Null__value__text} + $offset) >= ($elements__count__remaining___raw + $elements__offset___raw))";
+        (_elements__count__remaining + _elements__offset)) {
+      throw "in-valid call : `((count + offset) > (.elements__count__remaining + .elements__offset))`((${count ?? Null__value__text} + $offset) >= ($_elements__count__remaining + $_elements__offset))";
     }
 
     INT //
-        iteration__count,
+    iteration__count,
         array__elements__offset;
 
     if /*F*/ (offset == 0) {
-      if /*F*/ (elements__offset___raw != 0) {
+      if /*F*/ (_elements__offset != 0) {
         iteration__set__initial();
       }
 
-      iteration__count = (count ?? elements__count__remaining___raw);
+      iteration__count = (count ?? _elements__count__remaining);
 
       array__elements__offset = 0;
-    } else if /*F*/ (offset < elements__offset___raw) {
-      iteration__count = (count ?? (elements__count__remaining___raw + (elements__offset___raw - offset)));
+    } else if /*F*/ (offset < _elements__offset) {
+      iteration__count = (count ?? (_elements__count__remaining + (_elements__offset - offset)));
 
       array__elements__offset = iterate__backward__until(
         offset,
       );
-    } else if /*F*/ (offset == elements__offset___raw) {
-      iteration__count = (count ?? elements__count__remaining___raw);
+    } else if /*F*/ (offset == _elements__offset) {
+      iteration__count = (count ?? _elements__count__remaining);
 
       array__elements__offset = 0;
     } else /*if (offset > elements__offset___raw)*/ {
-      iteration__count = (count ?? (elements__count__remaining___raw - (offset - elements__offset___raw)));
+      iteration__count = (count ?? (_elements__count__remaining - (offset - _elements__offset)));
 
-      final elements__count = ((iteration__count + offset) - elements__offset___raw);
-      if (elements__count > elements__count__remaining___raw) {
-        throw "in-valid call : `(elements__count\\$elements__count\\ > elements__count__remaining\\$elements__count__remaining___raw\\)`";
+      final elements__count = ((iteration__count + offset) - _elements__offset);
+      if (elements__count > _elements__count__remaining) {
+        throw "in-valid call : `(elements__count\\$elements__count\\ > elements__count__remaining\\$_elements__count__remaining\\)`";
       }
 
-      final array__current__elements__count = array__current__elements__count___raw();
+      final array__current__elements__count = _array__current__elements__count();
 
       if (offset < array__current__elements__count) {
-        array__elements__offset = (offset - elements__offset___raw);
+        array__elements__offset = (offset - _elements__offset);
       } else {
         array__elements__offset = iterate__forward__until(
           offset,
@@ -380,15 +367,15 @@ declarative approach */
     if /*F*/ ((iteration__count == 0) || //
         (iteration__count == 1)) {
       final iterate___ok = array__handle(
-        elements__offset___raw,
-        array__current__id___raw,
+        _elements__offset,
+        _array__current__id,
         iteration__count,
         array__elements__offset,
       );
 
       if (iterate___ok && //
           (iteration__count != 0)) {
-        final array__current__elements__count = array__current__elements__count___raw();
+        final array__current__elements__count = _array__current__elements__count();
 
         if ((iteration__count + array__elements__offset) == array__current__elements__count) {
           elements__remaining__ensure___raw();
@@ -402,15 +389,16 @@ declarative approach */
 
     while (true) {
       final //
-          array__current__elements__count = array__current__elements__count___raw(),
+      array__current__elements__count = _array__current__elements__count(),
           array__last___ok = (iteration__count <= array__current__elements__count),
-          array__elements__count = (array__last___ok /*F*/ //
+          array__elements__count =
+              (array__last___ok /*F*/ //
               ? iteration__count
               : (array__current__elements__count - array__elements__offset));
 
       final iterate___ok = array__handle(
-        elements__offset___raw,
-        array__current__id___raw,
+        _elements__offset,
+        _array__current__id,
         array__elements__count,
         array__elements__offset,
       );
@@ -442,45 +430,47 @@ declarative approach */
     required final BOOL /*iterate___ok*/ Function(
       INT accumulation__element__id /* `(array__element__id + accumulation__elements__offset)` */,
       INT array__offset /*array__element__id*/,
-    ) element__handle,
+    )
+    element__handle,
   }) {
     iterate__auto(
       count: count,
       offset: offset,
-      array__handle: (
-        final elements__offset,
-        final array__id,
-        final array__elements__count,
-        final array__elements__offset,
-      ) {
-        var iterate___ok = TRUE;
+      array__handle:
+          (
+            final elements__offset,
+            final array__id,
+            final array__elements__count,
+            final array__elements__offset,
+          ) {
+            var iterate___ok = TRUE;
 
-        iterate(
-          array__elements__count,
-          offset: array__elements__offset,
-          (final element__id) {
-            iterate___ok = element__handle(
-              (element__id + elements__offset),
-              element__id,
+            ITERATE__forwards(
+              array__elements__count,
+              offset: array__elements__offset,
+              (final element__id) {
+                iterate___ok = element__handle(
+                  (element__id + elements__offset),
+                  element__id,
+                );
+
+                return iterate___ok;
+              },
             );
 
             return iterate___ok;
           },
-        );
-
-        return iterate___ok;
-      },
     );
   }
 
   representation__text___compo //
-      representation__text() {
+  representation__text() {
     return compo__representation__text(
       name: "accumulation__conservative__iteration__meta",
       members: {
-        "elements__count__remaining": elements__count__remaining___raw.representation__text(),
-        "elements__offset": elements__offset___raw.representation__text(),
-        "array__current__id": array__current__id___raw.representation__text(),
+        "elements__count__remaining": _elements__count__remaining.representation__text(),
+        "elements__offset": _elements__offset.representation__text(),
+        "array__current__id": _array__current__id.representation__text(),
       },
     );
   }
@@ -490,8 +480,7 @@ void accumulation__conservative__iteration__meta__test /*
 guide: `
 [0][1]
 [2][3][4][5]
-[6][7][8][9] [10][11][12][13]` */
-    () {
+[6][7][8][9] [10][11][12][13]` */ () {
   {
     const name = "default";
 
@@ -512,17 +501,17 @@ guide: `
           array__current__id: 0,
         ),
       ),
-    ].iterate(
-      (final i, final e) {
+    ].iterate__forwards(
+      (final e, final i) {
         "tests__$name[$i] : (elements__count :${e.elements__count})".print();
 
         final iteration__meta = accumulation__conservative__iteration__meta(
           elements__count: e.elements__count,
         );
 
-        if ((iteration__meta.elements__count__remaining___raw != e.result.elements__count__remaining) || //
-            (iteration__meta.elements__offset___raw != e.result.elements__offset) || //
-            (iteration__meta.array__current__id___raw != e.result.array__current__id)) {
+        if ((iteration__meta._elements__count__remaining != e.result.elements__count__remaining) || //
+            (iteration__meta._elements__offset != e.result.elements__offset) || //
+            (iteration__meta._array__current__id != e.result.array__current__id)) {
           throw "tests__$name[$i] failed";
         }
 
@@ -540,14 +529,18 @@ guide: `
     [
       (
         doubling: INT__4__width,
-        result: (array__first__elements__count__ideal: INT__4__limit,),
+        result: (
+          array__first__elements__count__ideal: INT__4__limit,
+        ),
       ),
       (
         doubling: 0,
-        result: (array__first__elements__count__ideal: 1,),
+        result: (
+          array__first__elements__count__ideal: 1,
+        ),
       ),
-    ].iterate(
-      (final i, final e) {
+    ].iterate__forwards(
+      (final e, final i) {
         "tests__$name[$i] : (doubling :${e.doubling})".print();
 
         final iteration__meta = accumulation__conservative__iteration__meta(
@@ -647,12 +640,12 @@ guide: `
         iteration__offset: 5,
         result: NIL,
       ),
-    ].iterate(
-      (final i, final e) {
+    ].iterate__forwards(
+      (final e, final i) {
         "tests__$name[$i] : (elements__count :${e.elements__count} ,iteration__offset :${e.iteration__offset})".print();
 
         final //
-            iteration__meta = accumulation__conservative__iteration__meta(
+        iteration__meta = accumulation__conservative__iteration__meta(
               elements__count: e.elements__count,
             ),
             result = e.result;
@@ -675,9 +668,9 @@ guide: `
           if (failed___ok.NOT) {
             throw "tests__$name[$i] should have failed";
           }
-        } else if ((iteration__meta.elements__count__remaining___raw != result.elements__count__remaining) || //
-            (iteration__meta.elements__offset___raw != result.elements__offset) || //
-            (iteration__meta.array__current__id___raw != result.array__current__id)) {
+        } else if ((iteration__meta._elements__count__remaining != result.elements__count__remaining) || //
+            (iteration__meta._elements__offset != result.elements__offset) || //
+            (iteration__meta._array__current__id != result.array__current__id)) {
           throw "tests__$name[$i] failed";
         }
 
@@ -745,8 +738,8 @@ guide: `
           array__current__id: 1,
         ),
       ),
-    ].iterate(
-      (final i, final e) {
+    ].iterate__forwards(
+      (final e, final i) {
         "tests__$name[$i] : (elements__count :${e.elements__count} ,begin :${e.begin} ,end :${e.end})".print();
 
         final iteration__meta = accumulation__conservative__iteration__meta(
@@ -763,9 +756,9 @@ guide: `
 
         final result = e.result;
 
-        if ((iteration__meta.elements__count__remaining___raw != result.elements__count__remaining) || //
-            (iteration__meta.elements__offset___raw != result.elements__offset) || //
-            (iteration__meta.array__current__id___raw != result.array__current__id)) {
+        if ((iteration__meta._elements__count__remaining != result.elements__count__remaining) || //
+            (iteration__meta._elements__offset != result.elements__offset) || //
+            (iteration__meta._array__current__id != result.array__current__id)) {
           throw "tests__$name[$i] failed";
         }
 
@@ -830,8 +823,8 @@ guide: `
           offset: 2,
         ),
       ),
-    ].iterate(
-      (final i, final e) {
+    ].iterate__forwards(
+      (final e, final i) {
         final range = e.iteration__range;
 
         "tests__$name[$i] : (elements__count :${e.elements__count} ,offset :${range.offset} ,count :${range.count})".print();

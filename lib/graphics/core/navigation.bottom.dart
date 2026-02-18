@@ -10,7 +10,7 @@ class navigation__bottom //
        );
 
   final value__mutation__event__channel__broadcast<INT> chosen__id__channel;
-  final ARRAY<bool /*switch__ok*/ Function()?> items__press__handle;
+  final ARRAY<BOOL /*switch__ok*/ Function()?> items__press__handle;
 
   @override
   void dispose() {
@@ -31,7 +31,7 @@ class navigation__bottom //
           /*
 non-functional ,with `GestureDetector.behavior` ,being `HitTestBehavior.translucent`
   ,while wrap-ing each `children`'s element ,with `Expanded` ,has equal effect */
-          children: array__new__generated(
+          children: ARRAY__generated(
             items__press__handle.elements__count,
             (final item__id) {
               return Expanded(

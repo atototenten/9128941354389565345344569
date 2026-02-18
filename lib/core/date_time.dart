@@ -48,7 +48,7 @@ the granular unit is nano-seconds until a day ,then itself */
     required final INT offset__years /*= offset__years__ideal__current*/,
   }) {
     return date_time.raw(
-      seconds__nano___raw: ((value.microsecondsSinceEpoch - DateTime.utc(offset__years).microsecondsSinceEpoch) * duration__second__micro__seconds__nano),
+      seconds__nano: ((value.microsecondsSinceEpoch - DateTime.utc(offset__years).microsecondsSinceEpoch) * duration__second__micro__seconds__nano),
       offset__years: offset__years,
     );
   }
@@ -57,28 +57,28 @@ the granular unit is nano-seconds until a day ,then itself */
     final INT minutes, {
     final INT seconds__nano__remaining = 0,
     required this.offset__years /*= offset__years__ideal__current*/,
-  }) : seconds__nano___raw = (seconds__nano__remaining + (minutes * duration__minute__seconds__nano));
+  }) : _seconds__nano = (seconds__nano__remaining + (minutes * duration__minute__seconds__nano));
 
   const date_time.raw({
-    required this.seconds__nano___raw,
+    required final INT seconds__nano,
     required this.offset__years,
-  });
+  }) : _seconds__nano = seconds__nano;
 
-  final INT seconds__nano___raw /*
+  final INT _seconds__nano /*
 stored as a single combined value ,instead of separate {28(`64-36`)-bits `minutes` ,and 36-bits `seconds__nano`}
   to prevent the wastage of capacity
     584 years for combined ,while 510 years for separate */;
   final INT offset__years;
 
   INT minutes() {
-    return (seconds__nano___raw ~/ duration__minute__seconds__nano);
+    return (_seconds__nano ~/ duration__minute__seconds__nano);
   }
 
   DateTime convert__DateTime() {
     final offset__seconds__micro = DateTime.utc(offset__years).microsecondsSinceEpoch;
 
     return DateTime.fromMicrosecondsSinceEpoch(
-      ((seconds__nano___raw ~/ duration__second__micro__seconds__nano) + offset__seconds__micro),
+      ((_seconds__nano ~/ duration__second__micro__seconds__nano) + offset__seconds__micro),
       isUtc: TRUE,
     );
   }
@@ -96,7 +96,7 @@ stored as a single combined value ,instead of separate {28(`64-36`)-bits `minute
       }
     }
 
-    final seconds__nano = (other.seconds__nano___raw - seconds__nano___raw);
+    final seconds__nano = (other._seconds__nano - _seconds__nano);
 
     if (seconds__nano < duration__minute__seconds__nano) {
       return date_time__relative__duration__little();
@@ -316,17 +316,17 @@ void date_time__test() {
   [
     (
       title: "global default",
-      DateTime: DateTime.now().toUtc(),
+      date_time: DateTime.now().toUtc(),
       global___ok: TRUE,
     ),
     (
       title: "non-global(local) default",
-      DateTime: DateTime.now(),
+      date_time: DateTime.now(),
       global___ok: FALSE,
     ),
     (
       title: "before a minute",
-      DateTime: DateTime.now().subtract(
+      date_time: DateTime.now().subtract(
         Duration(
           minutes: 1,
         ),
@@ -335,7 +335,7 @@ void date_time__test() {
     ),
     (
       title: "before an hour",
-      DateTime: DateTime.now().subtract(
+      date_time: DateTime.now().subtract(
         Duration(
           hours: 1,
         ),
@@ -344,7 +344,7 @@ void date_time__test() {
     ),
     (
       title: "before a day",
-      DateTime: DateTime.now().subtract(
+      date_time: DateTime.now().subtract(
         Duration(
           days: 1,
         ),
@@ -353,7 +353,7 @@ void date_time__test() {
     ),
     (
       title: "before 45 days",
-      DateTime: DateTime.now().subtract(
+      date_time: DateTime.now().subtract(
         Duration(
           days: 45,
         ),
@@ -362,7 +362,7 @@ void date_time__test() {
     ),
     (
       title: "before 400 days",
-      DateTime: DateTime.now().subtract(
+      date_time: DateTime.now().subtract(
         Duration(
           days: 400,
         ),
@@ -371,34 +371,34 @@ void date_time__test() {
     ),
     (
       title: "before 800 days",
-      DateTime: DateTime.now().subtract(
+      date_time: DateTime.now().subtract(
         Duration(
           days: 800,
         ),
       ),
       global___ok: FALSE,
     ),
-  ].iterate(
-    (final i, final e) {
+  ].iterate__forwards(
+    (final e, final i) {
       e.title.print();
 
       final value = date_time.DateTime__convert(
-        e.DateTime,
+        e.date_time,
         offset__years: offset__years,
       );
 
-      e.DateTime.toIso8601String().print();
+      e.date_time.toIso8601String().print();
 
       {
-        final DateTime = value.convert__DateTime(
+        final date_time = value.convert__DateTime(
           /*global___ok: e.global___ok,*/
         );
 
-        if (DateTime != e.DateTime) {
-          throw "${DateTime.toIso8601String()} ~= original";
+        if (date_time != e.date_time) {
+          throw "${date_time.toIso8601String()} ~= original";
         }
 
-        DateTime.representation__text().print("DateTime");
+        date_time.representation__text().print("DateTime");
       }
 
       value.representation__text().print("text");

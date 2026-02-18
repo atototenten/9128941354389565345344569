@@ -39,7 +39,7 @@ singly linked (forward ref.ing) list */ //
 
     _element__first = accumulation__linked__element<element___type>(
       value,
-      next___raw: _element__first,
+      next: _element__first,
     );
 
     if /*F*/ (only___ok) {
@@ -54,14 +54,14 @@ singly linked (forward ref.ing) list */ //
   ) {
     final element = accumulation__linked__element<element___type>(
       value,
-      next___raw: NIL,
+      next: NIL,
     );
 
     if /*F*/ (empty___ok()) /*
 `element` is first and only */ {
       _element__first = element;
     } else {
-      _element__last!.next___raw = element;
+      _element__last!._next = element;
     }
 
     _element__last = element;
@@ -74,7 +74,7 @@ singly linked (forward ref.ing) list */ //
       return;
     }
 
-    _element__first = _element__first?.next___raw;
+    _element__first = _element__first?._next;
 
     _elements__count -= 1;
 
@@ -101,13 +101,13 @@ if necessary ,prefer using `accumulation__chained` ,or the non-lazy default accu
         break;
       }
 
-      element = element.next___raw;
+      element = element._next;
     }
   }
 
   BOOL present___ok(
     final element___type element,
-    final value__equality__function__format<element___type, element___type> equal___ok,
+    final value__equality___procedure__format<element___type, element___type> equal___ok,
   ) {
     var present___ok = FALSE;
 
@@ -136,7 +136,7 @@ TASK
   eliminate intermediate conversion to `accumulation__linear__basic___compo`
     also in `accumulation__chained` */ () {
     if (empty___ok()) {
-      return array__new__empty();
+      return ARRAY__empty();
     }
 
     final accumulation = accumulation__linear__basic___compo<element___type>(
@@ -181,12 +181,12 @@ class accumulation__linked__element //
 <element___type extends Object?> {
   accumulation__linked__element(
     this.value, {
-    required this.next___raw,
-  });
+    required final accumulation__linked__element<element___type>? next,
+  }) : _next = next;
 
   final element___type value;
 
-  accumulation__linked__element<element___type>? next___raw;
+  accumulation__linked__element<element___type>? _next;
 }
 
 void accumulation__linked__test() {
@@ -213,7 +213,7 @@ void accumulation__linked__test() {
 
   accumulation__print("begin");
 
-  iterate__reverse(
+  ITERATE__backwards(
     4,
     (final i) {
       accumulation.add__beginning(i);
@@ -223,7 +223,7 @@ void accumulation__linked__test() {
     },
   );
 
-  iterate(
+  ITERATE__forwards(
     4,
     (final i) {
       accumulation.add__ending(i);
@@ -234,7 +234,7 @@ void accumulation__linked__test() {
     offset: 4,
   );
 
-  iterate__reverse(
+  ITERATE__backwards(
     accumulation.elements__count(),
     (final i) {
       accumulation.remove__first();

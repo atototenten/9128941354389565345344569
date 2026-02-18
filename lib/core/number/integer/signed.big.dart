@@ -16,7 +16,7 @@ extension INT__NEG__BIG__extension on INT__NEG__BIG {
         mask = ((INT__NEG__BIG.one << digit__width) - INT__NEG__BIG.one),
         destination = INT__NEG__BIG.zero;
 
-    iterate__reverse(
+    ITERATE__backwards(
       digits__count,
       (_) {
         final source__1 = (source & mask);

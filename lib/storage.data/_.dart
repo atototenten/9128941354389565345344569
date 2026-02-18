@@ -146,7 +146,7 @@ storage__data__meta___compo storage__data__create({
   if (printing___ok) {
     function__call__print(
       "storage__data__create",
-      storage__data__storage.debug__label,
+      storage__data__storage.label___debug,
     );
   }
 
@@ -235,7 +235,7 @@ storage__data__meta___compo storage__data__open({
   if (printing___ok) {
     function__call__print(
       "storage__data__open",
-      storage__data__storage.debug__label,
+      storage__data__storage.label___debug,
     );
   }
 
@@ -270,12 +270,12 @@ storage__data__meta___compo storage__data__open({
   if (printing___ok) {
     position.representation__text().print(
           "data:base:position",
-          storage__data__storage.debug__label,
+          storage__data__storage.label___debug,
         );
 
     position.representation__text().print(
           "data:base:wastage",
-          storage__data__storage.debug__label,
+          storage__data__storage.label___debug,
         );
   }
 
@@ -428,7 +428,7 @@ void storage__data__write__replace /*:preserved*/ (
   if (printing___ok) {
     function__call__print(
       "storage__data__write__replace",
-      ds__meta.debug__label,
+      ds__meta.label___debug,
     );
 
     storage__data__offset.representation__text().print("storage__data__offset");
@@ -452,7 +452,7 @@ void storage__data__write__replace /*:preserved*/ (
     if (printing___ok) {
       bytes__preserved.representation__text().print(
             "bytes__preserved",
-            ds__meta.debug__label,
+            ds__meta.label___debug,
           );
     }
 
@@ -481,7 +481,7 @@ INT storage__data__write__reserve(
   if (printing___ok) {
     function__call__print(
       "storage__data__write__reserve",
-      ds__meta.debug__label,
+      ds__meta.label___debug,
     );
 
     count.representation__text().print("count");
@@ -526,7 +526,7 @@ void storage__data__sync(
   if (printing___ok) {
     function__call__print(
       "storage__data__sync",
-      ds__meta.debug__label,
+      ds__meta.label___debug,
     );
   }
 

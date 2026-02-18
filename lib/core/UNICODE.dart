@@ -68,8 +68,8 @@ byte__array wstr__convert__bytes(
 ) {
   final sink = byte__array__accumulation___compo();
 
-  ws.iterate(
-    (_, final e) {
+  ws.iterate__forwards(
+    (final e, _) {
       sink.add__INT(e);
 
       return TRUE;

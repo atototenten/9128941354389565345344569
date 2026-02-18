@@ -10,29 +10,34 @@ de-focus ,ir-respective of the widget */ {
   FocusManager.instance.primaryFocus?.unfocus();
 }
 
-ASYN<void> //
-orientation__assign__portrait___asyn() {
+ASYN<void> orientation__assign__portrait___asyn() {
   return SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
 }
 
-ASYN<void> //
-orientation__assign__landscape___asyn() {
+ASYN<void> orientation__assign__landscape___asyn() {
   return SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
   ]);
 }
 
-void widget__tree__rendering__frame__current__post__register(
-  final void Function(
-    Duration time,
-  )
-  frame__current__post__handle,
-) {
-  WidgetsBinding.instance.addPostFrameCallback(
-    frame__current__post__handle,
-  );
+extension WidgetsBinding___extension //
+    on WidgetsBinding {
+  void task__rendering__frame__current__after__schedule(final void___procedure__format delegatee) {
+    addPostFrameCallback((_) {
+      return delegatee();
+    });
+  }
+
+  void task__rendering__frame__next__before__schedule(final void___procedure__format delegatee) {
+    scheduleFrameCallback(
+      (_) {
+        return delegatee();
+      },
+      scheduleNewFrame: TRUE,
+    );
+  }
 }

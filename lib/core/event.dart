@@ -10,11 +10,11 @@ abstract class event__channel___protocol {
 
 //
 
-typedef event__basic__handle___procedure__format = procedure__empty__format;
+typedef event__basic__handle___procedure__format = void___procedure__format;
 
 abstract class event__channel__unicast___protocol /*
 `description` is needed
-  ,because ,otherwise `procedure__empty__format` is the implicit and only `description`
+  ,because ,otherwise `void___procedure__format` is the implicit and only `description`
     ,and the channel can invoke only it ,because it does not accept any arg.
   one-of-the-most prominent use-case of description is `widget:tree:node:::base:graphics:dimension:2:u_:i_::build:again` */ //
     extends event__channel___protocol {
@@ -46,13 +46,13 @@ abstract class event__channel__unicast__dispose___protocol //
 
 class event__channel__unicast //
     implements event__channel__unicast__dispose___protocol {
-  event__basic__handle___procedure__format? description___raw;
+  event__basic__handle___procedure__format? _description;
 
   @override
   BOOL description__assign(
     final event__basic__handle___procedure__format description,
   ) {
-    if (description___raw != NIL) {
+    if (_description != NIL) {
       return FALSE;
     }
 
@@ -67,19 +67,19 @@ class event__channel__unicast //
   void description__assign___raw(
     final event__basic__handle___procedure__format description,
   ) {
-    description___raw = description;
+    _description = description;
   }
 
   @override
   void event__dispatch() {
-    description___raw?.call();
+    _description?.call();
   }
 
   @override
   BOOL description__equal___ok(
     final event__basic__handle___procedure__format description,
   ) {
-    return (description == description___raw);
+    return (description == _description);
   }
 
   @override
@@ -99,7 +99,7 @@ class event__channel__unicast //
 
   @override
   void description__remove___raw() {
-    description___raw = NIL;
+    _description = NIL;
   }
 
   @override
@@ -112,7 +112,7 @@ class event__channel__unicast //
 
 abstract class event__channel__broadcast___protocol /*
 `description` is needed
-  ,because ,otherwise `procedure__empty__format` is the implicit and only `description`
+  ,because ,otherwise `void___procedure__format` is the implicit and only `description`
     ,and the channel can invoke only it ,because it does not accept any arg.
   one-of-the-most prominent use-case of description is `widget:tree:node:::base:graphics:dimension:2:u_:i_::build:again` */ //
     extends event__channel___protocol {
@@ -137,18 +137,18 @@ abstract class event__channel__broadcast__dispose___protocol //
 class event__channel__broadcast //
     implements event__channel__broadcast__dispose___protocol {
   event__channel__broadcast({
-    this.debug__name,
-  }) : descriptions___raw = accumulation__linear__definitive___compo();
+    this.name___debug,
+  }) : _descriptions = accumulation__linear__advanced___compo();
 
-  final accumulation__linear__definitive___compo<event__basic__handle___procedure__format> descriptions___raw;
+  final accumulation__linear__advanced___compo<event__basic__handle___procedure__format> _descriptions;
 
-  final string? debug__name;
+  final string? name___debug;
 
   @override
   void descriptions__add(
     final event__basic__handle___procedure__format description,
   ) {
-    descriptions___raw.add__ending(
+    _descriptions.add__ending(
       description,
     );
   }
@@ -159,7 +159,7 @@ class event__channel__broadcast //
   ) {
     var result = FALSE;
 
-    descriptions___raw.iterate(
+    _descriptions.iterate(
       (final id, final e) {
         if (description != e) {
           return TRUE;
@@ -175,20 +175,20 @@ class event__channel__broadcast //
   }
 
   INT descriptions__count___raw() {
-    return descriptions___raw.elements__count();
+    return _descriptions.elements__count();
   }
 
   @override
   void descriptions__remove(
     final event__basic__handle___procedure__format description,
   ) {
-    descriptions___raw.iterate(
+    _descriptions.iterate(
       (final id, final e) {
         if (description != e) {
           return TRUE;
         }
 
-        descriptions___raw.remove(id);
+        _descriptions.remove(id);
 
         return FALSE;
       },
@@ -197,12 +197,12 @@ class event__channel__broadcast //
 
   @override
   void descriptions__flush() {
-    descriptions___raw.flush();
+    _descriptions.flush();
   }
 
   @override
   void event__dispatch() {
-    descriptions___raw.iterate(
+    _descriptions.iterate(
       (final id, final description) {
         try {
           description();
@@ -215,7 +215,7 @@ class event__channel__broadcast //
 
   @override
   void dispose() {
-    descriptions___raw.dispose();
+    _descriptions.dispose();
   }
 }
 
@@ -238,8 +238,8 @@ class event__channels__broadcast //
     )
     operate,
   ) {
-    _channels.iterate__reverse(
-      (final i, final e) {
+    _channels.iterate__backwards(
+      (final e, final i) {
         operate(e);
 
         return TRUE;
@@ -324,7 +324,7 @@ class event__channel__broadcast__periodic //
   event__channel__broadcast__periodic({
     required this.time__unit__count,
     final INT time__interval /* in milli-seconds */ = date_time.duration__second__seconds__milli,
-    required final procedure__empty__format completion__handle /*
+    required final void___procedure__format completion__handle /*
 invoked after the saturation of "time__unit__count"
   ,like on 4th ,for 3 as "time__unit__count" */,
   }) : _time__unit__count__current = time__unit__count {

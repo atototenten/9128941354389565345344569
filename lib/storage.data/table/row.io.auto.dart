@@ -87,7 +87,7 @@ ARRAY<Object?> storage__data__table__row__data__array__auto({
 
   printing__indentation__increase();
 
-  final result = array__new__generated(
+  final result = ARRAY__generated(
     column__meta__id__array.elements__count,
     (final column__id) {
       final table__column = table__columns[column__meta__id__array[column__id]];

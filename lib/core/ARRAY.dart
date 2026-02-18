@@ -2,54 +2,44 @@ part of "_.dart";
 
 typedef ARRAY<element___type> = List<element___type>;
 
-ARRAY<element___type> array__new__copy<element___type>(
-  final ARRAY<element___type> arr_, {
-  final INT offset = 0,
-  final INT? count,
-}) => arr_.sublist(
-  offset,
-  ((count ?? arr_.elements__count) + offset),
-);
-
-ARRAY<element___type> array__new__filled<element___type>(
+ARRAY<element___type> //
+ARRAY__filled<element___type>(
   final INT count,
   final element___type value,
-) => ARRAY<element___type>.filled(
-  count,
-  value,
-  growable: FALSE,
-);
-
-ARRAY<element___type> array__new__generated<element___type>(
-  final INT count,
-  final element___type Function(INT i) generate,
-) => ARRAY<element___type>.generate(
-  count,
-  generate,
-  growable: FALSE,
-);
+) {
+  return ARRAY<element___type>.filled(
+    count,
+    value,
+    growable: FALSE,
+  );
+}
 
 ARRAY<element___type> //
-array__new__empty<element___type>() => //
-array__new__generated<element___type>(
-  0,
-  (_) => throw Exception(),
-);
+ARRAY__generated<element___type>(
+  final INT count,
+  final element___type Function(INT i) generate,
+) {
+  return ARRAY<element___type>.generate(
+    count,
+    generate,
+    growable: FALSE,
+  );
+}
 
-ARRAY<element___type> array__new__element__single<element___type>(
-  final element___type value,
-) => array__new__filled<element___type>(
-  1,
-  value,
-);
+ARRAY<element___type> //
+ARRAY__empty<element___type>() {
+  return ARRAY<element___type>.empty(
+    growable: FALSE,
+  );
+}
 
 extension array__array__merge_ing<element___type> //
     on ARRAY<ARRAY<element___type>> {
   ARRAY<element___type> merge() {
     var elements__count = 0;
 
-    this.iterate__reverse(
-      (_, final e) {
+    this.iterate__backwards(
+      (final e, _) {
         elements__count += e.elements__count;
 
         return TRUE;
@@ -62,7 +52,7 @@ extension array__array__merge_ing<element___type> //
     element__offset = 0,
         array__offset = 0;
 
-    final result = array__new__generated(
+    final result = ARRAY__generated(
       elements__count,
       (var element__id) {
         "$element__id   $element__offset   $array__offset".print();
@@ -122,69 +112,60 @@ class array__elements__separated__generation__meta___compo {
   }
 }
 
-BS1__array INT__array__convert__BS1__array(
-  final ARRAY<INT> arr,
-) {
-  arr.iterate__reverse(
-    (final i, final value) {
-      if /*F*/ (value > INT__1__max) {
-        throw "$value(`array[$i]`) exceeds the limits of `by`";
-      }
-
-      return TRUE;
-    },
-  );
-
-  return BS1__array.fromList(
-    arr,
-  );
-}
-
 extension ARRAY___extension<element___type> //
     on ARRAY<element___type> {
   INT get elements__count => //
-      length;
-
-  INT get count => //
       length;
 
   BOOL empty___ok() => //
       (this.elements__count == 0);
 
   element___type element__last() => //
-      this[this.elements__count - 1];
-
-  void iterate(
-    final BOOL Function(INT element__id, element___type element) operate, {
-    final INT? count,
-    final INT offset = 0,
-  }) {
-    _iterate(
-      (count ?? (this.elements__count - offset)),
-      offset: offset,
-      (final element__id) => //
-          operate(element__id, this[element__id]),
-    );
-  }
-
-  void iterate__reverse(
-    final BOOL Function(INT element__id, element___type element) operate, {
-    final INT? count,
-  }) {
-    _iterate__reverse(
-      (count ?? this.elements__count),
-      (final element__id) {
-        return operate(
-          element__id,
-          this[element__id],
-        );
-      },
-    );
-  }
+      element(this.elements__count - 1);
 
   element___type element(
     final INT element__id,
   ) => this[element__id];
+
+  ARRAY<element___type> //
+  copy() {
+    return /*segment(
+      offset: 0,
+      count: elements__count,
+    )*/ convert__array();
+  }
+
+  ARRAY<element___type> //
+  segment({
+    required final INT offset,
+    required final INT count,
+  }) {
+    return sublist(
+      offset,
+      (count + offset),
+    );
+  }
+
+  void iterate__forwards(
+    final BOOL /*continue___ok*/ Function(element___type, INT) operate, {
+    final INT? iteration__count,
+    final INT offset = 0,
+  }) {
+    ITERATE__forwards(
+      (iteration__count ?? elements__count),
+      (i) => operate(element(i), i),
+      offset: offset,
+    );
+  }
+
+  void iterate__backwards(
+    final BOOL /*continue___ok*/ Function(element___type, INT) operate,
+  ) {
+    ITERATE__backwards(
+      elements__count,
+      (i) => operate(element(i), i),
+    );
+  }
 
   void fill(
     final element___type value, {
@@ -210,11 +191,11 @@ un-equal element's id, if any */
   }) {
     INT? result;
 
-    _iterate(
+    ITERATE__forwards(
       (count ?? this.elements__count),
       offset: offset,
       (final element__id) {
-        if (this[element__id] == other[element__id]) {
+        if (element(element__id) == other.element(element__id)) {
           return TRUE;
         }
 
@@ -239,13 +220,13 @@ un-equal element's id, if any */
 `id` if present ,otherwise NIL */
   search__simple(
     final BOOL Function(element___type) element__equal___ok, {
-    final BOOL reverse___ok = FALSE,
+    final BOOL backwards___ok = FALSE,
   }) {
     INT? result;
 
     BOOL operate(
-      final INT element__id,
       final element___type element,
+      final INT element__id,
     ) {
       if (element__equal___ok(element).NOT) {
         return TRUE;
@@ -256,9 +237,9 @@ un-equal element's id, if any */
       return FALSE;
     }
 
-    (reverse___ok //
-        ? iterate__reverse
-        : iterate)(operate);
+    (backwards___ok //
+        ? iterate__backwards
+        : iterate__forwards)(operate);
 
     return result;
   }
@@ -270,19 +251,21 @@ un-equal element's id, if any */
       element___type value,
     )
     element__equal___ok, {
-    final BOOL reverse___ok = FALSE,
-  }) => search__simple(
-    (final e) => element__equal___ok(e, value),
-    reverse___ok: reverse___ok,
-  );
+    final BOOL backwards___ok = FALSE,
+  }) {
+    return search__simple(
+      (final e) => element__equal___ok(e, value),
+      backwards___ok: backwards___ok,
+    );
+  }
 
   INT? /*element__id_*/ search__segment(
     final ARRAY<element___type> segment,
   ) {
     INT? segment__element__id;
 
-    iterate(
-      (final i, final e) {
+    iterate__forwards(
+      (final e, final i) {
         if (segment__element__id != NIL) {
           final $segment__element__id = (segment__element__id = (1 + segment__element__id!));
           if /*F*/ (($segment__element__id == segment.elements__count) /*
@@ -320,8 +303,8 @@ whole `segment` has been iterated ,and was not un-equal to `this[(i-segment__ele
       (input: [0, 1, 2, 3], segment: [1, 2], result: 1),
       (input: [0, 1, 2, 3], segment: [1, 2, 3], result: 1),
       (input: [0, 1, 2, 3], segment: [1, 3], result: NIL),
-    ].iterate(
-      (_, final e) {
+    ].iterate__forwards(
+      (final e, _) {
         final result =
             e.input.search__segment(e.segment) //
               ..representation__text().print("${e.input}.search__segment(${e.segment})");
@@ -349,9 +332,9 @@ more run-time efficient ,than `search__segment` */ {
 
     var prefix_ed___ok = TRUE;
 
-    segment.iterate__reverse(
-      (final i, final e) {
-        if (e == this[i]) {
+    segment.iterate__backwards(
+      (final e, final i) {
+        if (e == element(i)) {
           return TRUE;
         } else {
           prefix_ed___ok = FALSE;
@@ -369,7 +352,7 @@ more run-time efficient ,than `search__segment` */ {
       (input: [0, 1, 2, 3], segment: [1, 2], result: FALSE),
       (input: [0, 1, 2, 3], segment: [0, 1, 2, 3], result: FALSE),
       (input: [0, 1, 2], segment: [0, 1, 2, 3], result: FALSE),
-    ].iterate((_, final e) {
+    ].iterate__forwards((final e, _) {
       final result =
           e.input.search__segment__begin(e.segment) //
             ..representation__text().print("${e.input}.search__segment__begin(${e.segment})");
@@ -384,16 +367,16 @@ more run-time efficient ,than `search__segment` */ {
   ARRAY<element___type> search__multiple /*
 join */ <element__other__type>(
     final ARRAY<element__other__type> other,
-    final value__equality__function__format<element___type, element__other__type> element__equal___ok,
+    final value__equality___procedure__format<element___type, element__other__type> element__equal___ok,
   ) {
     final accumulation = accumulation__linear__basic___compo<element___type>();
 
-    this.iterate(
-      (_, final element) {
+    this.iterate__forwards(
+      (final element, _) {
         var equal___ok = FALSE;
 
-        other.iterate__reverse(
-          (_, final element__other) {
+        other.iterate__backwards(
+          (final element__other, _) {
             final equal__ok_1 = element__equal___ok(
               element,
               element__other,
@@ -429,7 +412,7 @@ join */ <element__other__type>(
   ) =>
       (search__simple(
         element__equal___ok,
-        reverse___ok: TRUE,
+        backwards___ok: TRUE,
       ) !=
       null);
 
@@ -438,7 +421,7 @@ join */ <element__other__type>(
   ) =>
       (search__simple(
         element__equal___ok,
-        reverse___ok: TRUE,
+        backwards___ok: TRUE,
       ) ==
       null);
 
@@ -455,7 +438,7 @@ join */ <element__other__type>(
   ) {
     final element__id = search__simple(
       element__equal___ok,
-      reverse___ok: TRUE,
+      backwards___ok: TRUE,
     );
 
     if (element__id == null) {
@@ -509,7 +492,7 @@ extension element___type__array__report__definitive__extension<element___type> /
     string element(
       final INT__NEG id__diff_,
     ) {
-      return this[element__id + id__diff_].representation__text().value;
+      return element(element__id + id__diff_).representation__text().value;
     }
 
     return ("$element__id: $static__indicate__short_en_ing " + //

@@ -5,6 +5,77 @@ typedef VENDING<element___type> = Iterable<element___type>;
 typedef VENDING__SESSION /*
   respective "VENDING"'s snap-shot ,at the time */ <element___type> = Iterator<element___type>;
 
+VENDING<element___type> //
+VENDING__generate__reverse<element___type> //
+(
+  final INT count,
+  final element___type Function(INT) generate,
+) sync* {
+  final vending = INT__VENDING__generate__reverse(count);
+
+  for (final i in vending) {
+    yield generate(i);
+  }
+}
+
+VENDING<INT> //
+INT__VENDING__generate__reverse //
+(final INT count) sync* {
+  if (count == 0) {
+    return;
+  }
+
+  RangeError.checkNotNegative((count - 1));
+
+  var i = count;
+
+  do {
+    i -= 1;
+
+    yield i;
+  } while (i /*~=*/ > 0);
+}
+
+VENDING<element___type> //
+VENDING__generate<element___type> //
+(
+  final INT count,
+  final element___type Function(INT) generate, {
+  final INT offset = 0,
+}) sync* {
+  final vending = INT__VENDING__generate(
+    count,
+    offset: offset,
+  );
+
+  for (final i in vending) {
+    yield generate(i);
+  }
+}
+
+VENDING<INT> //
+INT__VENDING__generate //
+(
+  final INT count, {
+  final INT offset = 0,
+}) sync* {
+  if (count == 0) {
+    return;
+  }
+
+  RangeError.checkNotNegative((count - 1));
+
+  final count__adjusted = (count + offset);
+
+  var i = offset;
+
+  while (i < count__adjusted) {
+    yield i;
+
+    i += 1;
+  }
+}
+
 extension VENDING___extension<element___type> //
     on VENDING<element___type> {
   VENDING<element__new___type> //

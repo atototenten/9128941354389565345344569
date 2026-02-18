@@ -1,15 +1,15 @@
 part of "../_.dart";
 
-class number__real__fixed_point___raw {
+class number__real__fixed_point___compo {
   static const //
       point__default = 8;
 
-  const number__real__fixed_point___raw(
+  const number__real__fixed_point___compo(
     this.value, {
     this.point = point__default,
   });
 
-  number__real__fixed_point___raw.APPROX__convert(
+  number__real__fixed_point___compo.APPROX__convert(
     final APPROX value, {
     this.point = point__default,
   }) : value = (value / point).truncate();

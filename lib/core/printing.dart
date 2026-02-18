@@ -49,7 +49,7 @@ void print__labeled(
 usually `value.ingredient.name` */
   ,
   final string? label /*
-usually `value.debug__label`, or `value.code__hash.cached` */
+usually `value.label___debug`, or `value.code__hash.cached` */
   ,
 ]) {
   final buffer = StringBuffer();
@@ -81,7 +81,7 @@ usually `value.debug__label`, or `value.code__hash.cached` */
 
   buffer
     ..write(value)
-    ..write(chars__slash__backward___string) /*..write(char__line_feed)*/;
+    ..write(chars__slash__backward___string) /*..write(chars__line_feed___string)*/;
 
   final result = buffer.toString();
 
@@ -116,6 +116,6 @@ const //
     function__call__print = procedure__call__print;
 
 extension Object__nilable__label__extension on Object? {
-  string get debug__label => //
+  string get label___debug => //
       hashCode.toString();
 }

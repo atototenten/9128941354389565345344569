@@ -9,8 +9,7 @@ class union {
   final ARRAY<Type> _types /*
 sub-typing is not supported
 /*must be ordered in narrow-to-wide sequence
-  ,like `[INT , APPROX ,... , string]` ,because `INT2` is `INT4` ,but `INT4` is-not `INT2`*/ */
-      ;
+  ,like `[INT , APPROX ,... , string]` ,because `INT2` is `INT4` ,but `INT4` is-not `INT2`*/ */;
 
   dynamic _value;
 
@@ -22,11 +21,8 @@ sub-typing is not supported
   ) {
     var type___ok = FALSE;
 
-    _types.iterate(
-      (
-        _,
-        final e,
-      ) {
+    _types.iterate__forwards(
+      (final e, _) {
         if (value__new.runtimeType == e) {
           type___ok = TRUE;
 
@@ -44,18 +40,15 @@ sub-typing is not supported
     _value = value__new;
   }
 
-  BOOL equal___ok(
-    final union other) /*
-`_types` is ignored */
-  {
+  BOOL equal___ok(final union other) /*
+`_types` is ignored */ {
     return ((runtimeType == other.runtimeType) //
         &&
         (_value == other._value));
   }
 
   @override
-  BOOL operator ==(
-    final Object other) {
+  BOOL operator ==(final Object other) {
     return ((other is union) &&
         equal___ok(
           other,
